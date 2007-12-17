@@ -7,7 +7,9 @@ import at.ac.tuwien.ifs.bpsw.designpatterns.beans.Person;
 
 public class NotificationManager {
 
-
+	/**
+	 * This Enumeration contains a list of possible notification methods
+	 */
 	public enum NotificationMethod {SMS, EMAIL};
 	
 	/**
