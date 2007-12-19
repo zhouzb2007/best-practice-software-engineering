@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpsw.designpatterns;
+package delegation;
 
 import java.util.List;
 
