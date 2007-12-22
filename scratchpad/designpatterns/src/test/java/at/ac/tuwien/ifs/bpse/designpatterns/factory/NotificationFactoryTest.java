@@ -1,6 +1,7 @@
 package at.ac.tuwien.ifs.bpse.designpatterns.factory;
 
 import junit.framework.TestCase;
+import at.ac.tuwien.ifs.bpse.designpatterns.adapter.VoiceCallNotificationAdapter;
 import at.ac.tuwien.ifs.bpse.designpatterns.beans.Person;
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.Email;
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.INotification;
@@ -9,6 +10,8 @@ import at.ac.tuwien.ifs.bpse.designpatterns.factory.NotificationFactory;
 
 public class NotificationFactoryTest extends TestCase {
 
+	private Person person = new Person ("Alexander", "Schatten", "alexemail", "12345");
+	
 	protected void setUp() throws Exception {
 		super.setUp();
 	}
@@ -29,6 +32,13 @@ public class NotificationFactoryTest extends TestCase {
 		assertEquals(Sms.class, notif.getClass());
 	}
 	
+	
+	public void testCreateVoiceNotification () throws Exception{
+		INotification notif = NotificationFactory.createNotification("Voice");
+		assertEquals(VoiceCallNotificationAdapter.class, notif.getClass());
+	}
+
+	
 	public void testWrongNotificationType () {
 		try {
 			INotification notif = NotificationFactory.createNotification("not existing");
@@ -46,8 +56,18 @@ public class NotificationFactoryTest extends TestCase {
 	
 	public void testSendEmail () throws Exception {
 		INotification notif = NotificationFactory.createNotification("Email");
-		notif.setPerson(new Person ("Alexander", "Schatten", "alexemail", "12345"));
+		notif.setPerson(person);
 		String status = notif.send("Hello Email");
 		assertEquals("Email sent", status);
+	}
+
+	/**
+	 * Voice is connected through an adapter, so we test this too 
+	 */
+	public void testNotifyVoice () throws Exception {
+		INotification notif = NotificationFactory.createNotification("Voice");
+		notif.setPerson(person);
+		String status = notif.send("Hello Email");
+		assertEquals("Phonecall done", status);
 	}
 }
