@@ -7,6 +7,7 @@ import at.ac.tuwien.ifs.bpse.designpatterns.delegation.Email;
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.INotification;
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.Sms;
 import at.ac.tuwien.ifs.bpse.designpatterns.factory.NotificationFactory;
+import at.ac.tuwien.ifs.bpse.designpatterns.immutable.NotificationIDs;
 
 public class NotificationFactoryTest extends TestCase {
 
@@ -51,6 +52,28 @@ public class NotificationFactoryTest extends TestCase {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void testGetNotificationIDs () {
+		NotificationIDs nids = NotificationFactory.getNotificationIDs();
+		assertEquals(3, nids.size());
+		assertEquals("Email", nids.getId(0));
+		assertEquals("SMS",   nids.getId(1));
+		assertEquals("Voice", nids.getId(2));
+		try {
+			String s = nids.getId(3);
+			System.out.println(s);
+			fail ("Index out of bounds exception expected!");
+		} catch (IndexOutOfBoundsException e) {
+			// ok
+		}
+		try {
+			String s = nids.getId(-1);
+			System.out.println(s);
+			fail ("Index out of bounds exception expected!");
+		} catch (IndexOutOfBoundsException e) {
+			// ok
 		}
 	}
 	
