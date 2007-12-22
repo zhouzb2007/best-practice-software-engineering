@@ -4,11 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
-
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.INotification;
+import at.ac.tuwien.ifs.bpse.designpatterns.immutable.NotificationIDs;
 
 /**
  * This factory class reads notification methods from a configuration file.
@@ -62,10 +63,16 @@ public class NotificationFactory {
 		return notification;
 	}
 
-	/*
-	public static List<String> getNotificationIDs () {
+	/**
+	 * 
+	 * @return sorted array of "ids", i.e. the types of notifications, e.g. for a
+	 * User Interface to display the options
+	 */
+	public static NotificationIDs getNotificationIDs () {
+		String[] id = (String[])notificationFactory.notificationClasses.keySet().toArray(new String[0]);
+		Arrays.sort(id);
+		return new NotificationIDs(id);
 	}
-	*/
 	
 	/**
 	 * Read configuration file that contains list of notification methods
