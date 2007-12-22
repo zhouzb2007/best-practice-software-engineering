@@ -21,6 +21,10 @@ import at.ac.tuwien.ifs.bpse.designpatterns.delegation.INotification;
  * The factory method reads the id and tries to find the appropriate notification method
  * then it makes an instance of the respective class.
  * 
+ * This factory actually also is a Singleton implementation.
+ * This is due to the fact, that the data should not be read from disk with
+ * every access but only once at initialisation.
+ * 
  * @author aschatt
  *
  */
