@@ -2,6 +2,7 @@ package at.ac.tuwien.ifs.bpse.designpatterns;
 
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.NotificationManagerTest;
 import at.ac.tuwien.ifs.bpse.designpatterns.factory.NotificationFactoryTest;
+import at.ac.tuwien.ifs.bpse.designpatterns.singleton.NoficationManagerServiceTest;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -13,6 +14,7 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(NotificationManagerTest.class);
 		suite.addTestSuite(NotificationFactoryTest.class);
+		suite.addTestSuite(NoficationManagerServiceTest.class);
 		//$JUnit-END$
 		return suite;
 	}
