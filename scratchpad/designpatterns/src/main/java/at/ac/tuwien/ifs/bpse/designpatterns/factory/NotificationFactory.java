@@ -79,7 +79,7 @@ public class NotificationFactory {
 	 * @throws IOException
 	 */
 	private void readCfg() throws IOException {
-		// Get Input Stream from config file in classpath
+		// Get Input Stream from config file in classpath, i.e. use classpath resource 
 		InputStream is = getClass().getResourceAsStream(NOTIFICATION_CLASSES_CONFIG);
 		InputStreamReader isr = new InputStreamReader(is);
 		// Buffered reader is used, as it provides a convenient readLine() method
@@ -88,6 +88,7 @@ public class NotificationFactory {
 		String id = null;
 		String classname = null;
 		String s = null;
+		// use String Tokenizer to break each line into Notification "ID" and actual implementing class
 		while ((s = br.readLine()) != null) {
 			StringTokenizer stk = new StringTokenizer(s, ",");
 			id = stk.nextToken().trim();
