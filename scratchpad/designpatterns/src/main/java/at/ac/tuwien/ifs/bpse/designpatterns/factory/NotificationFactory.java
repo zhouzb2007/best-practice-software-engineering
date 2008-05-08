@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.INotification;
 import at.ac.tuwien.ifs.bpse.designpatterns.immutable.NotificationIDs;
+import at.ac.tuwien.ifs.bpse.designpatterns.proxy.RecordNotificationProxy;
 
 /**
  * This factory class reads notification methods from a configuration file.
@@ -34,6 +35,7 @@ public class NotificationFactory {
 	private static final String NOTIFICATION_CLASSES_CONFIG = "/notification_classes.cfg";
 	private static NotificationFactory notificationFactory = new NotificationFactory();
 	private HashMap<String, String> notificationClasses = new HashMap<String, String>();
+	private HashMap<String, Boolean> notificationRecord = new HashMap<String, Boolean>();
 	
 	public NotificationFactory() {
 		try {
@@ -59,8 +61,17 @@ public class NotificationFactory {
 		if (!notificationFactory.notificationClasses.containsKey(type))
 			throw new NotificationMethodNotDefinedException("Notification '" + type + "' is not defined.");
 		String classname = notificationFactory.notificationClasses.get(type);
+		// Create Instance of actual notification class
 		INotification notification = (INotification)Class.forName(classname).newInstance();
-		return notification;
+		// Check if notification should be recorded, then 
+		// usee RecordNotificationProxy
+		boolean doRecord = notificationFactory.notificationRecord.get(type);
+		if (doRecord) {
+			INotification recordNotification = new RecordNotificationProxy (notification);
+			return recordNotification;
+		} else {
+			return notification;			
+		}
 	}
 
 	/**
@@ -87,13 +98,23 @@ public class NotificationFactory {
 		BufferedReader br = new BufferedReader(isr);
 		String id = null;
 		String classname = null;
+		boolean doRecord = false;
 		String s = null;
-		// use String Tokenizer to break each line into Notification "ID" and actual implementing class
+		// use String Tokenizer to break each line into
+		// Notification "ID" and actual implementing class
+		// put id and classname into Hashmap
 		while ((s = br.readLine()) != null) {
 			StringTokenizer stk = new StringTokenizer(s, ",");
 			id = stk.nextToken().trim();
 			classname = stk.nextToken().trim();
+			s = stk.nextToken().trim();
+			if (s.equals("record_on")) {
+				doRecord = true;
+			} else {
+				doRecord = false;
+			}
 			notificationClasses.put(id, classname);
+			notificationRecord.put(id, doRecord);
 		}
 	}
 	

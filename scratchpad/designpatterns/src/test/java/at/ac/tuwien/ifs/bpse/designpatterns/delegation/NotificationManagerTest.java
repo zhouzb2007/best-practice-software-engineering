@@ -42,7 +42,7 @@ public class NotificationManagerTest extends TestCase {
 	public void testNotification() {
 		notMan.addMember(new Person("Alexander", "Schatten", "alexemail",   "12345"), NotificationMethod.EMAIL);
 		notMan.addMember(new Person("Stefan",    "Biffl",    "stefanemail", "54321"), NotificationMethod.SMS);
-		List<String> statusList = notMan.sendNotifications("Test");
+		List<String> statusList = notMan.sendNotifications("Test, delegation, no factory");
 		assertEquals(statusList.get(0), "Email sent");
 		assertEquals(statusList.get(1), "SMS sent");
 	}
