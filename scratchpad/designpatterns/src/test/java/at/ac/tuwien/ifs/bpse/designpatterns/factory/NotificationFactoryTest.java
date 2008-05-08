@@ -5,9 +5,8 @@ import at.ac.tuwien.ifs.bpse.designpatterns.adapter.VoiceCallNotificationAdapter
 import at.ac.tuwien.ifs.bpse.designpatterns.beans.Person;
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.Email;
 import at.ac.tuwien.ifs.bpse.designpatterns.delegation.INotification;
-import at.ac.tuwien.ifs.bpse.designpatterns.delegation.Sms;
-import at.ac.tuwien.ifs.bpse.designpatterns.factory.NotificationFactory;
 import at.ac.tuwien.ifs.bpse.designpatterns.immutable.NotificationIDs;
+import at.ac.tuwien.ifs.bpse.designpatterns.proxy.RecordNotificationProxy;
 
 public class NotificationFactoryTest extends TestCase {
 
@@ -30,7 +29,9 @@ public class NotificationFactoryTest extends TestCase {
 	
 	public void testCreateSmsNotification () throws Exception{
 		INotification notif = NotificationFactory.createNotification("SMS");
-		assertEquals(Sms.class, notif.getClass());
+		//assertEquals(Sms.class, notif.getClass());
+		assertEquals(RecordNotificationProxy.class, notif.getClass());
+
 	}
 	
 	
@@ -77,20 +78,35 @@ public class NotificationFactoryTest extends TestCase {
 		}
 	}
 	
+	/**
+	 * Test Email Notification via Factory
+	 */
 	public void testSendEmail () throws Exception {
 		INotification notif = NotificationFactory.createNotification("Email");
 		notif.setPerson(person);
-		String status = notif.send("Hello Email");
+		String status = notif.send("Hello Email, factory used");
 		assertEquals("Email sent", status);
 	}
 
+	/**
+	 * Test SMS Notification via Factory
+	 * SMS has actually turned record on, so 
+	 * SMS is sending via proxy 
+	 */
+	public void testSendSMS () throws Exception {
+		INotification notif = NotificationFactory.createNotification("SMS");
+		notif.setPerson(person);
+		String status = notif.send("Hello SMS, factory used");
+		assertEquals("SMS sent", status);
+	}
+	
 	/**
 	 * Voice is connected through an adapter, so we test this too 
 	 */
 	public void testNotifyVoice () throws Exception {
 		INotification notif = NotificationFactory.createNotification("Voice");
 		notif.setPerson(person);
-		String status = notif.send("Hello Email");
+		String status = notif.send("Hello Voice, factory used");
 		assertEquals("Phonecall done", status);
 	}
 }
