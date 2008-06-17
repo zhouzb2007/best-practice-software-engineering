@@ -18,11 +18,11 @@ public class IteratorExample {
 		movies.add("Superman");
 		movies.add("X-Men");
 		
-		steps.add("Open Washing Machine");
-		steps.add("Put Clothes in");
-		steps.add("Close Washing Maching");
-		steps.add("Add Washing Powder");
-		steps.add("Start Machine");
+		steps.add("Switch Amplifier on");
+		steps.add("Switch DVD Player on");
+		steps.add("Switch TV on");
+		steps.add("Put DVD into Player");
+		steps.add("Press Play");
 		
 		System.out.println("Movies:");
 		Iterator<String> it = movies.iterator();
