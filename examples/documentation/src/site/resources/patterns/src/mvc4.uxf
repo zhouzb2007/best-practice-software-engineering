@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Relation</type><coordinates><x>110</x><y>110</y><w>180</w><h>140</h></coordinates><panel_attributes>lt=&lt;.
+shows status</panel_attributes><additional_attributes>160;20;20;120</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>259</x><y>110</y><w>152</w><h>140</h></coordinates><panel_attributes>lt=&lt;.
+   generates events</panel_attributes><additional_attributes>101;120;51;20</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>105</x><y>270</y><w>130</w><h>130</h></coordinates><panel_attributes>lt=&lt;.
+provides data</panel_attributes><additional_attributes>25;20;105;110</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>270</x><y>270</y><w>110</w><h>130</h></coordinates><panel_attributes>lt=&lt;.
+changes</panel_attributes><additional_attributes>20;110;90;20</additional_attributes></element><element><type>com.umlet.element.base.Actor</type><coordinates><x>270</x><y>20</y><w>44</w><h>120</h></coordinates><panel_attributes>User
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Package</type><coordinates><x>60</x><y>130</y><w>370</w><h>320</h></coordinates><panel_attributes>MVC System
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>70</x><y>230</y><w>120</w><h>60</h></coordinates><panel_attributes> 
+View(s)
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>300</x><y>230</y><w>120</w><h>60</h></coordinates><panel_attributes> 
+Controller(s)
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>190</x><y>380</y><w>120</w><h>60</h></coordinates><panel_attributes> 
+Model
+</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

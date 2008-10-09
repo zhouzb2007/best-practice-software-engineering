@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Relation</type><coordinates><x>230</x><y>80</y><w>220</w><h>190</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>200;20;20;170</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>270</x><y>260</y><w>180</w><h>40</h></coordinates><panel_attributes>lt=&lt;</panel_attributes><additional_attributes>20;20;160;20</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>430</x><y>30</y><w>240</w><h>120</h></coordinates><panel_attributes>Movie
+--
+-director: String
+...
+--
++Movie(director: String) &lt;&lt;create&gt;&gt;
++getDirector(): String
+...</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>30</x><y>250</y><w>260</w><h>70</h></coordinates><panel_attributes>SemiColonDelimitedMovieFinder
+--
+-filename: String
+--
++setFilename(filename: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>430</x><y>210</y><w>350</w><h>110</h></coordinates><panel_attributes>Movies
+--
+-finder: MovieFinder
+--
++Movies() &lt;&lt;create&gt;&gt;
++moviesDirectedBy(director: String): List&lt;Movie&gt;
++setFinder(MovieFinder finder): void</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>50</x><y>30</y><w>210</w><h>70</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+MovieFinder
+--
+--
++findAll(): List&lt;Movie&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>130</x><y>80</y><w>40</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;20;20;170</additional_attributes></element></umlet_diagram>

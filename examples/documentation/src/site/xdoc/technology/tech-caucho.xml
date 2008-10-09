@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <body>
+        <section name="Technology: Hessian and Burlap">
+	        
+	  <subsection name="Overview">
+		
+		  <p></p>
+		 </subsection>
+		  
+		
+		<subsection name="Reference">
+	
+		   <p>More information about Hessian is available on the <a href="http://www.caucho.com/hessian/">Hessian site</a>.</p>
+		   <p>The latest specification of Burlap can be found at <a href="http://www.caucho.com/resin-3.0/protocols/burlap-1.0-spec.xtp">http://www.caucho.com/resin-3.0/protocols/burlap-1.0-spec.xtp</a>.</p>
+		</subsection>
+		</section>
+	    
+	 </body>
+	 </document>
+

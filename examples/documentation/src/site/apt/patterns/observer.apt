@@ -1,0 +1,160 @@
+   ---
+   Observer
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Observer
+
+  
+
+  The aim of the Observer-Pattern is to define a one-to-many dependency
+  between objects so that when the object on the "one-side" changes state,
+  all its dependents are notified and updated automatically.
+
+  The Observer/Observable-Pattern is known under many different Names, 
+  each flavor is used for a special purpose and has a slightly different form.
+
+  Most common other names for this pattern are
+
+  * Producer/Consumer
+
+  * Publish/Subscribe
+
+  * Dependents
+
+  []
+
+  The main idea of the Observer-Pattern is that an object (the observer)
+  that always requires actual data of another object (the observable or 
+  subject).
+  
+  
+
+  The fist solution that comes into mind might be to continuously ask the 
+  subject for changes of the data desired and if necessary load the data.
+  The mechanism of continuously asking the subject for changes, also called
+  <polling> has the main disadvantage of causing an unnecessary high system
+  load.
+
+  A much better idea would be to delegate the responsibility for informing
+  objects about new data to the producer or manager of the data. Through the
+  producer - in our case the subject - knows exactly when the data has changed
+  and therefore other objects should be informed.
+
+  This is the Observer pattern.
+  
+  There are basically two ways of notifying the observers: One is the 
+  <<push model>> while the other is the <<pull model>>. The main difference is,
+  that using the <<pull model>> the observer has to pull the data needed by
+  itself, while when using the <<push model>> the observable sends the data
+  along with the notification.
+  
+* Applicability / Uses
+  
+  The Observer-Pattern is especially useful when
+
+  * a change in one object requires changing others, and you don't know how
+  many objects need to change their state, or when
+
+  * an object should be able to notify other objects without making assumptions
+  about what those objects are.
+
+  []
+  
+* Related Patterns
+
+  * The Observer pattern uses {{{delegation.html} delegation}} to accomplish its task.
+  
+  * {{{event_listener.html} Event Listener}} is similar to the Observer pattern
+  
+  * Observer is a cornerstone in the {{{mvc.html} Model View Controller}} paradigm.
+
+* Structure
+
+
+[images/observer.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  The Story for this example is the following: We have a Number-Bag which 
+  contains numbers (integers) and  someone can add a number at any time.
+
+  But there are several objects which have to know the content of the bag.
+
+  In this example, the Number-Bag is the Observable:
+
++----
+public class Observable {
+
+  private List<Observer> observers; // The list of observers to be notified
+                            // on new items in the "Bag"
+
+  private List<Integer> content;    // The "Bag"
+                            // Initialized in Constructor
+
+  public void addNumber(int nr) {
+    content.add(nr);
+    notifyObservers();
+  }
+
+  public List<Integer> getContent() {
+    return content;
+  }
+
+  public void registerObserver(Observer obs) {
+    observers.add(obs);
+  }
+
+  private void notifyObservers(); {
+    for (Observer obs: observers) {
+      obs.notify();
+    }
+  }
+
+}
++----
+
+  Every Observer-object has to implement an observer-interface, so that the 
+  Observable can notify him.
+
++----
+public interface Observer {
+
+  public void notify();
+
+}
++----
+
+  A concrete Observer could look like this:
+
++----
+public class SumCalculator implements Observer {
+
+  private Observable target;
+
+  public SumCalculator(Observable target) {
+    // Register the observer at the target.
+    target.registerObserver(this);
+    this.target = target;
+  }
+
+  public void notify() {
+    int sum = 0;
+    for (int i: target.getContent() {
+      sum += i;
+    }
+    System.out.println("Current sum in the Bag: " + sum);
+  }
+
+}
++----
+
+* References / More Info
+
+  {{{http://en.wikipedia.org/wiki/Observer_pattern} Observer pattern - Wikipedia}}
+
+  {{{http://www.javaworld.com/javaworld/javaqa/2001-05/04-qa-0525-observer.html} Speaking on the Observer pattern}}
+
+

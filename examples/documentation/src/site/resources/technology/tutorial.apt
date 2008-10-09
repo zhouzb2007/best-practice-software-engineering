@@ -1,0 +1,22 @@
+    ------
+    Maven Tutorial
+    ------
+    Kristof Meixner
+    ------
+    18.04.2008
+
+Maven Tutorial
+~~~~~~~~~~~~~~
+
+  This {{{http://www.fatlenny.net/maven}tutorial}} provides information on how to create a project 
+  structure with Maven and a corresponding documentation with Maven Site, modfiy it, prepare it 
+  for Eclipse and build it.
+
+* Linking resources
+~~~~~~~~~~~~~~~~~~~
+
+  Resources that are stored in the <<<resources>>> folder can be directly linked to the documentation
+  by using the following syntax:
+  {{{StundenlisteMeixner.xls}Stundenliste Meixner} or [UCD.jpg] Use Case Diagram
+  If you create your own structure within the folder like <<<resources\images>>> the path would 
+  similarly to the upper code be: [images/UCD.jpg] Use Case Diagram

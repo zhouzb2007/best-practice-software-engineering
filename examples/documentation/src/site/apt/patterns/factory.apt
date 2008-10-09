@@ -1,0 +1,171 @@
+   ---
+   Factory Method
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Factory Method Pattern
+
+  Most Object-Oriented languages have great flexibility at the method call level through polymorphism.
+  At the creation side however, you have to say new X() where X is a specific type.
+
+  The factory method pattern deals with the problem of creating objects (products) 
+  without specifying the exact class of object that will be created. 
+  Factory method handles this problem by defining a separate method for creating 
+  the objects, which subclasses can then override to specify the derived type of
+  product that will be created. 
+
+  More generally, the term factory method is often used to refer to any method whose
+  main purpose is creation of objects.
+
+* Applicability / Uses
+
+  Use a Factory Method when
+
+  * a class can't anticipate the class of objects it must create.
+  
+  * a class wants its subclasses to specify the objects it creates.
+
+  * classes delegate responsibility to one of several helper subclasses, and you want
+to localize the knowledge of which helper subclass is the delegate.
+  
+[]
+
+  A Factory Method is often used in combination with the  {{{interface.html} Interface Pattern}}.
+  It is used heavily by generic Frameworks such as Spring.
+  
+* Related Patterns
+
+  * Abstract Factory: is more high-level than a factory method, it is common for objects obtained
+  through an abstract factory to have factory methods.
+  
+  * {{{objectpool.html} Object Pool}}: uses factory methods to create the objects it manages.
+  
+* Varieties
+
+  Different implementations of factory methods are available:
+  
+  * Parameterized Factory Method (this example)
+  
+  * Factory Method is overridden in its subtyped (non-interface at root)
+  
+  * Factory Method is inherited, generics can help here (root class is an interface)
+  
+
+* Structure
+
+[images/FactoryMethod.jpg] diagram of the factory-pattern.
+
+* Sample
+
+  We have an abstract class which defines a product. This is the supertype
+  of all products which are produced by the factory:
+
++----
+public abstract class Product {
+
+    public float getPrice();
+
+    public String getProductType() {
+        return "Unknown Product";
+    }
+
+}
++----
+
+  Furthermore, we have two subclasses of concrete Products:
+
++----
+public class Milk extends Product {
+
+    private float price;
+
+    protected Milk(float price) {
+        this.price = price;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public String getProductType() {
+        return "Milk";
+    }
+
+}
++----
+
++----
+public class Sugar extends Product {
+
+    private float price;
+
+    protected Sugar(float price) {
+        this.price = price;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public String getProductType() {
+        return "Sugar";
+    }
+
+}
++----
+
+  Whenever we need a product (milk or sugar), we call the factory method instead of
+the constructor of the concrete Products.
+
++----
+public class Shopper {
+
+    public static void main(String args[]) {
+
+        // At first we create a shopping-cart
+        Product[] cart = new Product[3];
+
+        // Shopping!
+        cart[0] = ProductFactory.createProduct("Milk");
+        cart[1] = ProductFactory.createProduct("Sugar");
+        cart[2] = ProductFactory.createProduct("Bread");
+    }
+}
++----
+
+  All we need now is the factory with its factory-method.
+  The factory method contains all initialization data for the
+  objects it produces:
+
++----
+public class ProductFactory {
+
+    pulbic static Product createProduct(String what) {
+
+        // When sugar is requested, we return sugar:
+        if (what.equals("Sugar")) {
+            return new Sugar(1.49F);
+        }
+        // When milk is needed, we return milk:
+        else if (what.equals("Milk")) {
+            return new Milk(0.99F);
+        }
+        // If the requested Product is not available, 
+        //   we produce Milk for a special price.
+        else {
+            return new Milk(0.79);
+        }
+    }
+}
++----
+
+* References / More Info
+
+  Design Patterns, Elements of Reusable Object-Oriented Software, Gang of Four
+
+  {{{http://en.wikipedia.org/wiki/Factory_pattern} Factory method pattern - Wikipedia}}
+
+  {{{http://www.cs.usfca.edu/~parrt/course/601/lectures/patterns.html} Software Patterns}}
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <properties>
+        <title>Samples: Architecture Overview</title>
+        <author></author>
+    </properties>
+
+    <body>
+        <section id="overview" name="Architecture overview">
+		
+		  <img src="images/Architecture_Overview.png" align="center" alt="The sample application and the used frameworks"/>
+		  
+		  <p>The above illustration shows our sample application. 
+                  It is divided into the classical three tiers: <em>Presentation Layer</em>, 
+                  which is the interface to the user,
+		    <em>business layer</em>, which handles the data objects and modifies 
+                    them and <em>Data Layer</em>, which consists of a database that loads
+                    and stores data.
+		    In our example, the business layer is further divided into: (1) The 
+                    <em>service layer</em>, which provides services to the presentation layer, 
+                    controls the flow of the application and
+		    modifies data objects; and (2) the <em>data access layer</em> which deals with 
+                    the communication to the database.</p>
+		    
+		  <p>The illustration also shows that this sample comes in 3 variations:</p>
+		  <ul>
+		  	
+		  	<li><b><a href="arch-basic.html">Basic:</a></b> In the basic example, the user access the application with a Swing client. The service layer is built upon the popular
+				Spring Framework. JDBC Templates (also a Spring Feature) are used to access the database.</li>
+		    
+			<li><b><a href="arch-medium.html">Medium:</a></b> In the second sample application, the user accesses the application through a web frontend that builds on
+			    	the Java Server Faces technology. The persistence layer uses the popular O/R mapping tool Hibernate.</li>
+		    
+		 </ul>
+		 
+		 <p>All samples use the core module, which contains the interfaces and the data objects.</p>
+		
+	</section>
+        
+    </body>
+</document>

@@ -1,0 +1,124 @@
+   ---
+   Interface
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Interface Pattern
+
+  An interface defines the signature operations of an entity, it also sets
+the communication boundary between two entities, in this case two pieces of software. 
+It generally refers to an abstraction that an asset provides of itself to the outside.
+
+  The main idea of an interface is to separate functions from implementations.
+Any request that matches the signature or interface of an object may also be
+sent to that object, regardless of its implementation.
+
+  Since it does not matter which implementation of a specific class is used, a class 
+can be exchanged easily without changing the code of the calling class.
+
+  The concept of an interface is fundamental in most object oriented programming languages.
+In some, objects are known only through their interfaces so there is no way to access
+an object without going through it's interface.
+
+* Applicability / Uses
+  
+  Use an interface when:
+
+  * you want to specify how classes exchange messages. I.e., every time, when a class should be reused, or used outside a specific context (package) declare the communication interface as an Interface type
+
+  * you have to switch the implementation of a module during run-time
+
+  * at design-time you don't yet know which implementation you will use at compile-time
+
+* Related Patterns
+
+  * Many other patterns use interfaces, a lot of them depend on the interface pattern.
+  
+  * It is possible to combine the interface pattern with virtually any other pattern to
+  make them more flexible.
+
+* Structure
+
+[images/Interface.jpg] UML class diagram of the example shown below.
+
+* Sample
+
+  This example uses an interface for sending messages across the system.
+The interface defines a single method to send a message:
+
++----
+public interface Messenger {
+
+    public void sendMessage(String receiver, String text);
+
+}
++----
+
+  Now someone has to send a Message:
+
++----
+public class Sender {
+
+    public static void main(String args[]) {
+
+        // Retrieve an Implementation of the interface
+        Messenger m = getMessenger();
+
+        // Send a message
+        m.sendMessage("Bob", "Hello Bob, this is Alice!");
+    }
+
+}
++----
+
+  Now at last, we need at least on implementation:
+
++----
+public class MailMessenger implements Messenger {
+
+    public void sendMessage(String receiver, String text) {
+        
+        // Connect to mailserver
+	...
+        
+        // Send message
+        ...
+        setReceiver(receiver);
+        setBody(text);
+        commit();
+        ...
+
+        // Disconnect
+        ...
+    }
+
+}
++----
+
+  Notice, that in the Sender-class we didn't know how the message will be sent. In this case
+it was sent via mail, but it could also just be printed to stdout:
+
++----
+public class StdOutMessenger implements Messenger {
+
+    public void sendMessage(String receiver, String text) {
+
+        // Just print to stdout
+        System.out.println("A message is sent to " + receiver + ":");
+        System.out.println(text);
+    }
+
+}
++----
+
+  Such a construction of using an interface is often combined with the 
+{{{factory.html} Factory-Pattern}}
+to retrieve the Implementation of the interface.
+
+* References / More Info
+
+  {{{http://en.wikipedia.org/wiki/Interface_(computer_science)} Interface - Wikipedia}}
+
+

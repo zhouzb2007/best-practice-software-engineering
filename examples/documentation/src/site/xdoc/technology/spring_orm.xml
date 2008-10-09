@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : spring_general.xml
+    Created on : January 24, 2007, 10:20 PM
+    Author     : phex
+    Description:
+        Purpose of the document follows.
+-->
+<document>
+    <properties>
+        <title>Technology: Spring Object Relational Mapping Support</title>
+        <author>Christian Kloner</author>
+    </properties>
+    <body>
+
+        <section name="Technology: Spring Object Relational Mapping Support">
+
+            <subsection name="Overview">
+            
+            </subsection>
+            
+        </section>
+    </body>
+</document>
