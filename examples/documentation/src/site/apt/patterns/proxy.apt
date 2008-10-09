@@ -1,0 +1,143 @@
+   ---
+   Proxy Pattern
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Proxy Pattern
+
+  The intent of the proxy-pattern is to provide a placeholder for 
+another object to control access to it. It introduces an additional level
+of indirection. There are several reasons why you would want to do this, 
+hence there are several uses for this pattern.
+
+  One reason for controlling access to an object is to defer the full
+cost of its creation and initialization until we actually need to use it.
+Consider a document editor that can embed graphical objects in a document.
+It isn't necessary to load all pictures when the document is opened, because
+not all of these objects will be visible at the same time
+
+  So we could think about loading each picture on demand, which occurs 
+when an image becomes visible in the document. But what do we put in the
+document instead of the image? And how can we hide that the pictures are 
+created on demand?
+
+  The solution is to use another object, a <<proxy>>, in place of an image.
+The proxy acts like an image and loads the picture when it's required.
+
+  The proxy loads and creates the real image just when the document editor
+requests for showing that image by invoking its draw-method. The proxy then
+loads the image and forwards the request to it.
+
+  This was one usage of a proxy, but there are many more. Some have their own
+names, depending on their responsibility:
+
+  * A <<remote proxy>> is responsible for encoding a request and its arguments
+and for sending (and retrieving) the request (and the response) to the real
+object.
+
+  * A <<virtual proxy>> may cache additional information about the real subject
+so that it can postpone the access to it.
+
+  * A <<protection proxy>> checks whether the caller has sufficient access
+permissions for perform a request.
+
+[]
+
+  In many cases, real world proxies are a combination of some of these basic proxies.
+  
+
+* Applicability / Uses
+  
+  The proxy pattern is applicable whenever there is a need for a more versatile
+or sophisticated reference to an object than just a simple pointer.
+
+* Related Patterns
+
+  * Usually proxies use some form of the {{{facade.html} facade}} pattern to supply a unified interface.
+
+  * It is similar to the {{{decorator.html} decorator}} pattern which might be a more specific case
+  of the use of a proxy.
+
+* Structure
+
+[images/VirtualProxy.jpg] UML class diagram of the proxy pattern
+
+[images/proxy2.jpg] usage of the proxy pattern
+
+* Sample
+
+  In this short example we will use a virtual proxy to handle images.
+
+  At first, we need a common interface for a graphic:
+
++----
+public interface Graphic {
+
+	// a method used to draw the image
+      public void draw();
+}
++----
+
+  The we need an implementation of an image, the image-class will be the
+"real" object that the proxy will represent
+
++----
+public class Image implements Graphic {
+
+    private byte[] data;
+
+    public Image(String filename) {
+        // Load the image
+        data = loadImage(filename);
+    }
+	
+    public void draw() {
+        // Draw the image
+        drawToScreen(data);
+    }
+}
++----
+
+  And now at last, we create the proxy class. The ImageProxy object will maintain references to
+  the real Image object. The interfaces of Image and ImageProxy are identical, however their
+  implementations are of course different. This proxy class may also be responsible for the creation
+  of the Image object or it may also fulfill additional tasks like caching the extent of the image.
+
++----
+public class ImageProxy implements Graphic {
+
+    // Variables to hold the concrete image
+    private String filename;
+    private Image content;
+
+    public ImageProxy(String filename) {
+        this.filename = filename;
+        content = null;
+    }
+
+    // on a draw-request, load the concrete image
+    //   if we haven't done it until yet.
+    public void draw() {
+        if (content == null) {
+            content = new Image(filename);
+        }
+        // Forward to the Concrete image.
+        content.draw();
+    }
+}
++----
+
+* References / More Info
+
+
+  Design Patterns, Gang of Four
+
+  {{{http://en.wikipedia.org/wiki/Proxy_pattern} Proxy Pattern - Wikipedia}}
+
+  {{{http://www.cs.usfca.edu/~parrt/course/601/lectures/patterns.html} Design Patterns}}
+
+  {{{http://www.research.umbc.edu/~tarr/dp/lectures/Proxy-2pp.pdf} The Proxy Pattern}}
+
+  {{{http://www.allapplabs.com/java_design_patterns/proxy_pattern.htm} Java Design Patterns, Proxy Pattern}}

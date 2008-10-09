@@ -1,0 +1,19 @@
+
+Es soll eine Liste an Studenten (Relation STUDENTEN) verwaltet werden. Dabei gelten folgende Rahmenbedingungen:
+- Jeder Student kann beliebig viele Studienkennzahlen (identifiziert durch Kennzahl) inskribieren (3.3)
+- Die Anzahl der Studenten ist sehr groß, suchen und sortieren nach den in der GUI auswählbaren Kriterien (TODO: genau welche?) soll schnell erfolgen (3.2 und 3.11)
+- Die Relation soll auch in einer größeren Applikation verwendet werden, wobei das Attribut ID einen Studenten eindeutig identifiziert (3.1)
+- Alle Studenten müssen eine eindeutige Matrikelnummer und E-Mail Adresse haben (3.4)
+- Alle Studenten haben zusätzlich einen Vornamen und Nachnamen (Max. 35 Zeichen lang)
+- Alle Attribute müssen beim Anlegen eines Studenten ausgefüllt werden und dürfen nicht fehlen
+
+
+- Die angezeigte Liste an Studenten soll nach Matrikelnummer und Nachname sortiert werden können
+- Die Benutzerschnittstelle soll lokalisiert werden
+- Das EditFrame soll nach folgenden Regeln platziert werden: zuerst rechts vom mainframe, dann links davon, dann zentriert
+- Ein selektierter Eintrag kann durch einen Click auf den Edit Button bzw. durch doppelklick editiert werden und durch einen click auf den Delete Button gelöscht werden.
+
+TODO peter:
+===========
+
+- update files (pruefungen.script,...) nach test

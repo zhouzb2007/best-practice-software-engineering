@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Best Practice Software Engineering">
+    <bannerLeft>
+        <name>Best Practice Software Engineering</name>
+        <src>images/bpse_logo.png</src>
+        <href>http://best-practice-software-engineering.ifs.tuwien.ac.at/</href>
+    </bannerLeft>
+    <bannerRight>
+        <name>TU Wien, Faculty for Informatics</name>
+        <href>http://www.cs.tuwien.ac.at</href>
+        <src>images/fak_tu.gif</src>
+    </bannerRight>
+
+    <body>
+        <links>
+            <item name="Faculty of Informatics" href="http://www.cs.tuwien.ac.at/" />
+            <item name="IFS" href="http://ifs.tuwien.ac.at/"/>
+            <item name="QSE" href="http://qse.ifs.tuwien.ac.at/"/>
+            <item name="Best Practice SE BLOG" href="http://best-practice-software-engineering.blogspot.com/" />
+        </links>
+
+        <menu name="Getting Started">
+            <item name="Introduction" href="index.html"/>
+            <item name="Download" href="download.html"/>
+            <item name="Development Setup" href="setup.html"/>
+            <item name="General References" href="references.html"/>
+            <item name="Team &amp; Contacts" href="team-list.html"/>
+            <item name="ToDo" href="todo.html"/>
+        </menu>
+        <menu name="Examples">
+            <item name="Overview" href="architecture.html"/>
+            <item name="Basic Sample" href="arch-basic.html"/>
+            <item name="Medium Sample" href="arch-medium.html"/>
+            <item name="Advanced Sample" href="arch-advanced.html"/>
+            <item name="Javadoc" href="technology/javadoc.html">
+                <item name="Core Module" href="core/apidocs/index.html"/>
+                <item name="Basic Module" href="basic/apidocs/index.html"/>
+                <item name="Medium Module" href="medium/apidocs/index.html"/>
+            </item>
+
+            <item name="Source" href="xref-source.html">
+                <item name="Core Module" href="core/xref/index.html"/>
+                <item name="Basic Module" href="basic/xref/index.html"/>
+                <item name="Medium Module" href="medium/xref/index.html"/>
+            </item>
+
+            <item name="Test Source" href="xref-source.html">
+                <item name="Basic Module" href="basic/xref-test/index.html"/>
+                <item name="Medium Module" href="medium/xref-test/index.html"/>
+            </item>
+        </menu>
+        <menu name="Best Practices">
+            <item name="Introduction" href="bp_introduction.html"/>
+            <item name="Podcast" href="podcast.html"/>
+            <item name="Software Patterns" href="patterns.html">
+            	<item name="Interface" href="patterns/interface.html" />
+            	<item name="Container" href="patterns/container.html" />
+                <item name="Delegation" href="patterns/delegation.html" />
+                <item name="Model View Controler" href="patterns/mvc.html" />
+                <item name="Dependency Injection" href="patterns/dependency_injection.html" />
+                <item name="Decorator" href="patterns/decorator.html" />
+                <item name="Facade" href="patterns/facade.html" />
+                <item name="Proxy" href="patterns/proxy.html" />
+                <item name="Data Access Object" href="patterns/dao.html" />
+                <item name="Transfer Object" href="patterns/transfer_object.html" />
+                <item name="Singleton" href="patterns/singleton.html" />
+                <item name="Factory" href="patterns/factory.html" />
+                <item name="Object Pool" href="patterns/objectpool.html" />
+                <item name="Iterator" href="patterns/iterator.html" />
+                <item name="Observer / Observable" href="patterns/observer.html" />
+                <item name="Event Listener" href="patterns/event_listener.html" />
+                <item name="Strategy" href="patterns/strategy.html" />
+            </item>
+            <item name="Technology" href="technology.html">
+                <item name="Annotations" href="technology/annotations.html"/>
+                <item name="Hibernate" href="technology/tech-hibernate.html"/>
+                <item name="HSQLDB" href="technology/tech-hsqldb.html"/>
+                <item name="Java Server Faces" href="technology/tech-jsf.html"/>
+                <item name="Javadoc" href="technology/javadoc.html"/>
+                <item name="jUnit" href="technology/tech-junit.html"/>
+                <item name="Log4J" href="technology/tech-log4j.html"/>
+                <item name="Maven" href="technology/tech-maven.html">
+					<item name="Maven Basics" href="technology/tech-maven-basics.html" />
+					<item name="Maven Site" href="technology/tech-maven-site.html" />
+					<item name="Maven Archetypes" href="technology/tech-maven-archetype.html" />
+                </item>
+                <item name="Spring" href="technology/spring.html">
+            <!--<item name="Spring General" href="technology/spring_general.html"/>-->
+                    <item name="Spring JDBC" href="technology/spring_jdbctemplates.html"/>
+                    <item name="Spring ORM" href="technology/spring_orm.html"/>
+                    <item name="Spring Remote" href="technology/spring_remote.html"/>
+                </item>
+                <item name="Aspect Oriented Programming (AOP)" href="technology/aop.html" />
+                <item name="Swing" href="technology/tech-swing.html"/>
+                <item name="Tomcat" href="technology/tomcat.html"/>
+            </item>
+        </menu>
+    </body>
+</project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : annotations.xml
+    Created on : January 24, 2007, 10:38 PM
+    Author     : phex
+    Description:
+        Purpose of the document follows.
+-->
+
+<document>
+    <properties>
+        <title>Annotations</title>
+        <author>Christian Kloner</author>
+    </properties>
+    <body>
+        <section name="Technology: Annotations">
+
+        <subsection name="Overview">
+            <p>
+                Annotations provide a standard way to add metadata (data about data)
+                to Java classes, methods and variables. Annotations (starting with @) are like <a href="technology/javadoc.html">
+                Javadoc</a> except that they are not intended for humans but for programs
+                or tools which can read them  from source or byte code to provide 
+                special functionality.
+            </p>
+            <p>
+                For example, annotations could provide information for a code-processor what methods of a class should be published as Webservice (e.g., XFire provides this functionality). To make the system running, a pre-processing step (before compilation) is needed. This preprocessing could be initiated within the Maven build and (in the given example) would read the annotation, create the webservice description files and so on.
+            </p>
+        </subsection>
+        <subsection name="Usage">
+            <p>
+                In Java 1.5, a set of annotations where introduced to 
+                allow the compiler to detect errors or suppress warnings.
+            </p>
+            E.g. if you override a method of a super class, it can occur that you
+            make a spelling error and write as method name <code>initialise</code>
+            instead of <code>initialize</code>. So you never
+            override the method and your program may deliver false output. In
+            the worst case, you never realize this. The annotation @Override is used
+            by the compiler to check if a method is overriden:
+            <source>
+@Override
+void myOverridenMethod() { }
+            </source>
+        </subsection>    
+        <subsection name="Reference">
+            <p>
+                A Guide to annotations can be found on the 
+                <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html">
+                Sun documentation site</a> for Java 1.5.0. Also
+                a 
+                <a href="http://java.sun.com/docs/books/tutorial/java/javaOO/annotations.html">
+                tutorial</a> exists.
+                People interested in the original Java Specification Request can go to the
+                <a href="http://jcp.org/en/jsr/detail?id=175">JSR-175</a>.
+                
+                
+            </p>
+        </subsection>
+        </section>
+    </body>
+</document>

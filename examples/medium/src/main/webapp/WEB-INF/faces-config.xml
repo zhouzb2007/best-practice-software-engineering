@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+    <!-- Sessionable Student. -->
+    <managed-bean>
+        <managed-bean-name>sessionStudent</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.domain.Student</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <!-- Selected course-->
+    <managed-bean>
+        <managed-bean-name>course</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.domain.Course</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <!-- Selected course-->
+    <managed-bean>
+        <managed-bean-name>exam</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.domain.Exam</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <!-- Use the DelegatingVariableResolver in order to use Spring managed beans in JSF. Both loginController 
+     and studentController receive the studentDao from the Spring container-->
+    <managed-bean>
+        <managed-bean-name>loginController</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.web.controller.LoginController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>studentDao</property-name>
+            <value>#{studentDao}</value>
+        </managed-property>
+    </managed-bean>
+    <!-- Service controller -->
+    <managed-bean>
+        <managed-bean-name>serviceController</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.web.controller.ServiceController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property><property-name>informationService</property-name><value>#{informationService}</value></managed-property>
+    </managed-bean>
+
+    <!-- Search controller. These two controllers handles search requests -->
+    <managed-bean>
+        <managed-bean-name>courseController</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.web.controller.search.CourseSearchController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property><property-name>courseDao</property-name><value>#{courseDao}</value></managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>professorController</managed-bean-name>
+        <managed-bean-class>at.ac.tuwien.ifs.bpse.web.controller.search.ProfessorSearchController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property><property-name>professorDao</property-name><value>#{professorDao}</value></managed-property>
+    </managed-bean>
+
+    <application>
+        <locale-config>
+            <default-locale>de</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
+    </application>
+    
+    <!-- Login -->
+    <navigation-rule>
+        <from-view-id>/welcome.jsp</from-view-id>
+        <!-- Show course list -->
+        <navigation-case>
+          <from-outcome>success</from-outcome>
+          <to-view-id>/main.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- Main navigation -->
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <!-- Go Home to main -->
+        <navigation-case>
+          <from-outcome>goHome</from-outcome>
+          <to-view-id>/main.jsp</to-view-id>
+        </navigation-case>
+        <!-- Show course list -->
+        <navigation-case>
+          <from-outcome>courseList</from-outcome>
+          <to-view-id>/courseList.jsp</to-view-id>
+        </navigation-case>
+        <!-- Show professor list -->
+        <navigation-case>
+          <from-outcome>professorList</from-outcome>
+          <to-view-id>/professorList.jsp</to-view-id>
+        </navigation-case>
+        <!-- Show exam list -->
+        <navigation-case>
+          <from-outcome>showExams</from-outcome>
+          <to-view-id>/courseExamList.jsp</to-view-id>
+           <redirect/>
+        </navigation-case>
+        <navigation-case>
+          <from-outcome>examList</from-outcome>
+          <to-view-id>/examList.jsp</to-view-id>
+           <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- Do exam registration of selected course in list-->    
+    <navigation-rule>
+        <from-view-id>/courseExamList.jsp</from-view-id>
+        <navigation-case>
+          <from-outcome>registerSuccess</from-outcome>
+          <to-view-id>/examList.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

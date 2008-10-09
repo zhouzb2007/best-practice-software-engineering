@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Relation</type><coordinates><x>310</x><y>190</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;20;20;100</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>220</x><y>290</y><w>220</w><h>190</h></coordinates><panel_attributes>JDBCObjectPool
+--
+-dsn: String
+-usr: String
+-pwd: String
+--
++JDBCObjectPool() &lt;&lt;create&gt;&gt;
++create(): Object
++expire(o: Object): void
++validate(o: Object): boolean
++borrowObject(): Connection
++returnObject(): void</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>180</x><y>20</y><w>300</w><h>190</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+ObjectPool
+--
+-expirationTime: long
+-locked: HashTable
+-unlocked: HashTable
+--
+/+validate(o: Object): boolean/
+/+create(): Object/
+/+expire(o: Object): void/
++checkOut(): Object &lt;&lt;synchronized&gt;&gt;
++checkIn(o: Object): void &lt;&lt;synchronized&gt;&gt;</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

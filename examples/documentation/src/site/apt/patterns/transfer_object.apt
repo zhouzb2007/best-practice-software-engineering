@@ -1,0 +1,138 @@
+   ---
+   Transfer Object
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Transfer Object
+
+  Remember the Example from the Data Access Object pattern, where we used to
+  send information about books from one object to another.
+  In case just using built-in data-types (such as String, int, ...) a call to
+  <<<saveBook>>> would look like
+
++----
+  dao.saveBook("123456789X", "A Book of Books", "Martha T. Bone"); 
++----
+
+  Now imagine we want to save more information than just isbn, title and 
+  author. We could add publisher, price, coverimage, release-date, and even
+  more. The method-call would become rather unreadable.
+
+  Furthermore think about a method returning data of a book. Through it is not
+  possible in Java to return more than one value, you would have to make 
+  several calls to get all data.
+
+  The solution for this problem is the Transfer Object. A Transfer Object is
+  an object encapsulating data. A single method call is now sufficient to 
+  send and retrieve the Transfer Object and all included data.
+
+* Applicability / Uses
+  
+  Use the Transfer Object pattern when:
+
+  * the number of calls made by a client to a Data Access Object or Enterprise Bean impacts network performance
+
+  * you want to reduce communication effort when dealing with a lot of small data entities
+  
+  []
+
+* Related Patterns
+
+  * {{{dao.html} Data Access Object}}: A Transfer Object pattern is often used in combination with a Data Access
+  Object pattern.
+
+* Structure
+
+  UML diagram of the sample code:
+
+[images/transfer_object.jpg] UML diagram of the sample code
+
+* Sample
+
+  In this example we consider an advanced Book.
+
++----
+public class Book {
+  private String isbn;
+  private String title;
+  private String author;
+  private String publisher;
+  private float price;
+  private int pages;
+  private Date releaseDate;
+  private byte[] coverImage;
+
+  public String getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
+  public String getIsbn() {
+    return isbn;
+  }
+
+  public void setIsbn(String isbn) {
+    this.isbn = isbn;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public byte[] getCoverImage() {
+    return coverImage;
+  }
+
+  public void setCoverImage(byte[] coverImage) {
+    this.coverImage = coverImage;
+  }
+
+  public int getPages() {
+    return pages;
+  }
+
+  public void setPages(int pages) {
+    this.pages = pages;
+  }
+
+  public float getPrice() {
+    return price;
+  }
+
+  public void setPrice(float price) {
+    this.price = price;
+  }
+
+  public String getPublisher() {
+    return publisher;
+  }
+
+  public void setPublisher(String publisher) {
+    this.publisher = publisher;
+  }
+
+  public Date getReleaseDate() {
+    return releaseDate;
+  }
+
+  public void setReleaseDate(Date releaseDate) {
+    this.releaseDate = releaseDate;
+  }
+}
++----
+
+* References / More Info
+
+  {{{http://java.sun.com/blueprints/corej2eepatterns/Patterns/TransferObject.html} Core Patters - Transfer Object @ Sun}}
+
+  {{{http://en.wikipedia.org/wiki/Data_Transfer_Object} Data Transfer Object - Wikipedia}}
+  

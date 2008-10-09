@@ -1,0 +1,34 @@
+   ---
+   Architectural Patterns
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Architectural Patterns
+
+  Architectural patterns borrow a lot of terminology and concepts from design patterns, but focus on providing
+  re-usable models and methods specifically for the over-all architecture of information systems. 
+  This means they are not complete templates like other "design" patterns that can be directly applied to code. 
+  Architectural patterns comprise software, hardware, networks, and people as opposed to pure source code.
+
+    * {{{patterns/mvc.html}<<Model View Controller>>}} is one of the oldest patterns (SmallTalk-80) and thus 
+    very fundamental to software development. MVC separates the concerns regarding data (model)  and user 
+    interface (view) so that changes to the user interface do not impact the data handling and the data can be 
+    reorganized without changing the user interface.
+    
+    \ 
+    
+    * {{{patterns/dependency_injection.html}<<Dependency Injection>>}} is a relatively new and very complex pattern.
+    Introducing dependency injection into your project may change a lot of the architecture so its wise to plan ahead.
+    To those who think this pattern is a bit "backwards" - well, it is an implementation of the "Inversion of Control - IoC"
+    concept which does exactly that, it inverts the control flow. The name "dependency injection" is actually misleading, 
+    the pattern lets you inject not the dependencies themselves of course, but rather the information to satisfy them.
+    
+    
+* References / More Info
+
+  {{{http://en.wikipedia.org/wiki/Architectural_pattern_%28computer_science%29} Architectural Patterns - Wikipedia}}
+  
+  {{{http://www.opengroup.org/architecture/togaf7-doc/arch/p4/patterns/patterns.htm} Architectural Patterns - Opengroup}}
+  

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <properties>
+        <title>Crossreferenced sourcecode</title>
+        <author></author>
+    </properties>
+    
+    <body>
+        <section name="Crossreferenced sourcecode">
+            <subsection name="Overview">
+                <p>The cross-referenced sourcecode is useful for browsing through the source.</p>
+                
+                <ul>
+                    <li><a href="core/xref/index.html">Core Module</a></li>
+                    <li><a href="basic/xref/index.html">Basic Module</a></li>
+                    <li><a href="medium/xref/index.html">Medium Module</a></li>
+                    <!-- <li><a href="advanced/xref/index.html">Advanced Module</a></li> -->
+                </ul>
+                
+                <p>And here the sourcecode of the test modules:</p>
+                
+                <ul>
+                    <li><a href="basic/xref-test/index.html">Basic Module</a></li>
+                    <li><a href="medium/xref-test/index.html">Medium Module</a></li>
+                    <!--    <li><a href="advanced/xref-test/index.html">Advanced Module</a></li>-->
+		
+                </ul>
+            </subsection>
+            
+            
+            
+        </section>
+        
+    </body>
+</document>

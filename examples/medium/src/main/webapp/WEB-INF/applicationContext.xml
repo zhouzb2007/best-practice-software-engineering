@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <import resource="classpath:/at/ac/tuwien/ifs/qse/ctx/se-database-context.xml"/>
+    <import resource="classpath:/at/ac/tuwien/ifs/qse/ctx/se-medium-context.xml"/>
+    <!-- Define Lifecycle Advisor, which is responsible to setup an inital database context -->
+    <!-- <bean id="lifecycleAdvisor" class="at.ac.tuwien.ifs.qse.se1.LifecycleAdvisor" init-method="init" autowire="byName"/> -->
+</beans>

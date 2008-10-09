@@ -1,0 +1,44 @@
+   ---
+   Fundamental Design Patterns
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Fundamental Design Patterns
+
+	While some of these patterns also fit into the subcategories creational, structural, and behavioral they
+	are also an essential part of every Application written today and they must therefore be understood 
+	entirely before moving on to more complex patterns.
+	
+	Some of these patterns have already found a permanent home in modern programming languages, 
+	for example the Interface pattern in Java which has been part of the language specification from the start,
+	or the Java Collections Framework which has implementations for a wide variety of containers.
+ 
+  \ 
+   
+     * {{{patterns/interface.html} <<Interface>>}}
+    is a special type of class which provides the programmer with a simpler or more program-specific way of accessing 
+    other classes. Since the Java programming language relies on its interfaces to expose the functionality of a class
+    to the outside world, it is an integral part of the language (unlike C++, which has header files).
+    However the "interface pattern" discussed here is a even more general term without the restrictions placed upon 
+    interfaces by Java, for example the delegation, composite and bridge patterns are different types of interface 
+    patterns, however they do also have an implementation, so they would not conform to what Java calls an interface. 
+  
+  \ 
+  
+    * {{{patterns/container.html}<<Container>>}} - called <collection> in Java - is an object that groups multiple 
+    elements into a single unit. Containers are used to store, retrieve, manipulate, and communicate aggregate data. 
+    Examples of collection implementations in Java include Vector and Hashtable.
+  
+    * <<Collection Framework>> in Java is a unified architecture for representing and manipulating collections. 
+    All collection frameworks contain Interfaces, Implementations and Algorithms.
+  
+  \ 
+  
+    * {{{patterns/delegation.html}<<Delegation>>}} is a way of extending and reusing a class by writing another 
+    "container class" which uses instances of the original class to provide the original functionality. 
+    Delegation makes multiple inheritance behavior possible in languages where only single inheritance is possible 
+    (Java for example).
+    
+    

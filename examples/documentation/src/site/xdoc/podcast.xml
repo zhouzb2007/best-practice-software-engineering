@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+    <properties>
+        <title>Best-Practices Podcast</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+	<body>
+  	<section name="Best Practice Software Engineering Podcast">
+        <p>
+            As this website is the basis for some of our lectures at Vienna University of Technology, we record some material in the form of enhanced podcasts. Currently only in German, but English material might follow soon.
+        </p>
+    </section>
+
+  	<section name="Enhanced Podcast?">
+        <p>
+            An enhanced podcast is actually an audio recording with additional pictures and links. This is why the podcasts are provided in m4a format not mp3. 
+            Concrete, the podcasts are:
+        </p>
+        <ul>
+            <li>Recordings from lectures</li>
+            <li>Slides are recorded parallel to the audio, hence the slide presented to the text can be seen in parallel</li>
+            <li>Each Slide change is also a "chapter", i.e., slides can be easily skipped or specific parts addressed</li>
+        </ul>
+        
+        <p>This also means, that some Podcast recordings were <i>not</i> made in a studio-kind of setup, but live before audience</p>
+        <p>Additionally it should be noted that the Podcasts are in German.</p>
+    </section>    
+    
+    <section name="Get the Podcast">
+        <p>Enough introduction. To get the Podcast, visit the <a href="http://best-practice-software-engineering-pc.blogspot.com/">Podcast Page</a>. You find all Epsiodes there with "Shownotes". You can download episoded individually from there or better subscribe to the Podcast feed. Details are explained there, so check that out.</p>
+            
+            
+    </section>
+      
+  </body>
+</document>

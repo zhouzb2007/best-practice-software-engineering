@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <properties>
+        <title>Advanced Sample</title>
+        <author></author>
+    </properties>
+
+    <body>
+        <section name="Advanced sample">
+		<subsection name="Overview">
+            
+                The advanced sample application enhance the medium sample by using a messaging system. If a student finish the registration for an
+exam a message to a third party system will be sent.
+                <p>
+                    <div align="center">
+                        <img src="images/Usecase_Advanced.png" />
+                    </div>
+                </p>
+		This table gives an short description about the different use cases.
+		<table>
+			<tr>
+				<td>Registration confirmation</td>
+				<td>After the student register for a selected exam, a confirmation will be also send to
+                            the exam administration system. The message is send to a defined topic queue.</td>
+			</tr>
+			<tr>
+				<td>Student notification</td>
+				<td>In order to illustrate a asynchronous communication between two systems the exam
+                            administration system gives a feedback after all work is done for the registration</td>
+			</tr>
+			<tr>
+				<td>Add Student exam</td>
+				<td>Add the registration for the student exam in the administration system</td>
+			</tr>
+			<tr>
+				<td>Check prerequisites</td>
+				<td>In order to register for an exam a student must fullfill a set of prerequisits</td>
+			</tr>
+			<tr>
+				<td>Check Registration</td>
+				<td>A student must be registered for the course, in order to do an exam</td>
+			</tr>
+			<tr>
+				<td>Check Payment</td>
+				<td>Some courses and exams need extra payment. For this case an external ERP system must be contacted (e.g. via Web Service)</td>
+			</tr>
+		</table>
+		</subsection>
+	</section>
+	    
+	 </body>
+	 </document>
+

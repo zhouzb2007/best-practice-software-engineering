@@ -1,0 +1,175 @@
+   ---
+   Development Environment Setup Guideline
+   ---
+   Michael Pernkopf
+   ---
+   ---
+
+Setup of BP development environment
+
+  This guideline provides all of the information needed to setup the best practice development environment 
+ (please find the examples in {{{download.html} <<Download>>}} section.
+
+* Installation Instructions
+
+  Please follow all the instructions to assure the functionality of the development environment. 
+
+* Java 5 Setup
+
+	The best practice examples use the Java 5 technology. To compile and run it, you need to have Java SE SDK 1.5 installed.
+
+** Download and install JDK
+
+	Please download the latest version of the JDK at {{{http://java.sun.com/javase/downloads/index.jsp} <<Java.sun.com>>}}. When
+	downloading the JDK you might also consider downloading the API documentation for offline use.
+
+** System settings
+
+	After installing the JDK please make sure to set the JAVA_HOME environment variable to point to your java directory.
+	
+	<<Example>> (for Windows users)
+	Press WinKey + Pause, go to the Advanced Tab (Erweitert), click on Environment variables (Umgebungsvariablen), click 'New' at
+	user variables (Benutzervariablen) and define a new entry as follows:
+	
+	<<Name>>: JAVA_HOME
+	
+	<<Value>>: path/to/your/JDK-installation (e.g: H:\Programme\Java\jdk1.5.0_01 - <<Note: not the bin-directory>>)
+	
+	Go to your console/shell and use the following command (anywhere):
+	
+---
+java -version
+---
+
+	Output should look something like this (depends on the version you installed):
+
+---
+java version "1.5.0_02"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_02-b09)
+Java HotSport(TM) Client VM (build 1.5.0_02-b09, mixed mode, sharing)
+---
+
+* Maven 2 installation
+
+	Maven 2 is used to organize, build and deploy this application.
+
+** Maven Download (all platforms)
+
+	Please download the latest version at {{{http://maven.apache.org/download.html} <<Maven Project site>>}}.
+
+** Install instructions
+
+*** Windows2000/XP
+
+	[[1]] After downloading, unzip maven-2.x.x-bin.zip to a directory you wish to install Maven (e.g: C:\Maven).
+	
+	[[2]] Add the bin directory to your path by opening up the system properties (WinKey + Pause), selecting the "Advanced"
+	tab and the "Environment Varibales" button, then editing the PATH variable in the user variables (e.g: "C:\Maven\bin";%PATH%).
+	
+	[[3]] In the same dialog make sure that JAVA_HOME is set to the location of your JDK (see above "System settings").
+	
+	[[4]] Run <mvn --version> (in your console) to verify that it is installed correctly.	
+	
+	Output should look something like this:
+	
+---
+Maven version: 2.0.4 (depends on the version you installed)
+---
+	
+*** Unix-based Operating Systems (Linux, Mac OS X and Solaris)
+
+	[[1]] After downloading, extract the distribution archive to the directory you wish to install Maven. These instructions assume
+	you chose </usr/local/maven-2.0.3>. The directory <maven-2.0.3> will be created from the archive.
+	
+	[[2]] Add the bin directory to your path, e.g: <export PATH=/usr/local/maven-2.0.3/bin:$PATH>.
+	
+	[[3]] Make sure that JAVA_HOME is set to the location of your JDK, e.g. <export JAVA_HOME=/usr/java/jdk1.5.0_02>.
+	
+	[[4]] Run <mvn --version> (in your shell) to verify that it is installed correctly.	
+	
+	Output should look something like this:
+	
+---
+Maven version: 2.0.4 (depends on the version you installed)
+---	
+
+* Example installation
+
+	Download your copy of the example sample from {{{download.html} <<Download>>}} section and 
+	unpack the archive to a folder of your choice.
+	
+	After extracting the archive, you find the following folder structure
+
+---
++- root folder (from 1.)
+|
+|`-- advanced 
+|	`-- subfolders
+|
+|`-- basic 
+|	`-- subfolders
+|
+|`-- core
+|	`-- subfolders
+|
+|`-- medium
+|	`-- subfolders
+|
+`- pom.xml
+---
+
+	(detailed information can be found at {{{architecture.html} <<The sample apps>>}} section)
+
+	<<General>>
+	
+	You then have to use Maven downloading all the dependencies (used libraries in project; for more information see 
+	{{{technology/tech-maven.html} <<Maven technology page>>}}). 
+	Therefore you execute <<mvn install>> in your <<root>> and <<core>> folder (in your console).
+	<<Note>>: All mvn commands are executed in your console.
+	
+	<<Additionally>>
+	
+	<Usage of basic example:>
+	
+	Execute <mvn install> in the <basic folder>
+	
+	<Usage of medium example:>
+
+	Execute <mvn install> in the <medium folder>
+	
+	<Usage of advanced example:>
+	
+	Execute <mvn install> in the <advanced folder>
+
+* IDE Integration
+
+	If you f.ex. want to use the examples in Eclipse, you only have to execute <<mvn eclipse:eclipse>> in your desired folder (basic, medium, advanced).
+	
+** Example 
+
+	We just extracted the archive to a desired folder. Now we want to use the basic example in Eclipse.
+	
+	Todos:
+	
+	[[1]] execute <<mvn install>> in root, core and basic folder
+	
+	[[2]] go to the basic folder and execute <<mvn eclipse:eclipse>>. This will create Eclipse project files (.project, .classpath)
+	
+	[[3]] Open Eclipse and goto <File - New - Project>, select <Java Project>, give the <project> any <name> you like, check <Create project from
+	existing source> and browse to your basic folder, where you executed you <mvn eclipse:eclipse> command before.
+	<Finish> will create your project.
+	
+	After creating the project it may happen, that you get some curious <<Unbounded classpath>> errors. This may happen, because Eclipse actually
+	doesn´t know where to find all the libraries used in the project. Therefore we define a <<classpath variable>> in Eclipse.
+	
+	[[1]] We go to <Window - Preferences>, select <Java - Build Path - Classpath Variables> and click <New>
+	
+	[[2]] The new entry shall contain the following values:
+	
+	<<Name:>> M2_REPO
+	
+	<<Path:>> path/to/your/localMavenRepository (in our case: C:/test/.m2/repository)
+	
+	
+	Now everything is ready to use/browse/play around with the basic example (Integration of Medium and Advanced example is similar).
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Class</type><coordinates><x>20</x><y>20</y><w>300</w><h>450</h></coordinates><panel_attributes>Book
+--
+-isbn: String
+-title: String
+-author: String
+-publisher: String
+-price: float
+-pages: int
+-releaseDate: Date
+-coverImage: byte[]
+--
++getAuthor(): String
++setAuthor(author: String): void
++getIsbn(): String
++setIsbn(isbn: String): void
++getTitle(): String
++setTitle(title: String): void
++getCoverImage(): byte[]
++setCoverImage(coverImage: byte[]): void
++getPages(): int
++setPages(pages: int): void
++getPrice(): float
++setPrice(price: float): void
++getPublisher(): String
++setPublisher(publisher: String): void
++getReleaseDate(): Date
++setReleaseDate(releaseDate: Date): void</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Class</type><coordinates><x>180</x><y>60</y><w>210</w><h>160</h></coordinates><panel_attributes>Singleton::PrintSpooler
+--
+--
+-PrintSpooler() &lt;&lt;create&gt;&gt;
+_+getInstance(): PrintSpooler_
+ 
+{innerclass
+_SingletonHolder_
+--
+_-instance: PrintSpooler_
+--
+innerclass}
+</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

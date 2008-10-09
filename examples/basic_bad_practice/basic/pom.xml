@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <parent>
+        <artifactId>se1-parent</artifactId>
+        <groupId>at.ac.tuwien.ifs.qse</groupId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>se1-sample-basic</artifactId>
+    <name>Basic SE1 sample (bad practice)</name>
+    <description></description>
+    <dependencies>
+        <dependency>
+            <groupId>at.ac.tuwien.ifs.qse</groupId>
+            <artifactId>se1-sample-core</artifactId>
+        </dependency>
+        <!--    <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>3.8.1</version>
+    <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.12</version>
+    </dependency> -->
+        <!--   <dependency>
+    <groupId>hsqldb</groupId>
+    <artifactId>hsqldb</artifactId>
+    <version>1.8.0.1</version>
+    </dependency> -->
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
+        <!--    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>2.0-m4</version>
+    </dependency>
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>2.0-m4</version>
+    </dependency>
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-beans</artifactId>
+    <version>2.0-m4</version>
+    </dependency>
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-dao</artifactId>
+    <version>2.0-m4</version>
+    </dependency>    -->
+    </dependencies>
+</project>
