@@ -127,7 +127,7 @@
 
 
     <bean id="StudentAlexanderSchatten"
-        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        class="at.ac.tuwien.ifs.bpse.basis.domain.Student">
         <property name="id" value="1" />
         <property name="matnr" value="8925164" />
         <property name="firstname" value="Alexander" />
@@ -136,7 +136,7 @@
     </bean>
 
     <bean id="StudentHubertMeixner"
-        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        class="at.ac.tuwien.ifs.bpse.basis.domain.Student">
         <property name="id" value="2" />
         <property name="matnr" value="87654321" />
         <property name="firstname" value="Hubert" />
@@ -146,7 +146,7 @@
 
     <!-- Student for testing add - update - delete -->
     <bean id="StudentAddUpdateDelete"
-        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        class="at.ac.tuwien.ifs.bpse.basis.domain.Student">
         <description>
             A Student for testting the ADD, UPDATE and DELETE method
         </description>

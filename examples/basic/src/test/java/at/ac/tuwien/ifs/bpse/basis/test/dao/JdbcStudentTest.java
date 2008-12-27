@@ -8,9 +8,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
+import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO;
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
-import at.ac.tuwien.ifs.bpse.dao.IStudentDAO;
-import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
  * Class containing the testcases for StudentDAO. 

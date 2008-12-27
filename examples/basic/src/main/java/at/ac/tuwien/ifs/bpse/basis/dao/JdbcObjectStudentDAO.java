@@ -17,9 +17,8 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import at.ac.tuwien.ifs.bpse.dao.IStudentDAO;
-import at.ac.tuwien.ifs.bpse.domain.Student;
-import at.ac.tuwien.ifs.bpse.domain.StudentExam;
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
+import at.ac.tuwien.ifs.bpse.basis.domain.StudentExam;
 
 /**
  * Implementation of the Student Data Access Object for JDBC. This class makes

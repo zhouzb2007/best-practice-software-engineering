@@ -13,12 +13,13 @@
     <description></description>
     <dependencies>
         <dependency>
-            <groupId>at.ac.tuwien.ifs.bpse</groupId>
-            <artifactId>bpse-sample-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.1</version>
         </dependency>
     </dependencies>
 </project>

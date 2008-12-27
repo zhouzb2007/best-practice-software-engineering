@@ -16,9 +16,9 @@ import junit.framework.TestCase;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.export_import.HtmlExport;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
-import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
  * Class containing the TestCases for the HTML Exporter. Because we have no

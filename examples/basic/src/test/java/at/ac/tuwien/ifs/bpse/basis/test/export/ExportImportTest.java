@@ -10,10 +10,10 @@ import junit.framework.TestCase;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.export_import.Export;
 import at.ac.tuwien.ifs.bpse.basis.export_import.Import;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
-import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
  * Class containing the testcases for the Importers and Exporters. The instanced

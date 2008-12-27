@@ -37,10 +37,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
+import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO;
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.export_import.Export;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
-import at.ac.tuwien.ifs.bpse.dao.IStudentDAO;
-import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
  * The MainFrame is, as the name says, the main frame of this application. It
@@ -332,14 +332,14 @@ public class MainFrame extends JFrame implements ActionListener {
 			Student victim = studentenTM.getStudentAt(row);
 			int yesno = JOptionPane.showConfirmDialog(this, "Student \""
 					+ victim.getFirstname() + " " + victim.getLastname() + " ("
-					+ victim.getMatnr() + ")\"" + " wirklich löschen?", "Delete",
+					+ victim.getMatnr() + ")\"" + " wirklich lï¿½schen?", "Delete",
 					JOptionPane.YES_NO_OPTION);
 			if (yesno == 0) {
 				if (studentDAO.deleteStudent(victim.getId())) {
 					studentenTM.reload();
-					JOptionPane.showMessageDialog(this, "Löschen erfolgreich!");
+					JOptionPane.showMessageDialog(this, "Lï¿½schen erfolgreich!");
 				} else {
-					JOptionPane.showMessageDialog(this, "Fehler beim löschen");
+					JOptionPane.showMessageDialog(this, "Fehler beim lï¿½schen");
 				}
 			}
 		}
