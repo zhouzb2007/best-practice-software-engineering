@@ -13,9 +13,9 @@ import org.dom4j.Element;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.export_import.XmlExportImport;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
-import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
  * Class containing the TestCases for the XML-Importer and Exporter. Testing an

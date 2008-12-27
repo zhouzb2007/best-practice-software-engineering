@@ -3,7 +3,7 @@ package at.ac.tuwien.ifs.bpse.basis.export_import;
 import java.io.IOException;
 import java.util.List;
 
-import at.ac.tuwien.ifs.bpse.domain.Student;
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 
 
 

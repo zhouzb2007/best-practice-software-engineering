@@ -15,7 +15,7 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-import at.ac.tuwien.ifs.bpse.domain.Student;
+import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 
 
 /**
