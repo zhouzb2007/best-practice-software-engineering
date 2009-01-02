@@ -202,6 +202,8 @@ public class XmlExportImport implements Export, Import {
 	 * dom4j-Document which provides easy to use methods for accessing the
 	 * elements of the XML-Tree.
 	 * 
+	 * @param filename The file to read.
+	 * @return list of students
 	 * @see #readXml(String)
 	 */
 	public List<Student> read(String filename) throws IOException {
