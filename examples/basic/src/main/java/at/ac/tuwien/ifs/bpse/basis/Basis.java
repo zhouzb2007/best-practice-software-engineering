@@ -16,7 +16,7 @@ public class Basis {
 	/**
 	 * Retrieves the logger for this root package
 	 */
-	private static Logger log = Logger.getLogger("Basis");
+	private static Logger log = Logger.getLogger(Basis.class);
 
 	/**
 	 * Entry point for the program. Configures the the Log4j-Logger, 
