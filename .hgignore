@@ -26,3 +26,4 @@ syntax: glob
 # Maven targt directories
 examples/basic/target
 examples/medium/target
+examples/documentation/target
