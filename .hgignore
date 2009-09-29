@@ -22,3 +22,7 @@ syntax: glob
 
 # Generated Java Files
 *.class
+
+# Maven targt directories
+examples/basic/target
+examples/medium/target
