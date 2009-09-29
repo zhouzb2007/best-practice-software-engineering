@@ -1,0 +1,24 @@
+syntax: glob
+
+# Mac OS X Metadata
+.DS_Store
+
+# Generated Files 
+
+# LaTeX Support Files
+*.aux
+*.bbl
+*.log
+*.blg
+*.ilg
+*.idx
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.maf
+*.mtc*
+
+# Generated Java Files
+*.class
