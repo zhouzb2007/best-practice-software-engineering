@@ -27,3 +27,4 @@ syntax: glob
 examples/basic/target
 examples/medium/target
 examples/documentation/target
+scratchpad/designpatterns/target
