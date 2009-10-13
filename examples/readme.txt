@@ -1,1 +1,0 @@
-installation instructions see documentation/final/setup.html
