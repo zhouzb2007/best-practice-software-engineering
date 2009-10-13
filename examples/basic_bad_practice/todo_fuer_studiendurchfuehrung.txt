@@ -1,3 +1,0 @@
-working directories einstellen (speziell für test)
-backup von test.script (eventuell)
-
