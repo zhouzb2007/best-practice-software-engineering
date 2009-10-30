@@ -74,56 +74,27 @@ Build and test Project, File ignores
     hg log
 
 
-Create Eclipse Project Files
-----------------------------
-
-    mvn eclipse:eclipse
-    
-    .classpath
-    .project
-    
-    to .hgignore
-    
-    hg commit -u "Petra Maier" -m "Added Eclipse project files to .hgignore"
-    
-Add M2_REPO Java Classpath Variable
 
 
-Add Calculator Class
---------------------
 
-at.ac.tuwien.ifs.scmexample.Calculator
-    
-    package at.ac.tuwien.ifs.scmexample;
-    
-    public class Calculator {
-    
-    	public double add (double x, double y) {
-    		return x + y;
-    	}
-    	
-    }
+Create Maven Site Structure
+---------------------------
 
-Add CalculatorTest Class
-------------------------
+...
+...
+...
 
-    package at.ac.tuwien.ifs.scmexample;
-    
-    import junit.framework.TestCase;
-    
-    public class CalculatorTest extends TestCase {
-    
-    	public void testAdd() {
-    		Calculator calc = new Calculator();
-    		assertEquals(7.0, calc.add(3.0, 4.0), 0.01);
-    		assertEquals(1.3, calc.add(-3.0, 4.3), 0.01);
-    		assertEquals(0, calc.add(-3.0, 3.0), 0.01);
-    	}
-    
-    }
+
+Add initial content
+-------------------
+
+...
+...
+...
+
     
 
-Add Calculator Classes to SCM
+Add Site to SCM
 -----------------------------
 
     mvn test
@@ -142,51 +113,35 @@ go to "Ralf Huber"
 
 hg clone http://localhost:8000/ Mercurial_Demo_Ralf
 
+
 Make Clone for Prototyping
 --------------------------
 
 hg clone Mercurial_Demo_Ralf Prototype
 
 
-"Petra Maier" adds "Subtract" Function
---------------------------------------
+
+"Petra Maier" adds Content
+--------------------------
 
 Change to "Petra Maier"
 
-public double subtract(double x, double y) {
-	return x-y;
-}
 
-public void testSubtract() {
-	Calculator calc = new Calculator();
-	assertEquals(-1.0, calc.subtract(3.0, 4.0), 0.01);
-	assertEquals(9.0, calc.subtract(13.0, 4.0), 0.01);
-	assertEquals(0.5, calc.subtract(2.0, 1.5), 0.01);
-}
-
-    hg commit -u "Petra Maier" -m "Added Subtract Method to Calculator Class"
+...
+...
+...
 
 
 
-Ralf Huber adds "Multiply" Function
------------------------------------
+
+Ralf Huber adds Content
+-----------------------
 
 Change to "Ralf Huber"
 
-    public double multiply (double x, double y) {
-    	return x * y;
-    }
-    
-    public void testMultiply() {
-    	Calculator calc = new Calculator();
-    	assertEquals(8.0, calc.multiply(2.0, 4.0), 0.01);		
-    	assertEquals(-6.0, calc.multiply(-2.0, 3.0), 0.01);		
-    	assertEquals(20.0, calc.multiply(-4.0, -5.0), 0.01);		
-    	assertEquals(7.7, calc.multiply(3.5, 2.2), 0.01);		
-    }
-    
-    
-    hg commit -u "Ralf Huber" -m "Added Multiply Method to Calculator Class and Test Class"
+...
+...
+...
 
 
 Ralf likes changes and pushes it to main
@@ -221,22 +176,17 @@ Merge Changes
 
 Check out both branches
     
-Clean Merge Problem
-    
-    hg resolve -m src/main/java/at/ac/tuwien/ifs/scmexample/Calculator.java
-    hg resolve -m src/test/java/at/ac/tuwien/ifs/scmexample/CalculatorTest.java
-    
-    hg glog
-    
-    hg commit -u "Petra Maier" -m "Merged Calculator Class and CalculatorTest Class"
-    
+...
+...
+...
 
-Show different Calculator Versions
-----------------------------------
 
-    cat Calculator
+Show different Documentation Versions
+-------------------------------------
 
-and show different versions before, after merge
+...
+...
+...
 
 
 
