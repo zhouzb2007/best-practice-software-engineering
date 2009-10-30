@@ -80,27 +80,85 @@ Build and test Project, File ignores
 Create Maven Site Structure
 ---------------------------
 
-...
-...
-...
+Change to project/src
+
+    mkdir site
+    mkdir site/xdoc
 
 
 Add initial content
 -------------------
 
-...
-...
-...
+site.xml
 
+    <?xml version="1.0" encoding="ISO-8859-1"?>
+    <project name="SCM Tutorial">
+      <bannerLeft>
+        <name>Maven</name>
+        <src>http://maven.apache.org/images/apache-maven-project.png</src>
+        <href>http://maven.apache.org/</href>
+      </bannerLeft>
+      <bannerRight>
+        <src>http://maven.apache.org/images/maven-small.gif</src>
+      </bannerRight>
+      <body>
+        <links>
+          <item name="TU-Wien" href="http://www.tuwien.ac.at/" />
+          <item name="ISIS" href="http://www.isis.tuwien.ac.at"/>
+          <item name="Maven 2 Site Guide" href="http://maven.apache.org/guides/mini/guide-site.html"/>
+        </links>
     
+        <menu name="SCM Tutorial">
+          <item name="Introduction" href="index.html"/>
+          <item name="Installation and Setup" href="setup.html"/>
+          <item name="User Documentation" href="user.html"/>
+          <item name="Project Proposal" href="proposal.html" />
+          <item name="Models" href="model.html" />
+          <item name="Download" href="download.html"/>
+          <item name="Release Notes" href="release-notes.html" />
+        </menu>
+    
+        <menu ref="reports"/>
+    
+      </body>
+    </project>
+
+
+index.xml
+
+    <document>
+      <properties>
+        <author email="petra.maier@test.com">Petra Maier</author>
+        <title>Introduction</title>
+      </properties>
+      <!-- Optional HEAD element, which is copied as is into the XHTML <head> element -->
+      <head>
+      </head>
+      <body>
+        <section name="Introduction">
+    
+          <!-- Within sections, any XHTML can be used -->
+          <p>Here comes the introduction to the project</p>
+    
+        </section>
+    
+        <section name="Target Audience">
+        
+            <p>Who is supposed to use this project?</p>
+    
+        </section>
+      </body>
+    </document>
+
+        
 
 Add Site to SCM
 -----------------------------
 
-    mvn test
     hg status
     hg add
-    hg commit -u "Petra Maier" -m "Added Calculator Class and Calculator Unit-Test Class"
+    hg commit -u "Petra Maier" -m "Added Initial site descriptor and index.xml"
+
 
 
 Share Project with "Ralf Huber"
