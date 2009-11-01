@@ -233,6 +233,10 @@ on both sides, and compare changeset IDs
     hg glog
     
     two heads (branches now)
+
+
+Alternate Sharing
+-----------------
     
 Explain alternate sharing options like Sharing by Email:
 
@@ -249,10 +253,8 @@ Merge Changes
 
 Check out both branches
     
-...
-...
-...
-
+    hg merge
+    hg commit -u "Petra Maier" -m "Merged conflicting changes"
 
 Show different Documentation Versions
 -------------------------------------
