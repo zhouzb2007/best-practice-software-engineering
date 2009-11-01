@@ -111,9 +111,6 @@ site.xml
         <menu name="SCM Tutorial">
           <item name="Introduction" href="index.html"/>
           <item name="Installation and Setup" href="setup.html"/>
-          <item name="User Documentation" href="user.html"/>
-          <item name="Project Proposal" href="proposal.html" />
-          <item name="Models" href="model.html" />
           <item name="Download" href="download.html"/>
           <item name="Release Notes" href="release-notes.html" />
         </menu>
@@ -184,22 +181,26 @@ hg clone Mercurial_Demo_Ralf Prototype
 
 Change to "Petra Maier"
 
+site.xml
+    <item name="User Documentation" href="user.html"/>
 
-...
-...
-...
+Add Document: user.xml
 
-
-
+    hg commit -u "Petra Maier" -m "User documentation document draft added and modified Site descriptor"
 
 Ralf Huber adds Content
 -----------------------
 
 Change to "Ralf Huber"
 
-...
-...
-...
+site.xml
+    <item name="Project Proposal" href="proposal.html" />
+    <item name="Models" href="model.html" />
+
+
+Add two documents: proposal.xml and model.xml
+
+    hg commit -u "Ralf Huber" -m "Proposal and Model draft and modified Site-Descriptor"
 
 
 Ralf likes changes and pushes it to main
@@ -214,21 +215,35 @@ Ralf likes changes and pushes it to main
     hg update
     hg parent
 
+Compare Status and Log between Petra and Ralf
+---------------------------------------------
+
+    hg glog
+    
+on both sides, and compare changeset IDs
 
 
 "Petra Maier" pulls changes from "Ralf Huber"
 ---------------------------------------------
 
-    hg serve (at Ralf)
     
-    hg incoming http://localhost:8000
-    hg pull http://localhost:8000
+    hg incoming ../Ralf_Huber
+    hg pull ../Ralf_Huber
     
     hg glog
     
     two heads (branches now)
     
+Explain alternate sharing options like Sharing by Email:
 
+    hg export 3 > change3.diff
+    hg export 4 > change4.diff
+
+Send by email; on other end: 
+
+    hg import change3.diff
+    hg import change4.diff
+    
 Merge Changes
 -------------
 
@@ -241,6 +256,8 @@ Check out both branches
 
 Show different Documentation Versions
 -------------------------------------
+
+Check differences between "short numbers" and actual changeset ID
 
 ...
 ...
