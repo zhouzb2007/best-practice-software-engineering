@@ -13,6 +13,7 @@
         <developer>
             <id>axschatten</id>
             <name>Alexander Schatten</name>
+            <url>http://www.schatten.info</url>
             <email/>
             <roles>
                 <role>Project leader, Java Developer, Testing, Documentation</role>
@@ -30,11 +31,20 @@
             <timezone/>
         </developer>
         <developer>
-            <id>mswilthaner</id>
-            <name>Markus Wilthaner</name>
+            <id>erikgf</id>
+            <name>Erik Gostischa-Franta</name>
             <email/>
             <roles>
-                <role>Java developer</role>
+                <role>Java developer, Documentation, Testing</role>
+            </roles>
+            <timezone/>
+        </developer>
+        <developer>
+            <id>kristofm</id>
+            <name>Kristof Meixner</name>
+            <email/>
+            <roles>
+                <role>Java developer, Documentation, Testing</role>
             </roles>
             <timezone/>
         </developer>
@@ -50,36 +60,6 @@
             <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
             <roles>
                 <role>Tester</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Michael Pernkopf</name>
-            <email></email>
-            <timezone>+1</timezone>
-            <organization>Vienna University of Technology</organization>
-            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
-            <roles>
-                <role>Documentation</role>
-            </roles>
-        </contributor>        
-        <contributor>
-            <name>Erik Gostischa-Franta</name>
-            <email></email>
-            <timezone>+1</timezone>
-            <organization>Vienna University of Technology</organization>
-            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
-            <roles>
-                <role>Documentation</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Sinan Yurtcan</name>
-            <email></email>
-            <timezone>+1</timezone>
-            <organization>Vienna University of Technology</organization>
-            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
-            <roles>
-                <role>Documentation</role>
             </roles>
         </contributor>
     </contributors>
