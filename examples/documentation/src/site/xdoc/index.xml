@@ -18,6 +18,20 @@
 			<p>These examples including the documentation is open source and can be used according to the 
 	 			<a href="http://www.apache.org/licenses/"><b>Apache licence</b></a>. So anyone can use 
 	 			the examples but we ask you to inform us whether you plan to work with our examples.</p>
+	 		<p>The sources for this site are available on <a
+            href="http://code.google.com/p/best-practice-software-engineering">Google Code</a></p>
+      </subsection>
+
+      <subsection name="The Book">
+          <p>
+              In March 2010 our book with the title <i>"Best Practice Software-Engineering, Eine praxiserprobte
+              Zusammenstellung von komponentenorientierten Konzepten, Methoden und Werkzeugen."</i> is released. The
+              publisher is "Spektrum Akademischer Verlag (Springer)". The book is in German; find more information
+              at the <a
+              href="http://www.springer.com/spektrum+akademischer+verlag/informatik/software-entwicklung+und+datenbanken/book/978-3-8274-2486-0">publishers
+              website</a> or on <a
+              href="http://www.amazon.de/Best-Practice-Software-Engineering-Alexander-Schatten/dp/3827424860">Amazon.de</a>.
+          </p>
       </subsection>
       
 	  <subsection name="Introducing Best Practices">
@@ -105,21 +119,7 @@
 				  typos in the documentation: in short words mistakes of
 				  whatever kind, please do not hesitate to contact us!</b></p> 
       </subsection>
-      
-	  <subsection name="Best Practices - &quot;Surplus&quot;"> 
-		  <p>When developing a Java project where the usage of new technologies
-			  (e.g.: Spring, Maven) was specified, the first action item to
-			  finish will be getting all the information about this technology
-			  in terms of the official project documentation, online tutorials,
-			  newsgroups, mailing-lists or expensive trainings.</p>
-		  <p>As getting familiar with technical paradigms normally takes a
-			  lot of time and many ressources (e.g. documents, money), Best
-			  Practice Documentation can support you in order to decrease your
-			  investigation activities, because all of the documented
-			  technologies are yet in use and give an abstract of the most
-			  important things (overview, examples, tricks) to be aware of.</p>
-	  </subsection>
-      
+
       <subsection name="Where to find...">
       	<p>This 'fingerpost' will help you finding the needed information if you get lost in reading.</p>
       	<p>In section <a href="setup.html"><b>Development Setup</b></a> you will find - on the one hand - the information how to set up the 
@@ -165,18 +165,8 @@
 
 					<li><a href="http://qse.ifs.tuwien.ac.at/~biffl/">Homepage Stefan Biffl</a></li>
 					<li><a href="http://www.schatten.info">Homepage Alexander Schatten</a></li>
-					<li><a href="http://qse.ifs.tuwien.ac.at/~frast">Homepage Denis Frast</a></li>
-					<li><a href="http://qse.ifs.tuwien.ac.at/~winkler">Homepage Dietmar Winkler</a></li>
-					
-					<li><a
-							href="http://tuwis.tuwien.ac.at/zope/_ZopeId/39281833A2pYc5fAlQA/tpp/lv/lva_html&#63;num=188151&amp;sem=2006W">Fortgeschrittene
-							Aspekte des Qualitaetsmanagements</a></li>
-					<li><a
-							href="http://tuwis.tuwien.ac.at/zope/_ZopeId/39281833A2pYc5fAlQA/tpp/lv/lva_html&#63;num=188211&amp;sem=2007S">Softwarequalitaetssicherung</a></li>
-					<li><a href="http://tuwis.tuwien.ac.at/zope/_ZopeId/39281833A2pYc5fAlQA/tpp/lv/lva_html&#63;num=188280&amp;sem=2007S">Software Testen</a></li>
-					<li><a href="http://tuwis.tuwien.ac.at/zope/_ZopeId/39281833A2pYc5fAlQA/tpp/lv/lva_html&#63;num=188405&amp;sem=2006W">Advanced Software Engineering</a></li>
-					<li><a href="http://tuwis.tuwien.ac.at/zope/_ZopeId/39281833A2pYc5fAlQA/tpp/lv/lva_html&#63;num=188410&amp;sem=2007S">Software Engineering und Projektmanagement</a></li>
-				</ul>
+					<li><a href="http://qse.ifs.tuwien.ac.at/~winkler">Homepage Dietmar Winkler</a></li> 				    
+		</ul>
 			</subsection>
 		</section>        
   </body>
