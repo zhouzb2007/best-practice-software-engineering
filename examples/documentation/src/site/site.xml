@@ -13,16 +13,16 @@
 
     <body>
         <links>
-            <item name="Faculty of Informatics" href="http://www.cs.tuwien.ac.at/" />
             <item name="IFS" href="http://ifs.tuwien.ac.at/"/>
-            <item name="QSE" href="http://qse.ifs.tuwien.ac.at/"/>
             <item name="Best Practice SE BLOG" href="http://best-practice-software-engineering.blogspot.com/" />
+            <item name="BPSE Buch" href="bpse_buch.html"/>
         </links>
 
         <menu name="Getting Started">
             <item name="Introduction" href="index.html"/>
             <item name="Download" href="download.html"/>
             <item name="Development Setup" href="setup.html"/>
+            <item name="BPSE Buch" href="bpse_buch.html"/>
             <item name="General References" href="references.html"/>
             <item name="Team &amp; Contacts" href="team-list.html"/>
             <item name="ToDo" href="todo.html"/>
