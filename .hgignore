@@ -28,3 +28,8 @@ examples/basic/target
 examples/medium/target
 examples/documentation/target
 examples/designpatterns/target
+
+# Eclipse Project Files
+.classpath
+.project
+.settings

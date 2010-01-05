@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# This script packages the BPSE website of the QSE institute at the
-# Technical University of Vienna, written by Erik Gostischa-Franta, frost@ull.at
+# This script packages the BPSE website including preparation of binary downloads 
 
 # variables
 
