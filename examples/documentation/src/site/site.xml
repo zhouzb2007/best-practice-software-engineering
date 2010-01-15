@@ -72,6 +72,7 @@
                 <item name="Strategy" href="patterns/strategy.html" />
             </item>
             <item name="Technology" href="technology.html">
+                <item name="SCM (Mercurial)" href="technology/tech-scm-mercurial.html" />
                 <item name="Annotations" href="technology/annotations.html"/>
                 <item name="Hibernate" href="technology/tech-hibernate.html"/>
                 <item name="HSQLDB" href="technology/tech-hsqldb.html"/>
