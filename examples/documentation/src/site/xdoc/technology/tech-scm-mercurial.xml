@@ -52,6 +52,9 @@
             <subsection name="Patches">
                 export, import, diff
             </subsection>
+            <subsection name="Collaboration Platforms">
+                Google Code, Bitbucket
+            </subsection>
         </section>
     </body>
 </document>
