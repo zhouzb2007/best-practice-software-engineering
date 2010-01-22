@@ -8,21 +8,45 @@
     <body>
         <section name="Technology: Sourcecode Management (SCM)">
             <subsection name="Sourcecode Management">
-
-        
+                <p>Sourcecode and other resources like icons, configuration files or documentation are the core assets of a software project. Hence careful management of these resources is an important issue, particularly in team collaboration. The following aspects have to be taken into consideration:</p>
+                
+                <ul>
+                    <li>Sourcecode should be versioned, to be able to undo changes and refer back to older version of the software</li>
+                    <li>Often older versions of a Software have to be maintained allthough newer version are already available (e.g. to patch security issues: Version 1, Version 2, Version 1.1, 1.2, 2.1, 2.2 and so on). </li>
+                    <li>Team-collaboration has to be considered: sharing of code between developers has to be transparent, reliable and traceable.</li>
+                    <li>Versions and other important milestones in the project should be marked in the version history to be able to go back to a specific version in the history.</li>
+                    <li>Changes in the sourcecode should be communicated and annotated to be transparent for the whole team</li>
+                </ul> 
+                <p>Sourcecodemanagement (SCM) systems are designed to support the developers with these issues and thus are part of every software project; and are even recommended for tiny one-person projects.</p>
             </subsection>
             
             <subsection name="Centralised vs. Distributed SCM">
-            </subsection>
-            
-            
+                <p>Two different approaches to SCM can be distinguished: (1) centralised and (2) de-centralised systems:</p>
+                <p>Centralised systems like subversion work server based. A central server is responsible to keep the version and metadata for a project. On the client side, working copies can be pulled from the server. Changes on the clients are committed back to the server.</p>
+                <p>Distributed systems are very lightweight systems and do not rely on a central repository or server (allthough they sometimes use central repositories "by definition"). Every developer has a complete repository (including the whole history and metadata) on his machine. Distributed SCM systems allow a variety of collaboration patterns. Most new projects use distributed SCM systems. Some concrete advantages over centralised systems are:</p>
+                <ul>
+                    <li>No central repository (and no server) required; each client has the full history of the project.</li>
+                    <li>Offline work is better supported. </li>
+                    <li>Performance on repository interaction is usually much better </li>
+                    <li>A broad variety of collaboration patterns are supported (see also below)</li>
+                    <li>A repository can be easily cloned (with one command); this way, "experiments" on the sourcecode or repository can be isolated from other developers; in case of problems, the test-repository can be deleted; if the "experiment" was successful, the changes can be pushed to other repositories.</li>
+                    <li>Creating repositories is very simple (usually only one command is necessary). Hence also small projects on one maching can benefit from SCM.</li>
+                    <li>Merging is very well supported and usually more straightforward than with centralised systems.</li>
+                </ul>
+                <p>If multiple developers are working in the same project, conflicts are possible, e.g.: two or more people changing data in the same file. To handle conflicts two approaches are common: (1) Locking and (2) Merging. Locking means, that resources (e.g. files) have to be checked out from the repository and locked before they can be changed. Other developers cannot modify these files when  locked. This approach can be useful for binary resources, with text-based files and particularly with sourcecode locking is not a very efficient collaboration strategy. Merging on the other hand allowes also conflicting changes but supports the developers in resolving (merging) the conflicts on commit. Hence in SCM systems designed for sourcecode management, merging is the common practice.</p>
+                <p>Distributed SCM systems however, can by nature not support locking mechanism, as they do not use central server instances.</p>
+            </subsection>      
             
             <subsection name="References">
-          
+                <ul>
+                    <li><a href="http://mercurial.selenic.com/">Mercurial</a>, <a href="http://git-scm.com/">GIT</a> and <a href="http://bazaar.canonical.com/en/">Bazaar</a> are very popular (Open Source) distributed DSCMs.</li>
+                    <li><a href="http://subversion.tigris.org/">Subversion</a> is one of the leading centralised DSCM systems (Open Source).</li>
+                </ul>
            </subsection>
         </section>
         <section name="Mercurial Distributed SCM">
             <subsection name="Overview">
+                <p>In this document a brief introduction to one of the leading distributed SCM systems, Mercurial, is given. Other DSCMs behave very similarly and the general concepts described here are the same in systems like GIT or Bazaar. Mercurial was selected as it is very easy to learn and understand, yet very powerful for projects and collaborations. Binary installers are available for Unix-like systems, OS X and Windows.</p>
             </subsection>
             <subsection name="Getting Started">
                 Installation, Setup, Plugins (Eclipse), .hgrc, hg help System
