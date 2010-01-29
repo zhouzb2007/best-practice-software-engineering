@@ -44,16 +44,56 @@
                 </ul>
            </subsection>
         </section>
+        
+        
         <section name="Mercurial Distributed SCM">
             <subsection name="Overview">
                 <p>In this document a brief introduction to one of the leading distributed SCM systems, Mercurial, is given. Other DSCMs behave very similarly and the general concepts described here are the same in systems like GIT or Bazaar. Mercurial was selected as it is very easy to learn and understand, yet very powerful for projects and collaborations. Binary installers are available for Unix-like systems, OS X and Windows.</p>
+                <p>In the following short introduction to Mercurial Unix Bash-Script syntac is used. The Mercurial commands are identical in the Windows command line though. The general idea should be clear also for non Unix systems:</p>
+<pre>
+$ hg status
+? a.txt
+</pre>
+                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example).</p>
             </subsection>
             <subsection name="Getting Started">
-                Installation, Setup, Plugins (Eclipse), .hgrc, hg help System
+                <p>For installation instructions follow the documentation on the <a href="http://mercurial.selenic.com/">Mercurial website</a>. Plugins for Eclipse and other IDEs are available.</p>
+                <p>For the initial setup it is recommended to create a <code>.hgrc</code> configuration file. On Unix-like Systems and Mac OS X this file should be created with a text-editor in the user root directory. For details check the <a href="http://www.selenic.com/mercurial/hgrc.5.html">wiki-page</a>. For a start, the initial <code>.hgrc</code> file could look like this:</p>
+<pre>
+[ui]
+username = Firstname Lastname  &lt;firstname.lastname@company.com&gt;
+[extensions]
+hgext.graphlog = 
+hgext.purge = 
+hgext.rebase = 
+</pre>
+                <p>It is very important to set at least username and email address, as these settings are used to associate changesets to particular users.</p> 
+                <p>Mercurial comes with a set of basic functions. A large number of additional <a href="http://mercurial.selenic.com/wiki/UsingExtensions">extensions</a> is available, a lot are already part of the distribution. These extensions are not activated by default to not confuse the user with a large number of commands that are most likely not always needed. In this config file three extensions are activated: <code>graphlog</code>, <code>purge</code> and <code>rebase</code>.</p>
+                <p>Mercurial offers a easy to understand online help system: <code>hg help</code> lists all known commands; <code>hg help command</code> shows the detailed help of <i>command</i></p>
             </subsection>
             <subsection name="Creating a New Project">
+<pre>
+$ mkdir hgexample
+$ cd hgdoc
+$ hg init
+</pre>
+                <p>First a new directory <code>hgexample</code> is created, then the directory is changed and <code>hg init</code> prepares this directory and all subdirectories to be from now on under Mercurial version control. That's all that is required to create a new repository. The <code>init</code> command can also be used in a directory that already contains files.</p>
+<pre>
+$ hg status
+</pre>
+                <p>The <code>status</code> command gives an overview on the current status of the repository (new files, changed files, ...). In this newly created repo there is nothing to report (yet).</p>
             </subsection>
             <subsection name="Cloning an Existing Project">
+                <p>If a Mercurial project exists already, either on the same computer (local) or on a server, the <code>clone</code> command can be used to create a local clone of the other repository:</p>
+<pre>
+$ hg clone repo clone_repo
+</pre>
+            <p>This command assumes that the directory <code>repo</code> contains a Mercurial repository and creates a clone of this repository in the <code>clone_repo</code> directory.</p>
+<pre>
+$ hg clone ssh://username@server.com//home/project/repo project_clone
+</pre>
+            <p>This version of the clone command connects via ssh to the <code>server.com</code> and searches for a Mercurial repository in <code>/home/project/repo</code> (the double // in the url is correct!). This repository is then cloned locally in a directory named <code>project_clone</code></p>
+
             </subsection>
             <subsection name="Making Changes">
                 Commit, Ingoing, Outgoing, Push
