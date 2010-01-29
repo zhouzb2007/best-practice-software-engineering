@@ -109,7 +109,7 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
 8: hg glog
 9: @  changeset:   0:684afa0debd6
       tag:         tip
-      user:        Firstname Lastname <firstname.lastname@company.com>
+      user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
       date:        Fri Jan 29 17:31:04 2010 +0100
       summary:     Created initial Text class with 'Hello World' statement.
 </pre>
