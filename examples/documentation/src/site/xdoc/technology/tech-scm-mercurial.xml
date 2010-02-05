@@ -124,11 +124,12 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
                 </ul>
                 
                 <p>The <code>user</code>, <code>date</code> and <code>summary</code> fields should be clear. The changeset version is a little bit more tricky: As Mercurial is a distributed version control system, there is not one central server instance that can provide unique increasing version numbers. Hence Mercurial generates  changeset ids that are unique ("684afa0debd6" in the example above) even over multiple users in cloned repositories. The counter ("0") is only a convenience counter that helps navigation within one repository and must not be used to identify changesets between clones of repositories.</p>
-                
-                Ingoing, Outgoing, Push
-            </subsection>
+                            </subsection>
             <subsection name="Status">
                 status, (g)log, parents
+            </subsection>
+            <subsection name="Sharing Changes">
+                Ingoing, Outgoing, Push, Pull, Export, Import, Bundle
             </subsection>
             <subsection name="The Version History">
                 log, update, annotate, diff, revert, backout
