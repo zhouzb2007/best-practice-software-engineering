@@ -1,0 +1,188 @@
+   ---
+   Object Pool
+   ---
+   Erik Gostischa-Franta, Jakob Frank
+   ---
+   ---
+
+Object Pool Pattern
+
+  The idea of the Object Pool pattern is similar to that of a real-life book library. Every one knows that it
+  is cheaper to go to you library and borrow a book than to buy a copy for yourself. Likewise, it is cheaper
+  (in regards to system memory and speed) for a process to borrow an object rather than to instantiate it.
+  
+  The Object Pool lets others "check out" objects from its pool, when those objects are no longer needed by
+  their processes, they are returned to the pool in order to be reused. However, we don't want a process to
+  have to wait for a particular object to be released, so the Object Pool also instantiates new objects as they are
+  required, but must also implement a facility to clean up unused objects periodically.
+
+* Applicability / Uses
+  
+  Use the Object Pool pattern when:
+  
+  * your application sporadically requires objects which are "expensive" to create.
+  
+  * several parts of your application require the same objects at different times.
+
+* Related Patterns
+
+  * {{{factory.html} Factory Method}}: The Factory Method pattern can be used to encapsulate the creation logic for objects. However, 
+  it does not manage them after their creation, the object pool pattern keeps track of the objects it creates.
+  
+  * {{{singleton.html} Singleton}}: Object Pools are usually implemented as Singletons.
+
+* Structure
+
+  This Object Pool handles storage, tracking and expiration times. The instantiation, validation and destruction
+  of specific object types must be handled by subclassing.
+
+  UML diagram of the sample code:
+
+[images/objectpool.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  Let us create our ObjectPool class. This code, while heavily modified to reflect new features in the
+  Java language, is based on an example found on JavaWorld.com - 
+  {{{http://www.javaworld.com/javaworld/jw-06-1998/jw-06-object-pool.html?page=1} Build your own ObjectPool 
+  in Java to boost app speed, by Thomas E. Davis, 06/01/98}}
+
++----
+public abstract class ObjectPool<T> {
+  private long expirationTime;
+
+  private Hashtable<T, Long> locked, unlocked;
+
+  public ObjectPool() {
+    expirationTime = 30000; // 30 seconds
+    locked = new Hashtable<T, Long>();
+    unlocked = new Hashtable<T, Long>();
+  }
+
+  protected abstract T create();
+
+  public abstract boolean validate(T o);
+
+  public abstract void expire(T o);
+
+  public synchronized T checkOut() {
+    long now = System.currentTimeMillis();
+    T t;
+    if (unlocked.size() > 0) {
+      Enumeration<T> e = unlocked.keys();
+      while (e.hasMoreElements()) {
+        t = e.nextElement();
+        if ((now - unlocked.get(t)) > expirationTime) {
+          // object has expired
+          unlocked.remove(t);
+          expire(t);
+          t = null;
+        } else {
+          if (validate(t)) {
+            unlocked.remove(t);
+            locked.put(t, now);
+            return (t);
+          } else {
+            // object failed validation
+            unlocked.remove(t);
+            expire(t);
+            t = null;
+          }
+        }
+      }
+    }
+    // no objects available, create a new one
+    t = create();
+    locked.put(t, now);
+    return (t);
+  }
+
+  public synchronized void checkIn(T t) {
+    locked.remove(t);
+    unlocked.put(t, System.currentTimeMillis());
+  }
+}
++----
+
+  The three remaining methods are abstract and therefore must be implemented by the subclass
+  
++----
+public class JDBCConnectionPool extends ObjectPool<Connection> {
+
+  private String dsn, usr, pwd;
+
+  public JDBCConnectionPool(String driver, String dsn, String usr, String pwd) {
+    super();
+    try {
+      Class.forName(driver).newInstance();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    this.dsn = dsn;
+    this.usr = usr;
+    this.pwd = pwd;
+  }
+
+  @Override
+  protected Connection create() {
+    try {
+      return (DriverManager.getConnection(dsn, usr, pwd));
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return (null);
+    }
+  }
+
+  @Override
+  public void expire(Connection o) {
+    try {
+      ((Connection) o).close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public boolean validate(Connection o) {
+    try {
+      return (!((Connection) o).isClosed());
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return (false);
+    }
+  }
+}
++----
+
+  JDBCConnectionPool will allow the application to borrow and return database connections:
+
++----
+public class Main {
+  public static void main(String args[]) {
+    // Do something...
+    ...
+
+    // Create the ConnectionPool:
+    JDBCConnectionPool pool = new JDBCConnectionPool(
+      "org.hsqldb.jdbcDriver", "jdbc:hsqldb://localhost/mydb",
+      "sa", "secret");
+
+    // Get a connection:
+    Connection con = pool.checkOut();
+
+    // Use the connection
+    ...
+
+    // Return the connection:
+    pool.checkIn(con);
+    
+  }
+}
++----
+
+* References / More Info
+
+  {{{http://www.javaworld.com/javaworld/jw-06-1998/jw-06-object-pool.html?page=1} Javaworld - Build your own ObjectPool in Java to boost app speed}}
+
+  {{{http://www.mindspring.com/~mgrand/pattern_synopses.htm#Object%20Pool} Mindspring - Pattern Synopses}}
+  

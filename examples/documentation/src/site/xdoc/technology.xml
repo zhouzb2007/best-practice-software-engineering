@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    
+    <body>
+        <section id="overview" name="Technology">
+            <subsection name="Overview">
+                <p>
+                    This section gives a short overview on the used technologies
+                    in the basic, medium and advanced sample.
+                    The following linked technology sites present hints for using and configuring 
+                    a given technology as well as links to the reference 
+                    documentation and guides.
+                </p>
+                <p>
+                    <ul>
+                        <li><a href="technology/annotations.html">Annotations</a> [medium, advanced]</li>
+                        <li><a href="technology/tech-caucho.html">Hessian / Burlap</a> [advanced]</li>	
+                        <li><a href="technology/tech-hibernate.html">Hibernate</a> [medium, advanced]</li>
+                        <li><a href="technology/tech-hsqldb.html">HSqlDb</a> [basic, medium, advanced]</li>
+                        <li><a href="technology/tech-jsf.html">Java Server Faces</a> [medium, advanced]</li>
+                        <li><a href="technology/javadoc.html">Javadoc</a> [basic, medium, advanced]</li>
+                        <li><a href="technology/tech-junit.html">JUnit</a> [basic, medium, advanced]</li>
+                        <li><a href="technology/tech-log4j.html">Log4J</a> [basic, medium, advanced]</li>
+                        <li><a href="technology/tech-maven.html">Maven</a> [basic, medium, advanced]</li>
+                        <li><a href="technology/spring.html">Spring</a> [basic, medium, advanced]</li>
+                        <li><a href="technology/tech-jdbctemplates.html">Spring JDBC</a> [basic]</li>
+                        <li><a href="technology/spring_orm.html">Spring ORM</a> [medium, advanced]</li>
+                        <li><a href="technology/spring_remote.html">Spring Remote</a> [advanced]</li>			
+                        <li><a href="technology/aop.html">Aspect Oriented Programming</a> [medium]</li>			
+                        <li><a href="technology/tech-swing.html">Swing</a> [basic, advanced]</li> 
+                        <li><a href="technology/tomcat.html">Tomcat</a> [medium]</li>
+                    </ul>
+                </p>
+            </subsection>           
+        </section>
+        
+    </body>
+</document>

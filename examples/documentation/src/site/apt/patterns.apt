@@ -1,0 +1,114 @@
+   ---
+   Software and Design Patterns
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Software and Design Patterns
+
+  <<"Design Patterns are general, repeatable solutions to common recurring problems in software development.">>
+  <[From Wikipedia, the free encyclopedia, "Design pattern (computer science)"].>
+  
+  <<A "pattern" has been defined as "an idea that has been useful in one practical context and will probably 
+  be useful in others.">> <[M.Fowler, "Analysis Patterns - Reusable Object Models", Addison Wesley, ISBN 0-201-89542-0].>
+
+  Some simple patterns can be directly transformed into code. However, do not expect all
+  patterns to be complete solutions! They are helpful descriptions or templates on how to solve a 
+  particular problem, you as the programmer must know how and when to use them. In order to do this you must
+  first understand the fundamental concepts of Object Oriented programming: Class, Object, Method, Message passing,
+  Inheritance, Encapsulation, Abstraction and Polymorphism. If <any> of these concepts are unfamiliar to you please
+  read up on them before continuing with this chapter, you will find references on OO programming at the end of this
+  page.
+
+  Well-designed object-oriented systems have multiple patterns embedded in them.
+  These patterns are divided into five categories - Fundamental, Architectural, Creational, Structural, 
+  and Behavioral - all of them reinforce as well as complement each other.
+  Usually, patterns inside one category complement eachother because they have the same underlying principles 
+  for structuring code.
+  
+  \ 
+
+	[[1]] {{{patterns_fundamental.html} Fundamental Design Patterns }} are general concepts, 
+    they are needed in most other patterns to accomplish their task.
+    
+      	[[A]] {{{patterns/interface.html} Interface}}
+      	
+      	[[B]] {{{patterns/container.html} Container}}
+      	
+      	[[C]] {{{patterns/delegation.html} Delegation}}
+    
+	[[2]] {{{patterns_architectural.html} Architectural Patterns}} express a fundamental structural organization 
+	or schema for software systems. They provide a set of predefined subsystems, specify their responsibilities, 
+	and include rules and guidelines for organizing the relationships between them.
+    
+        	[[A]] {{{patterns/mvc.html} Model View Controller (MVC)}}
+        	
+        	[[B]] {{{patterns/dependency_injection.html} Dependency Injection}} 
+    
+	[[3]] {{{patterns_structural.html} Structural Design Patterns }} are concerned with how classes and 
+	objects are composed together to form larger structures. <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
+	
+			[[A]] {{{patterns/facade.html} Facade}}
+			
+			[[B]] {{{patterns/decorator.html} Decorator}}
+			
+			[[C]] {{{patterns/proxy.html} Proxy}}
+			
+			[[D]] {{{patterns/dao.html} Data Access Object}}
+			
+			[[E]] {{{patterns/transfer_object.html} Transfer Object}}
+ 
+	[[4]] {{{patterns_creational.html} Creational Design Patterns }} abstract the instantiation process. 
+	They help make a system independent of how its objects are created, composed, and represented.
+	<[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
+  
+  			[[A]] {{{patterns/factory.html} Factory Method}}
+  			
+  			[[B]] {{{patterns/factory.html} Abstract Factory}}
+  			
+  			[[C]] {{{patterns/objectpool.html} Objectpool}}
+  			
+  			[[D]] {{{patterns/singleton.html} Singleton}}
+  
+	[[5]] {{{patterns_behavioral.html} Behavioral Design Patterns }} are concerned with algorithms and 
+	the assignment of responsibilities between objects. <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
+	
+			[[A]] {{{patterns/iterator.html} Iterator}}
+			
+			[[B]] {{{patterns/observer.html} Observer}}
+			
+			[[C]] {{{patterns/event_listener.html} Event Listener}}
+			
+			[[D]] {{{patterns/strategy.html} Strategy}}
+  
+  \ 
+  
+* Pattern Map
+
+  The diagram below shows the relationships between the patterns described in this documentation, the notation
+  is according to Zimmer's classifications and relationships. <[Zimmer, Walter (1995), "Relationships between Design Patterns",  
+  from "Pattern Languages of Program Design", Addison-Wesley.]> There are three types of relationships in this diagram:
+  uses (pattern us used by), combine (pattern can be used by), and similar (patterns are similar in their design).
+  
+  \ 
+  
+[patterns/images/pattern_map.jpg] Pattern map according to Zimmer
+  
+* References / More Info
+
+  {{{http://www.martinfowler.com/books.html#ap} M.Fowler, "Analysis Patterns - Reusable Object Models", Addison Wesley, ISBN 0201895420 }}
+
+  {{{http://en.wikipedia.org/wiki/Design_Patterns} Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides (GOF - "Gang of Four"), 
+  "Design Patterns, Elements of Reusable Object-Oriented Software", Addison Wesley, ISBN 0201633612 }}
+  
+  {{{http://citeseer.ist.psu.edu/53928.html} Zimmer, Walter (1995), "Relationships between Design Patterns". Pattern Languages of Program Design, Addison-Wesley}}
+  
+  {{{http://en.wikipedia.org/wiki/Object-oriented_programming} Object-Oriented Programming - Wikipedia}}
+
+  {{{http://en.wikipedia.org/wiki/Design_pattern_(computer_science)} Design Patterns - Wikipedia}}
+
+  {{{http://en.wikipedia.org/wiki/Architectural_pattern_(computer_science)}
+    Architectural Patterns - Wikipedia}}
+    
+  {{{http://www.mindspring.com/~mgrand/pattern_synopses.htm} Patterns in Java Volume 1: A Catalog of Reusable Design Patterns Illustrated with UML}}

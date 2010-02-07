@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <body>
+        <section name="Technology: Log4J">
+	        
+	  <subsection name="Overview">
+		
+	    <p>In most applications, it makes sense to create a log of the activities. The "traditional" way is to print a message to stdout, which is usually the local console, using the command</p>
+	    
+	    <code>
+	    System.out.println("My log message"); 
+	    </code>
+	    
+	    <p>This, however, has certain drawbacks:</p>
+	    
+	    <ul>
+            <li>If you have inserted many logging statements in your code, there is no easy way of "turning them off" when you package your product for your customers. You have to modify the code
+             and comment the log messages out.</li>
+            <li>This log will go to your stdout, which is usually a console. This is rather useless when a server-application is developed, then the logging statements should be written to a log file or even a database.</li>
+            <li>In a distributed system environment, a component may run on a entirely different machine. That means your log messages would also get distributed on many machines.</li>
+            <li>In a complex server environment like in a Servlet container, multiple server applications and modules are running at the same time. The logging of all these modules should be controlable by a log-configuration of the central server.</li>
+            <li>Using the "print" method, it is not possible to tune the logging: e.g., when debugging an applications debug-statements should be printed out, in the production mode only warnings and errors should be logged.</li>
+            <li>Tuning of the log may also include various modules/packages: it might be e.g., desired to keep Hibernate log only errors, but let the own part of the application log debug statements, or vice versa, because you have a problem with the Hibernate configuration (as one example).</li>
+	    </ul>
+	    
+	    <p>With the Log4J framework, you can write something like</p>
+	    
+	    <pre>
+	    <code>
+	    Log.info("My info message");
+	    ...
+	    Log.error("My error message");
+	    </code></pre>
+        
+        <p>The "importance" of the log statement can be set by using the appropriate methods:</p>
+        <p>debug&lt;info&lt;warn&lt;error&lt;fatal</p>
+        <p>
+            "debug" should be used for debug statements, "info" for general information logged by the application, "warn" for warning of problematic conditions, "error" when a recoverable error and "fatal" when a non-recoverable error occured.
+        </p>
+        
+        <p>
+            In the log-configuration this level can be configured for output of individual components: e.g., you could define that the "main" application should log everything up to "info" level, Springframework only up to "warn" and Hibernate only "error" statements.
+        </p>
+	    
+	    <p>Log4J can be configured (without changing the code) to filter these messages, store them in a database, output them on a console or even send you a mail
+	     if certain errors arise - and all of that quite fast.</p>
+	     
+	     </subsection>
+	     
+	     <subsection name="Configuration">
+	     
+	       <p>Before using the logger in your application, you need to configure it using the "log4j.properties" file (the naming of the file is important!). If the config filed is then put into the main/resources or test/resources directory, log4j finds it automatically at startup and no further configuration is needed:</p>
+           <p>As can be seen above: different logging configurations could be provided for testing and for production system by putting them into the "main" or "test" directory of the project.</p>
+		
+		<p>After Log4J is configured, you need to create a reference to a Logger object. This can be done in multiple ways, one of them being to create a static instance in every class:</p>
+
+		<p>
+		<code>
+private static Logger log = Logger.getLogger(my.package.subpackage.classname.class);
+		</code>
+		</p>
+		
+		<p>Then, you can use this variable to send log messages in 5 log levels:</p>
+		
+		<ul>
+		<li>fatal</li>
+		<li>error</li>
+		<li>warn</li>
+		<li>debug</li>
+		<li> trace</li>
+		</ul>
+		
+	     </subsection>
+	     
+	     <subsection name="Usage">
+	     
+	     <p>Let's have a look at an example (taken from the BP Examples (basic\src\main\java\log4j.properties))</p>
+	     <p>
+				<br />
+				We set the root logger level to INFO and its appenders to stdout (output on console). Additionally we set the logging level by default (rootLogger) to INFO, but for all Apache libraries to WARN and the same for the Springframework<br /><br />
+				<code>
+					log4j.rootLogger = INFO, stdout<br />
+					log4j.logger.org.apache = WARN, stdout<br />
+					log4j.logger.org.springframework = WARN, stdout<br /><br />
+				</code>
+				Now we define the appender for stdout console output which uses the PatternLayout. An appender is the logging component that receives the log-statements and sends them to the desired output channel, the console in this case<br /><br />
+				<code>
+					log4j.appender.stdout = org.apache.log4j.ConsoleAppender<br />
+					log4j.appender.stdout.layout = org.apache.log4j.PatternLayout<br />
+					log4j.appender.stdout.layout.ConversionPattern = %d [%t] %-5p %c - %m%n<br />
+				</code><br />
+					<b><code>%d:</code></b> outputs the date of the logging event<br />
+					<b><code>[%t]:</code></b> outputs the thread the logging event produced<br />
+					<b><code>%c:</code></b> the category of the logging event<br />
+					<b><code>%-5:</code></b> outputs the priority level (INFO, WARN,...); "-" = left-aligned, "5" = length of level (f.ex. for having
+					INFO and DEBUG shortly one below the other)<br />
+					<b><code>%m%n:</code></b> output of the logging message and new line  
+	     </p>
+         <p>
+            Already this simple example shows the potential: the logging levels to be seen can be easily reconfigured on one place for the whole application. Additionally, if logging into a file, or database would be desired only the appender definition needs to be changed. Even logging into multiple channels with different loglevels and much more is possible.
+         </p>
+	     </subsection>
+
+	      <subsection name="Reference">
+	      
+	      <p>The official Log4J page can be found at <a href="http://logging.apache.org/log4j/docs/">http://logging.apache.org/log4j/docs/</a>.<br />
+	      Other resources of logging documentation can be found at <a href="http://www.torsten-horn.de/techdocs/java-log4j.htm">http://www.torsten-horn.de/techdocs/java-log4j.htm</a> (german documentation)<br />
+	      and <a href="http://javacore.de/jumpToDownload.php&#63;id=8">German log4j manual a javacore.de</a> (pdf direct download link)
+	      </p>
+	      		   
+		   </subsection>
+		</section>
+	    
+	 </body>
+	 </document>
+                                                                                                                                                            

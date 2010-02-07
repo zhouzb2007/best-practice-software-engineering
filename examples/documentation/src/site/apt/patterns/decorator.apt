@@ -1,0 +1,168 @@
+   ---
+   Decorator
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Decorator Pattern
+ 
+  A decorator object allows you to add new behaviour to other objects at <runtime>. You can also think
+  of this in terms of graphical interface components where a decorator object contains a border or
+  shadow which it uses to actually visually decorate another graphical component. However a decorator can also
+  add new <functionality> to existing components, like scrolling and zooming.
+  It is a good alternative to subclassing (inheritance) which allows you to create child objects with a new behaviour
+  during implementation. Subclassing extends an entire class hierarchy, decoration allows the transparent
+  extension of <particular> objects at runtime. This also means that you don't have to subclass several times for
+  the same functionality - you can add one decorator (one "functionality" or "behaviour") to many objects.
+  
+  To achieve this, a Decorator must maintain the same interface as the object it "decorates" and it must
+  accept the object it is "decorating" as an argument in its constructor. It keeps this original object
+  in a private member variable.
+  
+  The advantage of using the decorator pattern becomes quite clear when you are confronted with a large number
+  of <independent> ways to extend functionality, especially when you can't predict at design time which 
+  combinations of extensions will be used during runtime. You can decorate a decorator object by simply nesting
+  them within each other since they all conform to the same interface and forward their messages to the next
+  decorator or original object.
+
+  The Decorator pattern is also known as "Wrapper". It provides its functionality by wrapping itself around the
+  original object.
+
+* Applicability / Uses
+  
+  Use the decorator pattern to:
+  
+  * add responsibilities to individual objects transparently and
+  
+  * remove these (encapsulated) responsibilities again without affecting other object.
+  
+  * extend classes without subclassing. Sometimes subclassing results in an explosion of the number of subclasses
+  to support different combinations of these extensions.
+
+* Structure
+
+  UML diagram of a standard Decorator pattern (GoF):
+  
+[images/decorator_simple.jpg] UML diagram of a standard Decorator pattern (GoF):
+
+  \ 
+
+  The UML diagram of the sample code shown below:
+
+[images/decorator_advanced.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  This sample code is based on <[Budi Kurniawan, "Using the Decorator Pattern", ONJava.com]>.
+  \ 
+  
+  We will try to show the relevance of the Decorator pattern using a real-world example which is also the
+  most widely used example for this pattern - Java Swing components. In this example, our decorator
+  will actually visually decorate other Swing Components, however keep in mind that decorators can also
+  be used to add new functionality rather than just a new look, which is what the word decoration implies.
+
+  First lets take a look at the JComponent class, this class has a lot more methods than shown
+  in this code, we are only looking at the bare minimum amount of methods necessary to explain decoration.
+
++----
+public abstract class JComponent
+extends Container
+implements Serializable {
+	...
+	public JComponent() {
+		...
+	}
+	public void paint (Graphics g) {
+		// Invoked by Swing to draw this component 
+		// and its children on the screen
+	}
+	...
+}
++----
+
+  Now lets create our decorator, it inherits directly from the JComponent class, which means
+  it will also inherit the implementation of JComponent's serializable interface as well as 
+  JComponent's implementation of the abstract methods defined in the Container class.
+  
++----
+public class BorderDecorator extends JComponent {
+	protected JComponent component;
+	
+	public BorderDecorator(JComponent c){
+		this.component = c;
+		this.setLayout(new BorderLayout());
+		this.add(component);
+	}
+	
+	public void paint(Graphics g) {
+		super.paint(g);
+		int height = this.getHeight();
+		int width = this.getWidth();
+		g.drawRect(0, 0, width-1, height-1);	
+	}
+}
++----
+
+  Notice that the constructor of BorderDecorator adds the parameter "c" which is a JComponent as a child
+  to the component of the decorator. Since we are also using the BorderLayout, this child element will occupy
+  the entire area of the decorator.
+  
+  Also notice the modified paint method, it first calls the paint method of the parent class, after this our
+  decorator draws a border around it, after first establishing height and width of the element.
+
+  Now lets take a look at how this new decorator is used:
+  
++----
+public class FrameTest extends JFrame {
+	
+	BorderDecorator label = 
+		new BorderDecorator(new JLabel("Decorated Label"));
+	
+	BorderDecorator checkbox = 
+		new BorderDecorator(new JCheckBox("Decorated Checkbox"));
+	
+	public FrameTest() {
+		try {
+			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+         	getContentPane().setLayout(null);
+         	
+         	label.setBounds(new Rectangle(10, 10, 120, 25));
+         	this.getContentPane().add(label, null);
+         	
+         	checkBox.setBounds(new Rectangle(10, 110, 160, 25));
+         	this.getContentPane().add(checkBox, null);
+         	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		TestFrame frame = new TestFrame();
+		frame.setBounds(0,0,200,200);
+		frame.setVisible(true);
+	}
+}
++----
+
+  Since our decorator conforms to the same interface as JComponent, there is no difference in appearance
+  between our decorator and any other "undecorated" or "regular" JLabel or JCheckBox.
+  
+  It should be pointed out that this is not the usual way of customizing elements in Java Swing. There are already
+  facilities to define Look & Feel of GUI components, take a look the Java Tutorial 
+  {{{http://java.sun.com/docs/books/tutorial/uiswing/misc/plaf.html} How to Set Look and Feel}} from Sun.
+
+
+* References / More Info
+
+  {{{http://java.sun.com/docs/books/tutorial/uiswing/misc/plaf.html} How to Set Look and Feel - The Sun Java Tutorials}}
+
+  {{{http://exciton.cs.rice.edu/JavaResources/DesignPatterns/DecoratorPattern.htm} The Decorator Design Pattern - Antonio Garc’a and Stephen Wong}}
+  
+  {{{http://www.onjava.com/pub/a/onjava/2003/02/05/decorator.html} using the Decorator Pattern - Budi Kurniawan - O'Reilly ONJava.com}}
+  
+  {{{http://java.sun.com/docs/books/tutorial/essential/io/datastreams.html} Data Stream - The Sun Java Tutorials}}
+  
+  {{{http://en.wikipedia.org/wiki/Decorator_pattern} Wikipedia - Decorator Pattern}}
+

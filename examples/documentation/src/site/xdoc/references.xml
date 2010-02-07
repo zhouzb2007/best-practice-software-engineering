@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <properties>
+        <title>General References</title>
+        <author></author>
+    </properties>
+
+	<body>
+		<section name="General References">
+			<subsection name="Online References">
+				<p>Please find here a collection of online references: 
+					<ul>
+						<li><a href="http://www.javabuch.de/"><b>Javabuch.de</b></a> (Guido Kr&#252;ger)</li>
+						<li><a href="http://www.galileocomputing.de/openbook/javainsel6/"><b>Java ist auch eine Insel</b></a> (Christian Ullenboom / Galileo Press)</li>
+						<li><a href="http://www.mindview.net/Books/TIJ/"><b>Thinking in Java - 3rd edition</b></a> (Bruce Eckel)</li>
+						<li><a href="http://www.mergere.com/m2book_download.jsp"><b>Better builds with Maven</b></a> (Vincent Massol &amp; Jason van Zyl)</li>
+					</ul>
+				</p>
+			</subsection>
+			<!--subsection name="Book References">
+				<p>See here a listing of book references:
+					<ul>
+						<li>to be filled</li>
+					</ul>
+				</p>
+			</subsection-->
+		</section>
+	</body>
+</document>
+

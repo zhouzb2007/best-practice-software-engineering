@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <body>
+        <section name="Technology: jUnit">
+	        
+	  <subsection name="Overview">
+
+        <p>Modern software development (particularly following agile methods like Scrum or XP) is <b>test-driven</b>. This means, that before (or at least immediately after) a piece of code (a method, a class) is written, the according test has to be written. This test is part of a complete test-suite, that eventually tests the whole application. These tests can be executed <b>automatically</b> and will report any undesired behaviour.</p>
+        <p>Using an appropriate test-strategy is crucial for developing robust software by multiple reasons:</p>
+        <ul>
+            <li>The test can be seen as the specification of the functionality. Writing tests hand-in-hand with the implementation ensures a stable specification</li>
+            <li>Manual testing is unreliable: first, it is awkward (actually impossible) to test larger portions of code manually (and hence it is not done) and secondly, in a team-development setup, one single developer can have difficulties in testing other parts of the application, having lack of knowledge of the implementation details of other parts</li>
+            <li>Fine-grained automatically executed unit-tests not only give you confidence for your own code, but allow to detect, whether changes in <b>your</b> part of the code broke some other dependent code written by other developers (and vice versa).</li>
+        </ul>
+	    
+	    <p>The paradigma of <em>Test Driven Development</em> involves repeatedly first writing a test case and then implementing only the code necessary to pass the test. With such an automated
+	    test (a <em>TestCase</em>) you can rapidly get feedback and don't have to manually test every aspect of your software when you change only one module.</p>
+	    
+	    <p>The now defacto-standard testing framework for Java is <a href="http://www.junit.org">jUnit</a>. jUnit makes writing a test really easy. Each test case is a class extending <em>TestCase</em>.
+	    
+	      Each testcases has a <em>setUp()</em> and a <em>tearDown()</em> function and one or many testXXX() functions. When running the unit test:</p>
+	      
+	      <ul>
+	      <li>the TestCase is instantiated</li>
+	      <li>the setUp() function is called</li>
+	      <li>the next testXXX() function is called</li>
+	      <li>the tearDown() function is called</li>
+	      <li>If there is another testXXX() function, go back to the second step until all functions have been called</li>
+	      </ul>
+	      
+	    <p>To see jUnit in action, you have a look at the 
+	    <a href="basic/xref-test/index.html">Sourcecode of the unit tests in the basic example</a>.</p>
+	    
+	      </subsection>
+	      
+	      <subsection name="Reference">
+	      
+	      <p>The official jUnit page can be found at <a href="http://www.junit.org">http://www.junit.org</a>.</p>
+	      
+	      <p>To get started, have a look at the great tutorial at: 
+	      <a href="http://junit.sourceforge.net/doc/testinfected/testing.htm">http://junit.sourceforge.net/doc/testinfected/testing.htm</a>.</p>
+	      
+	      <p>TestDriven Development is also explain in great detail in C2s Pattern Wiki at: <a href="http://c2.com/cgi/wiki?TestDrivenDevelopment">http://c2.com/cgi/wiki?TestDrivenDevelopment</a>.</p>
+		   
+		   </subsection>
+		</section>
+	    
+	 </body>
+	 </document>
+                                                                                                                                                            

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <properties>
+        <title>Technology: Spring JDBC templates</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+    <body>
+        <section name="Technology: Spring JDBC templates">
+	
+            <subsection name="Overview">
+		
+                <p>When accessing a datasource, such as a database, one discovers that most of the code always stays the same: A connection to the database has to be established, a statement prepared, filled with parameters, the query has to be executed, the result has to be fetched and then mapped to a data object. Also, error-handling mechanisms, pooling of connections and other concerns reoccur in most situations when you access a database.</p>
+		
+                <p>One part of the popular Spring framework is the spring JDBC package. It handles most of the so-called <em>service code</em>, meaning the code of DAOs that always remains the same, no matter what query is employed.</p>
+            
+		
+            </subsection>
+         	
+            <subsection name="Reference">
+                <p>The Spring Framework has an excellent online documentation that covers Springs' JDBC functionality in <a href="http://static.springframework.org/spring/docs/2.0.x/reference/jdbc.html"> Chapter 11: Data access using JDBC</a>.</p>
+		
+                <p>The API documentation for Spring (look for the package org.springframework.jdbc and it's sub-packages) can be found here:
+                <a href="http://static.springframework.org/spring/docs/2.0.x/api/index.html">http://static.springframework.org/spring/docs/2.0.x/api/index.html</a>.</p>
+            </subsection>
+            
+        </section>
+	
+    </body>
+</document>
+                                                                                                                                                            

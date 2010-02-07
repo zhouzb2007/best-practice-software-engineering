@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Technology: Sourcecode Management (SCM)</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+    <body>
+        <section name="Technology: Sourcecode Management (SCM)">
+            <subsection name="Sourcecode Management">
+                <p>Sourcecode and other resources like icons, configuration files or documentation are the core assets of a software project. Hence careful management of these resources is an important issue, particularly in team collaboration. The following aspects have to be taken into consideration:</p>
+                
+                <ul>
+                    <li>Sourcecode should be versioned, to be able to undo changes and refer back to older version of the software</li>
+                    <li>Often older versions of a Software have to be maintained allthough newer version are already available (e.g. to patch security issues: Version 1, Version 2, Version 1.1, 1.2, 2.1, 2.2 and so on). </li>
+                    <li>Team-collaboration has to be considered: sharing of code between developers has to be transparent, reliable and traceable.</li>
+                    <li>Versions and other important milestones in the project should be marked in the version history to be able to go back to a specific version in the history.</li>
+                    <li>Changes in the sourcecode should be communicated and annotated to be transparent for the whole team</li>
+                </ul> 
+                <p>Sourcecodemanagement (SCM) systems are designed to support the developers with these issues and thus are part of every software project; and are even recommended for tiny one-person projects.</p>
+            </subsection>
+            
+            <subsection name="Centralised vs. Distributed SCM">
+                <p>Two different approaches to SCM can be distinguished: (1) centralised and (2) de-centralised systems:</p>
+                <p>Centralised systems like subversion work server based. A central server is responsible to keep the version and metadata for a project. On the client side, working copies can be pulled from the server. Changes on the clients are committed back to the server.</p>
+                <p>Distributed systems are very lightweight systems and do not rely on a central repository or server (allthough they sometimes use central repositories "by definition"). Every developer has a complete repository (including the whole history and metadata) on his machine. Distributed SCM systems allow a variety of collaboration patterns. Most new projects use distributed SCM systems. Some concrete advantages over centralised systems are:</p>
+                <ul>
+                    <li>No central repository (and no server) required; each client has the full history of the project.</li>
+                    <li>Offline work is better supported. </li>
+                    <li>Performance on repository interaction is usually much better </li>
+                    <li>A broad variety of collaboration patterns are supported (see also below)</li>
+                    <li>A repository can be easily cloned (with one command); this way, "experiments" on the sourcecode or repository can be isolated from other developers; in case of problems, the test-repository can be deleted; if the "experiment" was successful, the changes can be pushed to other repositories.</li>
+                    <li>Creating repositories is very simple (usually only one command is necessary). Hence also small projects on one maching can benefit from SCM.</li>
+                    <li>Merging is very well supported and usually more straightforward than with centralised systems.</li>
+                </ul>
+                <p>If multiple developers are working in the same project, conflicts are possible, e.g.: two or more people changing data in the same file. To handle conflicts two approaches are common: (1) Locking and (2) Merging. Locking means, that resources (e.g. files) have to be checked out from the repository and locked before they can be changed. Other developers cannot modify these files when  locked. This approach can be useful for binary resources, with text-based files and particularly with sourcecode locking is not a very efficient collaboration strategy. Merging on the other hand allowes also conflicting changes but supports the developers in resolving (merging) the conflicts on commit. Hence in SCM systems designed for sourcecode management, merging is the common practice.</p>
+                <p>Distributed SCM systems however, can by nature not support locking mechanism, as they do not use central server instances.</p>
+            </subsection>      
+            
+            <subsection name="References">
+                <ul>
+                    <li><a href="http://mercurial.selenic.com/">Mercurial</a>, <a href="http://git-scm.com/">GIT</a> and <a href="http://bazaar.canonical.com/en/">Bazaar</a> are very popular (Open Source) distributed DSCMs.</li>
+                    <li><a href="http://subversion.tigris.org/">Subversion</a> is one of the leading centralised DSCM systems (Open Source).</li>
+                </ul>
+           </subsection>
+        </section>
+        
+        
+        <section name="Mercurial Distributed SCM">
+            <subsection name="Overview">
+                <p>In this document a brief introduction to one of the leading distributed SCM systems, Mercurial, is given. Other DSCMs behave very similarly and the general concepts described here are the same in systems like GIT or Bazaar. Mercurial was selected as it is very easy to learn and understand, yet very powerful for projects and collaborations. Binary installers are available for Unix-like systems, OS X and Windows.</p>
+                <p>In the following short introduction to Mercurial Unix Bash-Script syntac is used. The Mercurial commands are identical in the Windows command line though. The general idea should be clear also for non Unix systems:</p>
+<pre>
+1: $ hg status
+2: ? a.txt
+</pre>
+                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text.</p>
+            </subsection>
+            <subsection name="Getting Started">
+                <p>For installation instructions follow the documentation on the <a href="http://mercurial.selenic.com/">Mercurial website</a>. Plugins for Eclipse and other IDEs are available.</p>
+                <p>For the initial setup it is recommended to create a <code>.hgrc</code> configuration file. On Unix-like Systems and Mac OS X this file should be created with a text-editor in the user root directory. For details check the <a href="http://www.selenic.com/mercurial/hgrc.5.html">wiki-page</a>. For a start, the initial <code>.hgrc</code> file could look like this:</p>
+<pre>
+[ui]
+username = Firstname Lastname  &lt;firstname.lastname@company.com&gt;
+[extensions]
+hgext.graphlog = 
+hgext.purge = 
+hgext.rebase = 
+</pre>
+                <p>It is very important to set at least username and email address, as these settings are used to associate changesets to particular users.</p> 
+                <p>Mercurial comes with a set of basic functions. A large number of additional <a href="http://mercurial.selenic.com/wiki/UsingExtensions">extensions</a> is available, a lot are already part of the distribution. These extensions are not activated by default to not confuse the user with a large number of commands that are most likely not always needed. In this config file three extensions are activated: <code>graphlog</code>, <code>purge</code> and <code>rebase</code>.</p>
+                <p>Mercurial offers a easy to understand online help system: <code>hg help</code> lists all known commands; <code>hg help command</code> shows the detailed help of <i>command</i></p>
+            </subsection>
+            <subsection name="Creating a New Project">
+<pre>
+$ mkdir hgexample
+$ cd hgdoc
+$ hg init
+</pre>
+                <p>First a new directory <code>hgexample</code> is created, then the directory is changed and <code>hg init</code> prepares this directory and all subdirectories to be from now on under Mercurial version control. That's all that is required to create a new repository. The <code>init</code> command can also be used in a directory that already contains files.</p>
+<pre> 
+$ hg status
+</pre>
+                <p>The <code>status</code> command gives an overview on the current status of the repository (new files, changed files, ...). In this newly created repo there is nothing to report (yet).</p>
+            </subsection>
+            <subsection name="Cloning an Existing Project">
+                <p>If a Mercurial project exists already, either on the same computer (local) or on a server, the <code>clone</code> command can be used to create a local clone of the other repository:</p>
+<pre>
+$ hg clone repo clone_repo
+</pre>
+            <p>This command assumes that the directory <code>repo</code> contains a Mercurial repository and creates a clone of this repository in the <code>clone_repo</code> directory.</p>
+<pre>
+$ hg clone ssh://username@server.com//home/project/repo project_clone
+</pre>
+            <p>This version of the clone command connects via ssh to the <code>server.com</code> and searches for a Mercurial repository in <code>/home/project/repo</code> (the double // in the url is correct!). This repository is then cloned locally in a directory named <code>project_clone</code></p>
+            
+            <p>It is important to understand, that the clone of a repository is not just a working copy but contains all information including the full version history from the source repository. The source and the cloned repository hence can be seen as being identical.</p>
+
+            </subsection>
+            <subsection name="Making Changes">
+                <p>In the following example a Java class is created, the new file is added to revision control and a change is committed:</p>
+<pre>
+1: $ echo "class Test { public static void main (String[] args) { System.out.println(\"Hello World\");}}" > Test.java 
+2: $ hg status
+3: ? Test.java
+4: $ hg add Test.java
+5: $ hg status
+6: A Test.java
+7: hg commit -m "Created initial Text class with 'Hello World' statement."
+8: hg glog
+9: @  changeset:   0:684afa0debd6
+      tag:         tip
+      user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+      date:        Fri Jan 29 17:31:04 2010 +0100
+      summary:     Created initial Text class with 'Hello World' statement.
+</pre>
+                <ul>
+                    <li>In line 1 a file with the name <code>Test.java</code> is created. This file contains a simple Java class that prints out "Hello World"</li>
+                    <li>The command in line 2 checks the status of the repository, line 3 indicates (?) that there is a file that is not yet under version control.</li>
+                    <li>The <code>add</code> command tells Mercurial to schedule this file for version control. If no file name is given, <i>all</i> files that are not yet under version control are added to the repository. This command prepares files for version control, but does not actually create a new version. This is done in line 7</li>
+                    <li>The <code>status</code> command in line 5 now indicates that <code>Test.java</code> was added to the version control but was not yet committed. </li>
+                    <li>Line 7 actually tells Mercurial to create a new version. A new version is created containing all changes to files that were already under version control since the last commit and all newly added file(s).</li>
+                    <li>The <code>glog</code> command lists all versions (= changesets) in the repository.</li>
+                    <li>Line 9 and following display the first changeset in the repository.</li>
+                </ul>
+                
+                <p>The <code>user</code>, <code>date</code> and <code>summary</code> fields should be clear. The changeset version is a little bit more tricky: As Mercurial is a distributed version control system, there is not one central server instance that can provide unique increasing version numbers. Hence Mercurial generates  changeset ids that are unique ("684afa0debd6" in the example above) even over multiple users in cloned repositories. The counter ("0") is only a convenience counter that helps navigation within one repository and must not be used to identify changesets between clones of repositories.</p>
+                            </subsection>
+            <subsection name="Status">
+                <p>To get an idea about the status the repository or the working copy is in, three commands are important to understand:</p>
+                <ul>
+                    <li><b><code>hg status</code>:</b> shows the status of files in the working directory: e.g. files that are not under revision control (<code>?</code>), <i>changed</i> (<code>M</code>), <i>deleted</i> files (<code>R</code>)...</li>
+                    <li><b><code>hg (g)log</code>:</b> The <code>log</code> command shows the revision history of the repository. The <code>glog</code> command also displays a graphical outline of the history.</li>
+                    <li><b><code>hg parent</code>:</b> the <code>parent</code> command is helpful to show the parent revision of the current working copy. The <code>hg update</code> command can set the version of the working copy on an arbitrary version. <code>hg pull</code> can pull new changesets into the repository. <code>parent</code> shows which version actually is used in the working copy. In the <code>glog</code> command the parent is indicated with the <code>@</code> symbol.</li>
+                </ul>
+            </subsection>
+            <subsection name="Sharing Changes">
+                Ingoing, Outgoing, Push, Pull, Export, Import, Bundle
+            </subsection>
+            <subsection name="The Version History">
+                log, update, annotate, diff, revert, backout
+            </subsection>
+            <subsection name="Adding, (Re)moving and Ignoring Files">
+                Add, rm, mv, addremove, purge
+            </subsection>
+            <subsection name="Branches and Tags">
+                branch, branches, tag, tags
+            </subsection>
+            <subsection name="Merging and Rebasing">
+                merge, resolve, rebase
+            </subsection>
+            <subsection name="Patches">
+                export, import, diff
+            </subsection>
+            <subsection name="Collaboration Platforms">
+                Google Code, Bitbucket
+            </subsection>
+        </section>
+    </body>
+</document>

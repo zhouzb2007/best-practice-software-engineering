@@ -1,0 +1,274 @@
+Skript
+======
+
+Create "Two Computer"
+---------------------
+
+    mkdir Petra_Maier
+    mkdir Ralf_Huber
+    
+
+Configure Mercurial .hgrc
+-------------------------
+
+    [ui]
+    username = Alexander Schatten <alexander@schatten.info>
+    [extensions]
+    hgext.convert=
+    hgext.graphlog = 
+    hgext.mq =
+    hgext.purge = 
+    
+    # Example for automatic authentication via https
+    [auth]
+    googlecodebpse.prefix = projectname.googlecode.com/hg/
+    googlecodebpse.username = username
+    googlecodebpse.password = password
+    googlecodebpse.schemes = https
+    
+
+Create initial Repository
+-------------------------
+
+    hg init
+
+
+Create Maven Project from Archetype
+-----------------------------------
+
+    mvn archetype:create -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=at.ac.tuwien.ifs.scmexample -DartifactId=example-app
+
+
+Add Files and first Commit
+--------------------------
+
+    hg status
+    hg add example-app/pom.xml
+    hg status
+    hg add
+    hg status
+    
+    hg commit -u "Petra Maier" -m "Initial Project structure"
+    hg status
+    hg log
+
+
+Build and test Project, File ignores
+------------------------------------
+
+    mvn test
+    hg status
+    
+    .hgignore:
+    
+    syntax: glob
+      # Mac OS X Metadata
+    .DS_Store
+      # Generated Java Files
+    example-app/target
+    *.class
+    
+    hg add
+    hg commit -u "Petra Maier" -m "Added .hgignore to ignore generated Java-Files in SCM"
+    hg status
+    hg log
+
+
+
+
+
+Create Maven Site Structure
+---------------------------
+
+Change to project/src
+
+    mkdir site
+    mkdir site/xdoc
+
+
+Add initial content
+-------------------
+
+site.xml
+
+    <?xml version="1.0" encoding="ISO-8859-1"?>
+    <project name="SCM Tutorial">
+      <bannerLeft>
+        <name>Maven</name>
+        <src>http://maven.apache.org/images/apache-maven-project.png</src>
+        <href>http://maven.apache.org/</href>
+      </bannerLeft>
+      <bannerRight>
+        <src>http://maven.apache.org/images/maven-small.gif</src>
+      </bannerRight>
+      <body>
+        <links>
+          <item name="TU-Wien" href="http://www.tuwien.ac.at/" />
+          <item name="ISIS" href="http://www.isis.tuwien.ac.at"/>
+          <item name="Maven 2 Site Guide" href="http://maven.apache.org/guides/mini/guide-site.html"/>
+        </links>
+    
+        <menu name="SCM Tutorial">
+          <item name="Introduction" href="index.html"/>
+          <item name="Installation and Setup" href="setup.html"/>
+          <item name="Download" href="download.html"/>
+          <item name="Release Notes" href="release-notes.html" />
+        </menu>
+    
+        <menu ref="reports"/>
+    
+      </body>
+    </project>
+
+
+index.xml
+
+    <document>
+      <properties>
+        <author email="petra.maier@test.com">Petra Maier</author>
+        <title>Introduction</title>
+      </properties>
+      <!-- Optional HEAD element, which is copied as is into the XHTML <head> element -->
+      <head>
+      </head>
+      <body>
+        <section name="Introduction">
+    
+          <!-- Within sections, any XHTML can be used -->
+          <p>Here comes the introduction to the project</p>
+    
+        </section>
+    
+        <section name="Target Audience">
+        
+            <p>Who is supposed to use this project?</p>
+    
+        </section>
+      </body>
+    </document>
+
+        
+
+Add Site to SCM
+-----------------------------
+
+    hg status
+    hg add
+    hg commit -u "Petra Maier" -m "Added Initial site descriptor and index.xml"
+
+
+
+Share Project with "Ralf Huber"
+-------------------------------
+
+hg serve
+http://localhost:8000/
+
+go to "Ralf Huber"
+
+hg clone http://localhost:8000/ Mercurial_Demo_Ralf
+
+
+Make Clone for Prototyping
+--------------------------
+
+hg clone Mercurial_Demo_Ralf Prototype
+
+
+
+"Petra Maier" adds Content
+--------------------------
+
+Change to "Petra Maier"
+
+site.xml
+    <item name="User Documentation" href="user.html"/>
+
+Add Document: user.xml
+
+    hg commit -u "Petra Maier" -m "User documentation document draft added and modified Site descriptor"
+
+Ralf Huber adds Content
+-----------------------
+
+Change to "Ralf Huber"
+
+site.xml
+    <item name="Project Proposal" href="proposal.html" />
+    <item name="Models" href="model.html" />
+
+
+Add two documents: proposal.xml and model.xml
+
+    hg commit -u "Ralf Huber" -m "Proposal and Model draft and modified Site-Descriptor"
+
+
+Ralf likes changes and pushes it to main
+----------------------------------------
+
+    hg push
+    
+    Change to main repo
+    
+    hg glog
+    hg parent
+    hg update
+    hg parent
+
+Compare Status and Log between Petra and Ralf
+---------------------------------------------
+
+    hg glog
+    
+on both sides, and compare changeset IDs
+
+
+"Petra Maier" pulls changes from "Ralf Huber"
+---------------------------------------------
+
+    
+    hg incoming ../Ralf_Huber
+    hg pull ../Ralf_Huber
+    
+    hg glog
+    
+    two heads (branches now)
+
+
+Alternate Sharing
+-----------------
+    
+Explain alternate sharing options like Sharing by Email:
+
+    hg export 3 > change3.diff
+    hg export 4 > change4.diff
+
+Send by email; on other end: 
+
+    hg import change3.diff
+    hg import change4.diff
+    
+Merge Changes
+-------------
+
+Check out both branches
+    
+    hg merge
+    hg commit -u "Petra Maier" -m "Merged conflicting changes"
+
+Show different Documentation Versions
+-------------------------------------
+
+Check differences between "short numbers" and actual changeset ID
+
+...
+...
+...
+
+
+
+
+
+
+
+

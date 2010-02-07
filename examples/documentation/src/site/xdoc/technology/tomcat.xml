@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!-- was: <?xml version="1.0" encoding="UT-8"?> -->
+
+<!--
+    Document   : tomcat.xml
+    Created on : January 23, 2007, 3:20 PM
+    Author     : phex
+    Description:
+        Purpose of the document follows.
+-->
+
+<document>
+    <properties>
+        <title>Tomcat</title>
+        <author>Christian Kloner</author>
+    </properties>
+    <body>
+        <section name="Tomcat">
+            <subsection name="Overview">
+                <p>
+                    Tomcat is a very popular container and server for 
+                    Java web applications and is being developed by a large
+                    community of the 
+                    <a href="http://www.apache.org/">Apache Software Foundation</a> (ASF). 
+                    It enjoys great popularity
+                    in ecomomic and scientific disciplines and is considered to be
+                    robust, reliable and high-performant. In Java enterprise applications, it
+                    is mostly part of a J2EE application server like 
+                    <a href="http://incubator.apache.org/openejb/">OpenEJB</a>,
+                    <a href="http://geronimo.apache.org/">Geronimo</a>,
+                    <a href="http://www.jboss.com/">JBoss</a> or
+                    <a href="https://glassfish.dev.java.net/">Glassfish</a> and handles
+                    incoming requests to deployed web applications. Tomcat can also
+                    be used as module of an
+                    <a href="http://httpd.apache.org/">Apache HTTP Server</a> 
+                    (other modules exist for CGI or PHP support). Nevertheless,
+                    it is increasingly used as standalone web server.
+                </p>
+                <p>
+                    If Tomcat is started as web server it will be bound to the specific 
+                    TCP/IP address of the running computer and 
+                    identified by a preconfigured port address where it is listening for
+                    incoming user requests. The transfer protocol on which requests 
+                    are based is the 
+                    <a href="http://www.w3.org/Protocols/">HTTP protocol</a>
+                    which allows to access any
+                    web application via web browser. The aim of the web container is
+                    to forward the requests to the intended web applications.
+                </p>
+                <p>
+                    Various versions of Apache Tomcat are available which differ in
+                    the underlying architecture. Apache Tomcat implements the Sun
+                    <a href="http://java.sun.com/products/servlet/index.jsp">Servlet</a>/
+                    <a href="http://java.sun.com/products/jsp/index.jsp">JSP</a>
+                    specifications and each major version implements
+                    another specification whereas minor versions are mostly bugfixing and 
+                    maintainance versions. E.g. both Tomcat versions 5.0 and 5.5 implement
+                    the Sun Servlet/JSP specifications 2.4/2.0 whereas version 6.0 implements the
+                    Servlet/JSP specifications 2.5/2.1 which lead to a significant jump
+                    in functionality.
+                    Further, each tomcat version is spitted into various modules that
+                    provide additional functionality, e.g, administration and monitoring modules and 
+                    must be downloaded and installed separately. To run Tomcat as web container and
+                    server, the <em>Core</em> distribution is needed.
+                </p>
+            </subsection>
+            <subsection name="Windows installation">
+                <p>
+                    If you use Windows, you can download the <em>Windows Server Installer</em>
+                    version of the <em>Core</em> distribution. The installation is straight-forward.
+                    You should only take care, that the installation path to the Tomcat directory
+                    contains no whitespaces because then errors can occur when starting 
+                    Tomcat as web server. 
+                    We recommend a path something like that: <code>C:\Programme\Apache\Tomcat</code>. 
+                </p>
+                <p>
+                    The installation path to your Tomcat is referred to as CATALINA_HOME and is
+                    usually set as user/system variable. You can check this by opening the command prompt 
+                    (Start, Ausfuehren and type <code>cmd</code> followed by pressing enter). Then type 
+                    <code>echo %CATALINA_HOME%</code> and press enter. This
+                    command will print the installation path to your Tomcat directory on the console
+                    if CATALINA_HOME is set as user/system variable.
+                </p>
+                <p>
+                    If Tomcat was successfully installed, you should notice a new icon
+                    in the Windows System Tray. With the help of this icon, you can
+                    start, stop and configure Tomcat.
+                </p>
+                <p>
+                    If you started the server using the default configuration, you should be able to access
+                    the web server via URL <code>http://localhost:8080</code> in your favourite
+                    web browser. 
+                </p>
+            </subsection>
+            <subsection name="Linux installation">
+                <p>
+                    <ol>
+                        <li>
+                            Download the binary version, e.g. as <em>tar.gz</em>
+                            or <em>zip</em>, of the
+                            <em>Core</em> distribution.
+                        </li>
+                        <li>
+                            Extract it to a directory of your choice 
+                            (e.g. extracting Tomcat version 5.5 to /opt/programs/ should result in a 
+                            directoy /opt/programs/apache-tomcat-5.5)
+                        </li>
+                        <li>
+                            Change your directory to <code>/etc/X11/Xsession.d/</code> and type as
+                            root <code>touch 90environment</code>. Then edit the file
+                            <code>90environment</code> with your favourite text editor and
+                            insert the following:
+                            <source>
+#installation path to our tomcat directory, 
+#in our example we use 5.5
+#Please set TOMCAT_HOME to your Tomcat installation directory    
+TOMCAT_HOME="/opt/programs/apache-tomcat-5.5"    
+CATALINA_HOME=$TOMCAT_HOME
+                                
+export TOMCAT_HOME CATALINA_HOME
+                                
+# path to our java installation directory
+#the following uncommented 3 lines must be done if
+#the 'javac' command is not found in the terminal
+#Please set JAVA_HOME to your Java SDK directory!!
+JAVA_HOME='/usr/java'
+PATH=$JAVA_HOME/bin:PATH
+export PATH JAVA_HOME
+</source>
+                        </li>
+                        <li>
+                            Restart the operating system.
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    If you have done the previous steps, you should be able
+                    to start Tomcat by typing <code>$CATALINA_HOME/bin/startup.sh</code>
+                    followed by pressing enter. If Tomcat is really running,
+                    the URL <code>http://localhost:8080</code> 
+                    displays the Tomcat welcome page in any webbrowser of your choice.
+                    To stop Tomcat, you can use the command 
+                    <code>$CATALINA_HOME/bin/shutdown.sh</code>.
+                </p>
+            </subsection>            
+            <subsection name="Configuration">
+                <p>
+                    The <strong><em>configuration files</em></strong> of Tomcat are located in the
+                    <code>CATALINA_HOME/conf</code> directory and allow
+                    to change a couple of security settings.  
+                    <ul>
+                        <li>
+                            <strong>Changing default port 8080 to any other</strong>:
+                            <br/>
+                            Edit the file <code>server.xml</code> in the
+                            <code>CATALINA_HOME/conf</code> directory
+                            with your favourite text editor. Find the
+                            <code>Connector</code> element in the XML file and change 
+                            the <code>port</code> attribute value
+                            to your preferred port number. (It should not be a port number
+                            less than 1024 because they are reserved for other applications
+                            except you really know what you do;) ). E.g. the default 
+                            <code>Connector</code> element can look like this:
+                            <source>
+&lt;!-- Define a non-SSL HTTP/1.1 Connector on port 8080 -->
+&lt;Connector port="8080" maxHttpHeaderSize="8192"
+maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+enableLookups="false" redirectPort="8443" acceptCount="100"
+connectionTimeout="20000" disableUploadTimeout="true" />
+                            </source>
+                            Then you can change the port to 8089 on which
+                            Tomcat is listening for requests.
+                            <source>
+&lt;!-- Define a non-SSL HTTP/1.1 Connector on port 8080 -->
+&lt;Connector port="8089" maxHttpHeaderSize="8192"
+maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+enableLookups="false" redirectPort="8443" acceptCount="100"
+connectionTimeout="20000" disableUploadTimeout="true" />
+                            </source>
+                        </li>
+                        <li>
+                            <strong>Setting username and password for Tomcat Manager</strong>:
+                            <br/>
+                            Edit the file <code>tomcat-user.xml</code> in the
+                            <code>CATALINA_HOME/conf</code> directory
+                            with your favourite text editor and add a new user with the role 
+                            'manager' and optionally 'tomcat'.
+                            <source>
+&lt;user username="Hugo" password="Boss" roles="manager,tomcat"/>
+                            </source>
+                            Now you can use the Tomcat Manager in your web browser with 
+                            the username Hugo and the password Boss.
+                        </li>
+                    </ul>
+                </p>
+                
+                <p>
+                    <strong><em>External libraries</em></strong> are located in the
+                    <code>CATALINA_HOME/common/lib</code> directory which are
+                    globally accessible by all deployed web applications.
+                    <ul>
+                    <li>
+                        <strong>Enabling Java Server Faces support</strong>:<br/>
+                        <ol>
+                            <li>
+                                Download the latest version of the 
+                                <a href="http://java.sun.com/j2ee/javaserverfaces/download.html">
+                                    JSF Reference Implementation</a> as archive file
+                                    (named something like <code>jsf-1_1_01.zip</code>).
+                            </li>
+                            <li>
+                                Extract the file to a directory of your choice.
+                            </li>
+                            <li>
+                                Change to the extracted directory (named something like
+                                ../jsf-1_1_01) and go to the lib subdirectory.
+                            </li>
+                            <li>
+                                Copy all the jar files to the 
+                                <code>CATALINA_HOME/common/lib</code> directory.
+                            </li>
+                            <li>
+                                If the <code>CATALINA_HOME/common/lib</code> directory
+                                does not contain the two jar files 
+                                <code>jstl.jar</code> and <code>standard.jar</code>, copy
+                                them from the 
+                                <code>CATALINA_HOME/webapps/jsp-examples/WEB-INF/lib</code>
+                                directory.
+                            </li>
+                            <li>
+                                From now on, Tomcat will be started with JSF and JSP support
+                                "out of the box".
+                            </li>
+                        </ol>
+                    </li>
+                    </ul>
+                </p>
+                <p>
+                    By default, Tomcat's <strong><em>log files</em></strong> are stored in the
+                    <code>CATALINA_HOME/log</code> directory. The evaluation
+                    of these files can be very useful if errors occur
+                    during the deployment of your web application as well
+                    as during it's execution.
+                </p>
+            </subsection>
+            <subsection name="Reference">
+                <p>
+                    Additional information about Apache Tomcat can be found on the
+                    <a href="http://tomcat.apache.org/">Official Tomcat website</a>.
+                    The JSF reference implementation is published on the 
+                    <a href="http://java.sun.com/j2ee/javaserverfaces/download.html">
+                        Sun JSF website.
+                    </a>
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>
+

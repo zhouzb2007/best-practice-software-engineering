@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+<!-- Context for the medium example -->
+
+    <!-- Data Access Objects -->
+    <bean id="abstractDaoPattern" abstract="true">
+        <property name="sessionFactory" ref="hbnSessionFactory"/>
+    </bean>
+    
+    <bean id="studentDao" class="at.ac.tuwien.ifs.bpse.dao.HibernateStudentDAO" parent="abstractDaoPattern"/>
+    <bean id="examDao" class="at.ac.tuwien.ifs.bpse.dao.HibernateExamDAO" parent="abstractDaoPattern"/>
+    <bean id="professorDao" class="at.ac.tuwien.ifs.bpse.dao.HibernateProfessorDAO" parent="abstractDaoPattern"/>
+    <bean id="courseDao" class="at.ac.tuwien.ifs.bpse.dao.HibernateCourseDAO" parent="abstractDaoPattern"/>
+    
+    <!-- Advice for an DAO Exception -->
+    <bean id="daoExceptionAdvice" class="at.ac.tuwien.ifs.bpse.dao.exception.DaoExceptionAdvice"/>
+
+    
+    <!-- ensure that the above transactional advice runs for any execution interface -->
+    <aop:config>
+        <aop:pointcut id="studentDaoOperation" expression="execution(* at.ac.tuwien.ifs.bpse.dao.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="studentDaoOperation"/>
+    </aop:config>
+
+    
+    
+    <!-- Define Lifecycle Advisor, which is responsible to setup an inital database context 
+         TODO: Autowiring herausnehmen 
+         Gelten Beans für einen Context oder für eine JVM?
+        -->
+    <bean id="lifecycleAdvisor" class="at.ac.tuwien.ifs.bpse.LifecycleAdvisor" init-method="init" autowire="byType"/>
+    
+    <!-- Information service -->
+    <bean id="informationService" class="at.ac.tuwien.ifs.bpse.services.StudentInformationServiceImpl">
+        <property name="courseDao" ref="courseDao"/>
+        <property name="examDao" ref="examDao"/>
+        <property name="professorDao" ref="professorDao"/>
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+</beans>

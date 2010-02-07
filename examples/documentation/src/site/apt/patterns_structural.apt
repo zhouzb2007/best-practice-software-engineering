@@ -1,0 +1,47 @@
+   ---
+   Structural Design Patterns
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Structural Design Patterns
+
+  Structural patterns ease the design of a program by identifying a way to realize relationships between entities.
+  The difference between class patterns and object patterns is that class patterns describe how inheritance can be 
+  used to provide more useful program interfaces. Object patterns, on the other hand, describe how objects can be 
+  composed into larger structures using object composition, or the inclusion of objects within other objects.
+  \ 
+
+  "Structural <class patterns> use inheritance to compose interfaces or implementations."
+  <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
+  
+  	* {{{patterns/dao.html}<<Data Access Object>>}} abstracts and encapsulates all access to a data source letting
+  	the implementation underneath vary while presenting a uniform interface to your program.
+  	
+  	* {{{patterns/transfer_object.html}<<Transfer Object>>}} encapsulates all the data associated with a specific type
+  	of entity, for a example a book, date, or bank account. It helps reduce the amount of method calls and makes the 
+  	actual method call much nicer to read.
+  \ 
+  
+  "Structural <object patterns> describe ways to compose objects to realize new functionality."
+  <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
+  The added flexibility of object composition comes from the ability to change the composition at run-time.
+  
+~~  	* <<Composite>> describes how to build a class hierarchy consisting of two kinds of objects: primitive and composite. The composite objects let you compose primitive and other composite objects into arbitrarily complex structures.
+  
+  	* {{{patterns/decorator.html}<<Decorator>>}} describes how to add responsibilities to objects dynamically. It composes objects recursively to allow an open-ended number of additional responsibilities.
+  
+  	* {{{patterns/facade.html}<<Facade>>}} shows how to make a single object represent an entire subsystem. It carries out its responsibility by forwarding messages to the objects it represents.
+  
+~~  	* <<Flyweight>> defines a structure for sharing objects focusing on space efficiency. Flyweight objects do not define a context dependent state, any additional information they need to perform their task is passed to them when needed.
+  
+  	* {{{patterns/proxy.html}<<Proxy>>}} acts as a placeholder for another object. A level of indirection is introduced hence a Proxy can be used in different ways - it can restrict, enhance or alter properties of the object it represents.
+  
+  
+* References / More Info
+
+  {{{http://en.wikipedia.org/wiki/Structural_pattern} Structural Patterns - Wikipedia}}
+  
+  {{{http://www.patterndepot.com/put/8/Structural.html} Structural Patterns - Pattern Depot}}
+  
