@@ -188,7 +188,131 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
             </ul>   
             </subsection>
             <subsection name="Sharing Changes">
-                Ingoing, Outgoing, Push, Pull, Export, Import, Bundle
+                <p>In most projects many developers are collaborating. Distributed SCMs allow a broad variety of collaboration patterns. In this short tutorial only two common collaboration patterns are outlined: </p>
+                <ol>
+                    <li>Collaboration using one central repository on a server (company server, <a href="http://code.google.com">Google Code</a>, <a href="http://www.bitbucket.com">Bitbucket</a>, ... or the built-in Mercurial webserver).</li>
+                    <li>"Peer to peer" collaboration without a central server; changesets are exchanged via email.</li>
+                </ol>
+                <p><b>(1) Collaboration with a central repository:</b> The concept of cloning was already explained in a previous section. Cloned repositories share a common history. Changes on one of them can be exchanges using the <code>push</code> and <code>pull</code> command. A simple way to create a central company or workgroup repository is, to create a Mercurial repository on a Linux server where all developers have <b>ssh</b> access to this directory on the server. This central repository can be cloned using the clone commande as described above. For Open Source source projects also services like Google code or Sourceforge can be used. Commercial projects can use services like Bitbucket as central repository.</p>
+                <p>Developers now make changes (commits) to their local repositories. These changes can be "pushed" from the local repository to the server using the <b><code>hg push</code></b> command. A Mercurial repository "remembers" where it was cloned from, hence <code>push</code> without parameter pushe the changes to the parent repository.</p>
+                <p><b><code>hg pull</code></b> pulls new changesets from the parent (central) repository to the local repository. Warning: <code>pull</code> loads new changesets into the repository, but does not change the working directory, i.e. in most cases <code>hg update</code> should be done after the pull. Alternatively the command <b><code>hg pull -u</code></b> can be executed. Pull with this switch automatically updates to the Tip after loading the new changesets.</p>
+                <p><b><code>hg outgoing</code></b> and <b><code>hg incoming</code></b> are two very useful commands: <b><code>outgoing</code></b> checks which changeset <i>would be pushed to the server if push would be executed</i>, it shows new changesets in the local repository that are not yet pushed to the parent repository. <b><code>incoming</code></b> does the same trick with incoming changes: it shows the changesets that would be loaded when <code>pull</code> is executed. <code>incoming</code> and <code>outgoing</code> make no changes, neither on the local nor on the associated repository.</p>
+                
+                <p><b>(2) Peer to peer collaboration:</b> Distributed SCMs also allow easy collaboration without central repositories: The general idea is to share changesets that are available in the repository of one developer with others, e.g. via email:</p>
+                <ul>
+                    <li>The <code>hg export</code> command exports one changeset as text(file), also called a <i>patch</i>. This patch can be sent to other developers</li>
+                    <li>The <code>hg import</code> command imports a patch into the local repository.</li>
+                    <li>The <code>hg bundle</code> command is more elaborate, and allows to bundle a set of changesets into a compressed file. This file can be sent to other developers and imported to their repositories using the <code>hg pull</code> command.</li>
+                </ul>
+                <p>One recommendation: Patch imports should be always done in local clones. In case of a problem, the main repository is not affected. In case of success, the changes can be pushed to the own main repo. The following example outlines such a collaboration scenario:</p>
+                <p>Let's assume: developer A created a new project in his local repository RA; This repository initially contained 3 revisions. This repository was transfered via USB stick to developer B. Now: A makes three commits in RA and wants to share these with developer B:
+                </p>
+
+<pre>
+Developer A:
+
+ 1: $ hg glog
+ 2: @  changeset:   5:75039d11a746
+    |  tag:         tip
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:15:15 2010 +0100
+    |  summary:     changed c
+    |
+    o  changeset:   4:1459c7e874c7
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:15:06 2010 +0100
+    |  summary:     changed b
+    |
+    o  changeset:   3:952599ea532b
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:58 2010 +0100
+    |  summary:     changed a
+    |
+    o  changeset:   2:a5f1a9f158bd
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:25 2010 +0100
+    |  summary:     added c
+    |
+    o  changeset:   1:28a2fd44926b
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:16 2010 +0100
+    |  summary:     added b
+    |
+    o  changeset:   0:65abfa371065
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Sun Feb 07 21:14:03 2010 +0100
+       summary:     added a
+ 3: $ hg bundle --base 2 changes.hg
+ 4: 3 changesets found
+ 5: (email changes.hg to developer B)
+
+Developer B (received bundle "changes.hg" via email):
+
+ 6: $ hg glog
+ 7: @  changeset:   2:a5f1a9f158bd
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:25 2010 +0100
+    |  summary:     added c
+    |
+    o  changeset:   1:28a2fd44926b
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:16 2010 +0100
+    |  summary:     added b
+    |
+    o  changeset:   0:65abfa371065
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Sun Feb 07 21:14:03 2010 +0100
+       summary:     added a
+ 8: $ hg pull changes.hg
+ 9: pulling from changes.hg
+    searching for changes
+    adding changesets
+    adding manifests
+    adding file changes
+    added 3 changesets with 3 changes to 3 files
+    (run 'hg update' to get a working copy)
+10: $ hg update
+11: $ hg glog
+12: @  changeset:   5:75039d11a746
+   |  tag:         tip
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:15:15 2010 +0100
+   |  summary:     changed c
+   |
+   o  changeset:   4:1459c7e874c7
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:15:06 2010 +0100
+   |  summary:     changed b
+   |
+   o  changeset:   3:952599ea532b
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:14:58 2010 +0100
+   |  summary:     changed a
+   |
+   o  changeset:   2:a5f1a9f158bd
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:14:25 2010 +0100
+   |  summary:     added c
+   |
+   o  changeset:   1:28a2fd44926b
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:14:16 2010 +0100
+   |  summary:     added b
+   |
+   o  changeset:   0:65abfa371065
+      user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+      date:        Sun Feb 07 21:14:03 2010 +0100
+      summary:     added a
+</pre>
+            <ul>
+                <li>Line 1-2: Developer A has 6 changeset in his repository; he knows, that developer B only has the first three revisions, revision 3-5 are new and should be shared</li>
+                <li>Line 3-5: Developer A create a bundle (file) that contains changesets 3-5 and sends this bundle (e.g. via email) to developer B.</li>
+                <li>Line 6-7: Developer B currently has only the first three revisions and receives the bundle via email</li>
+                <li>Line 8-12: Deverloper B pulls the changesets from the bundle to her repository.</li>
+            </ul>
+            
+            <p>Instead of the <code>bundle</code> command also <code>export</code> and <code>import</code> can be used. However to share multiple revisions bundle is much easier to use and more "resilient": <code>pull</code> only imports changesets fromt the bundle to the repository that are not yet in the repository.</p>
+            
             </subsection>
             <subsection name="The Version History">
                 log, update, annotate, diff, revert, backout
