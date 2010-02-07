@@ -134,6 +134,59 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
                     <li><b><code>hg parent</code>:</b> the <code>parent</code> command is helpful to show the parent revision of the current working copy. The <code>hg update</code> command can set the version of the working copy on an arbitrary version. <code>hg pull</code> can pull new changesets into the repository. <code>parent</code> shows which version actually is used in the working copy. In the <code>glog</code> command the parent is indicated with the <code>@</code> symbol.</li>
                 </ul>
             </subsection>
+            <subsection name="Navigating in the Version History">
+                <p>A SCM system keeps track of changes in a project and also allows to restore arbitrary versions from the project history. In Mercurial the <code>hg update</code> command is used to "navigate" in the version history. <code>hg update</code> without further parameter sets the working copy to the most recent version ("Tip") of the current branch. <code>hg update --rev revision</code> sets the working copy to an arbitrary revision. In the following example the Java class from the example above will be modified and the <code>update</code> command is used to navigate in the history:</p>
+<pre>
+ 1: $ echo "// Todo: add more functionality">> Test.java
+ 2: $ hg status
+ 3: M Test.java
+ 4: $ hg ci -m "Added todo to Test.java"
+ 5: $ hg glog
+ 6: @  changeset:   1:ce41ef368b17
+    |  tag:         tip
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 20:21:14 2010 +0100
+    |  summary:     Added todo to Test.java
+    |
+    o  changeset:   0:684afa0debd6
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Fri Jan 29 17:31:04 2010 +0100
+       summary:     Created initial Text class with 'Hello World' statement.
+ 7: $ hg parent
+ 8: changeset:   1:ce41ef368b17
+    tag:         tip
+    user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    date:        Sun Feb 07 20:21:14 2010 +0100
+    summary:     Added todo to Test.java
+ 9: $ hg update 0
+10: 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+11: $ cat Test.java
+12: class Test { public static void main (String[] args) { System.out.println("Hello World");}}
+13: $ hg parent
+14: changeset:   0:684afa0debd6
+    user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    date:        Fri Jan 29 17:31:04 2010 +0100
+    summary:     Created initial Text class with 'Hello World' statement.
+15: $ hg update     
+16: 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+17: $ cat Test.java
+18: class Test { public static void main (String[] args) { System.out.println("Hello World");}}
+    // Todo: add more functionality
+19: $ hg parent
+20: changeset:   1:ce41ef368b17
+    tag:         tip
+    user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    date:        Sun Feb 07 20:21:14 2010 +0100
+    summary:     Added todo to Test.java
+</pre>
+            <ul>
+                <li>Line 1-4: Add new line to file and commit change.</li>
+                <li>Line 5-6: Show repository history</li>
+                <li>Line 7-8: <code>parent</code> command indicates that the working copy is representing the "Tip", i.e. the most recent revision. The "<code>@</code>" sign in the glog history in line 6 also shows the parent.</li>
+                <li>Line 9: The working copy is set to revision 0, line 10 shows that one file was changed, lines 11-14 confirm that the Test.java file in the working directory is set back to revision 0.</li>
+                <li>Line 15-20: The <code>update</code> command is used (without parameters) to set the working copy back to the most recent version (Tip) of the repository.</li>
+            </ul>   
+            </subsection>
             <subsection name="Sharing Changes">
                 Ingoing, Outgoing, Push, Pull, Export, Import, Bundle
             </subsection>
