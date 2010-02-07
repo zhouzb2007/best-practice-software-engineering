@@ -318,7 +318,7 @@ Developer B (received bundle "changes.hg" via email):
                 log, update, annotate, diff, revert, backout
             </subsection>
             <subsection name="Adding, (Re)moving and Ignoring Files">
-                Add, rm, mv, addremove, purge
+                Add, rm, mv, addremove, purge, .hgignore
             </subsection>
             <subsection name="Branches and Tags">
                 branch, branches, tag, tags
