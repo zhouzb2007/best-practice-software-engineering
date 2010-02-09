@@ -74,7 +74,7 @@
                     <li>Branches and Tags</li>
                     <li>Merging and Rebasing</li>
                 </ul>
-                <p>Finally a short overview on "modern" collaboration platforms that support DSCM is given in the final section.</p>
+                <p>Finally a short overview on "modern" collaboration platforms that support DSCM is given in the final section and a short overview on helpful tools is given.</p>
             </subsection>
             <subsection name="Getting Started">
                 <p>For installation instructions follow the documentation on the <a href="http://mercurial.selenic.com/">Mercurial website</a>. Plugins for Eclipse and other IDEs are available.</p>
@@ -500,6 +500,9 @@ Developer B (received bundle "changes.hg" via email):
             </subsection>
             <subsection name="Merging and Rebasing">
                 merge, resolve, rebase
+            </subsection>
+            <subsection name="Tools">
+                hg serve, Eclipse Plugins, TortoiseHG
             </subsection>
             <subsection name="Collaboration Platforms">
                 Google Code, Bitbucket
