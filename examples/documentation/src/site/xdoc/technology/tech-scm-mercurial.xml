@@ -55,6 +55,7 @@
 2: ? a.txt
 </source>
                 <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text.</p>
+                <p>The <code>echo "text" >> filename</code> Unix command is used to add text to files. Of course any visual editor can be used instead. So the previous <code>echo</code> command can be replaced with (1) Open a text editor (2) write "text" (3) save the text file under the name "filename" The <code>echo</code> command is used to provide complete working examples.</p>
             </subsection>
             <subsection name="How to Read this Tutorial">
                 <p>For a basic understanding of distributed SCM and Mercurial (e.g. for individual use) read the sections:</p>
@@ -209,7 +210,46 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
             </subsection>
 
             <subsection name="Adding, (Re)moving and Ignoring Files">
-                Add, rm, mv, addremove, purge, .hgignore
+                <p>The <b><code>hg add</code></b> command was already explained above: it puts files under revision control and with the next <code>commit</code> these files are added to the repository. The "opposite" command is occasionally needed: <b><code>hg forget</code></b> removes files from the repository/version control, but does <i>not</i> delete the file from the working copy. <code>forget</code> also does not modify the history of the repository.</p>
+                <p>Additionally Mercurial offers commands known from the Unix shell to remove files, and move files and directories: <b><code>hg rm</code></b> removes files from the working copy <i>and</i> from the repository after the next commit.</p>
+                <p><b>Moving files</b> in the working copy with non-VCS commands like using the Mac Finder or Windows Explorer is usually not a good idea. For many VCS systems this looks like the old file was deleted and a new file was added on a different location. The consequence is, that the change history in the file is lost or only difficult to reconstruct. Hence it is always a good idea to use the commands the SCM system provides to move files and directories; Mercurial offers: <b><code>hg mv</code></b>.</p>
+                <p>Mercurial offers a second command: <b><code>addremove</code></b>: This command can be used to add all new files under revision control and remove all missing (i.e. deleted or moved) files from revision control. Particularly the <code>--similarity</code> switch can be very helpful: Assume some files or directories were moved with non-Mercurial commands, e.g. with the Windows Explorer. Now, on executing the <code>hg addremove --similarity 100</code>, Mercurial checks all files that are deleted and looks for newly added files that are 100% similar, i.e. identical. If such files are found, Mercurial detects that they were actually moved. If the percentage value is set lower, also minor changes in the files are ignored. This command can be very helpful to "reconstruct" moves.</p>
+                <p>Finally, <b>ignoring files</b> is a very important feature. <b>Generated files</b> like <code>.class</code> files or <code>target</code> directories in Maven projects, or generated html-reports <b>should never be put under revision control</b>. First, they are redundant, secondly the clutter the version history! Every time a developer rebuilds a project potentially hundreds of files (all generated during build) are "new". If these files are under revision control, the version history gets messed up. Consider the following situation following the previous example:</p>
+                
+<source>
+ 1: $ ls
+ 2: Test.java
+ 3: $ hg status
+ 4: 
+ 5: $ javac Test.java
+ 6: $ ls
+ 7: Test.class  Test.java
+ 8: $ hg status
+ 9: ? Test.class
+10: $ echo "syntax: glob" >> .hgignore
+11: $ echo "*.class" >> .hgignore
+12: $ cat .hgignore 
+13: syntax: glob
+    *.class
+14: $ hg status
+15: ? .hgignore
+16: $ hg add
+17: adding .hgignore
+18: $ hg commit -m "Created .hgignore and added *.class"
+19: $ hg status
+20:
+</source>
+                <ul>
+                    <li>Lines 1-4 show that <code>Test.java</code> is under revision control and all changes are committed, hence the status command shows no result. <code>Test.java</code> is also the only file in this directory.</li>
+                    <li>In line 5 <code>Test.java</code> is compiled using <code>javac</code>, the result is a <code>Test.class</code> file.</li>
+                    <li>Lines 6-9 indicate that a new file, <code>Test.class</code> was generated and Mercurial shows, that this file is not under revision control. Now, generated files should never be put under revision control hence:</li>
+                    <li>Lines 10-13: Each repository usually has one <code>.hgignore</code> file in the root of the repository. All files (or files that follow patterns like <code>*.class</code> in this example) are ignored by Mercurial.</li>
+                    <li>Lines 14-15: Mercurial already ignores the <code>Test.class</code> file, but indicates, that the <code>.hgignore</code> file is not yet under revision control.</li>
+                    <li>In lines 16-18 this <code>.hgignore</code> file itself is put under revision control.</li>
+                    <li>The <code>status</code> command in line 19 now shows no result, i.e. the <code>Test.class</code> file and all other <code>.class</code> files will be ignored from now on.</li>
+                </ul>
+                
+                <p>Usually all repositories have a <code>.hgignore</code> file; all files to be ignored or patterns of files are put one file/pattern pre line.</p>
             </subsection>
 
 
