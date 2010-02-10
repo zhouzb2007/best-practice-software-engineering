@@ -45,6 +45,7 @@
                     <li>Still missing:</li>
 					<ul>
                     	<li>AOP with declarative transactions</li>
+                    	<li>Security with AOP</li>
                     	<li>Spring ORM/Remote</li>
 					</ul>
 					<li>Check Tomcat documentation</li>
