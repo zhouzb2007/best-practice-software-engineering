@@ -17,19 +17,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.List;
 
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 
 import org.apache.commons.logging.Log;
@@ -47,7 +50,7 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
  * utilizes a JPanel with a ContentPane and a BorderLayout.
  * 
  * @author The SE-Team
- * @version 1.1
+ * @version 1.2
  */
 public class MainFrame extends JFrame implements ActionListener {
 	/**
@@ -73,9 +76,9 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JTable table;
 
 	/**
-	 * Holds the item to be exported.
+	 * Holds the menu entries for exporting data.
 	 */
-	private ComboBoxModel exportComboModel;
+	private ExportMenuModel exportMenuModel;
 
 	private IStudentDAO studentDAO = null;
 
@@ -90,10 +93,15 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * The Buttons for editing and deleting Students.
 	 */
 	private JButton editButton, deleteButton;
+	
+	/**
+	 * The Labels for further information of Students.
+	 */
+	private JLabel id, name, surname, email, matrikelnummer;
 
 	/**
 	 * The default Constructor for the MainFrame, initiating the DAO, the Models
-	 * and the Conponents. Additionally it defines a ActionListener to clean up
+	 * and the Components. Additionally it defines a ActionListener to clean up
 	 * before exit.
 	 * 
 	 * @see #terminateApplication()
@@ -124,50 +132,66 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	/**
 	 * Initializes the Models. Creates the StudentenTableModel (for the Table)
-	 * and loads the ExportComboModel from the XmlBean.
+	 * and loads the ExportMenuModel from the XmlBean.
 	 * 
 	 * @see StudentenTableModel
-	 * @see ExportComboModel
+	 * @see ExportMenuModel
 	 */
 	private void initModels() {
 		studentenTM = new StudentenTableModel("Matrikelnummer");
-		exportComboModel = (ComboBoxModel) xbf.getBean("ExportComboModel");
+		exportMenuModel = (ExportMenuModel) xbf.getBean("ExportMenuModel");
 	}
-
+	
 	/**
 	 * Initializes all the components of the GUI.
 	 */
 	private void initComponents() {
+		// define menu bar and menus
+		JMenuBar menuBar = new JMenuBar();
+		JMenu fileMenu = new JMenu("Datei");
+		menuBar.add(fileMenu);
+		JMenuItem exitMenuItem = new JMenuItem("Beenden");
+		exitMenuItem.setActionCommand("Exit");
+		exitMenuItem.addActionListener(this);
+		fileMenu.add(exitMenuItem);
+		JMenu exportMenu = new JMenu("Export");
+		menuBar.add(exportMenu);
+		// retrieve list of export filters and define corresponding menu items and actions
+		List<Export> exports = exportMenuModel.getExportFilter();
+		for (Export export : exports) {
+			exportMenu.add(new JMenuItem(new ExportAction(export.toString())));
+		}
+		setJMenuBar(menuBar);
 		// define main panel
 		JPanel mainPanel = new JPanel();
 		getContentPane().add(mainPanel);
-		mainPanel.setLayout(new BorderLayout(5, 5));
-		// define north, center and south panel
-		// a JToolBar is actually very similar to a panel; just a little bit
-		// more flexible
-		JToolBar northPanel = new JToolBar();
-		northPanel.setFloatable(false);
-		northPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 0, 20));
+		mainPanel.setLayout(new GridLayout(1, 2));
+		// define center and east panel		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(new BorderLayout());
-		centerPanel.setBorder(BorderFactory.createEmptyBorder(10, 5, 0, 10));
-		JPanel southPanel = new JPanel();
+		centerPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+		JPanel centerNorthPanel = new JPanel();
+		centerNorthPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		centerNorthPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
+		centerPanel.add(centerNorthPanel, BorderLayout.NORTH);
+		JPanel centerSouthPanel = new JPanel();
+		centerSouthPanel.setLayout(new GridLayout(0, 3, 5, 5));
+		centerSouthPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+		centerPanel.add(centerSouthPanel, BorderLayout.SOUTH);
 		JPanel eastPanel = new JPanel(new BorderLayout());
+		eastPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		JPanel eastNorthPanel = new JPanel(new GridLayout(0, 1, 5, 5));
 		eastPanel.add(eastNorthPanel, BorderLayout.NORTH);
-		eastPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 10));
-		mainPanel.add(eastPanel, BorderLayout.EAST);
-		mainPanel.add(northPanel, BorderLayout.NORTH);
-		mainPanel.add(centerPanel, BorderLayout.CENTER);
-		mainPanel.add(southPanel, BorderLayout.SOUTH);
+		mainPanel.add(centerPanel);
+		mainPanel.add(eastPanel);
 		// define Label for Drop Down Field in North Panel
-		northPanel.add(new JLabel("Sortiert nach "));
+		centerNorthPanel.add(new JLabel("Sortiert nach "));
 		// define Drop Down Field in North Panel
 		JComboBox selectOrderCB = new JComboBox();
 		selectOrderCB.setEditable(false);
 		selectOrderCB.addItem("Matrikelnummer");
 		selectOrderCB.addItem("Nachname");
-		northPanel.add(selectOrderCB);
+		centerNorthPanel.add(selectOrderCB);
 		selectOrderCB.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent ie) {
 				if (ie.getStateChange() == ItemEvent.SELECTED) {
@@ -176,30 +200,17 @@ public class MainFrame extends JFrame implements ActionListener {
 				}
 			}
 		});
-		// define label for export
-		northPanel.addSeparator(new Dimension(20, 5));
-		northPanel.add(new JLabel("Exportieren nach"));
-		JComboBox exportCB = new JComboBox();
-		exportCB
-				.setToolTipText("Exportformat auswaehlen, danach <Export> druecken");
-		
-		exportCB.setModel(exportComboModel);
-		northPanel.add(exportCB);
-		northPanel.addSeparator(new Dimension(5, 5));
-		JButton exportBtn = new JButton("Export");
-		exportBtn.setToolTipText("Exportieren der Daten in eine Datei");
-		exportBtn.addActionListener(this);
-		northPanel.add(exportBtn);
 		// define table in center
 		table = new JTable();
 		table.setModel(studentenTM);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		table.setShowGrid(true);
+		table.setShowGrid(false);
 		table.setGridColor(Color.LIGHT_GRAY);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				updateButtonStatus();
+				updateInfoBoxPanel();
 				if (e.getClickCount() >= 2) {
 					int row = table.getSelectedRow();
 					if (row > -1) {
@@ -211,6 +222,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		table.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
 				updateButtonStatus();
+				updateInfoBoxPanel();
 			}
 
 			public void keyTyped(KeyEvent e) {
@@ -219,27 +231,45 @@ public class MainFrame extends JFrame implements ActionListener {
 				}
 			}
 		});
+
 		JScrollPane tableScrollPane = new JScrollPane(table);
 		tableScrollPane.setWheelScrollingEnabled(true);
 		centerPanel.add(tableScrollPane);
-		// define Exit Button in South Panel
-		JButton exitButton = new JButton("Exit");
-		exitButton.setToolTipText("Programm beenden");
-		southPanel.add(exitButton);
-		exitButton.addActionListener(this);
-
+		JPanel infoBoxPanel = new JPanel();
+		infoBoxPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		JLabel lblId = new JLabel("Id:");
+		infoBoxPanel.add(lblId);
+		id = new JLabel();
+		infoBoxPanel.add(id);
+		JLabel lblFirstname = new JLabel("Vorname:");
+		infoBoxPanel.add(lblFirstname);
+		name = new JLabel();
+		infoBoxPanel.add(name);
+		JLabel lblSurname = new JLabel("Nachname:");
+		infoBoxPanel.add(lblSurname);
+		surname = new JLabel();
+		infoBoxPanel.add(surname);
+		JLabel lblMatrNr = new JLabel("Matrikelnummer:");
+		infoBoxPanel.add(lblMatrNr);
+		matrikelnummer = new JLabel();
+		infoBoxPanel.add(matrikelnummer);
+		JLabel lblEmail = new JLabel("E-Mail:");
+		infoBoxPanel.add(lblEmail);
+		email = new JLabel();
+		infoBoxPanel.add(email);
+		eastNorthPanel.add(infoBoxPanel, BorderLayout.NORTH);
+		// define buttons to manipulate students 
 		editButton = new JButton("Edit");
 		editButton.setEnabled(false);
 		editButton.addActionListener(this);
-		eastNorthPanel.add(editButton);
+		centerSouthPanel.add(editButton);
 		JButton createButton = new JButton("Create");
 		createButton.addActionListener(this);
-		eastNorthPanel.add(createButton);
+		centerSouthPanel.add(createButton);
 		deleteButton = new JButton("Delete");
 		deleteButton.setEnabled(false);
 		deleteButton.addActionListener(this);
-		eastNorthPanel.add(deleteButton);
-
+		centerSouthPanel.add(deleteButton);
 	}
 
 	private void updateButtonStatus() {
@@ -249,6 +279,21 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else {
 			editButton.setEnabled(false);
 			deleteButton.setEnabled(false);
+		}
+	}
+	
+	/**
+	 * Handle changes of information in the InfoBoxPanel
+	 */
+	private void updateInfoBoxPanel() {
+		int row = table.getSelectedRow();
+		if (row > -1) {
+			Student student = studentenTM.getStudentAt(row);
+			id.setText( Integer.toString(student.getId()));
+			name.setText(student.getFirstname());
+			surname.setText(student.getLastname());
+			matrikelnummer.setText(student.getMatnr());
+			email.setText(student.getEmail());
 		}
 	}
 
@@ -282,8 +327,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		log.debug("Action Performed \"" + cmd + "\"");
 		if (cmd.equals("Exit")) {
 			terminateApplication();
-		} else if (cmd.equals("Export")) {
-			export();
 		} else if (cmd.equals("Create")) {
 			createStudent();
 		} else if (cmd.equals("Edit")) {
@@ -332,14 +375,14 @@ public class MainFrame extends JFrame implements ActionListener {
 			Student victim = studentenTM.getStudentAt(row);
 			int yesno = JOptionPane.showConfirmDialog(this, "Student \""
 					+ victim.getFirstname() + " " + victim.getLastname() + " ("
-					+ victim.getMatnr() + ")\"" + " wirklich lï¿½schen?", "Delete",
+					+ victim.getMatnr() + ")\"" + " wirklich löschen?", "Delete",
 					JOptionPane.YES_NO_OPTION);
 			if (yesno == 0) {
 				if (studentDAO.deleteStudent(victim.getId())) {
 					studentenTM.reload();
-					JOptionPane.showMessageDialog(this, "Lï¿½schen erfolgreich!");
+					JOptionPane.showMessageDialog(this, "Löschen erfolgreich!");
 				} else {
-					JOptionPane.showMessageDialog(this, "Fehler beim lï¿½schen");
+					JOptionPane.showMessageDialog(this, "Fehler beim löschen");
 				}
 			}
 		}
@@ -370,7 +413,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * FileSelect-Dialog is shown to choose a filename and a location to save.
 	 */
 	private void export() {
-		Export export = (Export) exportComboModel.getSelectedItem();
+		Export export = (Export) exportMenuModel.getSelectedItem();
 		// Create a file dialog to choose filename for export
 		JFileChooser jfc = new JFileChooser();
 		jfc.setDialogTitle("Filenamen fuer Export eingeben");
@@ -399,7 +442,6 @@ public class MainFrame extends JFrame implements ActionListener {
 				log.error("File Writing Error: " + e);
 			}
 		}
-
 	}
 
 	/**
@@ -415,5 +457,24 @@ public class MainFrame extends JFrame implements ActionListener {
 			studentenTM.reload();
 		}
 	}
+	
+	/**
+	 * ExportAction provides the dynamic actions for the export menu.
+	 * 
+	 * @author The SE-Team
+	 * @since 1.2
+	 *
+	 */
+	@SuppressWarnings("serial")
+	class ExportAction extends AbstractAction {
+		public ExportAction(String name) {
+			super(name);
+		}
 
+		public void actionPerformed(ActionEvent e) {
+			log.info("ExportAction for menu item " + e.getActionCommand() + " called.");
+			exportMenuModel.setSelectedItem(e.getActionCommand());
+			export();
+		}
+	}
 }
