@@ -48,8 +48,7 @@ public class StudentenTableModel extends AbstractTableModel {
 	/**
 	 * Defines the Names of the Columns of the TableModel.
 	 */
-	private final String[] columnName = { "ID", "Matrikelnummer", "Vorname",
-			"Nachname", "Email" };
+	private String[] columnName = { "Matrikelnummer", "Name" };
 
 	/**
 	 * The list of Students will be filled by StudentDAO.
@@ -200,15 +199,9 @@ public class StudentenTableModel extends AbstractTableModel {
 		Student s = studenten.get(row);
 		switch (col) {
 		case 0:
-			return "" + s.getId();
-		case 1:
 			return s.getMatnr();
-		case 2:
-			return s.getFirstname();
-		case 3:
-			return s.getLastname();
-		case 4:
-			return s.getEmail();
+		case 1:
+			return s.getFullname();
 		default:
 			return null;
 		}

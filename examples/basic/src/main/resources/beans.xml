@@ -119,6 +119,18 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="ExportMenuModel"
+		class="at.ac.tuwien.ifs.bpse.basis.gui.ExportMenuModel"
+		init-method="init">
+		<!--  Register the actually available Export Filters: classes implementing the Export Interface -->
+		<property name="exportFilter">
+			<list>
+				<ref local="Export" />
+				<ref local="HtmlExport" />
+			</list>
+		</property>
+	</bean>
 
     
 </beans>
