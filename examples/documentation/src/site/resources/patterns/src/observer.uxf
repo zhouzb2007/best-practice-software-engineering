@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Relation</type><coordinates><x>60</x><y>70</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;20;20;100</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>10</x><y>170</y><w>320</w><h>90</h></coordinates><panel_attributes>SumCalculator
+--
+-target: Observable
+--
++SumCalculator(target: Observable) &lt;&lt;create&gt;&gt;
++notify(): void</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>130</x><y>50</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=*
+</panel_attributes><additional_attributes>20;20;140;20</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>270</x><y>10</y><w>280</w><h>140</h></coordinates><panel_attributes>Observable
+--
+-observers: List&lt;Observer&gt;
+-content: List&lt;Integer&gt;
+--
++addNumber(nr: int): void
++getContent(): List&lt;Integer&gt;
++registerObserver(obs: Observer): void
+-notifyObservers(): void</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>10</x><y>10</y><w>140</w><h>80</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+Observer
+--
+--
++ notify(): void</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

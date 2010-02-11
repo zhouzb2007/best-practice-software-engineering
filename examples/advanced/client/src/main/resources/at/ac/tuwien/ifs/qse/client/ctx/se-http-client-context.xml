@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+    Description todo
+  -->
+
+<beans>
+
+	<!-- Resolves ${...} placeholders from client.properties -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>at/ac/tuwien/ifs/qse/client/ctx/client.properties</value>
+        </property>
+	</bean>
+
+	<!-- Proxy for the Hessian-exported service-->
+	<bean id="studentService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>at.ac.tuwien.ifs.qse.services.IStudentService</value>
+		</property>
+		<property name="serviceUrl">
+			<value>http://${serverName}:${httpPort}${contextPath}/remote/StudentService-hessian</value>
+		</property>
+	</bean>
+	<!-- Proxy for the Burlap-exported service-->
+	<bean id="studentService" class="org.springframework.remoting.caucho.BurlapProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>at.ac.tuwien.ifs.qse.services.IStudentService</value>
+		</property>
+		<property name="serviceUrl">
+			<value>http://${serverName}:${httpPort}${contextPath}/remote/StudentService-burlap</value>
+		</property>
+	</bean>
+	<!-- Proxy for the HTTP Invoker exported service-->
+	<bean id="studentService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceInterface">
+			<value>at.ac.tuwien.ifs.qse.services.IStudentService</value>
+		</property>
+		<property name="serviceUrl">
+			<value>http://${serverName}:${httpPort}${contextPath}/remote/StudentService-burlap</value>
+		</property>
+	</bean>
+</beans>

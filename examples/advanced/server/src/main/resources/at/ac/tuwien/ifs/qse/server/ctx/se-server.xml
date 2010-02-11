@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!-- Description todo 
+-->
+
+<beans>
+    
+    <import resource="classpath:/at/ac/tuwien/ifs/qse/ctx/se-database-context.xml"/>
+    <import resource="classpath:/at/ac/tuwien/ifs/qse/ctx/se-medium-context.xml"/>
+    <!-- Define Lifecycle Advisor, which is responsible to setup an inital database context -->
+    <bean id="lifecycleAdvisor" class="at.ac.tuwien.ifs.qse.se1.LifecycleAdvisor" autowire="byName"/>
+
+    <!-- Export studentService for RMI Access.  -->
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="StudentService"/>
+        <property name="service" ref="studentService"/>
+        <property name="serviceInterface" value="at.ac.tuwien.ifs.qse.se1.services.IStudentService"/>
+        <!-- defaults to 1099 -->
+        <property name="registryPort" value="1199"/>
+    </bean>
+</beans>

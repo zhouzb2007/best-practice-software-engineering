@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <body>
+        <section name="Technology: HSQLDB">
+	        
+	  <subsection name="Overview">
+		
+	    <p>HSQLDB is a java-based relational database. It is provided under a BSD license.</p>
+	    
+	    <p>HSQLDB supports most of ANSI-92 SQL and some of the SQL 99 and 2003 enhancements. HSQLDB can be run in a server mode and also embedded in a java project,
+	     making configuration and deployment extremly easy as the database "starts" with the application, when used in embedded mode.</p>
+	     
+	     </subsection>
+	     
+	     <subsection name="Configuration">
+	     
+	       <p>To use HSQLDB, you only need to include the HSQLDB Jar File in your classpath (i.e., the dependency has to be declared in the Maven POM file). A call to the JDBC driver will then create an instance of the database.</p>
+           
+           <p>HSQLDB can keep tables in various modes (independent of the runing mode: server, or embedded): By default, tables  will keep all the data in-memory (but persist it to a file). This is obviously a very fast method, but not useful for larger tables. Alternatively, tables can be kept "only" on disk, which is the usual operation mode for other relational databases. Please check out the HSQLDB documentation (create table command) for details. This setting can be done on a "per-table" level, hence some tables could be kept in memory, others only on disk. This allows e.g., fine-tuning of performance. (Additionally there are also temporary tables, that are not persisted to disk at all).</p>
+		 
+	      <p>The JDBC driver is initialized with a URL, e.g.</p>
+	      
+	      <p><code>jdbc:hsqldb:data/pruefungen</code></p>
+	      
+	      <p>This will tell the hsqldb instance to search for a directory data/ and use the configuration <code>pruefungen</code> from there. This configuration name will be used for 4 files:</p>
+	      
+	      <ul>
+	      <li>NAME.properties: A configuration file for HSQLDB</li>
+	      <li>NAME.script: A startup script</li>
+	      <li>NAME.lck: A file that stores the lock information (so that only one HSQLDB instance will use this configuration at a given time)</li>
+	      <li>NAME.log: A logfile of the last run</li>
+	      </ul>
+	      
+	      <p>Especially interesting is the startup script. In the startup script, you can enter multiple SQL commands that will be run during startup. This way, you can create a certain
+	        state in your database by creating tables, adding data etc.</p>
+		
+		
+		</subsection>
+		
+		<subsection name="Hints">
+		
+		<p>HSQLDB is optimized for read performance. The paramerter WRITE_DELAY tells HSQLDB to delay an update or insert statement by X msecs. This can lead to actual data-loss when the database is "turned off" without sending an appropriate shutdonw command (all data inserted after the last write to disk is lost).
+        This often causes problems when the database is accessed within unit tests. In certain situations, it makes sense to use this delay, but for our purposes: <b>turn it off!!</b></p>
+		   
+		 <p>Set the write_delay to 0 by adding this line to the startup script file:</p>
+		 
+		 <p><code>SET WRITE_DELAY 0 MILLIS</code></p>
+		 
+		 </subsection>
+		 
+		 
+	      <subsection name="Reference">
+	      
+	      <ul>
+	      <li><a href="http://www.hsqldb.org/">Official HSQLDB site</a></li>
+	      <li><a href="http://www.hsqldb.org/doc/guide/ch09.html">SQL (for HSQLDB) reference</a></li>
+	      </ul>
+	      		   
+		   </subsection>
+		</section>
+	    
+	 </body>
+	 </document>
+                                                                                                                                                            

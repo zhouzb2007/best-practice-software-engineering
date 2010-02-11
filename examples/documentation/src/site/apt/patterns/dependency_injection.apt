@@ -1,0 +1,240 @@
+   ---
+   Dependency Injection
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Dependency Injection
+
+  One of the main goals of decomposing complex problems into smaller modules and implementing these modules are 
+  dependencies. A module that relies heavily on a underlying technology or platform is less reusable and makes 
+  changes to software complex and expensive.
+
+ The Dependency Injection pattern is used in almost every framework and is based on the 
+ "inversion of control" (IoC) principle. It relates to the way in which an object obtains references
+ to its dependencies - the object is passed its dependencies through constructor arguments or after
+ construction through setter methods or interface methods. It is called dependency injection since 
+ the dependencies of an object are 'injected' into it, the term dependency is a little misleading here, 
+ since it is not a new 'dependency' which is injected but rather a 'provider' of that particular capability. 
+ For example, passing a database connection as an argument to a constructor instead of creating one 
+ internal would be categorized as dependency injection.
+ 
+ The pattern seeks to establish a level of abstraction via a public interface and to remove dependencies
+ on components by supplying a 'plugin' architecture. This means that the individual components are tied 
+ together by the architecture rather than being linked together themselves. The responsibility for object
+ creation and linking is removed from the objects themselves and moved to a factory.
+ 
+ There are 3 forms of dependency injection: setter-, constructor- and interface-based injection. We will
+ concentrate on setter-based injection here since that is the recommended methodology using the Spring Framework.
+ To get rid of dependencies, Spring uses the idea of dependency injection. 
+ 
+ When developing - for example - a business
+ service, that service is implemented to work with an interface of the Data Access Object. If you then want to use 
+ that module with a certain DAO - for example a DAO to access your mySQL database - you somehow have to tell the 
+ service to use exactly that object. This, however, would create a dependency between the service and the DAO.
+ With the IoC pattern, as implemented in Spring, the developer defines which DAO (in this case the mySQL DAO) 
+ in an external configuration file (in our example: beans.xml). At runtime, the information from the configuration 
+ file are parsed and the dependency is <injected> into the service.
+ 
+ The sample uses dependency injection for multiple tasks:
+		  
+	* for DAOs
+	
+	* for DataSources
+	
+	* for SQL statements
+	
+	* for "test" objects
+		
+ The test class JdbcStudentTest can show you a simple example of dependency injection in action. If you understand 
+ what is going one, have a look at the JdbcObjectStudentDAO.
+  
+ More flexibility is obtained especially for testing since dependencies on a particular deployment
+ environment can be removed from the code making it much easier to test functionality in a simple
+ stand-alone environment. Especially when using mock-objects this technique results in highly testable objects.
+ Avoiding dependencies of collaborating classes makes it possible to produce controlled unit-tests that
+ focus on exercising the behaviour of only the class undergoing the test. To achieve this, dependency
+ injection is used to cause instances of the class under the test to interact with mock objects.
+
+
+* Applicability / Uses
+  
+  Use the dependency injection pattern when:
+  
+  * the coupling between components needs to be reduced
+  
+  * you are expecting to run controlled unit tests. With dependency injection, testing can begin very early
+  in the development cycle
+  
+  * you want to save time in that you don't have to write boilerplate factory creation code over and over again
+
+
+* Related Patterns
+
+  * {{{factory.html} Abstract Factory}}: allows an application to acquire objects and components without exposing too much information
+  about how to components fit together or what dependencies each component might have.
+  
+  * {{{container.html} Container}}: allows objects to be configured by the container instead of the client. A container can configure
+  objects declaratively, meaning they can be configured via some external facilities, like XML files.
+	
+
+* Structure
+
+  UML class diagram of the sample code:
+
+[images/dependency_injection.jpg] UML class diagram of the sample code shown below
+
+* Sample
+
+  First we implement the Movie entity which will be searching for:
+
++----
+public class Movie {
+	private String director;
+	...
+	
+	public Movie(String director, ...) {
+		this.director = director;
+		...
+	}
+	
+	public String getDirector() {
+		return director;
+	}
+	
+	...
+}
++----
+
+  Now lets look at a component which finds all movies which where directed
+  by one particular director, this is done by a single method. When we talk about
+  this class we shall assume it is a component - a piece of software intended to be
+  used, without change, by an application that is out of control of the writers of the
+  component. And by 'without change' we mean no changes to the source code of the component.
+  However we will of course provide a mechanism for altering the behaviour of our Movies
+  class, this is where dependency injection comes into play:
+
++----
+public class Movies {
+
+  public List<Movie> moviesDirectedBy(director: String) {
+    List<Movie> allMovies = finder.findAll();
+    for (m in allMovies) {
+    	if (!movie.getDirector().equals(director))
+    		allMovies.remove(m);
+    }
+    return allMovies;
+  }
+}
+
+public interface MovieFinder {
+	List<Movie> findAll();
+}
++----
+
+  At some point we will have to introduce a concrete class for actually
+  finding all the movies, we will put this code into the constructor of the Movies class:
+  
++----
+public class Movies {
+	private MovieFinder finder;
+	
+	public Movies() {
+		this.finder = new SemiColonDelimitedMovieFinder("movies.txt");
+	}
+
+  	public List<Movie> moviesDirectedBy(director: String) {
+    	List<Movie> allMovies = finder.findAll();
+    	for (m in allMovies) {
+    		if (!movie.getDirector().equals(director))
+    				allMovies.remove(m);
+ 		}
+    	return allMovies;
+  }
+}
++----
+
+  The files movies.txt contains all movies ever made, separated by a semicolon. This is all
+  very nice and actually quite decoupled but what if we have another file which is not semicolon-
+  but tab-delimited? Or if we want to pass this program on to other people who have completely
+  different ways of storing their movies for example in a SQL database or an XML file.
+  
+  We will need a different implementation of the MovieFinder, since we have defined an interface
+  this will not alter our moviesDirectedBy() method, but we still need some mechanism for getting
+  the right implementation of MovieFinder into place. The following is an example of setter-based
+  injection according to the Spring framework:
+
++----
+public class Movies {
+	private MovieFinder finder;
+	
+	public Movies() {
+	}
+
+	public void setFinder(MovieFinder finder) {
+		this.finder = finder;
+	}
+
+  	public List<Movie> moviesDirectedBy(director: String) {
+    	List<Movie> allMovies = finder.findAll();
+    	for (m in allMovies) {
+    		if (!movie.getDirector().equals(director))
+    				allMovies.remove(m);
+ 		}
+    	return allMovies;
+  }
+}
+
+public class SemiColonDelimitedMovieFinder implements MovieFinder {
+	private String filename;
+	
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+}
++----
+
+  Something about the container
+  
+  The third step is to set up the configuration for the files. Spring supports configuration through XML 
+  files and also through code, but XML is the expected way to do it.
+
++----
+    <beans>
+        <bean id="MovieLister" class="spring.MovieLister">
+            <property name="finder">
+                <ref local="MovieFinder"/>
+            </property>
+        </bean>
+        <bean id="MovieFinder" class="spring.ColonMovieFinder">
+            <property name="filename">
+                <value>movies1.txt</value>
+            </property>
+        </bean>
+    </beans>
++----
+
+  And lastly we then test the code we have written so far to demonstrate dependency injection
+  through a Spring container.
+
++----
+    public void testWithSpring() throws Exception {
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("spring.xml");
+        MovieLister lister = (MovieLister) ctx.getBean("MovieLister");
+        Movie[] movies = lister.moviesDirectedBy("Sergio Leone");
+        assertEquals("Once Upon a Time in the West", movies[0].getTitle());
+    }
++----
+
+* References / More Info
+
+  {{{http://static.springframework.org/spring/docs/2.0.x/reference/beans.html#beans-dependencies}  Spring Framwork Documentation - Chapter 3.3: Dependencies}}
+
+  {{{http://en.wikipedia.org/wiki/Inversion_of_control} Wikipedia - Inversion of Control}}
+  
+  {{{http://en.wikipedia.org/wiki/Dependency_injection} Wikipedia - Dependency Injection}}
+  
+  {{{http://www.martinfowler.com/articles/injection.html} Martin Fowler - Inversion of Control Containers and the Dependency Injection pattern}}
+  
+  {{{http://msdn.microsoft.com/msdnmag/issues/05/09/DesignPatterns/} MSDN Magazine - Dependency Injection}}

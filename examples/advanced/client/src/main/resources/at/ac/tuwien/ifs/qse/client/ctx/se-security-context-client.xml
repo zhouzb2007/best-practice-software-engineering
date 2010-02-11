@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  - $Id: security-context-client.xml 932 2006-03-12 16:32:49Z ge0ffrey $
+  -->
+
+<beans>
+
+	<bean id="remoteAuthenticationProvider" class="org.acegisecurity.providers.rcp.RemoteAuthenticationProvider">
+  		<property name="remoteAuthenticationManager"><ref bean="remoteAuthenticationManager"/></property>
+	</bean>
+	
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+		  <list>
+		    <ref bean="remoteAuthenticationProvider"/>
+		  </list>
+		</property>
+	</bean>
+    
+    <bean id="securityManager" class="org.springframework.richclient.security.support.DefaultApplicationSecurityManager">
+        <property name="authenticationManager" ref="authenticationManager"/>
+    </bean>
+
+	<bean id="remotingSecurityConfigurer" class="org.springframework.richclient.security.RemotingSecurityConfigurer"/>
+
+	<!-- =================== SECURITY BEANS YOU WILL RARELY (IF EVER) CHANGE ================== -->
+	
+	<bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter"/>
+
+	<bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
+   		<property name="allowIfAllAbstainDecisions"><value>false</value></property>
+		<property name="decisionVoters">
+		  <list>
+		    <ref bean="roleVoter"/>
+		  </list>
+		</property>
+	</bean>
+
+</beans>

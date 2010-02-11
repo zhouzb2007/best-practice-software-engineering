@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Relation</type><coordinates><x>150</x><y>20</y><w>40</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;20;20;90</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>120</x><y>10</y><w>100</w><h>30</h></coordinates><panel_attributes>JFrame</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>10</x><y>110</y><w>320</w><h>150</h></coordinates><panel_attributes>TestGUIEvents
+{innerclass
+#ButtonListener
+--
++actionPerformed(arg0: ActionEvent): void
+innerclass}
+--
+-clickCount: int
+--
++TestGUIEvents()  &lt;&lt;create&gt;&gt;
+_+main(args: String[]): void_</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

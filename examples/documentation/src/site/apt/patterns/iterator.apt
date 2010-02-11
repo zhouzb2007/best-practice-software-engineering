@@ -1,0 +1,113 @@
+   ---
+   Iterator
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Iterator Pattern
+
+  A form of the visitor pattern that walks a data structure using a common interface, 
+  retrieving the elements one by one without exposing the underlying representation. 
+  The iterator encapsulates the internal structure of how the iteration works.
+  
+  In Java, you will see alot of code like this:
+  
++----
+List users = new LinkedList();
+for (Iterator it = users.iterator(); it.hasNext();) {
+    User u = (User) it.next();
+    ...
+}
++----
+
+* Applicability / Uses
+  
+  For example, if your program uses 4 different kinds of data structures - a tree, linked list, 
+  hash table and an array which all need to be processed by methods to sort, search and next 
+  (iterate one by one) then you would need a total of 12 different algorithms. Using an iterator
+  this can be reduced to 7.
+  
+  The Iterator Pattern is also known under the name "Cursor".
+
+* Related Patterns
+
+  * {{{visitor.html} Visitor}}: The Iterator pattern is a form of the visitor pattern.
+  
+  * The {{{composite.html} Composite}} pattern usually lets Iterators walk its data structure.
+
+* Structure
+
+  UML diagram of the sample code shown:
+
+[images/Iterator.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  This sample code is based on the article {{{http://www.allappforum.com/java_design_patterns/iterator_pattern.htm} "Behavioral Patterns - Iterator Pattern"}}
+  from allappforum.com
+
+  In Java, you will see a lot of iterators. Lets apply our example to a real world application
+  like channel-surfing on a Television system and lets build a remote control implemented in Java:
+
++----
+public interface Iiterator {
+	public Channel nextChannel(int currentChannel);
+	public Channel prevChannel(int currentChannel);
+}
++----
+
+  Now lets say all remote controls produced must conform to this interface, its like a specification
+  given too all remote control manufacturing companies. Look at the interface pattern for more on this.
+  Lets see how the interface is implemented, this code already resides (of course in compiled form) on 
+  the remote control:
+
++----
+public class ChannelSurfer implements Iiterator {
+	
+	public Channel nextChannel(int currentChannel) {
+		Channel channel = new Channel(currentChannel+1);
+		return channel;
+	}
+	
+	public Channel prevChannel(int currentChannel) {
+		Channel channel = new Channel(currentChannel-1);
+		return channel;
+	}
+}
+
+public class RemoteControl {
+	private ChannelSurfer surfer;
+	private Settings settings;
+	
+	public RemoteControl() {
+		surfer = new ChannelSurfer();
+		settings = new Settings();
+	}
+	
+	public Program getProgram(ChannelSurfer surfer) {
+		return new Program(surfer.nextChannel());
+	}
+}
++----
+
+  While programming in Java you will use iterators allot, the facilities which Java provides
+  with its collection classes is extensive, so you will mostly be using existing iterators like
+  the one for a LinkedList:
+
++----
+List users = new LinkedList();
+for (Iterator it = users.iterator(); it.hasNext();) {
+    User u = (User) it.next();
+    ...
+}
++----
+
+* References / More Info
+
+  {{{http://www.cs.usfca.edu/~parrt/course/601/lectures/patterns.html} Software Patterns, lecture slides of course 601: "Object-Oriented Software Development" - University of San Francisco }}
+  
+  {{{http://www.allappforum.com/java_design_patterns/iterator_pattern.htm} Java Design Patterns, allappforum.com}}
+  
+  {{{http://en.wikipedia.org/wiki/Iterator_pattern} Wikipedia - Iterator Pattern}}
+  

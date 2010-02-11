@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : spring_general.xml
+    Created on : January 24, 2007, 10:20 PM
+    Author     : phex
+    Description:
+        Purpose of the document follows.
+-->
+<document>
+    <properties>
+        <title>Technology: Spring Framework</title>
+        <author>Alexander Schatten</author>
+    </properties>
+    <body>
+        <section name="Technology: Spring Framework">
+            <subsection name="Overview">
+                <p>
+                    The <a href="http://www.springframework.org">Springframework</a> is a modular framework that offers a large set of "tools" to support the developer in writing modern component-based applications. Spring is an open source project and was motivated by the quite complex concept of Enterprise Java Beans. Spring is a lightweight and modular component "glue", this means:
+                </p>
+                <ul>
+                    <li>Spring is not invasive. For most scenarios classes that are developed for usage within a Spring context do not have to be aware of Spring at all, i.e., there are no interfaces to be implemented or classes to be extended</li>
+                    <li>Using Spring does not mean, that each component of Spring has to be used, i.e., one can easily pick only the component/dependency injection part and not use any of the persistence or web-modules at all</li>
+                    <li>Spring helps to integrate a great variety of typical components that are needed in many applications without replicating functionality, e.g., Spring supports the integration of O/R mapping tools, but does not provide or abstract any O/R functionality</li>
+                    <li>The consequence of the last point is: there is always the full functionality of all integrated components available, but they are typicall better integrated using the Springframework</li>
+                    <li>Using Spring-Containers with dependency injection also supports test-driven development as components can be easily exchanged and mocked when needed.</li>
+                </ul>
+                <p>In this documentation a brief overview on Spring in general is given here, some more details on <a href="spring_jdbctemplates.html">Spring JDBC</a>, <a href="spring_orm.html">Spring ORM</a> and <a href="spring_remote.html">Spring Remote</a> is provided in the sub-pages.</p>
+            </subsection>
+            
+            <subsection name="Modules">
+                <p>
+                    The Spring documentation gives a good <a href="http://static.springframework.org/spring/docs/2.0.x/reference/introduction.html#introduction-overview">Overview</a> on the modules Spring provides. Essentially these are:
+                </p>
+                <ul>
+                    <li><b>Core:</b> This is the dependency injection/inversion of control container</li>
+                    <li><b>AOP</b> Support for aspect oriented development</li>
+                    <li><b>DAO</b> Support for data access objects including Spring JDBC and transaction management</li>
+                    <li><b>ORM</b> Object relational mapping support (e.g., for Hibernate)</li>
+                    <li><b>JEE</b> Support for various "enterprise" technologies, mostly messaging and remoting, but also emailing</li>
+                    <li><b>Web</b> Web-Framework</li>
+                </ul>
+                <p>
+                    The core module is used in every Spring project and also in all examples provided here. This module is easy to understand and is an implementation of the <a href="../patterns/dependency_injection.html">Dependency Injection pattern</a>.
+                </p>
+                <p>
+                    The DAO and ORM modules support the application developer in implementing persistence components. In the basic example the JDBC templates are used, in the medium und advanced example, the ORM module (for Hibernate) is applied.
+                </p>
+                <p>
+                    The JEE module is only used in the advanced example for remoting. 
+                </p>
+                <p>
+                    The implementation to provide aspect oriented development (AOP) is very useful in a broad range of applications. In the examples it is used starting with the medium example to provide declaration-based database transactions and access control to objects/components.
+                </p>
+                <p>
+                    The Spring Web framework is probably the part of the Spring project that is used by the least number of projects; in our set of examples we do not use this module. 
+                    However, this shows again, that Spring perfectly allows to select the parts that are useful for a concrete implementation problem and leave the other out, that would make the application unnecessarily complex.
+                </p>
+                
+            </subsection>
+            
+            <subsection name="References">
+                <ul>
+                    <li><a href="http://www.springframework.org">Springframework Project</a></li>
+                    <li>Spring Documentation</li>
+                    <ul>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/beans.html"><b>IoC/Dependency Injection Containter</b></a></li>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/aop.html">AOP</a></li>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/transaction.html">Transaction Management (including declarative TM using AOP)</a></li>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/dao.html">Principles of the DAO support</a></li>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/jdbc.html">JDBC Templates</a></li>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/orm.html">ORM Support (Hibernate, ...)</a></li>
+                        <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/remoting.html">Spring Remoting</a></li>
+                    </ul>
+                    <li>Additionally, the Spring website lists a <a href="http://www.springframework.org/bookreview">series of books</a>.</li>
+                </ul>
+            </subsection>
+            
+        </section>
+    </body>
+</document>

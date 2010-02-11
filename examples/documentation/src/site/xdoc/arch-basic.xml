@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <properties>
+        <title>Basic Sample</title>
+        <author></author>
+    </properties>
+    
+    <body>
+        <section name="Basic sample">
+            <subsection name="Overview">
+                The basic sample application shows how to create a simple application that fulfills 
+                the following <b>functional requirements</b>:
+                <p>
+                    <div align="center">
+                        <img src="images/Usecase_Basic.png" />
+                    </div>
+                </p>
+		This table gives an short description about the different use cases.
+		<table>
+			<tr>
+				<td>Add new student</td>
+				<td>Add new students to the system</td>
+			</tr>
+			<tr>
+				<td>Delelte student</td>
+				<td>Remove a selected student from the system</td>
+			</tr>
+			<tr>
+				<td>Update Student Data</td>
+				<td>Update a selected student</td>
+			</tr>
+			<tr>
+				<td>Show students</td>
+				<td>Show a list of students available in the system</td>
+			</tr>
+			<tr>
+				<td>Sort</td>
+				<td>Sort the list of students by matrikel number or name</td>
+			</tr>
+			<tr>
+				<td>Export students</td>
+				<td>The generated list can be exported in different formats, including HTML and XML</td>
+			</tr>
+		</table>
+                
+                <ul>
+                    <li>Create a simple Graphical User Interface (GUI) that interacts with a relational database to read and write data.</li>
+                    <li>Display the data as table (Java Swing <code>JTable</code>) in your GUI.</li>
+                    <li>The user must be able to choose a field to sort the rows in the table.</li>
+                    <li>The user must be allowed to export the data in two formats (XML and HTML).</li>
+                    <li>While exporting, the user can use standard dialogs to choose the file to export the data to.</li>
+                    <li>After exporting, the status of the export should be shown to the user by dialog.</li>
+                    <li>The user can create new rows, edit existing rows and remove rows from the table.</li>
+                </ul>
+                
+                <p>The user interface looks somewhat like this:</p>
+                <p>
+                    <div align="center">
+                        <img src="images/swing_main.png" />
+                    </div>
+                </p>
+                <p>
+                    <b>Technical features:</b>
+                    
+                    <ul>
+                        <li>Lifecycle Management with Maven</li>
+                        <li>Relational database HSqlDB</li>
+                        <li>Full inline documentation (Javadoc)</li>
+                        <li>Unittesting with JUnit</li>
+                        <li>Logging via Log4J Framework</li>
+                        <li>Persistence Layer utilizing Data Access Object Pattern in combination with JDBC Templates of the Spring framework and Dependency Injection</li>
+                        <li>Modular Export/Import capabilities (it is possible to add a new export or import filter without modifying the existing code)</li>
+                        <li>User Interface using Java Swing (coded manually without using a graphical UI builder!)</li>
+                    </ul>
+                </p>
+                <p>
+                    <b>Documentation requirements:</b>
+                    
+                    <ul>
+                        <li>The Java API documentation must be created using the Maven Javadoc plugin and the mvn site task</li>
+                        <li>All classes, variables and methods have to be documented in english</li>
+                        <li>
+                            Each package has to be documented. 
+                            A <code>package-info.java</code> file has to be delivered for every package directory
+                            containing information what the package is used for.
+                        </li>
+                    </ul>
+                </p>
+                Your programed basic sample should later be used as a foundation for further development.
+            </subsection>
+            <subsection name="Architecture">
+                <p>
+                    <div align="center">
+                        <img src="images/Architecture_Basic.png"/>
+                    </div>
+                </p>
+                <p>
+                    The above illustration shows the two building blocks of the basic example:
+                    The core package and the basic package. The core package consits of several 
+                    interfaces
+                    that define the behaviour/functionality of a couple of services 
+                    (they act as "contract"). These interfaces are implemented by the 
+                    the services of the basic package. If you use this services in your code,
+                    they can be exchanged through any other package which implements the 
+                    interfaces of the core package.
+                </p>
+                <p>The core package also contains the <em>data objects</em> (often refered to as <em>model</em>, 
+                    <em>transfer objects</em> or <em>value objects</em>). The data objects do nothing but hold the data; they represent the
+                    entities in the system. They are read from the database, modified in the business layer and sent to the presentation layer to be shown to the user. They are common to all
+                the examples (basic, medium and advanced).</p>
+                <p>To separate the concerns, this sample uses the MVC (ModelViewController) pattern. In the MVC, our data objects are the model, the (Spring) services are the controller
+                    and the Swing presentation layer is the view. If you are unfamiliar with the MVC pattern, this page might give you a short introduction: 
+                    <a href="http://java.sun.com/blueprints/patterns/MVC.html">http://java.sun.com/blueprints/patterns/MVC.html</a>. For  in-depth discussions, check out:
+                <a href="http://c2.com/cgi/wiki?ModelViewController">http://c2.com/cgi/wiki?ModelViewController</a>.</p>
+                <p>The code is heavily documented and also containts Javadoc comments. It makes sense to read the code or look at the Javadoc.</p>
+            </subsection>
+            <subsection name="Used technology">
+                <p>This example uses the following technologies:</p>
+                <ul>
+                    <li><a href="technology/tech-swing.html">Swing</a> for the presentation layer</li>
+                    <li><a href="technology/spring_jdbctemplates.html">Springs JDBC Templates</a> for simplified DAOs and reuse of service code</li>
+                    <li><a href="technology/tech-junit.html">jUnit</a> for automated tests</li>
+                    <li><a href="technology/tech-log4j.html">Log4J</a> as logging framework</li>
+                    <li><a href="technology/tech-hsqldb.html">HSQLdb</a> as a lightweight in-memory database</li>
+                    <li><a href="technology/tech-maven.html">Maven</a> and its practices for code organization and lifecycle management (building, testing, packaging, documenting)</li>
+                </ul>
+            </subsection>
+            <subsection name="Start the Application">
+                <p>The Basis.java class contains a static main method and can be used to start the GUI application. This can be done e.g., within Eclipse.</p>
+            </subsection>
+            <subsection name="Used patterns">
+                <p>
+                    Patterns are essential for any architecture in terms of
+                    understanding and extending source code.
+                    Basically you should get familiar with every pattern 
+                    described in the 
+                    <a href="patterns.html">
+                    Software Patterns</a> section. In general, the basic example makes
+                    use of these Patterns:
+                    <ul>
+                    	<li><a href="patterns/dependency_injection.html">Dependency Injection</a> to externalize configuration concerns from the code</li>
+                    	<li>The <a href="patterns/dao.html">Data Access Object Pattern</a> to enhance the independence of the used database</li>
+                        <li><a href="patterns/transfer_object.html">Transfer Object</a> (POJOs used to transfer data from and to database),</li>
+                        <li><a href="patterns/dependency_injection.html">Dependency Injection</a> (Data Access Objects),</li>
+                        <li><a href="patterns/dependency_injection.html">Interface</a> (Import/Export) and</li>
+                        <li><a href="patterns/dependency_injection.html">Delegation</a> (Logging)</li>
+                    </ul>
+                </p>
+            </subsection>            
+        </section>
+    </body>
+</document>
+

@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+ "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+   <session-factory>
+      <mapping class="at.ac.tuwien.ifs.bpse.domain.Student"/>
+      <mapping class="at.ac.tuwien.ifs.bpse.domain.Professor"/>
+      <mapping class="at.ac.tuwien.ifs.bpse.domain.Lecture"/>
+      <mapping class="at.ac.tuwien.ifs.bpse.domain.Lab"/>
+      <mapping class="at.ac.tuwien.ifs.bpse.domain.Exam"/>
+      <mapping class="at.ac.tuwien.ifs.bpse.domain.StudentExam"/>
+   </session-factory>
+</hibernate-configuration>

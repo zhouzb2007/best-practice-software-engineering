@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>Technology: Maven</title>
+	</properties>
+	<body>
+		<section name="Technology: Maven">
+		
+			<subsection name="Motivation">
+				<p>As already mentioned on various places in this documentation, build-automation is a very important 
+				part of contemporary software development. Apache Maven is the leading tool in the Java world. Maven 
+				is <i>not only</i>  a tool, it is actually a manifestation of build-best practices. Maven supports all 
+				stages of build automation including (but not limiting to) pre-processing activities, compiling, 
+				testing, sophisticated library dependency management, generation of documentation. Additionally project
+				 files for IDEs like Eclipse, IntelliJ and Netbeans can be generated.</p>
+			</subsection>
+		
+			<subsection name="Overview">
+				<p>We strongly recommend to read the "Getting Started" documentation on the Maven website and read at 
+				least the introduction chapter in the "Better Builds with Maven" book, that is freely available as 
+				PDF.</p>
+				<p>Basically, Maven consits of three parts:</p>
+				<ul>
+					<li>a set of rules (or better: "suggestions") how to organize your sourcecode and dependencies</li>
+					<li>a framework that is able to extend itself by plugins</li>
+					<li>a whole lot of plugins to compile sourcecode, build javadoc, package classes, deploy files, 
+					create reports, run unit tests and much more.</li>
+				</ul>
+				<p>The "heart" of a Maven project is the "POM file", the "project object model: All "metainformation" 
+				about the project like library dependencies, modules, code-generation or documentation generation 
+				plugins, developers, program name and version, distribution server and so on are defined in this 
+				xml file.</p>
+				<p>If you follow Mavens suggestions ("best practices") to organize your sourcecode and ressources, 
+				Maven needs almost no configuration to build your project. One main feature is it's ability to deal 
+				with your dependencies (e.g. libraries). For example: You simply define that your projects use jUnit 
+				in version 3.8.1. If this library is not installed yet, Maven will go online, download that library to 
+				your computer and then package it with your application. If this junit library needs other libraries 
+				(is depending on them), then Maven also downloads these libraries and adds all into the classpath for 
+				compilation and testing. Especially in big projects, with many libraries and even more different 
+				versions, Maven greatly simplifies dealing with dependencies and version problems.</p>
+				<p>But Maven is also great for smaller projects like this one. If you put your sourcecode on another 
+				machine or give it to a fellow developer, there is no need to copy many libraries, correct the 
+				classpath and check if older libraries in the classpath may interfere with a new application. Simply 
+				copy the source and the Maven configuration file (the POM "project object model") and Maven will 
+				take care of all dependencies.</p>
+				<p>Maven is configured using the Project Object Model. If you follow Mavens suggestions for organizing 
+				your sourcecode, not much needs to be configured, because Maven assumes most settings with a default 
+				value.</p>
+				<p>Maven also has simple commands to generate a defauls project structure including the one java 
+				class, one test class the project object model definition file including dependencies for junit.</p>
+				<p>This tutorial shows how to use Maven and perform basic tasks to create and build a project with documentation.</p>
+			</subsection>
+
+			<subsection name="Reference">
+				<ul>
+					<li>To get started, you should refer to the <a href="http://maven.apache.org/guides/getting-started/index.html">Getting started with Maven 2 guide</a>.</li>
+					<li>Further configuration of Maven: <a href="http://maven.apache.org/guides/mini/guide-configuring-maven.html">Maven configuration guide</a></li>
+					<li>The book <em>Better Builds with Maven</em> can be downloaded for free from <a href="http://www.mergere.com/better-build-maven/">http://www.mergere.com/better-build-maven/</a>.</li>
+					<li>The reference to the Project Object Model is available here: <a href="http://maven.apache.org/ref/current/maven-model/maven.html">http://maven.apache.org/ref/current/maven-model/maven.html</a>.</li>
+					<li><a name="repo"></a>A website that can be searched for external libraries and their corresponding POM entries: <a href="http://www.mvnrepository.com/">http://www.mvnrepository.com</a></li>
+					<li>Useful plugins for Maven projects: <a href="http://maven.apache.org/plugins/index.html">Maven plugin site</a></li>
+				</ul>
+			</subsection>
+		</section>
+	</body>
+</document>

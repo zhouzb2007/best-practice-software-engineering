@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+    <properties>
+        <title>Best Practice Software-Engineering Buch</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+	<body>
+  	<section name="Über das Buch">
+        <p>
+            <i> Remark: As the book is in German this page is in German as well; all other pages of this website are
+            in English.</i>
+        </p>
+        
+        <p>
+            Software-Komponenten tragen durch einen hohen Grad an Wiederverwendbarkeit, bessere Testbarkeit und
+            Wartbarkeit zur effizienten Herstellung komplexer Software-Anwendungen bei.
+        </p>
+        <p>
+            Diese Vorteile bedingen jedoch oft eine aufwendigere Einarbeitung beim Einstieg in diese Materie durch
+            die Vielzahl an komplexen Komponenten-Frameworks, Werkzeugen und Entwurfsansätzen.
+        </p>
+        <p>
+            Das vorliegende Buch „Best Practice Software-Engineering" bietet Neu- und Wiedereinsteigern in die
+            komponentenorientierte Software-Entwicklung eine Einführung in die Materie durch eine abgestimmte
+            Zusammenstellung von praxiserprobten Konzepten, Techniken und Werkzeugen für alle Aspekte eines
+            erfolgreichen Projekts.
+        </p>
+        <p>
+            Für moderne Software-Entwicklung sind eine Vielzahl von unterschiedlichen Fähigkeiten erforderlich, die
+            nur in richtiger Kombination zu einem erfolgreichen Ergebnis führen. Daher wird in diesem Buch besonderer
+            Wert darauf gelegt, nicht einzelne Techniken des Software-Engineerings isoliert zu betrachten, sondern
+            das effiziente Zusammenspiel verschiedener Aspekte darzustellen.
+        </p>
+        <p>
+            Schwerpunkte liegen auf Vorgehensstrategien im Software-Lebenszyklus, Projektmanagement,
+            Qualitätssicherung, UML-Modellierung, Entwurfsmustern und Architekturen, komponentenorientierter
+            Software-Entwicklung sowie ausgewählten Techniken und Werkzeugen.
+        </p>
+        
+    </section>
+
+  	<section name="Weitere Informationen?">
+        <p>
+            Weitere Informationen zum Buch finden Sie auf der <a
+            href="http://www.springer.com/spektrum+akademischer+verlag/informatik/software-entwicklung+und+datenbanken/book/978-3-8274-2486-0">Webseite
+            des Verlages</a> sowie bei <a
+            href="http://www.amazon.de/Best-Practice-Software-Engineering-Alexander-Schatten/dp/3827424860">Amazon</a>.
+        </p>
+    </section>    
+    
+    <section name="Vom Buch zur Webseite">
+        
+        <p>
+            In diesem Abschnitt soll ein Bezug zwischen Kapiteln des Buches und Materialien hergestellt werden die auf dieser Webseite zu finden sind. Die Beispiele TODO
+        </p>
+        
+        <table>
+            <tr>
+                <th>Kapitel</th>
+                <th>Webseite</th>
+            </tr>
+            <tr>
+                <td>Einführung in die Muster der Entwicklung</td>
+                <td>TODO</td>
+            </tr>
+        </table>
+            
+            
+            
+            
+            
+    </section>
+      
+  </body>
+</document>

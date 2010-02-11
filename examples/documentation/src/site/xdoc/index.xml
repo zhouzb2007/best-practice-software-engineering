@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+    <properties>
+        <title>The Project</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+	<body>
+  	<section name="Best Practice Software Engineering">
+	 		<subsection name="Welcome to Best Practices Engineering Documentation">
+	 			<p><font color="#ff0000"><b>Note:</b></font>
+	 			One remark in the beginning: We update this site and the examples regularly. Especially for <b>students</b> we would suggest
+	 			to <b>return</b> to this documentation regularly</p>
+	 			<p>This site introduces a set of techniques, patterns and paradigms, which are used for 
+	 			developing our Best Practices Examples.<br />
+	 			It also presents the used architecture, external libraries and technologies.</p>
+			<p>These examples including the documentation is open source and can be used according to the 
+	 			<a href="http://www.apache.org/licenses/"><b>Apache licence</b></a>. So anyone can use 
+	 			the examples but we ask you to inform us whether you plan to work with our examples.</p>
+	 		<p>The sources for this site are available on <a
+            href="http://code.google.com/p/best-practice-software-engineering">Google Code</a></p>
+      </subsection>
+
+      <subsection name="The Book">
+          <p>
+              In March 2010 our book with the title <i>"Best Practice Software-Engineering, Eine praxiserprobte
+              Zusammenstellung von komponentenorientierten Konzepten, Methoden und Werkzeugen."</i> is released. The
+              publisher is "Spektrum Akademischer Verlag (Springer)". The book is in German; find more information
+              at the <a
+              href="http://www.springer.com/spektrum+akademischer+verlag/informatik/software-entwicklung+und+datenbanken/book/978-3-8274-2486-0">publishers
+              website</a> or on <a
+              href="http://www.amazon.de/Best-Practice-Software-Engineering-Alexander-Schatten/dp/3827424860">Amazon.de</a>.
+          </p>
+      </subsection>
+      
+	  <subsection name="Introducing Best Practices">
+		  <p><b>What are best practices?</b> Developing solid and well-designed
+			  Software is a challenge. Systems and environments become more
+			  complex every year and technologies change fast. Developers with
+			  years of experience have the advantage over younger colleagues of
+			  having made many mistakes over the time. Mistakes they used to
+			  learn and write better applications next time.</p>
+		  <p>Clearly, we cannot "teach" unexperienced developers
+			  <i>experience</i>, but what we can do is provide so called "best
+			  practices". Some of the good and bad decisions from concrete
+			  projects can be abstracted to scenarios. E.g., how to implement a
+			  persistence solution for a business application, how to implement
+			  a robust GUI that is also easy to maintain and so on.</p>
+		  <p>This "abstract" experience can be explained on two levels: The
+			  first level is called <b>Software Patterns</b>: Software Patterns
+			  describe how to solve typical problems that appear in many
+			  application scenarios in similar ways. These patterns can be seen
+			  as abstracted knowledge, that guides you in better solving your
+			  concrete problems.</p> 
+		  <p>The second level is: <b>technical-implementation
+				  best-practices</b>.  Let's introduce the idea with a quotation
+			  from a leading Apple developer in the late 80s: <i>"Reusing other
+				  people's code would prove that I don't care about my work. I
+				  would no more reuse code than Ernest Hemingway would have
+				  reused other authors' paragraphs.?"</i></p>
+
+		  <p>Hardly two decades later this quotation is a funny curiosity from a
+			  long forgotten past ;-) Actually systems nowadays are so complex
+			  and demand such a wide spectrum of functionality that such an
+			  attempt is literally unthinkable.  In developing a modern
+			  application the "pure code hacking" is only one small part of the
+			  undertaking, the development effort at least needs to deal
+			  with:</p>
+		  <ul>
+			  <li>As most development efforts are done in teams, often even
+				  distributed: Setup and configure various groupware
+				  applications (sourcecode management, bug-tracking, mailing
+				  lists, other collaboration tools)</li>
+			  <li>Select a good build automation strategy that automatically
+				  prepares the build, generates code when necessary, compiles,
+				  excutes test-cases, generates various documentation artefacts,
+				  packages and distributes the application</li>
+			  <li>Define the dependencies of the applications: which libraries
+				  or subsystems are needed, what are the connections between
+				  these, how are they initialised and configured and what
+				  libraries are the libraries depending on</li>
+			  <li>Install and setup a proper integrated development environment
+				  and let this work together with the build automation tool and
+				  all other required components (e.g., Servlet container,
+				  modeling tools, ...)</li>
+			  <li>Figure out and setup the best suited platform and basic
+				  environment for the application (component management and
+				  configuration, logging, testing, other development-related
+				  tools)</li>
+			  <li>Find a fitting persistence technology, setup the development,
+				  test and production system including all configuration options</li>
+			  <li>Select the UI technology ("fat client", Web, Web 2.0, ...) and
+				  get all required additional libraries and environements
+				  working together (e.g., Servlet environment)</li>
+			  <li>...</li>
+			  <li>Get all these mentioned components working properly together
+				  and understand how they interact correctly</li>
+		  </ul> 
+		  <p>These are just some of the problems to take into consideration. We
+			  can see, that the pure "setup" of a working environment to start
+			  from needs a lot of experience and knowledge. Select the proper
+			  tools and libraries to start with, getting them running together
+			  and so on.  Precisely at this point our technical best-practices
+			  start:</p>
+		  <p>We prepared a set of examples that can be downloaded and used as
+			  start-point for own applications. Currently we provide examples
+			  for a "fat client" application, a web-application and a
+			  distributed application with web-frontend. The complexity of the
+			  applications (the functional requirements) are simple for not
+			  confusing the actual goal, that is showing a clean and
+			  well-written example for the application scenario. For designing
+			  these applications we tried to use established best-practices,
+			  patterns and libraries to give a good foundation to start
+			  from. We consulted literature, followed best-practice suggestions
+			  from various library documentations and discussed details with
+			  various experiences developers.</p>
+		  <p><b>However, if you should find bad-design, missing tests, bugs,
+				  typos in the documentation: in short words mistakes of
+				  whatever kind, please do not hesitate to contact us!</b></p> 
+      </subsection>
+
+      <subsection name="Where to find...">
+      	<p>This 'fingerpost' will help you finding the needed information if you get lost in reading.</p>
+      	<p>In section <a href="setup.html"><b>Development Setup</b></a> you will find - on the one hand - the information how to set up the 
+      	best practice examples and make them work, on the other hand a sneak tutorial how to make your own project build
+      	environment (catchword: Maven)</p>
+      	<p>Section <a href="architecture.html"><b>The sample apps</b></a> provides information about functional requirements, architecture and technologies used 
+      	in Basic, Medium or Advanced Sample.</p>
+      	<p><a href="technology.html"><b>Technology</b></a> is a listing of all used technologies. There you get a short description about each technology, what
+      	our motivation was to implement it, the usage of the technology (examples and tricks) and references to other ressources.</p>
+      	<p><a href="patterns.html"><b>Software Patterns</b></a> will help you 'speed up' your development process by providing information about 'What does' this pattern,
+      	the general structure, examples and references.</p>
+      	<p><a href="technology/javadoc.html"><b>Javadoc</b></a>, <a href="xref-source.html"><b>Source</b></a> and <a href="xref-source.html"><b>Test Source</b></a> provide the opportunity to browse through the source code, test source 
+      	or Javadoc</p>
+      	<p><a href="references.html"><b>General References</b></a> shows a selection of ressources (e.g.: Java, Maven).</p>
+      	<p>Finally the <a href="todo.html"><b>ToDo</b></a> give an overview of actual standings in developing the examples and the documentation.</p>
+      </subsection>
+      
+      <subsection name="Documentation status">
+				<p>
+					<ul>
+						<li>Development Setup - <font color="#009900">done</font></li>
+						<li>Sample Apps - <font color="#ff0000">in progress</font></li>
+						<li>Technologies - <font color="#ff0000">in progress</font></li>
+						<li>Software Patterns - <font color="#009900">done</font></li>
+						<li>Javadoc, Source, Test Source - <font color="#ff0000">in progress</font></li>
+					</ul>
+				</p>
+      </subsection>
+	  
+      <subsection name="Who we are?">
+        <p>
+            This example-and-documentation project is an effort from a team around the <a href="http://qse.ifs.tuwien.ac.at">Quality-Software-Engineering group</a> of the <a href="http://www.tuwien.ac.at">Vienna University of Technology</a>. The project initiator and leader is <a href="http://www.schatten.info">Alexander Schatten</a>. Please check out our websites and our <a href="http://best-practice-software-engineering.blogspot.com">Blog</a>!
+        </p> 
+        <p>
+            A big thanks to all contributors! Please have a look at the <a href="team-list.html">team page</a>!!.
+        </p>
+      </subsection>
+	    <subsection name="Additional Links">
+      	<ul>
+					<li><a href="http://best-practice-software-engineering.blogspot.com/">Software Engineering - Best Practices Blog</a></li>
+      		<li><a href="http://www.cs.tuwien.ac.at/">Faculty of informatics (Vienna university of technology)</a></li>     		
+					<li><a href="http://qse.ifs.tuwien.ac.at/">QSE Homepage</a></li>
+
+					<li><a href="http://qse.ifs.tuwien.ac.at/~biffl/">Homepage Stefan Biffl</a></li>
+					<li><a href="http://www.schatten.info">Homepage Alexander Schatten</a></li>
+					<li><a href="http://qse.ifs.tuwien.ac.at/~winkler">Homepage Dietmar Winkler</a></li> 				    
+		</ul>
+			</subsection>
+		</section>        
+  </body>
+</document>

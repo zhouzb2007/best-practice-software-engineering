@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    
+    <body>
+        <section name="Technology: Java Server Faces">
+            
+            <subsection name="Overview">
+                
+                <p>The presentation layer of the medium example consists of several JSP (Java Server Pages) that rest in the src/webapp directory. The JSPs itself use the
+                    <em>Java Server Faces</em> technology that was introduced with Java EE 5. JSF introduces components that can be reused in many scenarios and 
+                greatly reduce the often tedious work of writing JSPs. It also defines how events in these web components can be wired to server-side services.</p>
+                
+            </subsection>
+            
+            
+            <subsection name="Reference">
+                
+                <p>To understand Java Server Faces, please refer to Chapter 9 of the 
+                    <a href="http://java.sun.com/javaee/5/docs/tutorial/doc/index.html">Java EE 5 Tutorial</a>. The API documentation for JSF can be found at:
+                <a href="http://java.sun.com/javaee/javaserverfaces/">http://java.sun.com/javaee/javaserverfaces/</a>.</p>
+            </subsection>
+        </section>
+        
+    </body>
+</document>
+

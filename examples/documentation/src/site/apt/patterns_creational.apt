@@ -1,0 +1,53 @@
+   ---
+   Creational Design Patterns
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Creational Design Patterns
+  
+  All of the creational patterns deal with the best way to create instances of objects. This is important because 
+  your program should not depend on how objects are created and arranged. In Java, of course, the simplest way to 
+  create an instance of an object is by using the new operator.
+
+----
+	Object o = new Object(); 	//instance of an object class
+----
+
+  This really leads to hard coding how you create the object within your program. In many cases, the exact nature 
+  of the object that is created could vary with the needs of your program. Abstracting the creation process into a 
+  special "creator" class can make your program more flexible and general.
+
+  \ 
+
+  A <class creational pattern> uses inheritance to vary the class that's instantiated.
+  <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612].> 
+  The main drawback of this approach is that it can require creating a new subclass just to change the class of the product. Such changes can cascade. For example, when the product creator is itself created by a factory method, then you have to override its creator as well.
+  
+  	* {{{patterns/factory.html}<<Factory Method>>}} defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+  
+    * {{{patterns/objectpool.html}<<Object Pool>>}} manages and creates instances of a class that can be used interchangeably. These created objects could be expensive to create or maybe only a limited number of one kind of object should
+  	be created - the Object Pool manages these objects also after they are instantiated unlike the Factory patterns. The Object Pool pattern, when used in the right place, can result in a dramatic improvement in speed while lowering memory requirements.
+   
+  \ 
+
+  An <object creational pattern> will delegate instantiation to another object which is responsible for knowing the class of the product objects, and it will make it a parameter of the system. 
+  <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612].> 
+  They involve creating a new "factory object" whose responsibility is to create product objects.
+
+  	* {{{patterns/factory.html}<<Abstract Factory>>}} provides an interface for creating families of related or dependent objects without specifying their concrete classes. The factory object produces objects of several classes.
+  	
+  	* {{{patterns/singleton.html}<<Singleton>>}} ensures a class has only one instance at all times and provides one global point of access to it.
+  	
+  	
+~~  	* <<Builder>> separates the construction of a complex object from its representation so that the same construction process can create different representations. The factory object builds a complex product incrementally using a correspondingly complex protocol.
+  
+  \ 
+  
+* References / More Info
+
+  {{{http://en.wikipedia.org/wiki/Creational_pattern} Creational Patterns - Wikipedia}}
+  
+  {{{http://www.patterndepot.com/put/8/Creational_Patterns.htm} Creational Patterns - Pattern Depot}}
+  
