@@ -31,10 +31,10 @@ public class Basis {
 		// configure log4j based on log.properties
 		log.info("Starting Application");
        
-		MainFrame mf = new MainFrame();
-		mf.setLocation(50, 50);
-		mf.pack();
-		mf.setVisible(true);
+		MainFrame amf = new MainFrame();
+		amf.setLocation(50, 50);
+		amf.pack();
+		amf.setVisible(true);
 		log.info("Terminating Start Class");
 	}
 
