@@ -32,7 +32,18 @@ public class HtmlExportTest extends TestCase {
 
 	//private static Log log = LogFactory.getLog(HtmlExportTest.class);
 	private XmlBeanFactory xbf;
+	
+	/**
+	 * Holds the absolute path of the current directory. 
+	 */
+	private String pathToFile;
+	
+	/**
+	 * The list of Students used as testdata, also reinitialized for every new
+	 * TestCase.
+	 */
 	private List<Student> studenten;
+
 
 	/**
 	 * This method is executen before every TestCase
@@ -41,6 +52,8 @@ public class HtmlExportTest extends TestCase {
 		super.setUp();
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
+		ClassPathResource currentWorkingDir = new ClassPathResource(".");
+		pathToFile = currentWorkingDir.getFile().getAbsolutePath();		
 		studenten = new ArrayList<Student>();
 		Student s1 = (Student) xbf.getBean("StudentAlexanderSchatten");
 		s1.setId(new Integer(1));
@@ -90,7 +103,7 @@ public class HtmlExportTest extends TestCase {
 	 * 
 	 */
 	public void testWrite() throws IOException {
-		String filename_test = "test/export.html";
+		String filename_test = pathToFile + "/test/export.html";
 		
 		// export test data to html file
 		HtmlExport he = new HtmlExport();

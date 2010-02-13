@@ -31,9 +31,15 @@ public class ExportImportTest extends TestCase {
 	 * Spring Frameworks XML Bean Factory.
 	 */
 	private XmlBeanFactory xbf;
-
+	
 	/**
-	 * A very generic list of Students.
+	 * Holds the absolute path of the current directory. 
+	 */
+	private String pathToFile;
+	
+	/**
+	 * The list of Students used as testdata, also reinitialized for every new
+	 * TestCase.
 	 */
 	private List<Student> studenten;
 
@@ -44,6 +50,8 @@ public class ExportImportTest extends TestCase {
 		super.setUp();
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
+		ClassPathResource currentWorkingDir = new ClassPathResource(".");
+		pathToFile = currentWorkingDir.getFile().getAbsolutePath();		
 		studenten = generateStudentList();
 	}
 
@@ -78,7 +86,7 @@ public class ExportImportTest extends TestCase {
 	 * 
 	 */
 	public void testWriteRead() {
-		final String filename = "test/studenten";
+		final String filename = pathToFile + "/test/studenten.xml";
 		Export export = (Export) xbf.getBean("Export");
 
 		// save and re-read document
