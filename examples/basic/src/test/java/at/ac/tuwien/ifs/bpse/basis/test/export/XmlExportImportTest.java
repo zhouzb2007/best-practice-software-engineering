@@ -32,6 +32,11 @@ public class XmlExportImportTest extends TestCase {
 	 * The Spring Bean Factory, it is recreated for each new TestCase.
 	 */
 	private XmlBeanFactory xbf;
+	
+	/**
+	 * Holds the absolute path of the current directory. 
+	 */
+	private String pathToFile;
 
 	/**
 	 * The list of Students used as testdata, also reinitialized for every new
@@ -46,6 +51,8 @@ public class XmlExportImportTest extends TestCase {
 		super.setUp();
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
+		ClassPathResource currentWorkingDir = new ClassPathResource(".");
+		pathToFile = currentWorkingDir.getFile().getAbsolutePath();		
 		studenten = generateStudentList();
 	}
 
@@ -109,7 +116,7 @@ public class XmlExportImportTest extends TestCase {
 	 * TestCase for saving an XML file.
 	 */
 	public void testSave() {
-		final String filename = "test/studenten.xml";
+		final String filename = pathToFile + "/test/studenten.xml";
 		XmlExportImport xexp = new XmlExportImport();
 		xexp.generateXML(studenten);
 		// save and re-read document in XML
@@ -145,7 +152,7 @@ public class XmlExportImportTest extends TestCase {
 			i++;
 		}
 		
-		File f = new File("test/studenten.xml");
+		File f = new File(filename);
 		f.delete();
 	}
 
