@@ -38,6 +38,13 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="HsqldbDataSource" />
 	</bean>
+	
+	<!-- This ResourceBundle is used to provide l18n for the GUI -->
+	<bean id="resourceBundle" class="java.util.ResourceBundle" factory-method="getBundle">
+		<constructor-arg type="java.lang.String">
+		    <value>messages</value>
+		</constructor-arg>
+	</bean>
 
 	<!-- ********************************************************************************************** -->
 	<!-- Configuration of Data Access Objects and injection of session and transaction manager          -->

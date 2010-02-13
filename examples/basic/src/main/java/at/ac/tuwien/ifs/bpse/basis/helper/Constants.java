@@ -11,7 +11,7 @@ public class Constants {
 	 * The input file for the SpringBeans, the current value is {@value}.
 	 */
 	public final static String SPRINGBEANS = "/beans.xml";
-	
+
 	/**
 	 * This constant holds the reference for the test-configuration, the current value is {@value}.
 	 */

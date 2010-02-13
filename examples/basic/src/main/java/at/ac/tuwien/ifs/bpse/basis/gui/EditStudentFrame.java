@@ -124,6 +124,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 	 */
 	public EditStudentFrame() {
 		this(null, Mode.Create);
+		setResizable(false);
 	}
 	
 	/**

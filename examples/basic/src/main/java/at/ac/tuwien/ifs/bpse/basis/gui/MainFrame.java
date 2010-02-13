@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -62,6 +63,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * Retrieves the logger for this class.
 	 */
 	private static Log log = LogFactory.getLog(MainFrame.class);
+	
+	/**
+	 * ResourceBundle to externalize the Strings used for the GUI components.
+	 */
+	private ResourceBundle messageBundle;
 
 	/**
 	 * The Student Table Model, default order is Matrikel Number.
@@ -109,6 +115,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame() {
 		super();
 		initDAO();
+		initMessageBundle();
 		log.info("Initialising MainFrame");
 		// Window Listener for Closing Frame
 		addWindowListener(new WindowAdapter() {
@@ -129,6 +136,16 @@ public class MainFrame extends JFrame implements ActionListener {
 		xbf = new XmlBeanFactory(res);
 		studentDAO = (IStudentDAO) xbf.getBean("StudentDAO");
 	}
+	
+	/**
+	 * Initializes the ResourceBundle to externalize the Strings for the
+	 * components.
+	 * 
+	 * @see ResourceBundle
+	 */
+	private void initMessageBundle() {
+		messageBundle = (ResourceBundle) xbf.getBean("resourceBundle");
+	}
 
 	/**
 	 * Initializes the Models. Creates the StudentenTableModel (for the Table)
@@ -148,13 +165,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	private void initComponents() {
 		// define menu bar and menus
 		JMenuBar menuBar = new JMenuBar();
-		JMenu fileMenu = new JMenu("Datei");
+		JMenu fileMenu = new JMenu(messageBundle.getString("menu.lbl.file"));
 		menuBar.add(fileMenu);
-		JMenuItem exitMenuItem = new JMenuItem("Beenden");
-		exitMenuItem.setActionCommand("Exit");
+		JMenuItem exitMenuItem = new JMenuItem(messageBundle.getString("menu.lbl.exit"));
+		exitMenuItem.setActionCommand(messageBundle.getString("menu.lbl.exit"));
 		exitMenuItem.addActionListener(this);
 		fileMenu.add(exitMenuItem);
-		JMenu exportMenu = new JMenu("Export");
+		JMenu exportMenu = new JMenu(messageBundle.getString("menu.lbl.export"));
 		menuBar.add(exportMenu);
 		// retrieve list of export filters and define corresponding menu items and actions
 		List<Export> exports = exportMenuModel.getExportFilter();
@@ -189,8 +206,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		// define Drop Down Field in North Panel
 		JComboBox selectOrderCB = new JComboBox();
 		selectOrderCB.setEditable(false);
-		selectOrderCB.addItem("Matrikelnummer");
-		selectOrderCB.addItem("Nachname");
+		selectOrderCB.addItem(messageBundle.getString("cb.option.studentid"));
+		selectOrderCB.addItem(messageBundle.getString("cb.option.lastname"));
 		centerNorthPanel.add(selectOrderCB);
 		selectOrderCB.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent ie) {
@@ -237,36 +254,36 @@ public class MainFrame extends JFrame implements ActionListener {
 		centerPanel.add(tableScrollPane);
 		JPanel infoBoxPanel = new JPanel();
 		infoBoxPanel.setLayout(new GridLayout(0, 2, 5, 5));
-		JLabel lblId = new JLabel("Id:");
+		JLabel lblId = new JLabel(messageBundle.getString("lbl.id"));
 		infoBoxPanel.add(lblId);
 		id = new JLabel();
 		infoBoxPanel.add(id);
-		JLabel lblFirstname = new JLabel("Vorname:");
+		JLabel lblFirstname = new JLabel(messageBundle.getString("lbl.firstname"));
 		infoBoxPanel.add(lblFirstname);
 		name = new JLabel();
 		infoBoxPanel.add(name);
-		JLabel lblSurname = new JLabel("Nachname:");
+		JLabel lblSurname = new JLabel(messageBundle.getString("lbl.lastname"));
 		infoBoxPanel.add(lblSurname);
 		surname = new JLabel();
 		infoBoxPanel.add(surname);
-		JLabel lblMatrNr = new JLabel("Matrikelnummer:");
+		JLabel lblMatrNr = new JLabel(messageBundle.getString("lbl.studentid"));
 		infoBoxPanel.add(lblMatrNr);
 		matrikelnummer = new JLabel();
 		infoBoxPanel.add(matrikelnummer);
-		JLabel lblEmail = new JLabel("E-Mail:");
+		JLabel lblEmail = new JLabel(messageBundle.getString("lbl.email"));
 		infoBoxPanel.add(lblEmail);
 		email = new JLabel();
 		infoBoxPanel.add(email);
 		eastNorthPanel.add(infoBoxPanel, BorderLayout.NORTH);
 		// define buttons to manipulate students 
-		editButton = new JButton("Edit");
+		editButton = new JButton(messageBundle.getString("btn.lbl.edit"));
 		editButton.setEnabled(false);
 		editButton.addActionListener(this);
 		centerSouthPanel.add(editButton);
-		JButton createButton = new JButton("Create");
+		JButton createButton = new JButton(messageBundle.getString("btn.lbl.create"));
 		createButton.addActionListener(this);
 		centerSouthPanel.add(createButton);
-		deleteButton = new JButton("Delete");
+		deleteButton = new JButton(messageBundle.getString("btn.lbl.delete"));
 		deleteButton.setEnabled(false);
 		deleteButton.addActionListener(this);
 		centerSouthPanel.add(deleteButton);
@@ -325,13 +342,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		String cmd = ae.getActionCommand();
 		log.debug("Action Performed \"" + cmd + "\"");
-		if (cmd.equals("Exit")) {
+		if (cmd.equals(messageBundle.getString("menu.lbl.exit"))) {
 			terminateApplication();
-		} else if (cmd.equals("Create")) {
+		} else if (cmd.equals(messageBundle.getString("btn.lbl.create"))) {
 			createStudent();
-		} else if (cmd.equals("Edit")) {
+		} else if (cmd.equals(messageBundle.getString("btn.lbl.edit"))) {
 			editStudent();
-		} else if (cmd.equals("Delete")) {
+		} else if (cmd.equals(messageBundle.getString("btn.lbl.delete"))) {
 			deleteStudent();
 		}
 	}
@@ -375,14 +392,14 @@ public class MainFrame extends JFrame implements ActionListener {
 			Student victim = studentenTM.getStudentAt(row);
 			int yesno = JOptionPane.showConfirmDialog(this, "Student \""
 					+ victim.getFirstname() + " " + victim.getLastname() + " ("
-					+ victim.getMatnr() + ")\"" + " wirklich löschen?", "Delete",
+					+ victim.getMatnr() + ")\"" + " wirklich löschen?", messageBundle.getString("delete.lbl.title"),
 					JOptionPane.YES_NO_OPTION);
 			if (yesno == 0) {
 				if (studentDAO.deleteStudent(victim.getId())) {
 					studentenTM.reload();
-					JOptionPane.showMessageDialog(this, "Löschen erfolgreich!");
+					JOptionPane.showMessageDialog(this, messageBundle.getString("delete.lbl.success"));
 				} else {
-					JOptionPane.showMessageDialog(this, "Fehler beim löschen");
+					JOptionPane.showMessageDialog(this, messageBundle.getString("delete.lbl.error"));
 				}
 			}
 		}
@@ -416,7 +433,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		Export export = (Export) exportMenuModel.getSelectedItem();
 		// Create a file dialog to choose filename for export
 		JFileChooser jfc = new JFileChooser();
-		jfc.setDialogTitle("Filenamen fuer Export eingeben");
+		jfc.setDialogTitle(messageBundle.getString("export.lbl.filename"));
 		jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		int returnVal = jfc.showSaveDialog(this);
 		// check if Export was confirmed or canceled by user
@@ -433,12 +450,12 @@ public class MainFrame extends JFrame implements ActionListener {
 			try {
 				export.write(studentenTM.getStudenten(), filename);
 				JOptionPane.showMessageDialog(this,
-						"Daten wurden erfolgreich exportiert!", "File Export",
+						messageBundle.getString("export.lbl.success"), messageBundle.getString("export.lbl.title"),
 						JOptionPane.INFORMATION_MESSAGE);
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(this,
-						"Beim Export ist ein Fehler aufgetreten!",
-						"File Export", JOptionPane.WARNING_MESSAGE);
+						messageBundle.getString("export.lbl.error"),
+						messageBundle.getString("export.lbl.title"), JOptionPane.WARNING_MESSAGE);
 				log.error("File Writing Error: " + e);
 			}
 		}
