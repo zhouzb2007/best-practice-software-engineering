@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <properties>
+        <title>Open Issues for this project</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+    <body>
+        <section name="ToDo">
+            
+            <p>These best-practice examples and the according documentation are on ongoing effort in providing best material for learning software engineering techniques. As such, neither the examples nor the documentation will be ever "finished". As a team, we want to be transparent about open issues and problems we are aware of, and also show, what we are currently working on.</p>
+            
+            <p><b>In case you find any problems, or you have ideas how to improve this project, please contact us and help us adding important point to this todo list.</b></p>
+            
+            <subsection name="Architecture">
+                <ul>
+                    <li>ER Diagram of Data-model</li>
+                    <li>Brief UML introduction?</li>
+                    <li>Architecture Sketch: Extend with information what is learned on each step</li>
+                </ul>
+            </subsection>
+            
+            <subsection name="Java Examples">
+                <ul>
+                    <li>new SqlParameter("matnr", Types.VARCHAR));</li>
+                    <li>Check Unit tests, particularly the DAO Tests in Basic are partly nonsens.</li>
+                    <li>Describe how to start the example applications, probably create start scripts.</li>
+                    <ul>
+                        <li>is actually Spring 2.0m4 required or can it be changed to 2.0</li>
+                        <li>Medium Examples: no versions are provided for Hibernate...</li>
+                    </ul>
+                    <li>Add i18n to example!</li>
+                    <li>Add iBatis as alternative persistence technology to Hibernate</li>
+                    <li>Refactor Packages to remove all "SE1" and related names.</li>
+                    <li>Refactor: Interfaces should not start with I; e.g.: IStudentDAO to StudentDAO </li>
+                    <li>Check Javadoc comments Basic: JdbcObjectStudentDAO; partly missing, partly wrong</li>
+                </ul>
+            </subsection>
+            
+            <subsection name="Technologies">
+                <ul>
+                    <li>Add i18n, resource bundles</li>
+                    <li>Still missing:</li>
+					<ul>
+                    	<li>AOP with declarative transactions</li>
+                    	<li>Spring ORM/Remote</li>
+					</ul>
+					<li>Check Tomcat documentation</li>
+                </ul>
+            </subsection>
+            
+            <subsection name="Maven">
+                <ul>
+                    <li>Create on documentation section: In this section explain (overview) how to generate a complete project documentation with Maven including: </li>
+                    <ul>
+                        <li>Project Meta-information</li>
+                        <li>Javadoc</li>
+                        <li>Program documentation</li>
+                        <li>Unit-test results</li>
+                    </ul>
+                </ul>
+            </subsection>
+
+			<subsection name="New Features">
+				<ul>
+					<li>Add a section to the documentation explaining the most
+						important "groupeware" tools like SVN, bugtracking, ...</li>
+				</ul>
+			</subsection>
+			
+        </section>
+    </body>
+</document>
+

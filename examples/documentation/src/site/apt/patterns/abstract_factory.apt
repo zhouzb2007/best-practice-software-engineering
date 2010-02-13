@@ -1,0 +1,41 @@
+   ---
+   Title
+   ---
+   Author
+   ---
+   ---
+
+Section-Name/Pattern-Name
+
+  Here should follow a short introduction
+
+* Applicability / Uses
+  
+  Describe where this pattern should be used.
+
+* Structure
+
+  Here should follow a picture and/or <<UML-Diagram>>.
+
+[images/picture.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  Show the pattern with some sample <Java>Code.
+
++----
+public class foo {
+  private int bar;
+
+  public int getBar() {
+    return 2 * bar;
+  }
+}
++----
+
+* References / More Info
+
+  can be found here:
+
+  {{{http://en.wikipedia.org} Wikipedia}}
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <body>
+        <section name="Technology: Swing">
+	        
+	  <subsection name="Overview">
+		
+		  <p>Swing (another name for the "Java Foundation Classes") is a Java class library provided as part of Java 2 Platform, Standard Edition (J2SE) 
+		    to support building graphics user interface (GUI) and graphics functionality for client applications. Swing provides a modern look &amp; feel on many
+		    platforms, such as Windows, Linux, Unix and Mac OS.</p>
+		</subsection>
+		  
+		<subsection name="Configuration">
+		  <p>Since Swing is part of the Java 2 Software Development Kit, no configuration is necessary.</p>
+		</subsection>
+		
+		<subsection name="Reference">
+		
+		  <p>A lot of information around Swing can be found at</p>
+		  <ul>
+		  <li><a href="http://java.sun.com/products/jfc/">Suns official page of JFC: Swing</a></li>
+		  </ul>
+
+          <p>Swing is a large library and this is not the place to introduce into the development of GUIs with Swing.</p>
+		  
+		  <p>If you are unfamiliar with Swing, you should work through <a href="http://java.sun.com/docs/books/tutorial/uiswing/">this tutorial</a>.</p>
+		  
+		  <p>Since Swing is part of the J2SE Development Kit, the API documentation can be found in the J2SE JavaDoc, e.g. for Version 5 at: <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html">http://java.sun.com/j2se/1.5.0/docs/api/index.html</a>.</p>
+		  
+		  
+		</subsection>
+		</section>
+	    
+	 </body>
+	 </document>
+

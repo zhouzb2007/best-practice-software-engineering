@@ -1,0 +1,77 @@
+   ---
+   Event Listener
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Event Listener
+
+  Events are messages that are sent from one object to another. The component
+  sending the event (aka firing the event) is the producer, the component
+  receiving the event (aka handling the event) is the consumer.
+  The producer of an event should have the ability to add and delete listeners
+  for the events produced by itself.
+
+  In short, a predefined method of the listener is invoked by the producer
+  when an event is fired.
+
+* Applicability / Uses
+
+  The Event Listener pattern is commonly used in the Java-Libraries, 
+  especially within AWT (java.awt.*) and SWING (javax.swing.*).
+  Handling User-Interactions, such as clicking on a button, is realized
+  through Events and Event-Listeners
+
+* Related Patterns
+
+  * {{{observer.html} Observer}}: The Event Listener pattern is a special flavor of the Observer pattern
+  
+  * {{{delegation.html} Delegation}}: Event Listeners usually use delegation to accomplish their tasks.
+
+* Structure
+
+  UML diagram of the sample code:
+
+[images/event_listener.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  In this example we will create a new JFrame, containing a single Button.
+  When the user presses the button, the window-title will change.
+
++----
+public class TestGUIEvents extends JFrame {
+
+  int clickCount;
+
+  public TestGUIEvents() {
+    clickCount = 0;
+    setTitle("Click-Count: " + clickCount);
+    JButton button = new JButton("Click me!");
+    button.addActionListener(new ButtonListener());
+    add(button);
+    pack();
+  }
+
+  public static void main(String[] args) {
+    new TestGUIEvents().setVisible(true);		
+  }
+
+  protected class ButtonListener implements ActionListener {
+    public void actionPerformed(ActionEvent arg0) {
+      clickCount++;
+      setTitle("Click-Count: " + clickCount);
+    }
+  }
+}
++----
+
+* References / More Info
+
+  {{{http://java.sun.com/docs/books/tutorial/uiswing/events/index.html} 
+     Lesson: Writing Event Listeners (Java Tutorials@Sun)}}
+
+  {{{http://www.devx.com/tips/Tip/5501} Understanding the Listener Pattern}}
+
+  {{{http://en.wikipedia.org/wiki/Event_listener} Event Listener - Wikipedia}}

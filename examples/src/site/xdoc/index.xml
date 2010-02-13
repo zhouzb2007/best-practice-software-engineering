@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+
+    <body>
+        <section name="SE1 Sample">
+	  <subsection name="Welcome to the SE 1 Sample documentation">
+            <p>This is a sample documentation site.</p>
+           </subsection>
+	   
+	 
+           <subsection name="Links">
+            <ul>
+	        <li><a href="http://tuwel.tuwien.ac.at">TUWeL</a></li>
+            </ul>
+	    </subsection>
+	  </section>        
+    </body>
+</document>

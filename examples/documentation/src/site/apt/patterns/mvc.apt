@@ -1,0 +1,107 @@
+   ---
+   Model View Controller
+   ---
+   Erik Gostischa-Franta, Jakob Frank
+   ---
+   ---
+
+Model View Controller Pattern
+
+[images/mvc4.jpg] very general MVC diagram.
+
+  MVC proposes three types of objects in an application, the Model, Views and Controllers. These objects are separated by abstract 
+  boundaries which makes MVC more of a paradigm rather than an actual pattern since the communication with each other 
+  across those boundaries is not further specified. How the objects inside MVC communicate differs not only by the type
+  of application you are describing (GUI, web) but also by which part of the application you are currently looking at (frontend, backend).
+  
+  However, at the heart of every MVC architecture lies <<Separated Presentation>> which declares a clear division between
+  domain objects that model our perception of the real world (model objects), and presentation objects that are the GUI 
+  elements we see on the screen (view objects).
+  
+  
+  MVC defines the <<separation>> of these three types of objects:
+  
+    [[1]] <<Model>> objects hold data and define the logic for manipulating that data. For example, a Student
+    object in the Basic sample application is a model object. It holds data describing facts about the object
+    like the first and last name of the student and has methods that can access and change this data (getters & setters).
+    Model objects are not directly displayed. They often are reusable, distributed, persistent and portable to a variety
+    of platforms.
+    
+    [[2]] <<View>> objects represent something visible in the user interface, for example a panel or button. In order
+    to display the data from the model objects you might want to create your own custom objects, like a graph for
+    example.
+    
+    [[3]] The <<Controller>> object acts as a Mediator between the Model and View objects. A Controller object 
+    communicates data back and forth between the Model objects and the View objects. For example a controller could
+    mediate the first name of a student from a model object to a visible text field in the User Interface.
+    A controller also performs all application specific tasks, such as processing user input or loading configuration
+    data.
+    There is usually one controller per application or window, in many applications the Controller is tightly coupled 
+    to the view. The Basic sample application shows this - every GUI class implements its own ActionListeners.
+    Since controllers are application specific they usually do not find any reuse in other applications.
+  
+  Designing your application strictly according to MVC is not always advisable. If you are designing a graphics
+  intensive program, like a game, you would probably couple the View and Model classes much more tightly than what
+  MVC suggests. As we can see from the Basic sample application, when programming a very simple application it is
+  common to combine the controller with the view classes.
+  
+  Also, the MVC paradigm is not necessarily specific to Object Oriented programming languages. For example, an application
+  written in PHP4 while not being Object-Oriented, can also follow the principles of the Model View Controller pattern using
+  templating systems or MVC frameworks designed for PHP.
+  
+
+* Applicability / Uses
+  
+  This pattern should be used:
+  
+  * almost in every application - of course depending on the application some classes might be coupled tighter
+  than others, however it is generally always a good idea to structure your application according to MVC.
+  
+* Related Patterns
+
+  The Model-View-Controller paradigm uses different patterns depending on what kind of application you are
+  designing. It is common to find things like Intercepting Filters, View Helpers, Composite Views, Front 
+  Controllers, Value Objects, Session facades, Business Delegates and Data Access Objects used by the MVC
+  architectural pattern, here are a few of the most heavily used ones:
+
+  * {{{observer.html} Observer}}: used by Model and View. When the information stored in the Model classes changes, the View classes
+  need to be notified and updated with the latest information. In order to retain loose coupling between these Model/View
+  and also due to the fact that there can be several Views instantiated, the Observer pattern is a perfect candidate to accomplish this.
+
+  * {{{strategy.html} Strategy}}: used by the Model. The Data Access Object pattern is a form of the strategy pattern it is used primarily 
+  by the Model to access different form of data-sources. For example a MySQL/Postgres Database and XML files stored on the filesystem.
+  
+  * Composite: used by the View. There can be several different views within a system designed according to MVC, in order
+  for these different implementations to be composed together and exchanged at run time, the composite pattern is used.
+
+* Structure - Model 1 (from Smalltalk - GUI Applications)
+
+  This diagram shows the proper MVC structure for a GUI application, for instance using Java Swing.
+
+[images/mvc3.jpg] very strict MVC separation for GUI
+
+* Structure - Model 2 (from Java - Web Applications)
+
+  In some applications (especially web-applications) the view is coupled tighter to the model. Just think about a web-app
+  designed with Java Server Pages where the view part of the application (the .jsp file) contains direct references
+  to member variables (called properties) of the model classes. The diagram below shows this type of design methodology:
+  
+[images/mvc5.jpg] MVC separation for web applications
+
+* References / More Info
+
+  Apple Xcode online help - MVC Paradigm, Cocoa Application Tutorial Using Objective-C
+  
+  {{{http://www.martinfowler.com/eaaDev/uiArchs.html} GUI Architectures - Martin Fowler}}
+  
+  {{{http://www.se.uni-hannover.de/documents/ws2004_seminar_software_entwurf/04_mvc.pdf} Seminar Software Entwurf - Leif Singer}}
+  
+  {{{http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch2.html} Designing Enterprise Applications
+with the J2EE Platform}}
+  
+  {{{http://www.fim.uni-linz.ac.at/Diplomarbeiten/Diplomarbeit_stoiber/Dietmar_Stoiber_-_Model-View-Controller_Paradigma.pdf} Diplomarbeit - Dietmar Stoiber}}
+  
+  {{{http://en.wikipedia.org/wiki/Model-view-controller} Model-view-controller - Wikipedia}}
+ 
+  {{{http://www.oracle.com/technology/sample_code/tutorials/vsm1.3/patterns/concepts.htm} Pattern Concepts - Oracle}}
+

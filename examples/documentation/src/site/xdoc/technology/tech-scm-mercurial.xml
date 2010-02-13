@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Technology: Sourcecode Management (SCM)</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+    <body>
+        <section name="Technology: Sourcecode Management (SCM)">
+            <subsection name="Sourcecode Management">
+
+        
+            </subsection>
+            
+            <subsection name="Centralised vs. Distributed SCM">
+            </subsection>
+            
+            
+            
+            <subsection name="References">
+          
+           </subsection>
+        </section>
+        <section name="Mercurial Distributed SCM">
+            <subsection name="Overview">
+            </subsection>
+            <subsection name="Getting Started">
+                Installation, Setup, Plugins (Eclipse), .hgrc, hg help System
+            </subsection>
+            <subsection name="Creating a New Project">
+            </subsection>
+            <subsection name="Cloning an Existing Project">
+            </subsection>
+            <subsection name="Making Changes">
+                Commit, Ingoing, Outgoing, Push
+            </subsection>
+            <subsection name="Status">
+                status, (g)log, parents
+            </subsection>
+            <subsection name="The Version History">
+                log, update, annotate, diff, revert, backout
+            </subsection>
+            <subsection name="Adding, (Re)moving and Ignoring Files">
+                Add, rm, mv, addremove, purge
+            </subsection>
+            <subsection name="Branches and Tags">
+                branch, branches, tag, tags
+            </subsection>
+            <subsection name="Merging and Rebasing">
+                merge, resolve, rebase
+            </subsection>
+            <subsection name="Patches">
+                export, import, diff
+            </subsection>
+            <subsection name="Collaboration Platforms">
+                Google Code, Bitbucket
+            </subsection>
+        </section>
+    </body>
+</document>

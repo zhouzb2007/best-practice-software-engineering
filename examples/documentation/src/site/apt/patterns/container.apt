@@ -1,0 +1,187 @@
+   ---
+   Container
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Container Pattern
+
+  A Container is an object created to hold other objects that are accessed, placed, and maintained 
+  with the class methods of the container - queues, sets, lists, vectors, and caches all fit this description. 
+  These objects - the <elements> of the container - are usually allowed to be of any class and may be
+  of the container class itself. Every Container should also have an associated Iterator type that can be used 
+  to iterate through the elements of the container.
+  
+  The term container in modern computer programming can actually refer to many things:
+  
+   * Java programmers tend to call these types of classes "collections" rather than "containers".
+     The Java Collections Framework provides implementations for many kinds of container classes,
+     a typical implementation of a collection class in Java would be 
+     {{{http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html} ArrayList}} or 
+     {{{http://java.sun.com/j2se/1.5.0/docs/api/java/util/Hashtable.html} Hashtable}}.
+  
+  *  Within the Spring Framework containers represent much more higher level concepts 
+     such as inversion of control (IoC). See {{{dependency_injection.html} dependency injection}} for a sample 
+     implementation of IoC.
+  
+  *  Enterprise beans are software components that run in a special environment called an EJB 
+     container. The container hosts and manages an enterprise bean in the same manner that the 
+     Java Web Server hosts a servlet or an HTML browser hosts a Java applet.
+  
+* Applicability / Uses
+  
+  Use a Container Pattern when:
+  
+  * you want to represent any group of objects as a single entity
+  
+  * you want to reuse the code to store different kinds of objects
+
+* Related Patterns
+
+  * {{{http://java.sun.com/j2se/1.5.0/docs/guide/collections/} Java Collections Framework}}
+  The Java collections framework is a unified architecture for representing collections.
+  
+  * {{{dependency_injection.html} Dependency Injection}} is a high level implementation of the inversion of 
+  control pattern which uses containers.
+
+* Structure
+
+  This class diagram shows a simple Container which implements only the add(E o) and iterator() methods.
+  To be really useful you would of course also implement methods like remove(E o), contains(E o), isEmpty(), 
+  size(), etc...
+
+[images/container.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  A Container Pattern should really make use of the Interface Pattern, in our short example
+  here we won't implement an interface because we want to concentrate on how a container works. 
+  Please note that if you need to create your own container, which is very rare anyway since the
+  Java Collections Framework is quite good, you should implement the Collection interface
+  (public class MyContainer\<E\> implements Collection\<E\>) in order to make your container compatible 
+  with the Java Collections Framework. 
+
++----
+public class MyContainer<E> {
+	protected class Node {
+		private E element;
+
+		Node next = null;
+		Node previous = null;
+
+		public Node(E element) {
+			this.element = element;
+		}
+	}
+
+	protected Node head = null;
+
+	protected Node tail = null;
+
+	public class NodeIterator implements Iterator<E> {
+		protected Node p = head;
+
+		public boolean hasNext() {
+			return p != null;
+		}
+
+		// returns the next element
+		public E next() {
+			if (p == null)
+				return null;
+			E element = p.element;
+			p = p.next;
+			return element;
+		}
+		
+		// removes the last element returned by the iterator
+		public void remove() {
+			Node n = p.previous;
+			p.previous.next = p.next;
+			p.next.previous = p.previous;
+		}
+	}
+
+	public void add(E o) {
+		if (head == null)
+			tail = head = new Node(o);
+		else
+			Node newnode = new Node(o);
+			newnode.previous = tail;
+			tail = tail.next = newnode;
+			
+			
+	}
+
+	public Iterator<E> iterator() {
+		return new NodeIterator();
+	}
+}
++----
+
+  Now lets take a look at how this container is used:
+
++----
+public static void main(String[] args) {
+		// Integer Container
+		MyContainer<Integer> int_cont = new MyContainer<Integer>();
+		int_cont.add(1);
+		int_cont.add(2);
+		int_cont.add(3);
+		Iterator<Integer> int_it = int_cont.iterator();
+		while (int_it.hasNext()) {
+			System.out.println("Integer Container: " + int_it.next());
+		}
+
+		// String Container
+		MyContainer<String> string_cont = new MyContainer<String>();
+		string_cont.add("one");
+		string_cont.add("two");
+		string_cont.add("three");
+		Iterator<String> string_it = string_cont.iterator();
+		while (string_it.hasNext()) {
+			System.out.println("String Container: " + string_it.next());
+		}
+
+		// Container Container
+		MyContainer<MyContainer<Integer>> cont_cont = 
+			new MyContainer<MyContainer<Integer>>();
+		cont_cont.add(int_cont);
+		// cont_cont.add(string_cont); This does not work -> MyContainer<Integer> !
+		Iterator<MyContainer<Integer>> cont_it = cont_cont.iterator();
+		while (cont_it.hasNext()) {
+			MyContainer<Integer> it = cont_it.next();
+			Iterator<Integer> it_it = it.iterator();
+			while (it_it.hasNext()) {
+				System.out
+					.println("Integer Container inside Container Container: "
+								+ it_it.next());
+			}
+		}
+}
++----
+
+* References / More Info
+
+  {{{http://www.theserverside.com/tt/articles/article.tss?l=SpringFramework} Introduction to the Spring Framework}}
+  
+  {{{http://java.sun.com/developer/onlineTraining/EJBIntro/EJBIntro.html#EJBContainer} Enterprise Java Beans Fundamentals}}
+
+  {{{http://java.sun.com/docs/books/tutorial/collections/index.html} SUN Java Tutorials - Collections Framework}}
+
+  {{{http://en.wikipedia.org/wiki/Container_pattern} Wikipedia - Container Pattern}}
+  
+  {{{http://www.complang.tuwien.ac.at/franz/objektorientiert.html#skriptum} OOP - Complang, Puntigam}}
+  
+  {{{http://www.xmlpatterns.com/ContainerElementMain.shtml} XML Design Pattern - Container Element}}
+  
+  {{{http://java.sun.com/j2se/1.5/pdf/generics-tutorial.pdf} SUN Microsystems - Generics in the Java Programming Language}}
+
+  {{{http://www.codersource.net/published/view/299/stl_container_class_introduction.aspx} STL Container Class Introduction}}
+
+  {{{http://www.camtp.uni-mb.si/books/Thinking-in-C++/Chapter04.html} Thinking in C++, 2nd ed., Volume 2, Bruce Eckel}}
+
+  {{{http://en.wikipedia.org/wiki/Inversion_of_Control} Wikipedia - Inversion of Control}}
+  
+  {{{http://en.wikipedia.org/wiki/Dependency_injection} Wikipedia - Dependency Injection}}

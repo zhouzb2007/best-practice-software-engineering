@@ -1,0 +1,124 @@
+   ---
+   Strategy
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Strategy Pattern
+
+  The strategy pattern embodies two core principles of object-oriented programming,
+  it encapsulates the concept that varies and lets programmers code to an interface,
+  not an implementation.
+  
+  Canonical view of the strategy pattern:
+
+[images/strategy_simple.jpg] canonical view of the strategy pattern.
+
+  The strategy pattern shows you how to implement different behaviors (algorithms) 
+  in a seperate class hierarchy with an interface at its root. The goal is to decouple 
+  the objects which use your encapsulated "strategies" (the context) and the strategies 
+  (algorithms) themselves so that they can vary independently.
+  
+  The strategy pattern is also known under the name "Policy".
+
+* Applicability / Uses
+  
+  Use the strategy pattern when:
+  
+  * many related classes (tightly coupled classes) differ in their behavior. Strategy
+  lets you "configure" a class with one of many behaviors.
+  
+  * you need different variants of an algorithm. For example, java swing uses the strategy
+  pattern to implement different styles of borders on JComponents. Since these strategy 
+  variants can also be implemented in a class hierarchy they become interchangeable.
+  
+  * you want to decouple complex, algorithm specific data structures from the clients which
+  use them. With the strategy pattern you can encapsulate complex data structures and avoid
+  exposing them to the rest of your program.
+
+
+* Related Patterns
+
+  * Flyweight: Strategy objects often make good flyweights
+
+* Structure
+
+  UML diagram of the sample code:
+
+[images/strategy_advanced.jpg] UML diagram of the code shown below.
+
+* Sample
+
+  To show you a real world example of the strategy pattern in action we will have a look at how
+  Java Swing uses the strategy pattern to draw borders around its components. Borders for Swing
+  components are drawn by the JComponent class with  a method called paintBorder(g: Graphics).
+  JComponent is the base class for all Swing components. Lets take a closer look at this method now:
+  
++----
+protected void paintBorder(Graphics g) {
+   Border border = getBorder();
+   if (border != null) {
+      border.paintBorder(this, g, 0, 0, getWidth(), getHeight());
+   }
+}
++----
+
+  Instead of implementing the paintBorder() method with one huge switch statement and directly
+  calling the methods which do the drawing, the Swing developers have decided to use the Strategy
+  pattern in combination with {{{delegation.html} Delegation}}. <<Here, the method which paints a components
+  border is provided by the border object.>>
+  
+  The Delegation pattern becomes obvious by the "this" reference passed to the paintBorder method of the
+  Border object. It is used by the Border object to retrieve information about its Component.
+
+  Now lets have a look at the setter and getter methods of the JComponent class:
+  
++----
+...
+private Border border;
+...
+public void setBorder(Border border) {
+   Border oldBorder = this.border;
+   this.border = border;
+   firePropertyChange("border", oldBorder, border);
+   if (border != oldBorder) {
+      if (border == null || oldBorder == null || !(border.getBorderInsets(this).
+                                    equals(oldBorder.getBorderInsets(this)))) {
+         revalidate();
+      }       
+      repaint();
+   }
+}
+...
+public Border getBorder() {
+   return border;
+}
++----
+
+  The JComponent maintains a private reference to a Border object and provides setters and getters
+  to access it. Since Border is an interface and not a class, the Swing component can have a reference to
+  any object which implements the Border interface. <<That is what it means to program to an interface,
+  not an implementation>>
+  
+  Now that you have seen how JComponent and Borders are implemented in Java you can think about how to
+  extend this system, for example by creating your own Border type. This is basically accomplished by
+  creating a class which extends the AbstractBorder class and using it in your code since all JComponents
+  already implement the Strategy pattern. In this case you are extending the existing Strategy framework,
+  however creating your own Strategy framework is not to hard either, just follow this simple recipe:
+  
+  [[1]] Implement a Strategy interface for your strategy objects.
+  
+  [[2]] Implement ConcreteStrategy classes that implement the Strategy interface, as appropriate.
+  
+  [[3]] In your Context class, maintain a private reference to a Strategy object.
+  
+  [[4]] In your Context class, implement public setter and getter methods for the Strategy object.
+
+
+* References / More Info
+
+  {{{http://today.java.net/pub/a/today/2004/10/29/patterns.html} Java World - Principles, Patterns, and Practices: The Strategy, Template Method, and Bridge Patterns - Robert C. Martin}}
+  
+  {{{http://www.javaworld.com/javaworld/jw-04-2002/jw-0426-designpatterns.html} Java World - Strategy for success - David Geary}}
+

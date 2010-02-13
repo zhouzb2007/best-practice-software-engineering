@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <!-- Hessian exporter configurations. It is a slim binary HTTP remoting protocol -->
+    <!-- DAOs, which are already configured with the -->
+	<!--<bean name="/StudentService-hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service"><ref bean="studentService"/></property>
+		<property name="serviceInterface">
+			<value>at.ac.tuwien.ifs.qse.se1.services.IStudentService</value>
+		</property>
+	</bean>-->
+    <!-- Security -->
+<!--	<bean name="/RemoteAuthenticationManager-hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service"><ref bean="remoteAuthenticationManager"/></property>
+		<property name="serviceInterface">
+			<value>org.acegisecurity.providers.rcp.RemoteAuthenticationManager</value>
+		</property>
+	</bean>
+-->
+</beans>

@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>at.ac.tuwien.ifs.qse</groupId>
+    <artifactId>se1-site</artifactId>
+    <packaging>jar</packaging>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>Site SE1 sample</name>
+    <description>Description of the whole prototype</description>
+    <url>http://maven.apache.org</url>
+    
+    <developers>
+        <developer>
+            <id>axschatten</id>
+            <name>Alexander Schatten</name>
+            <url>http://www.schatten.info</url>
+            <email/>
+            <roles>
+                <role>Project leader, Java Developer, Testing, Documentation</role>
+            </roles>
+            <timezone/>
+        </developer>
+        <developer>
+            <id>msdemolsky</id>
+            <name>Markus Demolsky</name>
+            <email/>
+            <roles>
+                <role>Project leader</role>
+                <role>Main Java developer</role>
+            </roles>
+            <timezone/>
+        </developer>
+        <developer>
+            <id>erikgf</id>
+            <name>Erik Gostischa-Franta</name>
+            <email/>
+            <roles>
+                <role>Java developer, Documentation, Testing</role>
+            </roles>
+            <timezone/>
+        </developer>
+        <developer>
+            <id>kristofm</id>
+            <name>Kristof Meixner</name>
+            <email/>
+            <roles>
+                <role>Java developer, Documentation, Testing</role>
+            </roles>
+            <timezone/>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Stefan Biffl</name>
+            <email></email>
+            <url>http://qse.ifs.tuwien.ac.at/~biffl/</url>
+            <timezone>+1</timezone>
+            <organization>Vienna University of Technology</organization>
+            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
+            <roles>
+                <role>Tester</role>
+            </roles>
+        </contributor>
+    </contributors>
+
+
+
+    <distributionManagement>
+        <site>
+            <id>website</id>
+            <url>final2</url>
+        </site>
+    </distributionManagement>
+</project>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>Technology: Maven</title>
+	</properties>
+	<body>
+		<section name="Technology: Maven Site">
+					
+			<subsection name="Creating the Site structure">
+				<p>This section shows how to create and configure the documentation for a project with Maven Site.</p><br />
+				<p>Open a console windows and go to the parent directory of the project created before. Type and run the following (Notice that the values for <code>groupId</code> and <code>artifactId</code> are the same as before):</p>
+				<source>
+mvn archetype:create 
+-DarchetypeGroupId=org.apache.maven.archetypes 
+-DarchetypeArtifactId=maven-archetype-site 
+-DgroupId=com.mycompany.app 
+-DartifactId=my-app				
+				</source>
+				<p>The command will change the directory structure of your project to the following:</p>
+				<source>
+my-app
+|- src
+|  |- main
+|  |  `- java
+|  |     `- com
+|  |        `- mycompany
+|  |           `- app
+|  |              `- App.java
+|  |- site
+|  |  |- apt
+|  |  |  |- format.apt
+|  |  |  `- index.apt
+|  |  |- fml
+|  |  |  `- faq.fml
+|  |  |- fr
+|  |  |  `- ...
+|  |  |- xdoc
+|  |  |  `- xdoc.xml
+|  |  |- site.xml
+|  |  `- site_fr.xml
+|  `- test
+|     `- java
+|        `- com
+|           `- mycompany
+|              `- app
+|                 `- AppTest.java
+`- pom.xml				
+				</source>
+				<ul>
+					<li>The directory <code>fr</code> and file <code>site_fr.xml</code> are for doumentation in French and can be deleted, if you don't want to document in French.</li>
+					<li>The other directories and files are used for documentation with different file formats and syntax.
+						<ul>
+							<li><code>apt</code> is a Wiki like format that should mainly be used for documentation.</li>
+							<li><code>fml</code> is a format to structure FAQs.</li>
+							<li><code>xdoc</code> is a XML like format that is widely replaced by <code>apt</code></li>
+						</ul>
+					</li>
+					<li>As mentioned before external files can also be used within the documentation. Therefore you have to create a new folder <code>resources</code> in the site directory. The <a href="../technology/tutorial.apt">example</a> shows an <code>apt</code> file with references to some resources.</li>
+				</ul>
+			</subsection>
+			<subsection name="Configuring the menu of the documentation">
+				<p>To configure the structure of the menu the file <code>site.xml</code> from the site directory must be edited. The structure of the menu from the basic example could be used as a template. Generally the structure of the menu looks like this:</p>
+				<source>
+&lt;menu name="Hierarchy 1"&gt;
+    &lt;item name="Hierarchy 2" href="test.html"  /&gt;
+    &lt;item name="Hierarchy 2" href="team-list.html"&gt;
+	  &lt;item name="Hierarchy 3" href="test.html" /&gt;
+    &lt;/item&gt;
+&lt;/menu&gt;				
+				</source>
+				<ul>
+					<li>Automatically generated reports can be included with the entry <code>&lt;menu ref="reports" /&gt;</code>.</li>
+					<li>References to parent or child projects (that must be defined in the POM) can be made with <code>&lt;menu ref="parent" /&gt;</code> or <code>&lt;menu ref="modules" /&gt;</code>.</li>
+				</ul>
+			</subsection>
+			
+			<subsection name="Reporting with Maven Site">
+				<p>Maven can use additional plugins for a clear and helpful documentation of code and project specific information. Some very useful plugins are presented here.</p>
+				<h4>Javadoc</h4>
+				<p>The Javadoc plugin searches for Javadoc comments within the code of the project and generates the corresponding javadocs. Information can be found <a href="http://maven.apache.org/plugins/maven-javadoc-plugin/">here</a>.</p>
+				<h4>Surefire Reports</h4>
+				<p>When using the Surefire plugin all available JUnit tests within the project are executed and then combined to a report that shows errors and the particular reason. By this the responsible developers can get an error overview without even touching an IDE. For further information be refered to the following <a href="http://maven.apache.org/plugins/maven-surefire-report-plugin/">site.</a></p>
+				<h4>JXR plugin</h4>
+				<p>The JXR plugin links a source code reference of the classes to the documentation which can be used very quickly to find important passages of program code. More information <a href="http://maven.apache.org/plugins/maven-jxr-plugin/">here</a>.</p>
+			</subsection>
+			
+			<subsection name="Building the site">
+				<p>To build the Maven project site (the one you are just looking at right now), use:</p>
+				<source>mvn site</source>
+				<p>This creates a directory <code>target\site</code> where all html files can be found that represent the documentation. If the project got some further modules that should also be included into the documentation, use:</p>
+				<source>mvn site:stage -DstagingDirectory=path/to/directory/of/choice</source>
+			</subsection>
+			
+			<subsection name="Reference">
+				<ul>
+					<li>To get started, you should refer to the <a href="http://maven.apache.org/guides/getting-started/index.html">Getting started with Maven 2 guide</a>.</li>
+					<li>Further configuration of Maven: <a href="http://maven.apache.org/guides/mini/guide-configuring-maven.html">Maven configuration guide</a></li>
+					<li>The book <em>Better Builds with Maven</em> can be downloaded for free from <a href="http://www.mergere.com/better-build-maven/">http://www.mergere.com/better-build-maven/</a>.</li>
+					<li>The reference to the Project Object Model is available here: <a href="http://maven.apache.org/ref/current/maven-model/maven.html">http://maven.apache.org/ref/current/maven-model/maven.html</a>.</li>
+					<li><a name="repo"></a>A website that can be searched for external libraries and their corresponding POM entries: <a href="http://www.mvnrepository.com/">http://www.mvnrepository.com</a></li>
+					<li>Useful plugins for Maven projects: <a href="http://maven.apache.org/plugins/index.html">Maven plugin site</a></li>
+				</ul>
+			</subsection>
+		</section>
+	</body>
+</document>
