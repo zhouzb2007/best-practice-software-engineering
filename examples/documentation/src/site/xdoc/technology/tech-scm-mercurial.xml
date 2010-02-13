@@ -8,40 +8,534 @@
     <body>
         <section name="Technology: Sourcecode Management (SCM)">
             <subsection name="Sourcecode Management">
-
-        
+                <p>Sourcecode and other resources like icons, configuration files or documentation are the core assets of a software project. Hence careful management of these resources is an important issue, particularly in team collaboration. The following aspects have to be taken into consideration:</p>
+                
+                <ul>
+                    <li>Sourcecode should be versioned, to be able to undo changes and refer back to older version of the software</li>
+                    <li>Often older versions of a Software have to be maintained allthough newer version are already available (e.g. to patch security issues: Version 1, Version 2, Version 1.1, 1.2, 2.1, 2.2 and so on). </li>
+                    <li>Team-collaboration has to be considered: sharing of code between developers has to be transparent, reliable and traceable.</li>
+                    <li>Versions and other important milestones in the project should be marked in the version history to be able to go back to a specific version in the history.</li>
+                    <li>Changes in the sourcecode should be communicated and annotated to be transparent for the whole team</li>
+                </ul> 
+                <p>Sourcecodemanagement (SCM) systems are designed to support the developers with these issues and thus are part of every software project; and are even recommended for tiny one-person projects.</p>
             </subsection>
             
             <subsection name="Centralised vs. Distributed SCM">
-            </subsection>
-            
-            
+                <p>Two different approaches to SCM can be distinguished: (1) centralised and (2) de-centralised systems:</p>
+                <p>Centralised systems like subversion work server based. A central server is responsible to keep the version and metadata for a project. On the client side, working copies can be pulled from the server. Changes on the clients are committed back to the server.</p>
+                <p>Distributed systems are very lightweight systems and do not rely on a central repository or server (allthough they sometimes use central repositories "by definition"). Every developer has a complete repository (including the whole history and metadata) on his machine. Distributed SCM systems allow a variety of collaboration patterns. Most new projects use distributed SCM systems. Some concrete advantages over centralised systems are:</p>
+                <ul>
+                    <li>No central repository (and no server) required; each client has the full history of the project.</li>
+                    <li>Offline work is better supported. </li>
+                    <li>Performance on repository interaction is usually much better </li>
+                    <li>A broad variety of collaboration patterns are supported (see also below)</li>
+                    <li>A repository can be easily cloned (with one command); this way, "experiments" on the sourcecode or repository can be isolated from other developers; in case of problems, the test-repository can be deleted; if the "experiment" was successful, the changes can be pushed to other repositories.</li>
+                    <li>Creating repositories is very simple (usually only one command is necessary). Hence also small projects on one maching can benefit from SCM.</li>
+                    <li>Merging is very well supported and usually more straightforward than with centralised systems.</li>
+                </ul>
+                <p>If multiple developers are working in the same project, conflicts are possible, e.g.: two or more people changing data in the same file. To handle conflicts two approaches are common: (1) Locking and (2) Merging. Locking means, that resources (e.g. files) have to be checked out from the repository and locked before they can be changed. Other developers cannot modify these files when  locked. This approach can be useful for binary resources, with text-based files and particularly with sourcecode locking is not a very efficient collaboration strategy. Merging on the other hand allowes also conflicting changes but supports the developers in resolving (merging) the conflicts on commit. Hence in SCM systems designed for sourcecode management, merging is the common practice.</p>
+                <p>Distributed SCM systems however, can by nature not support locking mechanism, as they do not use central server instances.</p>
+            </subsection>      
             
             <subsection name="References">
-          
+                <ul>
+                    <li><a href="http://mercurial.selenic.com/">Mercurial</a>, <a href="http://git-scm.com/">GIT</a> and <a href="http://bazaar.canonical.com/en/">Bazaar</a> are very popular (Open Source) distributed DSCMs.</li>
+                    <li><a href="http://subversion.tigris.org/">Subversion</a> is one of the leading centralised DSCM systems (Open Source).</li>
+                </ul>
            </subsection>
         </section>
+        
+        
         <section name="Mercurial Distributed SCM">
             <subsection name="Overview">
+                <p>In this document a brief introduction to one of the leading distributed SCM systems, Mercurial, is given. Other DSCMs behave very similarly and the general concepts described here are the same in systems like GIT or Bazaar. Mercurial was selected as it is very easy to learn and understand, yet very powerful for projects and collaborations. Binary installers are available for Unix-like systems, OS X and Windows.</p>
+                <p>In the following short introduction to Mercurial Unix Bash-Script syntac is used. The Mercurial commands are identical in the Windows command line though. The general idea should be clear also for non Unix systems:</p>
+<source>
+1: $ hg status
+2: ? a.txt
+</source>
+                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text.</p>
+                <p>The <code>echo "text" >> filename</code> Unix command is used to add text to files. Of course any visual editor can be used instead. So the previous <code>echo</code> command can be replaced with (1) Open a text editor (2) write "text" (3) save the text file under the name "filename" The <code>echo</code> command is used to provide complete working examples.</p>
+            </subsection>
+            <subsection name="How to Read this Tutorial">
+                <p>For a basic understanding of distributed SCM and Mercurial (e.g. for individual use) read the sections:</p>
+                <ul>
+                    <li>Getting Started</li>
+                    <li>Creating a new Project</li>
+                    <li>Cloning an Existing Project</li>
+                    <li>Making Changes</li>
+                    <li>Status of the Repository</li>
+                    <li>Navigating in the Version History</li>
+                    <li>Adding, (Re)moving and Ignoring Files</li>
+                </ul>
+                <p>More advanced functionality is described in the following sections (this will be needed particularly as soon as team collaboration is needed):</p>
+                <ul>
+                    <li>Sharing Changes</li>
+                    <li>The Version History: Working with Revisions</li>
+                    <li>Branches and Tags</li>
+                    <li>Merging and Rebasing</li>
+                </ul>
+                <p>Finally a short overview on "modern" collaboration platforms that support DSCM is given in the final section and a short overview on helpful tools is given.</p>
             </subsection>
             <subsection name="Getting Started">
-                Installation, Setup, Plugins (Eclipse), .hgrc, hg help System
+                <p>For installation instructions follow the documentation on the <a href="http://mercurial.selenic.com/">Mercurial website</a>. Plugins for Eclipse and other IDEs are available.</p>
+                <p>For the initial setup it is recommended to create a <code>.hgrc</code> configuration file. On Unix-like Systems and Mac OS X this file should be created with a text-editor in the user root directory. For details check the <a href="http://www.selenic.com/mercurial/hgrc.5.html">wiki-page</a>. For a start, the initial <code>.hgrc</code> file could look like this:</p>
+<source>
+[ui]
+username = Firstname Lastname  &lt;firstname.lastname@company.com&gt;
+[extensions]
+hgext.graphlog = 
+hgext.purge = 
+hgext.rebase = 
+</source>
+                <p>It is very important to set at least username and email address, as these settings are used to associate changesets to particular users.</p> 
+                <p>Mercurial comes with a set of basic functions. A large number of additional <a href="http://mercurial.selenic.com/wiki/UsingExtensions">extensions</a> is available, a lot are already part of the distribution. These extensions are not activated by default to not confuse the user with a large number of commands that are most likely not always needed. In this config file three extensions are activated: <code>graphlog</code>, <code>purge</code> and <code>rebase</code>.</p>
+                <p>Mercurial offers a easy to understand online help system: <code>hg help</code> lists all known commands; <code>hg help command</code> shows the detailed help of <i>command</i></p>
             </subsection>
             <subsection name="Creating a New Project">
+<source>
+$ mkdir hgexample
+$ cd hgdoc
+$ hg init
+</source>
+                <p>First a new directory <code>hgexample</code> is created, then the directory is changed and <code>hg init</code> prepares this directory and all subdirectories to be from now on under Mercurial version control. That's all that is required to create a new repository. The <code>init</code> command can also be used in a directory that already contains files.</p>
+<source>
+$ hg status
+</source>
+                <p>The <code>status</code> command gives an overview on the current status of the repository (new files, changed files, ...). In this newly created repo there is nothing to report (yet).</p>
             </subsection>
             <subsection name="Cloning an Existing Project">
+                <p>If a Mercurial project exists already, either on the same computer (local) or on a server, the <code>clone</code> command can be used to create a local clone of the other repository:</p>
+<source>
+$ hg clone repo clone_repo
+</source>
+            <p>This command assumes that the directory <code>repo</code> contains a Mercurial repository and creates a clone of this repository in the <code>clone_repo</code> directory.</p>
+<source>
+$ hg clone ssh://username@server.com//home/project/repo project_clone
+</source>
+            <p>This version of the clone command connects via ssh to the <code>server.com</code> and searches for a Mercurial repository in <code>/home/project/repo</code> (the double // in the url is correct!). This repository is then cloned locally in a directory named <code>project_clone</code></p>
+            
+            <p>It is important to understand, that the clone of a repository is not just a working copy but contains all information including the full version history from the source repository. The source and the cloned repository hence can be seen as being identical.</p>
+
             </subsection>
             <subsection name="Making Changes">
-                Commit, Ingoing, Outgoing, Push
+                <p>In the following example a Java class is created, the new file is added to revision control and a change is committed:</p>
+<source>
+1: $ echo "class Test { public static void main (String[] args) { System.out.println(\"Hello World\");}}" > Test.java 
+2: $ hg status
+3: ? Test.java
+4: $ hg add Test.java
+5: $ hg status
+6: A Test.java
+7: hg commit -m "Created initial Text class with 'Hello World' statement."
+8: hg glog
+9: @  changeset:   0:684afa0debd6
+      tag:         tip
+      user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+      date:        Fri Jan 29 17:31:04 2010 +0100
+      summary:     Created initial Text class with 'Hello World' statement.
+</source>
+                <ul>
+                    <li>In line 1 a file with the name <code>Test.java</code> is created. This file contains a simple Java class that prints out "Hello World"</li>
+                    <li>The command in line 2 checks the status of the repository, line 3 indicates (?) that there is a file that is not yet under version control.</li>
+                    <li>The <code>add</code> command tells Mercurial to schedule this file for version control. If no file name is given, <i>all</i> files that are not yet under version control are added to the repository. This command prepares files for version control, but does not actually create a new version. This is done in line 7</li>
+                    <li>The <code>status</code> command in line 5 now indicates that <code>Test.java</code> was added to the version control but was not yet committed. </li>
+                    <li>Line 7 actually tells Mercurial to create a new version. A new version is created containing all changes to files that were already under version control since the last commit and all newly added file(s).</li>
+                    <li>The <code>glog</code> command lists all versions (= changesets) in the repository.</li>
+                    <li>Line 9 and following display the first changeset in the repository.</li>
+                </ul>
+                
+                <p>The <code>user</code>, <code>date</code> and <code>summary</code> fields should be clear. The changeset version is a little bit more tricky: As Mercurial is a distributed version control system, there is not one central server instance that can provide unique increasing version numbers. Hence Mercurial generates  changeset ids that are unique ("684afa0debd6" in the example above) even over multiple users in cloned repositories. The counter ("0") is only a convenience counter that helps navigation within one repository and must not be used to identify changesets between clones of repositories.</p>
+                            </subsection>
+            <subsection name="Status of the Repository">
+                <p>To get an idea about the status the repository or the working copy is in, three commands are important to understand:</p>
+                <ul>
+                    <li><b><code>hg status</code>:</b> shows the status of files in the working directory: e.g. files that are not under revision control (<code>?</code>), <i>changed</i> (<code>M</code>), <i>deleted</i> files (<code>R</code>)...</li>
+                    <li><b><code>hg (g)log</code>:</b> The <code>log</code> command shows the revision history of the repository. The <code>glog</code> command also displays a graphical outline of the history.</li>
+                    <li><b><code>hg parent</code>:</b> the <code>parent</code> command is helpful to show the parent revision of the current working copy. The <code>hg update</code> command can set the version of the working copy on an arbitrary version. <code>hg pull</code> can pull new changesets into the repository. <code>parent</code> shows which version actually is used in the working copy. In the <code>glog</code> command the parent is indicated with the <code>@</code> symbol.</li>
+                </ul>
             </subsection>
-            <subsection name="Status">
-                status, (g)log, parents
+            <subsection name="Navigating in the Version History">
+                <p>A SCM system keeps track of changes in a project and also allows to restore arbitrary versions from the project history. In Mercurial the <code>hg update</code> command is used to "navigate" in the version history. <code>hg update</code> without further parameter sets the working copy to the most recent version ("Tip") of the current branch. <code>hg update --rev revision</code> sets the working copy to an arbitrary revision. In the following example the Java class from the example above will be modified and the <code>update</code> command is used to navigate in the history:</p>
+<source>
+ 1: $ echo "// Todo: add more functionality">> Test.java
+ 2: $ hg status
+ 3: M Test.java
+ 4: $ hg ci -m "Added todo to Test.java"
+ 5: $ hg glog
+ 6: @  changeset:   1:ce41ef368b17
+    |  tag:         tip
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 20:21:14 2010 +0100
+    |  summary:     Added todo to Test.java
+    |
+    o  changeset:   0:684afa0debd6
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Fri Jan 29 17:31:04 2010 +0100
+       summary:     Created initial Text class with 'Hello World' statement.
+ 7: $ hg parent
+ 8: changeset:   1:ce41ef368b17
+    tag:         tip
+    user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    date:        Sun Feb 07 20:21:14 2010 +0100
+    summary:     Added todo to Test.java
+ 9: $ hg update 0
+10: 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+11: $ cat Test.java
+12: class Test { public static void main (String[] args) { System.out.println("Hello World");}}
+13: $ hg parent
+14: changeset:   0:684afa0debd6
+    user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    date:        Fri Jan 29 17:31:04 2010 +0100
+    summary:     Created initial Text class with 'Hello World' statement.
+15: $ hg update     
+16: 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+17: $ cat Test.java
+18: class Test { public static void main (String[] args) { System.out.println("Hello World");}}
+    // Todo: add more functionality
+19: $ hg parent
+20: changeset:   1:ce41ef368b17
+    tag:         tip
+    user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    date:        Sun Feb 07 20:21:14 2010 +0100
+    summary:     Added todo to Test.java
+</source>
+            <ul>
+                <li>Line 1-4: Add new line to file and commit change.</li>
+                <li>Line 5-6: Show repository history</li>
+                <li>Line 7-8: <code>parent</code> command indicates that the working copy is representing the "Tip", i.e. the most recent revision. The "<code>@</code>" sign in the glog history in line 6 also shows the parent.</li>
+                <li>Line 9: The working copy is set to revision 0, line 10 shows that one file was changed, lines 11-14 confirm that the Test.java file in the working directory is set back to revision 0.</li>
+                <li>Line 15-20: The <code>update</code> command is used (without parameters) to set the working copy back to the most recent version (Tip) of the repository.</li>
+            </ul>   
             </subsection>
-            <subsection name="The Version History">
-                log, update, annotate, diff, revert, backout
-            </subsection>
+
             <subsection name="Adding, (Re)moving and Ignoring Files">
-                Add, rm, mv, addremove, purge
+                <p>The <b><code>hg add</code></b> command was already explained above: it puts files under revision control and with the next <code>commit</code> these files are added to the repository. The "opposite" command is occasionally needed: <b><code>hg forget</code></b> removes files from the repository/version control, but does <i>not</i> delete the file from the working copy. <code>forget</code> also does not modify the history of the repository.</p>
+                <p>Additionally Mercurial offers commands known from the Unix shell to remove files, and move files and directories: <b><code>hg rm</code></b> removes files from the working copy <i>and</i> from the repository after the next commit.</p>
+                <p><b>Moving files</b> in the working copy with non-VCS commands like using the Mac Finder or Windows Explorer is usually not a good idea. For many VCS systems this looks like the old file was deleted and a new file was added on a different location. The consequence is, that the change history in the file is lost or only difficult to reconstruct. Hence it is always a good idea to use the commands the SCM system provides to move files and directories; Mercurial offers: <b><code>hg mv</code></b>.</p>
+                <p>Mercurial offers a second command: <b><code>addremove</code></b>: This command can be used to add all new files under revision control and remove all missing (i.e. deleted or moved) files from revision control. Particularly the <code>--similarity</code> switch can be very helpful: Assume some files or directories were moved with non-Mercurial commands, e.g. with the Windows Explorer. Now, on executing the <code>hg addremove --similarity 100</code>, Mercurial checks all files that are deleted and looks for newly added files that are 100% similar, i.e. identical. If such files are found, Mercurial detects that they were actually moved. If the percentage value is set lower, also minor changes in the files are ignored. This command can be very helpful to "reconstruct" moves.</p>
+                <p>Finally, <b>ignoring files</b> is a very important feature. <b>Generated files</b> like <code>.class</code> files or <code>target</code> directories in Maven projects, or generated html-reports <b>should never be put under revision control</b>. First, they are redundant, secondly they clutter the version history! Every time a developer rebuilds a project potentially hundreds of files (all generated during the build) are "new" or "changed". If these files are under revision control, the version history gets messed up. Consider the following situation following the previous example:</p>
+                
+<source>
+ 1: $ ls
+ 2: Test.java
+ 3: $ hg status
+ 4: 
+ 5: $ javac Test.java
+ 6: $ ls
+ 7: Test.class  Test.java
+ 8: $ hg status
+ 9: ? Test.class
+10: $ echo "syntax: glob" >> .hgignore
+11: $ echo "*.class" >> .hgignore
+12: $ cat .hgignore 
+13: syntax: glob
+    *.class
+14: $ hg status
+15: ? .hgignore
+16: $ hg add
+17: adding .hgignore
+18: $ hg commit -m "Created .hgignore and added *.class"
+19: $ hg status
+20:
+</source>
+                <ul>
+                    <li>Lines 1-4 show that <code>Test.java</code> is under revision control and all changes are committed, hence the status command shows no result. <code>Test.java</code> is also the only file in this directory.</li>
+                    <li>In line 5 <code>Test.java</code> is compiled using <code>javac</code>, the result is a <code>Test.class</code> file.</li>
+                    <li>Lines 6-9 indicate that a new file, <code>Test.class</code> was generated and Mercurial shows, that this file is not under revision control. Now, generated files should never be put under revision control hence:</li>
+                    <li>Lines 10-13: Each repository usually has one <code>.hgignore</code> file in the root of the repository. All files (or files that follow patterns like <code>*.class</code> in this example) are ignored by Mercurial.</li>
+                    <li>Lines 14-15: Mercurial already ignores the <code>Test.class</code> file, but indicates, that the <code>.hgignore</code> file is not yet under revision control.</li>
+                    <li>In lines 16-18 this <code>.hgignore</code> file itself is put under revision control.</li>
+                    <li>The <code>status</code> command in line 19 now shows no result, i.e. the <code>Test.class</code> file and all other <code>.class</code> files will be ignored from now on.</li>
+                </ul>
+                
+                <p>Usually all repositories have a <code>.hgignore</code> file; all files to be ignored or patterns of files are put one file/pattern pre line.</p>
+            </subsection>
+
+
+            <subsection name="Sharing Changes">
+                <p>In most projects many developers are collaborating. Distributed SCMs allow a broad variety of collaboration patterns. In this short tutorial only two common collaboration patterns are outlined: </p>
+                <ol>
+                    <li>Collaboration using one central repository on a server (company server, <a href="http://code.google.com">Google Code</a>, <a href="http://www.bitbucket.com">Bitbucket</a>, ... or the built-in Mercurial webserver).</li>
+                    <li>"Peer to peer" collaboration without a central server; changesets are exchanged via email.</li>
+                </ol>
+                <p><b>(1) Collaboration with a central repository:</b> The concept of cloning was already explained in a previous section. Cloned repositories share a common history. Changes on one of them can be exchanges using the <code>push</code> and <code>pull</code> command. A simple way to create a central company or workgroup repository is, to create a Mercurial repository on a Linux server where all developers have <b>ssh</b> access to this directory on the server. This central repository can be cloned using the clone commande as described above. For Open Source source projects also services like Google code or Sourceforge can be used. Commercial projects can use services like Bitbucket as central repository.</p>
+                <p>Developers now make changes (commits) to their local repositories. These changes can be "pushed" from the local repository to the server using the <b><code>hg push</code></b> command. A Mercurial repository "remembers" where it was cloned from, hence <code>push</code> without parameter pushe the changes to the parent repository.</p>
+                <p><b><code>hg pull</code></b> pulls new changesets from the parent (central) repository to the local repository. Warning: <code>pull</code> loads new changesets into the repository, but does not change the working directory, i.e. in most cases <code>hg update</code> should be done after the pull. Alternatively the command <b><code>hg pull -u</code></b> can be executed. Pull with this switch automatically updates to the Tip after loading the new changesets.</p>
+                <p><b><code>hg outgoing</code></b> and <b><code>hg incoming</code></b> are two very useful commands: <b><code>outgoing</code></b> checks which changeset <i>would be pushed to the server if push would be executed</i>, it shows new changesets in the local repository that are not yet pushed to the parent repository. <b><code>incoming</code></b> does the same trick with incoming changes: it shows the changesets that would be loaded when <code>pull</code> is executed. <code>incoming</code> and <code>outgoing</code> make no changes, neither on the local nor on the associated repository.</p>
+                <p>The <b><code>hg serve</code></b> command can be very useful in certain situations: it starts a small webserver at port 8000 and allows (a) to browse the repository with a web-browser and (b) for others to pull changes from this address. Attention though: this included simple server has no authorisation, i.e. everyone that has network access to the machine/port can access the project.</p>
+                
+                <p><b>(2) Peer to peer collaboration:</b> Distributed SCMs also allow easy collaboration without central repositories: The general idea is to share changesets that are available in the repository of one developer with others, e.g. via email:</p>
+                <ul>
+                    <li>The <code>hg export</code> command exports one changeset as text(file), also called a <i>patch</i>. This patch can be sent to other developers</li>
+                    <li>The <code>hg import</code> command imports a patch into the local repository.</li>
+                    <li>The <code>hg bundle</code> command is more elaborate, and allows to bundle a set of changesets into a compressed file. This file can be sent to other developers and imported to their repositories using the <code>hg pull</code> command.</li>
+                    <li>The before-mentioned <code>hg serve</code> command can be used for ad hoc collaboration.</li>
+                </ul>
+                <p>One recommendation: Patch imports should be always done in local clones. In case of a problem, the main repository is not affected. In case of success, the changes can be pushed to the own main repo. The following example outlines such a collaboration scenario:</p>
+                <p>Let's assume: developer A created a new project in his local repository RA; This repository initially contained 3 revisions. This repository was transfered via USB stick to developer B. Now: A makes three commits in RA and wants to share these with developer B:
+                </p>
+
+<source>
+Developer A:
+
+ 1: $ hg glog
+ 2: @  changeset:   5:75039d11a746
+    |  tag:         tip
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:15:15 2010 +0100
+    |  summary:     changed c
+    |
+    o  changeset:   4:1459c7e874c7
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:15:06 2010 +0100
+    |  summary:     changed b
+    |
+    o  changeset:   3:952599ea532b
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:58 2010 +0100
+    |  summary:     changed a
+    |
+    o  changeset:   2:a5f1a9f158bd
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:25 2010 +0100
+    |  summary:     added c
+    |
+    o  changeset:   1:28a2fd44926b
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:16 2010 +0100
+    |  summary:     added b
+    |
+    o  changeset:   0:65abfa371065
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Sun Feb 07 21:14:03 2010 +0100
+       summary:     added a
+ 3: $ hg bundle --base 2 changes.hg
+ 4: 3 changesets found
+ 5: (email changes.hg to developer B)
+
+Developer B (received bundle "changes.hg" via email):
+
+ 6: $ hg glog
+ 7: @  changeset:   2:a5f1a9f158bd
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:25 2010 +0100
+    |  summary:     added c
+    |
+    o  changeset:   1:28a2fd44926b
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Sun Feb 07 21:14:16 2010 +0100
+    |  summary:     added b
+    |
+    o  changeset:   0:65abfa371065
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Sun Feb 07 21:14:03 2010 +0100
+       summary:     added a
+ 8: $ hg pull changes.hg
+ 9: pulling from changes.hg
+    searching for changes
+    adding changesets
+    adding manifests
+    adding file changes
+    added 3 changesets with 3 changes to 3 files
+    (run 'hg update' to get a working copy)
+10: $ hg update
+11: $ hg glog
+12: @  changeset:   5:75039d11a746
+   |  tag:         tip
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:15:15 2010 +0100
+   |  summary:     changed c
+   |
+   o  changeset:   4:1459c7e874c7
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:15:06 2010 +0100
+   |  summary:     changed b
+   |
+   o  changeset:   3:952599ea532b
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:14:58 2010 +0100
+   |  summary:     changed a
+   |
+   o  changeset:   2:a5f1a9f158bd
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:14:25 2010 +0100
+   |  summary:     added c
+   |
+   o  changeset:   1:28a2fd44926b
+   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+   |  date:        Sun Feb 07 21:14:16 2010 +0100
+   |  summary:     added b
+   |
+   o  changeset:   0:65abfa371065
+      user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+      date:        Sun Feb 07 21:14:03 2010 +0100
+      summary:     added a
+</source>
+            <ul>
+                <li>Line 1-2: Developer A has 6 changeset in his repository; he knows, that developer B only has the first three revisions, revision 3-5 are new and should be shared</li>
+                <li>Line 3-5: Developer A create a bundle (file) that contains changesets 3-5 and sends this bundle (e.g. via email) to developer B.</li>
+                <li>Line 6-7: Developer B currently has only the first three revisions and receives the bundle via email</li>
+                <li>Line 8-12: Deverloper B pulls the changesets from the bundle to her repository.</li>
+            </ul>
+            
+            <p>Instead of the <code>bundle</code> command also <code>export</code> and <code>import</code> can be used. However to share multiple revisions bundle is much easier to use and more "resilient": <code>pull</code> only imports changesets fromt the bundle to the repository that are not yet in the repository.</p>
+            
+            </subsection>
+
+            <subsection name="The Version History: Working with Revisions">
+                <p>The <code>log</code> and <code>glog</code> as well as the <code>update</code> command were already outlined in the previous sections. But there is a set of other commands that are helpful in working with revisions:</p>
+                <p>The <b><code>hg annotate</code></b> command can be very helpful to assess changes in a file:</p>
+<source>
+1: $ hg annotate -u -n -dq Test.java 
+2:     Lisa 2 2010-02-09: class Test { 
+       Lisa 2 2010-02-09: 	public static void main (String[] args) { 
+  alexander 3 2010-02-09: 		System.out.println("Hello Java World");
+       Lisa 2 2010-02-09: 	}
+  alexander 3 2010-02-09: }
+  alexander 1 2010-02-07: // Todo: add more functionality
+</source>
+            <p>The <code>annotate</code> command in line 1 is executed on the <code>Test.java</code> file with some switches: <code>-u</code> to display the name of the user who changed a line, <code>-n</code> to display the short revision counter, <code>-dq</code> to print the date in short form. The result is the content of the <code>Test.java</code> file with annotations: <i>who</i> changed a line in which <i>revision</i> at what <i>date</i>.</p>
+                
+                <p>Another important command is <b><code>hg diff</code></b>: This command can be used to show differences of the project between revisions. For example:</p>
+<source>
+ 1: $ hg diff -r 2 -r 3
+ 2: diff -r 7eb91dedc66a -r 5ba8ca403e87 Test.java
+ 3: --- a/Test.java	Tue Feb 09 12:04:00 2010 +0100
+ 4: +++ b/Test.java	Tue Feb 09 12:04:55 2010 +0100
+ 5: @@ -1,5 +1,6 @@
+ 6: class Test { 
+ 7:    	public static void main (String[] args) { 
+ 8: -		System.out.println("Hello World");}
+ 9: +		System.out.println("Hello Java World");
+10:    	}
+11: +}
+12: // Todo: add more functionality
+</source>
+                <ul>
+                    <li>Line 1 executes the <code>diff</code> command and compares revision 2 with revision 3. The following lines are the output of the diff command.</li>
+                    <li>Line 2 shows the exact hexadecimal revision identifier and the file (<code>Test.java</code>) that has been changed.</li>
+                    <li>Line 3 - 5 provide more details on the change, e.g. the dates.</li>
+                    <li>Lines 6-12 show the changes in the file plus some additional unchanged lines as context around the changed lines</li>
+                    <li>Lines 6, 7, 10 and 12 were unchanged between these revisions</li>
+                    <li>Line 8 was replaced (-) with Line 9 (+)</li>
+                </ul>
+                <p>The <b><code>hg revert</code></b> command can be used to revert changes in the working copy to an earlier version from the version history. For example: Assume the file <code>Test.java</code> is edited but after saving the file we figure out, that we made a mistake and would like to revert the changes:</p>
+<source>
+ 1: $ cat Test.java
+ 2: class Test { 
+     	public static void main (String[] args) { 
+     		System.out.println("Hello Java World");
+     	}
+     }
+     // Todo: add more functionality
+ 3: $ echo "bad line" >> Test.java
+ 4: $ cat Test.java
+ 5: ...
+    }
+    // Todo: add more functionality
+    bad line
+ 6: $ hg status
+ 7: M Test.java
+ 8: hg revert Test.java
+ 9: $ ls
+10: Test.java  Test.java.orig
+11: rm Test.java.orig
+</source>
+                <p>First a "bad change" is made to <code>Test.java</code> in line 3. Line 4 and 5 show the added line to the file. This change is reverted by the command in line 8. The revert command (1) reverts the state of <code>Test.java</code> and (2) creates a new file <code>Test.java.orig</code> that contains the bad change, in case parts of the change should be kept. If this is not necessary,  <code>Test.java.orig</code> can be deleted and the "bad change" is reverted.</p>
+                <p>Finally, the <b><code>hg backout</code></b> command can be used to remove changesets from the history. However, the history is not rewritten. Mercurial tries to "undo" the given changeset and creates new commits with the reverted changes. Warning: The <code>backout</code> command can be tricky, particularly for beginners. It is highly recommended to make a clone of the repository before trying out this command. Also backing out changes involves branching and merging which will be explained in the next section. However, one backout example:</p>
+<source>
+ 1: $ hg init
+ 2: $ touch a.txt
+ 3: $ hg add a.txt
+ 4: adding a.txt
+ 5: $ hg commit -m "added a.txt"
+ 6: $ touch b.txt
+ 7: $ hg add b.txt
+ 8: adding b.txt
+ 9: $ hg commit -m "added b.txt"
+10: $ touch c.txt
+11: $ hg add c.txt
+12: adding c.txt
+13: $ hg commit -m "added c.txt"
+14: hg glog
+15: @  changeset:   2:74ffff5e37d6
+    |  tag:         tip
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Tue Feb 09 13:41:07 2010 +0100
+    |  summary:     added c.txt
+    |
+    o  changeset:   1:95ee193a510f
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Tue Feb 09 13:40:54 2010 +0100
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:39dcafad465b
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Tue Feb 09 13:40:40 2010 +0100
+       summary:     added a.txt
+16: $ hg backout 1 -m "Backing out Revision 95ee193a510f"
+17: removing b.txt
+    Backed out changeset 95ee193a510f
+    created new head
+    changeset 3:b735c1b1f4d4 backs out changeset 1:95ee193a510f
+    the backout changeset is a new head - do not forget to merge
+18: $ hg glog
+19: o  changeset:   3:b735c1b1f4d4
+    |  tag:         tip
+    |  parent:      1:95ee193a510f
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Tue Feb 09 13:41:22 2010 +0100
+    |  summary:     Backed out changeset 95ee193a510f
+    |
+    | @  changeset:   2:74ffff5e37d6
+    |/   user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |    date:        Tue Feb 09 13:41:07 2010 +0100
+    |    summary:     added c.txt
+    |
+    o  changeset:   1:95ee193a510f
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Tue Feb 09 13:40:54 2010 +0100
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:39dcafad465b
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Tue Feb 09 13:40:40 2010 +0100
+       summary:     added a.txt
+20: $ hg merge
+21: 0 files updated, 0 files merged, 1 files removed, 0 files unresolved
+    (branch merge, don't forget to commit)
+22: $ hg commit -m "Merged Backout"
+23: $ hg glog
+24: @    changeset:   4:f665faf1f560
+    |\   tag:         tip
+    | |  parent:      2:74ffff5e37d6
+    | |  parent:      3:b735c1b1f4d4
+    | |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    | |  date:        Tue Feb 09 13:42:04 2010 +0100
+    | |  summary:     Merged Backout
+    | |
+    | o  changeset:   3:b735c1b1f4d4
+    | |  parent:      1:95ee193a510f
+    | |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    | |  date:        Tue Feb 09 13:41:22 2010 +0100
+    | |  summary:     Backed out changeset 95ee193a510f
+    | |
+    o |  changeset:   2:74ffff5e37d6
+    |/   user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |    date:        Tue Feb 09 13:41:07 2010 +0100
+    |    summary:     added c.txt
+    |
+    o  changeset:   1:95ee193a510f
+    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+    |  date:        Tue Feb 09 13:40:54 2010 +0100
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:39dcafad465b
+       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
+       date:        Tue Feb 09 13:40:40 2010 +0100
+       summary:     added a.txt
+</source>
             </subsection>
             <subsection name="Branches and Tags">
                 branch, branches, tag, tags
@@ -49,8 +543,8 @@
             <subsection name="Merging and Rebasing">
                 merge, resolve, rebase
             </subsection>
-            <subsection name="Patches">
-                export, import, diff
+            <subsection name="Tools">
+                hg serve, Eclipse Plugins, TortoiseHG
             </subsection>
             <subsection name="Collaboration Platforms">
                 Google Code, Bitbucket
