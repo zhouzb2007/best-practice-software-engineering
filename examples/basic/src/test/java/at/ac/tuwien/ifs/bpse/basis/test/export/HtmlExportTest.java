@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +91,7 @@ public class HtmlExportTest extends TestCase {
 	 * 
 	 */
 	public void testWrite() throws IOException {
-		String filename_test = "test/export.html";
+		String filename_test = "target/test-classes/test/export.html";
 		
 		// export test data to html file
 		HtmlExport he = new HtmlExport();
@@ -101,14 +102,12 @@ public class HtmlExportTest extends TestCase {
 			e.printStackTrace();
 		}
 		// check if export is correct
-
-		InputStream ipCorrect = getClass().getResourceAsStream("/test/html-export.html");
-
-		String correct = readFile(new InputStreamReader(ipCorrect));
+		//InputStream ipCorrect = getClass().getResourceAsStream("basic/target/test-classes/test/html-export.html");
+		File newFile = new File("target/test-classes/test/html-export.html");
+		String correct = readFile(new FileReader(newFile));
+		//String correct = readFile(new InputStreamReader(ipCorrect));
 		String test = readFile(new FileReader(filename_test));
 		assertEquals(correct, test);
-		
-		ipCorrect.close();
 		
 		// delete file
 		new File(filename_test).delete();

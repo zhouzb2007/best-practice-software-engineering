@@ -78,7 +78,7 @@ public class ExportImportTest extends TestCase {
 	 * 
 	 */
 	public void testWriteRead() {
-		final String filename = "test/studenten";
+		final String filename = "target/test-classes/test/studenten";
 		Export export = (Export) xbf.getBean("Export");
 
 		// save and re-read document
