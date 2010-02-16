@@ -24,6 +24,7 @@ syntax: glob
 *.class
 
 # Maven targt directories
+examples/target
 examples/basic/target
 examples/core/target
 examples/medium/target

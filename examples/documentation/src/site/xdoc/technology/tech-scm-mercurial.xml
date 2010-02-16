@@ -150,7 +150,7 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
             <subsection name="Status of the Repository">
                 <p>To get an idea about the status the repository or the working copy is in, three commands are important to understand:</p>
                 <ul>
-                    <li><b><code>hg status</code>:</b> shows the status of files in the working directory: e.g. files that are not under revision control (<code>?</code>), <i>changed</i> (<code>M</code>), <i>deleted</i> files (<code>R</code>)...</li>
+                    <li><b><code>hg status</code>:</b> shows the status of files in the working directory: e.g. files that are not under revision control (<code>?</code>), <i>changed</i> (<code>M</code>), <i>deleted</i> files (<code>R</code>)... The <command>status</command> command can also list differences between revisions using e.g. <command>hg status --rev 14:18</command> in a compact way.</li>
                     <li><b><code>hg (g)log</code>:</b> The <code>log</code> command shows the revision history of the repository. The <code>glog</code> command also displays a graphical outline of the history.</li>
                     <li><b><code>hg parent</code>:</b> the <code>parent</code> command is helpful to show the parent revision of the current working copy. The <code>hg update</code> command can set the version of the working copy on an arbitrary version. <code>hg pull</code> can pull new changesets into the repository. <code>parent</code> shows which version actually is used in the working copy. In the <code>glog</code> command the parent is indicated with the <code>@</code> symbol.</li>
                 </ul>
