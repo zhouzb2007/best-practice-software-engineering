@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +115,10 @@ public class HtmlExportTest extends TestCase {
 			e.printStackTrace();
 		}
 		// check if export is correct
+		//InputStream ipCorrect = getClass().getResourceAsStream("basic/target/test-classes/test/html-export.html");
+		File newFile = new File("target/test-classes/test/html-export.html");
+		String correct = readFile(new FileReader(newFile));
+		//String correct = readFile(new InputStreamReader(ipCorrect));
 
 		InputStream ipCorrect = getClass().getResourceAsStream("/test/html-export.html");
 
