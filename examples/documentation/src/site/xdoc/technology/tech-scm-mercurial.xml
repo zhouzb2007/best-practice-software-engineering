@@ -49,12 +49,12 @@
         <section name="Mercurial Distributed SCM">
             <subsection name="Overview">
                 <p>In this document a brief introduction to one of the leading distributed SCM systems, Mercurial, is given. Other DSCMs behave very similarly and the general concepts described here are the same in systems like GIT or Bazaar. Mercurial was selected as it is very easy to learn and understand, yet very powerful for projects and collaborations. Binary installers are available for Unix-like systems, OS X and Windows.</p>
-                <p>In the following short introduction to Mercurial Unix Bash-Script syntac is used. The Mercurial commands are identical in the Windows command line though. The general idea should be clear also for non Unix systems:</p>
+                <p>In the following short introduction to Mercurial Unix Bash-Script syntax is used. The Mercurial commands are identical in the Windows command line though. The general idea should be clear also for non Unix systems:</p>
 <source>
 1: $ hg status
 2: ? a.txt
 </source>
-                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text.</p>
+                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text. Commands in Mercurial can be abbreviated as long as the abbreviation is clear, e.g. instead of <code>hg status</code> <code>hg st</code> can be used.</p>
                 <p>The <code>echo "text" >> filename</code> Unix command is used to add text to files. Of course any visual editor can be used instead. So the previous <code>echo</code> command can be replaced with (1) Open a text editor (2) write "text" (3) save the text file under the name "filename" The <code>echo</code> command is used to provide complete working examples.</p>
             </subsection>
             <subsection name="How to Read this Tutorial">
@@ -150,7 +150,7 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
             <subsection name="Status of the Repository">
                 <p>To get an idea about the status the repository or the working copy is in, three commands are important to understand:</p>
                 <ul>
-                    <li><b><code>hg status</code>:</b> shows the status of files in the working directory: e.g. files that are not under revision control (<code>?</code>), <i>changed</i> (<code>M</code>), <i>deleted</i> files (<code>R</code>)...</li>
+                    <li><b><code>hg status</code>:</b> shows the status of files in the working directory: e.g. files that are not under revision control (<code>?</code>), <i>changed</i> (<code>M</code>), <i>deleted</i> files (<code>R</code>)... The <command>status</command> command can also list differences between revisions using e.g. <command>hg status --rev 14:18</command> in a compact way.</li>
                     <li><b><code>hg (g)log</code>:</b> The <code>log</code> command shows the revision history of the repository. The <code>glog</code> command also displays a graphical outline of the history.</li>
                     <li><b><code>hg parent</code>:</b> the <code>parent</code> command is helpful to show the parent revision of the current working copy. The <code>hg update</code> command can set the version of the working copy on an arbitrary version. <code>hg pull</code> can pull new changesets into the repository. <code>parent</code> shows which version actually is used in the working copy. In the <code>glog</code> command the parent is indicated with the <code>@</code> symbol.</li>
                 </ul>
@@ -538,7 +538,124 @@ Developer B (received bundle "changes.hg" via email):
 </source>
             </subsection>
             <subsection name="Branches and Tags">
-                branch, branches, tag, tags
+                <p>A <b>Tag</b> is a useful to mark a certain version in the repository. It is a convenience function like a bookmark in the web browser. Technically spoken, tags are not necessary, as version IDs are unique identifiers of versions. One could simply make an external list with IDs that have a "special meaning".  Yet it is convenient to tag certain revisions with names e.g. "Version_1.2" using the <code>tag</code> command in line 1:</p> 
+<source>
+1: $ hg tag -r 143 Version_1.2
+2: $ hg tags
+3: tip             254:708b52826a7c
+   Version_1.2     143:d8eaf2c503d7
+   Version_1.0      98:073887fbd616
+4: $ hg update Version_1.2
+</source> 
+                <p>The <code>tags</code> command (line 2) lists all available tags and the tagname can be used in to set the working directory to the tagged version (line 3). With <code>hg tag --remove Version_1.2</code> a tag can be removed.</p>
+                <p><b>Branches</b> are parallel lines of development. Consider this example: Version 1 of a software was developed, then the development proceeds to version 2. Now a security issue is detected in version 1 which has to be maintained as customers still use it, hence a bugfix is written for version 1, creating version 1.1 leading to this situation:</p>
+<source>    
+    o  Version 2.0       
+    |       
+    |       
+    o       
+    |       
+    | o Version 1.1
+    | |    
+    o |  
+    | |    
+    |/   
+    |
+    o  Version 1
+    |
+    |
+    o 
+</source>
+                <p>Generally spoken, branching is a more complex topic compared to the rather easy usage patterns described before. There are several options in distributed SCMs to deal with branching. Steve Losh wrote a rather comprehensive and easy to understand article about <a href="http://stevelosh.com/blog/2009/08/a-guide-to-branching-in-mercurial/">branching in Mercurial and Git</a>.</p>
+                <p>There are two main options:</p>
+                <ol>
+                    <li>Cloned repositories: As soon as a repository is cloned and both clones are changed, you have in fact created a branch. This means, each branch lives in a separate repository.</li>
+                    <li>Create branches within one repository.</li>
+                </ol>
+                <p>Both approaches have advantages and disadvantages. (1) is very easy to do and easy to understand, yet one has to deal with a series of repositories, which is not always convenient. (2) Keeps all branches in one repository which can be a little bit harder to understand. Steve analyses advantages and disadvantages in detail the article mentioned above. Here only a brief example of branching within a repository is given:</p>
+<source>
+ 1: $ hg init
+ 2: $ touch a.txt
+ 3: $ hg add
+ 4: adding a.txt
+ 5: $ hg commit -m "added a.txt"
+ 6: $ touch b.txt
+ 7: $ hg add
+ 8: adding b.txt
+ 9: $ hg commit -m "added b.txt"
+10: $ hg tag -r 0 V_1.0
+11: $ hg tag -r 1 V_2.0
+12: $ hg glog
+13: @  changeset:   3:fce35216a630
+    |  tag:         tip
+    |  summary:     Added tag V_2.0 for changeset 6bc53f524a55
+    |
+    o  changeset:   2:f0168f0f06d0
+    |  summary:     Added tag V_1.0 for changeset b62595346c8f
+    |
+    o  changeset:   1:6bc53f524a55
+    |  tag:         V_2.0
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:b62595346c8f
+       tag:         V_1.0
+       summary:     added a.txt
+14: $ hg update V_1.0
+15: $ hg branch V_1.x
+16: marked working directory as branch V_1.x
+17: $ touch c.txt
+18: $ hg add
+19: adding c.txt
+20: $ hg commit -m "Bugfix, added c.txt"
+21: created new head
+22: $ hg glog
+23: @  changeset:   4:3a4f80f10c62
+    |  branch:      V_1.x
+    |  tag:         tip
+    |  parent:      0:984077fd8bf0
+    |  summary:     Bugfix, added c.txt
+    |
+    | o  changeset:   3:6a562cba417e
+    | |  summary:     Added tag V_2.0 for changeset dd4ce84acde5
+    | |
+    | o  changeset:   2:95d33ae73048
+    | |  summary:     Added tag V_1.0 for changeset 984077fd8bf0
+    | |
+    | o  changeset:   1:dd4ce84acde5
+    |/   tag:         V_2.0
+    |    summary:     added b.txt
+    |
+    o  changeset:   0:984077fd8bf0
+       tag:         V_1.0
+       summary:     added a.txt
+24: $ hg update default
+25: 2 files updated, 0 files merged, 1 files removed, 0 files unresolved
+26: $ ls
+27: a.txt  b.txt
+28: $ hg branches
+29: V_1.x                          4:3a4f80f10c62
+    default                        3:6a562cba417e
+30: $ hg update V_1.x
+31: 1 files updated, 0 files merged, 2 files removed, 0 files unresolved
+32: $ ls
+33: a.txt  c.txt
+</source>
+                <ul>
+                    <li>Line 1-9: A repository is created and two files are added with two commits.</li>
+                    <li>Line 10-11: Two tags are set: Revision 0 is <i>Version 1.0</i> of our "product" and Revision 1 is <i>Version 2.0</i></li>
+                    <li>Line 12-13 show the current revision history of the repository.</li>
+                    <li>Now we have to patch Version 1 (bugfix): line 14 sets the working directory back to Version 1.0</li>
+                    <li>Line 15 indicates, that we intend to make a new (named) branch</li>
+                    <li>Line 17-20: Make the "bugfix" by adding file <code>c.txt</code> and commit the changes</li>
+                    <li>Line 21 indicates that a new "head" is created, this means the repository now has a new branch.</li>
+                    <li>Line 22-23 show the current revision history with the two branches</li>
+                    <li>Line 24 updates to the "default" branch and lines 26-27 show the expected status with the two files <code>a.txt</code> and <code>b.txt</code></li>
+                    <li>Line 28-29: The <code>hg branches</code> command lists all branches in the repository, in this case two branches: <code>default</code> and <code>V_1.x</code>.</li>
+                    <li>Line 30-33: The <code>update</code> command switches back to branch <code>V_1.x</code> and shows the expected result: <code>b.txt</code> is not existing, but the "bugfix" <code>c.txt</code> is.</li>
+                </ul>
+                <p>The principles of branching should be clear from this short example. Sometimes branches are also used when more complex features are introduced to not disrupt the rest of the development:</p> 
+                <p>E.g., in a webapplication one developer should make significant changes to the persistence part of the application which takes several days. During this work it is highly likely that other parts of the application are broken. Hence he makes a <b>feature branch</b> which is isolated from the development efforts of the rest of the team. As soon as the feature is finished, the two lines of development are integrated (merged) again, as described in the next section.</p> 
+                <p>(From the technical point of view a feature branch is a branch as described above.)</p>
             </subsection>
             <subsection name="Merging and Rebasing">
                 merge, resolve, rebase
