@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+		<description>
+			State saving method: "client" or "server" (= default) See
+			JSF Specification 2.5.2
+		</description>
+	</context-param>
+
+	<context-param>
+		<param-name>org.apache.myfaces.ALLOW_JAVASCRIPT</param-name>
+		<param-value>true</param-value>
+		<description>
+			This parameter tells MyFaces if javascript code should be
+			allowed in the rendered HTML output. If javascript is
+			allowed, command_link anchors will have javascript code that
+			submits the corresponding form. If javascript is not
+			allowed, the state saving info and nested parameters will be
+			added as url parameters. Default: "true"
+		</description>
+	</context-param>
+
+	<context-param>
+		<param-name>org.apache.myfaces.DETECT_JAVASCRIPT</param-name>
+		<param-value>false</param-value>
+		<description>
+			This parameter tells MyFaces if javascript code should be
+			allowed in the rendered HTML output. If javascript is
+			allowed, command_link anchors will have javascript code that
+			submits the corresponding form. If javascript is not
+			allowed, the state saving info and nested parameters will be
+			added as url parameters. Default: "false" Setting this param
+			to true should be combined with STATE_SAVING_METHOD "server"
+			for best results. This is an EXPERIMENTAL feature. You also
+			have to enable the detector filter/filter mapping below to
+			get JavaScript detection working.
+		</description>
+	</context-param>
+
+	<context-param>
+		<param-name>org.apache.myfaces.PRETTY_HTML</param-name>
+		<param-value>true</param-value>
+		<description>
+			If true, rendered HTML code will be formatted, so that it is
+			"human readable". i.e. additional line separators and
+			whitespace will be written, that do not influence the HTML
+			code. Default: "true"
+		</description>
+	</context-param>
+
+	<context-param>
+		<param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
+		<param-value>true</param-value>
+		<description>
+			If true, a javascript function will be rendered that is able
+			to restore the former vertical scroll on every request.
+			Convenient feature if you have pages with long lists and you
+			do not want the browser page to always jump to the top if
+			you trigger a link or button action that stays on the same
+			page. Default: "false"
+		</description>
+	</context-param>
+
+	<!-- MyFaces extension filters -->
+	<filter>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<filter-class>
+			org.apache.myfaces.webapp.filter.ExtensionsFilter
+		</filter-class>
+		<init-param>
+			<param-name>maxFileSize</param-name>
+			<param-value>20m</param-value>
+			<description>
+				Set the size limit for uploaded files. Format: 10 - 10
+				bytes 10k - 10 KB 10m - 10 MB 1g - 1 GB
+			</description>
+		</init-param>
+	</filter>
+
+	<!-- extension mapping for adding <script/>, <link/>, and other resource tags to JSF-pages  -->
+	<filter-mapping>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
+
+	<!-- extension mapping for serving page-independent resources (javascript, stylesheets, images, etc.)  -->
+	<filter-mapping>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+	</filter-mapping>
+    
+	<!--
+		- Location of the XML file that defines the root application context
+		- Applied by ContextLoaderListener.
+	-->
+	<!--	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		classpath:/at/ac/tuwien/ifs/qse/ctx/se-database-context.xml
+		classpath:/at/ac/tuwien/ifs/qse/ctx/se-medium-context.xml
+		</param-value>
+		</context-param> -->
+
+	<!-- Listener, that does all the startup work (configuration, init). The listener 
+		default looks for a configuration file called applicationContext.xml located 
+		in the WEB-INF folder-->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.apache.myfaces.webapp.StartupServletContextListener
+		</listener-class>
+	</listener>
+    
+	<!-- Faces Servlet -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Faces Servlet Mapping -->
+	<!-- extension mapping -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<!-- Welcome files -->
+	<welcome-file-list>
+		<welcome-file>welcome.jsf</welcome-file>
+	</welcome-file-list>
+
+</web-app>

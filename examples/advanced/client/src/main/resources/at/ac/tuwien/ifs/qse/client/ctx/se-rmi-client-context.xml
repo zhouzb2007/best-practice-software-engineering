@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+    Description todo
+  -->
+
+<beans>
+    	<!-- Resolves ${...} placeholders from client.properties -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>at/ac/tuwien/ifs/qse/client/ctx/client.properties</value>
+        </property>
+	</bean>
+
+    
+    <bean id="studentService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl">
+            <value>rmi://${serverName}:${rmiPort}/StudentService</value>
+        </property>
+        <property name="serviceInterface" value="at.ac.tuwien.ifs.qse.se1.services.IStudentService"/>
+    </bean>
+</beans>

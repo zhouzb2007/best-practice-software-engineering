@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><element><type>com.umlet.element.base.Relation</type><coordinates><x>350</x><y>286</y><w>240</w><h>54</h></coordinates><panel_attributes>lt=&lt;.
+User Gestures</panel_attributes><additional_attributes>220;34;20;34</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>350</x><y>256</y><w>240</w><h>54</h></coordinates><panel_attributes>lt=&lt;-
+View Selection</panel_attributes><additional_attributes>20;34;220;34</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>570</x><y>76</y><w>214</w><h>184</h></coordinates><panel_attributes>lt=&lt;-
+State Change</panel_attributes><additional_attributes>20;34;150;34;150;164</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>141</x><y>56</y><w>219</w><h>204</h></coordinates><panel_attributes>lt=&lt;-
+State Query</panel_attributes><additional_attributes>199;34;59;34;59;184</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>192</x><y>106</y><w>168</w><h>154</h></coordinates><panel_attributes>lt=&lt;.
+Change
+Notification</panel_attributes><additional_attributes>58;134;58;34;148;34</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>570</x><y>240</y><w>250</w><h>120</h></coordinates><panel_attributes>Controller
+--
+* Defines application behaviour
+* Maps user actions to model 
+   updates
+* Selects view for response
+* One for each functionality</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>120</x><y>240</y><w>250</w><h>120</h></coordinates><panel_attributes>View
+--
+* Renders the model
+* Requests updates from model
+* Sends user gestures to controller
+* Allows controller to select view</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>340</x><y>40</y><w>250</w><h>120</h></coordinates><panel_attributes>Model
+--
+* Encapsulates application State
+* Responds to state queries
+* Exposes application functionality
+* Notifies view of changes</panel_attributes><additional_attributes></additional_attributes></element></umlet_diagram>

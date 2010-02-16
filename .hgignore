@@ -1,0 +1,38 @@
+syntax: glob
+
+# Mac OS X Metadata
+.DS_Store
+
+# Generated Files 
+
+# LaTeX Support Files
+*.aux
+*.bbl
+*.log
+*.blg
+*.ilg
+*.idx
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.maf
+*.mtc*
+
+# Generated Java Files
+*.class
+
+# Maven targt directories
+examples/target
+examples/basic/target
+examples/core/target
+examples/medium/target
+examples/documentation/target
+examples/designpatterns/target
+
+# Eclipse Project Files
+.classpath
+.project
+.settings
+/examples/bin

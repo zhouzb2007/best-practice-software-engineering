@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>Technology: Maven</title>
+	</properties>
+	<body>
+		<section name="Technology: Maven Basics">
+			<p>This is a short introduction on the basic features of Maven and how to use them.</p>
+			<subsection name="Installing Maven">
+				<p>This section gives a brief overview on how to install Maven on your system.</p>
+				<ul>
+					<li>As Maven depends on Java, Java must be installed and the enviroment variable JAVA_HOME must 
+					be set correctly.</li>
+					<li><a href="http://maven.apache.org/download.html">Download Maven</a> from the Apache Site 
+					and extract the archive to a directory of your choice (Notice that directories or paths that 
+					contain spaces can cause problems during build time).</li>
+					<li>To execute Maven from any location of your system add the path to the Maven binaries 
+					to the system path.</li>
+					<li>Test Maven by typing and running <code>mvn --version</code> into a console window. It should 
+					result in a message like:</li>
+				</ul>
+				<source>
+Maven version: 2.0.8
+Java version: 1.5.0
+OS name: "Windows XP"
+				</source>
+				<ul>
+					<li>Windows users should also consider to move the Maven repository, which is created in 
+					<code>C:\Dokumente und Einstellungen\User\.m2\repository</code>, to a directory that includes no spaces 
+					in its path. Don't forget to update the path of the repository within the tag 
+					<code>&lt;localrepository&gt;</code> in <code>installdir\conf\settings.xml</code>.</li>
+				</ul>
+			</subsection>
+			
+			<subsection name="Creating a project with Maven">
+			<p>This section shows how to create a project and configure the necessary files for your own needs.</p>
+			<h4>Creating the structure of a project</h4>
+				<p>This part shows how to create a new project with Maven Archetypes and introduces the project structure.</p>
+				<ul>
+					<li>Open a console window and go to the directory that should contain your project.</li>
+					<li>Type and run:</li>
+				</ul>
+				<source>
+mvn archetype:create 
+-DarchetypeGroupId=org.apache.maven.archetypes 
+-DgroupId=com.mycompany.app 
+-DartifactId=my-app				
+				</source>
+				<p>The following project structure will be created by Maven:</p>
+				<source>
+my-app
+|- src
+|  |- main
+|  |  `- java
+|  |     `- com
+|  |        `- mycompany
+|  |           `- app
+|  |              `- App.java
+|  `- test
+|     `- java
+|        `- com
+|           `- mycompany
+|              `- app
+|                 `- AppTest.java
+`- pom.xml				
+				</source>
+				<ul>
+					<li>The value that was used as <code>groupId</code> builds up the directory structure 
+					<code>com\mycompany\app</code> and already represents the Java package structure. So the 
+					class <code>App</code> belongs to the Java package <code>com.mycompany.app</code>.</li>
+					<li>If the Java project needs other files like external images or configuration files a directory 
+					<code>resources</code> within the branch <code>main</code> and/or <code>test</code> should be 
+					created. The files from the folder are bound to the project during <em>build time</em> and can 
+					be used	directly in the project (see <a href="../technology/Constants.java">Constants.java</a>).</li>
+				</ul>
+			<h4>Configuring the Project Object Model (POM)</h4>
+				<p>This chapter covers the configuration of the POM for usage in an individual project.</p>
+				<p>The <code>pom.xml</code> is the main configuration file of a Maven project. In its basic form (after the creation) only few values exist within the file. The structure of the file is pictured below:</p>
+				<source>
+&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; 
+  &lt;groupId&gt;at.ac.tuwien.ifs.qse&lt;/groupId&gt; 
+  &lt;artifactId&gt;projekt&lt;/artifactId&gt; 
+  &lt;packaging&gt;jar&lt;/packaging&gt; 
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; 
+  &lt;name&gt;projekt&lt;/name&gt; 
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt; 
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt; 
+      &lt;artifactId&gt;junit&lt;/artifactId&gt; 
+      &lt;version&gt;3.8.1&lt;/version&gt; 
+      &lt;scope&gt;test&lt;/scope&gt; 
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+				</source>
+				<ul>
+					<li>The values <code>name</code> and <code>packaging</code> are mandatory in the POM. The 
+					project can be identifed and called from other projects by its name.</li>
+					<li>In the section <code>dependencies</code> all external libraries can be mentioned that should
+					be available in the project (see also <a href="#repo">Reference</a>).</li>
+					<li>The section <code>reporting</code> (not in the example above) contains all Maven plugins 
+					responsible for automatic report generation.</li>
+					<li>If you are new at editing POMs it is strongly recommended to take the POM from the basic 
+					example and change some sections to recognize the effects.</li>
+					<li>A POM for a real project can be found <a href="../technology/pom.xml">here</a>.</li>
+				</ul>
+			</subsection>
+						
+			<subsection name="Build Lifecycle">
+				<p>This section introduces the phases of the Maven build process and how to use them.</p>
+				<h4>Clean Phase</h4>
+				<p>To clean the target folders, use the command</p>
+				<source>mvn clean</source>
+				<p>The Clean Plugin can also be configured to clean other directories than the target folder. For further information read the Plugin documentation.</p>
+				
+				<h4>Compile Phase</h4>
+				<p>To build the project, use:</p>
+				<source>mvn compile</source>
+				
+				<h4>Test Phase</h4>
+				<p>To run the tests, use:</p>
+				<source>mvn test</source>
+				
+				<h4>Package Phase</h4>
+				<p>To package the class files to format defined in the POM, use:</p>
+				<source>mvn package</source>
+				<p>To install the packaged project in the Maven 2 repository, use:</p>
+				<source>mvn install</source>
+				
+				<h4>Install Phase</h4>
+				<p>To build and install the project, go into the root of the project and run the command:</p>
+				<source>mvn install</source>
+				<p>Maven 2 will automatically identify and download needed ressources. This is only done during the 
+				first time; the downloaded dependencies will be stored in your local Maven repository (M2_HOME). 
+				The POM is configured to use a mirror of the repository at the QSE, but even so, you might encounter 
+				timeouts during the initial download. Simply restart the build process.</p>
+				<p>The output of the build process (class files, the project site etc.) is stored in the 
+				target/subdirectory.</p>
+				
+				<h4>Site (Documentation) Phase</h4>
+				<p>To build the Maven project site (the one you are just looking at right now), use:</p>
+				<source>mvn site</source>
+				<p>This creates a directory <code>target\site</code> where all html files can be found that represent the documentation..</p>
+				<p>For further information look at the <a href="tech-maven-site.html">Maven Site tutorial</a> at this page.</p>
+				
+				<h4>IDE Preperation</h4>
+				<p>You can prepare the project for some IDEs like Eclipse or Netbeans.</p>
+				<p>To prepare a project for Eclipse, use:</p>
+				<source>mvn eclipse:eclipse</source>
+				<p>This command creates all necessary files and folders used by Eclipse. The structure of your project (at root level) then looks like this:</p>
+				<source>
+my-app
+|- .settings
+|- src
+|- target
+|- .classpath
+|- .projekt
+`- pom.xml
+				</source>
+				<p>The project can be imported to Eclipse directly with the dialog <em>New - Project - Create project from existing source</em>.</p> 
+				<p>To clean the Eclipse specific files from the project, use:</p>
+				<source>mvn eclipse:clean</source>
+				<p>When using CVS/SVN it is recommended, that you only upload a <em>clean</em> project structure, without any IDE specific files and folders.</p>
+
+				<h4>Further Information</h4>
+				<p>You can also combine more than one goal in a single command:</p>
+				<source>mvn clean compile package</source>
+				<p>This will first clean all structures and then compile the sources to new target folders and package them.</p>
+			</subsection>
+			
+			<subsection name="Reference">
+				<ul>
+					<li>To get started, you should refer to the <a href="http://maven.apache.org/guides/getting-started/index.html">Getting started with Maven 2 guide</a>.</li>
+					<li>Further configuration of Maven: <a href="http://maven.apache.org/guides/mini/guide-configuring-maven.html">Maven configuration guide</a></li>
+					<li>The book <em>Better Builds with Maven</em> can be downloaded for free from <a href="http://www.mergere.com/better-build-maven/">http://www.mergere.com/better-build-maven/</a>.</li>
+					<li>The reference to the Project Object Model is available here: <a href="http://maven.apache.org/ref/current/maven-model/maven.html">http://maven.apache.org/ref/current/maven-model/maven.html</a>.</li>
+					<li><a name="repo"></a>A website that can be searched for external libraries and their corresponding POM entries: <a href="http://www.mvnrepository.com/">http://www.mvnrepository.com</a></li>
+					<li>Useful plugins for Maven projects: <a href="http://maven.apache.org/plugins/index.html">Maven plugin site</a></li>
+				</ul>
+			</subsection>
+		</section>
+	</body>
+</document>

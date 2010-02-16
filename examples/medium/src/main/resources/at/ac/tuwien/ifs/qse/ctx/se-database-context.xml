@@ -1,0 +1,72 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <!-- DATABASE CONTEXT -->
+    <!-- The property configurer loads properties from a properties file, which can be used in the context. This
+    is useful to distinguish between deployment semantics and configuration semantics -->
+    <bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- DATASOURCE/DB KONFIGURIEREN -->
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>${database.driver}</value>
+        </property>
+        <property name="url">
+            <value>${database.url}</value>
+        </property>
+        <property name="username">
+            <value>${database.username}</value>
+        </property>
+        <property name="password">
+            <value>${database.password}</value>
+        </property>
+    </bean>
+    
+    <!-- Hibernate configuration when using Hibernate Annotations -->
+    <bean id="hbnSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- Perhaps the configLocation can be configured in a another way -->
+        <property name="configLocation">
+            <value>classpath:/at/ac/tuwien/ifs/qse/ctx/se-hibernate.cfg.xml</value>
+        </property>
+        <property name="configurationClass"
+            value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${database.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- Transaction manager-->
+    <bean id="hibernateTxManager"
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hbnSessionFactory"/>
+    </bean>
+    
+    <!-- the transactional advice  -->
+    <tx:advice id="txAdvice" transaction-manager="hibernateTxManager">
+        <!-- the transactional semantics... -->
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="load*" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    
+</beans>

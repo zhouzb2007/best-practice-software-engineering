@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <properties>
+        <title>Technology: Aspect Oriented Programming</title>
+        <author>Sinan Yurtcan, Markus Demolsky</author>
+    </properties>
+
+	<body>
+		<section name="An Introduction to Aspect Oriented Programming">
+			<subsection name="Introduction">
+				<p>
+					Aspect Oriented Programming (AOP) is a software development approach
+					addressing certain problems that software developers face when dealing
+					with Separation Of Concerns. Separation of concerns is an important thing in
+					any software development process where semantically similar parts of
+					software should be modularized and organized in a proper way to achieve
+					well-built designs. During the last decades, object oriented
+					programming introduced advanced guidelines, terms, patterns and best
+					practices to achieve this goal. Aspect oriented programming on the
+					other hand is a way to address problems which cannot be efficiently
+					solved with object oriented programming, thus AOP complements OOP. Such
+					problems are generally caused by so-called
+					<a href="#crosscutting">Cross-Cutting Concerns</a>
+					like logging, security, transaction management, caching or debugging,
+					which spread over the entire scope of a set of software modules
+					containing the core concerns, as the following pseude code represents: 
+					<source>
+Logger logger = Logger.getLogger(...);
+TransactionManager tm = tmservice.
+getTrascactionManager();
+public void addAccount(Account account) {
+	logger.info("Creating (" + account + ") Account");
+	try {
+		tm.startTransaction(...);
+		erp.add(account);
+		db.add(account);
+		crm.add(account);
+		tm.commit();
+	} catch (Exception) {
+		tm.rollback();
+		logger.error("Account creation failed");
+	}
+}
+				</source>
+					As we can see, the business code is surrounded with a lot of resource work, including
+					open transaction, logging and exception handling.  Thus, the core concerns become
+					&#34;polluted&#34; by code segments which do not really represent the
+					core business logic. 
+				</p>
+ 				<p>
+					This section explains how AOP concepts can be used to address
+					such problems by means of a simple <a href="#appscenario">application scenario</a>
+					. Later on, dynamic and static approaches are discussed.
+				</p>
+
+				<h4><a name="appscenario">An application scenario</a></h4><p>
+					Before delving into the concepts AOP is built
+					upon an application scenario will be introduced
+					which will guide further explanations throughout the
+					section. The application scenario consists of a bank,
+					its customers, the bank accounts the customers own
+					and the transactions on these accounts. Figure 1
+					shows how the domain model.
+				</p>
+
+				<img src="/resources/images/aop_domainmodel.jpg"></img>
+				<p>Figure 1 - Domain Model</p>
+
+				<p>All classes are implemented as Plain Old Java Objects (POJOs):</p>
+
+				<source>
+public class Bank {
+
+	private ArrayList&#60;Account&#62; accounts;
+	
+	public Bank() {
+		accounts = new ArrayList&#60;Account&#62;();
+	}
+						
+	public void addAccount(Account account) {
+		accounts.add(account);
+	}
+						
+	public void removeAccount(Account account) {
+		accounts.remove(account);
+	}
+}
+				</source>
+				<source>
+public class Account {
+
+	private double balance;
+	private Customer owner;
+	private String currency;
+						
+	public Account(double balance, Customer owner) {
+		this.balance = balance;
+		this.owner = owner;
+	}
+						
+	public Account(Customer owner) {
+		this.owner = owner;
+		this.balance = 0;
+	}
+						
+	public Customer getOwner() {
+		return this.owner;
+	}
+
+	public void setBalance(double newbalance) {
+		this.balance = newbalance;
+	}
+						
+	public double getBalance() {
+		return this.balance;
+	}
+						
+	public String getCurrency() {
+		return currency;
+	}
+	
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+}
+				</source>
+				<source>
+public class Customer {
+
+	private String name;
+	private String address;
+	private ArrayList&#60;Account&#62; accounts;
+					
+	public Customer(String name, String address) {
+		this.name = name;
+		this.address = address;
+		accounts = new ArrayList&#60;Account&#62;();
+	}
+}
+				</source>
+		</subsection>
+
+		<subsection name="Basics and Concepts">
+			<h4><a name="crosscutting">Cross-Cutting Concerns</a></h4>
+			<p>
+				The tracing of information is an ideal candiat for a
+				cross-cutting concern. Without using any AOP approach it
+				is hardly possible to encapsulate the whole tracing
+				concern in a single module without modifying the
+				existing code base.
+			</p>
+			<p>
+				Logging causes the same issues even when the built-in
+				Logging API of the Java SE is used. To log the process
+				of adding a new bank account, we would change the
+				<code>Bank.addAccount()</code> method as follows:
+			</p>
+			<source>
+public void addAccount(Account account) {
+	accounts.add(account);
+	// Adding logging functionality:
+	Logger logger = Logger.getLogger("trace");
+	logger.info("Account (" + account + ") is being created");
+}
+			</source>
+			<p>
+				For each method we want to log we would inevitably need
+				to enter logging statements. Security requirements
+				impose similar problems when certain methods may only be
+				executed if a user has the necessary authorization
+				level. In this case, changing a security policy, like
+				adding, removing or altering authorization levels
+				involves refactoring the existing code again. This can end
+				in a huge refactoring process, because security issues are 
+				distributed in the whole application.
+			</p>
+			<p>
+				Using AOP conecpts furch such Cross Cutting Concerns improve
+				the maintainence of code and encapsulate these aspects (Logging, Security, etc.)
+				in single <a href="#aspect">aspects</a>, which can be reused in every
+				component accross the application. In order to do this, several basic conecpts
+				of AOP are needed, discussed in the next sections.
+			</p>
+
+			<h4>Join Point</h4><p>
+				Join points are simply well-defined points in the
+				execution of a program. A join point
+				defines the locations where cross-cutting behavior
+				(<a href="#advice">advice</a>) may be added. There are different join points
+				proposed by different AOP implementations.
+				AspectJ for example defines execution and invocation of
+				methods or constructors, as well as initialization of
+				objects, classes or fields as join points. Contrarily
+				loops or multiple statements are not recognized as join
+				points in AspectJ.
+			</p>
+
+			<h4><a name="pointcut">Pointcut</a></h4>
+			<p>
+				A pointcut can simply be considered as a set of join
+				points. The real advantage of pointcuts comes into play
+				when they can be defined by combining join points to
+				create semantically useful locations to add
+				cross-cutting behavior. Considering the
+				<code>Bank.addAccount()</code> method in our application scenario it
+				is possible to create a pointcut which is declared in
+				AspectJ as follows:
+			</p>
+
+			<source>
+pointcut addingAccount(Account account):
+		call(void addAccount(Account)) &#38;&#38;
+		args(account);
+			</source>
+
+			<p>
+				This pointcut will pick up each call to a method named
+				addAccount that takes one parameter of type Account and
+				does not have a return value. Instead of giving the
+				exact definition of the method names and the parameters
+				we can also use wildcards that AspectJ supports to
+				define pointcuts. This allows for defining dynamic
+				pointcuts. Below is another example:
+			</p>
+			<source>
+pointcut settersToLog():
+		execution(void set*(double)) ||
+		execution(void set*(String));
+			</source>
+			<p>
+				This pointcut will pick up each execution of a method
+				that has a name starting with &#34;set&#34;, does not have a
+				return value and accepts a double or a String as
+				argument. Pointcut definitions can be elaborated and
+				extended by combining join points with boolean operators
+				like &#38; or || but they can also be constrained by
+				specifying the type of the object the pointcut will pick
+				up (by using the keyword target in AspectJ) or by adding
+				parameters and arguments.
+			</p>
+
+			<h4><a name="advice">Advice</a></h4>
+			<p>
+				Until now it has been examined how to determine
+				locations in the core concern areas where we want to
+				interfere by using join points and pointcuts. However,
+				the main goal is to specify the code which will alter
+				the behavior of the existing code. An advice is a
+				method-like construct or an action to be taken at join
+				points defined using pointcuts. In out application
+				scenario this behavior will be adding a logging
+				functionality. For this purpose the following pieces of
+				advice can be used in AspectJ.
+			</p>
+			<p>
+				This advice implementation will be executed each time
+				the <code>addingAccount(Account)</code> pointcut is picked up. After
+				the method <code>addAccount()</code> returns this code will simply
+				create a message log that the bank account has been
+				created:
+			</p>
+			<source>
+after(Account account) returning: addingAccount(account) {
+	Logger logger = Logger.getLogger("trace");
+	logger.info("New account added: " + account); 
+}
+			</source>
+			<p>
+				This advice implementation is executed each time the
+				pointcur settersToLog() returns. At this point we
+				extract information like the class name and the method
+				name, read the cache of the old value of the field (if
+				cache is available) and log the information we have,
+				together with the new value which has just been set:
+			</p>
+			<source>
+after() returning: settersToLog(){
+	String className = thisJoinPoint.getSignature().getDeclaringTypeName();
+	String methodName = thisJoinPoint.getSignature().getName();
+	Object newValue = thisJoinPoint.getArgs()[0];
+	
+	Object oldValue = fieldCache.get(thisJoinPoint.getSignature());
+	if (null == oldValue) {
+		fieldCache.put(thisJoinPoint.getSignature(), newValue);
+		oldValue = new String("N/A");
+	}
+	
+	Logger logger = Logger.getLogger("trace");
+	logger.info(className + "." + methodName + "() called." + 
+				" Previous value: " + oldValue + ", new value: " + newValue);
+}
+			</source>
+			<p>
+				AspectJ does not only allow for using advices after
+				pointcuts have returned as we have seen in this example
+				but it is also possible to intercept before or around
+				pointcuts as well as in their control flows.
+			</p>
+
+			<h4><a name="aspect">Aspect</a></h4>
+			<p>
+				An aspect encapsulates a cross-cutting concern as a
+				whole and may contain pointcuts, advices plain Java
+				methods or additional field declarations. In the
+				application scenario the cross-cutting concern &#34;logging&#34;
+				can be modeled as an aspect. AspectJ allows for creating
+				aspect implementations very similar to plain Java
+				classes. A <code>LoggingAspect</code> could be defined as follows:
+			</p>
+
+			<source>
+public aspect LoggingAspect {
+	
+	// ... aspect specific fields
+
+	// pointcut definitions
+	pointcut addingAccount(Account account):
+				call(void addAccount(Account)) &#38;&#38;
+				args(account);	
+	
+	pointcut settersToLog():
+				execution(void set*(double)) ||
+				execution(void set*(String)); 
+	
+	// an advice implementation
+	after(Account account) returning: addingAccount(account) {
+		Logger logger = Logger.getLogger("trace");
+		logger.info("New account added: " + account);
+	}
+
+	after() returning: settersToLog(){
+		// ... another advice implementation
+	}
+
+	// ... other pointcuts, advices or introductions
+
+}
+			</source>
+
+			<h4><a name="introduction">Introduction</a></h4>
+			<p>
+				Until now it has been examined how Aspect Oriented
+				Programming makes it possible to define join points,
+				pointcuts and advices to alter the behavior of core
+				concerns without modifying them directly. Thus the
+				aspect code can be used to affect the dynamic structure
+				of programs. At the same time AOP also allows for
+				altering the static structure of existing code by adding
+				new fields, methods or by declaring parents or interface
+				implementations. In AOP such modifications which change
+				static structures are referred to as Introductions (as
+				opposed to interceptions that only change dynamic
+				behavior).
+			</p>
+			<p>
+				In AspectJ it is possible to alter hierarchical
+				relationships or dependencies between different types as
+				well as add new fields or methods. In our application
+				scenario we will define an interface
+				<code>Loggable</code>
+				and let certain classes implement this interface from
+				within the LoggingAspect.
+			</p>
+			<source>
+public interface Loggable {
+	// returns the type specific logging type
+	byte getLogType();
+}
+			</source>
+			<p>
+				In <code>LoggingAspect.aj</code> we would add the following
+				definitions:
+			</p>
+			<source>
+declare parents : Account implements Loggable;
+	// an implementation for the interface method
+	public byte Account.getLogType() {
+		return 0x01;
+	}
+			</source>
+			</subsection>
+
+			<subsection name="Weaving">
+				<p>
+					Weaving basically means processing aspect and
+					non-aspect components of a program in order to
+					produce the desired output. There are different
+					strategies among AOP systems about how to produce
+					the woven code. The main weaving strategies can be
+					divided into compile-time weaving (<a href="#staticweaving">static weaving</a>
+					and run-time weaving (<a href="#dynamicweaving">dynamic weaving</a>).
+					Compile-time weaving involves using a preprocessor
+					to generate woven Java byte code. Run-time weaving
+					on the other hand is the process of weaving and
+					unweaving aspects while the application is running.
+					The main issue in the weaving process is to produce
+					executable code which cannot be distinguished from
+					an ordinary program from the perspective of the
+					underlying interpreter ensure compatibility.
+				</p>
+
+				<h4><a name="staticweaving">Static weaving</a></h4>
+				<p>
+					Static weaving is the process of weaving aspect and
+					non-aspect components before the result code gets
+					compiled into the final byte code. A preprocessor
+					and aspect weaver are used to transform the original
+					non-aspect code into a woven code. Thus, the
+					original code is altered only once at compile-time.
+					The performance of this woven code is comparable to
+					code which is written traditionally with the
+					cross-cutting concerns tangled up with the core
+					business logic. It is obvious that carrying out the
+					weaving process during or before the compilation of
+					the final code, produces code with high performance,
+					since compilers can make even further optimizations
+					so only a few checks must be performed at run-time.
+					The drawback of the static weaving approach is the
+					difficulty in identifying the aspect code later or
+					making changes to aspects. Each time an aspect gets
+					altered, all other code segments that could
+					potentially be addressed by this aspect must go
+					through the weaving process and get recompiled.
+				</p>
+
+				<h4><a name="dynamicweaving">Dynamic weaving</a></h4>
+				<p>
+					Dynamic weaving overcomes some limitations faced
+					when weaving is performed at compile-time. The need
+					for recompilation, redeployment and restart can be
+					avoided by carrying out the weaving process either
+					at load-time or at run-time. There is a slight
+					difference between load-time and run-time weaving.
+					Load-time weaving is simply deferring the weaving
+					process until the classes are loaded by the class
+					loader. Such an approach requires either the usage
+					of a weaving class loader or the replacement of
+					the class loader with another one. The drawback is
+					the increased loading time and the lack of access to
+					aspects during running. Run-time weaving is the
+					process of weaving and unweaving aspects at
+					run-time. This approach requires new mechanisms to
+					interfere into running computations. Different AOP
+					frameworks also implement dynamic weaving
+					differently. While AspectWerkz utilizes byte code
+					modification via JVM-level functionality and a
+					"hotswap" architecture to weave classes at runtime,
+					the Spring AOP Framework relies on Proxies instead
+					of class loaders or JVM arguments to weave advices
+					to target objects (in Spring terminology target
+					objects are objects which are being advised).
+					Dynamic weaving allows for speeding up the design
+					and testing phases in software development, since
+					new aspects can be added or existing ones can be
+					altered without the need for recompiling and
+					redeploying applications. A major drawback is the
+					performance decrease, since weaving occurs at
+					runtime.
+				</p>
+			</subsection>
+
+			<subsection name="AspectJ and Spring AOP Comparison">
+				<p>
+					This section examines some major differences and
+					common features the two AOP frameworks have. It must
+					be mentioned beforehand that the word "comparison"
+					may sound misleading because the two frameworks are
+					actually not competing against each other but they
+					rather complement each other. Spring also integrates
+					AspectJ since Spring 2.0, which was a step to
+					enhance the power of both frameworks. Thus in Spring
+					both frameworks can be combined in many different
+					ways.
+				</p>
+				<p>
+					AspectJ is a fully-fledged AOP framework that offers
+					rich possibilities to completely detach
+					cross-cutting concerns from core concerns. It offers
+					the definition of dynamic pointcuts and allows for
+					precisely controlling the intercepting behavior with
+					powerful language semantics. The AspectJ compiler
+					(ajc) is used to generate the woven byte-code from
+					aspect and non-aspect parts of the program and the
+					result is highly optimized code. The AspectJ
+					compiler can detect many errors before the weaving
+					process as opposed to Spring AOP which only performs
+					dynamic weaving through the usage of proxies. Spring
+					AOP's features of defining dynamic pointcuts are not
+					as powerful as the ones AspectJ has. Spring AOP
+					neither provides the most complete AOP
+					implementation. Spring AOP rather aims at providing
+					a close integration between AOP implementation and
+					the IoC (Inversion of Control) container to solve
+					common problems in enterprise applications. In
+					Spring AOP only method execution points are
+					supported.
+				</p>
+			</subsection>
+			
+			<subsection name="Decoupling classes">
+				<p>
+					So far we have seen how a clear separation of concerns can
+					be achieved by using aspects. Furthermore aspects can also
+					be used in areas like exception handling or redirecting
+					control flows. Advices can be defined to catch, throw or
+					rethrow exceptions from different sources with the intention
+					of making the code more readable, maintainable and robust in
+					general. Similarly, advices can be used to implement
+					security features to block or redirect calls to specific
+					methods. An issue needs to be addressed though when some
+					aspect code needs to interact with client code and report a
+					failure or an exception: If for example an advice fails to
+					execute properly or detects a failure which the target code
+					could not detect, it may be desirable for the advice to
+					inform the client code about what is happening. The advice
+					may throw an exception itself, which may not be declared as
+					a checked exception by the target code. Since advices are
+					transparent to the caller (i.e. the client code does not
+					know whether it is interacting with the real target code or
+					with an aspect, which is an essence of the aspect oriented
+					thinking) a certain mechanism has to be defined to guarantee
+					that the caller takes the right actions. In the following
+					different approaches towards this issue are presented.
+				</p>
+
+				<h4>AspectJ Approach</h4>
+				<p>
+					AspectJ basically does not allow advices to define
+					exceptions that are not defined in joinpoints. The type of
+					the exception must also be defined in the signature of the
+					joinpoint. [ ] Even though this imposes a limitation on the
+					application code since it must be aware of the exceptions
+					thrown by the aspect, unchecked exceptions (e.g. a
+					RuntimeException) can still be thrown. While this approach
+					allows the application code to remain the same, there are no
+					other means to interact with the caller of an advice by
+					throwing exceptions
+				</p>
+				
+				<p>
+ 					There is still a language construct called
+ 					privileged aspect [name] {...} in AspectJ. A
+ 					normal aspect basically cannot read or write
+ 					private and protected fields. But the so-called
+ 					privileged aspects are allowed to do this. This
+ 					feature could be used as a means to access
+ 					application code internals to interact with.
+ 					But this feature must be used cautiously since
+ 					it may corrupt the normal behavior of the
+ 					program. AspectJ also allows for declaring
+ 					warnings and errors that can be raised at
+ 					compile-time whenever a given pointcut
+ 					expression is matched by the program. This can
+ 					be used to get notified when the program
+ 					defines unwanted code elements
+ 				</p>
+ 				
+ 				<h4>Spring Approach</h4>
+ 				<p>
+		 			Spring AOP does not necessarily offer any advantages over
+		 			AspectJ when dealing with the problem of aspect and
+		 			non-aspect interaction. Spring AOP still offers very
+		 			interesting solutions about implementing security concerns.
+		 			For example the Acegi Security System (Spring Security) [ ]
+		 			can be implemented on top of a system that was developed
+		 			without any security concerns in mind without using any
+		 			Java code at all. Spring Framework can be configured to
+		 			operate solely with xml configuration files and
+		 			ready-to-use security libraries. Acegi also offers support
+		 			for tag libraries to adapt presentation layers implemented
+		 			with Java Server Faces, for security requirements.
+		 		</p>
+		 		<p>
+		 			The interaction between aspects and non-aspects in the way
+		 			described above could be realized in Spring by delegating
+		 			all the Exceptions thrown by the advices to the
+		 			presentation layer and deciding there what to do.
+				</p>
+			</subsection>
+
+ 			<subsection name="Conclusion">
+ 			<p>
+ 				Aspect Oriented Programming is still far from being a
+ 				well-established paradigm since its history only spans
+ 				almost a decade. There are some issues that need to be
+ 				addressed and problems to be solved. There are few best
+ 				practices about using AOP in bigger projects.
+ 				Furthermore modeling software applications that use AOP
+ 				elements also introduces difficulties that cannot be
+ 				properly overcome by using current UML 2.0 notations.
+ 				There are many research papers published which propose
+ 				UML extensions to model AOP applications. With
+ 				increased IDE support for AOP applications and a
+ 				growing knowledge about AOP systems the paradigm might
+ 				well attract more and more analysts and developers in
+ 				near future.
+ 			</p>
+ 			</subsection>
+ 			<subsection name="AOP Resources">
+				<ul>
+					<li><a href="http://www.eclipse.org/aspectj/">The AspectJ Project</a></li>
+					<li><a href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/aop.html">Aspects with Spring</a></li>
+					<li><a href="http://www.theserverside.com/tt/articles/article.tss?l=ObjectCachingWithAOP">Implementing Objec Caching with AOP</a></li>
+					<li><a href="http://today.java.net/pub/a/today/2005/11/08/implementing-validation-rules-with-aspects.html">Implementing Validation Rules using Aspects</a></li>
+					<li><a href="http://www.securityfocus.com/infocus/1895/1">AOP and Security</a></li>
+				</ul>
+ 			</subsection>
+		</section>
+	</body>
+</document>
+

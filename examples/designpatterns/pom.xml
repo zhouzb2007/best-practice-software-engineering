@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>at.ac.tuwien.ifs.bpsw.designpatterns</groupId>
+    <artifactId>designpatterns</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Designpattern Examples</name>
+    <description>This project is only intended to focus on GoF design patterns without concrete application scenarios.</description>
+    <url>http://best-practice-software-engineering.ifs.tuwien.ac.at</url>
+    <developers>
+        <developer>
+            <id>axschatten</id>
+            <name>Alexander Schatten</name>
+            <email/>
+            <roles>
+                <role>Project leader</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+              <source>1.5</source>
+              <target>1.5</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </build>
+    
+</project>

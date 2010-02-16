@@ -1,0 +1,70 @@
+   ---
+   Singleton Pattern
+   ---
+   Jakob Frank, Erik Gostischa-Franta
+   ---
+   ---
+
+Singleton Pattern
+
+  In many cases, it is important for some classes having at most
+one Instance. There might exist many printers in the system, but there 
+should be only one printer spooler.
+
+  But how can we ensure, that there is only one Instance and that this instance is easily
+accessible? A global variable would make the Instance accessible, but it can't keep you from
+instantiating more than on object.
+
+  A better solution is to make the class itself responsible for watching over its status and 
+its sole instance. The class can ensure that only one instance is created by hiding the constructors, 
+and it can provide a way to access the instance. This is called the Singleton pattern, it consists of just
+one class, all methods which provide a way to access the instance are usually static.
+
+* Applicability / Uses
+		
+  You should use the Singleton pattern when
+
+ * there must be exactly one instance of a class, and it must be accessible for
+many clients via a known access point.
+
+ * the sole instance should be extensible by subclassing, hence clients should be
+able to use an extended instance without changes in their code.
+
+* Related Patterns
+
+  {{{facade.html} Facade}}, Abstract Factory, and {{{objectpool.html} Object Pool}} usually
+  use the singleton pattern to assure only one instance of their classes.
+ 
+ If containers like Spring are used for component creation, it is typically not required any more to implement the Singleton pattern manually. The same is true for many applications of the factory pattern. In Spring the configuration of a component (Java bean) can be defined in the Spring-config file. On option is to retrieve the component as Singleton. Spring then deals with the lifecycle of the object.
+
+* Structure
+
+[images/Singleton2.jpg] Class-Diagram of the Singleton Pattern.
+
+* Sample
+
++----
+public class PrintSpooler {
+   // Private constructor suppresses generation of a (public) default constructor
+   private PrintSpooler() {}
+ 
+   private static class SingletonHolder {
+     private static PrintSpooler instance = new PrintSpooler();
+   } 
+ 
+   public static PrintSpooler getInstance() {
+     return SingletonHolder.instance;
+   }
+ } 
++----
+
+* References / More Info
+
+  Design Patterns, Elements of Reusable Object-Oriented Software, Gang of Four
+
+  {{{http://en.wikipedia.org/wiki/Singleton_pattern} Singleton Pattern - Wikipedia}}
+  
+  {{{http://www.javaworld.com/javaworld/jw-04-2003/jw-0425-designpatterns.html}
+     Simply Singleton}}
+
+  {{{http://radio.weblogs.com/0122027/stories/2003/10/20/implementingTheSingletonPatternInJava.html} Implementing the Singleton Pattern in Java}}
