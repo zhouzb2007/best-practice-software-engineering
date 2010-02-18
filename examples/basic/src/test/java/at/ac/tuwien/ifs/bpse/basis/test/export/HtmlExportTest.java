@@ -122,7 +122,7 @@ public class HtmlExportTest extends TestCase {
 
 		InputStream ipCorrect = getClass().getResourceAsStream("/test/html-export.html");
 
-		String correct = readFile(new InputStreamReader(ipCorrect));
+		correct = readFile(new InputStreamReader(ipCorrect));
 		String test = readFile(new FileReader(filename_test));
 		assertEquals(correct, test);
 		

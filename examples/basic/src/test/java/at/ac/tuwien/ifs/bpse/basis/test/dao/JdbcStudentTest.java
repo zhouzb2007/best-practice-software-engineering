@@ -6,6 +6,8 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO;
@@ -48,14 +50,14 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
 public class JdbcStudentTest extends TestCase {
 	
 	/**
-	 * Data Access Object for Student, fetched with xbf.
+	 * Data Access Object for Student, fetched with ac.
 	 */
 	private IStudentDAO studentDAO = null;
 
 	/**
 	 * Spring Framework XML Bean Factory.
 	 */
-	private XmlBeanFactory xbf;
+	private ApplicationContext ac;
 	
 	private static Logger log = Logger.getLogger(JdbcStudentTest.class);
 
@@ -67,9 +69,10 @@ public class JdbcStudentTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		// notice, that the TEST beans.xml is loaded!
-		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
-		xbf = new XmlBeanFactory(res);
-		studentDAO = (IStudentDAO) xbf.getBean("StudentDAO");
+		ac = new FileSystemXmlApplicationContext("classpath:test-beans.xml");
+		//ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
+		//ac = new XmlBeanFactory(res);
+		studentDAO = (IStudentDAO) ac.getBean("StudentDAO");
 	}
 
 	/**
@@ -80,7 +83,7 @@ public class JdbcStudentTest extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 		studentDAO = null;
-		xbf.destroySingletons();
+		//ac.destroySingletons();
 	}
 
 	/**
@@ -88,7 +91,7 @@ public class JdbcStudentTest extends TestCase {
 	 * 
 	 */
 	public void testBeanInit() {
-		Student student = (Student) xbf.getBean("StudentAlexanderSchatten");
+		Student student = (Student) ac.getBean("StudentAlexanderSchatten");
 		assertNotNull(student);
 		assertEquals(1L, student.getId());
 		assertEquals("Alexander", student.getFirstname());
@@ -125,7 +128,7 @@ public class JdbcStudentTest extends TestCase {
 	 */
 	public void testAdd() {
 		// get a test-dataset from Spring config
-		Student student = (Student) xbf.getBean("StudentAddUpdateDelete");
+		Student student = (Student) ac.getBean("StudentAddUpdateDelete");
 		Integer oldId = student.getId();
 		
 		// Add Student
@@ -159,7 +162,7 @@ public class JdbcStudentTest extends TestCase {
 	 */
 	public void testUpdate() {
 		// First add one student to database
-		Student student = (Student) xbf.getBean("StudentAddUpdateDelete");
+		Student student = (Student) ac.getBean("StudentAddUpdateDelete");
 		studentDAO.saveStudent(student);
 		
 		//change the student data and update this student in database
