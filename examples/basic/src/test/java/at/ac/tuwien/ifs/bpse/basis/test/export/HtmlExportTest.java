@@ -1,5 +1,8 @@
 package at.ac.tuwien.ifs.bpse.basis.test.export;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,12 +11,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
-
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
@@ -29,7 +32,7 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
  * @author The SE-Team
  * @version 1.0
  */
-public class HtmlExportTest extends TestCase {
+public class HtmlExportTest {
 
 	//private static Log log = LogFactory.getLog(HtmlExportTest.class);
 	private XmlBeanFactory xbf;
@@ -49,8 +52,8 @@ public class HtmlExportTest extends TestCase {
 	/**
 	 * This method is executen before every TestCase
 	 */
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
 		ClassPathResource currentWorkingDir = new ClassPathResource(".");
@@ -67,8 +70,8 @@ public class HtmlExportTest extends TestCase {
 	/**
 	 * This method is invoced after each TestCase
 	 */
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 		xbf.destroySingletons();
 	}
 
@@ -88,6 +91,7 @@ public class HtmlExportTest extends TestCase {
 			while ((line = br.readLine()) != null) {
 				fcb.append(line);
 			}
+			br.close();
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -103,6 +107,7 @@ public class HtmlExportTest extends TestCase {
 	 * @throws IOException 
 	 * 
 	 */
+	@Test
 	public void testWrite() throws IOException {
 		String filename_test = pathToFile + "/test/export.html";
 		
@@ -124,7 +129,7 @@ public class HtmlExportTest extends TestCase {
 
 		correct = readFile(new InputStreamReader(ipCorrect));
 		String test = readFile(new FileReader(filename_test));
-		assertEquals(correct, test);
+		assertThat(test, is(correct));
 		
 		ipCorrect.close();
 		

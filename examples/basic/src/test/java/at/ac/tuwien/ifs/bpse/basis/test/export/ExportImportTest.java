@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotSame;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
@@ -25,7 +30,7 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
  * @author The SE-Team
  * @version 1.0
  */
-public class ExportImportTest extends TestCase {
+public class ExportImportTest {
 
 	/**
 	 * Spring Frameworks XML Bean Factory.
@@ -46,8 +51,8 @@ public class ExportImportTest extends TestCase {
 	/**
 	 * This method is executen before every TestCase.
 	 */
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
 		ClassPathResource currentWorkingDir = new ClassPathResource(".");
@@ -58,8 +63,8 @@ public class ExportImportTest extends TestCase {
 	/**
 	 * This method is invoced after each TestCase.
 	 */
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 		studenten = null;
 		xbf.destroySingletons();
 	}
@@ -85,6 +90,7 @@ public class ExportImportTest extends TestCase {
 	 * data is compared with the data that was previous exported.
 	 * 
 	 */
+	@Test
 	public void testWriteRead() {
 		final String filename = pathToFile + "/test/studenten.xml";
 		Export export = (Export) xbf.getBean("Export");
@@ -104,15 +110,15 @@ public class ExportImportTest extends TestCase {
 			e2.printStackTrace();
 		}
 		assertNotSame(studenten, impStud);
-		assertEquals(studenten.size(), impStud.size());
+		assertThat(impStud.size(), is(studenten.size()));
 		// Cycle through the imported students and compare them to the exported ones
 		int i = 0;
 		for (Student stud: impStud) {
-			assertEquals(studenten.get(i).getId(), stud.getId());
-			assertEquals(studenten.get(i).getMatnr(), stud.getMatnr());
-			assertEquals(studenten.get(i).getFirstname(), stud.getFirstname());
-			assertEquals(studenten.get(i).getLastname(), stud.getLastname());
-			assertEquals(studenten.get(i).getEmail(), stud.getEmail());
+			assertThat(stud.getId(), is(studenten.get(i).getId()));
+			assertThat(stud.getMatnr(), is(studenten.get(i).getMatnr()));
+			assertThat(stud.getFirstname(), is(studenten.get(i).getFirstname()));
+			assertThat(stud.getLastname(), is(studenten.get(i).getLastname()));
+			assertThat(stud.getEmail(), is(studenten.get(i).getEmail()));
 			i++;
 		}
 				
