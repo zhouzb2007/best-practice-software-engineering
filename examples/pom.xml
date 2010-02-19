@@ -12,6 +12,7 @@
         <module>core</module>
         <module>basic</module>
         <module>medium</module>
+        <module>bpse-wicket-medium</module>
         <!--<module>documentation</module>-->
         <!--<module>advanced</module>-->
     </modules>
