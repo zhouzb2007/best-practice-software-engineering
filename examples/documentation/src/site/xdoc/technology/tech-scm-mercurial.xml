@@ -56,6 +56,7 @@
 </source>
                 <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text. Commands in Mercurial can be abbreviated as long as the abbreviation is clear, e.g. instead of <code>hg status</code> <code>hg st</code> can be used.</p>
                 <p>The <code>echo "text" >> filename</code> Unix command is used to add text to files. Of course any visual editor can be used instead. So the previous <code>echo</code> command can be replaced with (1) Open a text editor (2) write "text" (3) save the text file under the name "filename" The <code>echo</code> command is used to provide complete working examples.</p>
+                <p>Some output maybe abbreviated, e.g. in the <code>glog</code> output often user and date lines are removed to keep listings short.</p>
             </subsection>
             <subsection name="How to Read this Tutorial">
                 <p>For a basic understanding of distributed SCM and Mercurial (e.g. for individual use) read the sections:</p>
@@ -283,32 +284,26 @@ Developer A:
  2: @  changeset:   5:75039d11a746
     |  tag:         tip
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:15:15 2010 +0100
     |  summary:     changed c
     |
     o  changeset:   4:1459c7e874c7
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:15:06 2010 +0100
     |  summary:     changed b
     |
     o  changeset:   3:952599ea532b
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:14:58 2010 +0100
     |  summary:     changed a
     |
     o  changeset:   2:a5f1a9f158bd
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:14:25 2010 +0100
     |  summary:     added c
     |
     o  changeset:   1:28a2fd44926b
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:14:16 2010 +0100
     |  summary:     added b
     |
     o  changeset:   0:65abfa371065
        user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-       date:        Sun Feb 07 21:14:03 2010 +0100
        summary:     added a
  3: $ hg bundle --base 2 changes.hg
  4: 3 changesets found
@@ -319,17 +314,14 @@ Developer B (received bundle "changes.hg" via email):
  6: $ hg glog
  7: @  changeset:   2:a5f1a9f158bd
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:14:25 2010 +0100
     |  summary:     added c
     |
     o  changeset:   1:28a2fd44926b
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Sun Feb 07 21:14:16 2010 +0100
     |  summary:     added b
     |
     o  changeset:   0:65abfa371065
        user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-       date:        Sun Feb 07 21:14:03 2010 +0100
        summary:     added a
  8: $ hg pull changes.hg
  9: pulling from changes.hg
@@ -344,32 +336,26 @@ Developer B (received bundle "changes.hg" via email):
 12: @  changeset:   5:75039d11a746
    |  tag:         tip
    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-   |  date:        Sun Feb 07 21:15:15 2010 +0100
    |  summary:     changed c
    |
    o  changeset:   4:1459c7e874c7
    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-   |  date:        Sun Feb 07 21:15:06 2010 +0100
    |  summary:     changed b
    |
    o  changeset:   3:952599ea532b
    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-   |  date:        Sun Feb 07 21:14:58 2010 +0100
    |  summary:     changed a
    |
    o  changeset:   2:a5f1a9f158bd
    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-   |  date:        Sun Feb 07 21:14:25 2010 +0100
    |  summary:     added c
    |
    o  changeset:   1:28a2fd44926b
    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-   |  date:        Sun Feb 07 21:14:16 2010 +0100
    |  summary:     added b
    |
    o  changeset:   0:65abfa371065
       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-      date:        Sun Feb 07 21:14:03 2010 +0100
       summary:     added a
 </source>
             <ul>
@@ -462,17 +448,14 @@ Developer B (received bundle "changes.hg" via email):
 15: @  changeset:   2:74ffff5e37d6
     |  tag:         tip
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Tue Feb 09 13:41:07 2010 +0100
     |  summary:     added c.txt
     |
     o  changeset:   1:95ee193a510f
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Tue Feb 09 13:40:54 2010 +0100
     |  summary:     added b.txt
     |
     o  changeset:   0:39dcafad465b
        user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-       date:        Tue Feb 09 13:40:40 2010 +0100
        summary:     added a.txt
 16: $ hg backout 1 -m "Backing out Revision 95ee193a510f"
 17: removing b.txt
@@ -485,22 +468,18 @@ Developer B (received bundle "changes.hg" via email):
     |  tag:         tip
     |  parent:      1:95ee193a510f
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Tue Feb 09 13:41:22 2010 +0100
     |  summary:     Backed out changeset 95ee193a510f
     |
     | @  changeset:   2:74ffff5e37d6
     |/   user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |    date:        Tue Feb 09 13:41:07 2010 +0100
     |    summary:     added c.txt
     |
     o  changeset:   1:95ee193a510f
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Tue Feb 09 13:40:54 2010 +0100
     |  summary:     added b.txt
     |
     o  changeset:   0:39dcafad465b
        user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-       date:        Tue Feb 09 13:40:40 2010 +0100
        summary:     added a.txt
 20: $ hg merge
 21: 0 files updated, 0 files merged, 1 files removed, 0 files unresolved
@@ -512,28 +491,23 @@ Developer B (received bundle "changes.hg" via email):
     | |  parent:      2:74ffff5e37d6
     | |  parent:      3:b735c1b1f4d4
     | |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    | |  date:        Tue Feb 09 13:42:04 2010 +0100
     | |  summary:     Merged Backout
     | |
     | o  changeset:   3:b735c1b1f4d4
     | |  parent:      1:95ee193a510f
     | |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    | |  date:        Tue Feb 09 13:41:22 2010 +0100
     | |  summary:     Backed out changeset 95ee193a510f
     | |
     o |  changeset:   2:74ffff5e37d6
     |/   user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |    date:        Tue Feb 09 13:41:07 2010 +0100
     |    summary:     added c.txt
     |
     o  changeset:   1:95ee193a510f
     |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |  date:        Tue Feb 09 13:40:54 2010 +0100
     |  summary:     added b.txt
     |
     o  changeset:   0:39dcafad465b
        user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-       date:        Tue Feb 09 13:40:40 2010 +0100
        summary:     added a.txt
 </source>
             </subsection>
@@ -658,7 +632,241 @@ Developer B (received bundle "changes.hg" via email):
                 <p>(From the technical point of view a feature branch is a branch as described above.)</p>
             </subsection>
             <subsection name="Merging and Rebasing">
-                merge, resolve, rebase
+                <p>Branches can be planned as described in the previous section (e.g. for feature development or for maintaining multiple versions) or a consequence of teams working in parallel. So it is often important to merge different branches together to one common line of development. For this purpose the <b><code>merge</code></b> and <code>rebase</code> command can be used. For example, the status of the central repository is like this:</p>
+<source>
+@  changeset:   1:c0040aa5dff5
+|  tag:         tip
+|  user:        Anne
+|  summary:     added b.txt
+|
+o  changeset:   0:00ebb2c92bb2
+   user:        Anne
+   summary:     added a.txt
+
+</source>
+                <p>So, Ann had created the first two changesets. Pete and Francis clone this repository and do their own work. After cloning the three repositories are of course identical. Then Pete adds file <code>c.txt</code>. So his local repository looks like this:</p>
+<source>
+@  changeset:   2:118d62ddb905
+|  tag:         tip
+|  user:        Pete
+|  summary:     added c.txt
+|
+o  changeset:   1:c0040aa5dff5
+|  user:        Anne
+|  summary:     added b.txt
+|
+o  changeset:   0:00ebb2c92bb2
+   user:        Anne
+   summary:     added a.txt
+</source>
+
+                <p>Francis on the other hand added the file <code>d.txt</code>, hence her local repository looks like this:</p>
+<source>
+@  changeset:   2:f0d318f6b0d1
+|  tag:         tip
+|  user:        Francis
+|  date:        Fri Feb 19 15:22:32 2010 +0100
+|  summary:     added d.txt
+|
+o  changeset:   1:c0040aa5dff5
+|  user:        Anne
+|  date:        Fri Feb 19 15:10:18 2010 +0100
+|  summary:     added b.txt
+|
+o  changeset:   0:00ebb2c92bb2
+   user:        Anne
+   date:        Fri Feb 19 15:10:07 2010 +0100
+   summary:     added a.txt
+</source>
+                <p>In this example it becomes obvious, that the short revision numbers are only unique within one repository: Revisions 0 and 1 are identical in all three repositories, e.g. revision 1 has the hash-identifier <code>c0040aa5dff5</code> which is the same in all repositories. Revision numer 2 on the other hand has hash-ID <code>118d62ddb905</code> in Pete's repository and <code>f0d318f6b0d1</code> indicating that these are different changesets!</p>
+                <p>Now, Pete pushes his changes to the central repository using <code>hg push</code>. Hence changeset <code>118d62ddb905</code> is pushed into the central repository. Later Francis also wants to push her changes back, but notices, that there are already changes in the central repository that she does not have locally (the changeset Pete made), so she has to first pull the unknown changes into her local repository, merge the changes and finally push the merged version:</p>
+
+<source>
+ 1: $ hg incoming
+ 2: searching for changes
+    changeset:   2:118d62ddb905
+    tag:         tip
+    user:        Pete
+    summary:     added c.txt
+ 3: $ hg pull
+ 4: added 1 changesets with 1 changes to 1 files (+1 heads)
+ 5: $ hg glog
+ 6: o  changeset:   3:118d62ddb905
+    |  tag:         tip
+    |  parent:      1:c0040aa5dff5
+    |  user:        Pete
+    |  summary:     added c.txt
+    |
+    | @  changeset:   2:f0d318f6b0d1
+    |/   user:        Francis
+    |    summary:     added d.txt
+    |
+    o  changeset:   1:c0040aa5dff5
+    |  user:        Anne
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:00ebb2c92bb2
+       user:        Anne
+       summary:     added a.txt
+ 7: $ hg merge
+ 8: 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+    (branch merge, don't forget to commit)  
+ 9: $ hg ci -m "Merged Branches"
+10: $ hg glog
+11: @    changeset:   4:be47f1fca4d5
+    |\   tag:         tip
+    | |  parent:      2:f0d318f6b0d1
+    | |  parent:      3:118d62ddb905
+    | |  user:        Francis
+    | |  summary:     Merged Branches
+    | |
+    | o  changeset:   3:118d62ddb905
+    | |  parent:      1:c0040aa5dff5
+    | |  user:        Pete
+    | |  summary:     added c.txt
+    | |
+    o |  changeset:   2:f0d318f6b0d1
+    |/   user:        Francis
+    |    summary:     added d.txt
+    |
+    o  changeset:   1:c0040aa5dff5
+    |  user:        Anne
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:00ebb2c92bb2
+       user:        Anne
+       summary:     added a.txt
+12: $ ls
+13: a.txt  b.txt  c.txt  d.txt
+14: $ hg push
+</source>
+                <ul>
+                    <li>Line 1: Before pushing changesets the <code>incoming</code> command should be used to check whether someone else had pushed changes in the meantime. Line 2 indicates that Pete made changes that are not in the local repository.</li>
+                    <li>Line 3-6: Pete's changeset is pulled into the local repository, and the <code>glog</code> command illustrates that this generated a branch: one branch is the development of Pete, the other one from Francis.</li>
+                    <li>Line 7-9: These branches should be merged using the <code>merge</code> command. The merge is then committed</li>
+                    <li>Line 10-11 show now that the two branches have been merged at changeset 4 which has two parents. </li>
+                    <li>Line 12-13: Also the <code>ls</code> command shows, that Francis has now all 4 files in her local repository: <code>a.txt</code> and <code>b.txt</code> created by Anne, <code>c.txt</code> created by Pete and <code>d.txt</code> by Francis herself.</li>
+                    <li>Line 14: Having solved these issues, Francis can now push the changesets back to the central repository.</li>
+                </ul>
+                <p><i>Merging operations can be a little bit tricky sometimes, so it is recommended to first try them in a clone of the own repository.</i></p>
+                
+                <p>It is often recommended not to use the merge command for such scenarios, as the consequence can be a very "messed up" and unclear revision history. Merge should be used when longer lived branches are merged. In such cases it is rather recommended to use the <b><code>rebase</code></b> command. Rebase rewrites the history in the local repository and creates a "flat" revision line. <code>rebase</code> is provided via the Rebase-Extesion which is part of the distribution, but has to be enabled in the <code>.hgrc</code> file like this:</p>
+<source>
+    [extensions]
+    hgext.graphlog = 
+    hgext.purge = 
+    hgext.rebase = 
+</source>
+                <p>Now let's redo the previous example but with <code>rebase</code> instead of <code>merge</code>:</p>
+<source>
+ 1: $ hg incoming
+ 2: searching for changes
+    changeset:   2:118d62ddb905
+    tag:         tip
+    user:        Pete
+    summary:     added c.txt
+ 3: $ hg pull
+ 4: added 1 changesets with 1 changes to 1 files (+1 heads)
+ 5: $ hg glog
+ 6: o  changeset:   3:118d62ddb905
+    |  tag:         tip
+    |  parent:      1:c0040aa5dff5
+    |  user:        Pete
+    |  summary:     added c.txt
+    |
+    | @  changeset:   2:f0d318f6b0d1
+    |/   user:        Francis
+    |    summary:     added d.txt
+    |
+    o  changeset:   1:c0040aa5dff5
+    |  user:        Anne
+    |  summary:     added b.txt
+    |
+    o  changeset:   0:00ebb2c92bb2
+       user:        Anne
+       summary:     added a.txt
+ 7: $ hg rebase
+ 8: added 3 changesets with 3 changes to 3 files
+    rebase completed
+ 9: $ hg glog
+10:  o  changeset:   3:f0d318f6b0d1
+     |  user:        Francis
+     |  summary:     added d.txt
+     |
+     o  changeset:   2:118d62ddb905
+     |  user:        Pete
+     |  summary:     added c.txt
+     |
+     o  changeset:   1:c0040aa5dff5
+     |  user:        Anne
+     |  summary:     added b.txt
+     |
+     o  changeset:   0:00ebb2c92bb2
+        user:        Anne
+        summary:     added a.txt
+    
+12: $ ls
+13: a.txt  b.txt  c.txt  d.txt
+14: $ hg push
+</source>
+    <p>This example is identical to the previous merge-example except for line 7: The rebase command "linarises" the revision history, i.e. it puts Frances changeset after Pete's changeset. This is easier to read and understand than the merged graph, particularly when a lot of parallel work is occurring. It is very important though not to rebase code that was already shared with other repositories!!</p>
+
+                <p>The previous examples were rather simple insofar as there were no <b>conflicting changes</b>. In case that two or more people made changes in the same file Mercurial indicates a conflict during merge or rebase. The <b><code>resolve</code></b> command can be used to mark when the conflict was resolved, for instance:</p>
+<source>
+ 1: $ hg pull
+ 2: $ hg glog
+ 3: o  changeset:   6:295b143c7c17
+    |  tag:         tip
+    |  parent:      4:49795916bc6f
+    |  user:        Pete
+    |  summary:     changed e.txt
+    |
+    | @  changeset:   5:4739ebd8c16e
+    |/   user:        Francis
+    |    summary:     changed e.txt
+    |
+    o  changeset:   4:49795916bc6f
+    |  user:        Francis
+    |  summary:     added e.txt
+    |
+ 4: $ hg rebase
+ 5: merging e.txt
+    warning: conflicts during merge.
+    merging e.txt failed!
+    abort: fix unresolved conflicts with hg resolve then run hg rebase --continue
+ 6: $ ls
+ 7: a.txt  b.txt  c.txt  d.txt  e.txt  e.txt.orig
+ 
+Open e.txt in a text editor, resolve conflict and save it. 
+ 
+ 8: $ rm e.txt.orig
+ 9: $ hg resolve --mark e.txt
+10: $ hg rebase --continue
+11:  added 2 changesets with 2 changes to 1 files
+     rebase completed
+12: $ hg glog 
+13: @  changeset:   6:4739ebd8c16e
+    |  tag:         tip
+    |  user:        Francis
+    |  summary:     changed e.txt
+    |
+    o  changeset:   5:295b143c7c17
+    |  user:        Pete
+    |  summary:     changed e.txt
+    |
+    o  changeset:   4:49795916bc6f
+    |  user:        Francis
+    |  summary:     added e.txt
+</source>
+                <ul>
+                    <li>Line 1-4: Again a changeset is pulled into the local repository. This time, the changes are conflicting.</li>
+                    <li>Line 5: Hence rebase indicates that the conflicting changes have to be resolved before the rebase can be finished.</li>
+                    <li>Line 6-7: Rebase tried to merge the conflicts in <code>e.txt</code> and created a new file <code>e.txt.orig</code> that contains the content before the merge.</li>
+                    <li>Now, Frances opens <code>e.txt</code> in an editor and resolves the conflict. <code>e.txt.orig</code> can be used, but is not needed any longer after the resolving, hence removed.</li>
+                    <li>Line 9: The <code>resolve</code> command marks that the conflict is resolved</li>
+                    <li>Line 10-13: The rebase is continued and executed.</li>
+                </ul>
+                <p>Depending on the operating system and tools installed various diff-tools can be used to support the resolving step. </p>
             </subsection>
             <subsection name="Tools">
                 hg serve, Eclipse Plugins, TortoiseHG
