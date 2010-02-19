@@ -274,7 +274,7 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
                     <li>The before-mentioned <code>hg serve</code> command can be used for ad hoc collaboration.</li>
                 </ul>
                 <p>One recommendation: Patch imports should be always done in local clones. In case of a problem, the main repository is not affected. In case of success, the changes can be pushed to the own main repo. The following example outlines such a collaboration scenario:</p>
-                <p>Let's assume: developer A created a new project in his local repository RA; This repository initially contained 3 revisions. This repository was transfered via USB stick to developer B. Now: A makes three commits in RA and wants to share these with developer B:
+                <p>Let's assume: developer A created a new project in his local repository RA; This repository initially contained 3 revisions. This repository was transfered via USB stick to developer B. Later A makes three commits in RA and wants to share these with developer B via Email:
                 </p>
 
 <source>
@@ -283,27 +283,21 @@ Developer A:
  1: $ hg glog
  2: @  changeset:   5:75039d11a746
     |  tag:         tip
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     changed c
     |
     o  changeset:   4:1459c7e874c7
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     changed b
     |
     o  changeset:   3:952599ea532b
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     changed a
     |
     o  changeset:   2:a5f1a9f158bd
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added c
     |
     o  changeset:   1:28a2fd44926b
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added b
     |
     o  changeset:   0:65abfa371065
-       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
        summary:     added a
  3: $ hg bundle --base 2 changes.hg
  4: 3 changesets found
@@ -313,15 +307,12 @@ Developer B (received bundle "changes.hg" via email):
 
  6: $ hg glog
  7: @  changeset:   2:a5f1a9f158bd
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added c
     |
     o  changeset:   1:28a2fd44926b
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added b
     |
     o  changeset:   0:65abfa371065
-       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
        summary:     added a
  8: $ hg pull changes.hg
  9: pulling from changes.hg
@@ -335,27 +326,21 @@ Developer B (received bundle "changes.hg" via email):
 11: $ hg glog
 12: @  changeset:   5:75039d11a746
    |  tag:         tip
-   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
    |  summary:     changed c
    |
    o  changeset:   4:1459c7e874c7
-   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
    |  summary:     changed b
    |
    o  changeset:   3:952599ea532b
-   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
    |  summary:     changed a
    |
    o  changeset:   2:a5f1a9f158bd
-   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
    |  summary:     added c
    |
    o  changeset:   1:28a2fd44926b
-   |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
    |  summary:     added b
    |
    o  changeset:   0:65abfa371065
-      user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
       summary:     added a
 </source>
             <ul>
@@ -447,15 +432,12 @@ Developer B (received bundle "changes.hg" via email):
 14: hg glog
 15: @  changeset:   2:74ffff5e37d6
     |  tag:         tip
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added c.txt
     |
     o  changeset:   1:95ee193a510f
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added b.txt
     |
     o  changeset:   0:39dcafad465b
-       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
        summary:     added a.txt
 16: $ hg backout 1 -m "Backing out Revision 95ee193a510f"
 17: removing b.txt
@@ -467,19 +449,15 @@ Developer B (received bundle "changes.hg" via email):
 19: o  changeset:   3:b735c1b1f4d4
     |  tag:         tip
     |  parent:      1:95ee193a510f
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     Backed out changeset 95ee193a510f
     |
     | @  changeset:   2:74ffff5e37d6
-    |/   user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |    summary:     added c.txt
+    |/  summary:     added c.txt
     |
     o  changeset:   1:95ee193a510f
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added b.txt
     |
     o  changeset:   0:39dcafad465b
-       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
        summary:     added a.txt
 20: $ hg merge
 21: 0 files updated, 0 files merged, 1 files removed, 0 files unresolved
@@ -490,26 +468,22 @@ Developer B (received bundle "changes.hg" via email):
     |\   tag:         tip
     | |  parent:      2:74ffff5e37d6
     | |  parent:      3:b735c1b1f4d4
-    | |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     | |  summary:     Merged Backout
     | |
     | o  changeset:   3:b735c1b1f4d4
     | |  parent:      1:95ee193a510f
-    | |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     | |  summary:     Backed out changeset 95ee193a510f
     | |
     o |  changeset:   2:74ffff5e37d6
-    |/   user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
-    |    summary:     added c.txt
+    |/   summary:     added c.txt
     |
     o  changeset:   1:95ee193a510f
-    |  user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
     |  summary:     added b.txt
     |
     o  changeset:   0:39dcafad465b
-       user:        Firstname Lastname &lt;firstname.lastname@company.com&gt;
        summary:     added a.txt
 </source>
+                <p>To execute a backout, a merge operation is needed. Branches, merge and rebase are explained in the next sections.</p>
             </subsection>
             <subsection name="Branches and Tags">
                 <p>A <b>Tag</b> is a useful to mark a certain version in the repository. It is a convenience function like a bookmark in the web browser. Technically spoken, tags are not necessary, as version IDs are unique identifiers of versions. One could simply make an external list with IDs that have a "special meaning".  Yet it is convenient to tag certain revisions with names e.g. "Version_1.2" using the <code>tag</code> command in line 1:</p> 
