@@ -70,20 +70,6 @@
 
 		<!--  JUNIT DEPENDENCY FOR TESTING -->
 		<dependency>
-        	<groupId>junit</groupId>
-        	<artifactId>junit</artifactId>
-        	<version>4.7</version>
-        	<scope>test</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.hamcrest</groupId>
-        	<artifactId>hamcrest-all</artifactId>
-        	<version>1.1</version>
-        	<scope>test</scope>
-        </dependency>
-
-		<!--  JETTY DEPENDENCIES FOR TESTING  -->
-		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty</artifactId>
 			<version>${jetty.version}</version>
@@ -111,11 +97,13 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-        <dependency>
+		<dependency>
             <groupId>com.ibatis</groupId>
             <artifactId>ibatis-3-core</artifactId>
             <version>3.0.0.227</version>
         </dependency>
+
+		<!--  JETTY DEPENDENCIES FOR TESTING  -->
 	</dependencies>
 	<build>
 		<resources>

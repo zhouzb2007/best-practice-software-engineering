@@ -4,10 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import at.ac.tuwien.ifs.bpse.basis.test.dao.JdbcStudentTest;
-import at.ac.tuwien.ifs.bpse.basis.test.export.ExportImportTest;
-import at.ac.tuwien.ifs.bpse.basis.test.export.HtmlExportTest;
-import at.ac.tuwien.ifs.bpse.basis.test.export.XmlExportImportTest;
+import at.ac.tuwien.ifs.bpse.basis.test.dao.AllDAOTests;
+import at.ac.tuwien.ifs.bpse.basis.test.export.AllExportTests;
 
 /**
  * This class is the entry-point for a jUnit test run. If you want to
@@ -19,7 +17,7 @@ import at.ac.tuwien.ifs.bpse.basis.test.export.XmlExportImportTest;
  *      Coockbook</a>
  */
 @RunWith(Suite.class)
-@SuiteClasses( { JdbcStudentTest.class, ExportImportTest.class, HtmlExportTest.class, XmlExportImportTest.class })
+@SuiteClasses( { AllDAOTests.class, AllExportTests.class })
 
 public class AllTests {
 }
