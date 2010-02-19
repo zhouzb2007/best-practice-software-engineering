@@ -28,6 +28,7 @@ examples/target
 examples/basic/target
 examples/core/target
 examples/medium/target
+examples/bpse-wicket-medium/target
 examples/documentation/target
 examples/designpatterns/target
 
