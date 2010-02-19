@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertNotSame;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -109,7 +109,7 @@ public class ExportImportTest {
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
-		assertNotSame(studenten, impStud);
+		assertThat(studenten, is(not(impStud)));
 		assertThat(impStud.size(), is(studenten.size()));
 		// Cycle through the imported students and compare them to the exported ones
 		int i = 0;

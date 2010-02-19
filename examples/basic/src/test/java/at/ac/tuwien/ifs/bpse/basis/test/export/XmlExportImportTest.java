@@ -1,8 +1,8 @@
 package at.ac.tuwien.ifs.bpse.basis.test.export;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertNotSame;
 
 import java.io.File;
 import java.io.IOException;
@@ -147,7 +147,7 @@ public class XmlExportImportTest {
 			e.printStackTrace();
 		}
 		//impStud.equals(studenten);
-		assertNotSame(studenten, impStud);
+		assertThat(studenten, is(not(impStud)));
 		assertThat(impStud.size(), is(studenten.size()));
 		// Cycle through the imported students and compare them to the exported ones
 		int i = 0;
