@@ -1,18 +1,25 @@
 package at.ac.tuwien.ifs.bpse.basis.test.dao;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
 
 import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO;
 import at.ac.tuwien.ifs.bpse.basis.domain.Student;
-import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
 
 /**
  * Class containing the testcases for StudentDAO. 
@@ -47,7 +54,7 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
  * @see StudentDAO
  * 
  */
-public class JdbcStudentTest extends TestCase {
+public class JdbcStudentTest {
 	
 	/**
 	 * Data Access Object for Student, fetched with ac.
@@ -66,8 +73,8 @@ public class JdbcStudentTest extends TestCase {
 	 * 
 	 * @see TestCase#setUp()
 	 */
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 		// notice, that the TEST beans.xml is loaded!
 		ac = new FileSystemXmlApplicationContext("classpath:test-beans.xml");
 		//ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
@@ -80,8 +87,8 @@ public class JdbcStudentTest extends TestCase {
 	 * 
 	 * @see TestCase#tearDown()
 	 */
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 		studentDAO = null;
 		//ac.destroySingletons();
 	}
@@ -90,13 +97,14 @@ public class JdbcStudentTest extends TestCase {
 	 * Test StudentBean initialisation.
 	 * 
 	 */
+	@Test
 	public void testBeanInit() {
 		Student student = (Student) ac.getBean("StudentAlexanderSchatten");
 		assertNotNull(student);
-		assertEquals(1L, student.getId());
-		assertEquals("Alexander", student.getFirstname());
-		assertEquals("Schatten", student.getLastname());
-		assertEquals("alexander@schatten.info", student.getEmail());
+		assertThat(student.getId(), is(1));
+		assertThat(student.getFirstname(), is("Alexander"));
+		assertThat(student.getLastname(), is("Schatten"));
+		assertThat(student.getEmail(), is("alexander@schatten.info"));
 	}
 
 	/**
@@ -107,12 +115,13 @@ public class JdbcStudentTest extends TestCase {
 	 * @see StudentDAO#getStudent(Long)
 	 * 
 	 */
+	@Test
 	public void testGetStudent() {
 		Student student = studentDAO.getStudent(0);
 		assertNotNull(student);
-		assertEquals("Fritz", student.getFirstname());
-		assertEquals("Haber", student.getLastname());
-		assertEquals("fritz@haber.test", student.getEmail());
+		assertThat(student.getFirstname(), is("Fritz"));
+		assertThat(student.getLastname(), is("Haber"));
+		assertThat(student.getEmail(), is("fritz@haber.test"));
 	}
 
 	/**
@@ -126,6 +135,7 @@ public class JdbcStudentTest extends TestCase {
 	 * @see StudentDAO#deleteStudent(Long)
 	 * 
 	 */
+	@Test
 	public void testAdd() {
 		// get a test-dataset from Spring config
 		Student student = (Student) ac.getBean("StudentAddUpdateDelete");
@@ -134,16 +144,16 @@ public class JdbcStudentTest extends TestCase {
 		// Add Student
 		studentDAO.saveStudent(student);
 		// new ID should be different from old ID
-		assertTrue(student.getId() != oldId);
+		assertNotSame(student.getId(), oldId);
 		
 		// check if student was added
 		// read student from database using the new generated ID
 		// then compare if the newly read data equals the old one,
 		// then check is complete
 		Student checkStudent = studentDAO.getStudent(student.getId());
-		assertEquals("Test", checkStudent.getFirstname());
-		assertEquals("Student", checkStudent.getLastname());
-		assertEquals("0926759", checkStudent.getMatnr());
+		assertThat(checkStudent.getFirstname(), is("Test"));
+		assertThat(checkStudent.getLastname(), is("Student"));
+		assertThat(checkStudent.getMatnr(), is("0926759"));
 	
 		//	 Delete Student
 		assertNotNull(studentDAO.deleteStudent(student.getId()));
@@ -160,6 +170,7 @@ public class JdbcStudentTest extends TestCase {
 	 *
 	 * @see StudentDAO#updateStudent(Long, Student)
 	 */
+	@Test
 	public void testUpdate() {
 		// First add one student to database
 		Student student = (Student) ac.getBean("StudentAddUpdateDelete");
@@ -173,9 +184,9 @@ public class JdbcStudentTest extends TestCase {
 
 		// retrieve student again from database and check if all fields are updated correctly
 		Student newStudent = studentDAO.getStudent(student.getId());
-		assertEquals(newStudent.getLastname(), student.getLastname());
-		assertEquals(newStudent.getFirstname(), student.getFirstname());
-		assertEquals(newStudent.getEmail(),student.getEmail());
+		assertThat(newStudent.getLastname(), is(student.getLastname()));
+		assertThat(newStudent.getFirstname(), is(student.getFirstname()));
+		assertThat(newStudent.getEmail(),is(student.getEmail()));
 		
 		// delete student again
 		studentDAO.deleteStudent(student.getId());
@@ -186,6 +197,7 @@ public class JdbcStudentTest extends TestCase {
 	 * 
 	 * @see StudentDAO#getStudents(String)
 	 */
+	@Test
 	public void testGetStudentsMatnr() {
 		// Order by Matrikelnummer
 		List<Student> students = studentDAO.getStudents("Matrikelnummer");
@@ -210,6 +222,7 @@ public class JdbcStudentTest extends TestCase {
 	 * @see StudentDAO#getStudents(String)
 	 * 
 	 */
+	@Test
 	public void testGetStudentsNachname() {
 		// Order by Nachname
 		List<Student> students = studentDAO.getStudents("Nachname");

@@ -1,15 +1,20 @@
 package at.ac.tuwien.ifs.bpse.basis.test.export;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotSame;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
@@ -26,7 +31,7 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
  * @author The SE-Team
  * @version 1.0
  */
-public class XmlExportImportTest extends TestCase {
+public class XmlExportImportTest {
 
 	/**
 	 * The Spring Bean Factory, it is recreated for each new TestCase.
@@ -47,8 +52,8 @@ public class XmlExportImportTest extends TestCase {
 	/**
 	 * This method is invoked before each TestCase.
 	 */
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
 		ClassPathResource currentWorkingDir = new ClassPathResource(".");
@@ -59,8 +64,8 @@ public class XmlExportImportTest extends TestCase {
 	/**
 	 * This method is executed after every TestCase.
 	 */
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 		studenten = null;
 		xbf.destroySingletons();
 	}
@@ -87,25 +92,27 @@ public class XmlExportImportTest extends TestCase {
 	 * @param doc
 	 *            The Document to check
 	 */
+	@SuppressWarnings("unchecked")
 	private void checkXml(Document doc) {
 		// check root element
 		Element rootEl = doc.getRootElement();
-		assertEquals("students", rootEl.getName());
+		assertThat(rootEl.getName(), is("students"));
 		// check two children
 		List studentenEl = rootEl.elements();
-		assertEquals(2, studentenEl.size());
+		assertThat(studentenEl.size(), is(2));
 		// check one Student Element
 		Element sEl = (Element) studentenEl.get(0);
-		assertEquals("1", sEl.attributeValue("id"));
-		assertEquals("Alexander", sEl.elementText("firstname"));
-		assertEquals("Schatten", sEl.elementText("lastname"));
-		assertEquals("8925164", sEl.elementText("matnr"));
-		assertEquals("alexander@schatten.info", sEl.elementText("email"));
+		assertThat(sEl.attributeValue("id"), is("1"));
+		assertThat(sEl.elementText("firstname"), is("Alexander"));
+		assertThat(sEl.elementText("lastname"), is("Schatten"));
+		assertThat(sEl.elementText("matnr"), is("8925164"));
+		assertThat(sEl.elementText("email"), is("alexander@schatten.info"));
 	}
 
 	/**
 	 * TestCase for the generation of a XML file.
 	 */
+	@Test
 	public void testGenerateXML() {
 		XmlExportImport xexp = new XmlExportImport();
 		xexp.generateXML(studenten);
@@ -115,6 +122,7 @@ public class XmlExportImportTest extends TestCase {
 	/**
 	 * TestCase for saving an XML file.
 	 */
+	@Test
 	public void testSave() {
 		final String filename = pathToFile + "/test/studenten.xml";
 		XmlExportImport xexp = new XmlExportImport();
@@ -138,17 +146,17 @@ public class XmlExportImportTest extends TestCase {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		impStud.equals(studenten);
+		//impStud.equals(studenten);
 		assertNotSame(studenten, impStud);
-		assertEquals(studenten.size(), impStud.size());
+		assertThat(impStud.size(), is(studenten.size()));
 		// Cycle through the imported students and compare them to the exported ones
 		int i = 0;
 		for (Student stud: impStud) {
-			assertEquals(studenten.get(i).getId(), stud.getId());
-			assertEquals(studenten.get(i).getMatnr(), stud.getMatnr());
-			assertEquals(studenten.get(i).getFirstname(), stud.getFirstname());
-			assertEquals(studenten.get(i).getLastname(), stud.getLastname());
-			assertEquals(studenten.get(i).getEmail(), stud.getEmail());
+			assertThat(stud.getId(), is(studenten.get(i).getId()));
+			assertThat(stud.getMatnr(), is(studenten.get(i).getMatnr()));
+			assertThat(stud.getFirstname(), is(studenten.get(i).getFirstname()));
+			assertThat(stud.getLastname(), is(studenten.get(i).getLastname()));
+			assertThat(stud.getEmail(), is(studenten.get(i).getEmail()));
 			i++;
 		}
 		

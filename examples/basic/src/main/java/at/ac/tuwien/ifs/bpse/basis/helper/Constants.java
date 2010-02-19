@@ -15,7 +15,7 @@ public class Constants {
 	/**
 	 * This constant holds the reference for the test-configuration, the current value is {@value}.
 	 */
-	public final static String SPRINGBEANS_TEST = "classpath:test-beans.xml";
+	public final static String SPRINGBEANS_TEST = "/test-beans.xml";
 
 	/**
 	 * The properties file for logging, the current value is {@value}.
