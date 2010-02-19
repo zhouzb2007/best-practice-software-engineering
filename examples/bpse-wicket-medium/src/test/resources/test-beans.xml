@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           www.springframework.org/schema/aop
+           www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/context/
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+         
+         
+      <!-- For some strange reason, annotation-config does not work on Erik's System,
+      		so we will be using the init-method directive when creating the sqlSessionFactory. 
+      		The following statement _should_ cause Spring to execute the init Method according
+      		to the defined @PostConstruct annotion in the class -->
+      <!--       
+     <context:annotation-config />-->
+
+	<!-- ********************************************************************************************** -->
+	<!-- Configuration of Datasource                   -->
+	<!-- ********************************************************************************************** -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:bpse-sample-medium" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+		<property name="connectionProperties">
+			<props>
+				<prop key="shutdown">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!-- ********************************************************************************************** -->
+	<!-- Configuration of iBATIS 3 Environment -->
+	<!-- ********************************************************************************************** -->
+
+    <bean id="environment" class="org.apache.ibatis.mapping.Environment">
+        <constructor-arg index="0" value="default"/>
+        <constructor-arg index="1" ref="transactionFactory"/>
+        <constructor-arg index="2" ref="dataSource"/>
+    </bean>
+
+	<!-- ********************************************************************************************** -->
+	<!-- Configuration of iBatis session factory and transaction factory -->
+	<!-- ********************************************************************************************** -->
+	
+	<bean id="sqlSessionFactory" 
+    	class="at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean" init-method="buildFactory">
+        <property name="configLocation" value="classpath:iBatisConfiguration.xml"/>
+        <property name="environment" ref="environment"/>
+    </bean>
+	
+	<bean id="transactionFactory" class="at.ac.tuwien.ifs.bpse.persistence.SpringTransactionFactory">
+        <constructor-arg index="0" ref="dataSource"/>
+    </bean>
+
+	<!-- ********************************************************************************************** -->
+	<!-- Configuration of Wicket Application as Spring Bean -->
+	<!-- ********************************************************************************************** -->
+
+	<bean id="wicketApplication" class="at.ac.tuwien.ifs.bpse.web.WicketApplication">
+	</bean>
+    
+    <!-- ********************************************************************************************** -->
+    <!-- Model Beans Testdata                                                                           -->
+    <!-- ********************************************************************************************** -->
+
+	<!-- Student for testing update - delete -->
+    <bean id="StudentUpdateDelete"
+        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        <description>
+            A Student for testting the UPDATE and DELETE method
+        </description>
+        <property name="id" value="41" />
+        <property name="matnr" value="0926759" />
+        <property name="firstname" value="Test" />
+        <property name="lastname" value="Student" />
+        <property name="email"
+            value="test.student@qse.ifs.tuwien.ac.at" />
+    </bean>
+
+    <bean id="StudentGet"
+        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        <description>
+            A Student for testting the SELECT method
+        </description>
+        <property name="id" value="42" />
+        <property name="matnr" value="8925164" />
+        <property name="firstname" value="Alex" />
+        <property name="lastname" value="Rodrigues" />
+        <property name="email" value="alex.r@info.com" />
+    </bean>
+
+    <bean id="StudentAdd"
+        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        <description>
+            A Student for testting the INSERT method
+        </description>
+        <property name="id" value="2" />
+        <property name="matnr" value="87654321" />
+        <property name="firstname" value="Hubert" />
+        <property name="lastname" value="Meixner" />
+        <property name="email" value="hubert@meixner.test" />
+    </bean>
+    
+</beans>

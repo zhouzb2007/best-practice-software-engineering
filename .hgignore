@@ -35,4 +35,5 @@ examples/designpatterns/target
 .classpath
 .project
 .settings
-/examples/bin
+.springBeans
+examples/bin

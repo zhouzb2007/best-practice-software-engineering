@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper">
+	<select id="selectStudent" parameterType="String"
+		resultType="at.ac.tuwien.ifs.bpse.domain.Student">
+		select * from students where id = #{id}
+	</select>
+	<select id="selectStudentByMatrNr" parameterType="String"
+		resultType="at.ac.tuwien.ifs.bpse.domain.Student">
+		select * from students where matnr = #{matnr}
+	</select>
+	<insert id="insertStudent" parameterType="at.ac.tuwien.ifs.bpse.domain.Student"
+		useGeneratedKeys="false" keyProperty="id">
+		insert into students
+		(id,matnr,firstname,lastname,email)
+		values
+		(#{id},#{matnr},#{firstname},#{lastname},#{email,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateStudent" parameterType="at.ac.tuwien.ifs.bpse.domain.Student">
+		update students set
+		matnr=#{matnr}, firstname=#{firstname}, lastname=#{lastname}, email=#{email}
+		where id = #{id}
+	</update>
+	<delete id="deleteStudent" parameterType="int">
+		delete from students
+		where id = #{id}
+	</delete>
+</mapper>
