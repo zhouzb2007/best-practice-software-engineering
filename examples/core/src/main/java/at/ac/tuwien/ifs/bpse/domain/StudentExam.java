@@ -11,12 +11,11 @@ import javax.persistence.ManyToOne;
  * This class holds the data of an examn a student has done.
  * Thus there is a reference to the Student object and to the Exam object
  */
-public class StudentExam implements java.io.Serializable{
-	private static final long serialVersionUID = -5723044155707767348L;
+public class StudentExam {
 
-	@Id
-    @GeneratedValue
-    private int id;
+	//@Id
+    //@GeneratedValue
+    //private int id;
 
     @ManyToOne
     @JoinColumn(name="examId")
