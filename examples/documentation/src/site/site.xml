@@ -28,10 +28,15 @@
             <item name="ToDo" href="todo.html"/>
         </menu>
         <menu name="Examples">
+        
             <item name="Overview" href="architecture.html"/>
+            
             <item name="Basic Sample" href="arch-basic.html"/>
+            
             <item name="Medium Sample" href="medium/overview-medium.html">
+            	<item name="Projektvorschlag" href="medium/projektvorschlag.html"/>
             	<item name="Projektauftrag" href="medium/projektauftrag.html"/>
+            	<item name="Checklisten" href="medium/checklists.html"/>
             	<item name="Architecture" href="medium/arch-medium.html"/>
             	<item name="Getting Started" href="medium/getting-started-medium.html"/>
             	<item name="Dev Setup" href="medium/devsetup.html"/>
@@ -49,7 +54,9 @@
             		<item name="Gruppenverwaltung" href="medium/usecases_groups.html"/>
             	</item>
             </item>
+            
             <item name="Advanced Sample" href="arch-advanced.html"/>
+            
             <item name="Javadoc" href="technology/javadoc.html">
                 <item name="Core Module" href="core/apidocs/index.html"/>
                 <item name="Basic Module" href="basic/apidocs/index.html"/>

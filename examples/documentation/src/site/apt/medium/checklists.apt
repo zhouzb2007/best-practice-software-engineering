@@ -1,0 +1,258 @@
+Checklisten für den Projektverlauf
+
+  Diese Checklisten gehen von einem typischen mittelgroßen Softwareprojekt aus 
+  und basieren auf dem Projektvorschlag und den Technischen Anforderungen.
+
+~~%FIXME (zoech) Imo gehoert zu manchen subsection die Info das manche
+~~% Artefakte frueher abzugeben sind, also zb. "Alle Artefakte 3 Tage
+~~% vor den MRs fertig und nicht erst zum MR mitbringen. Grund: Tutor und
+~~% Assi wollen vorher reviewen."
+
+* Vorbereitungen zum Kick-Off Meeting
+
+  Es ist vorteilhaft, bereits vor dem Kick-Off, mögliche Projektideen auf Papier auszuformulieren. 
+  Dazu zählt eine kurze präzise Projektbeschreibung und ein paar der wichtigsten Features als Liste --- ein angefangener Projektvorschlag. 
+  Der Projektvorschlag sollte bereits vor dem Kick-Off Meeting anderen Personen im Team, etwa über Kollaborationstools wie Google Docs, zur Verfügung stehen.
+
+  * Die Ausgangssituation beschreibt wesentliche Fehler, Kosten und Begrenzungen und dient als Basis für Verbesserungs- und Erweiterungsvorschläge welche beim Kick-Off besprochen werden sollen. Besonders bei bestehenden Systemen sollte genügend Motivation für eine detaillierte Ausgangssituation vorhanden sein.
+
+  * Bei bestehenden Datenbeständen ist ein Überblick zu den verwendeten Daten in einem ER Diagramm zusammenzufassen. Wie viel der derzeitigen Datenbank wird aktiv genutzt und von wem? 
+  
+  * Bei möglicher Übernahme existierender Daten: Beschreibung welche und wie viele Daten zu übernehmen sind.
+  
+  * Es ist sehr hilfreich ein UML Domänenmodell als Überblick anzufertigen.
+  
+  * Welche Personen werden die Software verwenden und was erwarten sie sich von einem neuen System? (User-Goals). 
+  
+  * Berechtigte Beschwerden und Auswirkungen der Schwachstellen von derzeitigen Systemen sollen dokumentiert werden.
+  
+  []
+  
+* Kick-Off Meeting
+
+  * Rollen bzw. Pflichten der einzelnen Teammitglieder müssen definiert werden. Der Dokumentbeauftragte bzw. Protokollführer hat bereits Pflichten während des Kick-Offs zu erfüllen. 
+
+  * Neue Ideen während des Meetings mitprotokollieren --- Stichworte zu Ausgangssituation und Produktfeatures im Protokoll notieren. Beim Kick-Off sollen mögliche Domänen besprochen werden, Technologien und verwendete Werkzeuge sind zweitrangig.
+
+  * Kommunikationswege innerhalb der Gruppe abstimmen: jede horizontale Rolle ist gegenüber anderen Rollen mit Arbeitspaketen oder anderen Statusmeldungen verpflichtet. Kontaktliste aller Teammitglieder erstellen.
+
+  * Kommunikation nach außen bzw. zum Management bestimmen:  Wer wird kontaktiert wenn es innerhalb der Gruppe zu Problemen kommt, wer wird kontaktiert wenn diese Person nicht erreichbar ist? Hierarchische Kontaktliste des Managements erstellen.
+
+  * Wenn bereits Analysearbeiten für neue Projekte durchgeführt wurden, sind diese im Kick-Off Meeting als Grundlage zu verwenden.
+
+  * Nachdem sich die Gruppe auf eine Projektidee einigt, wird definiert wann der vollständige Projektvorschlag beim Management abzuliefern ist.
+
+  * Welche Fachliteratur ist für das Themengebiet der Vorgeschlagenen Projekte vorhanden? Informationsquellen müssen gesammelt, dokumentiert und verteilt bzw. zugänglich gemacht werden.
+
+  * Zu Beginn der Analyse macht es Sinn, eine kurze Zusammenfassung über Existierende Systeme in der Branche zu erstellen, die als Vorbild dienen können.
+
+  * Wenn eine Projektidee beim Meeting konkretisiert wird, soll gemeinsam das Domänenmodell erweitert werden bzw. eines angefangen werden.
+
+  * Alle Anforderungen die unklar oder mehrdeutig sind, sollten im Besprechungsprotokoll in einer eigenen Liste zur weiteren Klärung gesammelt werden, da bekanntlich Missverständnisse während der Analyse oft weitreichende und unter Umständen kostspielige Folgen haben. Problemfälle können während der nächsten Treffen besprochen werden.
+
+  * Vereinbarung des nächsten Team-Treffen bzw. wöchentliche Treffen vereinbaren.
+
+  * Wenn weitere Projektideen ausformuliert bzw. bestehende verbessert werden müssen, sind weitere Treffen speziell zu diesem Zweck zu vereinbaren. 
+
+  * Vereinbarung des nächsten Treffen mit dem Management bzw. wöchentliche Treffen mit dem Management vereinbaren. (Management Reviews & Interne Reviews)
+  
+  []
+  
+* Nach dem Kick-Off Meeting
+
+  * Besprechungsprotokoll vom Kick-Off Meeting sollte überarbeitet werden bevor es verteilt wird. Oft wird während des Kick-Offs Brainstorming betrieben welches zu einem unzusammenhängenden Verlauf im Protokoll führt. Es sollte klar und verständlich sein welche verschiedenen Projektideen besprochen wurden.
+
+  * Es ist notwendig schon früh im Projekt zu definieren wie Dokumente verteilt und versioniert werden. Die technischen Rollen im Projekt haben in erste Linie für einen E-Mail Verteiler und Versionierungssystem, etwa ein Subversion Repository, zu sorgen. Der E-Mail Verteiler soll nicht zum Austausch von Dokumenten verwendet werden, dies erfolgt über das Versionierungssystem. Falls ein Trackingsystem wie Bugzilla oder Trac verwendet werden soll ist dieses auch so früh wie möglich zu konfigurieren.
+
+  * Eingesetzte Technologien und Werkzeuge definieren. Hierzu zählen Textverarbeitungs- und Modellierungswerkzeuge, aber auch Programmiersprachen und Werkzeuge für die Entwicklung (IDE, Debugger) und zum Management des Entwicklungsprozesses (Ant, Maven, SVN).
+
+  * Horizontalen Rollen (Pflichten), aus dem Kick-Off Meeting müssen erweitern werden, dabei hat jedes Teammitglied selber seine Pflichten zu definieren: am besten auf einer Plattform wo jedes Teammitglied Zugang hat, z.B. einem Wiki. Es wird stark empfohlen die aktuelle Todo-Liste (Vertikale Arbeitspakete) jedes Teammitglieds auch über ein Wiki bzw. ein Trackingsystem für alle Teammitglieder jederzeit sichtbar zu halten.
+
+  * Sobald ein Vorschlag vom Management akzeptiert wurde sind dessen Inhalte in einem Auftrag einzuarbeiten, in den meisten Fällen bedeutet dies die Überarbeitung des Materials und nicht nur Copy&Paste vom Vorschlag um die initiale Version eines Auftrags zu erstellen.
+
+  * Der Projektauftrag enthält Abschnitte für Domänenanalyse, technisches Design sowie Projektmanagement, d.h. jeder im Team muss am Projektauftrag mitarbeiten. Es ist unzureichend den Projektauftrag nur von einigen Teammitgliedern erstellen zu lassen. Daher muss definiert werden welche Personen welche Abschnitte des Projektauftrags verfassen werden, dies  sind auch schon dir ersten "vertikalen" Arbeitspakete welche im Projektmanagement zu erfassen sind.
+  
+  []
+  
+* Generelle Checklisten für Dokumente
+
+  * Alle aktuellen Dokumente werden in einer geeigneten (am besten einem Ringordner) gesammelt und durch Zwischenblätter mit Indizes zum schnelleren Auffinden getrennt. Jene Projektmappe wird zu jedem Management Review aktualisiert.
+
+  * Die Druckversion jedes Dokuments sollte den Namen auf der ersten Seite habe und die Seitennummer sollte auf jeder Seite zu finden sein.
+
+  * Bei internen Reviews ist die elektronische Projektmappe, also eine Sammlung aller Dokumente in einem Archiv, vor dem Meeting per E-Mail an alle Beteiligten zu verteilen. Gewisse Dokumente können dabei natürlich online bzw. Werkzeug unterstützt existieren. Es ist jedoch darauf zu achten, dass Auswertungen oder Exports erstellt werden können, um letztendlich in der Projektmappe bzw. einem Archiv alle Projekt relevanten Informationen zu hinterlegen.
+
+  * Beginnen Sie mit einfachen, auch für Uneingeweihte gut verständlichen Inhalten. Legen Sie besonderen Wert auf eine einfache Sprache.
+
+  * Ab fünf Seiten Umfang ist ein Inhaltsverzeichnis mit Seitennummern zu erstellen.
+  
+  []
+  
+* Projektauftrag
+
+  * Generelles
+  
+    * Am Deckblatt sind Name des Teams bzw. Nummer, Dokumentbezeichnung, Projektbezeichnung (evtl. Logo), Dokumentversion, Datum und Autor(en) (der Dokument-verantwortliche zuerst) beschrieben.
+
+    * Ausgangssituation, Beschreibung, Features, Zielgruppen, Domänenmodell wurden gegenüber den Versionen im Projektvorschlag verbessert.
+    
+  * Anforderungen
+    
+    * Gibt es Standardsoftwarepakete, die dieses Anwendungsgebiet abdecken?
+
+    * Wurden Anforderungen für spätere Erweiterungen spezifiziert und sind diese Anforderungen speziell gekennzeichnet? (need-to-have, nice-to-have)
+
+    * Sind alle Anforderungen mit der gegenwärtigen Technologie testbar? Es ist nicht sinnvoll, eine Anforderung aufzustellen, die nicht getestet werden kann. Worte wie "zuverlässig", "effizient" und "flexibel" sind im allgemeinen ein Kennzeichen von nicht testbaren Anforderungen.
+
+    * Alle Anforderungen beschreiben nur das extern wahrnehmbare Systemverhalten (Black-Box).
+
+~~%FIXME (zoech) Anwendungsfaelle -> Funktionale Anwendungsfaelle
+~~%FIXME (zoech) Warum ist hier die Verwendung eines UML Tools
+~~% empfehlenswert -> Erklaeren und vielleicht auch Use Case Diagramm
+~~% zu '... Featureliste und Textbeschreibung ...' hinzufuegen.
+
+    * Zu den Anforderungen in der Featureliste und Textbeschreibungen sind Anwendungsfälle vorhanden, welche so verfasst sind, dass sie relativ leicht an organisatorische, politische oder technische Änderungen angepasst werden können. Hier ist die Verwendung eines UML Tools sehr empfehlenswert. 
+
+    * Zu den wichtigsten Anwendungsfällen sollte eine Anwendungsfallbeschreibung vorhanden sein. Das Szenario soll entweder als User-Story oder als Enumeration der einzelnen Aktivitäten ausgearbeitet werden.
+
+    * Die drei bis fünf wesentlichsten Qualitäten, die das zukünftige System haben soll, sind überprüfbar im Abschnitt Nichtfunktionale-Anforderungen zu beschreiben und anhand von Beispielen zu erläutern. Wann und für wie lang soll das System eingesetzt werden?  Gibt es Überlegungen, was im Fall eines Softwareversagens passieren kann bzw. Wartbarkeit des Systems?
+    
+  * Technische Planung & Design
+  
+    * Komponentendiagramm und Domänenmodell sind in UML Notation vorhanden.
+
+    * Beschreibung des Komponentendiagramms hinsichtlich der Projektplanung: Welche Komponentenframeworks können verwendet werden um die Entwicklung zu beschleunigen? Welche Komponenten können "hinzugekauft" werden, um schnell einen Prototypen auf die Beine zu stellen?
+    
+  * Projektplanung / management
+  
+    * Wer ist das Team, was sind die Fähigkeiten bzw. Pflichten jedes Einzelnen? Die unterschiedlichen Funktionen der Mitarbeiter(gruppen) im Projekt (Horizontale Rollen) sind mit ihren Verantwortlichkeiten und Kompetenzen bzw. Berechtigungen geeignet zu beschreiben. 
+
+    * Vertikale Pflichten beschreiben welche Teile des Endprodukts von welchem Teammitglied erstellt werden, z.B. Implementation einer bestimmten Funktionalität. Diese ergeben Arbeitspakete welche mittels eines Projektplans geplant und verfolgt werden.
+
+    * Liegt der Umfang der in den Anforderungen genannten Ziele im Rahmen des Projekts? Steht ein vorläufiger Plan samt Kostenabschätzung für die Umsetzung des Systems zur Verfügung? Je mehr Personen an einem Dokument oder einer Komponente arbeiten, desto genauer sollten Zusammenbau und Überprüfung einer Version geplant werden.
+
+    * Der Projektplan ist in den Details nie 100% fertig, aber gleichzeitig im Grundsatz solide. Im Projektauftrag sollen für die Meilensteine Arbeitspaket-Oberkategorien vergeben und zwischen den Meilensteinen ausreichend Zeit veranschlagt werden.
+
+    * Beschreibt der Abschnitt Lieferkomponenten was die Resultate des Projekt sein sollte --- was am Ende des Projekt beim Kunden abgeliefert wird. Wird auch abgegrenzt was explizit nicht abgeliefert werden soll bzw. an andere ausgeliefert wird? (Beispielsweise für Open-Source Teile der Software).
+
+    * Projektmanagement- und Entwicklungswerkzeuge welche den einzelnen Personen zur Verfügung stehen sollen aufgelistet werden. Dazu werden meist die Abschnitte Besonderheiten oder Informationswesen gegen Ende des Projektauftrags verwendet.
+
+    * Zeigen die Arbeitspakete und verwendeten Technologien einen angemessenen Projektumfang für die Teamgröße?
+    
+  * Reviews
+  
+    * Ist die Erfüllung der Features durch unabhängige Dritte entscheidbar und überprüfbar? Wurden mehrere Reviews, auch durch Projekt-externe Personen durchgeführt. Eine einfache Kontrolle durch eine unabhängige Person wird unnötige Punkte im Projektauftrag an den Tag fördern. 
+    
+    * In den ersten 6-7 Seiten sollte das Wesentlichste beschrieben sein --- der Umfang des Projekt sollte dem Leser bereits ersichtlich sein, ohne in Details einzutauchen. Nur relevante Dinge, die der Kunde verlangt, werden behandelt. 
+    
+    * Die restlichen Seiten des Projektauftrags sollen keine Hintergrundinformationen, keine Geschichten, keine Anekdoten enthalten. Wenn unbedingt notwendig, kann man diese in den Anhang schreiben.
+    
+    * Abstimmen der Projektbeschreibung mit der Featureliste. Sind alle Features zur Projektbeschreibung bzw. Ausgangssituation rückverfolgbar bzw. logisch ableitbar?
+    
+    * Enthält die Projektbeschreibung alle Akteure welche in den Zielgruppen beschrieben sind? Sind die Ziele der Akteure in den Zielgruppen aus der Projektbeschreibung ersichtlich?
+    
+    * Sind alle Akteure der Zielgruppen in den Features zu finden? Enthält jedes Feature zumindest einen Akteur aus den Zielgruppen?
+    
+    * Haben alle Objekte im Domänenmodell Attribute? Werden spezielle Wertebereiche bzw. Formate verwendet? 
+    
+    * Sind alle Objekte des Domänenmodells zu den Beschreibungen rückverfolgbar und werden sie konsistent verwendet? Die in Ausgangssituation, Projektbeschreibung und Featureliste beschriebenen Abläufe (Operationen) können im Domänenmodell als Assoziationen modelliert werden --- stimmen diese auch überein?
+    
+    * Stimmen die in den Diagrammen verwendeten Begriffe mit jenen im Text überein? Diagramme sollen die Anforderungen(Projektbeschreibung, Featureliste, Zielgruppen) unterstützen und übersichtlich präsentieren, nicht neue Begriffe einführen.
+
+    * Begriffe, die für das Verständnis des Projektauftrags wichtig sind, sollen einheitlich in den Diagrammen der Modellierung verwendet werden.
+    
+    * Es darf nur einen Weg geben, wie die Spezifikation interpretiert werden kann. Konkret bedeutet das, absolut genaues Definieren und konsistentes Gebrauchen von Ausdrücken. Ausdrücke müssen im ganzen Dokument die gleiche Bedeutung haben.
+    
+    * Projektabgrenzungen sind in einer klaren einfachen Sprache formuliert und stecken den Umfang des Systems ab.
+    
+    * Ist alles, was der Kunde verlangt, durch die Leistungen der Anwendungsfälle abgedeckt? Gibt es eine einfache Zuordnung von Betriebsabläufen in den Beschreibungen und Features zu Anwendungsfällen?
+    
+    * Sind die einzelnen Anwendungsfälle zu den Zielgruppen rückverfolgbar? Triviale Anwendungsfälle, wie etwa "Einloggen", sind im Projektauftrag unbrauchbar. Jeder Anwendungsfall sollte ein sog. "User Goal" der in den Zielgruppen beschrieben Akteure sein.
+    
+    * Abstimmen der Akteure in den Anwendungsfällen mit den Zielgruppen: Sind alle relevanten Akteure in den Modellen als Zielgruppen beschrieben?
+    
+    []
+    
+* Vorbereitung zum MR-1
+  
+  * Die Version bzw. Aktualität des Projektauftrags überprüfen: Die Einarbeitung von Änderungen gegenüber der letzten Version genau überprüfen bzw. abhaken. Oft werden einige Korrekturen übersehen, was leicht zu einem Versionenchaos und zu Frust bei den Korrekturlesern führt (z.B.: "Das habe ich doch schon in der vorletzten Version ausgebessert?").
+
+  * Beim ersten Management Review trifft sich das Projektteam zum ersten mal mit dem oberen Management, dabei ist es sehr hilfreich eine Präsentation anzufertigen um einen Überblick der Projektidee zu geben. Die Präsentation beginnt jedoch mit einer Vorstellung des Projektteams und deren Rollen, da das erste Management Review oft auch die erste Begegnung dieser zwei Parteien darstellt. Die Präsentation soll nicht zu lang sein (max. 6 Folien), daher ist es wichtig jede Folie sinnvoll zu Nutzen, hier folgt ein Vorschlag zur Aufteilung: 
+    
+~~%FIXME (zoech) Ich hab auch noch gerne diese Folien dabei. Vieleicht
+~~% findest du Teile davon auch brauchbar.
+~~% *Nach Teamfolie -> Projektvorstellung: Ausgangssituation und grosse Ziele
+~~% *Domainenmodell um das Projekt vorzustellen dadurch laesst sich 
+~~% in einem Blick das Projekt veranschaulichen und dem Assi besser darstellen
+~~% Oft ist diese Folie auch mit den Produktfeatures kombiniert.
+~~% *Projektrisiken - Wo glaubt die Gruppe ist die Wahrscheinlichkeit sehr hoch auf Probleme zu stossen
+~~% *Next Steps
+
+  * MR1 Präsentation
+  
+    [[1]] Das Team: Namen & Horizontalen Rollen bzw. Pflichten beschreiben. Jeder im Team sollte sich selbst vorstellen.
+    
+    [[2]] Die wichtigsten Features der Featureliste, dabei sollte jedes Teammitglied die Features vorstellen welche in seinem Zuständigkeitsbereich liegen (Vertikale Pflichten) Zielgruppen erklären.
+    
+    [[3]] Weitere Produktfeatures, möglicherweise auch sog. "nice-to-have" Features wenn genügend Platz dafür vorhanden ist.
+    
+    [[4]] Schichtendiagramm oder Übersichtsdiagramm: Muss nicht in UML verfasst werden, jedoch durchaus möglich. Das Diagramm soll einen Überblick liefern und damit den Umfang des Projekt andeuten.
+    
+    [[5]] Komponentendiagramm oder Verteilungsdiagramm: Sollte in der UML dargestellt werden, dieses Diagramm dient zur Diskussion über die Architektur der zukünftigen Software. Mit dem Management wird besprochen welche Komponenten oder Teile des Systems hinzugekauft werden können bzw. bereits vorhanden sind und welche Teile neu entwickelt werden müssen, hier werden also Abgrenzungen der neuen Software klargestellt und auch Umfang besprochen.
+    
+* Management Review 1 (MR-1)
+
+  * Die vollständige Projektmappe ist bei jedem Management Review mitzubringen. Beim MR-1 enthält die Projektmappe nur den Projektvorschlag und den Projektauftrag bzw. andere Skizzen und Diagramme welche während der Analyse, etwa dem Kick-Off, entstanden sind.
+
+  * Ein ausgearbeiteter Projektauftrag ist vorhanden. Es wird empfohlen den Projektauftrag mehreren Internen Reviews zu unterziehen, am besten durch Projekt fremde Personen welche aber mit der Materie vertraut sind.
+
+  * Es ist vorteilhaft eine gut strukturierte, einfache Projektpräsentation mitzubringen um vor allem den Anfang des ersten Meetings zu beschleunigen.
+
+  * Falls im Umfeld bzw. Unternehmen bereits Software-Systeme oder Prototypen im Einsatz sind, die auf das zukünftige System Einfluss haben können, so sind diese zu besprechen.
+
+  * Zusammenfassung von im Rahmen der Spezifikation anzuwendenden gesetzlichen Regelungen oder behördlichen Auflagen sind zu besprechen: Was ist klarzustellen damit die Entwicklung der Software reibungsfrei abläuft?
+	
+  * Beim ersten Management Review steckt das Projektteam meist mitten in der Analysephase, es sind daher alle Wissensquellen die im Zuge der Analyse nützlich sein werden zu identifizieren und zugänglich zu machen.
+
+  * Anhand eines Komponentendiagramms oder anderen Übersichtsdiagramms sind die Schnittstellen der zukünftigen Software zu besprechen. Findet Datenaustausch mit anderen organisatorischen Systemen und Anwendungen statt?
+
+  * Alle Informationen, die in das System hinein bzw. aus dem System heraus fließen sollen, sind geeignet zu beschreiben. Erscheint das Gesamtsystem zu umfangreich, ist der wichtigste Betriebliche Ablauf zu verwenden. Existierende Formulare und Berichte sind eine gute Basis für Ein- und Ausgaben, mit denen das System arbeiten wird. Sind für alle Eingaben in das System ihre Herkunft und Typ (Format, Wertebereich, evtl. Genauigkeit) bekannt? Sind für alle Ausgaben des Systems ihr Ziel, Typ (Format, Wertebereich, evtl. Genauigkeit) bekannt? 
+
+  * Welche Auswertungen werden vom System verlangt? Soll es Exportfunktionen geben? Sind die Formate der Auswertungen(Berichte) und/oder Exportfunktionen spezifiziert? 
+
+  * Anforderungen an die Anwenderschnittstelle. Diese sind nach den Bedürfnissen des Publikums der jeweiligen Schnittstelle zu beschreiben, ohne den Entwurf unnötig einzuschränken. Hier haben sich Skizzen, verbale Beschreibungen oder Verweise auf (Papier-)Prototypen bewährt.
+	
+  * Gibt es Anforderungen, die wahrscheinlich nicht implementierbar sind und nur aus politischen oder technologischen Überlegungen in die Spezifikation aufgenommen worden sind?
+	
+  * Was sind die Risiken am Projekt, was kann schief gehen bzw. mit welchen Herausforderungen hatten andere, ähnliche Projekte zu kämpfen? Es ist eine grobe Risikoanalyse aus der Sicht des Managements aufzustellen und im Besprechungsprotokoll zu dokumentieren. 
+
+  * Es muss sicher sein, dass alle Anforderungen, mit zu Verfügung stehenden Werkzeugen, Techniken, Personal und Budget implementiert werden können. Deswegen bedeutet Durchführbarkeit sowohl technische als auch logistische Durchführbarkeit. 
+  
+  * Sind die Entwurfseinschränkungen realistisch? Sind die Anforderungen an die Ausrüstung für das neue System abgeschätzt? Wie stark kann sich der Technologiefortschritt während des Projekts auswirken? Wird das neue System die Verwendung von Technologie im Unternehmen stark verändern? 
+Wird in die Arbeitssituation von Anwendern sub-stantiell eingegriffen?
+
+  []
+
+* Erstes treffen nach dem MR-1
+
+  * Sind die Anforderungen vollständig insofern, dass ein Produkt, das alle Anforderungen erfüllt, jedenfalls auch ein erfolgreiches Produkt ist? 
+
+  * Ist eine vollständige Risikoanalyse vorhanden?
+  
+~~ TODO  
+ 
+  []
+ 
+* Letztes Treffen vor dem MR-2
+
+  * Sind die Anforderungen so klar, dass sie an eine unabhängige Organisation zur Umsetzung vergeben werden könnten?
+  
+  * Sind alle Anforderungen bis zur Systemebene bzw. zu einzelnen Personen(gruppen)  im Projektplan rückverfolgbar? Ist die Verfolgbarkeit der einzelnen Anforderungen im Entwurf sichergestellt?
+  
+  ~~TODO: Umsetzung, Design
+  
+  []
+  
+* Management Review 2 (MR-2)
+
+~~ TODO  

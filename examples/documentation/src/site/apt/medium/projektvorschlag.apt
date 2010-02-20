@@ -1,0 +1,145 @@
+Projektvorschlag
+
+  Dieser Abschnitt beinhaltet den Projektvorschlag für das Software-Engineering Anmelde Tool (SAT) in der Medium-Ausbaustufe.
+
+  Der Projektvorschlag (PV) umschreibt grob das geplante Vorhaben und liefert die Grundlage für eine erste Machbarkeits-Abschätzung. 
+
+  Das SAT Projekt baut technisch auf dem Basic Beispiel auf. Die Architekturellen Änderungen bzw. Erweiterungen sind jedoch massiv, 
+  weitere Analyse und Design in einem Team sind notwendig um ein gutes mittelgroßes Projekt in angemessener Zeit durchzuführen. 
+  Dazu sind anschließend Checklisten beschrieben, welche aus der Durchführung des SAT Projekts im Rahmen der SEPM LVA entstanden 
+  sind und für andere Projekt mit ähnlichen Charakteristiken verwendbar sein sollen.
+
+  Der Projektauftrag (PA) basiert auf diesem Vorschlag und erweitert ihn durch detailliertere und weitaus konkretere Anforderungen 
+  sowie Projektmanagement Artefakte. 
+
+* {Ausgangssituation}
+~~ Gleich mit der Ausgangssituation vom PA
+  Die <Lehrveranstalltung> (LVA) "Software Engineering & Projektmanagement"
+  (SE&PM) wird von zwei verschiedenen <Instituten> an der Technischen Universität 
+  Wien gemeinsam abgehalten. Dabei wird aus Administrationssicht der <<Tutoren>> und 
+  <<Professoren>>, der erste Teil der <Lehrveranstaltung>, die "Eingangsphase", 
+  gemeinsam und der zweite Teil "Guppenphase" an den zwei <Instituten> separat 
+  durchgeführt. 
+  Derzeit sind vier bis fünf verschiedene Webanwendungen an der Administration 
+  der SE&PM <LVA> beteiligt. Jede Webanwendung tragt bestimmte wichtige Funktionen 
+  zum Prozess bei, entweder die Anwendung ist universell genug um von beiden 
+  <Instituten> verwendet zu werden (Google Docs/Google Calendar) oder die Anwendung 
+  bezieht sich auf ein spezielles Problem seitens der Administration und 
+  Automatisierung (Domänenwissen der Professoren bzw. interne Webanwendungen). 
+  Andere, von der Universität angebotene, Webanwendungen erlauben es zwar 
+  <Lehrveranstalltungen> gut zu administrieren, doch beziehen sich diese immer auf 
+  genau eine <LVA> welche von genau einem Institut abgehalten wird. Sobald mit den 
+  bestehenden Anwendungen versucht wird eine gemeinsame Eingangsphase der <LVA> 
+  abzubilden, stoßŸen diese bestehenden Werkzeuge auf ihre Grenzen und können den 
+  geforderten Ablauf der SE&PM <LVA> nicht mehr abdecken.
+  
+* Projektbeschreibung
+~~ Anfang ist gleich mit Projektbeschreibung vom PA
+  Es wird ein Werkzeug benötigt welches den in der {{Ausgangssituation}}, 
+  von Semester zu Semester wiederkehrenden, Prozess administriert und mindestens drei, 
+  maximal vier, der fünf vorhandenen Webanwendungen ablöst.
+
+  Das Projektteam von SAT soll aus Sicht der <<LVA-Leitung>>(<<Tutoren>> & <<Professoren>>) 
+  und auch der <<Studenten>> den SE&PM Prozess neu gestalten. Die von den jetzigen 
+  Tools abgedeckten Technischen Features der verschiedenen Anwendungen sollen 
+  komplett überarbeiten werden, d.h. eine neue Webanwendung mit neuen Technologien 
+  und technischen Features muss Entwickelt werden, und die bestehende Dokumentation 
+  und das Domänenwissen der <<LVA-Leitung>> soll dabei soweit wie möglich integriert 
+  werden um den Prozess transparenter zu machen.
+
+  SAT soll nicht alles abdecken, aber es ist eine vollständige Web Applikation 
+  und zählt daher bereits zu einem verteilten System. Es geht darum, den <<Studenten>> 
+  und <<Professoren>> eine Platform zur Verfügung zu stellen. <<Student>> und <<Professor>> bzw. 
+  <<LVA-Leitung>> sind auch die Zielgruppen der SAT Webanwendung welche im Abschnitt 
+  {{Zielgruppen}} näher beschrieben sind.
+  
+* {Zielgruppen}
+~~ Gleich mit den Zielgruppen vom PA
+  Die <<LVA-Leitung>> von beiden Instituten, bestehend aus <<Tutoren>> und <<Professoren>>, sollen 
+  von SAT sehr stark profitieren. Die Anzahl der verwendeten Webanwendungen soll 
+  wesentlich reduziert werden, vorhandene Features sollen verbessert werden und der 
+  Übergang von Einzelphase zu Gruppenphase soll durch das neue SAT Werkzeug verbessert 
+  und beschleunigt werden.
+
+  <<Tutoren>> verwenden das System in erster Linie um Abgabegespräche durchzuführen und die 
+  <Bewertung> in das Werkzeug einzutragen, d.h. Die <Bewertung> ist als Fragebogen-Schablone 
+  im Werkzeug enthalten und der <<Tutor>> muss diese bei einer Abgabe vervollständigen und 
+  bestätigen.  Bei der <Bewertung> ist es hilfreich zu wissen wie oft ein <<Student>> bereits 
+  zur Abgabe angetreten ist und wann der letzte Antritt erfolgte. Weiters ist es bedingt 
+  hilfreich zu wissen wie viele bzw. welche <<Studenten>> sich zu einem bestimmten 
+  <Abgabetermin> angemeldet haben.
+~~TODO: Tutoreinschaetzung, free-form text
+
+  <<Administratoren>> wollen zu Begin eines neuen Semesters die Datenbestände aus alten 
+  Semestern übernehmen um organisatorischen Overhead zu verringern. Am Ende der 
+  Einzelphase, also nach der <Bewertung>, sollen jene <<Studenten>> welche die Abgabe 
+  positiv absolviert haben zu <Gruppen> zusammengestellt werden, ein <<Tutor>> soll 
+  jeder <Gruppe> zugeteilt werden und eine "`Kick-Off"' E-Mail sollte an 
+  <<Tutoren>> & <Gruppen> versandt werden um diese zu benachrichtigen. 
+
+  Den <<Studenten>> soll die Handhabung der LVA erleichtert werden. Mittels SAT und einer 
+  anderen Webapplikation welche als Kommunikationsplattform verwendet wird sollen alle 
+  Bedürfnisse abgedeckt werden. <<Studenten>> müssen sich in SAT zu <Terminen> 
+  (Einstiegstest \& Abgabe) anmelden und eine <LVA-Präferenz> abgeben. 
+~~Gruppen erstellen, Institutspraeferenz abgeben.
+~~Projekt finden
+  
+* {Featureliste}
+~~Gleich mit der Featureliste vom PA
+  Folgende Features der bestehenden Werkzeuge unterstützen die in der 
+  {Ausgangssituation} beschriebenen Abläufe, daher sind sie den erwähnten Zielgruppen 
+  von direktem Nutzen und sollen von der neuen SAT-Webapplikation abgelöst werden.
+
+  Bestehender Funktionsumfang:
+
+  [Registrierung der Studenten] Bestätigung mit gültiger E-Mail Adresse. Kontrolle der Matrikel Nummer und Studienkennzahl via externe Systeme wird derzeit nicht unterstützt, ist aber in Zukunft wünschenswert.
+  
+  [Fragebogen System] Studenten können verschiedene Fragebögen ausfüllen um die Einteilung von Gruppen durch die LVA-Leitung zu erleichtern. Fragebögen können von der LVA-Leitung erstellt, eingesehen und bearbeiten werden.
+  
+  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)]  Ein Fragebogen mit nur einer Frage welcher ausgefüllt und bestätigt werden muss um die Eingangsphase abzuschließen. 
+  
+  [Terminverwaltung] Studenten können sich zu einem Abgabetermin anmelden, dabei werden Anmeldebeschränkungen kontrolliert. Abmeldung vom Abgabetermin ist bis zu einem vorher bestimmten Zeitpunkt möglich. Die LVA-Leitung kann Abgabetermine anlegen und verwalten.
+    
+  [Gruppenbildung] Studenten können sich zu Gruppen zusammenschliessen, jeder Student kann sich zu genau einer Gruppe anmelden und auch wieder abmelden sowie eine neue Gruppe erstellen. Es wird derzeit nur die Gruppierung und Präferenz jedes Studenten in der Gruppe angezeigt, zudem sind immer alle Gruppen für alle im System Registrierten Benutzer sichtbar, was in der Vergangenheit schon zu Problemen geführt hat.
+  
+  [Bewertung durch Tutoren] Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf.
+    
+  [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten.
+~~\item Rundmail-Versand --- 
+    
+  [Datenrücksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden.
+   
+  [Import der Testergebnisse] Bei Testterminen, werden die von den Studenten erzielten Punkte zu der Bewertung in der Webanwendung dazugezählt. Ein Import dieser Punkte ist per CSV Datei möglich.
+    
+  [Export der Studenten-Datensätze] Am Ende der Einzelphase werden die Studenten mit ihren Leistungen, Beschreibungen, Gruppenzuteilungen und Präferenzen exportiert und in anderen Werkzeugen weiterverarbeitet.
+
+  []
+
+  Features welche vollkommen neu sind und nicht bereits von bestehenden Werkzeugen unterstützt werden:
+
+  [Registrierung der Studenten] Das Passwort wird als Hash gespeichert und nicht mehr per E-Mail versandt. Bei Verlust wird ein neues generiert und dem Studenten zugesandt, der es bei der ersten neuen Anmeldung ändern muss.
+
+  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)] Anmeldebeschränkungen und Unterschiedliche Anmelde-deadlines fuer jede Präferenz.
+
+  [Gruppenbildung] Eine Gruppe soll eine Notiz hinterlassen können, die andere Studenten einsehen können (Projektvorschlag, Kenntnisse, ...). Administrator-seitig soll SAT die Möglichkeit bieten Gruppen manuell zusammenzustellen, aber auch diese Schritte wieder rückgängig zu machen.
+
+  [Administrator Benutzerkonto] Direkte Verknüpfung eines Tutors und Assistenten mit einer Gruppe (siehe Domänenmodell \ref{med_bsp:PVDomain}, "`betreut"' Beziehung), dies soll den Übergang von Einzelphase zu Gruppenphase erheblich beschleunigen, da früher mit organisatorischer Arbeit für die Gruppenphase begonnen werden kann. Automatischer Versand eines E-Mail an die zusammengestellten Gruppen und die jeweiligen Tutoren/Assistenten soll möglich sein um die Gruppenphase zu "`starten"'.
+
+  [Fragebogen System] Benutzerfreundliche Erstellung der Fragebögen, jetzige Methode erfordert einen Entwickler.
+~~\item Nachabgaben bzw. dritte Antritte (NEU)
+~~\item Export der Studentenliste (NEU)
+
+  [Export von SVN Accounts] Exportfunktion der Studenten- und Gruppendaten für Mailinglisten und SVN-Accounts. Jene Systeme werden extern administriert, Export erfolgt als CSV.
+
+  [Terminverwaltung] soll in Zukunft auch für andere Formen von Anmeldungen genützt werden (Tutorien, vereinbarte Laborzeiten, ...). Anmeldeschluss zu Abgaben soll definierbar sein. Versand von Rund-Mails für Angemeldete Studenten soll unterstützt werden.
+~~\item Notenvergabe (NEU) - Noten sollen am Ende der LVA in das Tool eingetragen werden.
+~~\item Notenexport - Noten sollen bei Bedarf für das TUWIS unabhängig nach Gruppe, Semester und Institut exportiert werden. Dabei werden Studenten, die schon in der Eingangsphase negativ bewertet wurden automatisch auf die Institute aufgeteilt.
+~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden können.
+
+  [Bewertung durch Tutoren] Bei der Bewertung soll angezeigt werden wie oft der zu bewertende Student bereits abgetreten ist.
+
+  []
+  
+* Domänenmodell
+
+[../uml/medium/slat-model/fig128003.png] Domänenmodel
