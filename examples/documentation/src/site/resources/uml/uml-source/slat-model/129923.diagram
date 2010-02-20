@@ -1,0 +1,50 @@
+format 66
+
+fragment 128002 "Gruppen-Verwaltung Student"
+  xyzwh 3 3 1994 601 499
+end
+subject 128003 "SAT Gruppenbildung"
+  xyzwh 122 31 2000 469 461
+classcanvas 128259 class_ref 130691 // Student
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 34 218 2000
+end
+usecasecanvas 128265 usecase_ref 128521 // von Gruppe abmelden
+  xyzwh 230 407 3005 64 32 label_xy 209 439
+end
+usecasecanvas 128643 usecase_ref 129411 // Gruppe erstellen
+  xyzwh 230 48 3005 64 32 label_xy 222 80
+end
+usecasecanvas 128899 usecase_ref 129539 // Gruppenbeschreibung editieren
+  xyzwh 229 324 3005 64 32 label_xy 185 356
+end
+usecasecanvas 129155 usecase_ref 129667 // Gruppe einsehen
+  xyzwh 229 234 3005 64 32 label_xy 220 266
+end
+note 129161 "Brauchen wir extra 'Gruppe einsehen' oder soll das schon alles in der Übersicht möglich sein?"
+  xyzwh 414 209 2005 150 79
+usecasecanvas 129539 usecase_ref 129795 // zu Gruppe anmelden
+  xyzwh 229 145 3005 64 32 label_xy 211 177
+end
+line 128393 ----
+  from ref 128265 z 3006 to ref 128259
+simplerelationcanvas 128521 simplerelation_ref 129929
+  from ref 128643 z 3006 stereotype "<<include>>" xyz 231 111 3000 to ref 129539
+end
+line 128771 ----
+  from ref 128259 z 1999 to ref 128643
+simplerelationcanvas 128905 simplerelation_ref 130185
+  from ref 129539 z 3006 stereotype "<<extend>>" xyz 232 204 3000 to ref 129155
+end
+line 129027 ----
+  from ref 128259 z 1999 to ref 128899
+simplerelationcanvas 129033 simplerelation_ref 130313
+  from ref 128899 z 3006 stereotype "<<extend>>" xyz 231 294 3000 to ref 129155
+end
+line 129283 ----
+  from ref 128259 z 1999 to ref 129155
+line 129667 ----
+  from ref 128259 z 1999 to ref 129539
+line 129289 -_-_
+  from ref 129161 z 3006 to ref 129155
+end

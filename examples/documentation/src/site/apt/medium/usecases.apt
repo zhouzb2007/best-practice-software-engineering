@@ -1,0 +1,51 @@
+Allgemeine Use Cases von SAT
+
+* Package Overview
+
+[../uml/medium/slat-model/fig129283.png]
+
+** Use Case: in SAT einloggen
+
+*-----------------+---------------+
+| Name:  | in SAT einloggen |
+| Scope:  | SAT Homepage |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student TODO: Tutor, Admin |
+| Interests:      | Student will die Funktionen von SAT nuetzen und muss sich dazu einloggen |
+*-----------------+--------------+
+| Preconditions:  | Student hat ein gueltiges Account (Use Case: Account-Verwaltung::Account anlegen) |
+*-----------------+--------------+
+| Main Scenario:  | 1. Student gibt die URL von SAT in einem Web-Browser ein. |
+|			 	  | 2. Student gibt seine Matrikelnummer im vorgesehenen Feld ein. |
+|			      | 3. Student tragt auch sein Passwort im dafuer vorgesehenen Feld ein. |
+|			      | 4. Student klickt auf den Button <"Anmelden"> |
+|			      | 5. TODO: Student kommt in die Uebersicht |
+*-----------------+--------------+
+| Error Scenario <<"Falsche Matrikelnummer 1">>:  | 1. Student gibt die URL von SAT in einem Web-Browser ein. |
+|			 	  | 2. Student gibt eine falsche aber gueltige Matrikelnummer mit 7 Stellen im vorgesehenen Feld ein. |
+|			      | 3. Student traegt das Passwort im dafuer vorgesehenen Feld ein. |
+|			      | 4. Student klickt auf den Button <"Anmelden"> |
+|			      | 5. Meldung <"Ein Fehler ist aufgetreten"> sowie <"Benutzerkonto nicht gefunden oder Passwort falsch"> erscheint |
+|				  | 6. Zusaetzlich zum vorherigen Punkt erscheinen die Matrikelnummer und Passwort Felder aus Szenario-Schritten 2 und 3, nur mit den ausgefuellten, moeglicherweise falschen, Daten. |
+*-----------------+--------------+
+| Error Scenario <<"Falsche Matrikelnummer 2">>:  | 1. Student gibt die URL von SAT in einem Web-Browser ein. |
+|			 	  | 2. Student gibt eine ungueltige Matrikelnummer im vorgesehenen Feld ein. (\<\>7 oder Alphanumerisch)|
+|			      | 3. Student traegt das Passwort im dafuer vorgesehenen Feld ein. |
+|			      | 4. Student klickt auf den Button <"Anmelden"> |
+|			      | 5. Meldung <"Ein Fehler ist aufgetreten"> sowie <"Matrikelnummer muss aus 7 numerischen Zeichen bestehen"> erscheint |
+|				  | 6. Zusaetzlich zum vorherigen Punkt erscheinen die Matrikelnummer und Passwort Felder aus Szenario-Schritten 2 und 3, nur mit den ausgefuellten, moeglicherweise falschen, Daten. |
+*-----------------+--------------+
+| Error Scenario <<"Falsches Passwort">>:  | 1. Student gibt die URL von SAT in einem Web-Browser ein. |
+|			 	  | 2. Student gibt seine Matrikelnummer im vorgesehenen Feld ein. |
+|			      | 3. Student traegt das falsche Passwort im dafuer vorgesehenen Feld ein. |
+|			      | 4. Student klickt auf den Button <"Anmelden"> |
+|			      | 5. Meldung "Ein Fehler ist aufgetreten" sowie "Benutzerkonto nicht gefunden oder Passwort falsch" erscheint |
+|				  | 6. Zusaetzlich zum vorherigen Punkt erscheinen die Matrikelnummer und Passwort Felder aus Szenario-Schritten 2 und 3, nur mit den ausgefuellten, moeglicherweise falschen, Daten. |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+

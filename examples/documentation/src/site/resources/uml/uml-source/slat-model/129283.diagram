@@ -1,0 +1,32 @@
+format 66
+
+iconcanvas 128009 usecasediagram_ref 128009 // 6.1. LVAs verwalten
+  xyz 236 173 2004
+iconcanvas 128899 usecasediagram_ref 129411 // 3.1. Fragebögen verwalten
+  xyz 40.1 32 2000
+textcanvas 129411 "Fragebogen"
+  xyzwh 15 15 2005 77 18
+textcanvas 129539 "Bewertung"
+  xyzwh 138 13 2000 67 17
+textcanvas 129667 "Gruppenbildung"
+  xyzwh 13 92 2000 91 16
+textcanvas 129795 "Terminverwaltung"
+  xyzwh 197 92 2000 98 17
+textcanvas 129923 "Accountverwaltung"
+  xyzwh 250 11 2000 106 15
+textcanvas 130051 "LVA-Verwaltung"
+  xyzwh 201 156 2000 89 17
+iconcanvas 130179 usecasediagram_ref 129667 // 1.1. Studenten-Accounts verwalten
+  xyz 289 32 2000
+iconcanvas 130435 usecasediagram_ref 129795 // 5.1. Termine für die Abgabe verwalten
+  xyz 236 111 2000
+iconcanvas 130947 usecasediagram_ref 130051 // 2.1. Studenten bewerten
+  xyz 160 34 2000
+iconcanvas 131075 usecasediagram_ref 129923 // 4.1. Gruppe verwalten für Studenten
+  xyz 46 111 2000
+iconcanvas 131459 usecasediagram_ref 130179 // 4.2. Gruppe verwalten für Tutoren/Admins
+  xyz 60 175 2005
+textcanvas 131587 "GruppenbildungAdmin"
+  xyzwh 12 157 2000 124 17
+preferred_whz 0 0 1.2
+end

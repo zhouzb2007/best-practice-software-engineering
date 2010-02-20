@@ -1,0 +1,109 @@
+format 66
+
+activitycanvas 128009 activity_ref 136713 // Zusammenlegung rückgängig
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 23 16 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 143369 // initial
+  xyz 77 100 2005
+end
+activityactioncanvas 128265 activityaction_ref 143625 // activity action Einen Schritt zurück
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 291 79 2005 100 60
+end
+activitynodecanvas 128393 activitynode_ref 143497 // decision
+  xyz 210 173 2005
+end
+textcanvas 128777 "Letzter Schritt Gruppe?"
+  xyzwh 169 149 2005 113 14
+activityactioncanvas 128905 activityaction_ref 143753 // activity action Student aus Gruppe entfernen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 63 163 2005 100 60
+end
+activityactioncanvas 129033 activityaction_ref 143881 // activity action Gruppen auftrennen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 174 252 2010 100 60
+end
+activitynodecanvas 129161 activitynode_ref 143625 // decision
+  xyz 328 172 2005
+end
+textcanvas 129289 "Step-back
+bestätigen"
+  xyzwh 363 176 2005 59 37
+activitynodecanvas 129673 activitynode_ref 143753 // activity_final
+  xyz 379 299 2005
+end
+activitynodecanvas 130953 activitynode_ref 143881 // merge
+  xyz 69 348 2005
+end
+activityactioncanvas 131337 activityaction_ref 144009 // activity action Step-back bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 176 337 2005 100 60
+end
+activitynodecanvas 131465 activitynode_ref 144009 // merge
+  xyz 328 292 2005
+end
+flowcanvas 128521 flow_ref 160265 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129417 flow_ref 160521 // <flow>
+  
+  from ref 128265 z 2006 to ref 129161
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129545 flow_ref 160649 // Bestätigung
+  
+  from ref 129161 z 2006 label "Bestätigung" xyz 252 183 3000 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130697 flow_ref 161033 // Ja
+  
+  from ref 128393 z 2011 label "Ja" xyz 217 223 3000 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130825 flow_ref 161161 // Nein
+  
+  from ref 128393 z 2006 label "Nein" xyz 175.5 184 3000 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131081 flow_ref 161289 // <flow>
+  
+  from ref 128905 z 2006 to point 35 189
+  line 132361 z 2006 to point 35 363
+  line 132233 z 2006 to ref 130953
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131209 flow_ref 161417 // <flow>
+  
+  from ref 129033 z 2011 to point 79 279
+  line 132489 z 2011 to ref 130953
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131593 flow_ref 161545 // <flow>
+  
+  from ref 130953 z 2006 to ref 131337
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131721 flow_ref 161673 // Abbruch
+  
+  from ref 129161 z 2006 label "Abbruch" xyz 319 242 3000 to ref 131465
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131849 flow_ref 161801 // <flow>
+  
+  from ref 131337 z 2006 to point 338 363
+  line 132617 z 2006 to ref 131465
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131977 flow_ref 161929 // <flow>
+  
+  from ref 131465 z 2006 to ref 129673
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

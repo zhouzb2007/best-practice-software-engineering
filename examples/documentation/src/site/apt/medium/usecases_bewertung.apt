@@ -1,0 +1,70 @@
+Use Case Package: Bewertung
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig130051.png]
+
+** Use Case: Testpunkte eintragen
+
+*-----------------+---------------+
+| Name:  | Testpunkte eintragen |
+| Scope:  | SAT Bewertung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Tutor |
+| Interests:      | Tutor sitzt vor einem Stoss Tests und muss Matrikelnummer und Testpunkte eintragen. Alles andere eigentlich irrelevant zu dem Zeitpunkt. |
+*-----------------+--------------+
+| Preconditions:  | Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. |
+*-----------------+--------------+
+| Main Scenario:  | 1. Tutor gibt Matrikelnummer ein |
+|			 	  | 2. Tutor gibt Testpunkte ein |
+|			      | 3. TODO: Error Szenarios, Matrikelnummer nicht vorhanden. |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig129263.png]
+
+** Use Case: Bewertung eintragen
+
+*-----------------+---------------+
+| Name:  | Bewertung eintragen |
+| Scope:  | SAT Bewertung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Tutor |
+| Interests:      | Ein Student kommt zur Abgabe des Einzelbeispiels und der Tutor soll die Bewertung eintragen.  |
+*-----------------+--------------+
+| Preconditions:  | Anwendungsfall "Accountverwaltung::Daten einsehen". |
+*-----------------+--------------+
+| Main Scenario:  | 1. ... |
+|			 	  | 2. Wenn der Fragebogen vom Studenten noch nicht ausgefuellt wurde bzw. Student noch keiner Gruppe zugeordnet ist, wird darauf hingewiesen. |
+|			      | 3. ... |
+*-----------------+--------------+
+| Special Requirements:	| Fragebogen muss ausgefuellt worden sein, alle Felder muessen veraendert werden, auch Kommentar und Regeln der Benotung muessen passen. |
+*-----------------+--------------+
+
+** Use Case: Bewertungsbogen erstellen
+
+*-----------------+---------------+
+| Name:  | Bewertungsbogen erstellen |
+| Scope:  | SAT Bewertung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig130415.png]

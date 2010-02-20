@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <properties>
+        <title>Medium Sample Getting Started</title>
+        <author></author>
+    </properties>
+    
+    <body>
+        <section name="Medium sample getting started">
+            <subsection name="Start the Application">
+			<p>As the medium example is an web application we need a web container in order to execute the application. Jetty 
+is an open-source full featured web server implemented in Java. In contrast to JBoss or Apache Tomcat this web server is easy to use and can
+be integrated with maven without problems. In order to use the Jetty plugin in Maven projects, it must be configured in the pom.xml. Advantages of Jetty:
+				<ul>
+					<li>Lightweigt web server</li>
+					<li>Easy configuration (directly in Java or via configuration files)</li>
+					<li>Scalability (e.g. providing continuations)</li>
+					<li>Easy to integrate in projects</li>
+					<li>Maven integration</li>
+				</ul>
+			</p>
+			<p>
+			In order to start and stop the web application with Jetty you must change to the medium directory of the sample. 
+				<ol>
+					<li>Start jetty server by using mvn jetty:run</li>
+					<li>Open: http://localhost:8080/se1-sample-medium/welcome.jsf</li>
+					<li>Ready to use</li>
+				</ol>
+			</p>
+            </subsection>
+         
+        </section>
+    </body>
+</document>
+

@@ -1,0 +1,75 @@
+format 66
+
+activitycanvas 128113 activity_ref 128241 // LVA bearbeiten
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 23 19 2000 560 563
+end
+activitynodecanvas 128241 activitynode_ref 128625 // initial
+  xyz 119 127 2005
+end
+activityactioncanvas 128369 activityaction_ref 128625 // activity action LVA auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 220 107 2005 100 60
+end
+activityactioncanvas 128497 activityaction_ref 128753 // activity action LVA verändern
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 120 258 2005 100 60
+end
+activitynodecanvas 128881 activitynode_ref 128753 // decision
+  xyz 257 200 2005
+end
+activitynodecanvas 129137 activitynode_ref 128881 // activity_final
+  xyz 378 345 2005
+end
+activityactioncanvas 129265 activityaction_ref 129009 // activity action LVA speichern
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 119 410 2005 100 60
+end
+activitynodecanvas 129393 activitynode_ref 129009 // decision
+  xyz 156 340 2005
+end
+flowcanvas 128625 flow_ref 129393 // <flow>
+  decenter_begin 526
+  
+  from ref 128241 z 2006 to ref 128369
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129521 flow_ref 129649 // <flow>
+  
+  from ref 128369 z 2006 to ref 128881
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129649 flow_ref 129777 // Daten ändern
+  
+  from ref 128881 z 2006 label "Daten ändern" xyz 166 224 2006 to ref 128497
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129777 flow_ref 129905 // abbrechen
+  
+  from ref 128881 z 2006 label "abbrechen" xyz 329 262 2006 to ref 129137
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130033 flow_ref 130161 // <flow>
+  
+  from ref 129265 z 2006 to ref 129137
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130161 flow_ref 130289 // <flow>
+  
+  from ref 128497 z 2006 to ref 129393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130289 flow_ref 130417 // speichern
+  
+  from ref 129393 z 2006 label "speichern" xyz 116 383 2006 to ref 129265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130673 flow_ref 130545 // abbrechen
+  
+  from ref 129393 z 2006 label "abbrechen" xyz 250 339 2006 to ref 129137
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

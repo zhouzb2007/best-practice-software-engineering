@@ -1,0 +1,51 @@
+Use Case Package: Fragebogen
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig129411.png]
+
+** Use Case: Fragebogen <<erstellen>>
+
+*-----------------+---------------+
+| Name:  | Fragebogen <<erstellen>> |
+| Scope:  | SAT Fragebogen |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134019.png]
+
+** Use Case: Fragebogen <<ausfuellen>>
+
+*-----------------+---------------+
+| Name:  | Fragebogen <<ausfuellen>> |
+| Scope:  | SAT Fragebogen |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig132867.png]

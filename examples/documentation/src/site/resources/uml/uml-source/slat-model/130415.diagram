@@ -1,0 +1,91 @@
+format 66
+
+activitynodecanvas 128111 activitynode_ref 130543 // initial
+  xyz 33 79 2000
+end
+activitycanvas 128130 activity_ref 130415 // Bewertungsbogen erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 6 5 1994 480 407
+end
+activityactioncanvas 128239 activityaction_ref 130671 // activity action neuen Bewertungsbogen erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 102 58 2000 124 65
+end
+activityactioncanvas 128367 activityaction_ref 130799 // activity action Semester wählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 281 62 2000 100 60
+end
+activityactioncanvas 128495 activityaction_ref 130927 // activity action Frage erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 70 171 2000 100 60
+end
+activityactioncanvas 128623 activityaction_ref 131055 // activity action Kommentar hinzufügen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 221 172 2000 100 60
+end
+activityactioncanvas 128751 activityaction_ref 131183 // activity action Punktezahl wählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 367 173 2011 100 60
+end
+activitynodecanvas 129775 activitynode_ref 130671 // decision
+  xyz 373 288 2011
+end
+activitynodecanvas 130159 activitynode_ref 130799 // activity_final
+  xyz 373 362 2011
+end
+textcanvas 130543 "[ja]"
+  xyzwh 352 284 2004 23 50
+textcanvas 130671 "[nein]"
+  xyzwh 394 332 2000 31 15
+textcanvas 130799 "Weitere Fragen erstellen?"
+  xyzwh 403 270 2000 63 45
+flowcanvas 128879 flow_ref 130927 // <flow>
+  
+  from ref 128111 z 1999 to ref 128239
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129263 flow_ref 131183 // <flow>
+  
+  from ref 128239 z 1999 to ref 128367
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129391 flow_ref 131311 // <flow>
+  
+  from ref 128367 z 1999 to ref 128495
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129519 flow_ref 131439 // <flow>
+  
+  from ref 128495 z 1999 to ref 128623
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129647 flow_ref 131567 // <flow>
+  
+  from ref 128623 z 1999 to ref 128751
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129903 flow_ref 131695 // <flow>
+  decenter_begin 170
+  
+  from ref 128751 z 1999 to point 382 264
+  line 128002 z 1999 to ref 129775
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130031 flow_ref 131823 // <flow>
+  geometry VHr
+  
+  from ref 129775 z 1999 to point 117 304
+  line 130415 z 1999 to ref 128495
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130287 flow_ref 131951 // <flow>
+  
+  from ref 129775 z 1999 to ref 130159
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

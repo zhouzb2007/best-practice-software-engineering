@@ -1,0 +1,178 @@
+Use Case Package: Account-Verwaltung
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig129667.png]
+
+** Use Case: Account <<anlegen>>
+
+*-----------------+---------------+
+| Name:  | Account <<anlegen>> |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Anonymous |
+| Interests:      | Ein Student welcher sich bisher im TUWEL und TUWIS fuer die LVA angemedlet hat, will sich nun in SAT einloggen um Praeferenzen (Java/.Net) abzugeben und Gruppen zu bilden |
+|				  | Sekundaer will Student sich zu Terminen, etwa Einstiegstest und Abgabegespraeche, anmelden. |
+*-----------------+--------------+
+| Preconditions:  | keine |
+*-----------------+--------------+
+| Main Scenario:  | 1. Alle Anonymen Benutzer haben auf der Login-Seite von SAT die Moeglichkeit sich zu registrieren um ein Login und Passwort fuer SAT zu erhalten. |
+|			 	  | 2. Anonymer Benutzer gibt die Matrikelnummer und Studienkennzahl an. |
+|			      | 3. Anonymer Benutzer gibt Vorname und Nachname ein. |
+|				  | 4. Anonymer Benutzer waehlt ein Passwort und gibt seine E-Mail Addresse an |
+|				  | 5. Benutzer ist jetzt vorerst registriert, muss aber seine E-Mail bestaetigen bevor er sich einloggen kann. |
+|				  | 6. Benutzer checkt seine E-Mail und bestaetigt diese. |
+|				  | 7. Benutzer ist nun registriert (Akteur Student) und kann sich in SAT einloggen. |
+*-----------------+--------------+
+| Special Requirements:	| Passwort conventions? Kann SAT darauf aufmerksam machen wenn das Account zwar angelegt ist aber noch nicht per E-Mail bestaetigt wurde.  |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig129161.png]
+
+** Use Case: Account <<suchen>>
+
+*-----------------+---------------+
+| Name:  | Account <<suchen>> |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Administrator |
+| Interests:      | Administrator will die Registrierungsdaten eines bestimmten Studenten suchen bzw. wissen ob ein bestimmter Student registriert ist. |
+*-----------------+--------------+
+| Preconditions:  | TODO. Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. |
+*-----------------+--------------+
+| Main Scenario:  | 1. Administrator hat eine Suchmaske zur Verfuegung und kann nach folgenden Feldern per oder-Verknuepfung suchen: |
+|			 	  | 1a. Matrikelnummer |
+|			      | 1b. Nachname |
+|			      | 1c. Vorname |
+|			      | 1b. E-Mail |
+*-----------------+--------------+
+| Special Requirements:	| Die Suche soll auch Teilstrings bei allen feldern matchen. Beispielsweise soll nach nur einem Teil der E-Mail Addresse oder auch Matrikelnummer gesucht werden koennen. |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134025.png]
+
+** Use Case: Daten einsehen
+
+*-----------------+---------------+
+| Name:  | Daten einsehen |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Administrator, Tutor |
+| Interests:      | Administrator und Tutor wollen, aus einer sortierbaren Liste, Studenten einzeln auswaehlen und deren vollstaendige Daten (Account info) einsehen.
+|				  |	Tutoren wollen in der sortierbaren Liste haupsaechlich Daten der Bewertung sehen: Abgabetermin, Bewertungspunkte(Einstiegstest/Programmieraufgabe/Einstiegsbeispiel/Gesamtbewertung), Gruppe	|
+|				  | Administratoren wollen den Tutor bei Programmieraufgabe&Einstiegsbeispiel zusaetzlich sehen.
+*-----------------+--------------+
+| Preconditions:  | none |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  ... |
+|			      | 4. Fragebogen einsehen |
+|			      | 5.  ... |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134153.png]
+
+** Use Case: Accountdaten <<aendern>>
+
+*-----------------+---------------+
+| Name:  | Accountdaten <<aendern>> |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Student, Tutor, Administrator |
+| Interests:      | Student hat wenig interesse die Daten zu aendern wenn er einmal registriert ist. Tutoren und Administratoren wollen die Daten von Studenten korrigieren wenn sie unvollstaendig sind bzw. durch eine Suche festgestellt wurde das die Daten falsch sind. Ausserdem wollen Tutoren und Administratoren das Passwort eines Studenten neu setzen wenn es vergessen wurde. |
+*-----------------+--------------+
+| Preconditions:  | Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. Anwendungsfall "Daten einsehen" |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	| Passwort conventions? UC gehoert aufgeteilt, Stundenten haben einen "Profil" zugriff auf ihre Daten, etwa immer rechts-oben sichtbar waeren Tutoren und Administratoren nach Studenten suchen und aus einer Liste den richtigen zum editieren aussuchen.  |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig131593.png]
+
+** Use Case: Account <<loeschen>>
+
+*-----------------+---------------+
+| Name:  | Account <<loeschen>> |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Administrator |
+| Interests:      | Administrator will das Account eines Tutors welcher nicht mehr dabei ist rausloeschen. |
+|       		  | Administrator will ein Account eines Studenten welches faelschlicherweise angelegt wurde wieder loeschen, dies kommt jedoch sehr selten vor, hier gibt es einen eigenen UC "Datenruecksetzung" welcher alle Studentenacccounts archiviert. |
+*-----------------+--------------+
+| Preconditions:  | Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	| Tutoren sind ueberblickbar, werden aus einer Liste ausgewaehlt. Nach Studenten wird gesucht und dannach aus einer Liste ausgewaehlt.  |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig132873.png]
+
+** Use Case: Passwort <<aendern>>
+
+*-----------------+---------------+
+| Name:  | Passwort <<aendern>> |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Student, Tutor, Administrator |
+| Interests:      | Student, Tutor und Administrator wollen ihr eigenes Passwort aendern. |
+*-----------------+--------------+
+| Preconditions:  | Das bestehende Passwort muss bekannt sein. Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen.|
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|  Passwort conventions? |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig131465.png]
+
+** Use Case: Neues Passwort anfordern
+
+*-----------------+---------------+
+| Name:  | Neues Passwort anfordern |
+| Scope:  | Administration section of SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Student, Tutor, Administrator |
+| Interests:      | Student oder Tutor haben ihr Passwort vergessen und wollen sich einloggen. |
+*-----------------+--------------+
+| Preconditions:  | E-Mail addresse und Matrikelnummer/Studienrichtung, welche bei der Registrierung verwendet wurden, muessen bekannt sein. |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	| Passwort conventions? |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig132745.png]

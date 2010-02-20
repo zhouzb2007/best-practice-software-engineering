@@ -1,0 +1,216 @@
+Use Case Package: Account-Verwaltung
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig129795.png]
+
+** Use Case: zu Abgabetermin <<anmelden>>
+
+*-----------------+---------------+
+| Name:  | zu Abgabetermin <<anmelden>> |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      | Student will einen guten (moeglichst spaeten) Abgabetermin fuer die Einzelbeispielabgabe haben. Das heisst sobald die Anmedlung freigeschalten ist, will Student sich anmelden, sonst sind alle "guten" Abgabetermine bereits belegt. |
+*-----------------+--------------+
+| Preconditions:  | Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. Es gibt Termine mit freien Plaetzen. Student ist noch nicht zum Abgabegespraech angemeldet. |
+*-----------------+--------------+
+| Main Scenario:  | 1. Student waehlt <"Termine"> aus der Uebersicht aus. |
+|				  | 2. Eine Uebersicht der vorhandenen Abgabetermine (auch bereits belegte Termine) mit einem Menu der verfuegbaren Aktionen wird angezeigt. Die Meldung <"Sie sind nicht angemeldet"> wird angezeigt. |
+|			 	  | 3. Student waehlt einen freien Abgabetermin aus einer Liste aus |
+|			      | 4. Student bestaetigt die Auswahl des Termins mit einem Button aus dem Menu |
+|				  | 5. Die Uebersicht aus Szenario Punkt 2. wird angezeigt. Meldung <"Sie sind zum Termin X angemeldet"> wird angezeigt. |
+|				  | 6. Student bekommt eine E-Mail mit Details der Abgabe (Zeit, Ort, Mitzubringende Materialien) zugesandt. | 
+*-----------------+--------------+
+| Error Scenario "Abgabetermin wird waerend der Auswahl belegt":  | 1. Student waehlt <"Termine"> aus der Uebersicht aus. |
+|				  | 2. Eine Uebersicht der vorhandenen Abgabetermine (auch bereits belegte Termine) mit einem Menu der verfuegbaren Aktionen wird angezeigt. |
+|			 	  | 3. Student waehlt einen freien Abgabetermin aus einer Liste aus |
+|				  | 4. Ein anderer Student fuehrt diesen Anwendungsfall auch aus, waehlt den selben Abgabetermin aus und bestaetigt den Termin schneller als dieser Student. Dass heisst der Abgabeslot ist zwar bereits belegt, wird aber in der Uebersicht der Abgabetermine noch als verfuegbar angezeigt. |
+|			      | 5. Student bestaetigt die Auswahl des Termins mit einem Button aus dem Menu |
+|				  | 6. Die Uebersicht aus Szenario Punkt 2. wird angezeigt. Fehlermeldung <"Abgabetermin nicht verfuegbar"> wird angezeigt. Student ist zu keinem Abgabetermin angemeldet, so mit wird auch nicht angezeigt das er zu einem anderen Termin angemeldet ist. |
+|				  | 7. Student bekommt eine E-Mail mit Details des Fehlers zugesandt. z.B. "Die Anmedlung zu Termin X konnte nicht durchgefuehrt werden da..." | 
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128378.png]
+
+** Use Case: von Abgabetermin <<abmelden>>
+
+*-----------------+---------------+
+| Name:  | von Abgabetermin <<abmelden>> |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      | Student will nicht zum Abgabetermin des Einzelbeispiels kommen und sich davon abmelden. Dem Studenten sollte bewusst sein, dass durch die Anwesenheit bei moeglichen anderen Terminen (etwa Einstiegstest) bereits eine LVA Leistung erbracht wurde und durch das Versaeumen der Einzelbeispielabgabe eine negative Note ausgestellt wird. |
+*-----------------+--------------+
+| Preconditions:  | Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. Student hat den Anwendungsfall "zu Abgabetermin anmelden" bereits ausgefuehrt bzw. ist bereits zu einem Abgabetermin angemeldet. |
+*-----------------+--------------+
+| Main Scenario:  | 1. Student waehlt "Termine" aus der Uebersicht aus. |
+|				  | 2. Eine Uebersicht der vorhandenen Abgabetermine (auch bereits belegte Termine) mit einem Menu der verfuegbaren Aktionen wird angezeigt. Die Meldung <"Sie zu Termin X angemeldet"> wird angezeigt. |
+|			 	  | 3. Student waehlt die Option "von der Abgabe abmelden" aus einem Menu aus. (z.B. Button) |
+|			      | 4. Uebersicht aus Szenario-Punkt 2 wird angezeigt. Die Meldung <"Sie sind nicht angemeldet"> wird angezeigt. Die Ansicht "Abgabetermine" kehrt somit in den Ausgangszustand zurueck (siehe UC "zu Abgabetermin anmelden"). |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128506.png] 
+
+** Use Case: Termin <<erstellen>>
+
+*-----------------+---------------+
+| Name:  | Termin <<erstellen>> |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      | Admin will das bestimmte Studenten an einen bestimmten Ort zu einer bestimmten Zeit kommen sollen. |
+*-----------------+--------------+
+| Preconditions:  | TODO. Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. |
+*-----------------+--------------+
+| Main Scenario:  | 1. Admin waehlt "Termine" aus der Uebersicht aus. |
+|			 	  | 2. Eine Uebersicht der vorhandenen Termine (Agabetermine, Testtermine, Besprechungen) mit einem Menu der verfuegbaren Aktionen wird angezeigt. |
+|			      | 3. Admin waehlt "Termin hinzufuegen" aus dem Menu der Terminverwaltung aus. |
+|			      | 4. Eingabe des Datum (Tag, Monat, Jahr). Ein Text-Feld reicht hier, Date-Chooser nicht notwendig. |
+|			      | 5. Eingabe der Beginnzeit (Stunde, Minute) |
+|			      | 6. Eingabe der Endzeit (Stunde, Minute) |
+|			      | 7. Eingabe vom Ort, Beispielweise "HB 02 18", "Inflab Frogger Raum" oder auch "Audimax". Es sollte auch moeglich sein einen Link zu einer Webseite anzugeben um Details zum Ort zu verlinken, beispielsweise aus dem UNI-Wegweiser (http://www.wegweiser.ac.at/) |
+|			      | 8. Eingabe von Platzkontingent. (Fuer wie viele Studenten ist Platz?). | 
+|				  | TODO: Art des Termins auswaehlen |
+|				  | TODO: Eingabe der Abmeldungs-Deadline, wie viele Tage vorher koennen Studenten sich wieder abmelden? |
+|			      | 9. Admin klickt auf "Hinzufuegen" und legt somit den neuen Termin an. |
+|			      | 10. Uebersicht aus dem Szenario-Schritt 2 wird angezeigt, der neue Termin ist vorhanden |
+|			      | TODO: Falls es sich um einen Abgabetermin handelt kann nun vom Akteur Student via Anwendungsfall "Terminverwaltung::zu Abgabetermin anmelden" der neu erstellte Termin ausgewaehlt werden. |  
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128634.png] 
+
+** Use Case: <<Serien>>termin <<erstellen>>
+
+*-----------------+---------------+
+| Name:  | <<Serien>>termin <<erstellen>> |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      | Admin will mehrere, aehnliche Termine schnell erstellen welche alle am gleichen Tag stattfinden. |
+*-----------------+--------------+
+| Preconditions:  | TODO. Anwendunsgfall "in SAT einloggen" aus den allgemeinen Anwendungsfaellen. |
+*-----------------+--------------+
+| Main Scenario:  | 1. Admin waehlt "Termine" aus der Uebersicht aus. |
+|			 	  | 2. Eine Uebersicht der vorhandenen Termine (Agabetermine, Testtermine, Besprechungen) mit einem Menu der verfuegbaren Aktionen wird angezeigt. |
+|			      | 3. Admin waehlt "<<Serien>>termin hinzufuegen" aus dem Menu der Terminverwaltung aus. |
+|			      | 4. Eingabe des Datum (Tag, Monat, Jahr). Ein Text-Feld reicht hier, Date-Chooser nicht notwendig. |
+|			      | 5. Eingabe der Beginnzeit (Stunde, Minute) |
+|			      | 6. Eingabe der Anzahl der Termine (einfacher Integer) |
+|			      | 7. Eingabe der Dauer eines Termins in Minuten |
+|			      | 8. Eingabe vom Ort, Beispielweise "HB 02 18", "Inflab Frogger Raum" oder auch "Audimax". Es sollte auch moeglich sein einen Link zu einer Webseite anzugeben um Details zum Ort zu verlinken, beispielsweise aus dem UNI-Wegweiser (http://www.wegweiser.ac.at/) |
+|			      | 9. Eingabe von Platzkontingent pro Termin. (Fuer wie viele Studenten ist Platz?). | 
+|				  | TODO: Art des Termins auswaehlen |
+|				  | TODO: Eingabe der Abmeldungs-Deadline, wie viele Tage vorher koennen Studenten sich wieder abmelden? |
+|			      | 10. Admin klickt auf "Hinzufuegen" und legt somit den neuen Termin an. |
+|			      | 11. Uebersicht aus dem Szenario-Schritt 2 wird angezeigt, die neuen Termine sind vorhanden |
+|			      | TODO: Die neuen Termine koennen nun vom Akteur Student in der Termin-Uebersicht ausgewaehlt werden. |  
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+** Use Case: Termin loeschen
+
+*-----------------+---------------+
+| Name:  | Termin loeschen |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actors:  | Admin, System |
+| Interests:      | Admin will einen der bereits festegelten Termine loeschen. |
+*-----------------+--------------+
+| Preconditions:  | TODO |
+*-----------------+--------------+
+| Main Scenario:  | 1. Admin waehlt "Termine" aus der Uebersicht aus. |
+|			 	  | 2. Eine Uebersicht der vorhandenen Termine (Agabetermine, Testtermine, Besprechungen) mit einem Menu der verfuegbaren Aktionen wird angezeigt. |
+|			      | 3. Admin waehlt den zu loeschenden Termin aus einer Liste aus. |
+|			      | 4. Es erfolgt eine Abfrage "Wollen Sie wirklich Termin X loeschen?" welche der Admin mit "Ja" bestaetigen muss um fortzufahren. |
+|			      | 5. Uebersicht aus dem Szenario-Schritt 2 wird angezeigt, der geloeschte Termin ist nicht mehr vorhanden. |
+*-----------------+--------------+
+| Alternative Scenario <<"Studenten sind zum Termin angemeldet">>:  | 1. Admin waehlt "Termine" aus der Uebersicht aus. |
+|			 	  | 2. Eine Uebersicht der vorhandenen Termine (Agabetermine, Testtermine, Besprechungen) mit einem Menu der verfuegbaren Aktionen wird angezeigt. |
+|			      | 3. Admin waehlt den zu loeschenden Termin aus einer Liste aus. |
+|			      | 4. Es erfolgt eine Abfrage "Es sind Studenten A, B und C zu diesem Termin angemeldet, wollen Sie wirklich Termin X loeschen?" welche der Admin mit "Ja" bestaetigen muss um fortzufahren. |
+|			      | 5. Admin muss eine Begruendung angeben um den Termin zu loeschen (Diese Benachrichtigung wird im naechsten Schritt verwendet) |
+|			      | 6. Jene Studenten welche zum Termin angemeldet waren sind nun nicht mehr angemeldet, es wurde auch kein Ersatztermin fuer Sie gewaehlt, sondern Sie werden einfach per E-Mail benachrichtigt (Begruendung aus dem vorherigen Schritt) |
+|			      | 7. Uebersicht aus dem Szenario-Schritt 2 wird angezeigt, der geloeschte Termin ist nicht mehr vorhanden. |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+** Use Case: Termin aendern
+
+*-----------------+---------------+
+| Name:  | Termin aendern |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  | TODO |
+*-----------------+--------------+
+| Main Scenario:  | 1. TODO |
+|			 	  | 2. TODO |
+|			      | 3. TODO |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+** Use Case: Termin kopieren und aendern
+
+*-----------------+---------------+
+| Name:  | Termin kopieren und aendern |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  | TODO |
+*-----------------+--------------+
+| Main Scenario:  | 1. TODO |
+|			 	  | 2. TODO |
+|			      | 3. TODO |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+** Use Case: Anmeldung <<einsehen>>
+
+*-----------------+---------------+
+| Name:  | Anmeldung <<einsehen>> |
+| Scope:  | Terminverwaltung SAT |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      | Admin will wissen zu welchem Termin ein bestimmter Student angemeldet ist. |
+*-----------------+--------------+
+| Preconditions:  | TODO |
+*-----------------+--------------+
+| Main Scenario:  | 1. TODO |
+|			 	  | 2. TODO |
+|			      | 3. TODO |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128762.png]

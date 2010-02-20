@@ -1,0 +1,81 @@
+format 66
+
+activitycanvas 128009 activity_ref 133129 // Gruppe erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 32 29 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 135689 // initial
+  xyz 94 95 2005
+end
+activityactioncanvas 128265 activityaction_ref 135433 // activity action Neue Gruppe eröffnen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 171 76 2005 100 60
+end
+activitynodecanvas 128521 activitynode_ref 135817 // decision
+  xyz 208 158 2005
+end
+activityactioncanvas 128777 activityaction_ref 135817 // activity action Laufende Gruppennummer vergeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 46 147 2005 100 60
+end
+activityactioncanvas 129033 activityaction_ref 136073 // activity action Neue Gruppe bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 47 346 2005 100 60
+end
+activitynodecanvas 129161 activitynode_ref 135945 // merge
+  xyz 209 357 2005
+end
+activitynodecanvas 129289 activitynode_ref 136073 // activity_final
+  xyz 313 363 2005
+end
+activityactioncanvas 130697 activityaction_ref 136201 // activity action Neue Gruppe anlegen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 46 245 2010 100 60
+end
+textcanvas 131465 "Gruppe eröffnen?"
+  xyzwh 242 161 2005 87 14
+flowcanvas 129417 flow_ref 141321 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129545 flow_ref 141449 // <flow>
+  
+  from ref 128265 z 2006 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130569 flow_ref 142473 // <flow>
+  
+  from ref 129161 z 2006 to ref 129289
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130825 flow_ref 142601 // <flow>
+  
+  from ref 128777 z 2011 to ref 130697
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130953 flow_ref 142729 // <flow>
+  
+  from ref 130697 z 2011 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131081 flow_ref 142857 // <flow>
+  
+  from ref 129033 z 2006 to ref 129161
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131337 flow_ref 150537 // Bestätigen
+  
+  from ref 128521 z 2006 label "Bestätigen" xyz 153 176 3000 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131593 flow_ref 150665 // Abbrechen
+  
+  from ref 128521 z 2006 label "Abbrechen" xyz 193 268 3000 to ref 129161
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

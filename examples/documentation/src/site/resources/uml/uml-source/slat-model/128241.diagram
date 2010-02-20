@@ -1,0 +1,91 @@
+format 66
+
+activitycanvas 128113 activity_ref 128113 // LVA erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 15 6 2000 502 572
+end
+activitynodecanvas 128241 activitynode_ref 128113 // initial
+  xyz 61 72 2005
+end
+activityactioncanvas 128369 activityaction_ref 128113 // activity action LVA erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 187 51 2005 100 60
+end
+activitynodecanvas 128497 activitynode_ref 128241 // decision
+  xyz 227 230 2005
+end
+activityactioncanvas 128625 activityaction_ref 128241 // activity action Initialisierung mit leer Daten
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 74 295 2005 100 60
+end
+activityactioncanvas 128753 activityaction_ref 128369 // activity action Initialisierung mit Daten der Vorherigen LVA
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 305 292 2005 100 60
+end
+activityactioncanvas 128881 activityaction_ref 128497 // activity action LVA Namen vergeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 189 139 2005 100 60
+end
+activitynodecanvas 131057 activitynode_ref 128497 // activity_final
+  xyz 403 466 2005
+end
+activityactioncanvas 132849 activityaction_ref 130417 // activity action LVA active setzen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 184 446 2005 100 60
+end
+activitynodecanvas 133105 activitynode_ref 130673 // merge
+  xyz 222 375 2005
+end
+flowcanvas 129137 flow_ref 128241 // <flow>
+  decenter_begin 472
+  
+  from ref 128241 z 2006 to ref 128369
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129265 flow_ref 128369 // vorherige LVA vorhanden
+  
+  from ref 128497 z 2006 label "vorherige LVA vorhanden" xyz 283 247 2006 to ref 128753
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129393 flow_ref 128497 // keine vorherige LVA vorhanden
+  
+  from ref 128497 z 2006 label "keine vorherige LVA vorhanden" xyz 60 244 2006 to ref 128625
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131825 flow_ref 132593 // <flow>
+  
+  from ref 128369 z 2006 to ref 128881
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131953 flow_ref 132721 // <flow>
+  
+  from ref 128881 z 2006 to ref 128497
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133233 flow_ref 133361 // <flow>
+  
+  from ref 128625 z 2006 to ref 133105
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133361 flow_ref 133489 // <flow>
+  
+  from ref 128753 z 2006 to ref 133105
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133489 flow_ref 133617 // <flow>
+  
+  from ref 133105 z 2006 to ref 132849
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133617 flow_ref 133745 // <flow>
+  decenter_end 360
+  
+  from ref 132849 z 2006 to ref 131057
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

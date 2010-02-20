@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <properties>
+        <title>Medium Sample Architecture</title>
+        <author></author>
+    </properties>
+    
+    <body>
+        <section name="Medium sample architecture">
+            <subsection name="Architecture">
+			<div align="center">
+                  	<img src="../images/Architecture_Medium.png" />
+                  </div>
+			The domain model is implemented with Plain Old Java Objects (POJOs) enhanced with Hibernate Annotations in order to persist 
+domain objects. The service layer and DAO layer are enhanced with the aspect layer. We engrid the aspect layer from the service and dao layer
+because aspects are cross cutting concerns which can be used over different layers. In order to use the advice layer we define proxies 
+for our DAOs and Service objects by using Spring.
+The interface between service and presentation layer is the controller layer. This is an important point, because a controller is not a GUI
+component, such as a listener. The main task of a controller is to prepare data for the service layer, call it and doing further application
+flow. The presentation layer and controller layer are based on JSF (Java Server Faces). We introduce a JsfBeanManager, which provides methods
+to get and set managed beans in the JSF context. All web pages are implemented as Java Server Pages (JSPs) using JSF tags. 
+            </subsection>
+
+
+            <subsection name="Used technology">
+                    <ul>
+                        <li>JPA (Java Persistence Annotations) to annotate domain objects for persiting</li>
+                        <li>Object Relational mapping tool Hibernate for persistence</li>
+                        <li>Any relational database supported by Hibernate</li>
+                        <li>Spring as an application framework, putting things together by using dependency injection</li>
+                        <li>Unittesting with JUnit</li>
+                        <li>Logging via Log4J Framework</li>
+                        <li>AOP (Aspect Oriented Programing) by using Spring and Proxies</li>
+                        <li>Java Server Faces as Webframework</li>
+                        <li>MyFaces and Tomahawk as reference implementation of the JSF specification</li>
+                    </ul>
+            </subsection>
+
+            <subsection name="Used patterns">
+
+            </subsection>            
+        </section>
+    </body>
+</document>
+

@@ -1,0 +1,33 @@
+format 66
+
+fragment 128002 "LVA-Verwaltung"
+  xyzwh 2 3 2000 570 319
+end
+usecasecanvas 128003 usecase_ref 131593 // LVA erstellen
+  xyzwh 185 61 3005 64 32 label_xy 184 93
+end
+subject 128130 "SAT Administration"
+  xyzwh 114 13 2005 431 296
+usecasecanvas 128131 usecase_ref 131721 // LVA bearbeiten
+  xyzwh 255 142 3005 64 32 label_xy 249 174
+end
+usecasecanvas 128259 usecase_ref 131849 // LVA löschen
+  xyzwh 211 223 3005 64 32 label_xy 211 255
+end
+usecasecanvas 128387 usecase_ref 131977 // LVA-Daten übernehmen
+  xyzwh 397 63 3011 64 32 label_xy 371 95
+end
+classcanvas 128899 class_ref 130563 // Admin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 38 132 2006
+end
+simplerelationcanvas 128515 simplerelation_ref 130569
+  from ref 128387 z 3006 stereotype "<<extend>>" xyz 294 76.5 3000 to ref 128003
+end
+line 129155 ----
+  from ref 128899 z 3006 to ref 128003
+line 129283 ----
+  from ref 128899 z 3006 to ref 128131
+line 129411 ----
+  from ref 128899 z 3006 to ref 128259
+end

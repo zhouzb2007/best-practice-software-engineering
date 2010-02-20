@@ -1,0 +1,3705 @@
+format 66
+"slat-model"
+  revision 31
+  modified_by 2 "frost"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_infonote no shadow yes show_stereotype_properties no
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes show_stereotype_properties no
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml show_stereotype_properties no
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 12
+  diagram_format A4
+
+  mark_for_import
+  
+  ncouples 1
+  key "html dir" value "/Users/frost/workspace/sat/documentation/src/site/resources/slat-model/"
+  classview 128003 "Domainmodel"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 128003 "Domainmodel"
+      draw_all_relations default hide_attributes no hide_operations default show_members_full_definition yes show_members_visibility yes show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 128003 "Student"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128003 // <association>
+	relation 128003 ----
+	  a role_name "" private
+	    classrelation_ref 128003 // <association>
+	  b role_name "" private
+	    classrelation_ref 128131 // <association>
+      end
+
+      classrelation 128259 // <association>
+	relation 128131 ----
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 128259 // <association>
+	  b role_name "" multiplicity "1..6" private
+	    classrelation_ref 128387 // <association>
+      end
+
+      classrelation 128515 // (beantwortet)
+	relation 128259 ---- name "beantwortet"
+	  a role_name "" private
+	    classrelation_ref 128515 // (beantwortet)
+	  b role_name "" private
+	    classrelation_ref 128643 // (beantwortet)
+      end
+
+      classrelation 129283 // (absolviert)
+	relation 128643 ---- name "absolviert"
+	  a role_name "" private
+	    classrelation_ref 129283 // (absolviert)
+	  b role_name "" private
+	    classrelation_ref 129411 // (absolviert)
+      end
+
+      classrelation 129539 // (meldet sich an)
+	relation 128771 ---- name "meldet sich an"
+	  a role_name "" private
+	    classrelation_ref 129539 // (meldet sich an)
+	  b role_name "" private
+	    classrelation_ref 129667 // (meldet sich an)
+      end
+
+      attribute 128003 "vorname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128131 "nachname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128259 "email"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129539 "matrikelnummer"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129667 "studienkennzahl"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129795 "institutspräferenz"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131971 "passwort"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132483 "note"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132099 // (meldet sich an)
+	relation 130051 ---- name "meldet sich an"
+	  a role_name "" private
+	    classrelation_ref 132099 // (meldet sich an)
+	  b role_name "" private
+	    classrelation_ref 132227 // (meldet sich an)
+      end
+
+      attribute 132867 "zeugnis_ausgestellt"
+	public explicit_type "bool"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132739 // <association>
+	relation_ref 130307 // <association>
+      end
+    end
+
+    class 128131 "Tutor"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128899 // betreut
+	relation_ref 128387 // betreut
+      end
+
+      classrelation 129155 // erstellt
+	relation_ref 128515 // erstellt
+      end
+
+      classrelation 129795 // (führt)
+	relation 128899 ---- name "führt"
+	  a role_name "" private
+	    classrelation_ref 129795 // (führt)
+	  b role_name "" private
+	    classrelation_ref 129923 // (führt)
+      end
+
+      attribute 129155 "vorname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129283 "nachname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129411 "email"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132099 "login"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132227 "passwort"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128259 "Fragebogen"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128643 // (beantwortet)
+	relation_ref 128259 // beantwortet
+      end
+
+      classrelation 130051 // (enthält)
+	relation 129027 ---- name "enthält"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 130051 // (enthält)
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 130179 // (enthält)
+      end
+
+      classrelation 130947 // erstellt
+	relation_ref 129411 // erstellt
+      end
+    end
+
+    class 128387 "Gruppe"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128387 // <association>
+	relation_ref 128131 // <association>
+      end
+
+      classrelation 128771 // (betreut)
+	relation 128387 ---- name "betreut"
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 128771 // (betreut)
+	  b role_name "" multiplicity "1..*" private
+	    classrelation_ref 128899 // betreut
+      end
+
+      attribute 128899 "nummer"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130435 // betreut
+	relation_ref 129155 // betreut
+      end
+
+      attribute 130179 "kommentar"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130307 "institutszuteilung"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128515 "Bewertung"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128131 // <association>
+	relation_ref 128003 // <association>
+      end
+
+      classrelation 129027 // (erstellt)
+	relation 128515 ---- name "erstellt"
+	  a role_name "" private
+	    classrelation_ref 129027 // (erstellt)
+	  b role_name "" private
+	    classrelation_ref 129155 // erstellt
+      end
+
+      attribute 128515 "punkte_einstiegstest"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128643 "punkte_abgabegespräch"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128771 "kommentar"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129923 "punkte_programmieraufgabe"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130051 "positiv"
+	derived public explicit_type "bool"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132739 "kategorie"
+	public explicit_type "char"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128643 "Abgabegespräch"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129411 // (absolviert)
+	relation_ref 128643 // absolviert
+      end
+
+      classrelation 129923 // (führt)
+	relation_ref 128899 // führt
+      end
+
+      attribute 129027 "termin"
+	public explicit_type "date"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 131459 // erstellt
+	relation_ref 129667 // erstellt
+      end
+
+      attribute 132611 "ort"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128771 "Einstiegstest"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129667 // (meldet sich an)
+	relation_ref 128771 // meldet sich an
+      end
+
+      attribute 128387 "termin"
+	public explicit_type "date"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130691 // erstellt
+	relation_ref 129283 // erstellt
+      end
+
+      classrelation 131843 // <association>
+	relation 129923 ----
+	  a role_name "" private
+	    classrelation_ref 131843 // <association>
+	  b role_name "" private
+	    classrelation_ref 131971 // <association>
+      end
+    end
+
+    class 128899 "Fragen"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130179 // (enthält)
+	relation_ref 129027 // enthält
+      end
+    end
+
+    class 129027 "Assistent"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130307 // (betreut)
+	relation 129155 ---- name "betreut"
+	  a role_name "" multiplicity "1..*" private
+	    classrelation_ref 130307 // (betreut)
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 130435 // betreut
+      end
+
+      attribute 130435 "vorname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130691 "nachname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130819 "email"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132611 // <association>
+	relation 130307 ----
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 132611 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 132739 // <association>
+      end
+    end
+
+    class 129155 "Admin"
+      visibility package 
+      nformals 1
+      formal name "" type "class" explicit_default_value ""
+        explicit_extends ""
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130563 // (erstellt)
+	relation 129283 ---- name "erstellt"
+	  a role_name "" private
+	    classrelation_ref 130563 // (erstellt)
+	  b role_name "" private
+	    classrelation_ref 130691 // erstellt
+      end
+
+      classrelation 130819 // (erstellt)
+	relation 129411 ---- name "erstellt"
+	  a role_name "" private
+	    classrelation_ref 130819 // (erstellt)
+	  b role_name "" private
+	    classrelation_ref 130947 // erstellt
+      end
+
+      classrelation 131075 // (erstellt)
+	relation 129539 ---- name "erstellt"
+	  a role_name "" private
+	    classrelation_ref 131075 // (erstellt)
+	  b role_name "" private
+	    classrelation_ref 131203 // (erstellt)
+      end
+
+      classrelation 131331 // (erstellt)
+	relation 129667 ---- name "erstellt"
+	  a role_name "" private
+	    classrelation_ref 131331 // (erstellt)
+	  b role_name "" private
+	    classrelation_ref 131459 // erstellt
+      end
+
+      attribute 131331 "vorname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131459 "nachname"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131587 "email"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131715 "login"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131843 "passwort"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 129274 // <generalisation>
+	relation 129274 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129274 // <generalisation>
+	  b parent class_ref 128131 // Tutor
+      end
+    end
+
+    class 129283 "Tutorial"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 130563 "termin"
+	public explicit_type "date"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 131203 // (erstellt)
+	relation_ref 129539 // erstellt
+      end
+
+      classrelation 131587 // <association>
+	relation 129795 ----
+	  a role_name "" private
+	    classrelation_ref 131587 // <association>
+	  b role_name "" private
+	    classrelation_ref 131715 // <association>
+      end
+
+      attribute 132355 "titel"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132227 // (meldet sich an)
+	relation_ref 130051 // meldet sich an
+      end
+    end
+
+    class 129411 "Hörsaal"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 131075 "id"
+	public explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131203 "plätze"
+	public explicit_type "int"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 131715 // <association>
+	relation_ref 129795 // <association>
+      end
+
+      classrelation 131971 // <association>
+	relation_ref 129923 // <association>
+      end
+    end
+  end
+
+  usecaseview 128003 "UseCaseModel"
+    //use case diagram settings
+    package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    usecasediagram 129283 "UseCasePakete"
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    usecasediagram 129155 "Akteure_Hierachie"
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    usecaseview 128387 "1. Account"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+      //state diagram settings
+      package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+      show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+      //activity diagram settings
+      package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+      show_infonote default drawing_language default show_stereotype_properties default
+      usecasediagram 129667 "1.1. Studenten-Accounts verwalten"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations no class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecase 129155 "Account anlegen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128009 "Account anlegen"
+	  activitydiagram 129161 "Account anlegen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 128009 initial ""
+	    flow 130825 "<flow>"
+	      on activityaction_ref 128009 // activity action Studentendaten eingeben
+	    end
+	  end
+
+	  activityaction 128009 "Studentendaten eingeben"
+	    opaque_action
+	    flow 129417 "<flow>"
+	      on activityaction_ref 128137 // activity action Daten bestätigen
+	    end
+	  end
+
+	  activityaction 128137 "Daten bestätigen"
+	    opaque_action
+	    flow 129545 "<flow>"
+	      on activityaction_ref 128393 // activity action Bestätigungsmail versenden
+	    end
+	  end
+
+	  activityaction 128265 "Mail bestätigen"
+	    opaque_action
+	    flow 128137 "<flow>"
+	      on activitynode_ref 129417 // fork
+	    end
+
+	    flow 129033 "<flow>"
+	      on activitynode_ref 129161 // activity_final
+	    end
+
+	    flow 132745 "<flow>"
+	      on activityaction_ref 130185 // activity action Account freischalten
+	    end
+	  end
+
+	  activitynode 129161 activity_final ""
+	  end
+
+	  activitynode 129417 fork ""
+	  end
+
+	  activitynode 129545 fork ""
+	  end
+
+	  activitynode 129673 decision "Mail bestätigen"
+	    ncouples 1
+	    key "" value ""
+	    flow 147977 "Nein"
+	      on activityaction_ref 130057 // activity action Account löschen
+	    end
+
+	    flow 148105 "Ja"
+	      on activityaction_ref 130185 // activity action Account freischalten
+	    end
+	  end
+
+	  activityaction 128393 "Bestätigungsmail versenden"
+	    opaque_action
+	    flow 128777 "<flow>"
+	      on activityaction_ref 128393 // activity action Bestätigungsmail versenden
+	    end
+
+	    flow 128905 "<flow>"
+	      on activitynode_ref 129673 // decision
+	    end
+
+	    flow 148233 "<flow>"
+	      on activitynode_ref 129673 // decision
+	    end
+	  end
+
+	  activityaction 128521 "Mail verfallen lassen"
+	    opaque_action
+	    flow 129161 "<flow>"
+	      on activityaction_ref 128521 // activity action Mail verfallen lassen
+	    end
+
+	    flow 129289 "<flow>"
+	      on activitynode_ref 129161 // activity_final
+	    end
+
+	    flow 132617 "<flow>"
+	      on activityaction_ref 130057 // activity action Account löschen
+	    end
+	  end
+
+	  activityaction 130057 "Account löschen"
+	    opaque_action
+	    flow 132873 "<flow>"
+	      on activitynode_ref 131209 // merge
+	    end
+	  end
+
+	  activityaction 130185 "Account freischalten"
+	    opaque_action
+	    flow 133001 "<flow>"
+	      on activitynode_ref 131209 // merge
+	    end
+	  end
+
+	  activitynode 131209 merge ""
+	    flow 133129 "<flow>"
+	      on activitynode_ref 129161 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 129283 "neues Passwort anfordern"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 128649
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 129289 // Passwort ändern
+	end
+
+	activity 131593 "neues PW anfordern"
+	  activitydiagram 132745 "neues PW anfordern"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 133129 initial ""
+	    flow 136201 "<flow>"
+	      on activityaction_ref 132617 // activity action Matrikelnr & E-Mail eingeben
+	    end
+	  end
+
+	  activityaction 132361 "Übereinstimmung prüfen"
+	    opaque_action
+	    flow 136457 "<flow>"
+	      on activitynode_ref 133385 // decision
+	    end
+	  end
+
+	  activityaction 132489 "PW an definierte E-Mail-Adresse senden"
+	    opaque_action
+	    flow 136969 "<flow>"
+	      on activitynode_ref 133257 // activity_final
+	    end
+
+	    flow 138377 "<flow>"
+	      on activitynode_ref 133769 // merge
+	    end
+	  end
+
+	  activityaction 132617 "Matrikelnr & E-Mail eingeben"
+	    opaque_action
+	    flow 136329 "<flow>"
+	      on activityaction_ref 132361 // activity action Übereinstimmung prüfen
+	    end
+
+	    flow 137097 "<flow>"
+	      on activityaction_ref 132745 // activity action PW generieren
+	    end
+	  end
+
+	  activityaction 132745 "PW generieren"
+	    opaque_action
+	    flow 136713 "<flow>"
+	      on activityaction_ref 132489 // activity action PW an definierte E-Mail-Adresse senden
+	    end
+	  end
+
+	  activitynode 133257 activity_final ""
+	  end
+
+	  activitynode 133385 decision ""
+	    flow 136585 "Ja"
+	      on activityaction_ref 132745 // activity action PW generieren
+	    end
+
+	    flow 138249 "Nein"
+	      on activitynode_ref 133769 // merge
+	    end
+	  end
+
+	  activitynode 133769 merge ""
+	    flow 138505 "<flow>"
+	      on activitynode_ref 133257 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 128905 "Account löschen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 128521
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 129161 // Account suchen
+	end
+
+	activity 131721 "Account löschen"
+	  activitydiagram 132873 "Account löschen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 133513 initial ""
+	    flow 137353 "<flow>"
+	      on activityaction_ref 132873 // activity action Account auswählen
+	    end
+	  end
+
+	  activityaction 132873 "Account auswählen"
+	    opaque_action
+	    flow 137225 "<flow>"
+	      on activitynode_ref 133641 // decision
+	    end
+	  end
+
+	  activitynode 133641 decision ""
+	    flow 149513 "Bestätigen"
+	      on activityaction_ref 133257 // activity action Account löschen
+	    end
+
+	    flow 150153 "Abbrechen"
+	      on activitynode_ref 133897 // merge
+	    end
+	  end
+
+	  activityaction 133001 "Löschen bestätigen"
+	    opaque_action
+	    flow 137737 "<flow>"
+	      on activityaction_ref 133257 // activity action Account löschen
+	    end
+	  end
+
+	  activityaction 133129 "Löschen abbrechen"
+	    opaque_action
+	    flow 137865 "<flow>"
+	      on activityaction_ref 133385 // activity action Abbruch bestätigen
+	    end
+	  end
+
+	  activityaction 133257 "Account löschen"
+	    opaque_action
+	    flow 137993 "<flow>"
+	      on activityaction_ref 133513 // activity action Erfolg bestätigen
+	    end
+	  end
+
+	  activityaction 133385 "Abbruch bestätigen"
+	    opaque_action
+	    flow 138761 "<flow>"
+	      on activitynode_ref 133897 // merge
+	    end
+	  end
+
+	  activityaction 133513 "Erfolg bestätigen"
+	    opaque_action
+	    flow 138633 "<flow>"
+	      on activitynode_ref 133897 // merge
+	    end
+	  end
+
+	  activitynode 133897 merge ""
+	    flow 138889 "<flow>"
+	      on activitynode_ref 134025 // activity_final
+	    end
+	  end
+
+	  activitynode 134025 activity_final ""
+	  end
+	end
+      end
+
+      usecase 129033 "Accountdaten ändern"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 130441 "Accountdaten ändern"
+	  activitydiagram 131593 "Accountdaten ändern"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 131593 initial ""
+	    flow 133769 "<flow>"
+	      on activityaction_ref 130697 // activity action Neue Daten eingeben
+	    end
+	  end
+
+	  activityaction 130697 "Neue Daten eingeben"
+	    opaque_action
+	    flow 133897 "<flow>"
+	      on activityaction_ref 130825 // activity action Daten bestätigen
+	    end
+
+	    flow 134025 "<flow>"
+	      on activitynode_ref 131849 // decision
+	    end
+	  end
+
+	  activityaction 130825 "Daten bestätigen"
+	    opaque_action
+	    flow 134665 "<flow>"
+	      on activityaction_ref 130953 // activity action Daten ändern
+	    end
+	  end
+
+	  activityaction 130953 "Daten ändern"
+	    opaque_action
+	    flow 134793 "<flow>"
+	      on activitynode_ref 131977 // merge
+	    end
+
+	    flow 139145 "<flow>"
+	      on activityaction_ref 133641 // activity action Änderung bestätigen
+	    end
+	  end
+
+	  activitynode 131721 activity_final ""
+	  end
+
+	  activityaction 131081 "Änderung abbrechen"
+	    opaque_action
+	    flow 134537 "<flow>"
+	      on activityaction_ref 131209 // activity action Daten beibehalten
+	    end
+
+	    flow 139017 "<flow>"
+	      on activityaction_ref 133769 // activity action Abbruch bestätigen
+	    end
+	  end
+
+	  activityaction 131209 "Daten beibehalten"
+	    opaque_action
+	    flow 134921 "<flow>"
+	      on activitynode_ref 131977 // merge
+	    end
+	  end
+
+	  activitynode 131849 decision ""
+	    flow 149897 "Bestätigen"
+	      on activityaction_ref 130953 // activity action Daten ändern
+	    end
+
+	    flow 150409 "Abbrechen"
+	      on activitynode_ref 131977 // merge
+	    end
+	  end
+
+	  activitynode 131977 merge ""
+	    flow 135049 "<flow>"
+	      on activitynode_ref 131721 // activity_final
+	    end
+	  end
+
+	  activityaction 133641 "Änderung bestätigen"
+	    opaque_action
+	    flow 139273 "<flow>"
+	      on activitynode_ref 131977 // merge
+	    end
+	  end
+
+	  activityaction 133769 "Abbruch bestätigen"
+	    opaque_action
+	    flow 139401 "<flow>"
+	      on activitynode_ref 131977 // merge
+	    end
+	  end
+	end
+      end
+
+      usecase 129161 "Account suchen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 128393
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 128905 // Account löschen
+	end
+
+	activity 132873 "Account suchen"
+	  activitydiagram 134025 "Account suchen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 135177 initial ""
+	    flow 140553 "<flow>"
+	      on activityaction_ref 134921 // activity action Suchdaten eingeben
+	    end
+	  end
+
+	  activityaction 134921 "Suchdaten eingeben"
+	    opaque_action
+	    flow 140681 "<flow>"
+	      on activityaction_ref 135049 // activity action Ergebnisse anzeigen
+	    end
+	  end
+
+	  activityaction 135049 "Ergebnisse anzeigen"
+	    opaque_action
+	    flow 140809 "<flow>"
+	      on activitynode_ref 135305 // activity_final
+	    end
+	  end
+
+	  activitynode 135305 activity_final ""
+	  end
+	end
+      end
+
+      usecase 129289 "Passwort ändern"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 130313 "Passwort ändern"
+	  activitydiagram 131465 "Passwort ändern"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 131337 initial ""
+	    flow 133257 "<flow>"
+	      on activityaction_ref 130313 // activity action Altes Passwort eingeben
+	    end
+	  end
+
+	  activityaction 130313 "Altes Passwort eingeben"
+	    opaque_action
+	    flow 133385 "<flow>"
+	      on activityaction_ref 130441 // activity action Neues Passwort eingeben
+	    end
+	  end
+
+	  activityaction 130441 "Neues Passwort eingeben"
+	    opaque_action
+	    flow 133513 "<flow>"
+	      on activityaction_ref 130569 // activity action Neues Passwort wiederholen
+	    end
+	  end
+
+	  activityaction 130569 "Neues Passwort wiederholen"
+	    opaque_action
+	    flow 133641 "<flow>"
+	      on activitynode_ref 131465 // activity_final
+	    end
+	  end
+
+	  activitynode 131465 activity_final ""
+	  end
+	end
+
+	simplerelation 131721
+	  -_->
+	    stereotype "extend"
+	    on usecase_ref 129033 // Accountdaten ändern
+	end
+      end
+
+      usecase 130697 "Daten einsehen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 129801
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 129161 // Account suchen
+	end
+
+	activity 133001 "Daten einsehen"
+	  activitydiagram 134153 "Daten einsehen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 135433 initial ""
+	    flow 140937 "<flow>"
+	      on activityaction_ref 135177 // activity action Account auswählen
+	    end
+	  end
+
+	  activityaction 135177 "Account auswählen"
+	    opaque_action
+	    flow 141065 "<flow>"
+	      on activityaction_ref 135305 // activity action Daten anzeigen
+	    end
+	  end
+
+	  activityaction 135305 "Daten anzeigen"
+	    opaque_action
+	    flow 141193 "<flow>"
+	      on activitynode_ref 135561 // activity_final
+	    end
+	  end
+
+	  activitynode 135561 activity_final ""
+	  end
+	end
+      end
+    end
+
+    usecaseview 128259 "2. Bewertung"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+      //state diagram settings
+      package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+      show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+      //activity diagram settings
+      package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+      show_infonote default drawing_language default show_stereotype_properties default
+      usecasediagram 130051 "2.1. Studenten bewerten"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecase 130691 "Testpunkte eintragen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 129263 "Testpunkte eintragen"
+	  activitydiagram 129263 "Testpunkte eintragen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 129263 initial ""
+	    flow 129263 "<flow>"
+	      on activityaction_ref 129263 // activity action Student auswählen
+	    end
+	  end
+
+	  activityaction 129263 "Student auswählen"
+	    opaque_action
+	    flow 129391 "<flow>"
+	      on activityaction_ref 129391 // activity action Testpunkte eintragen
+	    end
+	  end
+
+	  activityaction 129391 "Testpunkte eintragen"
+	    opaque_action
+	    flow 129647 "<flow>"
+	      on activityaction_ref 129519 // activity action Daten bestätigen
+	    end
+	  end
+
+	  activitynode 129391 activity_final ""
+	  end
+
+	  activityaction 129519 "Daten bestätigen"
+	    opaque_action
+	    flow 129775 "<flow>"
+	      on activitynode_ref 129391 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 130819 "Bewertung eintragen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 128003
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 131203 // Einschätzung eintragen
+	end
+
+	simplerelation 128131
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 131075 // Abgabe eintragen
+	end
+
+	simplerelation 128259
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 130947 // Programmierbsp. eintragen
+	end
+
+	simplerelation 130441
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 131337 // Kommentar eintragen
+	end
+      end
+
+      usecase 130947 "Programmierbsp. eintragen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 131075 "Abgabe eintragen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 131203 "Einschätzung eintragen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 131331 "Bewertungsbogen erstellen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 130415 "Bewertungsbogen erstellen"
+	  activitydiagram 130415 "Bewertungsbogen erstellen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 130543 initial ""
+	    flow 130927 "<flow>"
+	      on activityaction_ref 130671 // activity action neuen Bewertungsbogen erstellen
+	    end
+	  end
+
+	  activityaction 130671 "neuen Bewertungsbogen erstellen"
+	    opaque_action
+	    flow 131055 "<flow>"
+	      on activityaction_ref 130799 // activity action Semester wählen
+	    end
+
+	    flow 131183 "<flow>"
+	      on activityaction_ref 130799 // activity action Semester wählen
+	    end
+	  end
+
+	  activityaction 130799 "Semester wählen"
+	    opaque_action
+	    flow 131311 "<flow>"
+	      on activityaction_ref 130927 // activity action Frage erstellen
+	    end
+	  end
+
+	  activityaction 130927 "Frage erstellen"
+	    opaque_action
+	    flow 131439 "<flow>"
+	      on activityaction_ref 131055 // activity action Kommentar hinzufügen
+	    end
+	  end
+
+	  activityaction 131055 "Kommentar hinzufügen"
+	    opaque_action
+	    flow 131567 "<flow>"
+	      on activityaction_ref 131183 // activity action Punktezahl wählen
+	    end
+	  end
+
+	  activityaction 131183 "Punktezahl wählen"
+	    opaque_action
+	    flow 131695 "<flow>"
+	      on activitynode_ref 130671 // decision
+	    end
+	  end
+
+	  activitynode 130671 decision ""
+	    flow 131823 "<flow>"
+	      on activityaction_ref 130927 // activity action Frage erstellen
+	    end
+
+	    flow 131951 "<flow>"
+	      on activitynode_ref 130799 // activity_final
+	    end
+	  end
+
+	  activitynode 130799 activity_final ""
+	  end
+	end
+      end
+
+      usecase 131081 "Bewertungsbogen ändern"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 131209 "Bewertungsbogen löschen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 131337 "Kommentar eintragen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 131465 "Bewertungsbogen übernehmen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+    end
+
+    usecaseview 128131 "3. Fragebogen"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+      //state diagram settings
+      package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+      show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+      //activity diagram settings
+      package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+      show_infonote default drawing_language default show_stereotype_properties default
+      usecasediagram 129411 "3.1. Fragebögen verwalten"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecase 128515 "Fragebogen ausfüllen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	associated_diagram usecasediagram_ref 129411 // 3.1. Fragebögen verwalten
+	activity 129155 "Fragebogen ausfüllen"
+	    pre_uml "Es sind Fragebögen verfügbar und freigeschalten"
+	  activitydiagram 132867 "Fragebogen ausfüllen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 128003 initial ""
+	    flow 128003 "<flow>"
+	      on activityaction_ref 128003 // activity action Fragebogen auswählen
+	    end
+	  end
+
+	  activitynode 128131 activity_final ""
+	  end
+
+	  activityaction 128003 "Fragebogen auswählen"
+	    opaque_action
+	    flow 128131 "<flow>"
+	      on activityaction_ref 128131 // activity action Frage beantworten
+	    end
+	  end
+
+	  expansionregion 128003 "Fragen beantworten"
+	    iterative
+	    activityaction 128131 "Frage beantworten"
+	      opaque_action
+	      flow 128259 "<flow>"
+		on activityaction_ref 128259 // activity action Fragebogen abschicken
+	      end
+	    end
+	  end
+
+	  activityaction 128259 "Fragebogen abschicken"
+	    opaque_action
+	    flow 128387 "<flow>"
+	      on activitynode_ref 128131 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 128643 "Fragebogen erstellen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 130307 "Fragebogen erstellen"
+	  activitydiagram 134019 "Fragebogen erstellen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 129283 initial ""
+	    flow 129539 "<flow>"
+	      on activityaction_ref 129411 // activity action Neuen Fragenbogen anlegen
+	    end
+	  end
+
+	  activitynode 129411 activity_final ""
+	  end
+
+	  activityaction 129411 "Neuen Fragenbogen anlegen"
+	    opaque_action
+	    flow 129667 "<flow>"
+	      on activityaction_ref 129539 // activity action Titel eingeben
+	    end
+	  end
+
+	  activityaction 129539 "Titel eingeben"
+	    opaque_action
+	    flow 130947 "<flow>"
+	      on activityaction_ref 129667 // activity action Frage eingeben
+	    end
+	  end
+
+	  activityaction 129667 "Frage eingeben"
+	    opaque_action
+	    flow 130051 "<flow>"
+	      on activityaction_ref 129795 // activity action Antworttyp auswählen
+	    end
+	  end
+
+	  activityaction 129795 "Antworttyp auswählen"
+	    opaque_action
+	    flow 130179 "<flow>"
+	      on activitynode_ref 129667 // decision
+	    end
+	  end
+
+	  activitynode 129667 decision "Multiple choice?"
+	    flow 130435 "[ja]"
+	      on activityaction_ref 129923 // activity action Multiple choice antworten definieren
+	    end
+
+	    flow 131075 "[nein]"
+	      on activitynode_ref 129795 // decision
+	    end
+	  end
+
+	  activityaction 129923 "Multiple choice antworten definieren"
+	    opaque_action
+	    flow 130563 "<flow>"
+	      on activitynode_ref 129795 // decision
+	    end
+	  end
+
+	  activitynode 129795 decision "Weitere Fragen?"
+	    flow 130819 "[nein]"
+	      on activitynode_ref 129411 // activity_final
+	    end
+
+	    flow 131203 "[ja]"
+	      on activityaction_ref 129667 // activity action Frage eingeben
+	    end
+	  end
+	end
+      end
+
+      usecase 128771 "Ergebnisse auswerten"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 128899 "Fragebogen veröffentlichen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 129027 "Fragebogen schliessen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+    end
+
+    usecaseview 128515 "4. Gruppenbildung"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+      //state diagram settings
+      package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+      show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+      //activity diagram settings
+      package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+      show_infonote default drawing_language default show_stereotype_properties default
+      usecasediagram 129923 "4.1. Gruppe verwalten für Studenten"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecasediagram 130179 "4.2. Gruppe verwalten für Tutoren/Admins"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecase 129411 "Gruppe erstellen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 129929
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 129795 // zu Gruppe anmelden
+	end
+
+	activity 133129 "Gruppe erstellen"
+	  activitydiagram 134281 "Gruppe erstellen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 135689 initial ""
+	    flow 141321 "<flow>"
+	      on activityaction_ref 135433 // activity action Neue Gruppe eröffnen
+	    end
+	  end
+
+	  activityaction 135433 "Neue Gruppe eröffnen"
+	    opaque_action
+	    flow 141449 "<flow>"
+	      on activitynode_ref 135817 // decision
+	    end
+	  end
+
+	  activityaction 135561 "Eröffnen bestätigen"
+	    opaque_action
+	    flow 141833 "<flow>"
+	      on activityaction_ref 135817 // activity action Laufende Gruppennummer vergeben
+	    end
+	  end
+
+	  activitynode 135817 decision ""
+	    flow 141577 "<flow>"
+	      on activityaction_ref 135561 // activity action Eröffnen bestätigen
+	    end
+
+	    flow 141705 "<flow>"
+	      on activityaction_ref 135689 // activity action Eröffnen abbrechen
+	    end
+
+	    flow 150537 "Bestätigen"
+	      on activityaction_ref 135817 // activity action Laufende Gruppennummer vergeben
+	    end
+
+	    flow 150665 "Abbrechen"
+	      on activitynode_ref 135945 // merge
+	    end
+	  end
+
+	  activityaction 135689 "Eröffnen abbrechen"
+	    opaque_action
+	    flow 141961 "<flow>"
+	      on activityaction_ref 135945 // activity action Abbruch bestätigen
+	    end
+
+	    flow 144393 "<flow>"
+	      on activitynode_ref 135945 // merge
+	    end
+	  end
+
+	  activityaction 135817 "Laufende Gruppennummer vergeben"
+	    opaque_action
+	    flow 142089 "<flow>"
+	      on activityaction_ref 136073 // activity action Neue Gruppe bestätigen
+	    end
+
+	    flow 142601 "<flow>"
+	      on activityaction_ref 136201 // activity action Neue Gruppe anlegen
+	    end
+	  end
+
+	  activityaction 135945 "Abbruch bestätigen"
+	    opaque_action
+	    flow 142217 "<flow>"
+	      on activitynode_ref 135945 // merge
+	    end
+	  end
+
+	  activityaction 136073 "Neue Gruppe bestätigen"
+	    opaque_action
+	    flow 142345 "<flow>"
+	      on activitynode_ref 135945 // merge
+	    end
+
+	    flow 142857 "<flow>"
+	      on activitynode_ref 135945 // merge
+	    end
+	  end
+
+	  activitynode 135945 merge ""
+	    flow 142473 "<flow>"
+	      on activitynode_ref 136073 // activity_final
+	    end
+	  end
+
+	  activitynode 136073 activity_final ""
+	  end
+
+	  activityaction 136201 "Neue Gruppe anlegen"
+	    opaque_action
+	    flow 142729 "<flow>"
+	      on activityaction_ref 136073 // activity action Neue Gruppe bestätigen
+	    end
+	  end
+	end
+      end
+
+      usecase 129539 "Gruppenbeschreibung editieren"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 130313
+	  -_->
+	    stereotype "extend"
+	    on usecase_ref 129667 // Gruppe einsehen
+	end
+
+	activity 133513 "Beschreibung editieren"
+	  activitydiagram 134665 "Beschreibung editieren"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 137481 initial ""
+	    flow 146697 "<flow>"
+	      on activityaction_ref 137865 // activity action Text editieren
+	    end
+	  end
+
+	  activityaction 137865 "Text editieren"
+	    opaque_action
+	    flow 146569 "<flow>"
+	      on activityaction_ref 137993 // activity action Änderung bestätigen
+	    end
+	  end
+
+	  activityaction 137993 "Änderung bestätigen"
+	    opaque_action
+	    flow 146825 "<flow>"
+	      on activitynode_ref 137609 // activity_final
+	    end
+	  end
+
+	  activitynode 137609 activity_final ""
+	  end
+	end
+      end
+
+      usecase 129667 "Gruppe einsehen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 129795 "zu Gruppe anmelden"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 130185
+	  -_->
+	    stereotype "extend"
+	    on usecase_ref 129667 // Gruppe einsehen
+	end
+
+	activity 133385 "Gruppenanmeldung"
+	  activitydiagram 134537 "Gruppenanmeldung"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 136713 initial ""
+	    flow 144649 "<flow>"
+	      on activityaction_ref 137097 // activity action Gruppe auswählen
+	    end
+	  end
+
+	  activityaction 137097 "Gruppe auswählen"
+	    opaque_action
+	    flow 144777 "<flow>"
+	      on activitynode_ref 136841 // decision
+	    end
+	  end
+
+	  activityaction 137225 "Anmeldung bestätigen"
+	    opaque_action
+	    flow 145161 "<flow>"
+	      on activitynode_ref 136969 // decision
+	    end
+	  end
+
+	  activityaction 137353 "Anmeldung abbrechen"
+	    opaque_action
+	    flow 146057 "<flow>"
+	      on activitynode_ref 137225 // merge
+	    end
+
+	    flow 146185 "<flow>"
+	      on activitynode_ref 137225 // merge
+	    end
+	  end
+
+	  activityaction 137481 "Aus alter Gruppe abmelden"
+	    opaque_action
+	    flow 145673 "<flow>"
+	      on activitynode_ref 137097 // merge
+	    end
+	  end
+
+	  activityaction 137609 "Zur Gruppe anmelden"
+	    opaque_action
+	    flow 145801 "<flow>"
+	      on activityaction_ref 137737 // activity action Gruppenzugehörigkeit bestätigen
+	    end
+	  end
+
+	  activityaction 137737 "Gruppenzugehörigkeit bestätigen"
+	    opaque_action
+	    flow 145929 "<flow>"
+	      on activitynode_ref 137225 // merge
+	    end
+	  end
+
+	  activitynode 136841 decision ""
+	    flow 144905 "<flow>"
+	      on activityaction_ref 137225 // activity action Anmeldung bestätigen
+	    end
+
+	    flow 145033 "<flow>"
+	      on activityaction_ref 137353 // activity action Anmeldung abbrechen
+	    end
+
+	    flow 150793 "Abbrechen"
+	      on activitynode_ref 137225 // merge
+	    end
+
+	    flow 150921 "Bestätigen"
+	      on activitynode_ref 136969 // decision
+	    end
+	  end
+
+	  activitynode 136969 decision ""
+	    flow 145289 "Ja"
+	      on activityaction_ref 137481 // activity action Aus alter Gruppe abmelden
+	    end
+
+	    flow 145417 "Nein"
+	      on activitynode_ref 137097 // merge
+	    end
+	  end
+
+	  activitynode 137097 merge ""
+	    flow 146441 "<flow>"
+	      on activityaction_ref 137609 // activity action Zur Gruppe anmelden
+	    end
+	  end
+
+	  activitynode 137225 merge ""
+	    flow 146313 "<flow>"
+	      on activitynode_ref 137353 // activity_final
+	    end
+	  end
+
+	  activitynode 137353 activity_final ""
+	  end
+	end
+      end
+
+      usecase 128521 "von Gruppe abmelden"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 133257 "Gruppenabmeldung"
+	  activitydiagram 134409 "Gruppenabmeldung"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 136201 initial ""
+	    flow 142985 "<flow>"
+	      on activityaction_ref 136329 // activity action von Gruppe abmelden
+	    end
+	  end
+
+	  activityaction 136329 "von Gruppe abmelden"
+	    opaque_action
+	    flow 143113 "<flow>"
+	      on activitynode_ref 136329 // decision
+	    end
+	  end
+
+	  activityaction 136457 "Abmelden bestätigen"
+	    opaque_action
+	    flow 143497 "<flow>"
+	      on activityaction_ref 136713 // activity action Student aus Gruppe löschen
+	    end
+	  end
+
+	  activityaction 136585 "Abmelden abbrechen"
+	    opaque_action
+	    flow 143625 "<flow>"
+	      on activityaction_ref 136841 // activity action Abbruch bestätigen
+	    end
+
+	    flow 144521 "<flow>"
+	      on activitynode_ref 136457 // merge
+	    end
+	  end
+
+	  activityaction 136713 "Student aus Gruppe löschen"
+	    opaque_action
+	    flow 143753 "<flow>"
+	      on activitynode_ref 136457 // merge
+	    end
+
+	    flow 144137 "<flow>"
+	      on activityaction_ref 136969 // activity action Abmeldung bestätigen
+	    end
+	  end
+
+	  activityaction 136841 "Abbruch bestätigen"
+	    opaque_action
+	    flow 143881 "<flow>"
+	      on activitynode_ref 136457 // merge
+	    end
+	  end
+
+	  activitynode 136329 decision ""
+	    flow 143241 "<flow>"
+	      on activityaction_ref 136457 // activity action Abmelden bestätigen
+	    end
+
+	    flow 143369 "<flow>"
+	      on activityaction_ref 136585 // activity action Abmelden abbrechen
+	    end
+
+	    flow 151049 "Bestätigen"
+	      on activityaction_ref 136713 // activity action Student aus Gruppe löschen
+	    end
+
+	    flow 151177 "Abbrechen"
+	      on activitynode_ref 136457 // merge
+	    end
+	  end
+
+	  activitynode 136457 merge ""
+	    flow 144009 "<flow>"
+	      on activitynode_ref 136585 // activity_final
+	    end
+	  end
+
+	  activitynode 136585 activity_final ""
+	  end
+
+	  activityaction 136969 "Abmeldung bestätigen"
+	    opaque_action
+	    flow 144265 "<flow>"
+	      on activitynode_ref 136457 // merge
+	    end
+	  end
+	end
+      end
+
+      usecase 129923 "Gruppen zusammenlegen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 135433 "Gruppen zusammenlegen"
+	  activitydiagram 136585 "Gruppen zusammenlegen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 141065 initial ""
+	    flow 156425 "<flow>"
+	      on activityaction_ref 141577 // activity action Gruppen auswählen
+	    end
+	  end
+
+	  activityaction 141577 "Gruppen auswählen"
+	    opaque_action
+	    flow 156553 "<flow>"
+	      on activityaction_ref 141705 // activity action Gruppen zusammenlegen
+	    end
+	  end
+
+	  activityaction 141705 "Gruppen zusammenlegen"
+	    opaque_action
+	    flow 156681 "<flow>"
+	      on activitynode_ref 141193 // decision
+	    end
+	  end
+
+	  activitynode 141193 decision ""
+	    flow 156809 "Nein"
+	      on activityaction_ref 141961 // activity action Studenten zur Gruppe fügen
+	    end
+
+	    flow 157065 "Ja"
+	      on activitynode_ref 141321 // decision
+	    end
+	  end
+
+	  activityaction 141833 "Zusammenlegung bestätigen"
+	    opaque_action
+	    flow 157449 "<flow>"
+	      on activitynode_ref 141577 // activity_final
+	    end
+
+	    flow 157833 "<flow>"
+	      on activitynode_ref 141705 // merge
+	    end
+	  end
+
+	  activityaction 141961 "Studenten zur Gruppe fügen"
+	    opaque_action
+	    flow 156937 "<flow>"
+	      on activityaction_ref 141833 // activity action Zusammenlegung bestätigen
+	    end
+	  end
+
+	  activitynode 141321 decision ""
+	    flow 157193 "Ja"
+	      on activitynode_ref 141449 // merge
+	    end
+
+	    flow 157961 "Nein"
+	      on activitynode_ref 141705 // merge
+	    end
+	  end
+
+	  activitynode 141449 merge ""
+	    flow 157321 "<flow>"
+	      on activityaction_ref 141961 // activity action Studenten zur Gruppe fügen
+	    end
+	  end
+
+	  activitynode 141577 activity_final ""
+	  end
+
+	  activitynode 141705 merge ""
+	    flow 158089 "<flow>"
+	      on activitynode_ref 141577 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 130051 "Tutor an Gruppe zuweisen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 134793 "Tutor zuweisen"
+	  activitydiagram 135945 "Tutor zuweisen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 139017 initial ""
+	    flow 151689 "<flow>"
+	      on activityaction_ref 139401 // activity action Gruppe auswählen
+	    end
+	  end
+
+	  activityaction 139401 "Gruppe auswählen"
+	    opaque_action
+	    flow 151817 "<flow>"
+	      on activityaction_ref 139529 // activity action Tutor zur Gruppe hinzufügen
+	    end
+	  end
+
+	  activityaction 139529 "Tutor zur Gruppe hinzufügen"
+	    opaque_action
+	    flow 151945 "<flow>"
+	      on activityaction_ref 139657 // activity action Zuweisung bestätigen
+	    end
+	  end
+
+	  activityaction 139657 "Zuweisung bestätigen"
+	    opaque_action
+	    flow 152073 "<flow>"
+	      on activityaction_ref 139657 // activity action Zuweisung bestätigen
+	    end
+
+	    flow 152201 "<flow>"
+	      on activitynode_ref 139145 // activity_final
+	    end
+	  end
+
+	  activitynode 139145 activity_final ""
+	  end
+	end
+      end
+
+      usecase 130179 "Assistent an Gruppe zuweisen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 134921 "Assitent zuweisen"
+	  activitydiagram 136073 "Assistent zuweisen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 139273 initial ""
+	    flow 152329 "<flow>"
+	      on activityaction_ref 139785 // activity action Gruppe auswählen
+	    end
+	  end
+
+	  activityaction 139785 "Gruppe auswählen"
+	    opaque_action
+	    flow 152457 "<flow>"
+	      on activityaction_ref 139913 // activity action Assitent auswählen
+	    end
+	  end
+
+	  activityaction 139913 "Assitent auswählen"
+	    opaque_action
+	    flow 152585 "<flow>"
+	      on activityaction_ref 140041 // activity action Zuweisung bestätigen
+	    end
+	  end
+
+	  activityaction 140041 "Zuweisung bestätigen"
+	    opaque_action
+	    flow 152713 "<flow>"
+	      on activitynode_ref 139401 // activity_final
+	    end
+	  end
+
+	  activitynode 139401 activity_final ""
+	  end
+	end
+      end
+
+      usecase 130307 "Gruppenzusammenlegung rückgangig machen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 136713 "Zusammenlegung rückgängig"
+	  activitydiagram 137865 "Zusammenlegung rückgängig"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 143369 initial ""
+	    flow 160265 "<flow>"
+	      on activityaction_ref 143625 // activity action Einen Schritt zurück
+	    end
+	  end
+
+	  activityaction 143625 "Einen Schritt zurück"
+	    opaque_action
+	    flow 160521 "<flow>"
+	      on activitynode_ref 143625 // decision
+	    end
+	  end
+
+	  activitynode 143497 decision ""
+	    flow 160905 "<flow>"
+	      on activitynode_ref 143497 // decision
+	    end
+
+	    flow 161033 "Ja"
+	      on activityaction_ref 143881 // activity action Gruppen auftrennen
+	    end
+
+	    flow 161161 "Nein"
+	      on activityaction_ref 143753 // activity action Student aus Gruppe entfernen
+	    end
+	  end
+
+	  activityaction 143753 "Student aus Gruppe entfernen"
+	    opaque_action
+	    flow 161289 "<flow>"
+	      on activitynode_ref 143881 // merge
+	    end
+	  end
+
+	  activityaction 143881 "Gruppen auftrennen"
+	    opaque_action
+	    flow 161417 "<flow>"
+	      on activitynode_ref 143881 // merge
+	    end
+	  end
+
+	  activitynode 143625 decision ""
+	    flow 160649 "Bestätigung"
+	      on activitynode_ref 143497 // decision
+	    end
+
+	    flow 161673 "Abbruch"
+	      on activitynode_ref 144009 // merge
+	    end
+	  end
+
+	  activitynode 143753 activity_final ""
+	  end
+
+	  activitynode 143881 merge ""
+	    flow 161545 "<flow>"
+	      on activityaction_ref 144009 // activity action Step-back bestätigen
+	    end
+	  end
+
+	  activityaction 144009 "Step-back bestätigen"
+	    opaque_action
+	    flow 161801 "<flow>"
+	      on activitynode_ref 144009 // merge
+	    end
+	  end
+
+	  activitynode 144009 merge ""
+	    flow 161929 "<flow>"
+	      on activitynode_ref 143753 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 130435 "Gruppenbildung zurücksetzen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 135561 "Gruppen zurückzetzen"
+	  activitydiagram 136713 "Gruppen zurücksetzen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 141833 initial ""
+	    flow 158217 "<flow>"
+	      on activityaction_ref 142089 // activity action Gruppen zurücksetzen
+	    end
+	  end
+
+	  activityaction 142089 "Gruppen zurücksetzen"
+	    opaque_action
+	    flow 158345 "<flow>"
+	      on activitynode_ref 141961 // decision
+	    end
+	  end
+
+	  activitynode 141961 decision ""
+	    flow 158473 "Nein"
+	      on activitynode_ref 142217 // merge
+	    end
+
+	    flow 158729 "Ja"
+	      on activityaction_ref 142217 // activity action Gruppen zum Anfang
+	    end
+	  end
+
+	  activitynode 142089 activity_final ""
+	  end
+
+	  activitynode 142217 merge ""
+	    flow 158601 "<flow>"
+	      on activitynode_ref 142089 // activity_final
+	    end
+	  end
+
+	  activityaction 142217 "Gruppen zum Anfang"
+	    opaque_action
+	    flow 158857 "<flow>"
+	      on activityaction_ref 142345 // activity action Studenten zum Anfang
+	    end
+	  end
+
+	  activityaction 142345 "Studenten zum Anfang"
+	    opaque_action
+	    flow 158985 "<flow>"
+	      on activityaction_ref 142473 // activity action Zurücksetzen bestätigen
+	    end
+	  end
+
+	  activityaction 142473 "Zurücksetzen bestätigen"
+	    opaque_action
+	    flow 159113 "<flow>"
+	      on activitynode_ref 142217 // merge
+	    end
+	  end
+	end
+      end
+
+      usecase 130563 "Gruppenbildung freischalten"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 135177 "Freischaltung"
+	  activitydiagram 136329 "Freischaltung"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 139913 initial ""
+	    flow 153993 "<flow>"
+	      on activityaction_ref 140809 // activity action Freischaltung bestätigen
+	    end
+	  end
+
+	  activityaction 140809 "Freischaltung bestätigen"
+	    opaque_action
+	    flow 154121 "<flow>"
+	      on activitynode_ref 140041 // activity_final
+	    end
+	  end
+
+	  activitynode 140041 activity_final ""
+	  end
+	end
+      end
+
+      usecase 129417 "Student an Gruppe zuweisen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 135049 "Student zuweisen"
+	  activitydiagram 136201 "Student zuweisen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 139529 initial ""
+	    flow 153609 "<flow>"
+	      on activityaction_ref 140297 // activity action Gruppe auswählen
+	    end
+	  end
+
+	  activityaction 140169 "Freie Studenten anzeigen"
+	    opaque_action
+	    flow 153865 "<flow>"
+	      on activityaction_ref 140553 // activity action Student zuweisen
+	    end
+	  end
+
+	  activityaction 140297 "Gruppe auswählen"
+	    opaque_action
+	    flow 153737 "<flow>"
+	      on activityaction_ref 140169 // activity action Freie Studenten anzeigen
+	    end
+	  end
+
+	  activityaction 140425 "Gruppenzusammensetzung anzeigen"
+	    opaque_action
+	    flow 153225 "<flow>"
+	      on activityaction_ref 140553 // activity action Student zuweisen
+	    end
+	  end
+
+	  activityaction 140553 "Student zuweisen"
+	    opaque_action
+	    flow 153353 "<flow>"
+	      on activityaction_ref 140681 // activity action Zuweisung bestätigen
+	    end
+
+	    flow 154249 "<flow>"
+	      on activitynode_ref 140169 // decision
+	    end
+	  end
+
+	  activityaction 140681 "Zuweisung bestätigen"
+	    opaque_action
+	    flow 154889 "<flow>"
+	      on activitynode_ref 140425 // merge
+	    end
+	  end
+
+	  activitynode 139657 activity_final ""
+	  end
+
+	  activitynode 140169 decision ""
+	    flow 154377 "Ja"
+	      on activityaction_ref 140681 // activity action Zuweisung bestätigen
+	    end
+
+	    flow 154505 "Nein"
+	      on activitynode_ref 140297 // decision
+	    end
+	  end
+
+	  activitynode 140297 decision ""
+	    flow 154633 "Ja"
+	      on activityaction_ref 140681 // activity action Zuweisung bestätigen
+	    end
+
+	    flow 155017 "Nein"
+	      on activitynode_ref 140425 // merge
+	    end
+	  end
+
+	  activitynode 140425 merge ""
+	    flow 154761 "<flow>"
+	      on activitynode_ref 139657 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 129545 "Gruppengröße definieren"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 134665 "Größe definieren"
+	  activitydiagram 135817 "Größe definieren"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 138761 initial ""
+	    flow 151305 "<flow>"
+	      on activityaction_ref 139145 // activity action Gruppengröße eingeben
+	    end
+	  end
+
+	  activityaction 139145 "Gruppengröße eingeben"
+	    opaque_action
+	    flow 151433 "<flow>"
+	      on activityaction_ref 139273 // activity action Gruppengröße bestätigen
+	    end
+	  end
+
+	  activityaction 139273 "Gruppengröße bestätigen"
+	    opaque_action
+	    flow 151561 "<flow>"
+	      on activitynode_ref 138889 // activity_final
+	    end
+	  end
+
+	  activitynode 138889 activity_final ""
+	  end
+	end
+      end
+
+      usecase 130953 "Gruppen anzeigen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+      end
+
+      usecase 132483 "Student aus Gruppe entfernen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 135305 "Student entfernen"
+	  activitydiagram 136457 "Student entfernen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 140553 initial ""
+	    flow 155145 "<flow>"
+	      on activityaction_ref 140937 // activity action Gruppe auswählen
+	    end
+	  end
+
+	  activityaction 140937 "Gruppe auswählen"
+	    opaque_action
+	    flow 155273 "<flow>"
+	      on activityaction_ref 141065 // activity action Student auswählen
+	    end
+	  end
+
+	  activityaction 141065 "Student auswählen"
+	    opaque_action
+	    flow 156169 "<flow>"
+	      on activityaction_ref 141449 // activity action Student löschen
+	    end
+	  end
+
+	  activitynode 140681 decision ""
+	    flow 155529 "Ja"
+	      on activityaction_ref 141193 // activity action Student entfernen
+	    end
+
+	    flow 155913 "Nein"
+	      on activitynode_ref 140809 // merge
+	    end
+	  end
+
+	  activityaction 141193 "Student entfernen"
+	    opaque_action
+	    flow 155657 "<flow>"
+	      on activityaction_ref 141321 // activity action Bestätigung anzeigen
+	    end
+	  end
+
+	  activityaction 141321 "Bestätigung anzeigen"
+	    opaque_action
+	    flow 155785 "<flow>"
+	      on activitynode_ref 140809 // merge
+	    end
+	  end
+
+	  activitynode 140809 merge ""
+	    flow 156041 "<flow>"
+	      on activitynode_ref 140937 // activity_final
+	    end
+	  end
+
+	  activitynode 140937 activity_final ""
+	  end
+
+	  activityaction 141449 "Student löschen"
+	    opaque_action
+	    flow 156297 "<flow>"
+	      on activitynode_ref 140681 // decision
+	    end
+	  end
+	end
+      end
+    end
+
+    usecaseview 128643 "5. Termin"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+      //state diagram settings
+      package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+      show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+      //activity diagram settings
+      package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+      show_infonote default drawing_language default show_stereotype_properties default
+      usecasediagram 129795 "5.1. Termine für die Abgabe verwalten"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecase 128003 "zu Termin anmelden"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128250 "zu Termin anmelden"
+	    pre_uml "Es gibt Termine mit freien Plätzen."
+	  activitydiagram 128378 "zu Termin anmelden"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activityaction 128122 "Termin auswählen"
+	    opaque_action
+	    flow 128378 "<flow>"
+	      on activityaction_ref 128250 // activity action Auswahl bestätigen
+	    end
+	  end
+
+	  activityaction 128250 "Auswahl bestätigen"
+	    opaque_action
+	    flow 128506 "<flow>"
+	      on activitynode_ref 128250 // activity_final
+	    end
+	  end
+
+	  activitynode 128122 initial ""
+	    flow 128250 "<flow>"
+	      on activityaction_ref 128122 // activity action Termin auswählen
+	    end
+	  end
+
+	  activitynode 128250 activity_final ""
+	  end
+	end
+      end
+
+      usecase 128131 "von Termin abmelden"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128378 "von Termin abmelden"
+	    pre_uml "angemeldet zu genau einem Termin"
+	  activitydiagram 128506 "von Termin abmelden"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activityaction 128378 "Abmeldung bestätigen"
+	    opaque_action
+	    flow 128762 "<flow>"
+	      on activitynode_ref 128506 // activity_final
+	    end
+	  end
+
+	  activitynode 128378 initial ""
+	    flow 128634 "<flow>"
+	      on activityaction_ref 128378 // activity action Abmeldung bestätigen
+	    end
+	  end
+
+	  activitynode 128506 activity_final ""
+	  end
+	end
+      end
+
+      usecase 128259 "Termin erstellen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128506 "Termin erstellen"
+	  activitydiagram 128634 "Termin erstellen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 128634 initial ""
+	    flow 128890 "<flow>"
+	      on activityaction_ref 128506 // activity action Termin auswählen/eingeben
+	    end
+	  end
+
+	  activitynode 128762 activity_final ""
+	  end
+
+	  activityaction 128506 "Termin auswählen/eingeben"
+	    opaque_action
+	    flow 129018 "<flow>"
+	      on activityaction_ref 128634 // activity action Termin anlegen bestätigen
+	    end
+	  end
+
+	  activityaction 128634 "Termin anlegen bestätigen"
+	    opaque_action
+	    flow 129146 "<flow>"
+	      on activitynode_ref 128890 // decision
+	    end
+
+	    flow 129402 "<flow>"
+	      on activitynode_ref 128762 // activity_final
+	    end
+	  end
+
+	  activitynode 128890 decision ""
+	    flow 129274 "<flow>"
+	      on activitynode_ref 128762 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 128387 "Anmeldungen einsehen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128634 "Anmeldung einsehen"
+	    pre_uml "es gibt Termine in der Datenbank"
+	  activitydiagram 128762 "Anmeldung einsehen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activityaction 128762 "Termin auswählen"
+	    opaque_action
+	    flow 129658 "<flow>"
+	      on activityaction_ref 128890 // activity action Anmeldungen anzeigen
+	    end
+	  end
+
+	  activityaction 128890 "Anmeldungen anzeigen"
+	    opaque_action
+	    flow 129786 "<flow>"
+	      on activitynode_ref 129146 // activity_final
+	    end
+	  end
+
+	  activitynode 129018 initial ""
+	    flow 129530 "<flow>"
+	      on activityaction_ref 128762 // activity action Termin auswählen
+	    end
+	  end
+
+	  activitynode 129146 activity_final ""
+	  end
+	end
+      end
+    end
+
+    usecaseview 128771 "6. LVA"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+      //state diagram settings
+      package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+      show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+      //activity diagram settings
+      package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+      show_infonote default drawing_language default show_stereotype_properties default
+      usecasediagram 128009 "6.1. LVAs verwalten"
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	size A4
+      end
+
+      usecase 131593 "LVA erstellen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128113 "LVA erstellen"
+	  activitydiagram 128241 "LVA erstellen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 128113 initial ""
+	    flow 128241 "<flow>"
+	      on activityaction_ref 128113 // activity action LVA erstellen
+	    end
+	  end
+
+	  activityaction 128113 "LVA erstellen"
+	    opaque_action
+	    flow 128113 "<flow>"
+	      on activitynode_ref 128241 // decision
+	    end
+
+	    flow 132465 "<flow>"
+	      on activityaction_ref 128113 // activity action LVA erstellen
+	    end
+
+	    flow 132593 "<flow>"
+	      on activityaction_ref 128497 // activity action LVA Namen vergeben
+	    end
+	  end
+
+	  activitynode 128241 decision ""
+	    flow 128369 "vorherige LVA vorhanden"
+	      on activityaction_ref 128369 // activity action Initialisierung mit Daten der Vorherigen LVA
+	    end
+
+	    flow 128497 "keine vorherige LVA vorhanden"
+	      on activityaction_ref 128241 // activity action Initialisierung mit leer Daten
+	    end
+	  end
+
+	  activityaction 128241 "Initialisierung mit leer Daten"
+	    opaque_action
+	    flow 128625 "<flow>"
+	      on activityaction_ref 128241 // activity action Initialisierung mit leer Daten
+	    end
+
+	    flow 128753 "<flow>"
+	      on activitynode_ref 128369 // merge
+	    end
+
+	    flow 132849 "<flow>"
+	      on activitynode_ref 130545 // merge
+	    end
+
+	    flow 133233 "<flow>"
+	      on activitynode_ref 130545 // merge
+	    end
+
+	    flow 133361 "<flow>"
+	      on activitynode_ref 130673 // merge
+	    end
+	  end
+
+	  activityaction 128369 "Initialisierung mit Daten der Vorherigen LVA"
+	    opaque_action
+	    flow 128881 "<flow>"
+	      on activitynode_ref 128369 // merge
+	    end
+
+	    flow 132977 "<flow>"
+	      on activitynode_ref 130545 // merge
+	    end
+
+	    flow 133489 "<flow>"
+	      on activitynode_ref 130673 // merge
+	    end
+	  end
+
+	  activityaction 128497 "LVA Namen vergeben"
+	    opaque_action
+	    flow 129137 "<flow>"
+	      on activitynode_ref 128497 // activity_final
+	    end
+
+	    flow 129265 "<flow>"
+	      on activitynode_ref 128497 // activity_final
+	    end
+
+	    flow 132721 "<flow>"
+	      on activitynode_ref 128241 // decision
+	    end
+	  end
+
+	  activitynode 128369 merge ""
+	    flow 129009 "<flow>"
+	      on activityaction_ref 128497 // activity action LVA Namen vergeben
+	    end
+	  end
+
+	  activitynode 128497 activity_final ""
+	  end
+
+	  activitynode 130545 merge ""
+	    flow 133105 "<flow>"
+	      on activitynode_ref 128497 // activity_final
+	    end
+	  end
+
+	  activityobject 128113 "LVA active setzen"
+	     explicit_type ""
+	    unordered 
+	  end
+
+	  activityaction 130417 "LVA active setzen"
+	    opaque_action
+	    flow 133745 "<flow>"
+	      on activitynode_ref 128497 // activity_final
+	    end
+	  end
+
+	  activitynode 130673 merge ""
+	    flow 133617 "<flow>"
+	      on activityaction_ref 130417 // activity action LVA active setzen
+	    end
+	  end
+	end
+      end
+
+      usecase 131721 "LVA bearbeiten"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128241 "LVA bearbeiten"
+	  activitydiagram 128369 "LVA bearbeiten"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 128625 initial ""
+	    flow 129393 "<flow>"
+	      on activityaction_ref 128625 // activity action LVA auswählen
+	    end
+	  end
+
+	  activityaction 128625 "LVA auswählen"
+	    opaque_action
+	    flow 129521 "<flow>"
+	      on activityaction_ref 128753 // activity action LVA verändern
+	    end
+
+	    flow 129649 "<flow>"
+	      on activitynode_ref 128753 // decision
+	    end
+	  end
+
+	  activityaction 128753 "LVA verändern"
+	    opaque_action
+	    flow 130033 "<flow>"
+	      on activityaction_ref 129009 // activity action LVA speichern
+	    end
+
+	    flow 130289 "<flow>"
+	      on activitynode_ref 129009 // decision
+	    end
+	  end
+
+	  activitynode 128753 decision ""
+	    flow 129777 "Daten ändern"
+	      on activityaction_ref 128753 // activity action LVA verändern
+	    end
+
+	    flow 129905 "abbrechen"
+	      on activitynode_ref 128881 // activity_final
+	    end
+	  end
+
+	  activityaction 128881 "bestätigen"
+	    opaque_action
+	  end
+
+	  activitynode 128881 activity_final ""
+	  end
+
+	  activityaction 129009 "LVA speichern"
+	    opaque_action
+	    flow 130161 "<flow>"
+	      on activitynode_ref 128881 // activity_final
+	    end
+	  end
+
+	  activitynode 129009 decision ""
+	    flow 130417 "speichern"
+	      on activityaction_ref 129009 // activity action LVA speichern
+	    end
+
+	    flow 130545 "abbrechen"
+	      on activitynode_ref 128881 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 131849 "LVA löschen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	activity 128369 "LVA löschen"
+	  activitydiagram 128497 "LVA löschen"
+	    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations no shadow default
+	    show_infonote default drawing_language default show_stereotype_properties default
+	    size A4
+	  end
+
+	  activitynode 129137 initial ""
+	    flow 130929 "<flow>"
+	      on activityaction_ref 129137 // activity action LVA auswählen
+	    end
+	  end
+
+	  activityaction 129137 "LVA auswählen"
+	    opaque_action
+	    flow 130801 "<flow>"
+	      on activitynode_ref 129265 // decision
+	    end
+	  end
+
+	  activityaction 129265 "LVA löschen"
+	    opaque_action
+	    flow 131185 "<flow>"
+	      on activitynode_ref 129393 // activity_final
+	    end
+
+	    flow 133873 "<flow>"
+	      on activitynode_ref 130801 // decision
+	    end
+	  end
+
+	  activitynode 129265 decision ""
+	    flow 130673 "<flow>"
+	      on activitynode_ref 129393 // activity_final
+	    end
+
+	    flow 131057 "löschen"
+	      on activityaction_ref 129265 // activity action LVA löschen
+	    end
+
+	    flow 131313 "abbrechen"
+	      on activitynode_ref 129393 // activity_final
+	    end
+	  end
+
+	  activitynode 129393 activity_final ""
+	  end
+
+	  activitynode 130801 decision ""
+	    flow 134001 "LVA active"
+	      on activityaction_ref 130545 // activity action Datumsletzte LVA active setzen
+	    end
+
+	    flow 134129 "LVA nicht active"
+	      on activitynode_ref 129393 // activity_final
+	    end
+	  end
+
+	  activityaction 130545 "Datumsletzte LVA active setzen"
+	    opaque_action
+	    flow 134257 "<flow>"
+	      on activitynode_ref 129393 // activity_final
+	    end
+	  end
+	end
+      end
+
+      usecase 131977 "LVA-Daten übernehmen"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+	//state diagram settings
+	package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+	show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+	//activity diagram settings
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+	show_infonote default drawing_language default show_stereotype_properties default
+	simplerelation 130569
+	  -_->
+	    stereotype "extend"
+	    on usecase_ref 131593 // LVA erstellen
+	end
+      end
+    end
+
+    class 130563 "Admin"
+      visibility package stereotype "actor"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133891 // <generalisation>
+	relation 131459 ---|>
+	  a public
+	    classrelation_ref 133891 // <generalisation>
+	  b parent class_ref 130819 // Tutor
+      end
+    end
+
+    class 130691 "Student"
+      visibility package stereotype "actor"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 130819 "Tutor"
+      visibility package stereotype "actor"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128122 "Anonym"
+      visibility package stereotype "actor"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+  end
+
+  deploymentview 128003 "Deployment"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    deploymentdiagram 131715 "SLAT"
+      package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+      draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+      size A4
+    end
+
+    deploymentnode 128003 "Webserver"
+    end
+
+    deploymentnode 128131 "Client"
+    end
+
+    deploymentnode 129283 "JBoss"
+    end
+  end
+
+  componentview 128003 "Components"
+    //component diagram settings
+    package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    component 128131 "MySQL"
+    end
+
+    component 128259 "SLAT"
+      simplerelation 129411
+	-_->
+	  on component_ref 128131 // MySQL
+      end
+    end
+
+    component 128387 "Webbrowser"
+    end
+  end
+end

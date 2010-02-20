@@ -1,0 +1,97 @@
+Use Case Package: Gruppenbildung
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig129923.png]
+
+** Use Case: Gruppe <<erstellen>>
+
+*-----------------+---------------+
+| Name:  | Gruppe <<erstellen>> |
+| Scope:  | SAT Gruppenverwaltung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134281.png]
+
+** Use Case: von Gruppe <<abmelden>>
+
+*-----------------+---------------+
+| Name:  | von Gruppe <<abmelden>> |
+| Scope:  | SAT Gruppenverwaltung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134409.png]
+
+** Use Case: zu Gruppe <<anmelden>>
+
+*-----------------+---------------+
+| Name:  | zu Gruppe <<anmelden>> |
+| Scope:  | SAT Gruppenverwaltung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134537.png]
+
+** Use Case: Beschreibung editieren
+
+*-----------------+---------------+
+| Name:  | Beschreibung editieren |
+| Scope:  | SAT Gruppenverwaltung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Student |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig134665.png]

@@ -1,0 +1,212 @@
+Use Case Package: Administration
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig130179.png]
+
+** Use Case: Gruppengroesse definieren
+
+*-----------------+---------------+
+| Name:  | Gruppengroesse definieren |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig135817.png]
+
+** Use Case: <<Tutor>> an Gruppe zuweisen
+
+*-----------------+---------------+
+| Name:  | <<Tutor>> an Gruppe zuweisen |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig135945.png]
+
+** Use Case: <<Assistent>> an Gruppe zuweisen
+
+*-----------------+---------------+
+| Name:  | <<Assistent>> an Gruppe zuweisen |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig136073.png]
+
+** Use Case: <<Student>> an Gruppe zuweisen
+
+*-----------------+---------------+
+| Name:  | <<Student>> an Gruppe zuweisen |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig136201.png]
+
+** Use Case: Gruppe freischalten
+
+*-----------------+---------------+
+| Name:  | Gruppe freischalten |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig136329.png]
+
+** Use Case: Student aus Gruppe entfernen
+
+*-----------------+---------------+
+| Name:  | Student aus Gruppe entfernen |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig136457.png]
+
+** Use Case: Gruppen <<zusammenlegen>>
+
+*-----------------+---------------+
+| Name:  | Gruppen <<zusammenlegen>> |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig136585.png]
+
+** Use Case: Gruppe <<zuruecksetzen>>
+
+*-----------------+---------------+
+| Name:  | Gruppe <<zuruecksetzen>> |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig136713.png]
+
+** Use Case: Gruppenzusammenlegung rueckgaengig machen
+
+*-----------------+---------------+
+| Name:  | Gruppenzusammenlegung rueckgaengig machen |
+| Scope:  | SAT Gruppenbildung |
+| Level:  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  |  |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig137865.png]

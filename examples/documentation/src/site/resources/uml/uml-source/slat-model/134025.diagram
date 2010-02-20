@@ -1,0 +1,38 @@
+format 66
+
+activitycanvas 128009 activity_ref 132873 // Account suchen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 28 23 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 135177 // initial
+  xyz 211 88 2005
+end
+activityactioncanvas 128265 activityaction_ref 134921 // activity action Suchdaten eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 171 146 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 135049 // activity action Ergebnisse anzeigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 172 243 2005 100 60
+end
+activitynodecanvas 128777 activitynode_ref 135305 // activity_final
+  xyz 208 340 2005
+end
+flowcanvas 128521 flow_ref 140553 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128649 flow_ref 140681 // <flow>
+  
+  from ref 128265 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128905 flow_ref 140809 // <flow>
+  
+  from ref 128393 z 2006 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

@@ -1,0 +1,91 @@
+format 66
+
+activitycanvas 128137 activity_ref 128009 // Account anlegen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 18 16 2000 528 462
+end
+activitynodecanvas 128265 activitynode_ref 128009 // initial
+  xyz 47 88 2005
+end
+activityactioncanvas 128393 activityaction_ref 128009 // activity action Studentendaten eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 109 68 2005 100 60
+end
+activityactioncanvas 128649 activityaction_ref 128137 // activity action Daten bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 245 68 2005 100 60
+end
+activitynodecanvas 128905 activitynode_ref 129161 // activity_final
+  xyz 283 439 2005
+end
+activitynodecanvas 129545 activitynode_ref 129673 // decision
+  xyz 282 248 2005
+end
+activityactioncanvas 129673 activityaction_ref 128393 // activity action Bestätigungsmail versenden
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 244 159 2010 100 60
+end
+activityactioncanvas 132617 activityaction_ref 130057 // activity action Account löschen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 342 300 2005 100 60
+end
+activityactioncanvas 132745 activityaction_ref 130185 // activity action Account freischalten
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 143 299 2005 100 60
+end
+activitynodecanvas 133129 activitynode_ref 131209 // merge
+  xyz 282 376 2005
+end
+textcanvas 134409 "Mail bestätigen"
+  xyzwh 313 247 2010 71 14
+flowcanvas 132233 flow_ref 129417 // <flow>
+  
+  from ref 128393 z 2006 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132361 flow_ref 129545 // <flow>
+  
+  from ref 128649 z 2011 to ref 129673
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132489 flow_ref 130825 // <flow>
+  
+  from ref 128265 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133257 flow_ref 132873 // <flow>
+  
+  from ref 132617 z 2006 to ref 133129
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133385 flow_ref 133001 // <flow>
+  
+  from ref 132745 z 2006 to ref 133129
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133513 flow_ref 133129 // <flow>
+  
+  from ref 133129 z 2006 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 134025 flow_ref 147977 // Nein
+  
+  from ref 129545 z 2006 label "Nein" xyz 315 279 3000 to ref 132617
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 134153 flow_ref 148105 // Ja
+  
+  from ref 129545 z 2006 label "Ja" xyz 254 278 3000 to ref 132745
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 134281 flow_ref 148233 // <flow>
+  
+  from ref 129673 z 2011 to ref 129545
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

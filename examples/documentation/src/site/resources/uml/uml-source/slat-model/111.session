@@ -1,0 +1,15 @@
+window_sizes 1200 672 300 900 512 82
+diagrams
+  activitydiagram_ref 129263 // Testpunkte eintragen
+    711 412 100 4 0 0
+  active  activitydiagram_ref 130415 // Bewertungsbogen erstellen
+    711 412 100 4 0 0
+end
+show_stereotypes
+selected activitydiagram_ref 130415 // Bewertungsbogen erstellen
+open
+  activity_ref 129263 // Testpunkte eintragen
+  usecase_ref 130819 // Bewertung eintragen
+  activity_ref 130415 // Bewertungsbogen erstellen
+end
+end

@@ -1,0 +1,36 @@
+format 66
+
+fragment 128002 "Termin-Verwaltung"
+  xyzwh 4 4 2000 517 505
+end
+classcanvas 128131 class_ref 130691 // Student
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 21 92 2000
+end
+classcanvas 128259 class_ref 130563 // Admin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 31 346 2000
+end
+usecasecanvas 128387 usecase_ref 128003 // zu Termin anmelden
+  xyzwh 209 50 3005 64 37 label_xy 193 89
+end
+usecasecanvas 128515 usecase_ref 128131 // von Termin abmelden
+  xyzwh 209 156 3005 64 37 label_xy 189 194
+end
+usecasecanvas 128899 usecase_ref 128259 // Termin erstellen
+  xyzwh 211 306 3005 64 37 label_xy 195 345
+end
+usecasecanvas 129155 usecase_ref 128387 // Anmeldungen einsehen
+  xyzwh 208 415 3005 64 32 label_xy 184 447
+end
+subject 129667 "SAT Terminverwaltung"
+  xyzwh 124 17 2000 387 483
+line 128643 ----
+  from ref 128131 z 1999 to ref 128387
+line 128771 ----
+  from ref 128131 z 1999 to ref 128515
+line 129027 ----
+  from ref 128259 z 1999 to ref 128899
+line 129283 ----
+  from ref 128259 z 1999 to ref 129155
+end

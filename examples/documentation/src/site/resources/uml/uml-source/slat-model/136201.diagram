@@ -1,0 +1,101 @@
+format 66
+
+activitycanvas 128009 activity_ref 135049 // Student zuweisen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 24 18 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 139529 // initial
+  xyz 98 87 2005
+end
+activityactioncanvas 128265 activityaction_ref 140169 // activity action Freie Studenten anzeigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 312 67 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 140297 // activity action Gruppe auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 171 68 2005 100 60
+end
+activityactioncanvas 128649 activityaction_ref 140553 // activity action Student zuweisen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 311 166 2005 100 60
+end
+activityactioncanvas 128777 activityaction_ref 140681 // activity action Zuweisung bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 175 269 2010 100 60
+end
+activitynodecanvas 129545 activitynode_ref 139657 // activity_final
+  xyz 350 353 2005
+end
+activitynodecanvas 130313 activitynode_ref 140169 // decision
+  xyz 212 177 2005
+end
+textcanvas 130569 "Gruppengröße
+zulässig?"
+  xyzwh 202 144 2005 81 32
+activitynodecanvas 130825 activitynode_ref 140297 // decision
+  xyz 94 176 2005
+end
+textcanvas 131081 "Gruppengröße
+überschreiten?"
+  xyzwh 84 145 2010 82 31
+activitynodecanvas 131593 activitynode_ref 140425 // merge
+  xyz 212 347 2005
+end
+flowcanvas 129929 flow_ref 153609 // <flow>
+  
+  from ref 128137 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130057 flow_ref 153737 // <flow>
+  
+  from ref 128393 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130185 flow_ref 153865 // <flow>
+  
+  from ref 128265 z 2006 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130441 flow_ref 154249 // <flow>
+  
+  from ref 128649 z 2006 to ref 130313
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130697 flow_ref 154377 // Ja
+  
+  from ref 130313 z 2011 label "Ja" xyz 219 233 3000 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130953 flow_ref 154505 // Nein
+  
+  from ref 130313 z 2006 label "Nein" xyz 154 187 3000 to ref 130825
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131209 flow_ref 154633 // Ja
+  
+  from ref 130825 z 2011 label "Ja" xyz 101 247 3000 to point 104 295
+  line 131337 z 2011 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131721 flow_ref 154761 // <flow>
+  
+  from ref 131593 z 2006 to ref 129545
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131849 flow_ref 154889 // <flow>
+  
+  from ref 128777 z 2011 to ref 131593
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131977 flow_ref 155017 // Nein
+  
+  from ref 130825 z 2006 label "Nein" xyz 55 186 3000 to point 35 191
+  line 132105 z 2006 to point 35 363
+  line 132233 z 2006 to ref 131593
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

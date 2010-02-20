@@ -1,0 +1,48 @@
+format 66
+
+activitycanvas 128009 activity_ref 134921 // Assitent zuweisen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 25 21 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 139273 // initial
+  xyz 98 106 2005
+end
+activityactioncanvas 128265 activityaction_ref 139785 // activity action Gruppe auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 174 86 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 139913 // activity action Assitent auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 175 186 2005 100 60
+end
+activityactioncanvas 128521 activityaction_ref 140041 // activity action Zuweisung bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 176 285 2005 100 60
+end
+activitynodecanvas 128649 activitynode_ref 139401 // activity_final
+  xyz 330 302 2005
+end
+flowcanvas 128777 flow_ref 152329 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128905 flow_ref 152457 // <flow>
+  
+  from ref 128265 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129033 flow_ref 152585 // <flow>
+  
+  from ref 128393 z 2006 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129161 flow_ref 152713 // <flow>
+  
+  from ref 128521 z 2006 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

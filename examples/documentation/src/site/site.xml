@@ -30,7 +30,25 @@
         <menu name="Examples">
             <item name="Overview" href="architecture.html"/>
             <item name="Basic Sample" href="arch-basic.html"/>
-            <item name="Medium Sample" href="arch-medium.html"/>
+            <item name="Medium Sample" href="medium/overview-medium.html">
+            	<item name="Projektauftrag" href="medium/projektauftrag.html"/>
+            	<item name="Architecture" href="medium/arch-medium.html"/>
+            	<item name="Getting Started" href="medium/getting-started-medium.html"/>
+            	<item name="Dev Setup" href="medium/devsetup.html"/>
+            	<item name="Akteure" href="medium/actors.html"/>
+            	<item name="Vertikale Arbeitspakete" href="medium/verticalRoles.html"/>
+            	<item name="Domaenenmodell" href="medium/domain.html"/>
+            	<item name="Verteilungdiagramm" href="medium/deployment.html"/>
+            	<item name="UML" href="medium/usecases.html">
+            		<item name="Account" href="medium/usecases_account.html"/>
+            		<item name="Admin" href="medium/usecases_admin.html"/>
+            		<item name="Bewertung" href="medium/usecases_bewertung.html"/>
+            		<item name="Fragebogen" href="medium/usecases_fragebogen.html"/>
+            		<item name="LVA" href="medium/usecases_lva.html"/>
+            		<item name="Terminverwaltung" href="medium/usecases_termin.html"/>
+            		<item name="Gruppenverwaltung" href="medium/usecases_groups.html"/>
+            	</item>
+            </item>
             <item name="Advanced Sample" href="arch-advanced.html"/>
             <item name="Javadoc" href="technology/javadoc.html">
                 <item name="Core Module" href="core/apidocs/index.html"/>

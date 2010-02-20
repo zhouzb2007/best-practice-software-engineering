@@ -1,0 +1,108 @@
+format 66
+
+activitycanvas 128009 activity_ref 133385 // Gruppenanmeldung
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 33 27 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 136713 // initial
+  xyz 88 89 2005
+end
+activityactioncanvas 128265 activityaction_ref 137097 // activity action Gruppe auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 197 70 2005 100 60
+end
+activityactioncanvas 128649 activityaction_ref 137481 // activity action Aus alter Gruppe abmelden
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 158 224 2005 100 60
+end
+activityactioncanvas 128777 activityaction_ref 137609 // activity action Zur Gruppe anmelden
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 54 353 2005 100 60
+end
+activityactioncanvas 128905 activityaction_ref 137737 // activity action Gruppenzugehörigkeit bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 199 352 2010 100 60
+end
+activitynodecanvas 129033 activitynode_ref 136841 // decision
+  xyz 234 166 2005
+end
+activitynodecanvas 129161 activitynode_ref 136969 // decision
+  xyz 91 236 2005
+end
+activitynodecanvas 130057 activitynode_ref 137097 // merge
+  xyz 91 292 2010
+end
+activitynodecanvas 130825 activitynode_ref 137225 // merge
+  xyz 337 363 2005
+end
+activitynodecanvas 131465 activitynode_ref 137353 // activity_final
+  xyz 396 370 2005
+end
+textcanvas 131977 "Anmeldung bestätigen?"
+  xyzwh 186 202 2011 113 14
+textcanvas 132617 "Bereits in
+Gruppe?"
+  xyzwh 44 245 2005 45 28
+flowcanvas 129289 flow_ref 144649 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129417 flow_ref 144777 // <flow>
+  
+  from ref 128265 z 2006 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129929 flow_ref 145289 // Ja
+  
+  from ref 129161 z 2006 label "Ja" xyz 131 246 3000 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130185 flow_ref 145417 // Nein
+  
+  from ref 129161 z 2011 label "Nein" xyz 93 274 3000 to ref 130057
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130441 flow_ref 145673 // <flow>
+  
+  from ref 128649 z 2011 to point 202 308
+  line 130569 z 2011 to ref 130057
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130697 flow_ref 145801 // <flow>
+  
+  from ref 128777 z 2011 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130953 flow_ref 145929 // <flow>
+  
+  from ref 128905 z 2011 to ref 130825
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131593 flow_ref 146313 // <flow>
+  
+  from ref 130825 z 2006 to ref 131465
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131849 flow_ref 146441 // <flow>
+  
+  from ref 130057 z 2011 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132105 flow_ref 150793 // Abbrechen
+  
+  from ref 129033 z 2006 label "Abbrechen" xyz 276 177 3000 to point 346 182
+  line 132233 z 2006 to ref 130825
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132361 flow_ref 150921 // Bestätigen
+  
+  from ref 129033 z 2006 label "Bestätigen" xyz 142 177 3000 to point 100 182
+  line 132489 z 2006 to ref 129161
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

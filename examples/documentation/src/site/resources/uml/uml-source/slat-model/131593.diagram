@@ -1,0 +1,72 @@
+format 66
+
+activitycanvas 128009 activity_ref 130441 // Accountdaten ändern
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 20 15 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 131593 // initial
+  xyz 80 78 2005
+end
+activityactioncanvas 128265 activityaction_ref 130697 // activity action Neue Daten eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 145 59 2005 100 60
+end
+activityactioncanvas 128521 activityaction_ref 130953 // activity action Daten ändern
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 145 221 2005 100 60
+end
+activitynodecanvas 128649 activitynode_ref 131721 // activity_final
+  xyz 353 326 2005
+end
+activitynodecanvas 129289 activitynode_ref 131849 // decision
+  xyz 182 140 2010
+end
+activitynodecanvas 129417 activitynode_ref 131977 // merge
+  xyz 285 319 2005
+end
+activityactioncanvas 130953 activityaction_ref 133641 // activity action Änderung bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 144 309 2011 100 60
+end
+textcanvas 132361 "Daten ändern?"
+  xyzwh 109 146 2005 71 14
+flowcanvas 128777 flow_ref 133769 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129545 flow_ref 134025 // <flow>
+  
+  from ref 128265 z 2011 to ref 129289
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130825 flow_ref 135049 // <flow>
+  
+  from ref 129417 z 2006 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131337 flow_ref 139145 // <flow>
+  
+  from ref 128521 z 2012 to ref 130953
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131465 flow_ref 139273 // <flow>
+  
+  from ref 130953 z 2012 to ref 129417
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132233 flow_ref 149897 // Bestätigen
+  
+  from ref 129289 z 2011 label "Bestätigen" xyz 169 191 3000 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 133385 flow_ref 150409 // Abbrechen
+  
+  from ref 129289 z 2011 label "Abbrechen" xyz 268 190 3000 to point 295 155
+  line 133641 z 2011 to ref 129417
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end
