@@ -78,9 +78,9 @@ public class XmlExportImportTest {
 	private List<Student> generateStudentList() {
 		List<Student> studenten = new ArrayList<Student>();
 		Student s1 = (Student) xbf.getBean("StudentAlexanderSchatten");
-		s1.setId(new Integer(1));
+		s1.setId(1);
 		Student s2 = (Student) xbf.getBean("StudentHubertMeixner");
-		s2.setId(new Integer(2));
+		s2.setId(2);
 		studenten.add(s1);
 		studenten.add(s2);
 		return studenten;
@@ -161,7 +161,7 @@ public class XmlExportImportTest {
 		}
 		
 		File f = new File(filename);
-		f.delete();
+		assertThat(f.delete(), is(not(false)));
 	}
 
 }
