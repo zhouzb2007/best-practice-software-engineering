@@ -1,0 +1,38 @@
+format 66
+
+activitycanvas 128122 activity_ref 128506 // Termin erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 7 5 2000 400 400
+end
+activitynodecanvas 128250 activitynode_ref 128634 // initial
+  xyz 180 65 2005
+end
+activitynodecanvas 128378 activitynode_ref 128762 // activity_final
+  xyz 177 353 2005
+end
+activityactioncanvas 128506 activityaction_ref 128506 // activity action Termin auswählen/eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 139 128 2005 100 60
+end
+activityactioncanvas 128634 activityaction_ref 128634 // activity action Termin anlegen bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 139 235 2010 100 60
+end
+flowcanvas 128762 flow_ref 128890 // <flow>
+  
+  from ref 128250 z 2006 to ref 128506
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128890 flow_ref 129018 // <flow>
+  
+  from ref 128506 z 2011 to ref 128634
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129402 flow_ref 129402 // <flow>
+  
+  from ref 128634 z 2011 to ref 128378
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

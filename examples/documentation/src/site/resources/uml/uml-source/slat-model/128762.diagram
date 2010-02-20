@@ -1,0 +1,38 @@
+format 66
+
+activitycanvas 128122 activity_ref 128634 // Anmeldung einsehen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 5 5 2000 504 400
+end
+activityactioncanvas 128250 activityaction_ref 128762 // activity action Termin auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 194 147 2005 100 60
+end
+activityactioncanvas 128378 activityaction_ref 128890 // activity action Anmeldungen anzeigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 194 239 2005 100 60
+end
+activitynodecanvas 128506 activitynode_ref 129018 // initial
+  xyz 235 92 2005
+end
+activitynodecanvas 128634 activitynode_ref 129146 // activity_final
+  xyz 232 347 2005
+end
+flowcanvas 128762 flow_ref 129530 // <flow>
+  
+  from ref 128506 z 2006 to ref 128250
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128890 flow_ref 129658 // <flow>
+  
+  from ref 128250 z 2006 to ref 128378
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129018 flow_ref 129786 // <flow>
+  
+  from ref 128378 z 2006 to ref 128634
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

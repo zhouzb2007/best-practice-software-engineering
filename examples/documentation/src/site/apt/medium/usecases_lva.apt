@@ -1,0 +1,74 @@
+Use Case Package: LVA-Verwaltung
+
+* Overview Diagram
+
+[../uml/medium/slat-model/fig128009.png]
+
+** Use Case: LVA <<erstellen>>
+
+*-----------------+---------------+
+| Name:  | LVA <<erstellen>> |
+| Scope:  | Administration section of SAT |
+| Level:  		  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      | Administrator wants to create a new Lecture at the beginning of every Semester in order for students to register |
+*-----------------+--------------+
+| Preconditions:  | Logged in as Admin |
+*-----------------+--------------+
+| Main Scenario:  | 1. Admin creates a new lecture and must assign a name which does not have to be unique. |
+|			 	  | 2. Admin may copy a Lecture from the previous Semester to save time, this data includes... |
+|			      | 3. Admin may choose to set the Lecture active right away or at a later point (seperate Use Case) |
+*-----------------+--------------+
+| Special Requirements:	| Certain data should not be copied from an old Semester, particularly Student registrations  |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128241.png]
+
+** Use Case: LVA <<bearbeiten>>
+
+*-----------------+---------------+
+| Name:  | LVA <<bearbeiten>> |
+| Scope:  | Administration section of SAT |
+| Level:  		  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  | Logged in as Admin |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128369.png]
+
+** Use Case: LVA <<loeschen>>
+
+*-----------------+---------------+
+| Name:  | LVA <<loeschen>> |
+| Scope:  | Administration section of SAT |
+| Level:  		  | User Goal     |
+*-----------------+--------------+
+| Actor:  | Admin |
+| Interests:      |  |
+*-----------------+--------------+
+| Preconditions:  | Logged in as Admin |
+*-----------------+--------------+
+| Main Scenario:  | 1.  |
+|			 	  | 2.  |
+|			      | 3.  |
+*-----------------+--------------+
+| Special Requirements:	|   |
+*-----------------+--------------+
+
+*** Activity Diagram
+
+[../uml/medium/slat-model/fig128497.png] 

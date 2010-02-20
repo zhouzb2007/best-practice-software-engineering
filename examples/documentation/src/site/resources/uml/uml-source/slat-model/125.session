@@ -1,0 +1,11 @@
+window_sizes 1200 896 300 894 699 120
+diagrams
+  active  classdiagram_ref 128003 // Domainmodel
+    715 559 100 4 0 0
+end
+show_stereotypes
+selected 
+package_ref 129 // slat-model
+open
+end
+end

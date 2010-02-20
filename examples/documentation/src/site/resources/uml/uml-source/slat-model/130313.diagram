@@ -1,0 +1,51 @@
+format 66
+
+activitycanvas 128009 activity_ref 129161 // Mail bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 117 15 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 129801 // initial
+  xyz 302 79 2005
+end
+activitynodecanvas 128905 activitynode_ref 129929 // activity_final
+  xyz 307 375 2005
+end
+activityactioncanvas 129033 activityaction_ref 128777 // activity action Mail bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 190 240 2005 100 60
+end
+activityactioncanvas 129161 activityaction_ref 128905 // activity action Mail verfallen lassen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 349 242 2005 100 60
+end
+activitynodecanvas 129417 activitynode_ref 130057 // decision
+  xyz 300 146 2005
+end
+flowcanvas 129545 flow_ref 130953 // <flow>
+  
+  from ref 128137 z 2006 to ref 129417
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129673 flow_ref 131081 // <flow>
+  
+  from ref 129417 z 2006 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129801 flow_ref 131209 // <flow>
+  
+  from ref 129417 z 2006 to ref 129161
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129929 flow_ref 131337 // <flow>
+  
+  from ref 129033 z 2006 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130057 flow_ref 131465 // <flow>
+  
+  from ref 129161 z 2006 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

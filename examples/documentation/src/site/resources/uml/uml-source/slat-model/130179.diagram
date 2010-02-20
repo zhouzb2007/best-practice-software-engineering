@@ -1,0 +1,71 @@
+format 66
+
+fragment 128002 "Gruppen-Verwaltung Tutor/Admin"
+  xyzwh 7 6 1994 662 578
+end
+subject 128003 "SAT Gruppenbildung"
+  xyzwh 112 33 2000 544 538
+usecasecanvas 128009 usecase_ref 129417 // Student an Gruppe zuweisen
+  xyzwh 433 240 3005 64 32 label_xy 394 272
+end
+classcanvas 128131 class_ref 130819 // Tutor
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 21 66 2000
+end
+classcanvas 128259 class_ref 130563 // Admin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 21 290 2004
+end
+usecasecanvas 128265 usecase_ref 129545 // Gruppengröße definieren
+  xyzwh 293 153 3005 64 32 label_xy 264 185
+end
+usecasecanvas 128515 usecase_ref 129667 // Gruppe einsehen
+  xyzwh 286 81 3005 64 32 label_xy 277 113
+end
+usecasecanvas 128771 usecase_ref 129923 // Gruppen zusammenlegen
+  xyzwh 272 380 3005 64 32 label_xy 243 412
+end
+usecasecanvas 129283 usecase_ref 130051 // Tutor an Gruppe zuweisen
+  xyzwh 435 287 3005 64 32 label_xy 402 319
+end
+usecasecanvas 129411 usecase_ref 130179 // Assistent an Gruppe zuweisen
+  xyzwh 517 341 3005 64 32 label_xy 474 373
+end
+usecasecanvas 129795 usecase_ref 130307 // Gruppenzusammenlegung rückgangig machen
+  xyzwh 272 445 3005 64 32 label_xy 192 477
+end
+usecasecanvas 129923 usecase_ref 130435 // Gruppenbildung zurücksetzen
+  xyzwh 277 510 3005 64 32 label_xy 237 542
+end
+usecasecanvas 130563 usecase_ref 130563 // Gruppenbildung freischalten
+  xyzwh 288 211 3005 64 32 label_xy 252 243
+end
+usecasecanvas 130819 usecase_ref 132483 // Student aus Gruppe entfernen
+  xyzwh 442 395 3005 64 32 label_xy 401 427
+end
+line 128137 ----
+  from ref 128009 z 3006 to ref 128259
+relationcanvas 128387 relation_ref 131459 // <generalisation>
+  from ref 128259 z 1999 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+line 128393 ----
+  from ref 128265 z 3006 to ref 128259
+line 128643 ----
+  from ref 128131 z 1999 to ref 128515
+line 128899 ----
+  from ref 128259 z 1999 to ref 128771
+line 129539 ----
+  from ref 129283 z 2003 to ref 128259
+line 129667 ----
+  from ref 129411 z 2003 to ref 128259
+line 130051 ----
+  from ref 128259 z 2003 to ref 129795
+line 130435 ----
+  from ref 128259 z 2003 to ref 129923
+line 130691 ----
+  from ref 128259 z 2003 to ref 130563
+line 130947 ----
+  from ref 128259 z 3006 to ref 130819
+end

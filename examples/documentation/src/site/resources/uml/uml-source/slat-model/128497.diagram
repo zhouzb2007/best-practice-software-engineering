@@ -1,0 +1,74 @@
+format 66
+
+activitycanvas 128113 activity_ref 128369 // LVA löschen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 16 16 2000 563 542
+end
+activitynodecanvas 128241 activitynode_ref 129137 // initial
+  xyz 107 114 2005
+end
+activityactioncanvas 128369 activityaction_ref 129137 // activity action LVA auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 210 95 2005 100 60
+end
+activityactioncanvas 128497 activityaction_ref 129265 // activity action LVA löschen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 210 297 2005 100 60
+end
+activitynodecanvas 128625 activitynode_ref 129265 // decision
+  xyz 247 213 2010
+end
+activitynodecanvas 128753 activitynode_ref 129393 // activity_final
+  xyz 451 220 2005
+end
+activitynodecanvas 130033 activitynode_ref 130801 // decision
+  xyz 355 307 2005
+end
+activityactioncanvas 130161 activityaction_ref 130545 // activity action Datumsletzte LVA active setzen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 415 391 2005 100 60
+end
+flowcanvas 129137 flow_ref 130801 // <flow>
+  
+  from ref 128369 z 2011 to ref 128625
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129265 flow_ref 130929 // <flow>
+  
+  from ref 128241 z 2006 to ref 128369
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129393 flow_ref 131057 // löschen
+  
+  from ref 128625 z 2011 label "löschen" xyz 215 264.5 2011 to ref 128497
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129905 flow_ref 131313 // abbrechen
+  
+  from ref 128625 z 2011 label "abbrechen" xyz 329.5 215 2011 to ref 128753
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130289 flow_ref 133873 // <flow>
+  
+  from ref 128497 z 2006 to ref 130033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130417 flow_ref 134001 // LVA active
+  
+  from ref 130033 z 2006 label "LVA active" xyz 354 366 3000 to ref 130161
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130801 flow_ref 134129 // LVA nicht active
+  
+  from ref 130033 z 2006 label "LVA nicht active" xyz 328 267 3000 to ref 128753
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130929 flow_ref 134257 // <flow>
+  
+  from ref 130161 z 2006 to ref 128753
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

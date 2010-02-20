@@ -1,0 +1,41 @@
+format 66
+
+fragment 128002 "Fragebogen-Verwaltung"
+  xyzwh 5 6 2000 471 528
+end
+classcanvas 128003 class_ref 130691 // Student
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 26 100 2000
+end
+subject 128259 "SAT Fragebogen"
+  xyzwh 136 30 2000 326 491
+usecasecanvas 128387 usecase_ref 128515 // Fragebogen ausfüllen
+  xyzwh 266 115 3005 64 32 label_xy 246 147
+end
+classcanvas 128643 class_ref 130563 // Admin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 31 312 2000
+end
+usecasecanvas 128771 usecase_ref 128643 // Fragebogen erstellen
+  xyzwh 267 223 3005 64 32 label_xy 248 255
+end
+usecasecanvas 128899 usecase_ref 128771 // Ergebnisse auswerten
+  xyzwh 267 436 3005 64 32 label_xy 244 468
+end
+usecasecanvas 129027 usecase_ref 128899 // Fragebogen veröffentlichen
+  xyzwh 268 289 3005 64 32 label_xy 233 321
+end
+usecasecanvas 129155 usecase_ref 129027 // Fragebogen schliessen
+  xyzwh 267 362 3005 64 32 label_xy 243 394
+end
+line 128515 ----
+  from ref 128003 z 1999 to ref 128387
+line 129283 ----
+  from ref 128643 z 1999 to ref 128771
+line 129411 ----
+  from ref 128643 z 1999 to ref 129027
+line 129539 ----
+  from ref 128643 z 1999 to ref 129155
+line 129667 ----
+  from ref 128643 z 1999 to ref 128899
+end

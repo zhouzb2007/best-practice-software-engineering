@@ -1,0 +1,114 @@
+   ---
+   Development Environment Setup Guideline
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Setup of development environment for the SAT project
+
+  This guideline provides all of the information needed to setup the sat development environment.
+ (please find the examples in {{{download.html} <<Download>>}} section)
+
+* Installation Instructions
+
+  Please follow all the instructions to assure the functionality of the development environment. 
+
+* Java 6 Setup
+
+	SAT uses Java 6 technology. To compile and run it, you need to have Sun Java EE SDK 1.6 installed.
+
+** Download and install JDK
+
+	Please download the latest version of the JDK at {{{http://java.sun.com/javase/downloads/index.jsp} <<Java.sun.com>>}}. When
+	downloading the JDK you might also consider downloading the API documentation for offline use.
+
+** System settings
+
+	After installing the JDK please make sure to set the JAVA_HOME environment variable to point to your java directory.
+	
+	<<Example>> (for Windows users)
+	Press WinKey + Pause, go to the Advanced Tab (Erweitert), click on Environment variables (Umgebungsvariablen), click 'New' at
+	user variables (Benutzervariablen) and define a new entry as follows:
+	
+	<<Name>>: JAVA_HOME
+	
+	<<Value>>: path/to/your/JDK-installation (e.g: H:\Programme\Java\jdk1.6.0_01 - <<Note: not the bin-directory>>)
+	
+	Go to your console/shell and use the following command (anywhere):
+	
+---
+java -version
+---
+
+	Output should look something like this (depends on the version you installed):
+
+---
+java version "1.6.0_13"
+Java(TM) SE Runtime Environment (build 1.6.0_13-b03)
+Java HotSpot(TM) Client VM (build 11.3-b02, mixed mode, sharing)
+---
+
+* Maven 2 installation
+
+	Upon execution of the default target, Ant should 
+	download maven-ant-tasks-2.0.9.jar which contains all maven functionality to
+	organize the development process, handle transitive dependencies
+	and build the documentation (mvn-site) of this application.
+
+* Example installation for Eclipse IDE
+
+	Install either Subclipse or Subversive to check out at the project at:
+
+---
+svn://...
+---
+
+	You will find source code & documentation in <<<trunk/sat>>>, this is the project root.
+	The repository also contains a .project file for the eclipse IDE, make sure you have the JBoss Tools plugin installed as described in the previous step. 
+	
+	Once the project is in your workspace, eclipse will automatically start building the project
+	because of the provided build.xml in the root directory. The <<<deploy>>> target is executed and should finish
+	without any major errors, provided that you followed all the previous steps.
+
+	You may also want to install the M2eclipse plugin. Even though the build process is managed through Ant,
+	the project also contains two pom.xml files. The POM in the root of the project is used to specify dependencies while
+	<<<documentation/pom.xml>>> is used to build the documentation of the project.
+
+---
+http://m2eclipse.sonatype.org/update/
+---
+
+** Customize Build Environment
+
+
+
+*Testing
+
+
+	
+
+~~	Download your copy of the example sample from {{{download.html} <<Download>>}} section and 
+~~	unpack the archive to a folder of your choice.
+	
+~~	After extracting the archive, you find the following folder structure
+
+~~---
+~~+- root folder (from 1.)
+~~|
+~~|`-- advanced 
+~~|	`-- subfolders
+~~|
+~~|`-- basic 
+~~|	`-- subfolders
+~~|
+~~|`-- core
+~~|	`-- subfolders
+~~|
+~~|`-- medium
+~~|	`-- subfolders
+~~|
+~~`- pom.xml
+~~---
+
+~~	(detailed information can be found at {{{architecture.html} <<The sample apps>>}} section)

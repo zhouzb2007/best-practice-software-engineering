@@ -1,0 +1,19 @@
+window_sizes 1276 750 300 900 533 82
+diagrams
+  usecasediagram_ref 129283 // UseCasePakete
+    788 435 100 4 0 0
+  activitydiagram_ref 132867 // Fragebogen ausfüllen
+    772 475 100 4 0 0
+  activitydiagram_ref 134019 // Fragebogen erstellen
+    772 475 100 4 0 0
+  active  deploymentdiagram_ref 131715 // SLAT
+    775 475 100 4 0 0
+end
+show_stereotypes
+selected deploymentdiagram_ref 131715 // SLAT
+open
+  activity_ref 129155 // Fragebogen ausfüllen
+  activity_ref 130307 // Fragebogen erstellen
+  deploymentview_ref 128003 // Deployment
+end
+end

@@ -1,0 +1,28 @@
+format 66
+
+activitycanvas 128009 activity_ref 135177 // Freischaltung
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 28 24 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 139913 // initial
+  xyz 98 105 2005
+end
+activityactioncanvas 128265 activityaction_ref 140809 // activity action Freischaltung bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 173 86 2005 100 60
+end
+activitynodecanvas 128521 activitynode_ref 140041 // activity_final
+  xyz 334 102 2005
+end
+flowcanvas 128393 flow_ref 153993 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128649 flow_ref 154121 // <flow>
+  
+  from ref 128265 z 2006 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

@@ -1,0 +1,48 @@
+format 66
+
+activitycanvas 128009 activity_ref 130313 // Passwort ändern
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 69 14 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 131337 // initial
+  xyz 109 105 2005
+end
+activityactioncanvas 128265 activityaction_ref 130313 // activity action Altes Passwort eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 203 86 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 130441 // activity action Neues Passwort eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 204 182 2005 100 60
+end
+activityactioncanvas 128521 activityaction_ref 130569 // activity action Neues Passwort wiederholen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 205 273 2005 100 60
+end
+activitynodecanvas 129033 activitynode_ref 131465 // activity_final
+  xyz 381 291 2005
+end
+flowcanvas 128649 flow_ref 133257 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128777 flow_ref 133385 // <flow>
+  
+  from ref 128265 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128905 flow_ref 133513 // <flow>
+  
+  from ref 128393 z 2006 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129161 flow_ref 133641 // <flow>
+  
+  from ref 128521 z 2006 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

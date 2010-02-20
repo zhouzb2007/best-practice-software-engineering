@@ -1,0 +1,75 @@
+format 66
+
+fragment 128002 "Bewertung & Abgabe"
+  xyzwh 8 10 2000 612 485
+end
+subject 128003 "SAT Bewertung"
+  xyzwh 107 38 2000 500 442
+classcanvas 128259 class_ref 130563 // Admin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 20 314 2000
+end
+classcanvas 128387 class_ref 130819 // Tutor
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 21 108 2004
+end
+usecasecanvas 128393 usecase_ref 131081 // Bewertungsbogen ändern
+  xyzwh 194 283 3005 64 32 label_xy 163 315
+end
+usecasecanvas 128643 usecase_ref 130691 // Testpunkte eintragen
+  xyzwh 190 66 3005 64 32 label_xy 172 98
+end
+usecasecanvas 128777 usecase_ref 131209 // Bewertungsbogen löschen
+  xyzwh 194 348 3005 64 32 label_xy 161 380
+end
+usecasecanvas 128899 usecase_ref 130819 // Bewertung eintragen
+  xyzwh 192 145 3005 64 32 label_xy 173 177
+end
+usecasecanvas 129033 usecase_ref 131337 // Kommentar eintragen
+  xyzwh 487 315 3005 64 32 label_xy 468 347
+end
+usecasecanvas 129155 usecase_ref 130947 // Programmierbsp. eintragen
+  xyzwh 477 69 3005 64 32 label_xy 445 101
+end
+usecasecanvas 129283 usecase_ref 131075 // Abgabe eintragen
+  xyzwh 479 144 3005 64 32 label_xy 472 176
+end
+usecasecanvas 129289 usecase_ref 131465 // Bewertungsbogen übernehmen
+  xyzwh 195 413 3005 64 32 label_xy 151 445
+end
+usecasecanvas 129411 usecase_ref 131203 // Einschätzung eintragen
+  xyzwh 488 224 3005 64 32 label_xy 464 256
+end
+usecasecanvas 130435 usecase_ref 131331 // Bewertungsbogen erstellen
+  xyzwh 194 221 3005 64 32 label_xy 159 253
+end
+relationcanvas 128515 relation_ref 131459 // <generalisation>
+  from ref 128259 z 1999 to ref 128387
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+line 128649 ----
+  from ref 128393 z 3006 to ref 128259
+line 128771 ----
+  from ref 128387 z 2003 to ref 128643
+line 128905 ----
+  from ref 128777 z 3006 to ref 128259
+line 129027 ----
+  from ref 128387 z 2003 to ref 128899
+simplerelationcanvas 129161 simplerelation_ref 130441
+  from ref 128899 z 3006 stereotype "<<include>>" xyz 341.5 244 3000 to ref 129033
+end
+line 129417 ----
+  from ref 129289 z 3006 to ref 128259
+simplerelationcanvas 129539 simplerelation_ref 128003
+  from ref 128899 z 3004 stereotype "<<include>>" xyz 331 213 3000 to ref 129411
+end
+simplerelationcanvas 129923 simplerelation_ref 128131
+  from ref 128899 z 3004 stereotype "<<include>>" xyz 331 163 3000 to ref 129283
+end
+simplerelationcanvas 130051 simplerelation_ref 128259
+  from ref 128899 z 3004 stereotype "<<include>>" xyz 344 124 3000 to ref 129155
+end
+line 130563 ----
+  from ref 128259 z 1999 to ref 130435
+end

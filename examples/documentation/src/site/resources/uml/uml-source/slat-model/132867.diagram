@@ -1,0 +1,51 @@
+format 66
+
+activitynodecanvas 128003 activitynode_ref 128003 // initial
+  xyz 25 86 2013
+end
+activitynodecanvas 128131 activitynode_ref 128131 // activity_final
+  xyz 302 333 2005
+end
+activityactioncanvas 128387 activityaction_ref 128003 // activity action Fragebogen auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 129 66 2013 100 60
+end
+expansionregioncanvas 128643 expansionregion_ref 128003 // Fragen beantworten
+  xyzwh 72 148 2005 228 139
+end
+activityactioncanvas 128899 activityaction_ref 128131 // activity action Frage beantworten
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 130 188 2011 100 60
+end
+activityactioncanvas 129155 activityaction_ref 128259 // activity action Fragebogen abschicken
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 131 316 2005 100 60
+end
+activitycanvas 129539 activity_ref 129155 // Fragebogen ausfüllen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 3 3 2000 598 400
+end
+flowcanvas 128515 flow_ref 128003 // <flow>
+  
+  from ref 128003 z 2001 to ref 128387
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129027 flow_ref 128131 // <flow>
+  
+  from ref 128387 z 2006 to ref 128899
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129283 flow_ref 128259 // <flow>
+  
+  from ref 128899 z 2006 to ref 129155
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129411 flow_ref 128387 // <flow>
+  
+  from ref 129155 z 2001 to ref 128131
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

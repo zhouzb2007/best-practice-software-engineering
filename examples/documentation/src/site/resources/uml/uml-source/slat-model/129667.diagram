@@ -1,0 +1,80 @@
+format 66
+
+fragment 128002 "Account-Verwaltung"
+  xyzwh 2 2 0 640 536
+end
+subject 128003 "SAT Administration"
+  xyzwh 121 27 2000 508 498
+classcanvas 128122 class_ref 128122 // Anonym
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 30 48 2005
+end
+classcanvas 128131 class_ref 130691 // Student
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 35 142 2000
+end
+usecasecanvas 128259 usecase_ref 129155 // Account anlegen
+  xyzwh 270 62 3005 64 32 label_xy 262 94
+end
+usecasecanvas 128515 usecase_ref 129283 // neues Passwort anfordern
+  xyzwh 269 279 3005 64 32 label_xy 236 311
+end
+classcanvas 128899 class_ref 130819 // Tutor
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 41 224 2000
+end
+classcanvas 130441 class_ref 130563 // Admin
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 39 351 2006
+end
+usecasecanvas 130953 usecase_ref 128905 // Account löschen
+  xyzwh 273 446 3005 64 32 label_xy 264 478
+end
+usecasecanvas 131209 usecase_ref 129033 // Accountdaten ändern
+  xyzwh 270 148 3005 64 32 label_xy 250 180
+end
+usecasecanvas 131593 usecase_ref 129161 // Account suchen
+  xyzwh 457 411 3005 64 32 label_xy 449 443
+end
+usecasecanvas 131977 usecase_ref 129289 // Passwort ändern
+  xyzwh 456 208 3005 64 32 label_xy 446 240
+end
+note 132361 "User muss beim ersten Anmelden nach einer Passwortanforderung ein Neues eingeben."
+  xyzwh 478 294 2005 135 80
+usecasecanvas 132617 usecase_ref 130697 // Daten einsehen
+  xyzwh 273 370 3005 64 32 label_xy 268 402
+end
+line 128250 ----
+  from ref 128122 z 3006 to ref 128259
+line 128643 ----
+  from ref 128131 z 1999 to ref 128515
+line 129027 ----
+  from ref 128899 z 1999 to ref 128515
+relationcanvas 130569 relation_ref 131459 // <generalisation>
+  from ref 130441 z 2001 to ref 128899
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+line 131081 ----
+  from ref 130953 z 3006 to ref 130441
+line 131337 ----
+  from ref 131209 z 3006 to ref 128131
+line 131465 ----
+  from ref 131209 z 3006 to ref 128899
+simplerelationcanvas 131849 simplerelation_ref 128521
+  from ref 130953 z 3006 stereotype "<<include>>" xyz 367 442 3000 to ref 131593
+end
+simplerelationcanvas 132233 simplerelation_ref 128649
+  from ref 128515 z 3006 stereotype "<<include>>" xyz 364 255 3000 to ref 131977
+end
+line 132745 ----
+  from ref 132617 z 3006 to ref 130441
+simplerelationcanvas 132873 simplerelation_ref 129801
+  from ref 132617 z 3006 stereotype "<<include>>" xyz 367 404 3000 to ref 131593
+end
+simplerelationcanvas 133257 simplerelation_ref 131721
+  from ref 131977 z 3006 stereotype "<<extend>>" xyz 365 192 3000 to ref 131209
+end
+line 132489 -_-_
+  from ref 132361 z 3007 to ref 132233
+end

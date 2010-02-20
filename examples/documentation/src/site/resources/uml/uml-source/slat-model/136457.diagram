@@ -1,0 +1,91 @@
+format 66
+
+activitycanvas 128009 activity_ref 135305 // Student entfernen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 22 21 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 140553 // initial
+  xyz 40 84 2005
+end
+activityactioncanvas 128265 activityaction_ref 140937 // activity action Gruppe auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 82 65 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 141065 // activity action Student auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 214 64 2005 100 60
+end
+activitynodecanvas 128521 activitynode_ref 140681 // decision
+  xyz 254 246 2005
+end
+activityactioncanvas 128649 activityaction_ref 141193 // activity action Student entfernen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 109 235 2005 100 60
+end
+activityactioncanvas 128777 activityaction_ref 141321 // activity action Bestätigung anzeigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 113 319 2010 100 60
+end
+activitynodecanvas 128905 activitynode_ref 140809 // merge
+  xyz 255 330 2005
+end
+activitynodecanvas 129033 activitynode_ref 140937 // activity_final
+  xyz 330 337 2005
+end
+textcanvas 130185 "Löschen bestätigen"
+  xyzwh 285 235 2010 64 27
+activityactioncanvas 130313 activityaction_ref 141449 // activity action Student löschen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 216 148 2005 100 60
+end
+flowcanvas 129161 flow_ref 155145 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129289 flow_ref 155273 // <flow>
+  
+  from ref 128265 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129545 flow_ref 155529 // Ja
+  
+  from ref 128521 z 2006 label "Ja" xyz 225 257 3000 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129673 flow_ref 155657 // <flow>
+  
+  from ref 128649 z 2011 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129801 flow_ref 155785 // <flow>
+  
+  from ref 128777 z 2011 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129929 flow_ref 155913 // Nein
+  
+  from ref 128521 z 2006 label "Nein" xyz 256 298 3000 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130057 flow_ref 156041 // <flow>
+  
+  from ref 128905 z 2006 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130441 flow_ref 156169 // <flow>
+  
+  from ref 128393 z 2006 to ref 130313
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130569 flow_ref 156297 // <flow>
+  
+  from ref 130313 z 2006 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

@@ -1,0 +1,38 @@
+window_sizes 1280 744 300 900 590 80
+diagrams
+  usecasediagram_ref 129923 // 4.1. Gruppe verwalten für Studenten
+    775 472 100 4 0 0
+  activitydiagram_ref 134281 // Gruppe erstellen
+    775 472 100 4 0 0
+  activitydiagram_ref 134665 // Beschreibung editieren
+    775 472 100 4 0 0
+  activitydiagram_ref 134537 // Gruppenanmeldung
+    775 472 100 4 0 0
+  activitydiagram_ref 134409 // Gruppenabmeldung
+    775 472 100 4 0 0
+  activitydiagram_ref 135817 // Größe definieren
+    775 472 100 4 0 0
+  activitydiagram_ref 135945 // Tutor zuweisen
+    775 472 100 4 0 0
+  usecasediagram_ref 130179 // 4.2. Gruppe verwalten für Tutoren/Admins
+    775 472 100 4 60 0
+  activitydiagram_ref 136073 // Assistent zuweisen
+    775 472 100 4 0 0
+  activitydiagram_ref 136585 // Gruppen zusammenlegen
+    775 472 100 4 0 0
+  activitydiagram_ref 136713 // Gruppen zurücksetzen
+    970 590 100 4 0 0
+  activitydiagram_ref 137865 // Zusammenlegung rückgängig
+    974 590 100 4 0 0
+  active  classdiagram_ref 128003 // Domainmodel
+    974 590 100 4 355 0
+end
+show_stereotypes
+selected 
+package_ref 129 // slat-model
+open
+  classview_ref 128003 // Domainmodel
+  activity_ref 136713 // Zusammenlegung rückgängig
+  deploymentview_ref 128003 // Deployment
+end
+end

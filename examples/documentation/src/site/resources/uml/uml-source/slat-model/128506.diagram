@@ -1,0 +1,28 @@
+format 66
+
+activityactioncanvas 128122 activityaction_ref 128378 // activity action Abmeldung bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 138 176 2002 100 60
+end
+activitynodecanvas 128250 activitynode_ref 128378 // initial
+  xyz 179 112 2002
+end
+activitynodecanvas 128378 activitynode_ref 128506 // activity_final
+  xyz 176 295 2002
+end
+activitycanvas 128762 activity_ref 128378 // von Termin abmelden
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 7 6 2000 523 400
+end
+flowcanvas 128506 flow_ref 128634 // <flow>
+  
+  from ref 128250 z 2001 to ref 128122
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128634 flow_ref 128762 // <flow>
+  
+  from ref 128122 z 2001 to ref 128378
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

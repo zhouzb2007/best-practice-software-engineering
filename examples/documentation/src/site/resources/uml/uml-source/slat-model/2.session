@@ -1,0 +1,17 @@
+window_sizes 1440 820 312 1122 628 136
+diagrams
+  usecasediagram_ref 129283 // UseCasePakete
+    897 502 120 4 0 0
+  active  usecasediagram_ref 130179 // 4.2. Gruppe verwalten für Tutoren/Admins
+    897 502 100 4 0 0
+end
+show_stereotypes
+selected usecasediagram_ref 130179 // 4.2. Gruppe verwalten für Tutoren/Admins
+open
+  activity_ref 129155 // Fragebogen ausfüllen
+  activity_ref 130307 // Fragebogen erstellen
+  usecaseview_ref 128515 // 4. Gruppenbildung
+  deploymentview_ref 128003 // Deployment
+  component_ref 128259 // SLAT
+end
+end

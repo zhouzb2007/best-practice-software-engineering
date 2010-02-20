@@ -1,0 +1,107 @@
+format 66
+
+activitycanvas 128009 activity_ref 135433 // Gruppen zusammenlegen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 22 18 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 141065 // initial
+  xyz 52 81 2005
+end
+activityactioncanvas 128265 activityaction_ref 141577 // activity action Gruppen auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 121 61 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 141705 // activity action Gruppen zusammenlegen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 250 64 2005 100 60
+end
+activitynodecanvas 128521 activitynode_ref 141193 // decision
+  xyz 286 169 2005
+end
+activityactioncanvas 128649 activityaction_ref 141833 // activity action Zusammenlegung bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 250 335 2005 100 60
+end
+activityactioncanvas 128777 activityaction_ref 141961 // activity action Studenten zur Gruppe fügen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 249 247 2005 100 60
+end
+textcanvas 129289 "Gruppengröße
+überschritten?"
+  xyzwh 314 140 2005 71 28
+activitynodecanvas 129929 activitynode_ref 141321 // decision
+  xyz 188 170 2005
+end
+textcanvas 130313 "Gruppengröße
+überschreiten?"
+  xyzwh 168 141 2010 88 31
+activitynodecanvas 130441 activitynode_ref 141449 // merge
+  xyz 188 257 2005
+end
+activitynodecanvas 130953 activitynode_ref 141577 // activity_final
+  xyz 51 351 2005
+end
+activitynodecanvas 131721 activitynode_ref 141705 // merge
+  xyz 125 345 2005
+end
+flowcanvas 128905 flow_ref 156425 // <flow>
+  
+  from ref 128137 z 2006 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129033 flow_ref 156553 // <flow>
+  
+  from ref 128265 z 2006 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129161 flow_ref 156681 // <flow>
+  
+  from ref 128393 z 2006 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129417 flow_ref 156809 // Nein
+  
+  from ref 128521 z 2006 label "Nein" xyz 288 218.5 3000 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129801 flow_ref 156937 // <flow>
+  
+  from ref 128777 z 2006 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130057 flow_ref 157065 // Ja
+  
+  from ref 128521 z 2006 label "Ja" xyz 243 180 3000 to ref 129929
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130569 flow_ref 157193 // Ja
+  
+  from ref 129929 z 2006 label "Ja" xyz 195 224 3000 to ref 130441
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130697 flow_ref 157321 // <flow>
+  
+  from ref 130441 z 2006 to ref 128777
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131849 flow_ref 157833 // <flow>
+  
+  from ref 128649 z 2006 to ref 131721
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131977 flow_ref 157961 // Nein
+  
+  from ref 129929 z 2006 label "Nein" xyz 151 181 3000 to point 134 186
+  line 132233 z 2006 to ref 131721
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132105 flow_ref 158089 // <flow>
+  
+  from ref 131721 z 2006 to ref 130953
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

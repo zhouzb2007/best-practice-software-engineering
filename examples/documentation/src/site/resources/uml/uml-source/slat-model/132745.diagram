@@ -1,0 +1,82 @@
+format 66
+
+activitycanvas 128009 activity_ref 131593 // neues PW anfordern
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 77 39 2000 400 400
+end
+activitynodecanvas 128137 activitynode_ref 133129 // initial
+  xyz 122 103 2005
+end
+activityactioncanvas 128265 activityaction_ref 132361 // activity action Übereinstimmung prüfen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 322 84 2005 100 60
+end
+activityactioncanvas 128393 activityaction_ref 132489 // activity action PW an definierte E-Mail-Adresse senden
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 173 349 2005 100 60
+end
+activityactioncanvas 128521 activityaction_ref 132617 // activity action Matrikelnr & E-Mail eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 173 84 2010 100 60
+end
+activityactioncanvas 128649 activityaction_ref 132745 // activity action PW generieren
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 174 186 2010 100 60
+end
+activitynodecanvas 128905 activitynode_ref 133257 // activity_final
+  xyz 438 366 2005
+end
+activitynodecanvas 129033 activitynode_ref 133385 // decision
+  xyz 358 198 2015
+end
+activitynodecanvas 130185 activitynode_ref 133769 // merge
+  xyz 357 359 2010
+end
+textcanvas 130953 "E-Mail & Matrikelnr
+korrekt"
+  xyzwh 386 201 2020 116 28
+flowcanvas 128777 flow_ref 136201 // <flow>
+  
+  from ref 128137 z 2011 to ref 128521
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129161 flow_ref 136329 // <flow>
+  
+  from ref 128521 z 2011 to ref 128265
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129289 flow_ref 136457 // <flow>
+  
+  from ref 128265 z 2016 to ref 129033
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129417 flow_ref 136585 // Ja
+  
+  from ref 129033 z 2016 label "Ja" xyz 310 208 2016 to ref 128649
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129545 flow_ref 136713 // <flow>
+  
+  from ref 128649 z 2011 to ref 128393
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130569 flow_ref 138249 // Nein
+  
+  from ref 129033 z 2016 label "Nein" xyz 359 289 2016 to ref 130185
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130697 flow_ref 138377 // <flow>
+  
+  from ref 128393 z 2011 to ref 130185
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130825 flow_ref 138505 // <flow>
+  
+  from ref 130185 z 2011 to ref 128905
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

@@ -1,0 +1,20 @@
+window_sizes 1680 1031 407 1267 700 82
+show_stereotypes
+selected activity_ref 128634 // Anmeldung einsehen
+open
+  classview_ref 128003 // Domainmodel
+  usecaseview_ref 128387 // 1. Account
+  activity_ref 129263 // Testpunkte eintragen
+  usecase_ref 130819 // Bewertung eintragen
+  activityaction_ref 128003 // activity action Fragebogen auswählen
+  activityaction_ref 128131 // activity action Frage beantworten
+  activityaction_ref 128259 // activity action Fragebogen abschicken
+  activityaction_ref 128122 // activity action Termin auswählen
+  activity_ref 128378 // von Termin abmelden
+  activity_ref 128506 // Termin erstellen
+  activity_ref 128634 // Anmeldung einsehen
+  usecase_ref 131977 // LVA-Daten übernehmen
+  deploymentview_ref 128003 // Deployment
+  component_ref 128259 // SLAT
+end
+end

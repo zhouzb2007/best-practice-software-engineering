@@ -1,0 +1,48 @@
+format 66
+
+activitycanvas 128002 activity_ref 129263 // Testpunkte eintragen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 11 8 1994 337 409
+end
+activitynodecanvas 128111 activitynode_ref 129263 // initial
+  xyz 77 77 2012
+end
+activityactioncanvas 128239 activityaction_ref 129263 // activity action Student auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 38 144 2012 100 60
+end
+activityactioncanvas 128367 activityaction_ref 129391 // activity action Testpunkte eintragen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 39 251 2012 100 60
+end
+activitynodecanvas 128495 activitynode_ref 129391 // activity_final
+  xyz 222 361 2000
+end
+activityactioncanvas 129007 activityaction_ref 129519 // activity action Daten bestätigen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 185 252 2005 100 60
+end
+flowcanvas 128623 flow_ref 129263 // <flow>
+  
+  from ref 128111 z 1999 to ref 128239
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128751 flow_ref 129391 // <flow>
+  
+  from ref 128239 z 1999 to ref 128367
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129135 flow_ref 129647 // <flow>
+  
+  from ref 128367 z 1999 to ref 129007
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129263 flow_ref 129775 // <flow>
+  
+  from ref 129007 z 1999 to ref 128495
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end

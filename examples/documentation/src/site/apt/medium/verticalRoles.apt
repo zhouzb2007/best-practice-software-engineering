@@ -1,0 +1,79 @@
+Vertikale Arbeitsverteilung (Backlog nach Entwickler)
+
+* Use Cases
+
+*-----------------+-----+---------+
+| <<UC Package>>  | <<Actor & Use Case>> | <<Status & Verantwortung>> |
+*-----------------+-----+---------+
+| Fragebogen  | Student fuellt Fragebogen aus | 30%, Thomas|
+|   | Admin erstellt Fragebogen | 80%, Thomas|
+|   | Admin veroeffentlicht Fragebogen | 10%, Thomas|
+|   | Admin schliesst Fragebogen | 10%, Thomas|
+|   | Admin wertet Fragebogen aus | 0%, Thomas|
+*-----------------+-----+---------+
+| Bewertung  | Tutor tragt Testpunkte ein | 0%, Nic |
+|   | Tutor tragt Bewertung ein | 0%, Nic |
+|   | Admin erstellt Bewertungsbogen | 90%, Nic |
+|   | Admin aednert Bewertungsbogen | 40%, Nic |
+|   | Admin loescht Bewertungsbogen | 0%, Nic |
+|   | Admin uebernimmt Bewertungsfrage | 50%, Nic |
+*-----------------+-----+---------+
+| Account Verwaltung | Anonymer User legt Account an | 100%, Kristof |
+|   | Student aendert Accountdaten | 100%, Kristof |
+|   | Student aendert Passwort | 100%, Kristof |
+|   | Student fordert neues Passwort an | 80%, Kristof |
+|   | Tutor aendert Accountdaten | 100%, Kristof |
+|   | Tutor aendert Passwort | 100%, Kristof |
+|   | Tutor fordert neues Passwort an | 80%, Kristof |
+|   | Admin aendert Accountdaten | 100%, Kristof |
+|   | Admin aendert Passwort | 100%, Kristof |
+|   | Admin fordert neues Passwort an | 80%, Kristof |
+|   | Admin sucht ein bestimmtes Account | 100%, Kristof |
+|   | Admin sieht Accountdaten ein | 100%, Kristof |
+|   | Admin loescht Account | 0%, Kristof |
+|   | Assistent aendert Accountdaten | 100%, Kristof |
+|   | Assistent aendert Passwort | 100%, Kristof |
+|   | Assistent fordert neues Passwort an | 80%, Kristof |
+|   | Admin loggt sich ein | 100%, Kristof |
+|   | Tutor loggt sich ein | 100%, Kristof |
+|   | Student loggt sich ein | 100%, Kristof |
+*-----------------+-----+---------+
+| Gruppenbildung | Student erstellt Gruppe | 20%, Kristof |
+|   | Student meldet sich zu einer Gruppe an | 20%, Kristof |
+|   | Student sieht Gruppe ein | 0%, Kristof |
+|   | Student editiert Gruppenbeschreibung | 0%, Kristof |
+|   | Student meldet sich von Gruppe ab | 0%, Kristof |
+*-----------------+-----+---------+
+| Terminverwaltung | Student meldet sich zu Termin an | 0%, Lukas/Erik |
+|   | Student meldet sich von Termin ab | 0%, Lukas/Erik |
+|   | Admin erstellt Termin | 85%, Lukas |
+|   | Admin sieht Anmeldungen zu Termin ein | 0%, Lukas/Erik |
+*-----------------+-----+---------+
+| Gruppenbildung Admin | Tutor sieht Gruppe ein | 0%, Kristof |
+|   | Admin sieht Gruppe ein | 0%, Kristof |
+|   | Admin definiert Gruppengroesse | 0%, Kristof |
+|   | Admin schaltet Gruppe frei | 0%, Kristof |
+|   | Admin weist Studenten zu einer Gruppe zu | 0%, Kristof |
+|   | Admin weist einen Tutor zu einer Gruppe zu | 0%, Kristof |
+|   | Admin weist einen Assistenten zu einer Gruppe zu | 0%, Kristof |
+|   | Admin entfernt Studenten von einer Gruppe | 0%, Kristof |
+|   | Admin legt Grupen zusammen | 0%, Kristof |
+|   | Admin macht Gruppenzusammenlegung rueckgaengig | 0%, Kristof |
+|   | Admin setzt Gruppenbildung zurueck | 0%, Kristof |
+*-----------------+-----+---------+
+| LVA Verwaltung | Admin erstellt LVA | 100%, Lukas |
+|	| Admin uebernimmt LVA Daten | 50%, Lukas |
+|	| Admin bearbeitet LVA Daten | 100%, Lukas |
+|	| Admin loescht LVA | 100%, Lukas |
+*-----------------+------+--------+
+
+	* Fehlende Use Cases: 
+	
+		* Student,Tutor,Admin CRUD (Admin Aktor) von Kristof
+		
+		* Admin loescht/aendert Termin sowie Termin info von Lukas/Erik
+		
+		* Admin loescht Gruppe von Kristof
+		
+		* Admin importiert Testdaten aus Datei von Nic (Tragt Testpunkte ein)
+		

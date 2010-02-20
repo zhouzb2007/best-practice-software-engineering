@@ -1,0 +1,155 @@
+format 66
+
+classcanvas 128003 class_ref 128003 // Student
+  draw_all_relations default hide_attributes no hide_operations default show_members_full_definition yes show_members_visibility yes show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 78 426 2000
+end
+classcanvas 128131 class_ref 128131 // Tutor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 651 458 2000
+end
+classcanvas 128259 class_ref 128259 // Fragebogen
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 359 288 2000
+end
+classcanvas 128387 class_ref 128387 // Gruppe
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 383 474 2000
+end
+classcanvas 128515 class_ref 128515 // Bewertung
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 361 718 2000
+end
+classcanvas 129283 class_ref 128643 // Abgabegespräch
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 571 352 2000
+end
+classcanvas 129539 class_ref 128771 // Einstiegstest
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 238 242 2000
+end
+classcanvas 130051 class_ref 128899 // Fragen
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 505 288 2000
+end
+classcanvas 130307 class_ref 129027 // Assistent
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 399 609 2000
+end
+classcanvas 130563 class_ref 129155 // Admin
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 329 20 2000
+end
+classcanvas 131331 class_ref 129283 // Tutorial
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 17 235 2004
+end
+classcanvas 131971 class_ref 129411 // Hörsaal
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  xyz 129 234 2000
+end
+note 133507 "Studenten die die Einstiegsphase nicht positiv absolvieren muss ein Assistent zugewiesen werden.
+"
+  xyzwh 156 652 2000 130 97
+relationcanvas 128643 relation_ref 128003 // <association>
+  from ref 128003 z 1999 to ref 128515
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128771 relation_ref 128131 // <association>
+  from ref 128003 z 1999 to ref 128387
+  no_role_a no_role_b
+  multiplicity_a_pos 366 521 3000 multiplicity_b_pos 236 521 3000
+end
+relationcanvas 128899 relation_ref 128259 // beantwortet
+  from ref 128003 z 1999 label "beantwortet" italic xyz 313 373 1999 to ref 128259
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129027 relation_ref 128387 // betreut
+  from ref 128387 z 1999 label "betreut" italic xyz 574 496 1999 to ref 128131
+  no_role_a no_role_b
+  multiplicity_a_pos 634 521 3000 multiplicity_b_pos 533 521 3000
+end
+relationcanvas 129155 relation_ref 128515 // erstellt
+  from ref 128515 z 1999 label "erstellt" italic xyz 593 633 1999 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129411 relation_ref 128643 // absolviert
+  from ref 128003 z 1999 label "absolviert" italic xyz 454 426 1999 to ref 129283
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129667 relation_ref 128771 // meldet sich an
+  from ref 128003 z 1999 label "meldet sich an" italic xyz 160 335 1999 to ref 129539
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129795 relation_ref 128899 // führt
+  from ref 128131 z 1999 label "führt" italic xyz 657 420 1999 to ref 129283
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130179 relation_ref 129027 // enthält
+  from ref 128259 z 1999 label "enthält" italic xyz 460 292 1999 to ref 130051
+  no_role_a no_role_b
+  multiplicity_a_pos 478 314 3000 multiplicity_b_pos 447 314 3000
+end
+relationcanvas 130435 relation_ref 129155 // betreut
+  from ref 130307 z 1999 label "betreut" italic xyz 458 575 1999 to ref 128387
+  no_role_a no_role_b
+  multiplicity_a_pos 427 561 3000 multiplicity_b_pos 437 590 3000
+end
+relationcanvas 130691 relation_ref 129283 // erstellt
+  from ref 130563 z 1999 label "erstellt" italic xyz 249.5 171.5 1999 to point 277 188
+  line 132995 z 1999 to ref 129539
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130819 relation_ref 129411 // erstellt
+  from ref 130563 z 1999 label "erstellt" italic xyz 402 166 1999 to point 395 192
+  line 133123 z 1999 to ref 128259
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131587 relation_ref 129539 // erstellt
+  from ref 130563 z 1999 to point 55 173
+  line 132867 z 1999 label "erstellt" italic xyz 92 138 1999 to ref 131331
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131715 relation_ref 129667 // erstellt
+  from ref 130563 z 1999 label "erstellt" italic xyz 538.5 158 1999 to point 622 217
+  line 133251 z 1999 to ref 129283
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132099 relation_ref 129795 // <association>
+  from ref 131331 z 1999 to ref 131971
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132227 relation_ref 129923 // <association>
+  from ref 129539 z 1999 to ref 131971
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132483 relation_ref 130051 // meldet sich an
+  from ref 128003 z 1999 label "meldet sich an" italic xyz 22 363 1999 to ref 131331
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133379 relation_ref 130307 // <association>
+  from ref 130307 z 1999 to ref 128003
+  no_role_a no_role_b
+  multiplicity_a_pos 236 557 3000 multiplicity_b_pos 382 634 3000
+end
+relationcanvas 133763 relation_ref 129274 // <generalisation>
+  from ref 130563 z 2001 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+line 133635 -_-_
+  from ref 133507 z 1998 to ref 133379
+end

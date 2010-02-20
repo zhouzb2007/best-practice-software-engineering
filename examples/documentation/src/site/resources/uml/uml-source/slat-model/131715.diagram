@@ -1,0 +1,29 @@
+format 66
+
+deploymentnodecanvas 128003 deploymentnode_ref 128003 // Webserver
+  xyzwh 33 49 2000 291 348
+end
+deploymentnodecanvas 128131 deploymentnode_ref 128131 // Client
+  xyzwh 483 167 2000 185 135
+end
+deploymentnodecanvas 128515 deploymentnode_ref 129283 // JBoss
+  xyzwh 56 96 2005 239 148
+end
+componentcanvas 128643 component_ref 128131 // MySQL
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 65 281 2005 204 86
+end
+componentcanvas 128771 component_ref 128259 // SLAT
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 79 137 2010 182 83
+end
+componentcanvas 129539 component_ref 128387 // Webbrowser
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  xyzwh 500 215 2005 143 67
+end
+line 128259 ---- decenter_begin 533
+  from ref 128003 z 2001 stereotype "<<http>>" xyz 381 234 3000 to ref 128131
+simplerelationcanvas 129283 simplerelation_ref 129411
+  from ref 128771 z 2011 to ref 128643
+end
+end

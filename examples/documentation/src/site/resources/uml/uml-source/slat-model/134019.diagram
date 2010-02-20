@@ -1,0 +1,100 @@
+format 66
+
+activitycanvas 128003 activity_ref 130307 // Fragebogen erstellen
+  show_infonote default drawing_language default show_stereotype_properties default
+  xyzwh 4 5 2000 550 470
+end
+activitynodecanvas 128131 activitynode_ref 129283 // initial
+  xyz 28 81 2005
+end
+activitynodecanvas 128259 activitynode_ref 129411 // activity_final
+  xyz 367 431 2005
+end
+activityactioncanvas 128387 activityaction_ref 129411 // activity action Neuen Fragenbogen anlegen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 97 62 2005 100 60
+end
+activityactioncanvas 128771 activityaction_ref 129539 // activity action Titel eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 241 63 2005 100 60
+end
+activityactioncanvas 129539 activityaction_ref 129667 // activity action Frage eingeben
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 53 228 2005 100 60
+end
+activityactioncanvas 129795 activityaction_ref 129795 // activity action Antworttyp auswählen
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 209 227 2005 100 60
+end
+activitynodecanvas 130051 activitynode_ref 129667 // decision
+  xyz 366 238 2005
+end
+activityactioncanvas 130691 activityaction_ref 129923 // activity action Multiple choice antworten definieren
+  show_infonote default drawing_language default show_stereotype_properties default
+  show_opaque_action_definition default
+  xyzwh 434 226 2005 100 60
+end
+activitynodecanvas 131203 activitynode_ref 129795 // decision
+  xyz 367 341 2005
+end
+textcanvas 132611 "Multiple Choice?"
+  xyzwh 342 207 2005 54 28
+textcanvas 132739 "Weiter Fragen anlegen?"
+  xyzwh 408 348 2010 88 27
+flowcanvas 128515 flow_ref 129539 // <flow>
+  
+  from ref 128131 z 2006 to ref 128387
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 128899 flow_ref 129667 // <flow>
+  
+  from ref 128387 z 2006 to ref 128771
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 129923 flow_ref 130051 // <flow>
+  
+  from ref 129539 z 2006 to ref 129795
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130179 flow_ref 130179 // <flow>
+  
+  from ref 129795 z 2006 to ref 130051
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 130819 flow_ref 130435 // [ja]
+  
+  from ref 130051 z 2006 label "[ja]" xyz 400 240 2006 to ref 130691
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131331 flow_ref 130563 // <flow>
+  
+  from ref 130691 z 2006 to ref 131203
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131715 flow_ref 130819 // [nein]
+  
+  from ref 131203 z 2006 label "[nein]" xyz 365.5 385.5 2006 to ref 128259
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 131971 flow_ref 130947 // <flow>
+  
+  from ref 128771 z 2006 to ref 129539
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132099 flow_ref 131075 // [nein]
+  
+  from ref 130051 z 2006 label "[nein]" xyz 381 289 2006 to point 376 308
+  line 132227 z 2006 to ref 131203
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+flowcanvas 132355 flow_ref 131203 // [ja]
+  
+  from ref 131203 z 2006 label "[ja]" xyz 220.5 344 2006 to point 134 357
+  line 132483 z 2006 to ref 129539
+  show_infonote default drawing_language default show_stereotype_properties default write_horizontally default
+end
+end
