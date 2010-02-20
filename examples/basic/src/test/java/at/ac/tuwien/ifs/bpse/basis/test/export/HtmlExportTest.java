@@ -1,6 +1,7 @@
 package at.ac.tuwien.ifs.bpse.basis.test.export;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
@@ -60,9 +61,9 @@ public class HtmlExportTest {
 		pathToFile = currentWorkingDir.getFile().getAbsolutePath();		
 		studenten = new ArrayList<Student>();
 		Student s1 = (Student) xbf.getBean("StudentAlexanderSchatten");
-		s1.setId(new Integer(1));
+		s1.setId(1);
 		Student s2 = (Student) xbf.getBean("StudentHubertMeixner");
-		s2.setId(new Integer(2));
+		s2.setId(2);
 		studenten.add(s1);
 		studenten.add(s2);
 	}
@@ -134,7 +135,8 @@ public class HtmlExportTest {
 		ipCorrect.close();
 		
 		// delete file
-		new File(filename_test).delete();
+		File f = new File(filename_test);
+		assertThat(f.delete(), is(not(false)));
 	}
 
 }

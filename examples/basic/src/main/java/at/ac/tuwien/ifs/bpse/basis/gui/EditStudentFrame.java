@@ -346,8 +346,8 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 	 * @see RegexTextField#isMatching()
 	 */
 	private boolean validateInput() {
-		return (txtMatrNr.isMatching() & txtVorname.isMatching()
-				& txtNachname.isMatching() & txtEmail.isMatching());
+		return (txtMatrNr.isMatching() && txtVorname.isMatching()
+				&& txtNachname.isMatching() && txtEmail.isMatching());
 	}
 
 	/**

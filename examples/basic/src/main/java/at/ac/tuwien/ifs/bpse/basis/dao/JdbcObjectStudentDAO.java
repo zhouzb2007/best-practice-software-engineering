@@ -176,7 +176,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		 * @see #dataSource
 		 */
 		public Query_InsertStudent(DataSource ds) {
-			setDataSource(ds);
+			super.setDataSource(ds);
 			setSql(sql_insertStudent);
 			declareParameter(new SqlParameter("matnr", Types.VARCHAR));
 			declareParameter(new SqlParameter("firstname", Types.VARCHAR));
@@ -198,7 +198,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		 * @see #dataSource
 		 */
 		public Query_UpdateStudent(DataSource ds) {
-			setDataSource(ds);
+			super.setDataSource(ds);
 			setSql(sql_updateStudent);
 			declareParameter(new SqlParameter("id", Types.INTEGER));
 			declareParameter(new SqlParameter("matnr", Types.VARCHAR));
@@ -220,7 +220,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		 * @see #dataSource
 		 */
 		public Query_DeleteStudent(DataSource ds) {
-			setDataSource(ds);
+			super.setDataSource(ds);
 			setSql(sql_deleteStudent);
 			declareParameter(new SqlParameter("id", Types.INTEGER));
 		}
@@ -247,7 +247,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 				throws SQLException {
 			// "@p0" is the row name hsqldb creates for the one value returning
 			// the ID
-			Integer id = new Integer(rs.getInt("@p0"));
+			Integer id = Integer.valueOf(rs.getInt("@p0"));
 			return id;
 		}
 	}
@@ -526,10 +526,11 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		List<Student> students = null;
 		if (order.equals("Matrikelnummer")) {
 			students = query_getAllStudentsOrderMatnr.execute();
+			log.debug("Student List contains " + students.size() + " students");
 		} else if (order.equals("Nachname")) {
 			students = query_getAllStudentsOrderNachname.execute();
+			log.debug("Student List contains " + students.size() + " students");
 		}
-		log.debug("Student List contains " + students.size() + " students");
 		return students;
 	}
 
