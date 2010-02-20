@@ -25,7 +25,7 @@ public class HomePage extends WebPage {
 	private static final long serialVersionUID = 1L;
 
 	@SpringBean(name="sqlSessionFactory")
-	private SqlSessionFactoryBean sf;
+	transient private SqlSessionFactoryBean sf;
 
     public SqlSessionFactoryBean getSf() {
 		return sf;
