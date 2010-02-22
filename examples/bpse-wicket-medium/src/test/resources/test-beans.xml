@@ -29,11 +29,6 @@
 		<property name="url" value="jdbc:hsqldb:mem:bpse-sample-medium" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
-		<property name="connectionProperties">
-			<props>
-				<prop key="shutdown">true</prop>
-			</props>
-		</property>
 	</bean>
 
 

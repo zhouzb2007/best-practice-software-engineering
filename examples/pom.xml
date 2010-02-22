@@ -88,10 +88,15 @@
             <url>http://apache.osuosl.org/maven-repository</url>
         </repository>
         <repository>
-            <id>facesRepo</id>
-            <name>Apache MyFaces Repo</name>
-            <url>http://myfaces.zones.apache.org/dist/maven-repository</url>
+			<id>facesRepo</id>
+			<name>Apache MyFaces Repo</name>
+			<url>http://myfaces.zones.apache.org/dist/maven-repository</url>
         </repository>
+        <repository>
+			<id>org.springframework.maven.milestone</id>
+			<name>Maven Central Compatible Spring Milestone Repository</name>
+			<url>http:// maven.springframework.org/milestone</url>
+			</repository>
     </repositories>
     
     <dependencyManagement>
@@ -144,7 +149,7 @@
             <dependency>
                 <groupId>hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
-                <version>1.8.0.10</version>
+                <version>2.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -177,7 +182,7 @@
         <!-- As Spring is used in the service layer for all modules, this can be done here -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring</artifactId>
+            <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
         
@@ -185,6 +190,7 @@
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
+            <version>2.0.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -205,6 +211,16 @@
         	<version>1.1</version>
         	<scope>test</scope>
         </dependency>
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-beans</artifactId>
+        	<version>${spring.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-jdbc</artifactId>
+        	<version>${spring.version}</version>
+        </dependency>
     </dependencies>
     
     <reporting>
@@ -220,7 +236,7 @@
     </reporting>
     
     <properties>
-		 <spring.version>2.5.6</spring.version>
+		 <spring.version>3.0.1.RELEASE</spring.version>
     </properties>
     
 </project>

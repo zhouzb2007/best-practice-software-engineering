@@ -45,63 +45,57 @@
 		-->
 
 			<dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-
-	<dependency>
 		<groupId>commons-dbcp</groupId>
 		<artifactId>commons-dbcp</artifactId>
 		<version>1.2.2</version>
 	</dependency>
-
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-		<dependency>
+			<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.4.2</version>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
 		</dependency>
-
-		<!--  JUNIT DEPENDENCY FOR TESTING -->
-		<dependency>
+			<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty</artifactId>
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty-util</artifactId>
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty-management</artifactId>
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-spring</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<dependency>
-            <groupId>com.ibatis</groupId>
-            <artifactId>ibatis-3-core</artifactId>
-            <version>3.0.0.227</version>
+			<dependency>
+            <groupId>org.apache.ibatis</groupId>
+            <artifactId>ibatis-sqlmap</artifactId>
+            <version>3.0-beta-9</version>
         </dependency>
+
+		<!-- LOGGING DEPENDENCIES - LOG4J -->
+
+		<!--  JUNIT DEPENDENCY FOR TESTING -->
 
 		<!--  JETTY DEPENDENCIES FOR TESTING  -->
 	</dependencies>
@@ -166,6 +160,6 @@
 	<properties>
 		<wicket.version>1.4.6</wicket.version>
 		<jetty.version>6.1.4</jetty.version>
-		<spring.version>2.5.6</spring.version>
+		
 	</properties>
 	</project>
