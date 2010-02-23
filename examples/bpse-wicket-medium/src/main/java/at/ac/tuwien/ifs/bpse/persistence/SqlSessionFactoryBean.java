@@ -64,6 +64,7 @@ public class SqlSessionFactoryBean implements SqlSessionFactory {
             throw new NestedIOException("Failed to parse config resource: " + configLocation, e);
         }
     }
+    
     @PreDestroy
     public void cleanFactory() {
         sqlSessionFactory = null;

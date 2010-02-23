@@ -5,19 +5,13 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-           www.springframework.org/schema/aop
-           www.springframework.org/schema/aop/spring-aop-2.5.xsd
-           http://www.springframework.org/schema/context/
-           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-         
-         
-      <!-- For some strange reason, annotation-config does not work on Erik's System,
-      		so we will be using the init-method directive when creating the sqlSessionFactory. 
-      		The following statement _should_ cause Spring to execute the init Method according
-      		to the defined @PostConstruct annotion in the class -->
-      <!--       
-     <context:annotation-config />-->
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+      
+     <context:annotation-config />
 
 	<!-- ********************************************************************************************** -->
 	<!-- Configuration of Datasource                   -->
@@ -47,13 +41,18 @@
 	<!-- ********************************************************************************************** -->
 	
 	<bean id="sqlSessionFactory" 
-    	class="at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean" init-method="buildFactory">
+    	class="at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:iBatisConfiguration.xml"/>
         <property name="environment" ref="environment"/>
     </bean>
 	
 	<bean id="transactionFactory" class="at.ac.tuwien.ifs.bpse.persistence.SpringTransactionFactory">
         <constructor-arg index="0" ref="dataSource"/>
+    </bean>
+ 
+	<bean id="StudentDAO"
+        class="at.ac.tuwien.ifs.bpse.persistance.dao.SqlMapStudentDao">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
 	<!-- ********************************************************************************************** -->
@@ -96,7 +95,7 @@
     <bean id="StudentAdd"
         class="at.ac.tuwien.ifs.bpse.domain.Student">
         <description>
-            A Student for testting the INSERT method
+            A Student for testing the INSERT method
         </description>
         <property name="id" value="2" />
         <property name="matnr" value="87654321" />

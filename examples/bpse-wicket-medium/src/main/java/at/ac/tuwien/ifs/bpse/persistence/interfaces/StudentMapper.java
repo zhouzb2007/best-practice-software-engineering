@@ -10,7 +10,7 @@ public interface StudentMapper {
 	
 	public Student selectStudentByMatrNr(String matnr);
 	
-	public void insertStudent(Student s);
+	public int insertStudent(Student s);
 	
 	public int updateStudent(Student s);
 	

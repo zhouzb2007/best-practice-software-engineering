@@ -1,5 +1,6 @@
 package at.ac.tuwien.ifs.bpse.persistence;
 
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -11,7 +12,6 @@ import java.sql.SQLException;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
@@ -21,31 +21,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import at.ac.tuwien.ifs.bpse.domain.Student;
-import at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper;
+import at.ac.tuwien.ifs.bpse.persistance.dao.SqlMapStudentDao;
 
-public class StudentMapperTest {
+public class SqlMapStudentDaoTest {
 
 	/**
 	 * Spring Framework Application Context (Bean Factory, Global Scope).
 	 */
 	private static ApplicationContext ac; 
 	
-	/**
-	 * SessionFactory is a Spring managed Singleton. (Local Scope)
-	 */
-	SqlSessionFactoryBean sqlSessionFactory;
+	private SqlMapStudentDao studentDAO;
 	
-	/**
-	 * (Local/Class Scope)
-	 */
-	SqlSession sqlSession;
-	
-	/**
-	 * Data Access Object for Student, fetched with ac. (Local/Method Scope)
-	 */
-	private StudentMapper studentMapper;
-
-	private static Logger log = Logger.getLogger(StudentMapperTest.class);
+	private static Logger log = Logger.getLogger(SqlMapStudentDaoTest.class);
 
 	private Connection conn;
 
@@ -64,11 +51,11 @@ public class StudentMapperTest {
 	private final String dbData = "bpse-sample-medium-TestData.sql";
 	
 	@BeforeClass
-	public static void setUpBeforeClass() {
+	public static void setUpBeforeClass() throws Exception {
 		// notice, that the TEST beans.xml is loaded!
 		ac = new FileSystemXmlApplicationContext("classpath:test-beans.xml");
 	}
-	
+
 	@Before
 	public void setUp() {
 		try {
@@ -81,20 +68,15 @@ public class StudentMapperTest {
 					+ " with user " + dbUser + " and password " + dbPassword);
 			e.printStackTrace();
 		} catch (IOException e) {
-			log.info("DB Script " + dbData + " not found");
+			log.info("DB Script " + dbSchema + "\n or \n" + dbData + " not found");
 			e.printStackTrace();
 		}
 		
-		sqlSessionFactory = (SqlSessionFactoryBean) ac.getBean("sqlSessionFactory");
-		sqlSession = sqlSessionFactory.openSession();
-		studentMapper = sqlSession.getMapper(StudentMapper.class);
+		studentDAO = (SqlMapStudentDao) ac.getBean("StudentDAO");
 	}
 
 	@After
 	public void tearDown() {
-		log.info("Test done, closing sqlSession");
-		sqlSession.close();
-		
 		try {
 			conn = DriverManager.getConnection(database, dbUser, dbPassword);
 			runner = new ScriptRunner(conn);
@@ -112,7 +94,7 @@ public class StudentMapperTest {
 	@Test
 	public void selectStudent_shouldGetStudentFromDB() {
 		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentMapper.selectStudent(s.getId());
+		Student stud = studentDAO.getStudent(s.getId());
 		assertThat( stud.getFirstname(), is(s.getFirstname()) );
 		assertThat( stud.getMatnr(), is(s.getMatnr()) );
 		assertThat( stud.getEmail(), is(s.getEmail()) );
@@ -124,13 +106,40 @@ public class StudentMapperTest {
 	@Test
 	public void selectStudentByMatrNr_shouldGetStudentFromDB() {
 		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentMapper.selectStudentByMatrNr(s.getMatnr());
+		Student stud = studentDAO.getStudentByMatrNr(s.getMatnr());
 		assertThat( stud.getFirstname(), is(s.getFirstname()) );
 		assertThat( stud.getMatnr(), is(s.getMatnr()) );
 		assertThat( stud.getEmail(), is(s.getEmail()) );
 		assertThat( stud.getLastname(), is(s.getLastname()) );
 		assertThat( stud.getFullname(), is(s.getFullname()) );
 		assertThat( stud.getId(), is(s.getId()) );
+	}
+	
+	@Test
+	public void deleteStudent_shouldDeleteStudentFromDB() {
+		Student s = (Student)ac.getBean("StudentUpdateDelete");
+		boolean ret = studentDAO.deleteStudent(s.getId());
+		assertThat(ret, is(true));
+		Student stud = studentDAO.getStudent(s.getId());
+		assertNull(stud);
+	}
+	
+	@Test
+	public void updateStudent_shouldUpdateStudentInDB() {
+		Student s = (Student)ac.getBean("StudentUpdateDelete");
+		int id = s.getId();
+		String matnr = s.getMatnr();
+		String first = s.getFirstname();
+		String last = s.getLastname();
+		String full = first + " " + last;
+		String email = s.getEmail();
+		Student stud = studentDAO.updateStudent(s);
+		assertThat( stud.getId(), is(id) );
+		assertThat( stud.getMatnr(), is(matnr) );
+		assertThat( stud.getFirstname(), is(first) );
+		assertThat( stud.getLastname(), is(last) );
+		assertThat( stud.getEmail(), is(email) );
+		assertThat( stud.getFullname(), is(full) );
 	}
 	
 	@Test
@@ -145,46 +154,13 @@ public class StudentMapperTest {
 		String full = first + " " + last;
 		String email = s.getEmail();
 		
-		int ret = studentMapper.insertStudent(s);		
-		assertThat(ret, is(1));
-		assertThat(s.getId(), is(43));
-		Student stud = studentMapper.selectStudent(s.getId());
-		
-		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first) );
-		assertThat( stud.getLastname(), is(last) );
-		assertThat( stud.getFullname(), is(full) );
-		assertThat( stud.getEmail(), is(email) );
-	}
-	
-	@Test
-	public void deleteStudent_shouldDeleteStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentUpdateDelete");
-		int ret = studentMapper.deleteStudent(s.getId());
-		log.info("DELETE Return Value: " + ret);
-		Student stud = studentMapper.selectStudent(s.getId());
-		assertNull(stud);
-	}
-	
-	@Test
-	public void updateStudent_shouldUpdateStudentInDB() {
-		Student s = (Student)ac.getBean("StudentUpdateDelete");
-		int id = s.getId();
-		String matnr = s.getMatnr();
-		String first = s.getFirstname();
-		String last = s.getLastname();
-		String full = first + " " + last;
-		String email = s.getEmail();
-		
-		int ret = studentMapper.updateStudent(s);
-		log.info("UPDATE Return Value: " + ret);
-		Student stud = studentMapper.selectStudent(id);
-		assertThat( stud.getId(), is(id) );
-		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first) );
-		assertThat( stud.getLastname(), is(last) );
-		assertThat( stud.getFullname(), is(full) );
-		assertThat( stud.getEmail(), is(email) );
-	}
+		Student stud = studentDAO.saveStudent(s);	
 
+		assertThat( stud.getId(), is(43));
+		assertThat( stud.getMatnr(), is(matnr) );
+		assertThat( stud.getFirstname(), is(first) );
+		assertThat( stud.getLastname(), is(last) );
+		assertThat( stud.getFullname(), is(full) );
+		assertThat( stud.getEmail(), is(email) );
+	}
 }

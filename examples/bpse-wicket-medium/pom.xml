@@ -83,15 +83,15 @@
 			<version>${wicket.version}</version>
 		</dependency>
 			<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-			<dependency>
             <groupId>org.apache.ibatis</groupId>
             <artifactId>ibatis-sqlmap</artifactId>
             <version>3.0-beta-9</version>
         </dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 
