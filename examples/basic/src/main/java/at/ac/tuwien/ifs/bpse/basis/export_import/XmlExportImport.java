@@ -1,7 +1,9 @@
 package at.ac.tuwien.ifs.bpse.basis.export_import;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -178,10 +180,12 @@ public class XmlExportImport implements Export, Import {
 	 * @throws DocumentException
 	 *             on errors while reading.
 	 */
-	public void readXml(String filename) throws DocumentException {
+	public void readXml(String filename) throws DocumentException, IOException {
 		log.info("Reading XML Data from file \"" + filename + "\"");
 		SAXReader xmlReader = new SAXReader();
-		doc = xmlReader.read(filename);
+		InputStream is = new FileInputStream(filename);
+		doc = xmlReader.read(is);
+		is.close();
 	}
 
 	/**

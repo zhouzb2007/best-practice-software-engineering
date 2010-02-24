@@ -17,6 +17,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO.SortOrder;
 import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.domain.StudentExam;
 
@@ -30,7 +31,7 @@ import at.ac.tuwien.ifs.bpse.basis.domain.StudentExam;
  * for configuration.
  * 
  * @author The SE-Team
- * @version 1.0
+ * @version 1.1
  * @see StudentDAO
  */
 public class JdbcObjectStudentDAO implements IStudentDAO {
@@ -519,6 +520,9 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	 * and also require enormous amounts of memory. Morover, there is hardly an
 	 * application conceivable that needs more than a few dozen datasets at any
 	 * one time.
+	 * 
+	 * @deprecated Use {@link #getStudents(SortOrder)} instead!
+	 * @see #getStudents(SortOrder)
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Student> getStudents(String order) {
@@ -530,6 +534,32 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		} else if (order.equals("Nachname")) {
 			students = query_getAllStudentsOrderNachname.execute();
 			log.debug("Student List contains " + students.size() + " students");
+		}
+		return students;
+	}
+
+	/**
+	 * Retrieves all students from the database. <br>
+	 * <b>Warning:</b> this type of DAO method would not be used in a real-
+	 * world application because there may be thousands of students in the
+	 * database and this method would retrieve them all. <br>
+	 * This is usually not needed: it will generate a huge load on the database
+	 * and also require enormous amounts of memory. Morover, there is hardly an
+	 * application conceivable that needs more than a few dozen datasets at any
+	 * one time.
+	 * 
+	 * @since 1.1
+	 * @see SortOrder
+	 */
+	public List<Student> getStudents(SortOrder order) {
+		log.info("Get all Students order = " + order.toString());
+		List<Student> students = null;
+		if (order.equals(SortOrder.StudentId)) {
+			students = query_getAllStudentsOrderMatnr.execute();
+			log.debug("Student List contains " + students.size() + " students ordered by studentId");
+		} else if (order.equals(SortOrder.LastName)) {
+			students = query_getAllStudentsOrderNachname.execute();
+			log.debug("Student List contains " + students.size() + " students ordered by lastname");
 		}
 		return students;
 	}

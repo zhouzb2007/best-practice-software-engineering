@@ -10,6 +10,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO;
+import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO.SortOrder;
 import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
 
@@ -20,7 +21,7 @@ import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
  * access object (DAO).
  * 
  * @author The SE-Team
- * @version 1.0
+ * @version 1.1
  * 
  */
 public class StudentenTableModel extends AbstractTableModel {
@@ -61,6 +62,13 @@ public class StudentenTableModel extends AbstractTableModel {
 	private String order = "";
 
 	/**
+	 * Order of the TableModel
+	 * 
+	 * @see SortOrder
+	 */
+	private SortOrder sortOrder = SortOrder.StudentId;
+
+	/**
 	 * Creates a new StudentenTableModel with default ordering.
 	 * 
 	 * @param order
@@ -73,6 +81,22 @@ public class StudentenTableModel extends AbstractTableModel {
 		xbf = new XmlBeanFactory(res);
 		studentDAO = (IStudentDAO) xbf.getBean("StudentDAO");
 		this.order = order;
+		readData();
+	}
+
+	/**
+	 * Creates a new StudentenTableModel with default ordering.
+	 * 
+	 * @param order
+	 *            the default Order
+	 * @see #order
+	 */
+	public StudentenTableModel(SortOrder order) {
+		super();
+		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS);
+		xbf = new XmlBeanFactory(res);
+		studentDAO = (IStudentDAO) xbf.getBean("StudentDAO");
+		this.sortOrder = order;
 		readData();
 	}
 
@@ -105,7 +129,7 @@ public class StudentenTableModel extends AbstractTableModel {
 	 * @see StudentDAO#getStudents(String)
 	 */
 	private void readData() {
-		studenten = studentDAO.getStudents(order);
+		studenten = studentDAO.getStudents(sortOrder);
 	}
 
 	/**
@@ -119,13 +143,31 @@ public class StudentenTableModel extends AbstractTableModel {
 	/**
 	 * Change the Order and reload the Data.
 	 * 
+	 * @deprecated Use {@link #setOrder(SortOrder)} instead!
 	 * @param order
 	 *            the new Order
 	 * @see #order
+	 * @see #setOrder(SortOrder)
 	 */
 	public void setOrder(String order) {
 		log.info("Order Changed: reading data...");
 		this.order = order;
+		reload();
+	}
+
+	/**
+	 * Change the Order and reload the Data.
+	 * 
+	 * @since 1.1
+	 * @param order
+	 *            the new Order
+	 * @see #sortOrder
+	 * @see SortOrder
+	 */
+	public void setOrder(SortOrder order) {
+		log.info("Sort Order Changed to " + order.toString()
+				+ ": reading data...");
+		this.sortOrder = order;
 		reload();
 	}
 
