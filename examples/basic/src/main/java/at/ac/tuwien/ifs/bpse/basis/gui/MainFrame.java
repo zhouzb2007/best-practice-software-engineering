@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -41,7 +42,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
+import com.sun.org.apache.xerces.internal.util.MessageFormatter;
+
 import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO;
+import at.ac.tuwien.ifs.bpse.basis.dao.IStudentDAO.SortOrder;
 import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.export_import.Export;
 import at.ac.tuwien.ifs.bpse.basis.helper.Constants;
@@ -103,7 +107,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	/**
 	 * The Labels for further information of Students.
 	 */
-	private JLabel id, name, surname, email, matrikelnummer;
+	private JLabel id, name, surname, email, studentId;
 
 	/**
 	 * The default Constructor for the MainFrame, initiating the DAO, the Models
@@ -163,6 +167,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * Initializes all the components of the GUI.
 	 */
 	private void initComponents() {
+		setTitle(messageBundle.getString("app.title"));
 		// define menu bar and menus
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu(messageBundle.getString("menu.lbl.file"));
@@ -182,33 +187,35 @@ public class MainFrame extends JFrame implements ActionListener {
 		// define main panel
 		JPanel mainPanel = new JPanel();
 		getContentPane().add(mainPanel);
+		// main panel is divided into two columns via GridLayout, 
+		// the two columns themselves are divided into several areas via BorderLayout
 		mainPanel.setLayout(new GridLayout(1, 2));
-		// define center and east panel		
-		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(new BorderLayout());
-		centerPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
-		JPanel centerNorthPanel = new JPanel();
-		centerNorthPanel.setLayout(new GridLayout(0, 2, 5, 5));
-		centerNorthPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
-		centerPanel.add(centerNorthPanel, BorderLayout.NORTH);
-		JPanel centerSouthPanel = new JPanel();
-		centerSouthPanel.setLayout(new GridLayout(0, 3, 5, 5));
-		centerSouthPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
-		centerPanel.add(centerSouthPanel, BorderLayout.SOUTH);
-		JPanel eastPanel = new JPanel(new BorderLayout());
-		eastPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		JPanel eastNorthPanel = new JPanel(new GridLayout(0, 1, 5, 5));
-		eastPanel.add(eastNorthPanel, BorderLayout.NORTH);
-		mainPanel.add(centerPanel);
-		mainPanel.add(eastPanel);
+		// define left (sorting order box, information table, action buttons) and right (information box) panel
+		JPanel leftColumnPanel = new JPanel();
+		leftColumnPanel.setLayout(new BorderLayout());
+		leftColumnPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+		JPanel leftColumnTopPanel = new JPanel();
+		leftColumnTopPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		leftColumnTopPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
+		leftColumnPanel.add(leftColumnTopPanel, BorderLayout.NORTH);
+		JPanel leftColumnBottomPanel = new JPanel();
+		leftColumnBottomPanel.setLayout(new GridLayout(0, 3, 5, 5));
+		leftColumnBottomPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+		leftColumnPanel.add(leftColumnBottomPanel, BorderLayout.SOUTH);
+		JPanel rightColumnPanel = new JPanel(new BorderLayout());
+		rightColumnPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		JPanel rightColumnTopPanel = new JPanel(new GridLayout(0, 1, 5, 5));
+		rightColumnPanel.add(rightColumnTopPanel, BorderLayout.NORTH);
+		mainPanel.add(leftColumnPanel);
+		mainPanel.add(rightColumnPanel);
 		// define Label for Drop Down Field in North Panel
-		centerNorthPanel.add(new JLabel("Sortiert nach "));
+		leftColumnTopPanel.add(new JLabel(messageBundle.getString("cb.lbl.sort")));
 		// define Drop Down Field in North Panel
 		JComboBox selectOrderCB = new JComboBox();
 		selectOrderCB.setEditable(false);
 		selectOrderCB.addItem(messageBundle.getString("cb.option.studentid"));
 		selectOrderCB.addItem(messageBundle.getString("cb.option.lastname"));
-		centerNorthPanel.add(selectOrderCB);
+		leftColumnTopPanel.add(selectOrderCB);
 		selectOrderCB.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent ie) {
 				if (ie.getStateChange() == ItemEvent.SELECTED) {
@@ -250,43 +257,43 @@ public class MainFrame extends JFrame implements ActionListener {
 		});
 
 		JScrollPane tableScrollPane = new JScrollPane(table);
+		tableScrollPane.getViewport().setPreferredSize(table.getPreferredSize());
 		tableScrollPane.setWheelScrollingEnabled(true);
-		centerPanel.add(tableScrollPane);
-		JPanel infoBoxPanel = new JPanel();
-		infoBoxPanel.setLayout(new GridLayout(0, 2, 5, 5));
-		JLabel lblId = new JLabel(messageBundle.getString("lbl.id"));
-		infoBoxPanel.add(lblId);
-		id = new JLabel();
-		infoBoxPanel.add(id);
-		JLabel lblFirstname = new JLabel(messageBundle.getString("lbl.firstname"));
-		infoBoxPanel.add(lblFirstname);
-		name = new JLabel();
-		infoBoxPanel.add(name);
-		JLabel lblSurname = new JLabel(messageBundle.getString("lbl.lastname"));
-		infoBoxPanel.add(lblSurname);
-		surname = new JLabel();
-		infoBoxPanel.add(surname);
-		JLabel lblMatrNr = new JLabel(messageBundle.getString("lbl.studentid"));
-		infoBoxPanel.add(lblMatrNr);
-		matrikelnummer = new JLabel();
-		infoBoxPanel.add(matrikelnummer);
-		JLabel lblEmail = new JLabel(messageBundle.getString("lbl.email"));
-		infoBoxPanel.add(lblEmail);
-		email = new JLabel();
-		infoBoxPanel.add(email);
-		eastNorthPanel.add(infoBoxPanel, BorderLayout.NORTH);
+		leftColumnPanel.add(tableScrollPane, BorderLayout.CENTER);
 		// define buttons to manipulate students 
 		editButton = new JButton(messageBundle.getString("btn.lbl.edit"));
 		editButton.setEnabled(false);
 		editButton.addActionListener(this);
-		centerSouthPanel.add(editButton);
+		leftColumnBottomPanel.add(editButton);
 		JButton createButton = new JButton(messageBundle.getString("btn.lbl.create"));
 		createButton.addActionListener(this);
-		centerSouthPanel.add(createButton);
+		leftColumnBottomPanel.add(createButton);
 		deleteButton = new JButton(messageBundle.getString("btn.lbl.delete"));
 		deleteButton.setEnabled(false);
 		deleteButton.addActionListener(this);
-		centerSouthPanel.add(deleteButton);
+		leftColumnBottomPanel.add(deleteButton);
+		// define panel for info box
+		JPanel infoBoxPanel = new JPanel();
+		infoBoxPanel.setLayout(new GridLayout(0, 2, 5, 5));
+		infoBoxPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		JScrollPane infoBoxScrollPane = new JScrollPane(infoBoxPanel);
+		rightColumnTopPanel.add(infoBoxScrollPane, BorderLayout.CENTER);
+		// define labels for info box
+		infoBoxPanel.add(new JLabel(messageBundle.getString("lbl.id")));
+		id = new JLabel();
+		infoBoxPanel.add(id);
+		infoBoxPanel.add(new JLabel(messageBundle.getString("lbl.firstname")));
+		name = new JLabel();
+		infoBoxPanel.add(name);
+		infoBoxPanel.add(new JLabel(messageBundle.getString("lbl.lastname")));
+		surname = new JLabel();
+		infoBoxPanel.add(surname);
+		infoBoxPanel.add(new JLabel(messageBundle.getString("lbl.studentid")));
+		studentId = new JLabel();
+		infoBoxPanel.add(studentId);
+		infoBoxPanel.add(new JLabel(messageBundle.getString("lbl.email")));
+		email = new JLabel();
+		infoBoxPanel.add(email);
 	}
 
 	private void updateButtonStatus() {
@@ -309,7 +316,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			id.setText( Integer.toString(student.getId()));
 			name.setText(student.getFirstname());
 			surname.setText(student.getLastname());
-			matrikelnummer.setText(student.getMatnr());
+			studentId.setText(student.getMatnr());
 			email.setText(student.getEmail());
 		}
 	}
@@ -390,9 +397,11 @@ public class MainFrame extends JFrame implements ActionListener {
 		int row = table.getSelectedRow();
 		if (row > -1) {
 			Student victim = studentenTM.getStudentAt(row);
-			int yesno = JOptionPane.showConfirmDialog(this, "Student \""
-					+ victim.getFirstname() + " " + victim.getLastname() + " ("
-					+ victim.getMatnr() + ")\"" + " wirklich löschen?", messageBundle.getString("delete.lbl.title"),
+			// support full I18n with patterns 
+			Object [] messageArgs = {victim.getFullname(), victim.getMatnr()};
+			MessageFormat formatter = new MessageFormat("");
+			formatter.applyPattern(messageBundle.getString("pattern"));
+			int yesno = JOptionPane.showConfirmDialog(this, formatter.format(messageArgs), messageBundle.getString("delete.lbl.title"),
 					JOptionPane.YES_NO_OPTION);
 			if (yesno == 0) {
 				if (studentDAO.deleteStudent(victim.getId())) {
@@ -422,7 +431,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	 */
 	private void sortOrderChanged(String order) {
 		log.info("Sort Order Changed to \"" + order + "\"");
-		studentenTM.setOrder(order);
+		if(order.equals(messageBundle.getString("cb.option.studentid"))) {
+			studentenTM.setOrder(SortOrder.StudentId);
+		} else if (order.equals(messageBundle.getString("cb.option.lastname"))) {
+			studentenTM.setOrder(SortOrder.LastName);
+		}
 	}
 
 	/**

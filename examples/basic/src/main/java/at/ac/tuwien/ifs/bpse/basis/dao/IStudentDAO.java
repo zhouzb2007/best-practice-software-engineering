@@ -6,58 +6,109 @@ import at.ac.tuwien.ifs.bpse.basis.domain.Student;
 import at.ac.tuwien.ifs.bpse.basis.domain.StudentExam;
 
 /**
- * The DAO abstracts and encapsulates all access to the data source corresponding to the Student
- * business object
+ * The DAO abstracts and encapsulates all access to the data source
+ * corresponding to the Student business object
+ * 
  * @author The SE-Team
- * @version 1.0
+ * @version 1.1
  */
 public interface IStudentDAO {
-    /**
-     * Retrieves one single Student from the DB.
-     * @param id unique database ID of Student
-     * @return Student object holding the data of one student or null if no student with the
-     *         matching id is found
-     */
-    public Student getStudent(int id);
+	/**
+	 * Enumeration for different sort orders of students that can be used.
+	 * Possible sort ordes are:
+	 * <ul>
+	 * <li><code>StudentId</code> for an ascending order by studentId.</li>
+	 * <li><code>LastName</code> for an ascending order by lastname.</li>
+	 * </ul>
+	 * 
+	 * @author The SE-Team
+	 * @since 1.1
+	 * 
+	 */
+	public enum SortOrder {
+		/**
+		 * Use this sort order to order ascending by studentId.
+		 */
+		StudentId,
 
-    /**
-     * Retrieves one single Student by a given matrikel number
-     * @param matnr
-     * @return Student object if someone existed, otherwise null if no student with the given matnr
-     *         exist
-     */
-    public Student getStudentByMatrNr(String matnr);
+		/**
+		 * Use this sort order to order ascending by lastname.
+		 */
+		LastName,
+	}
 
-    /**
-     * Saves one single Student to the Database.
-     * @param student object holding the data of one student
-     * @return Student object with the generated ID, or null if an error occurs
-     */
-    public Student saveStudent(Student student);
+	/**
+	 * Retrieves one single Student from the DB.
+	 * 
+	 * @param id
+	 *            unique database ID of Student
+	 * @return Student object holding the data of one student or null if no
+	 *         student with the matching id is found
+	 */
+	public Student getStudent(int id);
 
-    /**
-     * Updates an existing student in the database.
-     * @param student object holding the data of one student
-     * @return Student object
-     */
-    public Student updateStudent(Student student);
+	/**
+	 * Retrieves one single Student by a given matrikel number
+	 * 
+	 * @param matnr
+	 * @return Student object if someone existed, otherwise null if no student
+	 *         with the given matnr exist
+	 */
+	public Student getStudentByMatrNr(String matnr);
 
-    /**
-     * Deletes an existing student from the database.
-     * @param id of the student to be deleted
-     * @return true if procedure was successfully, otherwise false
-     */
-    public boolean deleteStudent(int id);
+	/**
+	 * Saves one single Student to the Database.
+	 * 
+	 * @param student
+	 *            object holding the data of one student
+	 * @return Student object with the generated ID, or null if an error occurs
+	 */
+	public Student saveStudent(Student student);
 
-    /**
-     * Retrieves all students from the database.
-     * @param order database column which the result set should be ordered by
-     * @return List of type Student holding all stundents available
-     */
-    public List<Student> getStudents(String order);
-    
-    /**
-     * Retrieves a list of registered exams
-     */
-    public List<StudentExam> getRegisteredExams(Student student);
+	/**
+	 * Updates an existing student in the database.
+	 * 
+	 * @param student
+	 *            object holding the data of one student
+	 * @return Student object
+	 */
+	public Student updateStudent(Student student);
+
+	/**
+	 * Deletes an existing student from the database.
+	 * 
+	 * @param id
+	 *            of the student to be deleted
+	 * @return true if procedure was successfully, otherwise false
+	 */
+	public boolean deleteStudent(int id);
+
+	/**
+	 * Retrieves all students from the database.
+	 * 
+	 * @param order
+	 *            database column which the result set should be ordered by
+	 * @return List of type Student holding all students available
+	 * 
+	 * @deprecated Use {@link #getStudents(SortOrder)} instead!
+	 * @see #getStudents(SortOrder)
+	 */
+	public List<Student> getStudents(String order);
+
+	/**
+	 * Retrieves all students from the database.
+	 * 
+	 * @param SortOrder
+	 *            that the result set should be ordered by
+	 * @return List of type Student holding all students available
+	 * 
+	 * @since 1.1
+	 * @see SortOrder
+	 */
+	public List<Student> getStudents(SortOrder order);
+
+	/**
+	 * Retrieves a list of registered exams
+	 */
+	public List<StudentExam> getRegisteredExams(Student student);
 }

@@ -8,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -42,6 +43,11 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 	 * Retrieves the logger for this class.
 	 */
 	private static Log log = LogFactory.getLog(EditStudentFrame.class);
+	
+	/**
+	 * ResourceBundle to externalize the Strings used for the GUI components.
+	 */
+	private ResourceBundle messageBundle;
 
 	/**
 	 * The Data Access Object for Students.
@@ -141,6 +147,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 		super();
 		this.mode = mode;
 		initDAO();
+		initMessageBundle();
 		log.info("Initializing EditStudentFrame");
 		this.student = student;
 		// Handler for WindowClosing
@@ -202,8 +209,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 			setTitle("Create new Student");
 			break;
 		case Update:
-			setTitle("Update Student \"(" + student.getId() + ") "
-					+ student.getFirstname() + " " + student.getLastname() + "\"");
+			setTitle("Update Student");
 			break;
 		}
 		// Fill Frame
@@ -215,37 +221,36 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 		centerBox.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		centerBox.setLayout(new GridLayout(0, 2, 5, 5));
 		// ID
-		// TODO: verenglischen?
 		idLabel = new JLabel("<assigned from DB>");
 		if (this.mode != Mode.Create) {
-			JLabel lblId = new JLabel("Id:");
+			JLabel lblId = new JLabel(messageBundle.getString("lbl.id"));
 			centerBox.add(lblId);
 			//idLabel.setEditable(false);
 			centerBox.add(idLabel);
 		}
 		// Matrikel Number
-		JLabel lblMatrNr = new JLabel("Matrikelnummer:");
+		JLabel lblMatrNr = new JLabel(messageBundle.getString("lbl.studentid"));
 		centerBox.add(lblMatrNr);
 		txtMatrNr = new RegexTextField("");
 		txtMatrNr.setRegex(regexMatrNr);
 		txtMatrNr.setValidationIndicator(lblMatrNr);
 		centerBox.add(txtMatrNr);
 		// First Name
-		JLabel lblVorname = new JLabel("Vorname:");
+		JLabel lblVorname = new JLabel(messageBundle.getString("lbl.firstname"));
 		centerBox.add(lblVorname);
 		txtVorname = new RegexTextField("");
 		txtVorname.setRegex(regexVorname);
 		txtVorname.setValidationIndicator(lblVorname);
 		centerBox.add(txtVorname);
 		// Last Name
-		JLabel lblNachname = new JLabel("Nachname:");
+		JLabel lblNachname = new JLabel(messageBundle.getString("lbl.lastname"));
 		centerBox.add(lblNachname);
 		txtNachname = new RegexTextField("");
 		txtNachname.setRegex(regexNachname);
 		txtNachname.setValidationIndicator(lblNachname);
 		centerBox.add(txtNachname);
 		// Email
-		JLabel lblEmail = new JLabel("Email:");
+		JLabel lblEmail = new JLabel(messageBundle.getString("lbl.email"));
 		centerBox.add(lblEmail);
 		txtEmail = new RegexTextField("");
 		txtEmail.setRegex(regexEmail);
@@ -266,14 +271,14 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 		saveButton = new JButton();
 		switch (mode) {
 		case Create:
-			saveButton.setText("Create");
+			saveButton.setText(messageBundle.getString("btn.lbl.create"));
 			break;
 		case Update:
-			saveButton.setText("Update");
+			saveButton.setText(messageBundle.getString("btn.lbl.edit"));
 			break;
 		}
 		saveButton.addActionListener(this);
-		JButton cancel = new JButton("Close");
+		JButton cancel = new JButton(messageBundle.getString("btn.lbl.close"));
 		cancel.addActionListener(this);
 		south.add(saveButton);
 		south.add(cancel);
@@ -300,6 +305,16 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 		studentDAO = (IStudentDAO) xbf.getBean("StudentDAO");
 		updateListeners = new ArrayList<ActionListener>();
 	}
+	
+	/**
+	 * Initializes the ResourceBundle to externalize the Strings for the
+	 * components.
+	 * 
+	 * @see ResourceBundle
+	 */
+	private void initMessageBundle() {
+		messageBundle = (ResourceBundle) xbf.getBean("resourceBundle");
+	}
 
 	/**
 	 * Check which Action was performed and notify the UpdateListener.
@@ -309,27 +324,27 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String action = e.getActionCommand();
 		log.info("Action performed: \"" + action + "\"");
-		if (action.equals("Close")) {
+		if (action.equals(messageBundle.getString("btn.lbl.close"))) {
 			closeFrame();
-		} else if (action.equals("Update")) {
+		} else if (action.equals(messageBundle.getString("btn.lbl.edit"))) {
 			if (validateInput()) {
 				studentDAO
 						.updateStudent(getStudentFromFrame());
 				notifyUpdateListener();
 			}
-		} else if (action.equals("Create")) {
+		} else if (action.equals(messageBundle.getString("btn.lbl.create"))) {
 			if (validateInput()) {
 				Student st = getStudentFromFrame();
 				Student save = studentDAO.saveStudent(st);
-				System.out.println("before");
+				log.trace("before");
 				if (save != null) {
 					student = st;
 					this.mode = Mode.Update;
 					idLabel.setText(student.getId()+"");
-					System.out.println("after");
-					((JButton) e.getSource()).setText("Update");
+					log.trace("after");
+					((JButton) e.getSource()).setText(messageBundle.getString("btn.lbl.edit"));
 					centerBox.add(idLabel, 0);
-					centerBox.add(new JLabel("ID: "), 0);
+					centerBox.add(new JLabel(messageBundle.getString("lbl.id")), 0);
 					this.repaint();
 					this.pack();
 				}
