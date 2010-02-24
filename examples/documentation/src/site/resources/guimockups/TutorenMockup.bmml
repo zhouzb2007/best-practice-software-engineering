@@ -1,0 +1,30 @@
+<mockup version="1.0" skin="sketch" measuredW="1065" measuredH="380">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="605" y="122" w="450" h="248" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tutoren</text>
+        <topheight>26</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="620" y="162" w="-1" h="-1" measuredW="41" measuredH="25" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Filter</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="676" y="159" w="278" h="-1" measuredW="79" measuredH="29" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="963" y="159" w="-1" h="-1" measuredW="61" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Suche</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::DataGrid" x="620" y="211" w="404" h="118" measuredW="330" measuredH="118" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Bearbeiten%2C%20L%F6schen%2C%20Vorname%2C%20Nachname%0AIcon%2C%20Icon%2C%20Student%201%2C%20Studi%0AIcon%2C%20Icon%2C%20Max%2C%20Mustermann%0AIcon%2C%20Icon%2C%20Maxi%2C%20Gruber</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
