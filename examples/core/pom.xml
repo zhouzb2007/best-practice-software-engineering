@@ -19,18 +19,6 @@
         are based on the core module.
     </description>
     <dependencies>
-        <!-- Annotations -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.4.0.GA</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <!-- My SQL Database driver. If another database is used, the driver dependency of the database
         must be set here -->
         <!-- <dependency>

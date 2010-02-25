@@ -66,7 +66,6 @@
     <!-- Model Beans Testdata                                                                           -->
     <!-- ********************************************************************************************** -->
 
-	<!-- Student for testing update - delete -->
     <bean id="StudentUpdateDelete"
         class="at.ac.tuwien.ifs.bpse.domain.Student">
         <description>
@@ -98,10 +97,127 @@
             A Student for testing the INSERT method
         </description>
         <property name="id" value="2" />
-        <property name="matnr" value="87654321" />
+        <property name="matnr" value="8765432" />
         <property name="firstname" value="Hubert" />
         <property name="lastname" value="Meixner" />
         <property name="email" value="hubert@meixner.test" />
+    </bean>
+    
+    <bean id="CourseUpdateDelete"
+        class="at.ac.tuwien.ifs.bpse.domain.Course">
+        <description>
+            A Course for testting the UPDATE and DELETE method
+        </description>
+        <property name="id" value="2" />
+        <property name="title" value="ASE" />
+        <property name="ects" value="3.5" />
+    </bean>
+
+    <bean id="CourseGet"
+        class="at.ac.tuwien.ifs.bpse.domain.Course">
+        <description>
+            A Course for testting the SELECT method
+        </description>
+        <property name="id" value="2" />
+        <property name="title" value="SEPM" />
+        <property name="ects" value='4.5' />
+    </bean>
+
+    <bean id="CourseAdd"
+        class="at.ac.tuwien.ifs.bpse.domain.Course">
+        <description>
+            A Course for testing the INSERT method
+        </description>
+        <property name="id" value="509" />
+        <property name="title" value="ASE" />
+        <property name="ects" value="6.5" />
+    </bean>
+    
+    <bean id="ProfessorUpdateDelete"
+        class="at.ac.tuwien.ifs.bpse.domain.Professor">
+        <description>
+            A Professor for testting the UPDATE and DELETE method
+        </description>
+        <property name="id" value="3" />
+        <property name="officenr" value="188" />
+        <property name="firstname" value="Assi" />
+        <property name="lastname" value="1" />
+        <property name="email" value="assi@info.com" />
+    </bean>
+
+    <bean id="ProfessorGet"
+        class="at.ac.tuwien.ifs.bpse.domain.Professor">
+        <description>
+            A Professor for testting the SELECT method
+        </description>
+        <property name="id" value="3" />
+        <property name="officenr" value="188" />
+        <property name="firstname" value="Assi" />
+        <property name="lastname" value="1" />
+        <property name="email" value="assi@info.com" />
+    </bean>
+	
+    <bean id="ProfessorAdd"
+        class="at.ac.tuwien.ifs.bpse.domain.Professor">
+        <description>
+            A Professor for testing the INSERT method
+        </description>
+        <property name="id" value="2" />
+        <property name="officenr" value="8765432" />
+        <property name="firstname" value="Hubert" />
+        <property name="lastname" value="Meixner" />
+        <property name="email" value="hubert@meixner.test" />
+    </bean>
+    
+    <bean id="ExamUpdateDelete"
+        class="at.ac.tuwien.ifs.bpse.domain.Exam">
+        <description>
+            A Exam for testting the UPDATE and DELETE method
+        </description>
+        <property name="id" value="509" />
+        <property name="location" value="Buero" />
+        <property name="exdate"> <value type="java.util.Date">2008-08-08 20:08:08</value> </property>
+        <property name="course" ref="CourseGet" />
+    </bean>
+
+    <bean id="ExamGet"
+        class="at.ac.tuwien.ifs.bpse.domain.Exam">
+        <description>
+            A Exam for testting the SELECT method
+        </description>
+        <property name="id" value="509" />
+        <property name="location" value="Frogger" />
+        <property name="exdate"> <value type="java.util.Date">2008-08-08 20:08:08</value> </property>
+        <property name="course" ref="CourseGet" />
+    </bean>
+
+	<bean id="customEditorConfigurer"
+		class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date">
+					<bean class="org.springframework.beans.propertyeditors.CustomDateEditor">
+						<constructor-arg index="0">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg value="yyy-dd-mm hh:mm:ss" />
+							</bean>
+						</constructor-arg>
+						<constructor-arg index="1" value="false" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+    <bean id="ExamAdd"
+        class="at.ac.tuwien.ifs.bpse.domain.Exam">
+        <description>
+            A Exam for testing the INSERT method
+        </description>
+         <property name="id" value="510" />
+        <property name="location" value="Buero 2" />
+        <property name="exdate"> <value type="java.util.Date">2008-08-08 20:08:08</value> </property>
+        <property name="course" ref="CourseGet" />
     </bean>
     
 </beans>

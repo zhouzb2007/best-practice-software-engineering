@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="at.ac.tuwien.ifs.bpse.persistence.interfaces.ProfessorMapper">
+	<select id="selectProfessor" parameterType="int"
+		resultType="Professor">
+		select * from professor where id = #{id}
+	</select>
+		<select id="selectProfessorByOfficeNr" parameterType="int"
+		resultType="Professor">
+		select * from professor where officenr = #{officenr}
+	</select>
+	<insert id="insertProfessor" parameterType="Professor"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into professor
+		(officenr,firstname,lastname,email)
+		values
+		(#{officenr,jdbcType=CHAR},#{firstname,jdbcType=VARCHAR},#{lastname,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateProfessor" parameterType="Professor">
+		update professor set
+		id=#{id}, officenr=#{officenr}, firstname=#{firstname}, lastname=#{lastname}, email=#{email}
+		where id = #{id}
+	</update>
+	<delete id="deleteProfessor" parameterType="int">
+		delete from professor
+		where id = #{id}
+	</delete>
+</mapper>

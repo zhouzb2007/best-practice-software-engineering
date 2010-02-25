@@ -53,7 +53,8 @@ public class HomePage extends WebPage {
 			// StudentMapper has Method Scope, just like Session
 			StudentMapper mapper = session.getMapper(StudentMapper.class);
 			Student s = new Student("0027226","Erik", "G");
-			//s.setEmail("foo");
+			//s.setId(null);
+			s.setEmail("foo");
 			mapper.insertStudent(s);
 			Student stud = mapper.selectStudentByMatrNr("0027226");
 			

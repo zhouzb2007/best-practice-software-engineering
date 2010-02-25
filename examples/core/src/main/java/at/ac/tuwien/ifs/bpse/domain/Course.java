@@ -1,15 +1,5 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 /**
  * 
  * This class holds the data for one university course. 
@@ -19,15 +9,12 @@ import javax.persistence.ManyToOne;
  * 
  */
 public class Course {
-    @Id
-    @GeneratedValue
+
     private int id;
 
     private String title;
-    private int ecds;
+    private float ects;
     
-    @ManyToOne
-    @JoinColumn(name="professorId")
     /*
      * A professor can give more than one course, but each course is assigned to precisely one professor
      */
@@ -41,12 +28,12 @@ public class Course {
         this.professor = professor;
     }
 
-    public int getEcds() {
-        return ecds;
+    public float getEcts() {
+        return ects;
     }
 
-    public void setEcds(int ecds) {
-        this.ecds = ecds;
+    public void setEcts(float ects) {
+        this.ects = ects;
     }
 
     public String getTitle() {

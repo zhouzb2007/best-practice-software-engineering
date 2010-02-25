@@ -1,8 +1,6 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
-import javax.persistence.Entity;
 
-@Entity
 /**
  * Student extends Person, hence inherits all properties from Person class (main data of a person)
  */

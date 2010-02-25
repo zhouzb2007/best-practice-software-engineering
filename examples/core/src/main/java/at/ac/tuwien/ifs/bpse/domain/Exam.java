@@ -2,23 +2,13 @@ package at.ac.tuwien.ifs.bpse.domain;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-@Entity
 public class Exam {
-    @Id
-    @GeneratedValue
+
     private int id;
     
     private Date exdate;
     private String location;
 
-    @ManyToOne
-    @JoinColumn(name="courseId")
     private Course course;
     
     public Exam(){}

@@ -4,10 +4,16 @@ PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="at.ac.tuwien.ifs.bpse.domain.Student" alias="Student"/>
+		<typeAlias type="at.ac.tuwien.ifs.bpse.domain.Course" alias="Course"/>
+		<typeAlias type="at.ac.tuwien.ifs.bpse.domain.Professor" alias="Professor"/>
+		<typeAlias type="at.ac.tuwien.ifs.bpse.domain.Exam" alias="Exam"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="at/ac/tuwien/ifs/bpse/persistence/sql/StudentMapper.xml" />
+		<mapper resource="at/ac/tuwien/ifs/bpse/persistence/sql/CourseMapper.xml" />
+		<mapper resource="at/ac/tuwien/ifs/bpse/persistence/sql/ProfessorMapper.xml" />
+		<mapper resource="at/ac/tuwien/ifs/bpse/persistence/sql/ExamMapper.xml" />
 	</mappers>
 	
 </configuration>
