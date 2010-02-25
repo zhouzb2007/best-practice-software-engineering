@@ -2,12 +2,6 @@ package at.ac.tuwien.ifs.bpse.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-
-
-@Entity
-@PrimaryKeyJoinColumn(name="CourseId")
 /**
  * Lecture is extending Course, hence inherits all properties and methods from Course
  */
@@ -19,7 +13,7 @@ public class Lecture extends Course implements Serializable{
     public Lecture(){}
     public Lecture(String title, int ecds, boolean compulsoryattendance){
         setTitle(title);
-        setEcds(ecds);
+        setEcts(ecds);
         setCompulsoryattendance(compulsoryattendance);
     }
     

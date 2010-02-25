@@ -1,27 +1,16 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-@Entity
 /**
  * This class holds the data of an examn a student has done.
  * Thus there is a reference to the Student object and to the Exam object
  */
 public class StudentExam {
 
-	//@Id
-    //@GeneratedValue
     //private int id;
 
-    @ManyToOne
-    @JoinColumn(name="examId")
     private Exam exam;
-    @ManyToOne
-    @JoinColumn(name="studentId")
+
     private Student student;
 
     public Exam getExam() {

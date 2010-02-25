@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="at.ac.tuwien.ifs.bpse.persistence.interfaces.CourseMapper">
+	<select id="selectCourse" parameterType="int"
+		resultType="Course">
+		select * from course where id = #{id}
+	</select>
+	<insert id="insertCourse" parameterType="Course"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into Course
+		(title, ects)
+		values
+		(#{title,jdbcType=VARCHAR},#{ects,jdbcType=DECIMAL})
+	</insert>
+	<update id="updateCourse" parameterType="Course">
+		update course set
+		id=#{id}, title=#{title}, ects=#{ects}
+		where id = #{id}
+	</update>
+	<delete id="deleteCourse" parameterType="int">
+		delete from course
+		where id = #{id}
+	</delete>
+</mapper>

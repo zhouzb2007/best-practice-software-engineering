@@ -1,17 +1,11 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
 /**
  * This class holds the main data of one person, might be superclass for more specific roles 
  */
 public class Person {
 
-    @Id
-    @GeneratedValue
     private int id;
     private String firstname;
     private String lastname;
