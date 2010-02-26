@@ -1,5 +1,7 @@
 package at.ac.tuwien.ifs.bpse.medium.persistence.interfaces;
 
+import java.util.List;
+
 import at.ac.tuwien.ifs.bpse.domain.Student;
 
 public interface StudentMapper {
@@ -15,5 +17,7 @@ public interface StudentMapper {
 	public int updateStudent(Student s);
 	
 	public int deleteStudent(int id);
+	
+	public List<Student> findStudents(String searchphrase);
 	
 }

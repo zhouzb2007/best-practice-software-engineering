@@ -9,12 +9,13 @@ import java.util.List;
 public class Professor extends Person {
     private String officenr;
     
-    private List<Course>courses =  new ArrayList<Course>();
+    private List<Course> courses;
 
     
     public Professor(){
-        
+        courses = new ArrayList<Course>();
     }
+    
     public Professor(String officenr, String firstname, String lastname){
         setOfficenr(officenr);
         setFirstname(firstname);
@@ -38,7 +39,7 @@ public class Professor extends Person {
     }
     
     public void addCourse(Course course){
-        course.setProfessor(this);
+        course.addProfessor(this);
         courses.add(course);
     }
 

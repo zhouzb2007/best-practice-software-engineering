@@ -1,6 +1,7 @@
 package at.ac.tuwien.ifs.bpse.medium.test.persistence;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
@@ -115,6 +116,8 @@ public class CourseMapperTest {
 		Course c = (Course)ac.getBean("CourseGet");
 		Course newc = CourseMapper.selectCourse(c.getId());
 		assertThat( newc.getTitle(), is(c.getTitle()) );
+		
+		assertThat (newc.getProfessors().get(0).getFirstname(), is("Assi"));
 	}
 	
 	@Test

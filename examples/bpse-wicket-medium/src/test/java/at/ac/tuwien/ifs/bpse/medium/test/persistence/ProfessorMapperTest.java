@@ -1,6 +1,8 @@
 package at.ac.tuwien.ifs.bpse.medium.test.persistence;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
@@ -120,6 +122,8 @@ public class ProfessorMapperTest {
 		assertThat( newp.getLastname(), is(p.getLastname()) );
 		assertThat( newp.getFullname(), is(p.getFullname()) );
 		assertThat( newp.getId(), is(p.getId()) );
+		
+		assertThat(newp.getCourses().get(0), is(notNullValue()));
 	}
 	
 	@Test
