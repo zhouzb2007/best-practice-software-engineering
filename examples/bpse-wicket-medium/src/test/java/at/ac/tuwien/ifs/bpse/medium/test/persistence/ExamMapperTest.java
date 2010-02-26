@@ -1,6 +1,8 @@
 package at.ac.tuwien.ifs.bpse.medium.test.persistence;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
@@ -115,6 +117,8 @@ public class ExamMapperTest {
 		Exam e = (Exam)ac.getBean("ExamGet");
 		Exam newe = ExamMapper.selectExam(e.getId());
 		assertThat( newe.getLocation(), is(e.getLocation()) );
+		
+		assertThat(newe.getCourse(), is(notNullValue()));
 	}
 	
 	@Test

@@ -10,6 +10,15 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 		resultType="Student">
 		select * from student where matnr = #{matnr}
 	</select>
+	<select id="findStudents" parameterType="String"
+		resultType="Student">
+		select * from student 
+		where 
+		matnr LIKE #{searchchar} OR
+		firstname LIKE #{searchphrase} OR
+		lastname LIKE #{searchphrase} OR
+		email LIKE #{searchphrase}
+	</select>
 	<insert id="insertStudent" parameterType="Student"
 		useGeneratedKeys="true" keyProperty="id">
 		insert into student

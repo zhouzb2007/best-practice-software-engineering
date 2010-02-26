@@ -3,19 +3,19 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="at.ac.tuwien.ifs.bpse.medium.persistence.interfaces.ExamMapper">
 
-	<select id="selectExam" parameterType="int" resultMap="ExamResult">
-		select *
-		from Exam where id = #{id}
-	</select>
-
 	<resultMap id="ExamResult" type="Exam">
 		<association property="course" column="courseId" javaType="Course"
 			select="selectCourse" />
 	</resultMap>
+	
+	<select id="selectExam" parameterType="int" resultMap="ExamResult">
+		select *
+		from exam where id = #{id}
+	</select>
 
 	<select id="selectCourse" parameterType="int" resultType="Course">
 		select
-		* from course where id = #{id}
+		* from course where id = #{courseId}
 	</select>
 
 	<insert id="insertExam" parameterType="Exam" useGeneratedKeys="true"

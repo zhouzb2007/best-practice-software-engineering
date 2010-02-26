@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
@@ -186,6 +187,14 @@ public class StudentMapperTest {
 		assertThat( stud.getLastname(), is(last) );
 		assertThat( stud.getFullname(), is(full) );
 		assertThat( stud.getEmail(), is(email) );
+	}
+	
+	@Test
+	public void findStudents() {
+		List<Student> studs = studentMapper.findStudents("%odrig%");
+		assertThat(studs.size(), is(2));
+		List<Student> studs2 = studentMapper.findStudents("%027%");
+		assertThat(studs2.size(), is(3));
 	}
 
 }

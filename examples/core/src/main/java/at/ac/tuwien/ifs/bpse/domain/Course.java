@@ -1,9 +1,12 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  * This class holds the data for one university course. 
- * Course has a connection to Professor, as each course is held by a professor
+ * Course has a connection to Professor, as each course is held by a professors
  * 
  * Several special type of courses can be inherited from this object (e.g., Lab and Lecture in this example)
  * 
@@ -16,18 +19,22 @@ public class Course {
     private float ects;
     
     /*
-     * A professor can give more than one course, but each course is assigned to precisely one professor
+     * A professors can give more than one course, but each course is assigned to precisely one professors
      */
-    private Professor professor;
+    private List<Professor> professors;
 
-    public Professor getProfessor() {
-        return professor;
+    public List<Professor> getProfessors() {
+        return professors;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setProfessors(List<Professor> professors) {
+        this.professors = professors;
     }
 
+    public void addProfessor(Professor p) {
+    	this.professors.add(p);
+    }
+    
     public float getEcts() {
         return ects;
     }
