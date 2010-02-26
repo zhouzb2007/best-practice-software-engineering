@@ -14,8 +14,8 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import at.ac.tuwien.ifs.bpse.domain.Student;
-import at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean;
-import at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper;
+import at.ac.tuwien.ifs.bpse.medium.persistence.SqlSessionFactoryBean;
+import at.ac.tuwien.ifs.bpse.medium.persistence.interfaces.StudentMapper;
 
 /**
  * Homepage

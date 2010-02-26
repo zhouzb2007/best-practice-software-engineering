@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.persistence;
+package at.ac.tuwien.ifs.bpse.medium.test.persistence;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
@@ -21,7 +21,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import at.ac.tuwien.ifs.bpse.domain.Course;
-import at.ac.tuwien.ifs.bpse.persistence.interfaces.CourseMapper;
+import at.ac.tuwien.ifs.bpse.medium.persistence.SqlSessionFactoryBean;
+import at.ac.tuwien.ifs.bpse.medium.persistence.interfaces.CourseMapper;
 
 public class CourseMapperTest {
 

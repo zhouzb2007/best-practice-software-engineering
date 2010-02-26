@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.persistence;
+package at.ac.tuwien.ifs.bpse.medium.persistence;
 
 import java.sql.Connection;
 import java.util.Properties;

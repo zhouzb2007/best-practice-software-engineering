@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.persistence;
+package at.ac.tuwien.ifs.bpse.medium.test.persistence;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
@@ -20,10 +20,11 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import at.ac.tuwien.ifs.bpse.domain.Student;
-import at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper;
+import at.ac.tuwien.ifs.bpse.domain.Professor;
+import at.ac.tuwien.ifs.bpse.medium.persistence.SqlSessionFactoryBean;
+import at.ac.tuwien.ifs.bpse.medium.persistence.interfaces.ProfessorMapper;
 
-public class StudentMapperTest {
+public class ProfessorMapperTest {
 
 	/**
 	 * Spring Framework Application Context (Bean Factory, Global Scope).
@@ -41,11 +42,11 @@ public class StudentMapperTest {
 	SqlSession sqlSession;
 	
 	/**
-	 * Data Access Object for Student, fetched with ac. (Local/Method Scope)
+	 * Data Access Object for Professor, fetched with ac. (Local/Method Scope)
 	 */
-	private StudentMapper studentMapper;
+	private ProfessorMapper ProfessorMapper;
 
-	private static Logger log = Logger.getLogger(StudentMapperTest.class);
+	private static Logger log = Logger.getLogger(ProfessorMapperTest.class);
 
 	private Connection conn;
 
@@ -87,7 +88,7 @@ public class StudentMapperTest {
 		
 		sqlSessionFactory = (SqlSessionFactoryBean) ac.getBean("sqlSessionFactory");
 		sqlSession = sqlSessionFactory.openSession();
-		studentMapper = sqlSession.getMapper(StudentMapper.class);
+		ProfessorMapper = sqlSession.getMapper(ProfessorMapper.class);
 	}
 
 	@After
@@ -110,81 +111,81 @@ public class StudentMapperTest {
 	}
 
 	@Test
-	public void selectStudent_shouldGetStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentMapper.selectStudent(s.getId());
-		assertThat( stud.getFirstname(), is(s.getFirstname()) );
-		assertThat( stud.getMatnr(), is(s.getMatnr()) );
-		assertThat( stud.getEmail(), is(s.getEmail()) );
-		assertThat( stud.getLastname(), is(s.getLastname()) );
-		assertThat( stud.getFullname(), is(s.getFullname()) );
-		assertThat( stud.getId(), is(s.getId()) );
+	public void selectProfessor_shouldGetProfessorFromDB() {
+		Professor p = (Professor)ac.getBean("ProfessorGet");
+		Professor newp = ProfessorMapper.selectProfessor(p.getId());
+		assertThat( newp.getFirstname(), is(p.getFirstname()) );
+		assertThat( newp.getOfficenr(), is(p.getOfficenr()) );
+		assertThat( newp.getEmail(), is(p.getEmail()) );
+		assertThat( newp.getLastname(), is(p.getLastname()) );
+		assertThat( newp.getFullname(), is(p.getFullname()) );
+		assertThat( newp.getId(), is(p.getId()) );
 	}
 	
 	@Test
-	public void selectStudentByMatrNr_shouldGetStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentMapper.selectStudentByMatrNr(s.getMatnr());
-		assertThat( stud.getFirstname(), is(s.getFirstname()) );
-		assertThat( stud.getMatnr(), is(s.getMatnr()) );
-		assertThat( stud.getEmail(), is(s.getEmail()) );
-		assertThat( stud.getLastname(), is(s.getLastname()) );
-		assertThat( stud.getFullname(), is(s.getFullname()) );
-		assertThat( stud.getId(), is(s.getId()) );
+	public void selectProfessorByOfficeNr_shouldGetProfessorFromDB() {
+		Professor p = (Professor)ac.getBean("ProfessorGet");
+		Professor newp = ProfessorMapper.selectProfessorByOfficeNr(p.getOfficenr());
+		assertThat( newp.getFirstname(), is(p.getFirstname()) );
+		assertThat( newp.getOfficenr(), is(p.getOfficenr()) );
+		assertThat( newp.getEmail(), is(p.getEmail()) );
+		assertThat( newp.getLastname(), is(p.getLastname()) );
+		assertThat( newp.getFullname(), is(p.getFullname()) );
+		assertThat( newp.getId(), is(p.getId()) );
 	}
 	
 	@Test
-	public void insertStudent_shouldSaveStudentToDB() {
-		Student s = (Student)ac.getBean("StudentAdd");
-		assertThat(s.getId(), is(2));
+	public void insertProfessor_shouldSaveProfessorToDB() {
+		Professor p = (Professor)ac.getBean("ProfessorAdd");
+		assertThat(p.getId(), is(2));
 		
 		//int id = s.getId();
-		String matnr = s.getMatnr();
-		String first = s.getFirstname();
-		String last = s.getLastname();
+		String officenr = p.getOfficenr();
+		String first = p.getFirstname();
+		String last = p.getLastname();
 		String full = first + " " + last;
-		String email = s.getEmail();
+		String email = p.getEmail();
 		
-		int ret = studentMapper.insertStudent(s);		
+		int ret = ProfessorMapper.insertProfessor(p);		
 		assertThat(ret, is(1));
-		assertThat(s.getId(), is(43));
-		Student stud = studentMapper.selectStudent(s.getId());
+		assertThat(p.getId(), is(4));
+		Professor newp = ProfessorMapper.selectProfessor(p.getId());
 		
-		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first) );
-		assertThat( stud.getLastname(), is(last) );
-		assertThat( stud.getFullname(), is(full) );
-		assertThat( stud.getEmail(), is(email) );
+		assertThat( newp.getOfficenr(), is(officenr) );
+		assertThat( newp.getFirstname(), is(first) );
+		assertThat( newp.getLastname(), is(last) );
+		assertThat( newp.getFullname(), is(full) );
+		assertThat( newp.getEmail(), is(email) );
 	}
 	
 	@Test
-	public void deleteStudent_shouldDeleteStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentUpdateDelete");
-		int ret = studentMapper.deleteStudent(s.getId());
+	public void deleteProfessor_shouldDeleteProfessorFromDB() {
+		Professor p = (Professor)ac.getBean("ProfessorUpdateDelete");
+		int ret = ProfessorMapper.deleteProfessor(p.getId());
 		log.info("DELETE Return Value: " + ret);
-		Student stud = studentMapper.selectStudent(s.getId());
-		assertNull(stud);
+		Professor newp = ProfessorMapper.selectProfessor(p.getId());
+		assertNull(newp);
 	}
 	
 	@Test
-	public void updateStudent_shouldUpdateStudentInDB() {
-		Student s = (Student)ac.getBean("StudentUpdateDelete");
-		int id = s.getId();
-		String matnr = s.getMatnr();
-		String first = s.getFirstname();
-		String last = s.getLastname();
+	public void updateProfessor_shouldUpdateProfessorInDB() {
+		Professor p = (Professor)ac.getBean("ProfessorUpdateDelete");
+		int id = p.getId();
+		String officenr = p.getOfficenr();
+		String first = p.getFirstname();
+		String last = p.getLastname();
 		String full = first + " " + last;
-		String email = s.getEmail();
+		String email = p.getEmail();
 		
-		int ret = studentMapper.updateStudent(s);
+		int ret = ProfessorMapper.updateProfessor(p);
 		log.info("UPDATE Return Value: " + ret);
-		Student stud = studentMapper.selectStudent(id);
-		assertThat( stud.getId(), is(id) );
-		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first) );
-		assertThat( stud.getLastname(), is(last) );
-		assertThat( stud.getFullname(), is(full) );
-		assertThat( stud.getEmail(), is(email) );
+		Professor newp = ProfessorMapper.selectProfessor(id);
+		assertThat( newp.getId(), is(id) );
+		assertThat( newp.getOfficenr(), is(officenr) );
+		assertThat( newp.getFirstname(), is(first) );
+		assertThat( newp.getLastname(), is(last) );
+		assertThat( newp.getFullname(), is(full) );
+		assertThat( newp.getEmail(), is(email) );
 	}
 
 }

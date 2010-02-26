@@ -26,7 +26,7 @@
     </bean>
 
     <!-- iBATIS 3 -->
-    <bean id="transactionFactory" class="at.ac.tuwien.ifs.bpse.persistence.SpringTransactionFactory">
+    <bean id="transactionFactory" class="at.ac.tuwien.ifs.bpse.medium.persistence.SpringTransactionFactory">
         <constructor-arg index="0" ref="dataSource"/>
     </bean>
     <bean id="environment" class="org.apache.ibatis.mapping.Environment">
@@ -35,7 +35,7 @@
         <constructor-arg index="2" ref="dataSource"/>
     </bean>
     <bean id="sqlSessionFactory" 
-    	class="at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean">
+    	class="at.ac.tuwien.ifs.bpse.medium.persistence.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:iBatisConfiguration.xml"/>
         <property name="environment" ref="environment"/>
     </bean>

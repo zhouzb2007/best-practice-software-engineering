@@ -41,17 +41,17 @@
 	<!-- ********************************************************************************************** -->
 	
 	<bean id="sqlSessionFactory" 
-    	class="at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean">
+    	class="at.ac.tuwien.ifs.bpse.medium.persistence.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:iBatisConfiguration.xml"/>
         <property name="environment" ref="environment"/>
     </bean>
 	
-	<bean id="transactionFactory" class="at.ac.tuwien.ifs.bpse.persistence.SpringTransactionFactory">
+	<bean id="transactionFactory" class="at.ac.tuwien.ifs.bpse.medium.persistence.SpringTransactionFactory">
         <constructor-arg index="0" ref="dataSource"/>
     </bean>
  
 	<bean id="StudentDAO"
-        class="at.ac.tuwien.ifs.bpse.persistance.dao.SqlMapStudentDao">
+        class="at.ac.tuwien.ifs.bpse.medium.persistance.dao.SqlMapStudentDao">
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

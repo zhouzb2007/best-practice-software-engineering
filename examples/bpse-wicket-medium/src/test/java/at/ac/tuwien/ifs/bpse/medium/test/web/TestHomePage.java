@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.web;
+package at.ac.tuwien.ifs.bpse.medium.test.web;
 
 import junit.framework.TestCase;
 import org.apache.wicket.util.tester.WicketTester;
