@@ -7,13 +7,31 @@ package at.ac.tuwien.ifs.bpse.domain;
  */
 public class StudentExam {
 
-    //private int id;
+    private int id;
 
-    private Exam exam;
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	private Exam exam;
 
     private Student student;
 
-    public Exam getExam() {
+    private Tutor tutor;
+    
+    public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
+	}
+
+	public Exam getExam() {
         return exam;
     }
 

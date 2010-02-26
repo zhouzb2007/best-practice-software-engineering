@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.persistance.dao;
+package at.ac.tuwien.ifs.bpse.medium.persistance.dao;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import at.ac.tuwien.ifs.bpse.dao.IStudentDAO;
 import at.ac.tuwien.ifs.bpse.domain.Student;
 import at.ac.tuwien.ifs.bpse.domain.StudentExam;
-import at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean;
-import at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper;
+import at.ac.tuwien.ifs.bpse.medium.persistence.SqlSessionFactoryBean;
+import at.ac.tuwien.ifs.bpse.medium.persistence.interfaces.StudentMapper;
 
 public class SqlMapStudentDao implements IStudentDAO {
 

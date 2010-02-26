@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.web;
+package at.ac.tuwien.ifs.bpse.medium.test.web;
 
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Server;

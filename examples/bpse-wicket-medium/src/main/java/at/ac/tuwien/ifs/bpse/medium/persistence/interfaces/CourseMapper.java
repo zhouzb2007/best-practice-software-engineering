@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.persistence.interfaces;
+package at.ac.tuwien.ifs.bpse.medium.persistence.interfaces;
 
 import at.ac.tuwien.ifs.bpse.domain.Course;
 
