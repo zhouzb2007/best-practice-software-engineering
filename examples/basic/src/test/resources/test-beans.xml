@@ -47,7 +47,7 @@
     <!-- ********************************************************************************************** -->
     <!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
     <bean id="StudentDAO"
-        class="at.ac.tuwien.ifs.bpse.basis.dao.JdbcObjectStudentDAO"
+        class="at.ac.tuwien.ifs.bpse.basic.dao.JdbcObjectStudentDAO"
         scope="singleton" init-method="init" destroy-method="destroy">
         <!-- This is the datasource needed for JDBC Database Access -->
         <property name="dataSource" ref="HsqldbDataSource" />
@@ -93,16 +93,16 @@
     <!-- ********************************************************************************************** -->
 
     <bean id="Import" 
-        class="at.ac.tuwien.ifs.bpse.basis.export_import.XmlExportImport">
+        class="at.ac.tuwien.ifs.bpse.basic.export_import.XmlExportImport">
     </bean>
 
     <bean id="Export"
-        class="at.ac.tuwien.ifs.bpse.basis.export_import.XmlExportImport">
+        class="at.ac.tuwien.ifs.bpse.basic.export_import.XmlExportImport">
         <property name="encoding" value="utf-8" />
     </bean>
 
     <bean id="HtmlExport"
-        class="at.ac.tuwien.ifs.bpse.basis.export_import.HtmlExport">
+        class="at.ac.tuwien.ifs.bpse.basic.export_import.HtmlExport">
         <property name="title" value="Export of Student-Data" />
     </bean>
 
@@ -112,7 +112,7 @@
         All Export Classes should be added to the exportFilter list
     -->
     <bean id="ExportComboModel"
-        class="at.ac.tuwien.ifs.bpse.basis.gui.ExportComboModel"
+        class="at.ac.tuwien.ifs.bpse.basic.gui.ExportComboModel"
         init-method="init">
         <!--  Register the actually available Export Filters: classes implementing the Export Interface -->
         <property name="exportFilter">
@@ -130,7 +130,7 @@
 
 
     <bean id="StudentAlexanderSchatten"
-        class="at.ac.tuwien.ifs.bpse.basis.domain.Student">
+        class="at.ac.tuwien.ifs.bpse.basic.domain.Student">
         <property name="id" value="1" />
         <property name="matnr" value="8925164" />
         <property name="firstname" value="Alexander" />
@@ -139,7 +139,7 @@
     </bean>
 
     <bean id="StudentHubertMeixner"
-        class="at.ac.tuwien.ifs.bpse.basis.domain.Student">
+        class="at.ac.tuwien.ifs.bpse.basic.domain.Student">
         <property name="id" value="2" />
         <property name="matnr" value="87654321" />
         <property name="firstname" value="Hubert" />
@@ -149,9 +149,9 @@
 
     <!-- Student for testing add - update - delete -->
     <bean id="StudentAddUpdateDelete"
-        class="at.ac.tuwien.ifs.bpse.basis.domain.Student">
+        class="at.ac.tuwien.ifs.bpse.basic.domain.Student">
         <description>
-            A Student for testting the ADD, UPDATE and DELETE method
+            A Student for testing the ADD, UPDATE and DELETE method
         </description>
         <property name="id" value="432" />
         <property name="matnr" value="0926759" />

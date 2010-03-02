@@ -54,7 +54,7 @@
 	<!-- ********************************************************************************************** -->
 	<!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
 	<bean id="StudentDAO"
-		class="at.ac.tuwien.ifs.bpse.basis.dao.JdbcObjectStudentDAO"
+		class="at.ac.tuwien.ifs.bpse.basic.dao.JdbcObjectStudentDAO"
 		scope="singleton" init-method="init" destroy-method="destroy">
 		<!-- This is the datasource needed for JDBC Database Access -->
 		<property name="dataSource" ref="HsqldbDataSource" />
@@ -100,16 +100,16 @@
 	<!-- ********************************************************************************************** -->
 
 	<bean id="Import" 
-		class="at.ac.tuwien.ifs.bpse.basis.export_import.XmlExportImport">
+		class="at.ac.tuwien.ifs.bpse.basic.export_import.XmlExportImport">
 	</bean>
 
 	<bean id="Export"
-		class="at.ac.tuwien.ifs.bpse.basis.export_import.XmlExportImport">
+		class="at.ac.tuwien.ifs.bpse.basic.export_import.XmlExportImport">
 		<property name="encoding" value="utf-8" />
 	</bean>
 
 	<bean id="HtmlExport"
-		class="at.ac.tuwien.ifs.bpse.basis.export_import.HtmlExport">
+		class="at.ac.tuwien.ifs.bpse.basic.export_import.HtmlExport">
 		<property name="title" value="Export of Student-Data" />
 	</bean>
 
@@ -119,7 +119,7 @@
 		All Export Classes should be added to the exportFilter list
 	-->
 	<bean id="ExportComboModel"
-		class="at.ac.tuwien.ifs.bpse.basis.gui.ExportComboModel"
+		class="at.ac.tuwien.ifs.bpse.basic.gui.ExportComboModel"
 		init-method="init">
 		<!--  Register the actually available Export Filters: classes implementing the Export Interface -->
 		<property name="exportFilter">
@@ -131,7 +131,7 @@
 	</bean>
 	
 	<bean id="ExportMenuModel"
-		class="at.ac.tuwien.ifs.bpse.basis.gui.ExportMenuModel"
+		class="at.ac.tuwien.ifs.bpse.basic.gui.ExportMenuModel"
 		init-method="init">
 		<!--  Register the actually available Export Filters: classes implementing the Export Interface -->
 		<property name="exportFilter">
