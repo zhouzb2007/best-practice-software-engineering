@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <parent>
-        <artifactId>bpse-parent</artifactId>
-        <groupId>at.ac.tuwien.ifs.bpse</groupId>
-        <version>0.1.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>bpse-sample-basic</artifactId>
-    <groupId>at.ac.tuwien.ifs.bpse</groupId>
-    <name>Basic BPSE sample</name>
-    <description></description>
-    <dependencies>
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-        </dependency>
-    </dependencies>
+	<!--
+		The BPSE Examples consist of several modules. For simplicity the BPSE
+		Basic Example, which should be the entry point for students, is
+		deployed and can be build totally for its own. Nevertheless the BPSE
+		Examples can also be build by Maven in one run, therefor the projects
+		are organized in a single parent project. However if you are not
+		familiar with Maven multi projects ignore the <parent> section.
+	-->
+	<parent>
+		<artifactId>bpse-parent</artifactId>
+		<groupId>at.ac.tuwien.ifs.bpse</groupId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>bpse-sample-basic</artifactId>
+	<groupId>at.ac.tuwien.ifs.bpse</groupId>
+	<name>Basic BPSE sample</name>
+	<description></description>
+	<dependencies>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+		</dependency>
+	</dependencies>
 </project>
 
 
