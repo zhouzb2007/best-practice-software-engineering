@@ -143,21 +143,6 @@ public class StudentenTableModel extends AbstractTableModel {
 	/**
 	 * Change the Order and reload the Data.
 	 * 
-	 * @deprecated Use {@link #setOrder(SortOrder)} instead!
-	 * @param order
-	 *            the new Order
-	 * @see #order
-	 * @see #setOrder(SortOrder)
-	 */
-	public void setOrder(String order) {
-		log.info("Order Changed: reading data...");
-		this.order = order;
-		reload();
-	}
-
-	/**
-	 * Change the Order and reload the Data.
-	 * 
 	 * @since 1.1
 	 * @param order
 	 *            the new Order

@@ -86,18 +86,6 @@ public interface IStudentDAO {
 	/**
 	 * Retrieves all students from the database.
 	 * 
-	 * @param order
-	 *            database column which the result set should be ordered by
-	 * @return List of type Student holding all students available
-	 * 
-	 * @deprecated Use {@link #getStudents(SortOrder)} instead!
-	 * @see #getStudents(SortOrder)
-	 */
-	public List<Student> getStudents(String order);
-
-	/**
-	 * Retrieves all students from the database.
-	 * 
 	 * @param SortOrder
 	 *            that the result set should be ordered by
 	 * @return List of type Student holding all students available
