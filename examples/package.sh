@@ -16,7 +16,7 @@ dest_basic="$deploydir/basic"
 dest_medium="$deploydir/medium"
 dest_core="$deploydir/core"
 dest_packages="$deploydir/src-package"
-packages="advanced/ basic/ core/ documentation/ medium/ pom.xml src/"
+packages="designpatterns/ advanced/ basic/ core/ documentation/ medium/ pom.xml src/"
 
 suffix=$(date +%k%M%j)
 
