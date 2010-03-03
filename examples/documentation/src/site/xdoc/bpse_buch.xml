@@ -22,16 +22,16 @@
             die Vielzahl an komplexen Komponenten-Frameworks, Werkzeugen und Entwurfsansätzen.
         </p>
         <p>
-            Das vorliegende Buch „Best Practice Software-Engineering" bietet Neu- und Wiedereinsteigern in die
+            Das vorliegende Buch "Best Practice Software-Engineering" bietet Neu- und Wiedereinsteigern in die
             komponentenorientierte Software-Entwicklung eine Einführung in die Materie durch eine abgestimmte
             Zusammenstellung von praxiserprobten Konzepten, Techniken und Werkzeugen für alle Aspekte eines
             erfolgreichen Projekts.
         </p>
         <p>
             Für moderne Software-Entwicklung sind eine Vielzahl von unterschiedlichen Fähigkeiten erforderlich, die
-            nur in richtiger Kombination zu einem erfolgreichen Ergebnis führen. Daher wird in diesem Buch besonderer
-            Wert darauf gelegt, nicht einzelne Techniken des Software-Engineerings isoliert zu betrachten, sondern
-            das effiziente Zusammenspiel verschiedener Aspekte darzustellen.
+            nur in richtiger Kombination zu einem erfolgreichen Ergebnis führen. Daher wird in diesem Buch
+            besonderer Wert darauf gelegt, nicht einzelne Techniken des Software-Engineerings isoliert zu
+            betrachten, sondern das effiziente Zusammenspiel verschiedener Aspekte darzustellen.
         </p>
         <p>
             Schwerpunkte liegen auf Vorgehensstrategien im Software-Lebenszyklus, Projektmanagement,
@@ -63,15 +63,22 @@
             </tr>
             <tr>
                 <td>Einführung in die Muster der Entwicklung</td>
-                <td>TODO</td>
+                <td>Die Beispiele die im Buch erwähnt werden finden sich in den <a href="download.html">Downloads</a>.</td>
+            </tr>
+            <tr>
+                <td>Techniken und Werkzeuge</td>
+                <td>Die Kombination von Build-Automatisierung, Testen, ... ist in allen Beispielen implementiert.</td>
+            </tr>
+            <tr>
+                <td>Checklisten und Beispiel-Dokumente</td>
+                <td></td>
             </tr>
         </table>
-            
-            
-            
-            
-            
+                        
     </section>
-      
+    <section name="Errata">
+        <subsection name="Seite x">
+        </subsection>
+    </section>
   </body>
 </document>

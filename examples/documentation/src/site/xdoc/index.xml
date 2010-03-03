@@ -23,6 +23,7 @@
             <p>Currently the <b>Medium (Web)</b> example is under heavy development and will be
             completely refactored until end of March. The reason is, that technology changes fast and we
             decided to move from the old JSF based example towards Wicket. Stay tuned!</p>
+            <p><b>This website will be updated on a weekly basis (each Wednesday)</b>.</p>
         </subsection>
 
       <subsection name="The Book">
@@ -41,6 +42,7 @@
                       <p>Find more information at the <a href="http://www.springer.com/spektrum+akademischer+verlag/informatik/software-entwicklung+und+datenbanken/book/978-3-8274-2486-0">publishers
                       website</a> or on <a
                       href="http://www.amazon.de/Best-Practice-Software-Engineering-Alexander-Schatten/dp/3827424860">Amazon.de</a>.</p>
+                      <p>Please also visit the dedicated <a href="bpse_buch.html">book-page</a> on this website to get more information on examples mentioned in the book, errata and more.</p>
                   </td>
               </tr>
           </table>
@@ -153,10 +155,10 @@
 				<p>
 					<ul>
 						<li>Development Setup - <font color="#009900">done</font></li>
-						<li>Sample Apps - <font color="#ff0000">in progress</font></li>
-						<li>Technologies - <font color="#ff0000">in progress</font></li>
-						<li>Software Patterns - <font color="#009900">done</font></li>
-						<li>Javadoc, Source, Test Source - <font color="#ff0000">in progress</font></li>
+						<li>Basic Sample - <font color="#009900">done</font></li>
+						<li>Medium (Wicket Web) Sample - <font color="#ff0000">under refactoring</font></li>
+						<li>Technologies - <font color="#ff0000">update in progress</font></li>
+						<li>Software Patterns - <font color="#009900">in review</font></li>
 					</ul>
 				</p>
       </subsection>
