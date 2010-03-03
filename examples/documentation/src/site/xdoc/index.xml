@@ -8,30 +8,42 @@
 
 	<body>
   	<section name="Best Practice Software Engineering">
-	 		<subsection name="Welcome to Best Practices Engineering Documentation">
-	 			<p><font color="#ff0000"><b>Note:</b></font>
-	 			One remark in the beginning: We update this site and the examples regularly. Especially for <b>students</b> we would suggest
-	 			to <b>return</b> to this documentation regularly</p>
-	 			<p>This site introduces a set of techniques, patterns and paradigms, which are used for 
-	 			developing our Best Practices Examples.<br />
-	 			It also presents the used architecture, external libraries and technologies.</p>
-			<p>These examples including the documentation is open source and can be used according to the 
-	 			<a href="http://www.apache.org/licenses/"><b>Apache licence</b></a>. So anyone can use 
-	 			the examples but we ask you to inform us whether you plan to work with our examples.</p>
-	 		<p>The sources for this site are available on <a
-            href="http://code.google.com/p/best-practice-software-engineering">Google Code</a></p>
-      </subsection>
+	    <subsection name="Welcome to Best Practices Engineering Documentation">
+            <p><font color="#ff0000"><b>Note:</b></font> One remark in the beginning: We update this site
+            and the examples regularly. Especially for <b>students</b> we would suggest to <b>return</b>
+            to this documentation regularly</p>
+            <p>This site introduces a set of techniques, patterns and paradigms, which are used for
+            developing our <b>Best Practices</b> examples.<br /> It also presents the used architecture,
+            external libraries and technologies.</p>
+            <p>These examples including the documentation is open source and can be used under Open
+            Source / Creative Commons licenses. So anyone can use the examples but we ask you to inform
+            us whether you plan to work with our examples. The <b>sources</b> for this site including all
+            examples, downloadable content and license details are available on <a
+            href="http://code.google.com/p/best-practice-software-engineering"><b>Google Code</b></a></p>
+            <p>Currently the <b>Medium (Web)</b> example is under heavy development and will be
+            completely refactored until end of March. The reason is, that technology changes fast and we
+            decided to move from the old JSF based example towards Wicket. Stay tuned!</p>
+        </subsection>
 
       <subsection name="The Book">
-          <p>
-              In March 2010 our book with the title <i>"Best Practice Software-Engineering, Eine praxiserprobte
-              Zusammenstellung von komponentenorientierten Konzepten, Methoden und Werkzeugen."</i> is released. The
-              publisher is "Spektrum Akademischer Verlag (Springer)". The book is in German; find more information
-              at the <a
-              href="http://www.springer.com/spektrum+akademischer+verlag/informatik/software-entwicklung+und+datenbanken/book/978-3-8274-2486-0">publishers
-              website</a> or on <a
-              href="http://www.amazon.de/Best-Practice-Software-Engineering-Alexander-Schatten/dp/3827424860">Amazon.de</a>.
-          </p>
+          <table>
+              <tr>
+                  <td>
+                      <img src="http://images.springer.com/cda/content/image/cda_displayimage.jpg?SGWID=0-0-16-673305-0" alt="Book-Cover"/>
+                  </td>
+                  <td>
+                      <p>In March 2010 our book with the title</p> 
+                      <p><i>"Best Practice Software-Engineering, Eine
+                      praxiserprobte Zusammenstellung von komponentenorientierten Konzepten, Methoden und
+                      Werkzeugen."</i></p> 
+                      <p>is released. The publisher is "Spektrum Akademischer Verlag
+                      (Springer)". The book is in German.</p> 
+                      <p>Find more information at the <a href="http://www.springer.com/spektrum+akademischer+verlag/informatik/software-entwicklung+und+datenbanken/book/978-3-8274-2486-0">publishers
+                      website</a> or on <a
+                      href="http://www.amazon.de/Best-Practice-Software-Engineering-Alexander-Schatten/dp/3827424860">Amazon.de</a>.</p>
+                  </td>
+              </tr>
+          </table>
       </subsection>
       
 	  <subsection name="Introducing Best Practices">
