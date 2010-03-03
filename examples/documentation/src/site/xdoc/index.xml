@@ -24,7 +24,9 @@
             completely refactored until end of March. The reason is, that technology changes fast and we
             decided to move from the old JSF based example towards Wicket. If you are interested in the
             old JSF example, please visit Google Code Repository, clone the repository and update to tag
-            "2010-02-26_before_medium_move". Stay tuned!</p> <p><b>This website will be updated on a
+            "2010-02-26_before_medium_move". Stay tuned!</p> 
+            <p>Also stay in contact with us by reading or <a href="http://best-practice-software-engineering.blogspot.com/">Blog</a>, where we discuss current SE related topics.</p>
+            <p><b>This website will be updated on a
             weekly basis (each Wednesday)</b>.</p>
         </subsection>
 
