@@ -72,14 +72,15 @@
                         <li>Persistence Layer utilizing Data Access Object Pattern in combination with JDBC Templates of the Spring framework and Dependency Injection</li>
                         <li>Modular Export/Import capabilities (it is possible to add a new export or import filter without modifying the existing code)</li>
                         <li>User Interface using Java Swing (coded manually without using a graphical UI builder!)</li>
+						<li>Full I18n to support multiple languages and string externalization</li>
                     </ul>
                 </p>
                 <p>
                     <b>Documentation requirements:</b>
                     
                     <ul>
-                        <li>The Java API documentation must be created using the Maven Javadoc plugin and the mvn site task</li>
-                        <li>All classes, variables and methods have to be documented in english</li>
+                        <li>The Java API documentation must be created using the Maven Javadoc plugin and the <code>mvn site</code> task</li>
+                        <li>All classes, variables and methods have to be documented in English</li>
                         <li>
                             Each package has to be documented. 
                             A <code>package-info.java</code> file has to be delivered for every package directory
@@ -126,9 +127,6 @@
                     <li><a href="technology/tech-maven.html">Maven</a> and its practices for code organization and lifecycle management (building, testing, packaging, documenting)</li>
                 </ul>
             </subsection>
-            <subsection name="Start the Application">
-                <p>The Basis.java class contains a static main method and can be used to start the GUI application. This can be done e.g., within Eclipse.</p>
-            </subsection>
             <subsection name="Used patterns">
                 <p>
                     Patterns are essential for any architecture in terms of
@@ -147,7 +145,42 @@
                         <li><a href="patterns/dependency_injection.html">Delegation</a> (Logging)</li>
                     </ul>
                 </p>
-            </subsection>            
+            </subsection>
+			<subsection name="Build and run the Application">
+				<p>The following steps must be taken to run the Basic Sample.</p>
+				<ol>
+					<li>Prerequisits:
+						<ul>
+							<li>Java, Eclipse and <a href="technology/tech-maven-basics.html" title="BPSE Maven Basics - How to install and use Maven">Maven</a> downloaded and installed</li>
+							<li><a href="download.html" title="Download page for the examples">Basic Sample</a> downloaded and unzipped</li>
+						</ul>
+					</li>
+					<li>Open a command line window and change to the folder where you unzipped the sample (contains at least a <code>pom.xml</code>).</li>
+					<li>Create the necessary Eclipse project files by typing and running <code>mvn eclipse:eclipse</code> within that folder.</li>
+					<li>Start Eclipse and choose a workspace if you use it for the first time.</li>
+					<li>Setup Maven repository variable:
+						<ul>
+							<li>Choose <a href="images/basic-eclipse-preferences.png"><em>Window - Preferences</em></a> from the menu.</li>
+							<li>Choose <a href="images/basic-classpath-variables.png"><em>Java - Build Path - Classpath Variables</em></a> from the tree view.</li>
+							<li>Select <a href="images/basic-m2-variable.png"><em>New</em></a>, enter <code>M2_REPO</code> as Name and choose the path of your Maven repository in the Dialog window.</li>
+						</ul>
+					</li>
+					<li>Import Basic Sample to Eclipse:
+						<ul>
+							<li>Right-click into the package explorer on the left side and choose <a href="images/basic-newproject.png"><em>New - Java Project</em></a>.</li>
+							<li><a href="images/basic-project-preferences.png">Enter</a> a project name (e.g. bpse-sample-basic) and choose the path to the directory of your prior unzipped project.</li>
+						</ul>
+					</li>
+					<li>Run tests and application:
+						<ul>
+							<li>Choose package <code>at.ac.tuwien.ifs.bpse.basic.test</code> from the <code>src/test/java</code> folder.</li>
+							<li>Right-click on <code>AllTests.java</code> and <a href="images/basic-start-tests.png"><em>Run as - JUnit Test</em></a>.</li>
+							<li>Choose package <code>at.ac.tuwien.ifs.bpse.basic</code> from the <code>src/main/java</code> folder.</li>
+							<li>Right-click on <code>Basis.java</code> and <a href="images/basic-start-app.png"><em>Run as - Java Application</em></a>.</li>
+						</ul>
+					</li>
+				</ol>
+			</subsection>
         </section>
     </body>
 </document>
