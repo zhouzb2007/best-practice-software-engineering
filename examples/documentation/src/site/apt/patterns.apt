@@ -27,6 +27,8 @@ Software and Design Patterns
   Usually, patterns inside one category complement eachother because they have the same underlying principles 
   for structuring code.
   
+  In this section a set of important patterns are outlined and explained. Additionally, in the {{{download.html} download}} section a small example outlining a series of patterns can be downloaded. This set of examples is used in our {{{bpse_buch.html}"Best Practice"}} book.
+  
   \ 
 
 	[[1]] {{{patterns_fundamental.html} Fundamental Design Patterns }} are general concepts, 
