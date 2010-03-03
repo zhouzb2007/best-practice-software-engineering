@@ -70,8 +70,8 @@
                 <td>Die Kombination von Build-Automatisierung, Testen, ... ist in allen Beispielen implementiert.</td>
             </tr>
             <tr>
-                <td>Checklisten und Beispiel-Dokumente</td>
-                <td></td>
+                <td>Techniken und Werkzeuge: Sourcecode-Management</td>
+                <td>Im Buch wird eine Überblick über SCM Ansätze gegeben; im <a href="technology/tech-scm-mercurial.html">Technology/SCM Dokument</a> finden Sie eine umfangreichere Einführung in verteilte Versionskontrolle.</td>
             </tr>
         </table>
                         
