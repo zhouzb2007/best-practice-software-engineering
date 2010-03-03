@@ -848,6 +848,16 @@ Open e.txt in a text editor, resolve conflict and save it.
             <subsection name="Collaboration Platforms">
                 Google Code, Bitbucket
             </subsection>
+            <subsection name="Further Information">
+                <p>There is a lot of additional tutorial and reference documentation for Mercurial, just some good
+                references here:</p>
+                <ul>
+                    <li><a href="http://mercurial.selenic.com/guide/">"Official" Mercurial Guide</a></li>
+                    <li><a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide by Brian O'Sullivan</a>: This book is available online or for Download as PDF or as <a href="http://www.amazon.com/gp/product/0596800673">O'Reilly book</a> for sale.</li>
+                    <li><a href="http://hginit.com/">Joel Spolsky's Mercurial Tutorial (Hg Init)</a></li>
+                    <li>And finally a <a href="http://stevelosh.com/blog/2009/08/a-guide-to-branching-in-mercurial/">Guide to Branching in Mercurial</a> (in comparison to GIT) by Steve Losh</li>
+                </ul>
+            </subsection>
         </section>
     </body>
 </document>
