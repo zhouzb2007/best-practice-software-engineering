@@ -22,8 +22,10 @@
             href="http://code.google.com/p/best-practice-software-engineering"><b>Google Code</b></a></p>
             <p>Currently the <b>Medium (Web)</b> example is under heavy development and will be
             completely refactored until end of March. The reason is, that technology changes fast and we
-            decided to move from the old JSF based example towards Wicket. Stay tuned!</p>
-            <p><b>This website will be updated on a weekly basis (each Wednesday)</b>.</p>
+            decided to move from the old JSF based example towards Wicket. If you are interested in the
+            old JSF example, please visit Google Code Repository, clone the repository and update to tag
+            "2010-02-26_before_medium_move". Stay tuned!</p> <p><b>This website will be updated on a
+            weekly basis (each Wednesday)</b>.</p>
         </subsection>
 
       <subsection name="The Book">
