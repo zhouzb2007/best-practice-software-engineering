@@ -7,6 +7,7 @@
 
     <body>
         <section name="Technology: Sourcecode Management (SCM)">
+            <p><b>Author: <a href="http://www.schatten.info">Alexander Schatten</a></b></p>
             <subsection name="Sourcecode Management">
                 <p>Sourcecode and other resources like icons, configuration files or documentation are the core assets of a software project. Hence careful management of these resources is an important issue, particularly in team collaboration. The following aspects have to be taken into consideration:</p>
                 
@@ -54,7 +55,7 @@
 1: $ hg status
 2: ? a.txt
 </source>
-                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text. Commands in Mercurial can be abbreviated as long as the abbreviation is clear, e.g. instead of <code>hg status</code> <code>hg st</code> can be used.</p>
+                <p>The <code>$</code> sign indicates that the following text in this line should be entered as a command in the command line ("hg status" in this case). In the next line (without <code>$</code>) the result from the command is shown ("? a.txt" in this example). The lines are numbered for easy reference within the text. Commands in Mercurial can be abbreviated as long as the abbreviation is clear, e.g. <code>hg st</code> can be used instead of <code>hg status</code>.</p>
                 <p>The <code>echo "text" >> filename</code> Unix command is used to add text to files. Of course any visual editor can be used instead. So the previous <code>echo</code> command can be replaced with (1) Open a text editor (2) write "text" (3) save the text file under the name "filename" The <code>echo</code> command is used to provide complete working examples.</p>
                 <p>Some output maybe abbreviated, e.g. in the <code>glog</code> output often user and date lines are removed to keep listings short.</p>
             </subsection>
