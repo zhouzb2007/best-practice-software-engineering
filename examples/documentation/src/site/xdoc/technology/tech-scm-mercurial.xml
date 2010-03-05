@@ -21,7 +21,7 @@
             </subsection>
             
             <subsection name="Centralised vs. Distributed SCM">
-                <p>Two different approaches to SCM can be distinguished: (1) centralised and (2) de-centralised systems:</p>
+                <p>Two different approaches to SCM can be distinguished: (1) centralised and (2) distributed systems:</p>
                 <p>Centralised systems like subversion work server based. A central server is responsible to keep the version and metadata for a project. On the client side, working copies can be pulled from the server. Changes on the clients are committed back to the server.</p>
                 <p>Distributed systems are very lightweight systems and do not rely on a central repository or server (allthough they sometimes use central repositories "by definition"). Every developer has a complete repository (including the whole history and metadata) on his machine. Distributed SCM systems allow a variety of collaboration patterns. Most new projects use distributed SCM systems. Some concrete advantages over centralised systems are:</p>
                 <ul>
