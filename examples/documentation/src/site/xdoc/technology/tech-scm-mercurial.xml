@@ -97,7 +97,7 @@ hgext.rebase =
             <subsection name="Creating a New Project">
 <source>
 $ mkdir hgexample
-$ cd hgdoc
+$ cd hgexample
 $ hg init
 </source>
                 <p>First a new directory <code>hgexample</code> is created, then the directory is changed and <code>hg init</code> prepares this directory and all subdirectories to be from now on under Mercurial version control. That's all that is required to create a new repository. The <code>init</code> command can also be used in a directory that already contains files.</p>
