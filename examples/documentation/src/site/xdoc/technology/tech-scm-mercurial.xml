@@ -62,22 +62,22 @@
             <subsection name="How to Read this Tutorial">
                 <p>For a basic understanding of distributed SCM and Mercurial (e.g. for individual use) read the sections:</p>
                 <ul>
-                    <li>Getting Started</li>
-                    <li>Creating a new Project</li>
-                    <li>Cloning an Existing Project</li>
-                    <li>Making Changes</li>
-                    <li>Status of the Repository</li>
-                    <li>Navigating in the Version History</li>
-                    <li>Adding, (Re)moving and Ignoring Files</li>
+                    <li><a href="Getting_Started">Getting Started</a></li>
+                    <li><a href="Creating_a_New_Project">Creating a new Project</a></li>
+                    <li><a href="Cloning_an_Existing_Project">Cloning an Existing Project</a></li>
+                    <li><a href="Making_Changes">Making Changes</a></li>
+                    <li><a href="Status_of_the_Repository">Status of the Repository</a></li>
+                    <li><a href="Navigating_in_the_Version_History">Navigating in the Version History</a></li>
+                    <li><a href="Adding_Removing_and_Ignoring_Files">Adding, (Re)moving and Ignoring Files</a></li>
                 </ul>
                 <p>More advanced functionality is described in the following sections (this will be needed particularly as soon as team collaboration is needed):</p>
                 <ul>
-                    <li>Sharing Changes</li>
-                    <li>The Version History: Working with Revisions</li>
-                    <li>Branches and Tags</li>
-                    <li>Merging and Rebasing</li>
+                    <li><a href="Sharing_Changes">Sharing Changes</a></li>
+                    <li><a href="The_Version_History:_Working_with_Revisions">The Version History: Working with Revisions</a></li>
+                    <li><a href="Branches_and_Tags">Branches and Tags</a></li>
+                    <li><a href="Merging_and_Rebasing">Merging and Rebasing</a></li>
                 </ul>
-                <p>Finally a short overview on "modern" collaboration platforms that support DSCM is given in the final section and a short overview on helpful tools is given.</p>
+                <p>Finally a short overview on <a href="Collaboration_Platforms">"modern" collaboration platforms</a> that support DSCM is given in the final section, a short overview on <a href="Tools">helpful tools</a> and <a href="Further_Information">further information resources</a> is given.</p>
             </subsection>
             <subsection name="Getting Started">
                 <p>For installation instructions follow the documentation on the <a href="http://mercurial.selenic.com/">Mercurial website</a>. Plugins for Eclipse and other IDEs are available.</p>
@@ -147,7 +147,7 @@ $ hg clone ssh://username@server.com//home/project/repo project_clone
                     <li>Line 9 and following display the first changeset in the repository.</li>
                 </ul>
                 
-                <p>The <code>user</code>, <code>date</code> and <code>summary</code> fields should be clear. The changeset version is a little bit more tricky: As Mercurial is a distributed version control system, there is not one central server instance that can provide unique increasing version numbers. Hence Mercurial generates  changeset ids that are unique ("684afa0debd6" in the example above) even over multiple users in cloned repositories. The counter ("0") is only a convenience counter that helps navigation within one repository and must not be used to identify changesets between clones of repositories.</p>
+                <p>The <code>user</code>, <code>date</code> and <code>summary</code> fields should be clear. The changeset version is a little bit more tricky: As Mercurial is a distributed version control system, there is not one central server instance that can provide unique increasing version numbers. Hence Mercurial generates  changeset ids that are unique ("684afa0debd6" in the example above) even over multiple users in cloned repositories. <b>The counter ("0") is only a convenience counter</b> that helps navigation within one repository and <b>must not be used to identify changesets between clones of repositories</b>.</p>
                             </subsection>
             <subsection name="Status of the Repository">
                 <p>To get an idea about the status the repository or the working copy is in, three commands are important to understand:</p>
