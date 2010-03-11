@@ -352,7 +352,8 @@ Developer B (received bundle "changes.hg" via email):
             </ul>
             
             <p>Instead of the <code>bundle</code> command also <code>export</code> and <code>import</code> can be used. However to share multiple revisions bundle is much easier to use and more "resilient": <code>pull</code> only imports changesets fromt the bundle to the repository that are not yet in the repository.</p>
-            
+
+            <p><i>Again a </i> <b>warning </b> <i>here: the short revision numbers (counting 0, 1, 2, ...) are only for convenience use within one repository. They must not be used to identify revisions between clones of repositories. For this purpose always the long ID has to be used!</i></p>
             </subsection>
 
             <subsection name="The Version History: Working with Revisions">
@@ -487,7 +488,7 @@ Developer B (received bundle "changes.hg" via email):
                 <p>To execute a backout, a merge operation is needed. Branches, merge and rebase are explained in the next sections.</p>
             </subsection>
             <subsection name="Branches and Tags">
-                <p>A <b>Tag</b> is a useful to mark a certain version in the repository. It is a convenience function like a bookmark in the web browser. Technically spoken, tags are not necessary, as version IDs are unique identifiers of versions. One could simply make an external list with IDs that have a "special meaning".  Yet it is convenient to tag certain revisions with names e.g. "Version_1.2" using the <code>tag</code> command in line 1:</p> 
+                <p>A <b>Tag</b> is useful to mark a certain version in the repository. It is a convenience function like a bookmark in the web browser. Technically spoken, tags are not necessary, as version IDs are unique identifiers of versions. One could simply make an external list with IDs that have a "special meaning".  Yet it is convenient to tag certain revisions with names e.g. "Version_1.2" using the <code>tag</code> command in line 1:</p> 
 <source>
 1: $ hg tag -r 143 Version_1.2
 2: $ hg tags
@@ -841,7 +842,7 @@ Open e.txt in a text editor, resolve conflict and save it.
                     <li>Line 9: The <code>resolve</code> command marks that the conflict is resolved</li>
                     <li>Line 10-13: The rebase is continued and executed.</li>
                 </ul>
-                <p>Depending on the operating system and tools installed various diff-tools can be used to support the resolving step. </p>
+                <p><i>Depending on the operating system and tools installed various merge-tools can be used to support the resolving step. Also, the <i>default</i> settings which merge tool is used by Mercurial is different in various operating systems. Please read the <a href="http://mercurial.selenic.com/wiki/MergeProgram">Mercurial documentation</a> to modify the merge tool settings.</i></p>
             </subsection>
             <subsection name="Tools">
                 hg serve, Eclipse Plugins, TortoiseHG
