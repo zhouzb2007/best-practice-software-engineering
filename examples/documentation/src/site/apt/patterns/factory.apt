@@ -32,7 +32,7 @@ to localize the knowledge of which helper subclass is the delegate.
   
 []
 
-  A Factory Method is often used in combination with the  {{{interface.html} Interface Pattern}}.
+  A Factory Method is often used in combination with the  {{{./interface.html} Interface Pattern}}.
   It is used heavily by generic Frameworks such as Spring.
   
 * Related Patterns
@@ -40,7 +40,7 @@ to localize the knowledge of which helper subclass is the delegate.
   * Abstract Factory: is more high-level than a factory method, it is common for objects obtained
   through an abstract factory to have factory methods.
   
-  * {{{objectpool.html} Object Pool}}: uses factory methods to create the objects it manages.
+  * {{{./objectpool.html} Object Pool}}: uses factory methods to create the objects it manages.
   
 * Varieties
 

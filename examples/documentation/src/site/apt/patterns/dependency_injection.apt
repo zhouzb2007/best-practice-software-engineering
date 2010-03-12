@@ -72,10 +72,10 @@ Dependency Injection
 
 * Related Patterns
 
-  * {{{factory.html} Abstract Factory}}: allows an application to acquire objects and components without exposing too much information
+  * {{{./factory.html} Abstract Factory}}: allows an application to acquire objects and components without exposing too much information
   about how to components fit together or what dependencies each component might have.
   
-  * {{{container.html} Container}}: allows objects to be configured by the container instead of the client. A container can configure
+  * {{{./container.html} Container}}: allows objects to be configured by the container instead of the client. A container can configure
   objects declaratively, meaning they can be configured via some external facilities, like XML files.
 	
 

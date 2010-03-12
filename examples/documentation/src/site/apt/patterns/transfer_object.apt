@@ -40,7 +40,7 @@ Transfer Object
 
 * Related Patterns
 
-  * {{{dao.html} Data Access Object}}: A Transfer Object pattern is often used in combination with a Data Access
+  * {{{./dao.html} Data Access Object}}: A Transfer Object pattern is often used in combination with a Data Access
   Object pattern.
 
 * Structure

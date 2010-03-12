@@ -45,11 +45,11 @@ Delegation Pattern
 
 * Related Patterns
 
-  * {{{decorator.html} Decorator}}: is similar to delegation and uses it heavily to accomplish
+  * {{{./decorator.html} Decorator}}: is similar to delegation and uses it heavily to accomplish
   its task.
   
-  * Delegation is very common, it is used by many other pattern like {{{visitor.html} Visitor}}, 
-  {{{observer.html} Observer}}, {{{strategy.html} Strategy}}, and {{{event_listener.html} Event Listener}}.
+  * Delegation is very common, it is used by many other pattern like {{{./visitor.html} Visitor}}, 
+  {{{./observer.html} Observer}}, {{{./strategy.html} Strategy}}, and {{{./event_listener.html} Event Listener}}.
 
 * Structure
 

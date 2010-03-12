@@ -36,7 +36,7 @@ Facade Pattern
 
   * Abstract Factory can be used with Facade to provide an interface for creating subsystem objects. 
   
-  * Facades are often implemented as {{{singleton.html} Singletons}} when only one 
+  * Facades are often implemented as {{{./singleton.html} Singletons}} when only one 
     facade per subsystem is needed/desired.
      
   * Mediator is similar to Facade in that in abstracts functionality of existing classes. <[GoF, "Design Patterns"]>.

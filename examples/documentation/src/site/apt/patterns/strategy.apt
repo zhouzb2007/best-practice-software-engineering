@@ -66,7 +66,7 @@ protected void paintBorder(Graphics g) {
 
   Instead of implementing the paintBorder() method with one huge switch statement and directly
   calling the methods which do the drawing, the Swing developers have decided to use the Strategy
-  pattern in combination with {{{delegation.html} Delegation}}. <<Here, the method which paints a components
+  pattern in combination with {{{./delegation.html} Delegation}}. <<Here, the method which paints a components
   border is provided by the border object.>>
   
   The Delegation pattern becomes obvious by the "this" reference passed to the paintBorder method of the

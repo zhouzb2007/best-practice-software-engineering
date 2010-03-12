@@ -26,10 +26,10 @@ Object Pool Pattern
 
 * Related Patterns
 
-  * {{{factory.html} Factory Method}}: The Factory Method pattern can be used to encapsulate the creation logic for objects. However, 
+  * {{{./factory.html} Factory Method}}: The Factory Method pattern can be used to encapsulate the creation logic for objects. However, 
   it does not manage them after their creation, the object pool pattern keeps track of the objects it creates.
   
-  * {{{singleton.html} Singleton}}: Object Pools are usually implemented as Singletons.
+  * {{{./singleton.html} Singleton}}: Object Pools are usually implemented as Singletons.
 
 * Structure
 

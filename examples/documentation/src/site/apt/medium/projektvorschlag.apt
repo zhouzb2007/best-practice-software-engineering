@@ -105,7 +105,7 @@ Projektvorschlag
   [Bewertung durch Tutoren] Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf.
     
   [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten.
-~~\item Rundmail-Versand --- 
+~~\item Rundmail-Versand
     
   [Datenrücksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden.
    

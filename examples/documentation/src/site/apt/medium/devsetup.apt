@@ -8,7 +8,7 @@
 Setup of development environment for the SAT project
 
   This guideline provides all of the information needed to setup the sat development environment.
- (please find the examples in {{{download.html} <<Download>>}} section)
+ (please find the examples in {{{./download.html} <<Download>>}} section)
 
 * Installation Instructions
 
@@ -88,27 +88,9 @@ http://m2eclipse.sonatype.org/update/
 
 	
 
-~~	Download your copy of the example sample from {{{download.html} <<Download>>}} section and 
+~~	Download your copy of the example sample from {{{./download.html} <<Download>>}} section and 
 ~~	unpack the archive to a folder of your choice.
 	
 ~~	After extracting the archive, you find the following folder structure
 
-~~---
-~~+- root folder (from 1.)
-~~|
-~~|`-- advanced 
-~~|	`-- subfolders
-~~|
-~~|`-- basic 
-~~|	`-- subfolders
-~~|
-~~|`-- core
-~~|	`-- subfolders
-~~|
-~~|`-- medium
-~~|	`-- subfolders
-~~|
-~~`- pom.xml
-~~---
-
-~~	(detailed information can be found at {{{architecture.html} <<The sample apps>>}} section)
+~~	(detailed information can be found at {{{./architecture.html} <<The sample apps>>}} section)

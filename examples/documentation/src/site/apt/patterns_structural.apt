@@ -16,10 +16,10 @@ Structural Design Patterns
   "Structural <class patterns> use inheritance to compose interfaces or implementations."
   <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
   
-  	* {{{patterns/dao.html}<<Data Access Object>>}} abstracts and encapsulates all access to a data source letting
+  	* {{{./patterns/dao.html}<<Data Access Object>>}} abstracts and encapsulates all access to a data source letting
   	the implementation underneath vary while presenting a uniform interface to your program.
   	
-  	* {{{patterns/transfer_object.html}<<Transfer Object>>}} encapsulates all the data associated with a specific type
+  	* {{{./patterns/transfer_object.html}<<Transfer Object>>}} encapsulates all the data associated with a specific type
   	of entity, for a example a book, date, or bank account. It helps reduce the amount of method calls and makes the 
   	actual method call much nicer to read.
   \ 
@@ -30,13 +30,13 @@ Structural Design Patterns
   
 ~~  	* <<Composite>> describes how to build a class hierarchy consisting of two kinds of objects: primitive and composite. The composite objects let you compose primitive and other composite objects into arbitrarily complex structures.
   
-  	* {{{patterns/decorator.html}<<Decorator>>}} describes how to add responsibilities to objects dynamically. It composes objects recursively to allow an open-ended number of additional responsibilities.
+  	* {{{./patterns/decorator.html}<<Decorator>>}} describes how to add responsibilities to objects dynamically. It composes objects recursively to allow an open-ended number of additional responsibilities.
   
-  	* {{{patterns/facade.html}<<Facade>>}} shows how to make a single object represent an entire subsystem. It carries out its responsibility by forwarding messages to the objects it represents.
+  	* {{{./patterns/facade.html}<<Facade>>}} shows how to make a single object represent an entire subsystem. It carries out its responsibility by forwarding messages to the objects it represents.
   
 ~~  	* <<Flyweight>> defines a structure for sharing objects focusing on space efficiency. Flyweight objects do not define a context dependent state, any additional information they need to perform their task is passed to them when needed.
   
-  	* {{{patterns/proxy.html}<<Proxy>>}} acts as a placeholder for another object. A level of indirection is introduced hence a Proxy can be used in different ways - it can restrict, enhance or alter properties of the object it represents.
+  	* {{{./patterns/proxy.html}<<Proxy>>}} acts as a placeholder for another object. A level of indirection is introduced hence a Proxy can be used in different ways - it can restrict, enhance or alter properties of the object it represents.
   
   
 * References / More Info

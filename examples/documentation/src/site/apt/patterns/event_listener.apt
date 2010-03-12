@@ -25,9 +25,9 @@ Event Listener
 
 * Related Patterns
 
-  * {{{observer.html} Observer}}: The Event Listener pattern is a special flavor of the Observer pattern
+  * {{{./observer.html} Observer}}: The Event Listener pattern is a special flavor of the Observer pattern
   
-  * {{{delegation.html} Delegation}}: Event Listeners usually use delegation to accomplish their tasks.
+  * {{{./delegation.html} Delegation}}: Event Listeners usually use delegation to accomplish their tasks.
 
 * Structure
 

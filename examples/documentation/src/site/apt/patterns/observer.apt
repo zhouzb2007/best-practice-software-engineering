@@ -65,11 +65,11 @@ Observer
   
 * Related Patterns
 
-  * The Observer pattern uses {{{delegation.html} delegation}} to accomplish its task.
+  * The Observer pattern uses {{{./delegation.html} delegation}} to accomplish its task.
   
-  * {{{event_listener.html} Event Listener}} is similar to the Observer pattern
+  * {{{./event_listener.html} Event Listener}} is similar to the Observer pattern
   
-  * Observer is a cornerstone in the {{{mvc.html} Model View Controller}} paradigm.
+  * Observer is a cornerstone in the {{{./mvc.html} Model View Controller}} paradigm.
 
 * Structure
 
