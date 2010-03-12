@@ -10,7 +10,7 @@
         <relativePath>../</relativePath>
     </parent>
 	
-	<artifactId>bpse-wicket-medium</artifactId>
+	<artifactId>medium</artifactId>
 	<packaging>war</packaging>
 	<name>Medium BPSE sample</name>
 	<description> The medium step of the SE-sample. The data layer is implemented with Hibernate using HibernateTemplate of the Springframework. The service layer uses advanced features of Spring, 

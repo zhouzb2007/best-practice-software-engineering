@@ -10,7 +10,7 @@
 	<body>
 		<section name="Download Section">
 			<subsection name="Packages">
-				<p>Find here the packages of the best practice examples:</p>
+				<p>This archive contains the basic example sourcecode, the implemented design patterns discussed in the BPSE Book and this website documentation as apache maven projects.</p>
                 <!--
 					<ul>
 						<li>Zip-Archive <a href="http://best-practice-software-engineering.ifs.tuwien.ac.at/src-package/BPSE.zip"> <img src="images/download.gif" /></a> (4.589 KB)</li>
@@ -20,7 +20,6 @@
                 -->
 					<ul>
 						<li>Zip-Archive <a href="src-package/BPSE.zip"> <img src="images/download.gif" /></a></li>
-						<li>Tar-gz Archive <a href="src-package/BPSE.tar.gz"> <img src="images/download.gif" /></a></li>
 					</ul>
 			</subsection>
 		</section>

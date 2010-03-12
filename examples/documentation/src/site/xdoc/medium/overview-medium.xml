@@ -36,22 +36,6 @@ information system platform. The following use case diagram illustrates the main
 			</tr>
 		</table>
 		</div>
-                
-                <p>
-                    <b>Technical features:</b>
-                    <ul>
-                        <li>Lifecycle Management with Maven</li>
-                        <li>Relational database HSqlDB</li>
-                        <li>Full inline documentation (Javadoc)</li>
-                        <li>Unittesting with JUnit</li>
-                        <li>Logging via Log4J Framework</li>
-                        <li>Persistence Layer utilizing Data Access Object Pattern in combination with JDBC Templates of the Spring framework and Dependency Injection</li>
-                        <li>Object Relational Mapping Tool Hibernate, in order to persist domain objects. The domain objects are facilitated with Hibernate annotations</li>
-                        <li>Webserver can be run with Jetty, by using Maven plugin</li>
-                        <li>Presentation layer based on Java Server Faces, an official standard of sun</li>
-                        <li>My faces as JSF implementation</li>
-                    </ul>
-                </p>
                 <p>
                     <b>Documentation requirements:</b>
                     
@@ -65,7 +49,37 @@ information system platform. The following use case diagram illustrates the main
                         </li>
                     </ul>
                 </p>
-                Your programed basic sample should later be used as a foundation for further development.
+            </subsection>
+         
+         <subsection name="Architecture">
+			<div align="center">
+                  	<img src="../images/Architecture_Medium.png" />
+                  </div>
+			The domain model is implemented with Plain Old Java Objects (POJOs) enhanced with Hibernate Annotations in order to persist 
+domain objects. The service layer and DAO layer are enhanced with the aspect layer. We engrid the aspect layer from the service and dao layer
+because aspects are cross cutting concerns which can be used over different layers. In order to use the advice layer we define proxies 
+for our DAOs and Service objects by using Spring.
+The interface between service and presentation layer is the controller layer. This is an important point, because a controller is not a GUI
+component, such as a listener. The main task of a controller is to prepare data for the service layer, call it and doing further application
+flow. The presentation layer and controller layer are based on JSF (Java Server Faces). We introduce a JsfBeanManager, which provides methods
+to get and set managed beans in the JSF context. All web pages are implemented as Java Server Pages (JSPs) using JSF tags. 
+            </subsection>
+
+
+            <subsection name="Used technology">
+                    <ul>
+                    	<li>Lifecycle Management with Maven</li>
+                        <li>Spring-beans to annotate domain objects for persiting</li>
+                        <li>Object mapping tool iBATIS for persistence</li>
+                        <li>HSQLDB or any relational database supported by iBATIS</li>
+                        <li>Persistence Layer utilizing Data Access Object Pattern in combination with JDBC Templates of the Spring framework and Dependency Injection</li>
+                        <li>Unittesting with JUnit</li>
+                        <li>Logging via Log4J Framework</li>
+                        <li>AOP (Aspect Oriented Programing) by using Spring and Proxies</li>
+                        <li>Apache Wicket</li>
+                        <li>Webserver can be run with Jetty, by using Maven plugin</li>
+                        <li>Full inline documentation (Javadoc)</li>
+                    </ul>
             </subsection>
          
         </section>

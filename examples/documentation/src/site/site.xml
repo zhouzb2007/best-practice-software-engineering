@@ -36,42 +36,57 @@
             <item name="Medium Sample" href="medium/overview-medium.html">
             	<item name="Projektvorschlag" href="medium/projektvorschlag.html"/>
             	<item name="Projektauftrag" href="medium/projektauftrag.html"/>
-            	<item name="Checklisten" href="medium/checklists.html"/>
+            	<!--
             	<item name="Architecture" href="medium/arch-medium.html"/>
             	<item name="Getting Started" href="medium/getting-started-medium.html"/>
             	<item name="Dev Setup" href="medium/devsetup.html"/>
-            	<item name="Akteure" href="medium/actors.html"/>
+            	-->
+            	<item name="Actors" href="medium/actors.html"/>
+            	<!--
             	<item name="Vertikale Arbeitspakete" href="medium/verticalRoles.html"/>
-            	<item name="Domaenenmodell" href="medium/domain.html"/>
-            	<item name="Verteilungdiagramm" href="medium/deployment.html"/>
-            	<item name="UML" href="medium/usecases.html">
+            	-->
+            	<item name="Domain Model" href="medium/domain.html"/>
+            	<item name="Deployment" href="medium/deployment.html"/>
+            	<item name="UML Use Cases" href="medium/usecases.html">
             		<item name="Account" href="medium/usecases_account.html"/>
+            		<!--
             		<item name="Admin" href="medium/usecases_admin.html"/>
+            		-->
             		<item name="Bewertung" href="medium/usecases_bewertung.html"/>
+            		<!--
             		<item name="Fragebogen" href="medium/usecases_fragebogen.html"/>
+            		-->
             		<item name="LVA" href="medium/usecases_lva.html"/>
             		<item name="Terminverwaltung" href="medium/usecases_termin.html"/>
+            		<!--
             		<item name="Gruppenverwaltung" href="medium/usecases_groups.html"/>
+            		-->
             	</item>
             </item>
-            
+            <!--
             <item name="Advanced Sample" href="arch-advanced.html"/>
-            
+            -->
             <item name="Javadoc" href="technology/javadoc.html">
                 <item name="Core Module" href="core/apidocs/index.html"/>
                 <item name="Basic Module" href="basic/apidocs/index.html"/>
+                <!--
                 <item name="Medium Module" href="medium/apidocs/index.html"/>
+                -->
             </item>
 
             <item name="Source" href="xref-source.html">
                 <item name="Core Module" href="core/xref/index.html"/>
                 <item name="Basic Module" href="basic/xref/index.html"/>
+                <!--
                 <item name="Medium Module" href="medium/xref/index.html"/>
+                -->
             </item>
 
             <item name="Test Source" href="xref-source.html">
                 <item name="Basic Module" href="basic/xref-test/index.html"/>
+                <!--
                 <item name="Medium Module" href="medium/xref-test/index.html"/>
+                -->
             </item>
         </menu>
         <menu name="Best Practices">
