@@ -8,7 +8,7 @@
 Setup of BP development environment
 
   This guideline provides all of the information needed to setup the best practice development environment 
- (please find the examples in {{{download.html} <<Download>>}} section.
+ (please find the examples in {{{./download.html} <<Download>>}} section.
 
 * Installation Instructions
 
@@ -95,7 +95,7 @@ Maven version: 2.0.4 (depends on the version you installed)
 
 * Example installation
 
-	Download your copy of the example sample from {{{download.html} <<Download>>}} section and 
+	Download your copy of the example sample from {{{./download.html} <<Download>>}} section and 
 	unpack the archive to a folder of your choice.
 	
 	After extracting the archive, you find the following folder structure
@@ -118,12 +118,12 @@ Maven version: 2.0.4 (depends on the version you installed)
 `- pom.xml
 ---
 
-	(detailed information can be found at {{{architecture.html} <<The sample apps>>}} section)
+	(detailed information can be found at {{{./architecture.html} <<The sample apps>>}} section)
 
 	<<General>>
 	
 	You then have to use Maven downloading all the dependencies (used libraries in project; for more information see 
-	{{{technology/tech-maven.html} <<Maven technology page>>}}). 
+	{{{./technology/tech-maven.html} <<Maven technology page>>}}). 
 	Therefore you execute <<mvn install>> in your <<root>> and <<core>> folder (in your console).
 	<<Note>>: All mvn commands are executed in your console.
 	

@@ -55,9 +55,9 @@ or sophisticated reference to an object than just a simple pointer.
 
 * Related Patterns
 
-  * Usually proxies use some form of the {{{facade.html} facade}} pattern to supply a unified interface.
+  * Usually proxies use some form of the {{{./facade.html} facade}} pattern to supply a unified interface.
 
-  * It is similar to the {{{decorator.html} decorator}} pattern which might be a more specific case
+  * It is similar to the {{{./decorator.html} decorator}} pattern which might be a more specific case
   of the use of a proxy.
 
 * Structure

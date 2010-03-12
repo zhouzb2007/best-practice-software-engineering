@@ -22,7 +22,7 @@ Container Pattern
      {{{http://java.sun.com/j2se/1.5.0/docs/api/java/util/Hashtable.html} Hashtable}}.
   
   *  Within the Spring Framework containers represent much more higher level concepts 
-     such as inversion of control (IoC). See {{{dependency_injection.html} dependency injection}} for a sample 
+     such as inversion of control (IoC). See {{{./dependency_injection.html} dependency injection}} for a sample 
      implementation of IoC.
   
   *  Enterprise beans are software components that run in a special environment called an EJB 
@@ -42,7 +42,7 @@ Container Pattern
   * {{{http://java.sun.com/j2se/1.5.0/docs/guide/collections/} Java Collections Framework}}
   The Java collections framework is a unified architecture for representing collections.
   
-  * {{{dependency_injection.html} Dependency Injection}} is a high level implementation of the inversion of 
+  * {{{./dependency_injection.html} Dependency Injection}} is a high level implementation of the inversion of 
   control pattern which uses containers.
 
 * Structure

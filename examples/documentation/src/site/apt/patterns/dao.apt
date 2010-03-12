@@ -41,10 +41,10 @@ Data Access Object
 
 * Related Patterns
 
-  * {{{factory.html} Abstract Factory}}: Applications often use a Factory to select the right DAO implementation
+  * {{{./factory.html} Abstract Factory}}: Applications often use a Factory to select the right DAO implementation
   at run time.
   
-  * {{{transfer_object.html} Transfer Object}}: The DAO pattern often uses a Transfer Object to send data from the
+  * {{{./transfer_object.html} Transfer Object}}: The DAO pattern often uses a Transfer Object to send data from the
   data source to its client and vice versa. 
 
 * Structure

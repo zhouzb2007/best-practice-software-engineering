@@ -25,9 +25,9 @@ Creational Design Patterns
   <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612].> 
   The main drawback of this approach is that it can require creating a new subclass just to change the class of the product. Such changes can cascade. For example, when the product creator is itself created by a factory method, then you have to override its creator as well.
   
-  	* {{{patterns/factory.html}<<Factory Method>>}} defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+  	* {{{./patterns/factory.html}<<Factory Method>>}} defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
   
-    * {{{patterns/objectpool.html}<<Object Pool>>}} manages and creates instances of a class that can be used interchangeably. These created objects could be expensive to create or maybe only a limited number of one kind of object should
+    * {{{./patterns/objectpool.html}<<Object Pool>>}} manages and creates instances of a class that can be used interchangeably. These created objects could be expensive to create or maybe only a limited number of one kind of object should
   	be created - the Object Pool manages these objects also after they are instantiated unlike the Factory patterns. The Object Pool pattern, when used in the right place, can result in a dramatic improvement in speed while lowering memory requirements.
    
   \ 
@@ -36,9 +36,9 @@ Creational Design Patterns
   <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612].> 
   They involve creating a new "factory object" whose responsibility is to create product objects.
 
-  	* {{{patterns/factory.html}<<Abstract Factory>>}} provides an interface for creating families of related or dependent objects without specifying their concrete classes. The factory object produces objects of several classes.
+  	* {{{./patterns/factory.html}<<Abstract Factory>>}} provides an interface for creating families of related or dependent objects without specifying their concrete classes. The factory object produces objects of several classes.
   	
-  	* {{{patterns/singleton.html}<<Singleton>>}} ensures a class has only one instance at all times and provides one global point of access to it.
+  	* {{{./patterns/singleton.html}<<Singleton>>}} ensures a class has only one instance at all times and provides one global point of access to it.
   	
   	
 ~~  	* <<Builder>> separates the construction of a complex object from its representation so that the same construction process can create different representations. The factory object builds a complex product incrementally using a correspondingly complex protocol.

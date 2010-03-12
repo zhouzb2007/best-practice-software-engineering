@@ -64,11 +64,11 @@ Model View Controller Pattern
   Controllers, Value Objects, Session facades, Business Delegates and Data Access Objects used by the MVC
   architectural pattern, here are a few of the most heavily used ones:
 
-  * {{{observer.html} Observer}}: used by Model and View. When the information stored in the Model classes changes, the View classes
+  * {{{./observer.html} Observer}}: used by Model and View. When the information stored in the Model classes changes, the View classes
   need to be notified and updated with the latest information. In order to retain loose coupling between these Model/View
   and also due to the fact that there can be several Views instantiated, the Observer pattern is a perfect candidate to accomplish this.
 
-  * {{{strategy.html} Strategy}}: used by the Model. The Data Access Object pattern is a form of the strategy pattern it is used primarily 
+  * {{{./strategy.html} Strategy}}: used by the Model. The Data Access Object pattern is a form of the strategy pattern it is used primarily 
   by the Model to access different form of data-sources. For example a MySQL/Postgres Database and XML files stored on the filesystem.
   
   * Composite: used by the View. There can be several different views within a system designed according to MVC, in order

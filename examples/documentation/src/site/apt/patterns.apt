@@ -27,62 +27,62 @@ Software and Design Patterns
   Usually, patterns inside one category complement eachother because they have the same underlying principles 
   for structuring code.
   
-  In this section a set of important patterns are outlined and explained. Additionally, in the {{{download.html} download}} section a small example outlining a series of patterns can be downloaded. This set of examples is used in our {{{bpse_buch.html}"Best Practice"}} book.
+  In this section a set of important patterns are outlined and explained. Additionally, in the {{{./download.html} download}} section a small example outlining a series of patterns can be downloaded. This set of examples is used in our {{{./bpse_buch.html}"Best Practice"}} book.
   
   \ 
 
-	[[1]] {{{patterns_fundamental.html} Fundamental Design Patterns }} are general concepts, 
+	[[1]] {{{./patterns_fundamental.html} Fundamental Design Patterns }} are general concepts, 
     they are needed in most other patterns to accomplish their task.
     
-      	[[A]] {{{patterns/interface.html} Interface}}
+      	[[A]] {{{./patterns/interface.html} Interface}}
       	
-      	[[B]] {{{patterns/container.html} Container}}
+      	[[B]] {{{./patterns/container.html} Container}}
       	
-      	[[C]] {{{patterns/delegation.html} Delegation}}
+      	[[C]] {{{./patterns/delegation.html} Delegation}}
     
-	[[2]] {{{patterns_architectural.html} Architectural Patterns}} express a fundamental structural organization 
+	[[2]] {{{./patterns_architectural.html} Architectural Patterns}} express a fundamental structural organization 
 	or schema for software systems. They provide a set of predefined subsystems, specify their responsibilities, 
 	and include rules and guidelines for organizing the relationships between them.
     
-        	[[A]] {{{patterns/mvc.html} Model View Controller (MVC)}}
+        	[[A]] {{{./patterns/mvc.html} Model View Controller (MVC)}}
         	
-        	[[B]] {{{patterns/dependency_injection.html} Dependency Injection}} 
+        	[[B]] {{{./patterns/dependency_injection.html} Dependency Injection}} 
     
-	[[3]] {{{patterns_structural.html} Structural Design Patterns }} are concerned with how classes and 
+	[[3]] {{{./patterns_structural.html} Structural Design Patterns }} are concerned with how classes and 
 	objects are composed together to form larger structures. <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
 	
-			[[A]] {{{patterns/facade.html} Facade}}
+			[[A]] {{{./patterns/facade.html} Facade}}
 			
-			[[B]] {{{patterns/decorator.html} Decorator}}
+			[[B]] {{{./patterns/decorator.html} Decorator}}
 			
-			[[C]] {{{patterns/proxy.html} Proxy}}
+			[[C]] {{{./patterns/proxy.html} Proxy}}
 			
-			[[D]] {{{patterns/dao.html} Data Access Object}}
+			[[D]] {{{./patterns/dao.html} Data Access Object}}
 			
-			[[E]] {{{patterns/transfer_object.html} Transfer Object}}
+			[[E]] {{{./patterns/transfer_object.html} Transfer Object}}
  
-	[[4]] {{{patterns_creational.html} Creational Design Patterns }} abstract the instantiation process. 
+	[[4]] {{{./patterns_creational.html} Creational Design Patterns }} abstract the instantiation process. 
 	They help make a system independent of how its objects are created, composed, and represented.
 	<[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
   
-  			[[A]] {{{patterns/factory.html} Factory Method}}
+  			[[A]] {{{./patterns/factory.html} Factory Method}}
   			
-  			[[B]] {{{patterns/factory.html} Abstract Factory}}
+  			[[B]] {{{./patterns/factory.html} Abstract Factory}}
   			
-  			[[C]] {{{patterns/objectpool.html} Objectpool}}
+  			[[C]] {{{./patterns/objectpool.html} Objectpool}}
   			
-  			[[D]] {{{patterns/singleton.html} Singleton}}
+  			[[D]] {{{./patterns/singleton.html} Singleton}}
   
-	[[5]] {{{patterns_behavioral.html} Behavioral Design Patterns }} are concerned with algorithms and 
+	[[5]] {{{./patterns_behavioral.html} Behavioral Design Patterns }} are concerned with algorithms and 
 	the assignment of responsibilities between objects. <[GoF, "Design Patterns", Addison Wesley, ISBN 0201633612]>
 	
-			[[A]] {{{patterns/iterator.html} Iterator}}
+			[[A]] {{{./patterns/iterator.html} Iterator}}
 			
-			[[B]] {{{patterns/observer.html} Observer}}
+			[[B]] {{{./patterns/observer.html} Observer}}
 			
-			[[C]] {{{patterns/event_listener.html} Event Listener}}
+			[[C]] {{{./patterns/event_listener.html} Event Listener}}
 			
-			[[D]] {{{patterns/strategy.html} Strategy}}
+			[[D]] {{{./patterns/strategy.html} Strategy}}
   
   \ 
   

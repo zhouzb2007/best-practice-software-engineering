@@ -32,7 +32,7 @@ able to use an extended instance without changes in their code.
 
 * Related Patterns
 
-  {{{facade.html} Facade}}, Abstract Factory, and {{{objectpool.html} Object Pool}} usually
+  {{{./facade.html} Facade}}, Abstract Factory, and {{{./objectpool.html} Object Pool}} usually
   use the singleton pattern to assure only one instance of their classes.
  
  If containers like Spring are used for component creation, it is typically not required any more to implement the Singleton pattern manually. The same is true for many applications of the factory pattern. In Spring the configuration of a component (Java bean) can be defined in the Spring-config file. On option is to retrieve the component as Singleton. Spring then deals with the lifecycle of the object.

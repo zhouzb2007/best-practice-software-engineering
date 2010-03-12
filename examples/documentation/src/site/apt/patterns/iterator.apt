@@ -32,9 +32,9 @@ for (Iterator it = users.iterator(); it.hasNext();) {
 
 * Related Patterns
 
-  * {{{visitor.html} Visitor}}: The Iterator pattern is a form of the visitor pattern.
+  * {{{./visitor.html} Visitor}}: The Iterator pattern is a form of the visitor pattern.
   
-  * The {{{composite.html} Composite}} pattern usually lets Iterators walk its data structure.
+  * The {{{./composite.html} Composite}} pattern usually lets Iterators walk its data structure.
 
 * Structure
 

@@ -114,7 +114,7 @@ public class StdOutMessenger implements Messenger {
 +----
 
   Such a construction of using an interface is often combined with the 
-{{{factory.html} Factory-Pattern}}
+{{{./factory.html} Factory-Pattern}}
 to retrieve the Implementation of the interface.
 
 * References / More Info
