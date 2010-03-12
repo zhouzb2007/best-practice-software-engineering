@@ -2,15 +2,17 @@ window_sizes 1350 787 337 1007 665 66
 diagrams
   classdiagram_ref 128003 // Domainmodel
     882 639 100 4 0 0
-  active  usecasediagram_ref 130051 // 2.1. Studenten bewerten
+  usecasediagram_ref 130051 // 2.1. Studenten bewerten
     805 532 100 4 0 52
   activitydiagram_ref 129263 // Testpunkte eintragen
     805 532 100 4 0 0
+  active  activitydiagram_ref 129161 // Account anlegen
+    805 563 100 4 0 0
 end
 show_stereotypes
-selected usecase_ref 130691 // Testpunkte eintragen
+selected activitydiagram_ref 129161 // Account anlegen
 open
-  classview_ref 128003 // Domainmodel
+  activity_ref 128009 // Account anlegen
   usecaseview_ref 128259 // 2. Bewertung
 end
 end

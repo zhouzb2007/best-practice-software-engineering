@@ -118,17 +118,6 @@
 		Hence it is implementing the ComboBoxModel Interface.
 		All Export Classes should be added to the exportFilter list
 	-->
-	<bean id="ExportComboModel"
-		class="at.ac.tuwien.ifs.bpse.basic.gui.ExportComboModel"
-		init-method="init">
-		<!--  Register the actually available Export Filters: classes implementing the Export Interface -->
-		<property name="exportFilter">
-			<list>
-				<ref local="Export" />
-				<ref local="HtmlExport" />
-			</list>
-		</property>
-	</bean>
 	
 	<bean id="ExportMenuModel"
 		class="at.ac.tuwien.ifs.bpse.basic.gui.ExportMenuModel"

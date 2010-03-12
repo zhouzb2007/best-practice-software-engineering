@@ -16,7 +16,8 @@ dest_basic="$deploydir/basic"
 dest_medium="$deploydir/medium"
 dest_core="$deploydir/core"
 dest_packages="$deploydir/src-package"
-packages="designpatterns/ advanced/ basic/ core/ documentation/ medium/ pom.xml src/"
+packages="designpatterns pom.xml documentation"
+basic_srcpackages="basic/pom.xml basic/src"
 
 suffix=$(date +%k%M%j)
 
@@ -25,26 +26,34 @@ suffix=$(date +%k%M%j)
 # sanity checks
 
 cd $rootdir
-if [ ! -e $src_basic ] || [ ! -e $src_doc ] || [ ! -e $src_medium ] || [ ! -e $src_core ]
+echo "would you like to execute mvn clean & site? [y/N]"
+read response
+if [ "$response" = y ]
+then
+	echo "Executing 'mvn clean'"
+	#sleep 3
+	mvn clean
+	echo "Executing 'mvn site'"
+	#sleep 3
+	cd basic
+	mvn site
+	echo "Executing 'mvn site'"
+	#sleep 3
+	cd ../documentation
+	mvn site
+	cd ../core
+	mvn site
+
+	cd ..
+	#mvn site
+fi
+if [ ! -e $src_basic ] || [ ! -e $src_doc ] 
 then
 	echo "ERROR: one of these dirctories was not found in rootdir: $rootdir"
 	echo $src_doc
 	echo $src_basic
-	echo $src_medium
-	echo $src_core
 	echo "exiting..."
 	exit 1
-fi
-echo "would you like to execute mvn site? [y/N]"
-read response
-if [ "$response" = y ]
-then
-	echo "Doing a 'mvn site' in the documentation and root folders"
-	sleep 3
-	cd $rootdir/documentation
-	mvn site
-	cd ..
-	mvn site
 fi
 if [ -e $deploydir ] 
 then
@@ -70,20 +79,38 @@ mkdir $dest_basic
 cp -rv $src_basic/apidocs $dest_basic/
 cp -rv $src_basic/xref $dest_basic/
 cp -rv $src_basic/xref-test $dest_basic/
-mkdir $dest_medium
-cp -rv $src_medium/apidocs $dest_medium/
-cp -rv $src_medium/xref $dest_medium/
-cp -rv $src_medium/xref-test $dest_medium/
+#mkdir $dest_medium
+#cp -rv $src_medium/apidocs $dest_medium/
+#cp -rv $src_medium/xref $dest_medium/
+#cp -rv $src_medium/xref-test $dest_medium/
 
 # create zip, tar and rar packages of the java source code
 
 echo "Done with documentation, now archiving the source packages into $dest_packages"
-mkdir $dest_packages
 sleep 2
-zip -r $dest_packages/BPSE.zip $packages
-tar cfvz $dest_packages/BPSE.tar.gz $packages
-# rar a -r $dest_packages/BPSE.rar $packages
+mkdir $dest_packages
+mkdir $dest_packages/bpse
 
+for p in $packages
+do
+ cp -rv $p $dest_packages/bpse/
+done
+
+mkdir $dest_packages/bpse/basic
+
+for bp in $basic_srcpackages
+do
+ cp -rv $bp $dest_packages/bpse/basic/
+done
+
+sleep 2
+cd $dest_packages
+zip -r BPSE.zip bpse
+rm -rf bpse 
+#tar cfvz $dest_packages/BPSE.tar.gz $packages
+# rar a -r $dest_packages/BPSE.rar $packages
+cd ..
+cd ..
 # wrap it all up
 
 echo "Done with packaging, now archiving the build into $deploydir.zip"

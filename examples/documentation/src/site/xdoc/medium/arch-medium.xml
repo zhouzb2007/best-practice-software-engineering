@@ -25,15 +25,17 @@ to get and set managed beans in the JSF context. All web pages are implemented a
 
             <subsection name="Used technology">
                     <ul>
-                        <li>JPA (Java Persistence Annotations) to annotate domain objects for persiting</li>
-                        <li>Object Relational mapping tool Hibernate for persistence</li>
-                        <li>Any relational database supported by Hibernate</li>
-                        <li>Spring as an application framework, putting things together by using dependency injection</li>
+                    	<li>Lifecycle Management with Maven</li>
+                        <li>Spring-beans to annotate domain objects for persiting</li>
+                        <li>Object mapping tool iBATIS for persistence</li>
+                        <li>HSQLDB or any relational database supported by iBATIS</li>
+                        <li>Persistence Layer utilizing Data Access Object Pattern in combination with JDBC Templates of the Spring framework and Dependency Injection</li>
                         <li>Unittesting with JUnit</li>
                         <li>Logging via Log4J Framework</li>
                         <li>AOP (Aspect Oriented Programing) by using Spring and Proxies</li>
-                        <li>Java Server Faces as Webframework</li>
-                        <li>MyFaces and Tomahawk as reference implementation of the JSF specification</li>
+                        <li>Apache Wicket</li>
+                        <li>Webserver can be run with Jetty, by using Maven plugin</li>
+                        <li>Full inline documentation (Javadoc)</li>
                     </ul>
             </subsection>
 

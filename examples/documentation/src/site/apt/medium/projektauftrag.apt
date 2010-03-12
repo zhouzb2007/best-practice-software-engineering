@@ -1,69 +1,69 @@
 Projektauftrag
 
-  Dieser Abschnitt beinhaltet den Projektauftrag (PA) für das Software Engineering 
+  Dieser Abschnitt beinhaltet den Projektauftrag (PA) fÃ¼r das Software Engineering 
   Anmelde Tool (SAT) in der Medium-Ausbaustufe. Der PA umschreibt 
   konkrete Anforderungen sowie Artefakte des Projektmanagement, welche zusammen 
-  die Grundlage für eine Vereinbarung mit dem Kunden bilden.
+  die Grundlage fÃ¼r eine Vereinbarung mit dem Kunden bilden.
 
-  Alle Akteure bzw. Zielgruppen sind <<fett>> und alle Entitäten <kursiv> gedruckt. 
+  Alle Akteure bzw. Zielgruppen sind <<fett>> und alle EntitÃ¤ten <kursiv> gedruckt. 
 
 * {Ausgangssituation}
 
   Die <Lehrveranstalltung> (LVA) "Software Engineering & Projektmanagement"
-  (SE&PM) wird von zwei verschiedenen <Instituten> an der Technischen Universität 
+  (SE&PM) wird von zwei verschiedenen <Instituten> an der Technischen UniversitÃ¤t 
   Wien gemeinsam abgehalten. Dabei wird aus Administrationssicht der <<Tutoren>> und 
   <<Professoren>>, der erste Teil der <Lehrveranstaltung>, die "Eingangsphase", 
   gemeinsam und der zweite Teil "Guppenphase" an den zwei <Instituten> separat 
-  durchgeführt. 
-  Derzeit sind vier bis fünf verschiedene Webanwendungen an der Administration 
+  durchgefÃ¼hrt. 
+  Derzeit sind vier bis fÃ¼nf verschiedene Webanwendungen an der Administration 
   der SE&PM <LVA> beteiligt. Jede Webanwendung tragt bestimmte wichtige Funktionen 
   zum Prozess bei, entweder die Anwendung ist universell genug um von beiden 
   <Instituten> verwendet zu werden (Google Docs/Google Calendar) oder die Anwendung 
   bezieht sich auf ein spezielles Problem seitens der Administration und 
-  Automatisierung (Domänenwissen der Professoren bzw. interne Webanwendungen). 
-  Andere, von der Universität angebotene, Webanwendungen erlauben es zwar 
+  Automatisierung (DomÃ¤nenwissen der Professoren bzw. interne Webanwendungen). 
+  Andere, von der UniversitÃ¤t angebotene, Webanwendungen erlauben es zwar 
   <Lehrveranstalltungen> gut zu administrieren, doch beziehen sich diese immer auf 
   genau eine <LVA> welche von genau einem Institut abgehalten wird. Sobald mit den 
   bestehenden Anwendungen versucht wird eine gemeinsame Eingangsphase der <LVA> 
-  abzubilden, stoßŸen diese bestehenden Werkzeuge auf ihre Grenzen und können den 
+  abzubilden, stoÃŸÂŸen diese bestehenden Werkzeuge auf ihre Grenzen und kÃ¶nnen den 
   geforderten Ablauf der SE&PM <LVA> nicht mehr abdecken.
   
 * Projektbeschreibung
 
-  Es wird ein Werkzeug benötigt welches den in der {{Ausgangssituation}}, 
+  Es wird ein Werkzeug benÃ¶tigt welches den in der {{Ausgangssituation}}, 
   von Semester zu Semester wiederkehrenden, Prozess administriert und mindestens drei, 
-  maximal vier, der fünf vorhandenen Webanwendungen ablöst.
+  maximal vier, der fÃ¼nf vorhandenen Webanwendungen ablÃ¶st.
 
   Das Projektteam von SAT soll aus Sicht der <<LVA-Leitung>>(<<Tutoren>> & <<Professoren>>) 
   und auch der <<Studenten>> den SE&PM Prozess neu gestalten. Die von den jetzigen 
   Tools abgedeckten Technischen Features der verschiedenen Anwendungen sollen 
-  komplett überarbeiten werden, d.h. eine neue Webanwendung mit neuen Technologien 
+  komplett Ã¼berarbeiten werden, d.h. eine neue Webanwendung mit neuen Technologien 
   und technischen Features muss Entwickelt werden, und die bestehende Dokumentation 
-  und das Domänenwissen der <<LVA-Leitung>> soll dabei soweit wie möglich integriert 
+  und das DomÃ¤nenwissen der <<LVA-Leitung>> soll dabei soweit wie mÃ¶glich integriert 
   werden um den Prozess transparenter zu machen.
 
-  SAT soll nicht alles abdecken, aber es ist eine vollständige Web Applikation 
-  und zählt daher bereits zu einem verteilten System. Es geht darum, den <<Studenten>> 
-  und <<Professoren>> eine Platform zur Verfügung zu stellen. <<Student>> und <<Professor>> bzw. 
+  SAT soll nicht alles abdecken, aber es ist eine vollstÃ¤ndige Web Applikation 
+  und zÃ¤hlt daher bereits zu einem verteilten System. Es geht darum, den <<Studenten>> 
+  und <<Professoren>> eine Platform zur VerfÃ¼gung zu stellen. <<Student>> und <<Professor>> bzw. 
   <<LVA-Leitung>> sind auch die Zielgruppen der SAT Webanwendung welche im Abschnitt 
-  {{Zielgruppen}} näher beschrieben sind.
+  {{Zielgruppen}} nÃ¤her beschrieben sind.
 
 ~~%TODO: following Paragraphs could use more Requirements, like Tutors, maybe some non-funct?
-  Für <<Studenten>> bietet die Platform die Möglichkeit sich zu <Veranstaltungen> und 
-  <Prüfungen> anzumelden. Die <<Professoren>> nutzen diese Platform für die Statistikabfrage. 
+  FÃ¼r <<Studenten>> bietet die Platform die MÃ¶glichkeit sich zu <Veranstaltungen> und 
+  <PrÃ¼fungen> anzumelden. Die <<Professoren>> nutzen diese Platform fÃ¼r die Statistikabfrage. 
   Die ersten Anforderungen welche mittels Brainstorming aller beteiligten Stakeholder 
   entstanden sind sind in der {{Featureliste}} beschrieben.
 
-  Betrachten wir zuerst die Funktionen für einen <<Studenten>>. Damit ein <<Student>> die 
-  Platform überhaupt nutzen kann, muss dieser im System vorhanden sein. 
-~~Für die Verwaltung der <<Studenten>> wird das Basis Beispiel (siehe Chapter TODO Ref) verwendet. 
-  Nach erfolgreichen Login im System, bekommt der <<Student>> die Möglichkeit 
-  <<Professoren>> und <Kurse> zu suchen und erhält die Ergebnise in Form einer Tabelle 
-  dargestellt. Ein <<Student>> kann sich für jede <<Prüfung>> zu einem bestimmten Datum 
-  anmelden. Dem <<Studenten>> wird auch eine Übersicht seiner aktuell registrierten 
-  <Prüfungen> angezeigt.
+  Betrachten wir zuerst die Funktionen fÃ¼r einen <<Studenten>>. Damit ein <<Student>> die 
+  Platform Ã¼berhaupt nutzen kann, muss dieser im System vorhanden sein. 
+~~FÃ¼r die Verwaltung der <<Studenten>> wird das Basis Beispiel (siehe Chapter TODO Ref) verwendet. 
+  Nach erfolgreichen Login im System, bekommt der <<Student>> die MÃ¶glichkeit 
+  <<Professoren>> und <Kurse> zu suchen und erhÃ¤lt die Ergebnise in Form einer Tabelle 
+  dargestellt. Ein <<Student>> kann sich fÃ¼r jede <<PrÃ¼fung>> zu einem bestimmten Datum 
+  anmelden. Dem <<Studenten>> wird auch eine Ãœbersicht seiner aktuell registrierten 
+  <PrÃ¼fungen> angezeigt.
 
-  Die Suche nach <<Professoren>> und <Kursen>, sowie die Anzahl der gefundenen Einträge 
+  Die Suche nach <<Professoren>> und <Kursen>, sowie die Anzahl der gefundenen EintrÃ¤ge 
   wird vom System protokolliert. Auf diese Statistikinformationen kann nur der 
   <<Professor>> zugreifen. 
   
@@ -72,20 +72,20 @@ Projektauftrag
   Die <<LVA-Leitung>> von beiden Instituten, bestehend aus <<Tutoren>> und <<Professoren>>, sollen 
   von SAT sehr stark profitieren. Die Anzahl der verwendeten Webanwendungen soll 
   wesentlich reduziert werden, vorhandene Features sollen verbessert werden und der 
-  Übergang von Einzelphase zu Gruppenphase soll durch das neue SAT Werkzeug verbessert 
+  Ãœbergang von Einzelphase zu Gruppenphase soll durch das neue SAT Werkzeug verbessert 
   und beschleunigt werden.
 
-  <<Tutoren>> verwenden das System in erster Linie um Abgabegespräche durchzuführen und die 
+  <<Tutoren>> verwenden das System in erster Linie um AbgabegesprÃ¤che durchzufÃ¼hren und die 
   <Bewertung> in das Werkzeug einzutragen, d.h. Die <Bewertung> ist als Fragebogen-Schablone 
-  im Werkzeug enthalten und der <<Tutor>> muss diese bei einer Abgabe vervollständigen und 
-  bestätigen.  Bei der <Bewertung> ist es hilfreich zu wissen wie oft ein <<Student>> bereits 
+  im Werkzeug enthalten und der <<Tutor>> muss diese bei einer Abgabe vervollstÃ¤ndigen und 
+  bestÃ¤tigen.  Bei der <Bewertung> ist es hilfreich zu wissen wie oft ein <<Student>> bereits 
   zur Abgabe angetreten ist und wann der letzte Antritt erfolgte. Weiters ist es bedingt 
   hilfreich zu wissen wie viele bzw. welche <<Studenten>> sich zu einem bestimmten 
   <Abgabetermin> angemeldet haben.
 ~~TODO: Tutoreinschaetzung, free-form text
 
-  <<Administratoren>> wollen zu Begin eines neuen Semesters die Datenbestände aus alten 
-  Semestern übernehmen um organisatorischen Overhead zu verringern. Am Ende der 
+  <<Administratoren>> wollen zu Begin eines neuen Semesters die DatenbestÃ¤nde aus alten 
+  Semestern Ã¼bernehmen um organisatorischen Overhead zu verringern. Am Ende der 
   Einzelphase, also nach der <Bewertung>, sollen jene <<Studenten>> welche die Abgabe 
   positiv absolviert haben zu <Gruppen> zusammengestellt werden, ein <<Tutor>> soll 
   jeder <Gruppe> zugeteilt werden und eine "`Kick-Off"' E-Mail sollte an 
@@ -93,62 +93,62 @@ Projektauftrag
 
   Den <<Studenten>> soll die Handhabung der LVA erleichtert werden. Mittels SAT und einer 
   anderen Webapplikation welche als Kommunikationsplattform verwendet wird sollen alle 
-  Bedürfnisse abgedeckt werden. <<Studenten>> müssen sich in SAT zu <Terminen> 
-  (Einstiegstest \& Abgabe) anmelden und eine <LVA-Präferenz> abgeben. 
+  BedÃ¼rfnisse abgedeckt werden. <<Studenten>> mÃ¼ssen sich in SAT zu <Terminen> 
+  (Einstiegstest \& Abgabe) anmelden und eine <LVA-PrÃ¤ferenz> abgeben. 
 ~~Gruppen erstellen, Institutspraeferenz abgeben.
 ~~Projekt finden
   
 * {Featureliste}
 
-  Folgende Features der bestehenden Werkzeuge unterstützen die in der 
-  {Ausgangssituation} beschriebenen Abläufe, daher sind sie den erwähnten Zielgruppen 
-  von direktem Nutzen und sollen von der neuen SAT-Webapplikation abgelöst werden.
+  Folgende Features der bestehenden Werkzeuge unterstÃ¼tzen die in der 
+  {Ausgangssituation} beschriebenen AblÃ¤ufe, daher sind sie den erwÃ¤hnten Zielgruppen 
+  von direktem Nutzen und sollen von der neuen SAT-Webapplikation abgelÃ¶st werden.
 
   Bestehender Funktionsumfang:
 
-  [Registrierung der Studenten] Bestätigung mit gültiger E-Mail Adresse. Kontrolle der Matrikel Nummer und Studienkennzahl via externe Systeme wird derzeit nicht unterstützt, ist aber in Zukunft wünschenswert.
+  [Registrierung der Studenten] BestÃ¤tigung mit gÃ¼ltiger E-Mail Adresse. Kontrolle der Matrikel Nummer und Studienkennzahl via externe Systeme wird derzeit nicht unterstÃ¼tzt, ist aber in Zukunft wÃ¼nschenswert.
   
-  [Fragebogen System] Studenten können verschiedene Fragebögen ausfüllen um die Einteilung von Gruppen durch die LVA-Leitung zu erleichtern. Fragebögen können von der LVA-Leitung erstellt, eingesehen und bearbeiten werden.
+  [Fragebogen System] Studenten kÃ¶nnen verschiedene FragebÃ¶gen ausfÃ¼llen um die Einteilung von Gruppen durch die LVA-Leitung zu erleichtern. FragebÃ¶gen kÃ¶nnen von der LVA-Leitung erstellt, eingesehen und bearbeiten werden.
   
-  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)]  Ein Fragebogen mit nur einer Frage welcher ausgefüllt und bestätigt werden muss um die Eingangsphase abzuschließen. 
+  [Angabe einer Instituts-  bzw. LVA-PrÃ¤ferenz (Java, C++, .NET, ...)]  Ein Fragebogen mit nur einer Frage welcher ausgefÃ¼llt und bestÃ¤tigt werden muss um die Eingangsphase abzuschlieÃŸen. 
   
-  [Terminverwaltung] Studenten können sich zu einem Abgabetermin anmelden, dabei werden Anmeldebeschränkungen kontrolliert. Abmeldung vom Abgabetermin ist bis zu einem vorher bestimmten Zeitpunkt möglich. Die LVA-Leitung kann Abgabetermine anlegen und verwalten.
+  [Terminverwaltung] Studenten kÃ¶nnen sich zu einem Abgabetermin anmelden, dabei werden AnmeldebeschrÃ¤nkungen kontrolliert. Abmeldung vom Abgabetermin ist bis zu einem vorher bestimmten Zeitpunkt mÃ¶glich. Die LVA-Leitung kann Abgabetermine anlegen und verwalten.
     
-  [Gruppenbildung] Studenten können sich zu Gruppen zusammenschliessen, jeder Student kann sich zu genau einer Gruppe anmelden und auch wieder abmelden sowie eine neue Gruppe erstellen. Es wird derzeit nur die Gruppierung und Präferenz jedes Studenten in der Gruppe angezeigt, zudem sind immer alle Gruppen für alle im System Registrierten Benutzer sichtbar, was in der Vergangenheit schon zu Problemen geführt hat.
+  [Gruppenbildung] Studenten kÃ¶nnen sich zu Gruppen zusammenschliessen, jeder Student kann sich zu genau einer Gruppe anmelden und auch wieder abmelden sowie eine neue Gruppe erstellen. Es wird derzeit nur die Gruppierung und PrÃ¤ferenz jedes Studenten in der Gruppe angezeigt, zudem sind immer alle Gruppen fÃ¼r alle im System Registrierten Benutzer sichtbar, was in der Vergangenheit schon zu Problemen gefÃ¼hrt hat.
   
-  [Bewertung durch Tutoren] Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf.
+  [Bewertung durch Tutoren] Am Ende der Einzelphase werden AbgabegesprÃ¤che durchgefÃ¼hrt, dabei werden die erzielten Punkte und andere, fÃ¼r die Gruppenphase relevante, Informationen eingetragen und bestÃ¤tigt. Es wird festgehalten welcher Tutor das AbgabegesprÃ¤ch durchgefÃ¼hrt hat und ob der Student an der Gruppenphase teilnehmen darf.
     
-  [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten.
+  [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen mÃ¼ssen beispielsweise genÃ¼tzt werden um Falsche eingaben zu korrigieren, PasswÃ¶rter neu zu setzen, oder Benutzerkonten zu verwalten.
 ~~\item Rundmail-Versand --- 
     
-  [Datenrücksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden.
+  [DatenrÃ¼cksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle DatensÃ¤tze in der Datenbank werden, bis auf ein paar Grundinformationen, zurÃ¼ckgesetzt. Wobei alte DatensÃ¤tze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden Ã¼bernommen und kÃ¶nnen bei Bedarf entfernt werden.
    
-  [Import der Testergebnisse] Bei Testterminen, werden die von den Studenten erzielten Punkte zu der Bewertung in der Webanwendung dazugezählt. Ein Import dieser Punkte ist per CSV Datei möglich.
+  [Import der Testergebnisse] Bei Testterminen, werden die von den Studenten erzielten Punkte zu der Bewertung in der Webanwendung dazugezÃ¤hlt. Ein Import dieser Punkte ist per CSV Datei mÃ¶glich.
     
-  [Export der Studenten-Datensätze] Am Ende der Einzelphase werden die Studenten mit ihren Leistungen, Beschreibungen, Gruppenzuteilungen und Präferenzen exportiert und in anderen Werkzeugen weiterverarbeitet.
+  [Export der Studenten-DatensÃ¤tze] Am Ende der Einzelphase werden die Studenten mit ihren Leistungen, Beschreibungen, Gruppenzuteilungen und PrÃ¤ferenzen exportiert und in anderen Werkzeugen weiterverarbeitet.
 
   []
 
-  Features welche vollkommen neu sind und nicht bereits von bestehenden Werkzeugen unterstützt werden:
+  Features welche vollkommen neu sind und nicht bereits von bestehenden Werkzeugen unterstÃ¼tzt werden:
 
-  [Registrierung der Studenten] Das Passwort wird als Hash gespeichert und nicht mehr per E-Mail versandt. Bei Verlust wird ein neues generiert und dem Studenten zugesandt, der es bei der ersten neuen Anmeldung ändern muss.
+  [Registrierung der Studenten] Das Passwort wird als Hash gespeichert und nicht mehr per E-Mail versandt. Bei Verlust wird ein neues generiert und dem Studenten zugesandt, der es bei der ersten neuen Anmeldung Ã¤ndern muss.
 
-  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)] Anmeldebeschränkungen und Unterschiedliche Anmelde-deadlines fuer jede Präferenz.
+  [Angabe einer Instituts-  bzw. LVA-PrÃ¤ferenz (Java, C++, .NET, ...)] AnmeldebeschrÃ¤nkungen und Unterschiedliche Anmelde-deadlines fuer jede PrÃ¤ferenz.
 
-  [Gruppenbildung] Eine Gruppe soll eine Notiz hinterlassen können, die andere Studenten einsehen können (Projektvorschlag, Kenntnisse, ...). Administrator-seitig soll SAT die Möglichkeit bieten Gruppen manuell zusammenzustellen, aber auch diese Schritte wieder rückgängig zu machen.
+  [Gruppenbildung] Eine Gruppe soll eine Notiz hinterlassen kÃ¶nnen, die andere Studenten einsehen kÃ¶nnen (Projektvorschlag, Kenntnisse, ...). Administrator-seitig soll SAT die MÃ¶glichkeit bieten Gruppen manuell zusammenzustellen, aber auch diese Schritte wieder rÃ¼ckgÃ¤ngig zu machen.
 
-  [Administrator Benutzerkonto] Direkte Verknüpfung eines Tutors und Assistenten mit einer Gruppe (siehe Domänenmodell \ref{med_bsp:PVDomain}, "`betreut"' Beziehung), dies soll den Übergang von Einzelphase zu Gruppenphase erheblich beschleunigen, da früher mit organisatorischer Arbeit für die Gruppenphase begonnen werden kann. Automatischer Versand eines E-Mail an die zusammengestellten Gruppen und die jeweiligen Tutoren/Assistenten soll möglich sein um die Gruppenphase zu "`starten"'.
+  [Administrator Benutzerkonto] Direkte VerknÃ¼pfung eines Tutors und Assistenten mit einer Gruppe (siehe DomÃ¤nenmodell \ref{med_bsp:PVDomain}, "`betreut"' Beziehung), dies soll den Ãœbergang von Einzelphase zu Gruppenphase erheblich beschleunigen, da frÃ¼her mit organisatorischer Arbeit fÃ¼r die Gruppenphase begonnen werden kann. Automatischer Versand eines E-Mail an die zusammengestellten Gruppen und die jeweiligen Tutoren/Assistenten soll mÃ¶glich sein um die Gruppenphase zu "`starten"'.
 
-  [Fragebogen System] Benutzerfreundliche Erstellung der Fragebögen, jetzige Methode erfordert einen Entwickler.
+  [Fragebogen System] Benutzerfreundliche Erstellung der FragebÃ¶gen, jetzige Methode erfordert einen Entwickler.
 ~~\item Nachabgaben bzw. dritte Antritte (NEU)
 ~~\item Export der Studentenliste (NEU)
 
-  [Export von SVN Accounts] Exportfunktion der Studenten- und Gruppendaten für Mailinglisten und SVN-Accounts. Jene Systeme werden extern administriert, Export erfolgt als CSV.
+  [Export von SVN Accounts] Exportfunktion der Studenten- und Gruppendaten fÃ¼r Mailinglisten und SVN-Accounts. Jene Systeme werden extern administriert, Export erfolgt als CSV.
 
-  [Terminverwaltung] soll in Zukunft auch für andere Formen von Anmeldungen genützt werden (Tutorien, vereinbarte Laborzeiten, ...). Anmeldeschluss zu Abgaben soll definierbar sein. Versand von Rund-Mails für Angemeldete Studenten soll unterstützt werden.
+  [Terminverwaltung] soll in Zukunft auch fÃ¼r andere Formen von Anmeldungen genÃ¼tzt werden (Tutorien, vereinbarte Laborzeiten, ...). Anmeldeschluss zu Abgaben soll definierbar sein. Versand von Rund-Mails fÃ¼r Angemeldete Studenten soll unterstÃ¼tzt werden.
 ~~\item Notenvergabe (NEU) - Noten sollen am Ende der LVA in das Tool eingetragen werden.
-~~\item Notenexport - Noten sollen bei Bedarf für das TUWIS unabhängig nach Gruppe, Semester und Institut exportiert werden. Dabei werden Studenten, die schon in der Eingangsphase negativ bewertet wurden automatisch auf die Institute aufgeteilt.
-~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden können.
+~~\item Notenexport - Noten sollen bei Bedarf fÃ¼r das TUWIS unabhÃ¤ngig nach Gruppe, Semester und Institut exportiert werden. Dabei werden Studenten, die schon in der Eingangsphase negativ bewertet wurden automatisch auf die Institute aufgeteilt.
+~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden kÃ¶nnen.
 
   [Bewertung durch Tutoren] Bei der Bewertung soll angezeigt werden wie oft der zu bewertende Student bereits abgetreten ist.
 
@@ -156,71 +156,71 @@ Projektauftrag
   
 ~~Die zu realisierenden Funktionen der Platform sind im Use Case Diagramm in Abbildung \ref{abb:medium_usecase} dargestellt.
 
-~~ Ich denke das sollte man dann aus dem Buch übernehmen. ^^
+~~ Ich denke das sollte man dann aus dem Buch Ã¼bernehmen. ^^
   
-* Domänenmodell
+* DomÃ¤nenmodell
 
-  Bevor wir nun das Komponentendiagramm des Systems betrachten, gehen wir kurz auf das Domänenmodell 
+  Bevor wir nun das Komponentendiagramm des Systems betrachten, gehen wir kurz auf das DomÃ¤nenmodell 
   vom Projektvorschlag ein, welches ein wenig komplexer als jenes im BPSE Basisbeispiel ist. Das UML 
-  Domänenmodell ist in Abbildung \ref{abb:medium_domain} dargestellt. 
+  DomÃ¤nenmodell ist in Abbildung \ref{abb:medium_domain} dargestellt. 
 
-[../uml/medium/slat-model/fig128003.png] Domänenmodel
+[../uml/medium/slat-model/fig128003.png] DomÃ¤nenmodel
 
 * Komponentendiagramm
 
 * Projektabgrenzungen
  
   Bei dem Projekt muss eine sinnvolle Erweiterbarkeit gegeben sein, in diesem Teil wird aber vor allem 
-  auf die stabile Umsetzung der oben angeführten Anforderungen geachtet.
+  auf die stabile Umsetzung der oben angefÃ¼hrten Anforderungen geachtet.
 
-  Folgende Features werden von bestehenden Werkzeugen unterstützt und sollen nicht von SAT abgelöst werden:
+  Folgende Features werden von bestehenden Werkzeugen unterstÃ¼tzt und sollen nicht von SAT abgelÃ¶st werden:
 
-  * Forum für Diskussionen zum Einzelbeispiel der Eingangsphase
+  * Forum fÃ¼r Diskussionen zum Einzelbeispiel der Eingangsphase
 
-  * Mailinglisten für die Studentengruppen der Gruppenphase
+  * Mailinglisten fÃ¼r die Studentengruppen der Gruppenphase
 
-  * Verteilung von Dokumentation (Foliensätze, Infoblätter, Abgaben)
+  * Verteilung von Dokumentation (FoliensÃ¤tze, InfoblÃ¤tter, Abgaben)
 
   []
   
-* Anwendungsfälle, Funktionale Anforderungen
+* AnwendungsfÃ¤lle, Funktionale Anforderungen
 
-  Abbildung \ref{abb:medium_usecase} zeigt die wichtigsten Akteure und Anwendungsfälle als 
+  Abbildung \ref{abb:medium_usecase} zeigt die wichtigsten Akteure und AnwendungsfÃ¤lle als 
   UML Use Case Diagramm.
 
 ~~ UCs
 
   Folgende Tabelle beschreibt eine grobe Gliederung der Anwendungsfaelle sowie eine Kurzbeschreibung 
-  und Zuständigkeiten der Teammitglieder. 
+  und ZustÃ¤ndigkeiten der Teammitglieder. 
   
 * Nichtfunktionale Anforderungen
 
-  * Verfügbarkeit - Die Anwendung muss Hauptanwendungszeiten, als v.a. zu Beginn des Semesters stabil laufen und mehrere hundert Anfragen parallel bedienen können.
+  * VerfÃ¼gbarkeit - Die Anwendung muss Hauptanwendungszeiten, als v.a. zu Beginn des Semesters stabil laufen und mehrere hundert Anfragen parallel bedienen kÃ¶nnen.
 
-  * Wiederherstellung - Die Daten müssen bei einem Ausfall des Systems wieder komplett hergestellt werden können.
+  * Wiederherstellung - Die Daten mÃ¼ssen bei einem Ausfall des Systems wieder komplett hergestellt werden kÃ¶nnen.
 
-  * Browser-Konformität - Die Oberfläche muss zumindest auf den am häufigsten genutzten Browsern getestet und ausreichend benutzbar sein um die Features fehlerfrei zu nutzen.
+  * Browser-KonformitÃ¤t - Die OberflÃ¤che muss zumindest auf den am hÃ¤ufigsten genutzten Browsern getestet und ausreichend benutzbar sein um die Features fehlerfrei zu nutzen.
 
-  * Benutzbarkeit - Durch eine möglichst Prozess gebundene Darstellung und Unterstützung wie Onlinehilfe, Tooltips, Statusmeldungen, soll eine einfache Bedienbarkeit gewährleistet werden.
+  * Benutzbarkeit - Durch eine mÃ¶glichst Prozess gebundene Darstellung und UnterstÃ¼tzung wie Onlinehilfe, Tooltips, Statusmeldungen, soll eine einfache Bedienbarkeit gewÃ¤hrleistet werden.
 
-  * Fehlerfeedback - Sowohl Benutzer- als auch Entwickler-seitig soll ein sinnvolles Fehlerfeedback genutzt werden, um die Ursachen schnell und unkompliziert lösen zu können.
+  * Fehlerfeedback - Sowohl Benutzer- als auch Entwickler-seitig soll ein sinnvolles Fehlerfeedback genutzt werden, um die Ursachen schnell und unkompliziert lÃ¶sen zu kÃ¶nnen.
 
-  * Wartbarkeit - Die Anwendung soll so umgesetzt werden, dass eine spätere Wartung möglichst einfach ausfällt. Dazu gehören aussagekräftige Kommentare des Programmcodes und ein sauberer Programmierstil.
+  * Wartbarkeit - Die Anwendung soll so umgesetzt werden, dass eine spÃ¤tere Wartung mÃ¶glichst einfach ausfÃ¤llt. Dazu gehÃ¶ren aussagekrÃ¤ftige Kommentare des Programmcodes und ein sauberer Programmierstil.
 
-  * Datensicherheit - Die Daten (z.B. Noten) der einzelnen Akteure dürfen nur von den dafür vorgesehenen Benutzern eingesehen werden können.
+  * Datensicherheit - Die Daten (z.B. Noten) der einzelnen Akteure dÃ¼rfen nur von den dafÃ¼r vorgesehenen Benutzern eingesehen werden kÃ¶nnen.
 
-  * Skalierbarkeit - Eine grundsätzliche Skalierbarkeit ist sinnvoll. Es wird aber nicht damit gerechnet, dass die Anwendung in Umgebungen benutzt wird, die eine volle Skalierbarkeit benötigt.
+  * Skalierbarkeit - Eine grundsÃ¤tzliche Skalierbarkeit ist sinnvoll. Es wird aber nicht damit gerechnet, dass die Anwendung in Umgebungen benutzt wird, die eine volle Skalierbarkeit benÃ¶tigt.
   
   []
   
 * Lieferkomponenten
 ~~TODO: Datenbank, Programm, Dokumentation
 
-  * Die Anwendung und der dazu gehörige Quelltext mit Programmkommentaren
+  * Die Anwendung und der dazu gehÃ¶rige Quelltext mit Programmkommentaren
 
-  * Projektdokumentation, soweit für die Wartung oder Weiterentwicklung notwendig
+  * Projektdokumentation, soweit fÃ¼r die Wartung oder Weiterentwicklung notwendig
 
-  * Konfigurationsdaten für Datenbanken und Server, soweit für Wartung oder Weiterentwicklung notwendig
+  * Konfigurationsdaten fÃ¼r Datenbanken und Server, soweit fÃ¼r Wartung oder Weiterentwicklung notwendig
 
   * Benutzerhandbuch in Form einer Onlinehilfe.
   
@@ -241,7 +241,7 @@ Projektauftrag
 
     * Design der Programmarchitektur und -komponenten
 
-    * Verantwortlichkeit für Architekturdiagramme
+    * Verantwortlichkeit fÃ¼r Architekturdiagramme
    
 	\ 
 	
@@ -249,9 +249,9 @@ Projektauftrag
   
     * Erstellung von Dokumentationsrichtlinien (Format- und Formatierungsrichtlinien, Spezifikation der Code Conventions, Erstellung von Vorlagen, ...)
 
-    * Überprüfung der Einhaltung von Dokumentationsrichtlinien
+    * ÃœberprÃ¼fung der Einhaltung von Dokumentationsrichtlinien
 
-    * Überprüfung der Vollständigkeit von Dokumenten
+    * ÃœberprÃ¼fung der VollstÃ¤ndigkeit von Dokumenten
 
     * Organisation und Archivierung der Dokumente
     
@@ -265,7 +265,7 @@ Projektauftrag
    
     * Schlichtung teaminterner Differenzen
    
-    * Primärer Ansprechpartner für die Auftraggeber
+    * PrimÃ¤rer Ansprechpartner fÃ¼r die Auftraggeber
    
     * Organisation und Leitung interner und externer Meeting
 
@@ -275,22 +275,22 @@ Projektauftrag
 
     * Erstellung von Testrichtlinien (Testvorgehensweise, Auswirkungen bei Fehlern, WeitergabeVerhalten bei Fehlern, ...)
 
-    * Überprüfung der Einhaltung von Testrichtlinien
+    * ÃœberprÃ¼fung der Einhaltung von Testrichtlinien
 
     * Planung von Test-Runs
 
     * Verwaltung des Trouble-Ticket-Systems und der allgemeinen Trouble-Tickets
 
-    * Überwachung von Integrations- und Systemtests
+    * Ãœberwachung von Integrations- und Systemtests
 
-    * Regelmäßige Überprüfung aller Unit-Tests
+    * RegelmÃ¤ÃŸige ÃœberprÃ¼fung aller Unit-Tests
     
     []
 
-* Grober Projektplan und Aufwandsschätzung
+* Grober Projektplan und AufwandsschÃ¤tzung
 ~~TODO: Arbeitspakete, WBS
 
-  Die Features können zu folgenden groben Arbeitspaketen zusammengefasst werden:
+  Die Features kÃ¶nnen zu folgenden groben Arbeitspaketen zusammengefasst werden:
 
   * Account-Verwaltung
 
@@ -300,14 +300,14 @@ Projektauftrag
 
   * Gruppenverwaltung
 
-  * Fragebögen-Verwaltung
+  * FragebÃ¶gen-Verwaltung
 
   * Studentenbewertung
   
   []
 ~~TODO: Meilensteinbeschreibung  
   
-  * Abschluss des generellen Aufbaus der Infrastruktur bis 30. März 2009
+  * Abschluss des generellen Aufbaus der Infrastruktur bis 30. MÃ¤rz 2009
 
   * Abschluss der Analysephase bis 27. April 2009
 
@@ -326,9 +326,9 @@ Projektauftrag
 * Informationswesen
 ~~TODO: Kommunikationswege, Dokumentation, Tooling, Sonstige Dokumente
   
-  Die Informationsstruktur für das Projekt wird folgendermaßen aussehen:
+  Die Informationsstruktur fÃ¼r das Projekt wird folgendermaÃŸen aussehen:
 
-  * Wöchentliche Treffen intern und mit dem Auftraggeber (bei Bedarf mehr)
+  * WÃ¶chentliche Treffen intern und mit dem Auftraggeber (bei Bedarf mehr)
 
   * Kommunikation via interner Mailingliste und bei Bedarf telefonisch
 
@@ -338,7 +338,7 @@ Projektauftrag
 
   []
 
-  Die zur Verfügung gestellte Infrastruktur umfasst:
+  Die zur VerfÃ¼gung gestellte Infrastruktur umfasst:
 
   * SVN Repository
 
@@ -357,15 +357,15 @@ Projektauftrag
 * Besonderheiten
 
   Wir wollen nochmals zusammenfassen welche Design Patterns und Architekturprinzipen in diesem Beispiel 
-  angewandt wurden. Als Architekturstil wurde eine 5-Schichten-Architektur gewählt, wobei ausschließlich 
-  der Presentation Layer am Client (= Browser) läuft. Durch die verteilte Architektur erfolgt die 
-  Kommunikation zwischen Client und Browser über das HTTP Protokoll. Wie auch im Basis Beispiel wurden 
+  angewandt wurden. Als Architekturstil wurde eine 5-Schichten-Architektur gewÃ¤hlt, wobei ausschlieÃŸlich 
+  der Presentation Layer am Client (= Browser) lÃ¤uft. Durch die verteilte Architektur erfolgt die 
+  Kommunikation zwischen Client und Browser Ã¼ber das HTTP Protokoll. Wie auch im Basis Beispiel wurden 
   Interfaces und DAOs verwendet. Um eine klare Trennung zwischen der realationalen Welt und der objekt 
   orientierten Welt zu schaffen, wurde ein O/R Mapper eingesetzt. Die Mapping Informationen wurden 
   mithilfe von Annotations direkt in den Java Objekten definiert. Querschnittsfunktionen wie Security 
   und Transaktionsmanagement wurden mit der Aspekt Orientierten Programmierung (AOP) realisiert, was eine 
   Verschlankung unserer DAOs und Service Objekte mit sich brachte.
 
-~~ Auch aus dem Buch übernehmen.
+~~ Auch aus dem Buch Ã¼bernehmen.
 
 ~~ TODO: Risikoabschaetzung

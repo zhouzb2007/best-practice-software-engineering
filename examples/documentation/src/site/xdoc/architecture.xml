@@ -30,7 +30,7 @@
 		  	<li><b><a href="arch-basic.html">Basic:</a></b> In the basic example, the user access the application with a Swing client. The service layer is built upon the popular
 				Spring Framework. JDBC Templates (also a Spring Feature) are used to access the database.</li>
 		    
-			<li><b><a href="arch-medium.html">Medium:</a></b> In the second sample application, the user accesses the application through a web frontend that builds on
+			<li><b><a href="medium/overview-medium.html">Medium:</a></b> In the second sample application, the user accesses the application through a web frontend that builds on
 			    	the Java Server Faces technology. The persistence layer uses the popular O/R mapping tool Hibernate.</li>
 		    
 		 </ul>
