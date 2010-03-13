@@ -1,174 +1,169 @@
-Projektauftrag
+   ---
+   Projektauftrag
+   ---
+   Erik Gostischa-Franta
+   ---
+   2010-03-13
+   ---
 
-  Dieser Abschnitt beinhaltet den Projektauftrag (PA) für das Software Engineering 
-  Anmelde Tool (SAT) in der Medium-Ausbaustufe. Der PA umschreibt 
-  konkrete Anforderungen sowie Artefakte des Projektmanagement, welche zusammen 
-  die Grundlage für eine Vereinbarung mit dem Kunden bilden.
+Projektauftrag (PA)
 
-  Alle Akteure bzw. Zielgruppen sind <<fett>> und alle Entitäten <kursiv> gedruckt. 
-
-* {Ausgangssituation}
-
-  Die <Lehrveranstalltung> (LVA) "Software Engineering & Projektmanagement"
-  (SE&PM) wird von zwei verschiedenen <Instituten> an der Technischen Universität 
-  Wien gemeinsam abgehalten. Dabei wird aus Administrationssicht der <<Tutoren>> und 
-  <<Professoren>>, der erste Teil der <Lehrveranstaltung>, die "Eingangsphase", 
-  gemeinsam und der zweite Teil "Guppenphase" an den zwei <Instituten> separat 
-  durchgeführt. 
-  Derzeit sind vier bis fünf verschiedene Webanwendungen an der Administration 
-  der SE&PM <LVA> beteiligt. Jede Webanwendung tragt bestimmte wichtige Funktionen 
-  zum Prozess bei, entweder die Anwendung ist universell genug um von beiden 
-  <Instituten> verwendet zu werden (Google Docs/Google Calendar) oder die Anwendung 
-  bezieht sich auf ein spezielles Problem seitens der Administration und 
-  Automatisierung (Domänenwissen der Professoren bzw. interne Webanwendungen). 
-  Andere, von der Universität angebotene, Webanwendungen erlauben es zwar 
-  <Lehrveranstalltungen> gut zu administrieren, doch beziehen sich diese immer auf 
-  genau eine <LVA> welche von genau einem Institut abgehalten wird. Sobald mit den 
-  bestehenden Anwendungen versucht wird eine gemeinsame Eingangsphase der <LVA> 
-  abzubilden, stoßen diese bestehenden Werkzeuge auf ihre Grenzen und können den 
-  geforderten Ablauf der SE&PM <LVA> nicht mehr abdecken.
+  Dieser Abschnitt beinhaltet den Projektauftrag (PA) für das <Software Engineering 
+  Anmelde Tool (SAT)> in der Medium-Ausbaustufe. Der Projektauftrag (PA) basiert auf 
+  dem {{{./projektvorschlag.html}Projektvorschlag (PV)}}. 
   
-* Projektbeschreibung
+  Der PA umschreibt konkrete Anforderungen sowie Artefakte des Projektmanagement, 
+  die zusammen die Grundlage für eine Vereinbarung mit dem Kunden bilden.
 
-  Es wird ein Werkzeug benötigt welches den in der {{Ausgangssituation}}, 
-  von Semester zu Semester wiederkehrenden, Prozess administriert und mindestens drei, 
-  maximal vier, der fünf vorhandenen Webanwendungen ablöst.
+* Inhaltsverzeichniss
 
-  Das Projektteam von SAT soll aus Sicht der <<LVA-Leitung>>(<<Tutoren>> & <<Professoren>>) 
-  und auch der <<Studenten>> den SE&PM Prozess neu gestalten. Die von den jetzigen 
-  Tools abgedeckten Technischen Features der verschiedenen Anwendungen sollen 
-  komplett überarbeiten werden, d.h. eine neue Webanwendung mit neuen Technologien 
-  und technischen Features muss Entwickelt werden, und die bestehende Dokumentation 
-  und das Domänenwissen der <<LVA-Leitung>> soll dabei soweit wie möglich integriert 
-  werden um den Prozess transparenter zu machen.
+	[[1]] {{{./projektvorschlag.html#Projektbezeichnung_und_Entwicklerteam}Projektbezeichnung und Entwicklerteam (Projektvorschlag)}}
+	
+	[[2]] {{{./projektvorschlag.html#Ausgangssituation}Ausgangssituation (Projektvorschlag)}}
+	
+	[[3]] {{{./projektvorschlag.html#Projektbeschreibung}Projektbeschreibung (Projektvorschlag)}}
+	
+	[[4]] {{{./projektvorschlag.html#Zielgruppen}Zielgruppen (Projektvorschlag)}}
+	
+	[[5]] {{{./projektvorschlag.html#Featureliste}Featureliste (Projektvorschlag)}}
+	
+	[[6]] {{{./projektvorschlag.html#Domnenmodell}Domänenmodell (Projektvorschlag)}}
+	
+	[[7]] {{{Rollen & Horizontale Verantwortlichkeiten}Rollen & Horizontale Verantwortlichkeiten}}
+	
+	[[8]] {{{Icebergliste}Icebergliste}}
+	
+	[[9]] {{{Projektabgrenzungen}Projektabgrenzungen}}
+	
+	[[10]] {{{Komponentendiagramm}Komponentendiagramm}}
+	
+	[[11]] {{{Lieferkomponenten}Lieferkomponenten}}
+	
+	[[12]] {{{Arbeitsstruktur & Grober Projektplan}Arbeitsstruktur & Grober Projektplan}}
+	
+	[[13]] {{{Anwendungsfälle, Funktionale Anforderungen}Anwendungsfälle, Funktionale Anforderungen}}
+	
+	[[14]] {{{Nichtfunktionale Anforderungen}Nichtfunktionale Anforderungen}}
+	
+	[[15]] {{{Informationswesen}Informationswesen}}
+	
+	[[16]] {{{Besonderheiten}Besonderheiten}}
 
-  SAT soll nicht alles abdecken, aber es ist eine vollständige Web Applikation 
-  und zählt daher bereits zu einem verteilten System. Es geht darum, den <<Studenten>> 
-  und <<Professoren>> eine Platform zur Verfügung zu stellen. <<Student>> und <<Professor>> bzw. 
-  <<LVA-Leitung>> sind auch die Zielgruppen der SAT Webanwendung welche im Abschnitt 
-  {{Zielgruppen}} näher beschrieben sind.
+	[]
 
-~~%TODO: following Paragraphs could use more Requirements, like Tutors, maybe some non-funct?
-  Für <<Studenten>> bietet die Platform die Möglichkeit sich zu <Veranstaltungen> und 
-  <Prüfungen> anzumelden. Die <<Professoren>> nutzen diese Platform für die Statistikabfrage. 
-  Die ersten Anforderungen welche mittels Brainstorming aller beteiligten Stakeholder 
-  entstanden sind sind in der {{Featureliste}} beschrieben.
+* {Rollen & Horizontale Verantwortlichkeiten}
+~~TODO: Horizontalbeschreibung, Einleitung
 
-  Betrachten wir zuerst die Funktionen für einen <<Studenten>>. Damit ein <<Student>> die 
-  Platform überhaupt nutzen kann, muss dieser im System vorhanden sein. 
-~~Für die Verwaltung der <<Studenten>> wird das Basis Beispiel (siehe Chapter TODO Ref) verwendet. 
-  Nach erfolgreichen Login im System, bekommt der <<Student>> die Möglichkeit 
-  <<Professoren>> und <Kurse> zu suchen und erhält die Ergebnise in Form einer Tabelle 
-  dargestellt. Ein <<Student>> kann sich für jede <<Prüfung>> zu einem bestimmten Datum 
-  anmelden. Dem <<Studenten>> wird auch eine Übersicht seiner aktuell registrierten 
-  <Prüfungen> angezeigt.
+** Rollenverteilung
 
-  Die Suche nach <<Professoren>> und <Kursen>, sowie die Anzahl der gefundenen Einträge 
-  wird vom System protokolliert. Auf diese Statistikinformationen kann nur der 
-  <<Professor>> zugreifen. 
-  
-* {Zielgruppen}
-  
-  Die <<LVA-Leitung>> von beiden Instituten, bestehend aus <<Tutoren>> und <<Professoren>>, sollen 
-  von SAT sehr stark profitieren. Die Anzahl der verwendeten Webanwendungen soll 
-  wesentlich reduziert werden, vorhandene Features sollen verbessert werden und der 
-  Übergang von Einzelphase zu Gruppenphase soll durch das neue SAT Werkzeug verbessert 
-  und beschleunigt werden.
-
-  <<Tutoren>> verwenden das System in erster Linie um Abgabegespräche durchzuführen und die 
-  <Bewertung> in das Werkzeug einzutragen, d.h. Die <Bewertung> ist als Fragebogen-Schablone 
-  im Werkzeug enthalten und der <<Tutor>> muss diese bei einer Abgabe vervollständigen und 
-  bestätigen.  Bei der <Bewertung> ist es hilfreich zu wissen wie oft ein <<Student>> bereits 
-  zur Abgabe angetreten ist und wann der letzte Antritt erfolgte. Weiters ist es bedingt 
-  hilfreich zu wissen wie viele bzw. welche <<Studenten>> sich zu einem bestimmten 
-  <Abgabetermin> angemeldet haben.
-~~TODO: Tutoreinschaetzung, free-form text
-
-  <<Administratoren>> wollen zu Begin eines neuen Semesters die Datenbestände aus alten 
-  Semestern übernehmen um organisatorischen Overhead zu verringern. Am Ende der 
-  Einzelphase, also nach der <Bewertung>, sollen jene <<Studenten>> welche die Abgabe 
-  positiv absolviert haben zu <Gruppen> zusammengestellt werden, ein <<Tutor>> soll 
-  jeder <Gruppe> zugeteilt werden und eine "`Kick-Off"' E-Mail sollte an 
-  <<Tutoren>> & <Gruppen> versandt werden um diese zu benachrichtigen. 
-
-  Den <<Studenten>> soll die Handhabung der LVA erleichtert werden. Mittels SAT und einer 
-  anderen Webapplikation welche als Kommunikationsplattform verwendet wird sollen alle 
-  Bedürfnisse abgedeckt werden. <<Studenten>> müssen sich in SAT zu <Terminen> 
-  (Einstiegstest \& Abgabe) anmelden und eine <LVA-Präferenz> abgeben. 
-~~Gruppen erstellen, Institutspraeferenz abgeben.
-~~Projekt finden
-  
-* {Featureliste}
-
-  Folgende Features der bestehenden Werkzeuge unterstützen die in der 
-  {Ausgangssituation} beschriebenen Abläufe, daher sind sie den erwähnten Zielgruppen 
-  von direktem Nutzen und sollen von der neuen SAT-Webapplikation abgelöst werden.
-
-  Bestehender Funktionsumfang:
-
-  [Registrierung der Studenten] Bestätigung mit gültiger E-Mail Adresse. Kontrolle der Matrikel Nummer und Studienkennzahl via externe Systeme wird derzeit nicht unterstützt, ist aber in Zukunft wünschenswert.
-  
-  [Fragebogen System] Studenten können verschiedene Fragebögen ausfüllen um die Einteilung von Gruppen durch die LVA-Leitung zu erleichtern. Fragebögen können von der LVA-Leitung erstellt, eingesehen und bearbeiten werden.
-  
-  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)]  Ein Fragebogen mit nur einer Frage welcher ausgefüllt und bestätigt werden muss um die Eingangsphase abzuschließen. 
-  
-  [Terminverwaltung] Studenten können sich zu einem Abgabetermin anmelden, dabei werden Anmeldebeschränkungen kontrolliert. Abmeldung vom Abgabetermin ist bis zu einem vorher bestimmten Zeitpunkt möglich. Die LVA-Leitung kann Abgabetermine anlegen und verwalten.
+*-----------+-----------+-----------+-----------+-----------+
+|| Id 	 || Name	|| URL || Rolle || Stellvertretende Rolle || E-Mail |
+*-----------+-----------+-----------+-----------+-----------+
+| aschatt | Alexander Schatten | {{{http://www.schatten.info}http://www.schatten.info}} | Technischer Architekt | Dokumentbeauftragter | schatten[at]ifs[dot]tuwien[dot]ac[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
+| sbi | Stefan Biffl | {{{http://qse.ifs.tuwien.ac.at/~biffl/}http://qse.ifs.tuwien.ac.at/~biffl/}} |  Team Koordinator   | Tester | biffl[at]ifs[dot]tuwien[dot]ac[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
+| mdemolsky | Markus Demolsky |  |  Tester   | Technischer Architekt | markus[dot]demolsky[at]aon[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
+| erikgf | Erik Gostischa-Franta |  |  Build/Release Manager  | Dokumentbeauftragter | gostischa-franta[at]qse[dot]ifs[dot]tuwien[dot]ac[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
     
-  [Gruppenbildung] Studenten können sich zu Gruppen zusammenschliessen, jeder Student kann sich zu genau einer Gruppe anmelden und auch wieder abmelden sowie eine neue Gruppe erstellen. Es wird derzeit nur die Gruppierung und Präferenz jedes Studenten in der Gruppe angezeigt, zudem sind immer alle Gruppen für alle im System Registrierten Benutzer sichtbar, was in der Vergangenheit schon zu Problemen geführt hat.
-  
-  [Bewertung durch Tutoren] Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf.
+** Horizontale Verantwortlichkeiten
+
+*** Technische Architekten: <<aschatt & mdemolsky>>
+
+	Technische Architekten verwalten die Programm Infrastruktur des Projekts, z.B. Ordnerstruktur und Abhängige JAR Bibliotheken der Software (Dependencies).
+	Zum Expertenwissen der Technischen Architekten zählen eindeutig sehr gute Kenntnisse der 
+	verwendeten Programmiersprachen, Toolkits und Frameworks, sowie
+	Architekturelles Design und Software Patterns.
+	Spezifische Horizontale Verantwortlichkeiten für dieses Projekt sind:
+
+	* Projekt Objekt Model (Maven pom.xml); Dependency Management, Plugins, Repositories
+	
+	* Expertenwissen zu allen verwendeten Technologien der Technischen Entwicklung, z.B. Eclipse, Maven.
+	
+	* Erstellung von Kodierungs-Richtlinien (Checkstyle).
+	
+	* Erstellung von Richtlinien zur Sourcecode-Dokumentation (Javadoc).
+	
+	* Design der Programmarchitektur und -komponenten (Komponentendiagramm, Verteilungsdiagramm)
     
-  [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten.
-~~\item Rundmail-Versand 
-    
-  [Datenrücksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden.
+*** Team Koordinator: <<sbi>>
+
+	Team Koordinatoren müssen gute Projektmanagement Kenntnisse haben und sind für die Aktualität der Artefakte des laufenden Projektmanagement (, Projektplan) verantwortlich.
+
+	* Organisation und Planung (laufende Dokumentation, z.B. Projektplan)
+	
+		* Projektplan, Risikoanalyse, Iceberglist, Burn-Down Charts
+	
+	* Controlling & Tracking
+	
+		* Stundenlisten, Tickets, Statuserhebung für den Statusbericht
    
-  [Import der Testergebnisse] Bei Testterminen, werden die von den Studenten erzielten Punkte zu der Bewertung in der Webanwendung dazugezählt. Ein Import dieser Punkte ist per CSV Datei möglich.
+    * Kontrolle der Aufgabenverteilung (User Story/Developer)
+   
+    * Primärer Ansprechpartner für die Auftraggeber
+   
+    * Organisation interner und externer Meetings
     
-  [Export der Studenten-Datensätze] Am Ende der Einzelphase werden die Studenten mit ihren Leistungen, Beschreibungen, Gruppenzuteilungen und Präferenzen exportiert und in anderen Werkzeugen weiterverarbeitet.
+    	* Gruppentreffen (Jour-Fix), Tutortrefen, IR's, MR's
 
-  []
+*** Dokumentbeauftragte: <<erikgf & aschatt>>
 
-  Features welche vollkommen neu sind und nicht bereits von bestehenden Werkzeugen unterstützt werden:
+	* Dokument: Verfügbarkeit der Dokumentation, z.B. über Mercurial und Maven site.
 
-  [Registrierung der Studenten] Das Passwort wird als Hash gespeichert und nicht mehr per E-Mail versandt. Bei Verlust wird ein neues generiert und dem Studenten zugesandt, der es bei der ersten neuen Anmeldung ändern muss.
-
-  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)] Anmeldebeschränkungen und Unterschiedliche Anmelde-deadlines fuer jede Präferenz.
-
-  [Gruppenbildung] Eine Gruppe soll eine Notiz hinterlassen können, die andere Studenten einsehen können (Projektvorschlag, Kenntnisse, ...). Administrator-seitig soll SAT die Möglichkeit bieten Gruppen manuell zusammenzustellen, aber auch diese Schritte wieder rückgängig zu machen.
-
-  [Administrator Benutzerkonto] Direkte Verknüpfung eines Tutors und Assistenten mit einer Gruppe (siehe Domänenmodell \ref{med_bsp:PVDomain}, "`betreut"' Beziehung), dies soll den Übergang von Einzelphase zu Gruppenphase erheblich beschleunigen, da früher mit organisatorischer Arbeit für die Gruppenphase begonnen werden kann. Automatischer Versand eines E-Mail an die zusammengestellten Gruppen und die jeweiligen Tutoren/Assistenten soll möglich sein um die Gruppenphase zu "`starten"'.
-
-  [Fragebogen System] Benutzerfreundliche Erstellung der Fragebögen, jetzige Methode erfordert einen Entwickler.
-~~\item Nachabgaben bzw. dritte Antritte (NEU)
-~~\item Export der Studentenliste (NEU)
-
-  [Export von SVN Accounts] Exportfunktion der Studenten- und Gruppendaten für Mailinglisten und SVN-Accounts. Jene Systeme werden extern administriert, Export erfolgt als CSV.
-
-  [Terminverwaltung] soll in Zukunft auch für andere Formen von Anmeldungen genützt werden (Tutorien, vereinbarte Laborzeiten, ...). Anmeldeschluss zu Abgaben soll definierbar sein. Versand von Rund-Mails für Angemeldete Studenten soll unterstützt werden.
-~~\item Notenvergabe (NEU) - Noten sollen am Ende der LVA in das Tool eingetragen werden.
-~~\item Notenexport - Noten sollen bei Bedarf für das TUWIS unabhängig nach Gruppe, Semester und Institut exportiert werden. Dabei werden Studenten, die schon in der Eingangsphase negativ bewertet wurden automatisch auf die Institute aufgeteilt.
-~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden können.
-
-  [Bewertung durch Tutoren] Bei der Bewertung soll angezeigt werden wie oft der zu bewertende Student bereits abgetreten ist.
-
-  []
+	* Projektorganisation und -dokumentation
   
-~~Die zu realisierenden Funktionen der Platform sind im Use Case Diagramm in Abbildung \ref{abb:medium_usecase} dargestellt.
+    * Erstellung von Dokumentationsrichtlinien (Format- und Formatierungsrichtlinien, Spezifikation der Code Conventions, Erstellung von Vorlagen, ...)
 
-~~ Ich denke das sollte man dann aus dem Buch übernehmen. ^^
+    * Überprüfung der Einhaltung von Dokumentationsrichtlinien
+
+    * Überprüfung der Vollständigkeit von Dokumenten
+
+    * Organisation und Archivierung der Dokumente
+    
+
+*** Testbeauftragte: <<mdemolsky & sbi>>
   
-* Domänenmodell
+  	* Test Infrastrukture: Test Suites, Test Libraries, Testdata (zweite DB). Testcode von Produktionscode trennen
 
-  Bevor wir nun das Komponentendiagramm des Systems betrachten, gehen wir kurz auf das Domänenmodell 
-  vom Projektvorschlag ein, welches ein wenig komplexer als jenes im BPSE Basisbeispiel ist. Das UML 
-  Domänenmodell ist in Abbildung \ref{abb:medium_domain} dargestellt. 
+    * Erstellung von Testrichtlinien (Testvorgehensweise, Auswirkungen bei Fehlern, WeitergabeVerhalten bei Fehlern, ...)
 
-[../uml/medium/slat-model/fig128003.png] Domänenmodel
+    * Überprüfung der Einhaltung von Testrichtlinien
 
-* Komponentendiagramm
+    * Planung von Test-Runs
 
-* Projektabgrenzungen
+    * Verwaltung des Trouble-Ticket-Systems und der allgemeinen Trouble-Tickets
+
+    * Überwachung von Integrations- und Systemtests
+
+    * Regelmäßige Überprüfung aller Unit-Tests
+    
+    
+*** Build/Release Manager: <<erikgf>>
+
+	* Development Environment INfrastructure: scripts, tagging, mercurial, build targets, 
+    
+    []
+    
+* {Icebergliste}
+
+  Die Features können zu folgenden groben Arbeitspaketen zusammengefasst werden:
+
+  * Account-Verwaltung
+
+  * LVA Verwaltung
+
+  * Terminverwaltung
+
+  * Gruppenverwaltung
+
+  * Fragebögen-Verwaltung
+
+  * Studentenbewertung
+  
+
+* {Projektabgrenzungen}
  
   Bei dem Projekt muss eine sinnvolle Erweiterbarkeit gegeben sein, in diesem Teil wird aber vor allem 
   auf die stabile Umsetzung der oben angeführten Anforderungen geachtet.
@@ -183,7 +178,44 @@ Projektauftrag
 
   []
   
-* Anwendungsfälle, Funktionale Anforderungen
+* {Komponentendiagramm}
+
+* {Lieferkomponenten}
+~~TODO: Datenbank, Programm, Dokumentation
+
+  * Die Anwendung und der dazu gehörige Quelltext mit Programmkommentaren
+
+  * Projektdokumentation, soweit für die Wartung oder Weiterentwicklung notwendig
+
+  * Konfigurationsdaten für Datenbanken und Server, soweit für Wartung oder Weiterentwicklung notwendig
+
+  * Benutzerhandbuch in Form einer Onlinehilfe.
+  
+  []
+  
+  ~~TODO: Meilensteinbeschreibung  
+  
+  * Abschluss des generellen Aufbaus der Infrastruktur bis 30. März 2009
+
+  * Abschluss der Analysephase bis 27. April 2009
+
+  * Abschluss der Entwurfsphase bis 18. Mai 2009
+
+  * Abschluss des Aufbaus der Serverinfrastruktur 01. Juni 2009
+
+  * Abschluss des Projekts bis 22. Juni 2009
+
+  * Abschluss der externe Tests (Auftraggeber) bis Ende Juli 2009
+
+  * Monitoring und Bugfixing des Projekts Anfang des WS09/10
+  
+  []
+  
+* {Arbeitsstruktur & Grober Projektplan}
+~~TODO: Arbeitspakete, WBS
+	und Aufwandsschätzung
+  
+* {Anwendungsfälle, Funktionale Anforderungen}
 
   Abbildung \ref{abb:medium_usecase} zeigt die wichtigsten Akteure und Anwendungsfälle als 
   UML Use Case Diagramm.
@@ -193,7 +225,7 @@ Projektauftrag
   Folgende Tabelle beschreibt eine grobe Gliederung der Anwendungsfaelle sowie eine Kurzbeschreibung 
   und Zuständigkeiten der Teammitglieder. 
   
-* Nichtfunktionale Anforderungen
+* {Nichtfunktionale Anforderungen}
 
   * Verfügbarkeit - Die Anwendung muss Hauptanwendungszeiten, als v.a. zu Beginn des Semesters stabil laufen und mehrere hundert Anfragen parallel bedienen können.
 
@@ -213,117 +245,7 @@ Projektauftrag
   
   []
   
-* Lieferkomponenten
-~~TODO: Datenbank, Programm, Dokumentation
-
-  * Die Anwendung und der dazu gehörige Quelltext mit Programmkommentaren
-
-  * Projektdokumentation, soweit für die Wartung oder Weiterentwicklung notwendig
-
-  * Konfigurationsdaten für Datenbanken und Server, soweit für Wartung oder Weiterentwicklung notwendig
-
-  * Benutzerhandbuch in Form einer Onlinehilfe.
-  
-  []
-  
-* Arbeitsstruktur, Rollenverteilung
-~~TODO: Horizontalbeschreibung, Einleitung
-
-  * Alexander Schatten: Technischer Architekt
-  
-    * Aufbau der Projektinfrastruktur (SVN, SSH-Zugriff, Datenbankserver, ...)
-
-    * Entscheidungsfindung zur Verwendung von Technologien
-
-    * Erstellung von Kodierungs-Richtlinien
-
-    * Erstellung von Richtlinien zur Sourcecode-Dokumentation
-
-    * Design der Programmarchitektur und -komponenten
-
-    * Verantwortlichkeit für Architekturdiagramme
-   
-	\ 
-	
-  * Erik Gostischa-Franta: Dokumentbeauftragter
-  
-    * Erstellung von Dokumentationsrichtlinien (Format- und Formatierungsrichtlinien, Spezifikation der Code Conventions, Erstellung von Vorlagen, ...)
-
-    * Überprüfung der Einhaltung von Dokumentationsrichtlinien
-
-    * Überprüfung der Vollständigkeit von Dokumenten
-
-    * Organisation und Archivierung der Dokumente
-    
-    \ 
-
-  * Stefan Biffl: Team-Koordinator
-   
-    * Projektorganisation, -dokumentation und planung (laufende Dokumentation, Statusberichte, Meilenstein-Trendanalyse, ...)
-   
-    * Teaminterne Aufgabenverteilung und -koordination
-   
-    * Schlichtung teaminterner Differenzen
-   
-    * Primärer Ansprechpartner für die Auftraggeber
-   
-    * Organisation und Leitung interner und externer Meeting
-
-    \ 
-
-  * Markus Demolsky: Testbeauftragter
-
-    * Erstellung von Testrichtlinien (Testvorgehensweise, Auswirkungen bei Fehlern, WeitergabeVerhalten bei Fehlern, ...)
-
-    * Überprüfung der Einhaltung von Testrichtlinien
-
-    * Planung von Test-Runs
-
-    * Verwaltung des Trouble-Ticket-Systems und der allgemeinen Trouble-Tickets
-
-    * Überwachung von Integrations- und Systemtests
-
-    * Regelmäßige Überprüfung aller Unit-Tests
-    
-    []
-
-* Grober Projektplan und Aufwandsschätzung
-~~TODO: Arbeitspakete, WBS
-
-  Die Features können zu folgenden groben Arbeitspaketen zusammengefasst werden:
-
-  * Account-Verwaltung
-
-  * LVA Verwaltung
-
-  * Terminverwaltung
-
-  * Gruppenverwaltung
-
-  * Fragebögen-Verwaltung
-
-  * Studentenbewertung
-  
-  []
-~~TODO: Meilensteinbeschreibung  
-  
-  * Abschluss des generellen Aufbaus der Infrastruktur bis 30. März 2009
-
-  * Abschluss der Analysephase bis 27. April 2009
-
-  * Abschluss der Entwurfsphase bis 18. Mai 2009
-
-  * Abschluss des Aufbaus der Serverinfrastruktur 01. Juni 2009
-
-  * Abschluss des Projekts bis 22. Juni 2009
-
-  * Abschluss der externe Tests (Auftraggeber) bis Ende Juli 2009
-
-  * Monitoring und Bugfixing des Projekts Anfang des WS09/10
-  
-  []
-  
-* Informationswesen
+* {Informationswesen}
 ~~TODO: Kommunikationswege, Dokumentation, Tooling, Sonstige Dokumente
   
   Die Informationsstruktur für das Projekt wird folgendermaßen aussehen:
@@ -354,7 +276,7 @@ Projektauftrag
 
   []
   
-* Besonderheiten
+* {Besonderheiten}
 
   Wir wollen nochmals zusammenfassen welche Design Patterns und Architekturprinzipen in diesem Beispiel 
   angewandt wurden. Als Architekturstil wurde eine 5-Schichten-Architektur gewählt, wobei ausschließlich 
@@ -366,6 +288,5 @@ Projektauftrag
   und Transaktionsmanagement wurden mit der Aspekt Orientierten Programmierung (AOP) realisiert, was eine 
   Verschlankung unserer DAOs und Service Objekte mit sich brachte.
 
-~~ Auch aus dem Buch übernehmen.
 
 ~~ TODO: Risikoabschaetzung

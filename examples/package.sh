@@ -21,9 +21,7 @@ basic_srcpackages="basic/pom.xml basic/src"
 
 suffix=$(date +%k%M%j)
 
-# script
-
-# sanity checks
+# run maven
 
 cd $rootdir
 echo "would you like to execute mvn clean & site? [y/N]"
@@ -31,30 +29,34 @@ read response
 if [ "$response" = y ]
 then
 	echo "Executing 'mvn clean'"
-	#sleep 3
+	sleep 1
 	mvn clean
-	echo "Executing 'mvn site'"
-	#sleep 3
+	echo "Executing 'mvn site for core, basic and documentation'"
+	sleep 2
 	cd basic
 	mvn site
-	echo "Executing 'mvn site'"
-	#sleep 3
 	cd ../documentation
 	mvn site
 	cd ../core
 	mvn site
 
 	cd ..
-	#mvn site
 fi
-if [ ! -e $src_basic ] || [ ! -e $src_doc ] 
+
+#checks
+
+if [ ! -e $src_basic ] || [ ! -e $src_doc ] || [ ! -e $src_core ]
 then
 	echo "ERROR: one of these dirctories was not found in rootdir: $rootdir"
 	echo $src_doc
 	echo $src_basic
+	echo $src_core
 	echo "exiting..."
 	exit 1
 fi
+
+#Create a new Deploy dir and move the old one out of the way
+
 if [ -e $deploydir ] 
 then
 	echo "moving $deploydir to $deploydir.$suffix"
