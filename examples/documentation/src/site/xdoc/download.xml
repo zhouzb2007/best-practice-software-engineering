@@ -8,8 +8,8 @@
     </properties>
 
 	<body>
-		<section name="Download Section">
-			<subsection name="Packages">
+		<section name="Download Best-Practice Examples">
+			<!--<subsection name="Packages">-->
 				<p>This archive contains the basic example sourcecode, the implemented design patterns discussed in the BPSE Book and this website documentation as apache maven projects.</p>
                 <!--
 					<ul>
@@ -21,7 +21,7 @@
 					<ul>
 						<li>Zip-Archive <a href="src-package/BPSE.zip"> <img src="images/download.gif" /></a></li>
 					</ul>
-			</subsection>
+			<!--</subsection>-->
 		</section>
 	</body>
 </document>

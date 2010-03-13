@@ -1,91 +1,140 @@
-Projektvorschlag
+   ---
+   Projektvorschlag
+   ---
+   Erik Gostischa-Franta
+   ---
+   2010-03-13
+   ---
+
+Projektvorschlag (PV)
 
   Dieser Abschnitt beinhaltet den Projektvorschlag für das Software-Engineering Anmelde Tool (SAT) in der Medium-Ausbaustufe.
-
   Der Projektvorschlag (PV) umschreibt grob das geplante Vorhaben und liefert die Grundlage für eine erste Machbarkeits-Abschätzung. 
+
+* Inhaltsverzeichniss
+
+	[[1]] {{{Projektbezeichnung und Entwicklerteam}Projektbezeichnung und Entwicklerteam}}
+	
+	[[2]] {{{Ausgangssituation}Ausgangssituation}}
+	
+	[[3]] {{{Projektbeschreibung}Projektbeschreibung}}
+	
+	[[4]] {{{Zielgruppen}Zielgruppen}}
+	
+	[[5]] {{{Featureliste}Featureliste}}
+	
+	[[6]] {{{Domänenmodell}Domänenmodell}}
+	
+	[]
+
+* {Projektbezeichnung und Entwicklerteam}
 
   Das SAT Projekt baut technisch auf dem Basic Beispiel auf. Die Architekturellen Änderungen bzw. Erweiterungen sind jedoch massiv, 
   weitere Analyse und Design in einem Team sind notwendig um ein gutes mittelgroßes Projekt in angemessener Zeit durchzuführen. 
-  Dazu sind anschließend Checklisten beschrieben, welche aus der Durchführung des SAT Projekts im Rahmen der SEPM LVA entstanden 
-  sind und für andere Projekt mit ähnlichen Charakteristiken verwendbar sein sollen.
 
-  Der Projektauftrag (PA) basiert auf diesem Vorschlag und erweitert ihn durch detailliertere und weitaus konkretere Anforderungen 
-  sowie Projektmanagement Artefakte. 
+*-----------+-----------+-----------+-----------+-----------+
+|| Id 	 || Name	|| URL || Rolle || Stellvertretende Rolle || E-Mail |
+*-----------+-----------+-----------+-----------+-----------+
+| aschatt | Alexander Schatten | {{{http://www.schatten.info}http://www.schatten.info}} | Technischer Architekt | Dokumentbeauftragter | schatten[at]ifs[dot]tuwien[dot]ac[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
+| sbi | Stefan Biffl | {{{http://qse.ifs.tuwien.ac.at/~biffl/}http://qse.ifs.tuwien.ac.at/~biffl/}} |  Team Koordinator   | Tester | biffl[at]ifs[dot]tuwien[dot]ac[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
+| mdemolsky | Markus Demolsky |  |  Tester   | Technischer Architekt | markus[dot]demolsky[at]aon[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
+| erikgf | Erik Gostischa-Franta |  |  Build/Release Manager  | Dokumentbeauftragter | gostischa-franta[at]qse[dot]ifs[dot]tuwien[dot]ac[dot]at |
+*-----------+-----------+-----------+-----------+-----------+
 
 * {Ausgangssituation}
-~~ Gleich mit der Ausgangssituation vom PA
-  Die <Lehrveranstalltung> (LVA) "Software Engineering & Projektmanagement"
-  (SE&PM) wird von zwei verschiedenen <Instituten> an der Technischen Universität 
-  Wien gemeinsam abgehalten. Dabei wird aus Administrationssicht der <<Tutoren>> und 
-  <<Professoren>>, der erste Teil der <Lehrveranstaltung>, die "Eingangsphase", 
-  gemeinsam und der zweite Teil "Guppenphase" an den zwei <Instituten> separat 
+
+  Die Lehrveranstalltung (LVA) "Software Engineering & Projektmanagement"
+  (SE&PM) wird von zwei verschiedenen Instituten an der Technischen Universität 
+  Wien gemeinsam abgehalten. Dabei wird aus Administrationssicht der Tutoren und 
+  Professoren, der erste Teil der Lehrveranstaltung, die "Eingangsphase", 
+  gemeinsam und der zweite Teil "Guppenphase" an den zwei Instituten separat 
   durchgeführt. 
   Derzeit sind vier bis fünf verschiedene Webanwendungen an der Administration 
-  der SE&PM <LVA> beteiligt. Jede Webanwendung tragt bestimmte wichtige Funktionen 
+  der SE&PM LVA beteiligt. Jede Webanwendung tragt bestimmte wichtige Funktionen 
   zum Prozess bei, entweder die Anwendung ist universell genug um von beiden 
-  <Instituten> verwendet zu werden (Google Docs/Google Calendar) oder die Anwendung 
+  Instituten verwendet zu werden (Google Docs/Google Calendar) oder die Anwendung 
   bezieht sich auf ein spezielles Problem seitens der Administration und 
   Automatisierung (Domänenwissen der Professoren bzw. interne Webanwendungen). 
   Andere, von der Universität angebotene, Webanwendungen erlauben es zwar 
-  <Lehrveranstalltungen> gut zu administrieren, doch beziehen sich diese immer auf 
-  genau eine <LVA> welche von genau einem Institut abgehalten wird. Sobald mit den 
-  bestehenden Anwendungen versucht wird eine gemeinsame Eingangsphase der <LVA> 
+  Lehrveranstalltungen gut zu administrieren, doch beziehen sich diese immer auf 
+  genau eine LVA welche von genau einem Institut abgehalten wird. Sobald mit den 
+  bestehenden Anwendungen versucht wird eine gemeinsame Eingangsphase der LVA 
   abzubilden, stoßen diese bestehenden Werkzeuge auf ihre Grenzen und können den 
-  geforderten Ablauf der SE&PM <LVA> nicht mehr abdecken.
+  geforderten Ablauf der SE&PM LVA nicht mehr abdecken.
   
-* Projektbeschreibung
-~~ Anfang ist gleich mit Projektbeschreibung vom PA
-  Es wird ein Werkzeug benötigt welches den in der {{Ausgangssituation}}, 
+* {Projektbeschreibung}
+
+  Es wird ein Werkzeug benötigt, dass den in der {{Ausgangssituation}} beschriebenen, 
   von Semester zu Semester wiederkehrenden, Prozess administriert und mindestens drei, 
   maximal vier, der fünf vorhandenen Webanwendungen ablöst.
 
-  Das Projektteam von SAT soll aus Sicht der <<LVA-Leitung>>(<<Tutoren>> & <<Professoren>>) 
-  und auch der <<Studenten>> den SE&PM Prozess neu gestalten. Die von den jetzigen 
+  Das Projektteam von SAT soll aus Sicht der LVA-Leitung (Tutoren & Professoren) 
+  und auch der Studenten den SE&PM Prozess neu gestalten. Die von den jetzigen 
   Tools abgedeckten Technischen Features der verschiedenen Anwendungen sollen 
   komplett überarbeiten werden, d.h. eine neue Webanwendung mit neuen Technologien 
   und technischen Features muss Entwickelt werden, und die bestehende Dokumentation 
-  und das Domänenwissen der <<LVA-Leitung>> soll dabei soweit wie möglich integriert 
+  und das Domänenwissen der LVA-Leitung soll dabei soweit wie möglich integriert 
   werden um den Prozess transparenter zu machen.
 
   SAT soll nicht alles abdecken, aber es ist eine vollständige Web Applikation 
-  und zählt daher bereits zu einem verteilten System. Es geht darum, den <<Studenten>> 
-  und <<Professoren>> eine Platform zur Verfügung zu stellen. <<Student>> und <<Professor>> bzw. 
-  <<LVA-Leitung>> sind auch die Zielgruppen der SAT Webanwendung welche im Abschnitt 
+  und zählt daher bereits zu einem verteilten System. Es geht darum, den Studenten 
+  und Professoren eine Platform zur Verfügung zu stellen. Student und Professor bzw. 
+  LVA-Leitung sind auch die Zielgruppen der SAT Webanwendung welche im Abschnitt 
   {{Zielgruppen}} näher beschrieben sind.
+
+~~%TODO: following Paragraphs could use more Requirements, like Tutors, maybe some non-funct?
+  Für Studenten bietet die Platform die Möglichkeit sich zu Veranstaltungen und 
+  Prüfungen anzumelden. Die Professoren nutzen diese Platform für die Statistikabfrage. 
+  Die ersten Anforderungen welche mittels Brainstorming aller beteiligten Stakeholder 
+  entstanden sind sind in der {{Featureliste}} beschrieben.
+
+  Betrachten wir zuerst die Funktionen für einen Studenten. Damit ein Student die 
+  Platform überhaupt nutzen kann, muss dieser im System vorhanden sein. 
+~~Für die Verwaltung der Studenten wird das Basis Beispiel (siehe Chapter TODO Ref) verwendet. 
+  Nach erfolgreichen Login im System, bekommt der Student die Möglichkeit 
+  Professoren und Kurse zu suchen und erhält die Ergebnise in Form einer Tabelle 
+  dargestellt. Ein Student kann sich für jede Prüfung zu einem bestimmten Datum 
+  anmelden. Dem Studenten wird auch eine Übersicht seiner aktuell registrierten 
+  Prüfungen angezeigt.
+
+  Die Suche nach Professoren und Kursen, sowie die Anzahl der gefundenen Einträge 
+  wird vom System protokolliert. Auf diese Statistikinformationen kann nur der 
+  Professor zugreifen. 
   
 * {Zielgruppen}
-~~ Gleich mit den Zielgruppen vom PA
-  Die <<LVA-Leitung>> von beiden Instituten, bestehend aus <<Tutoren>> und <<Professoren>>, sollen 
+  
+  Die <<LVA-Leitung>> von beiden Instituten, bestehend aus Tutoren und Professoren, sollen 
   von SAT sehr stark profitieren. Die Anzahl der verwendeten Webanwendungen soll 
   wesentlich reduziert werden, vorhandene Features sollen verbessert werden und der 
   Übergang von Einzelphase zu Gruppenphase soll durch das neue SAT Werkzeug verbessert 
   und beschleunigt werden.
 
   <<Tutoren>> verwenden das System in erster Linie um Abgabegespräche durchzuführen und die 
-  <Bewertung> in das Werkzeug einzutragen, d.h. Die <Bewertung> ist als Fragebogen-Schablone 
-  im Werkzeug enthalten und der <<Tutor>> muss diese bei einer Abgabe vervollständigen und 
-  bestätigen.  Bei der <Bewertung> ist es hilfreich zu wissen wie oft ein <<Student>> bereits 
+  Bewertung in das Werkzeug einzutragen, d.h. Die Bewertung ist als Fragebogen-Schablone 
+  im Werkzeug enthalten und der Tutor muss diese bei einer Abgabe vervollständigen und 
+  bestätigen.  Bei der Bewertung ist es hilfreich zu wissen wie oft ein Student bereits 
   zur Abgabe angetreten ist und wann der letzte Antritt erfolgte. Weiters ist es bedingt 
-  hilfreich zu wissen wie viele bzw. welche <<Studenten>> sich zu einem bestimmten 
-  <Abgabetermin> angemeldet haben.
+  hilfreich zu wissen wie viele bzw. welche Studenten sich zu einem bestimmten 
+  Abgabetermin angemeldet haben.
 ~~TODO: Tutoreinschaetzung, free-form text
 
   <<Administratoren>> wollen zu Begin eines neuen Semesters die Datenbestände aus alten 
-  Semestern übernehmen um organisatorischen Overhead zu verringern. Am Ende der 
-  Einzelphase, also nach der <Bewertung>, sollen jene <<Studenten>> welche die Abgabe 
-  positiv absolviert haben zu <Gruppen> zusammengestellt werden, ein <<Tutor>> soll 
-  jeder <Gruppe> zugeteilt werden und eine "`Kick-Off"' E-Mail sollte an 
-  <<Tutoren>> & <Gruppen> versandt werden um diese zu benachrichtigen. 
+  Semestern übernehmen um organisatorischen Overhead zu verringern. Automatisierung: 
+  Nach der Bewertung der Einzelphase, sollen jene Studenten welche die Abgabe 
+  positiv absolviert haben, zu Gruppen zusammengestellt werden. Nach Zuteilung des
+  Tutors, soll Tutor & Gruppe eine "`Kick-Off"' E-Mail gesandt werden. 
 
-  Den <<Studenten>> soll die Handhabung der LVA erleichtert werden. Mittels SAT und einer 
-  anderen Webapplikation welche als Kommunikationsplattform verwendet wird sollen alle 
-  Bedürfnisse abgedeckt werden. <<Studenten>> müssen sich in SAT zu <Terminen> 
-  (Einstiegstest \& Abgabe) anmelden und eine <LVA-Präferenz> abgeben. 
+  <<Studenten>> soll die Handhabung der LVA erleichtert werden. Mittels SAT und TUWEL
+  sollen alle Bedürfnisse in SE&PM abgedeckt werden. Studenten müssen sich in SAT zu 
+  Terminen (Einstiegstest & Abgabe) anmelden und eine LVA-Präferenz abgeben. 
 ~~Gruppen erstellen, Institutspraeferenz abgeben.
 ~~Projekt finden
   
 * {Featureliste}
-~~Gleich mit der Featureliste vom PA
+
   Folgende Features der bestehenden Werkzeuge unterstützen die in der 
   {Ausgangssituation} beschriebenen Abläufe, daher sind sie den erwähnten Zielgruppen 
   von direktem Nutzen und sollen von der neuen SAT-Webapplikation abgelöst werden.
@@ -105,7 +154,7 @@ Projektvorschlag
   [Bewertung durch Tutoren] Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf.
     
   [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten.
-~~\item Rundmail-Versand
+~~\item Rundmail-Versand 
     
   [Datenrücksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden.
    
@@ -139,6 +188,8 @@ Projektvorschlag
   [Bewertung durch Tutoren] Bei der Bewertung soll angezeigt werden wie oft der zu bewertende Student bereits abgetreten ist.
 
   []
+  
+~~Die zu realisierenden Funktionen der Platform sind im Use Case Diagramm in Abbildung \ref{abb:medium_usecase} dargestellt.
   
 * Domänenmodell
 
