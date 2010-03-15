@@ -15,58 +15,188 @@ Projektauftrag (PA)
   Der PA umschreibt konkrete Anforderungen sowie Artefakte des Projektmanagement, 
   die zusammen die Grundlage für eine Vereinbarung mit dem Kunden bilden.
 
-* Inhaltsverzeichniss
+%{toc|section=1|fromDepth=1|toDepth=1} 
 
-	[[1]] {{{./projektvorschlag.html#Projektbezeichnung_und_Entwicklerteam}Projektbezeichnung und Entwicklerteam (Projektvorschlag)}}
-	
-	[[2]] {{{./projektvorschlag.html#Ausgangssituation}Ausgangssituation (Projektvorschlag)}}
-	
-	[[3]] {{{./projektvorschlag.html#Projektbeschreibung}Projektbeschreibung (Projektvorschlag)}}
-	
-	[[4]] {{{./projektvorschlag.html#Zielgruppen}Zielgruppen (Projektvorschlag)}}
-	
-	[[5]] {{{./projektvorschlag.html#Featureliste}Featureliste (Projektvorschlag)}}
-	
-	[[6]] {{{./projektvorschlag.html#Domnenmodell}Domänenmodell (Projektvorschlag)}}
-	
-	[[7]] {{{Rollen & Horizontale Verantwortlichkeiten}Rollen & Horizontale Verantwortlichkeiten}}
-	
-	[[8]] {{{Icebergliste}Icebergliste}}
-	
-	[[9]] {{{Projektabgrenzungen}Projektabgrenzungen}}
-	
-	[[10]] {{{Komponentendiagramm}Komponentendiagramm}}
-	
-	[[11]] {{{Lieferkomponenten}Lieferkomponenten}}
-	
-	[[12]] {{{Arbeitsstruktur & Grober Projektplan}Arbeitsstruktur & Grober Projektplan}}
-	
-	[[13]] {{{Anwendungsfälle, Funktionale Anforderungen}Anwendungsfälle, Funktionale Anforderungen}}
-	
-	[[14]] {{{Nichtfunktionale Anforderungen}Nichtfunktionale Anforderungen}}
-	
-	[[15]] {{{Informationswesen}Informationswesen}}
-	
-	[[16]] {{{Besonderheiten}Besonderheiten}}
+* {Projektbezeichnung und Entwicklerteam}
 
-	[]
+	Siehe {{{./projektvorschlag.html#Projektbezeichnung_und_Entwicklerteam}Projektbezeichnung und Entwicklerteam}} vom Projektvorschlag
 
-* {Rollen & Horizontale Verantwortlichkeiten}
-~~TODO: Horizontalbeschreibung, Einleitung
+* {Ausgangssituation}
+
+	Siehe {{{./projektvorschlag.html#Ausgangssituation}Ausgangssituation}} vom Projektvorschlag
+
+* {Projektbeschreibung}
+
+	Siehe {{{./projektvorschlag.html#Projektbeschreibung}Projektbeschreibung}} vom Projektvorschlag
+
+* {Zielgruppen}
+
+	Siehe {{{./projektvorschlag.html#Zielgruppen}Zielgruppen}} vom Projektvorschlag
+
+  Zusätzlich zu den beschriebenen Zielgruppen, wurde eine UML Aktorenhierarchie erstellt, 
+  auf die sich die {{{Icebergliste}Icebergliste}} (erweiterte Featuresliste) im folgenden Abschnitt bezieht.
+
+[../uml/medium/slat-model/fig129155.png]
+
+* {Funktionale Anforderungen, Anwendungsfälle}
+
+	Siehe {{{./projektvorschlag.html#Featureliste}Feature-Liste}} vom Projektvorschlag (PV) für eine Beschreibung der Features.
+
+** {Anwendungsfall Pakete}
+
+  Die Features aus dem Projektvorschlag (PV) wurden zu folgenden Anwendungsfallpaketen abstrahiert:
+
+  * Registrierung
+
+  * LVA Verwaltung
+
+  * Terminverwaltung
+
+  * Gruppenbildung (Student), Gruppenverwaltung (Admin)
+
+  * Fragebogen
+
+  * (Studenten-) Bewertung
+  
+  []
+  
+** {Iceberglist}
+
+	Der wesentliche Unterschied zur {{{./projektvorschlag.html#Featureliste}Feature-Liste}} aus dem Projektvorschlag (PV), besteht in der Verfeinerung der Features zu Anwendungsfällen (Use Cases) und die Spalten "Version" und "Zuständiger", die zusätzlich Projektplanung ins Spiel bringen.
+	
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+|| \ 	 || \	|| \ || Kunden-\ || Auf-\ || Ver-\ || Zustän-\ |
+|| Id 	 || Feature, Aktor	|| Anwendungsfälle || Priorität || wand || sion || diger |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.1 | Registrierung, Anonym | Account anlegen | H | 3 | <<1>> | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.2 | Registrierung, Student | Accountdaten ändern | H | 1 | <<1>> | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.5 | Registrierung, Tutor | Accountdaten ändern | H | 1 | <<1>> | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.6 | Registrierung, Admin | Daten einsehen | H | 3 | <<1>> | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.10 | Registrierung, Admin | Student oder Tutor Passwort ändern (mit Benachrichtigen) | H | 4 | <<1>> | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 3.1 | Terminverwaltung, Student | zu Termin anmelden | H | 4 | <<1>> | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 3.2 | Terminverwaltung, Student | von Termin abmelden | H | 2 | <<1>> | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 3.3 | Terminverwaltung, Admin | Termin erstellen | H | 5 | <<1>> | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 4.1 | Gruppenbildung, Student | Gruppe erstellen | H | 4 | <<1>> | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 4.2 | Gruppenbildung, Student | Gruppe ansehen | M | 3 | <<1>> | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 4.2 | Gruppenbildung, Student | Gruppenbeschreibung editieren | N | 8 | <<1>> | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.1 | Bewertung, Tutor | Student suchen | M | 4 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.1 | LVA-Verwaltung, Student | zu LVA anmelden |  H  | 4 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.1 | LVA-Verwaltung, Student | von LVA abmelden |  H  | 2 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.2 | LVA-Verwaltung, Admin | LVA erstellen |  H  | 5 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.3 | LVA-Verwaltung, Admin | LVA bearbeiten |  M  | 4 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.4 | LVA-Verwaltung, Admin | LVA löschen |  N  | 3 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.7 | LVA-Verwaltung, Admin | Testpunkte import |  H  | 1 | <<1>> | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.3.1 | Bewertung, Admin | Bewertungsbogen erstellen |  H  | 5 | <<1>> | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.3.2 | Bewertung, Admin | Bewertungsbogen ändern |  H  | 4 | <<1>> | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.3 | Registrierung, Student | neues Passwort anfordern | H | 2 | 2 | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.4 | Registrierung, Tutor | neues Passwort anfordern | H | 2 | 2 | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.7 | Registrierung, Admin | Account löschen | H | 2 | 2 | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.8 | Registrierung, Admin | Accountdaten ändern | H | 1 | 2 | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.9 | Registrierung, Admin | Tutor account anlegen | H | 3 | 2 | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 2.2 | Fragebogen, Admin | Fragebogen erstellen | M | 8 | 2 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 3.4 | Terminverwaltung, Admin | Anmeldungen einsehen |  H  | 4 | 2 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 4.2 | Gruppenbildung, Student | zu Gruppe anmelden | H | 2 | 2 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 4.2 | Gruppenbildung, Student | von Gruppe abmelden | M | 2 | 2 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.2 | Bewertung, Tutor | Bewertung eintragen (bewerten) | H | 8 | 2 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.2.1 | Bewertung, Tutor | Testpunkte eintragen | H | 2 | 2 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.2.2 | Bewertung, Tutor | Live-Beispiel eintragen | H | 2 | 2 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.2.3 | Bewertung, Tutor | Einzelbeispiel eintragen | H | 2 | 2 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.2.4 | Bewertung, Tutor | Einschätzung und Kommentar eintragen | H | 2 | 2 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.3.3 | Bewertung, Admin | Bewertungsbogen löschen |  H  | 2 | 2 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.3.4 | Bewertung, Admin | Bewertungsbogen übernehmen |  H  | 3 | 2 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.1 | Gruppenverwaltung, Tutor | Gruppe ansehen |  M  | 4 | 3 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.2 | Gruppenverwaltung, Admin | Gruppengröße definieren |  H  | 1 | 3 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.4 | Gruppenverwaltung, Admin | Student zu Gruppe zuweisen |  M  | 2 | 3 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 2.1 | Fragebogen, Student | Fragebogen ausfüllen | H | 4 | 3 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.2.1 | LVA-Verwaltung, Admin | LVA Daten übernehmen |  H  | 3 | 3 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.3 | Bewertung, Admin | Bewertungsbögen verwalten |  H  | 8 | 3 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 2.2 | Fragebogen, Admin | Fragebogen veröffentlichen | M | 3 | 4 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 2.2 | Fragebogen, Admin | Fragebogen schliessen | M | 2 | 4 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 5.4 | Bewertung, Admin | Tutor zur Bewertung (für einen Termin) freischalten |  H  | 5 | 4 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.3 | Gruppenverwaltung, Admin | Gruppenbildung freischalten |  N  | 2 | 4 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.5 | Gruppenverwaltung, Admin | Tutor zu Gruppe zuweisen |  M  | 2 | 4 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.6 | Gruppenverwaltung, Admin | Student aus Gruppe entfernen |  H  | 1 | 4 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.5 | LVA-Verwaltung, Admin | LVA Daten export |  M  | 2 | 4 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.7 | Gruppenverwaltung, Admin | Gruppen zusammenlegen (optionale Konstruktionsheuristik) |  M  | 9 | 4 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 2.2 | Fragebogen, Admin | Fragebogen auswerten | M | 6 | 5 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.5 | Gruppenverwaltung, Admin | Assistent zu Gruppe zuweisen |  N  | 2 | 5 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.8 | Gruppenverwaltung, Admin | Gruppezusammenlegung Rückgängig machen |  N  | 4 | 5 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 6.9 | Gruppenverwaltung, Admin | Gruppenkonfiguration zurücksetzen |  M  | 4 | 5 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.6 | LVA-Verwaltung, Admin | Gruppenkonfiguration export |  H  | 2 | 5 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.6.1 | LVA-Verwaltung, Admin | xls export (für GoogleDocs) |  H  | 3 | 5 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 7.6.2 | LVA-Verwaltung, Admin | SCM, Tracker, Mailingslist export |  H  | 8 | 5 | erikgf |
+
+
+* {Domänenmodell}
+
+	Siehe {{{./projektvorschlag.html#Domnenmodell}Domänenmodell}} vom Projektvorschlag
+
+* {Arbeitsstruktur & Grober Projektplan}
+
+	Das Projektteam besteht aus 4 Entwicklern, die Expertenrollen (und damit verbundene Horizontale Verantwortlichkeiten) wurden bereits im Projektvorschlag definiert.
+	Es wurde entschieden eine Kombination aus dem Rational Unified Process (RUP) und SCRUM zu anzuwenden: Zu Projektbeginn hat RUP mehr Einfluss (Anforderungen, Expertenwissen/Rollen), während in der Construction Phase von RUP hauptsächlich SCRUM eingesetzt werden soll. 
 
 ** Rollenverteilung
 
-*-----------+-----------+-----------+-----------+-----------+
-|| Id 	 || Name	|| URL || Rolle || Stellvertretende Rolle || E-Mail |
-*-----------+-----------+-----------+-----------+-----------+
-| aschatt | Alexander Schatten | {{{http://www.schatten.info}http://www.schatten.info}} | Technischer Architekt | Dokumentbeauftragter | schatten[at]ifs[dot]tuwien[dot]ac[dot]at |
-*-----------+-----------+-----------+-----------+-----------+
-| sbi | Stefan Biffl | {{{http://qse.ifs.tuwien.ac.at/~biffl/}http://qse.ifs.tuwien.ac.at/~biffl/}} |  Team Koordinator   | Tester | biffl[at]ifs[dot]tuwien[dot]ac[dot]at |
-*-----------+-----------+-----------+-----------+-----------+
-| mdemolsky | Markus Demolsky |  |  Tester   | Technischer Architekt | markus[dot]demolsky[at]aon[dot]at |
-*-----------+-----------+-----------+-----------+-----------+
-| erikgf | Erik Gostischa-Franta |  |  Build/Release Manager  | Dokumentbeauftragter | gostischa-franta[at]qse[dot]ifs[dot]tuwien[dot]ac[dot]at |
-*-----------+-----------+-----------+-----------+-----------+
+  	Siehe {{{./projektvorschlag.html#Projektbezeichnung_und_Entwicklerteam}Projektbezeichnung und Entwicklerteam}} vom Projektvorschlag
+  	Aufgrund dieser Expertenrollen muss die Projekt- (SCM, Tracker) und Produktinfrastruktur (Maven) aufgebaut werden.
+	Auch das verfassen von Artefakten bzw. Dokumentation unterliegt bestimmten Experten (siehe {{{Grober Projektplan}Grober Projektplan}}), jedoch reviewen und beitragen muss jeder.
     
 ** Horizontale Verantwortlichkeiten
 
@@ -142,26 +272,99 @@ Projektauftrag (PA)
     
 *** Build/Release Manager: <<erikgf>>
 
-	* Development Environment INfrastructure: scripts, tagging, mercurial, build targets, 
+	* Development Environment Infrastructure: scripts, tagging, mercurial, build targets, 
     
     []
-    
-* {Icebergliste}
-
-  Die Features können zu folgenden groben Arbeitspaketen zusammengefasst werden:
-
-  * Account-Verwaltung
-
-  * LVA Verwaltung
-
-  * Terminverwaltung
-
-  * Gruppenverwaltung
-
-  * Fragebögen-Verwaltung
-
-  * Studentenbewertung
   
+** {Grober Projektplan}
+~~TODO: Arbeitspakete, Meilensteine WBS	und Aufwandsschätzung
+
+	Artefakte, die aus dem Projektauftrag entstehen und werkzeugunterstützt oder als eigenständige Artefakte weitergeführt werden, wurden bereits in der Work Breakdown Structure eingeplant. Die Verteilung basiert auf den Rollen und Horizontalen Verantwortungen.
+
+*** Work Breakdown Structure auf Meilensteinebene
+
+*-----------*-----------+-----------+-----------*-----------*
+|| \ 	 || \	|| \ || \ || Personen-\ |
+|| Nr. 	 || Arbeitspakete	|| Anfang || Ende || tage |
+*-----------*-----------+-----------+-----------*-----------*
+| <MS.0> | <Kick-off> | <01.10.2009> | <02.10.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.1 | Anforderungs-Analyse | 02.10.2009 | 04.11.2009 | 23 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.1.1 | \ \ \ \ \ Feature-Liste verfeinern: Iceberglist | 05.10.2009 | 13.10.2009 | 8 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.1.2 | \ \ \ \ \ Ausgangssituation & Projektbeschreibung (vom PV) verfeinern | 06.10.2009 | 10.10.2009 | 4 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.1.3 | \ \ \ \ \ Zielgruppen verfeinern, Aktorenhierarchie erstellen | 10.10.2009 | 13.10.2009 | 3 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.1.4 | \ \ \ \ \ Anwendungsfälle: User Story zu den 5 wichtigsten (Kundenpriotität) | 10.10.2009 | 13.10.2009 | 3 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.1.5 | \ \ \ \ \ Projektplan erstellen | 03.10.2009 | 13.10.2009 | 10 |
+*-----------*-----------+-----------+-----------*-----------*
+| <MS.1> | <Projektdefinition, Projektauftrag> | <13.10.2009> | <14.10.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| <MR-1> | <Management Review 1 (Anforderungs Review)> | <15.10.2009> | <16.10.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.2 | Anforderungs-Analyse fertigstellen | 05.11.2009 | 11.11.2009 | 5 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.2.1 | \ \ \ \ \ Anwendungsfall-Beschreibung: alle UCs mit User Story | 05.11.2009 | 11.11.2009 | 5 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.2.2 | \ \ \ \ \ Nichtfunktionale Anforderungen in die UCs einarbeiten | 05.11.2009 | 07.11.2009 | 2 |
+*-----------*-----------+-----------+-----------*-----------*
+| 1.2.3 | \ \ \ \ \ Projektplan verfeinern, Arbeitspaketebene | 07.11.2009 | 11.11.2009 | 3 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.1 | Entwurf und Design | 19.10.2009 | 04.11.2009 | 13 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.1.1 | \ \ \ \ \ Domänenmodell abschliessen, im SCM einchecken | 19.10.2009 | 20.10.2009 | 1 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.1.1 | \ \ \ \ \ Komponentendiagramm aktualisieren, im SCM einchecken | 19.10.2009 | 20.10.2009 | 1 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0 | Implementierung Sprint 1 | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.1 | \ \ \ \ \ DB Schema & Testdaten | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.2 | \ \ \ \ \ Persistenzschicht, DAOs, Model Klassen | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.3 | \ \ \ \ \ Service Schicht & erstes GUI Panel | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.4 | \ \ \ \ \ SCM, Tracker Konfiguration | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.5 | \ \ \ \ \ Produkt Dokumentation, maven site | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.6 | \ \ \ \ \ Maven Konfiguration (pom.xml) | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.0.7 | \ \ \ \ \ Tests der Persistenzschicht (DAOs), Test-Suites | 15.10.2009 | 1.11.2009 | 16 |
+*-----------*-----------+-----------+-----------*-----------*
+| <MS.2> | <Erster Systemtest (Hello World)> | <01.11.2009> | <2.11.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| <IR-1> | <Internes Review 1 (Anforderungs Review), Pre-Release Demo> | <04.11.2009> | <5.11.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.2 | Entwurf und Design fertigstellen | 05.11.2009 | 04.12.2009 | 21 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.1 | Implementierung Sprint 2 bis Version 2, siehe {{{Iceberglist}Iceberglist}} | 06.11.2009 | 10.12.2009 | 24 |
+*-----------*-----------+-----------+-----------*-----------*
+| <MS.3> | <GUI Prototyp mit DAO Tests, 40% der User Stories implementiert> | <07.12.2009> | <8.12.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| <MR-2> | <Management Review 2 (Design Review), Alpha Release Demo> | <10.12.2009> | <11.12.2009> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.2 | Implementierung Sprint 3 bis Version 3, siehe {{{Iceberglist}Iceberglist}} | 11.12.2009 | 12.01.2010 | 22 |
+*-----------*-----------+-----------+-----------*-----------*
+| <MS.4> | <70% der User Stories implementiert, Service-Schicht Tests> | <09.01.2009> | <10.01.2010> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| <IR-2> | <Internes Review (Code Inspection), Beta Version Demo> | <12.01.2009> | <13.01.2010> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| 3.3 | Implementierung Sprint 4 bis Version 5, siehe {{{Iceberglist}Iceberglist}} | 13.01.2010 | 28.01.2010 | 11 |
+*-----------*-----------+-----------+-----------*-----------*
+| <MS.5> | <100% der User Stories implementiert, Akzeptanztests> | <25.01.2010> | <26.01.2010> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+| <MR-3> | <Management Review 3: Projektabnahme, General Availability (GA) Version Demo> | <28.01.2010> | <29.01.2010> | <1> |
+*-----------*-----------+-----------+-----------*-----------*
+
+*** Meilensteinbeschreibung
+
+*** GANTT Diagramm
+
+[../images/gantt_meilenstein.png]
 
 * {Projektabgrenzungen}
  
@@ -179,6 +382,8 @@ Projektauftrag (PA)
   []
   
 * {Komponentendiagramm}
+
+[../images/Architecture_Medium.png]
 
 * {Lieferkomponenten}
 ~~TODO: Datenbank, Programm, Dokumentation
@@ -211,9 +416,38 @@ Projektauftrag (PA)
   
   []
   
-* {Arbeitsstruktur & Grober Projektplan}
-~~TODO: Arbeitspakete, WBS
-	und Aufwandsschätzung
+	
+
+	* Domänenmodell & Komponentendigramm
+	
+	* Funktionale Anforderungen
+		
+		* Anwendungsfallbeschreibung
+		
+		* Anwendungsfalldiagramme, Packages & Aktorenhierarchie
+	
+	* Projektstrukturplan (GANTT)
+	
+	* Iceberglist, Burn-Down Charts
+
+	[]	
+
+	Weitere Artefakte bzw. Dokumentation:
+	
+	* Artefakte des laufenden Projektmanagement (Besprechungsprotokolle, Stundenlisten, Risikoanalyse, Statusberichte)
+	
+	* UI Skizzen
+	
+	* UML Verteilungsdiagramm (Deployment Diagramm)
+	
+	* Testplan, Funktionale Testfälle, Testberichte
+	
+	* Datenbankbeschreibung & ER Diagramm
+	
+	* Präsentationen zu den Reviews (vor allem MRs)
+	
+	
+	[]
   
 * {Anwendungsfälle, Funktionale Anforderungen}
 
