@@ -8,27 +8,13 @@
 
 Projektvorschlag (PV)
 
-  Dieser Abschnitt beinhaltet den Projektvorschlag für das Software-Engineering Anmelde Tool (SAT) in der Medium-Ausbaustufe.
   Der Projektvorschlag (PV) umschreibt grob das geplante Vorhaben und liefert die Grundlage für eine erste Machbarkeits-Abschätzung. 
 
-* Inhaltsverzeichniss
-
-	[[1]] {{{Projektbezeichnung und Entwicklerteam}Projektbezeichnung und Entwicklerteam}}
-	
-	[[2]] {{{Ausgangssituation}Ausgangssituation}}
-	
-	[[3]] {{{Projektbeschreibung}Projektbeschreibung}}
-	
-	[[4]] {{{Zielgruppen}Zielgruppen}}
-	
-	[[5]] {{{Featureliste}Featureliste}}
-	
-	[[6]] {{{Domänenmodell}Domänenmodell}}
-	
-	[]
+%{toc|section=1|fromDepth=1|toDepth=1} 
 
 * {Projektbezeichnung und Entwicklerteam}
 
+  Dieser Abschnitt beinhaltet den Projektvorschlag für das Software-Engineering Anmelde Tool (SAT) in der Medium-Ausbaustufe.
   Das SAT Projekt baut technisch auf dem Basic Beispiel auf. Die Architekturellen Änderungen bzw. Erweiterungen sind jedoch massiv, 
   weitere Analyse und Design in einem Team sind notwendig um ein gutes mittelgroßes Projekt in angemessener Zeit durchzuführen. 
 
@@ -135,61 +121,72 @@ Projektvorschlag (PV)
   
 * {Featureliste}
 
+  Da SAT eine bestehende Applikation ablösen soll, sind die Features in "Bestehende Funktionaliät" und "Neue Features" unterteilt. Die Kunden-Priorität ist spezifiziert als "N" für niedrig, "M" für mittel und "H" für hoch. Der Aufwand ist, im Hinblick auf Agile Methoden (Iceberglist), als abstrakte "Story Points" auf einer Skala von 1 bis 9 geschätzt.
+
+** Bestehender Funktionsumfang
+
   Folgende Features der bestehenden Werkzeuge unterstützen die in der 
   {Ausgangssituation} beschriebenen Abläufe, daher sind sie den erwähnten Zielgruppen 
   von direktem Nutzen und sollen von der neuen SAT-Webapplikation abgelöst werden.
 
-  Bestehender Funktionsumfang:
-
-  [Registrierung der Studenten] Bestätigung mit gültiger E-Mail Adresse. Kontrolle der Matrikel Nummer und Studienkennzahl via externe Systeme wird derzeit nicht unterstützt, ist aber in Zukunft wünschenswert.
-  
-  [Fragebogen System] Studenten können verschiedene Fragebögen ausfüllen um die Einteilung von Gruppen durch die LVA-Leitung zu erleichtern. Fragebögen können von der LVA-Leitung erstellt, eingesehen und bearbeiten werden.
-  
-  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)]  Ein Fragebogen mit nur einer Frage welcher ausgefüllt und bestätigt werden muss um die Eingangsphase abzuschließen. 
-  
-  [Terminverwaltung] Studenten können sich zu einem Abgabetermin anmelden, dabei werden Anmeldebeschränkungen kontrolliert. Abmeldung vom Abgabetermin ist bis zu einem vorher bestimmten Zeitpunkt möglich. Die LVA-Leitung kann Abgabetermine anlegen und verwalten.
+*-----------*-----------+-----------+-----------*-----------*
+|| \ 	 || \	|| \ || Kunden-\ || Auf- |
+|| Id 	 || Feature	|| Beschreibung || Priorität || wand |
+*-----------*-----------+-----------+-----------*-----------*
+| 1A | Registrierung der Studenten | Bestätigung mit gültiger E-Mail Adresse. Kontrolle der Matrikel Nummer und Studienkennzahl via externe Systeme wird derzeit nicht unterstützt, ist aber in Zukunft wünschenswert. | H | 4 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.1A | Fragebogen System | Studenten können verschiedene Fragebögen ausfüllen um die Einteilung von Gruppen durch die LVA-Leitung zu erleichtern. Fragebögen können von der LVA-Leitung erstellt, eingesehen und bearbeiten werden. |  M   | 7 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.2A | Angabe einer Instituts-  bzw. LVA-Präferenz | Ein Fragebogen mit nur einer Frage welcher ausgefüllt und bestätigt werden muss um die Eingangsphase abzuschließen. |  H   | 1 | 
+*-----------*-----------+-----------+-----------*-----------*
+| 3A | Terminverwaltung | Studenten können sich zu einem Abgabetermin anmelden, dabei werden Anmeldebeschränkungen kontrolliert. Abmeldung vom Abgabetermin ist bis zu einem vorher bestimmten Zeitpunkt möglich. Die LVA-Leitung kann Abgabetermine anlegen und verwalten. |  H  | 6 |
+*-----------*-----------+-----------+-----------*-----------*
+| 4A | Gruppenbildung | Studenten können sich zu Gruppen zusammenschliessen, jeder Student kann sich zu genau einer Gruppe anmelden und auch wieder abmelden sowie eine neue Gruppe erstellen. Es wird derzeit nur die Gruppierung und Präferenz jedes Studenten in der Gruppe angezeigt, zudem sind immer alle Gruppen für alle im System Registrierten Benutzer sichtbar, was in der Vergangenheit schon zu Problemen geführt hat. |  M  | 9 |
+*-----------*-----------+-----------+-----------*-----------*
+| 5A | Bewertung durch Tutoren | Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf. |  H  | 8 |
+*-----------*-----------+-----------+-----------*-----------*
+| 6A | Administrator Benutzerkonto | Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten. |  H  | 7 |
+*-----------*-----------+-----------+-----------*-----------*
+| 7A | Export der Studenten-Datensätze | Am Ende der Einzelphase werden die Studenten mit ihren Leistungen, Beschreibungen, Gruppenzuteilungen und Präferenzen exportiert und in anderen Werkzeugen weiterverarbeitet. |  H  | 2 |
+*-----------*-----------+-----------+-----------*-----------*
+| 8 | Datenrücksetzung | Zu Beginn des Semesters legt der Administrator eine "neue LVA" an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden. |  M  | 3 |
+*-----------*-----------+-----------+-----------*-----------*
+| 9 | Import der Testergebnisse | Bei Testterminen, werden die von den Studenten erzielten Punkte zu der Bewertung in der Webanwendung dazugezählt. Ein Import dieser Punkte ist per CSV Datei möglich. |  N  | 1 |
+*-----------*-----------+-----------+-----------*-----------*
     
-  [Gruppenbildung] Studenten können sich zu Gruppen zusammenschliessen, jeder Student kann sich zu genau einer Gruppe anmelden und auch wieder abmelden sowie eine neue Gruppe erstellen. Es wird derzeit nur die Gruppierung und Präferenz jedes Studenten in der Gruppe angezeigt, zudem sind immer alle Gruppen für alle im System Registrierten Benutzer sichtbar, was in der Vergangenheit schon zu Problemen geführt hat.
-  
-  [Bewertung durch Tutoren] Am Ende der Einzelphase werden Abgabegespräche durchgeführt, dabei werden die erzielten Punkte und andere, für die Gruppenphase relevante, Informationen eingetragen und bestätigt. Es wird festgehalten welcher Tutor das Abgabegespräch durchgeführt hat und ob der Student an der Gruppenphase teilnehmen darf.
-    
-  [Administrator Benutzerkonto] Es gibt einen speziellen Benutzer im System welcher alle Rechte hat, d.h. vollen Zugriff auf den Datenbestand der Anwendung. Jene Funktionen müssen beispielsweise genützt werden um Falsche eingaben zu korrigieren, Passwörter neu zu setzen, oder Benutzerkonten zu verwalten.
-~~\item Rundmail-Versand 
-    
-  [Datenrücksetzung] Zu Beginn des Semesters legt der Administrator eine "`neue LVA"' an, d.h. Alle Datensätze in der Datenbank werden, bis auf ein paar Grundinformationen, zurückgesetzt. Wobei alte Datensätze derzeit per DB-Dump gesichert werden. Alle Benutzerkonten der LVA-Leitung werden übernommen und können bei Bedarf entfernt werden.
-   
-  [Import der Testergebnisse] Bei Testterminen, werden die von den Studenten erzielten Punkte zu der Bewertung in der Webanwendung dazugezählt. Ein Import dieser Punkte ist per CSV Datei möglich.
-    
-  [Export der Studenten-Datensätze] Am Ende der Einzelphase werden die Studenten mit ihren Leistungen, Beschreibungen, Gruppenzuteilungen und Präferenzen exportiert und in anderen Werkzeugen weiterverarbeitet.
+** Neue Features
 
-  []
+  Folgende Features sind neu und sollen von SAT unterstützt werden.
 
-  Features welche vollkommen neu sind und nicht bereits von bestehenden Werkzeugen unterstützt werden:
+*-----------*-----------+-----------+-----------*-----------*
+|| \ 	 || \	|| \ || Kunden-\ || Auf- |
+|| Id 	 || Feature	|| Beschreibung || Priorität || wand |
+*-----------*-----------+-----------+-----------*-----------*
+| 1B | Registrierung der Studenten | Das Passwort wird als Hash gespeichert und nicht mehr per E-Mail versandt. Bei Verlust wird ein neues generiert und dem Studenten zugesandt, der es bei der ersten neuen Anmeldung ändern muss. |  M  | 4 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.1B | Fragebogen System | Benutzerfreundliche Erstellung der Fragebögen, jetzige Methode erfordert einen Entwickler. |  H  | 5 |
+*-----------*-----------+-----------+-----------*-----------*
+| 2.2B | Angabe einer Instituts-  bzw. LVA-Präferenz | Anmeldebeschränkungen und Unterschiedliche Anmelde-deadlines fuer jede Präferenz. |  N  | 2 |
+*-----------*-----------+-----------+-----------*-----------*
+| 3B | Terminverwaltung | soll in Zukunft auch für andere Formen von Anmeldungen genützt werden (Tutorien, vereinbarte Laborzeiten, ...). Anmeldeschluss zu Abgaben soll definierbar sein. Versand von Rund-Mails für Angemeldete Studenten soll unterstützt werden. |  M  | 4 |
+*-----------*-----------+-----------+-----------*-----------*
+| 4B | Gruppenbildung | Eine Gruppe soll eine Notiz hinterlassen können, die andere Studenten einsehen können (Projektvorschlag, Kenntnisse, ...). Administrator-seitig soll SAT die Möglichkeit bieten Gruppen manuell zusammenzustellen, aber auch diese Schritte wieder rückgängig zu machen. |  H  | 8 |
+*-----------*-----------+-----------+-----------*-----------*
+| 5B | Bewertung durch Tutoren | Bei der Bewertung soll angezeigt werden wie oft der zu bewertende Student bereits angetreten ist. |  N  | 1 |
+*-----------*-----------+-----------+-----------*-----------*
+| 6B | Administrator Benutzerkonto | Direkte Verknüpfung eines Tutors und Assistenten mit einer Gruppe (siehe Domänenmodell \ref{med_bsp:PVDomain}, "betreut" Beziehung), dies soll den Übergang von Einzelphase zu Gruppenphase erheblich beschleunigen, da früher mit organisatorischer Arbeit für die Gruppenphase begonnen werden kann. Automatischer Versand eines E-Mail an die zusammengestellten Gruppen und die jeweiligen Tutoren/Assistenten soll möglich sein um die Gruppenphase zu "starten". |  H  | 7 |
+*-----------*-----------+-----------+-----------*-----------*
+| 7B | Export von SVN Accounts | Exportfunktion der Studenten- und Gruppendaten für Mailinglisten und SVN-Accounts. Jene Systeme werden extern administriert, Export erfolgt als CSV. |  H  | 6 |
+*-----------*-----------+-----------+-----------*-----------*
 
-  [Registrierung der Studenten] Das Passwort wird als Hash gespeichert und nicht mehr per E-Mail versandt. Bei Verlust wird ein neues generiert und dem Studenten zugesandt, der es bei der ersten neuen Anmeldung ändern muss.
 
-  [Angabe einer Instituts-  bzw. LVA-Präferenz (Java, C++, .NET, ...)] Anmeldebeschränkungen und Unterschiedliche Anmelde-deadlines fuer jede Präferenz.
-
-  [Gruppenbildung] Eine Gruppe soll eine Notiz hinterlassen können, die andere Studenten einsehen können (Projektvorschlag, Kenntnisse, ...). Administrator-seitig soll SAT die Möglichkeit bieten Gruppen manuell zusammenzustellen, aber auch diese Schritte wieder rückgängig zu machen.
-
-  [Administrator Benutzerkonto] Direkte Verknüpfung eines Tutors und Assistenten mit einer Gruppe (siehe Domänenmodell \ref{med_bsp:PVDomain}, "`betreut"' Beziehung), dies soll den Übergang von Einzelphase zu Gruppenphase erheblich beschleunigen, da früher mit organisatorischer Arbeit für die Gruppenphase begonnen werden kann. Automatischer Versand eines E-Mail an die zusammengestellten Gruppen und die jeweiligen Tutoren/Assistenten soll möglich sein um die Gruppenphase zu "`starten"'.
-
-  [Fragebogen System] Benutzerfreundliche Erstellung der Fragebögen, jetzige Methode erfordert einen Entwickler.
 ~~\item Nachabgaben bzw. dritte Antritte (NEU)
 ~~\item Export der Studentenliste (NEU)
-
-  [Export von SVN Accounts] Exportfunktion der Studenten- und Gruppendaten für Mailinglisten und SVN-Accounts. Jene Systeme werden extern administriert, Export erfolgt als CSV.
-
-  [Terminverwaltung] soll in Zukunft auch für andere Formen von Anmeldungen genützt werden (Tutorien, vereinbarte Laborzeiten, ...). Anmeldeschluss zu Abgaben soll definierbar sein. Versand von Rund-Mails für Angemeldete Studenten soll unterstützt werden.
 ~~\item Notenvergabe (NEU) - Noten sollen am Ende der LVA in das Tool eingetragen werden.
 ~~\item Notenexport - Noten sollen bei Bedarf für das TUWIS unabhängig nach Gruppe, Semester und Institut exportiert werden. Dabei werden Studenten, die schon in der Eingangsphase negativ bewertet wurden automatisch auf die Institute aufgeteilt.
-~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden können.
-
-  [Bewertung durch Tutoren] Bei der Bewertung soll angezeigt werden wie oft der zu bewertende Student bereits abgetreten ist.
-
-  []
-  
+~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden können.  
 ~~Die zu realisierenden Funktionen der Platform sind im Use Case Diagramm in Abbildung \ref{abb:medium_usecase} dargestellt.
+~~Rundmail-Versand
   
 * Domänenmodell
 

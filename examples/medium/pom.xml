@@ -16,15 +16,6 @@
 	<description> The medium step of the SE-sample. The data layer is implemented with Hibernate using HibernateTemplate of the Springframework. The service layer uses advanced features of Spring, 
       including declarative transaction management and some other AOP stuff. The presentation layer is implemented with JavaServer Faces (JSF). 
     </description>
-
-	    <!-- A list of all remote repositories used in the sample -->
-    <repositories>
-        <repository>
-        	<id>biblioRepo</id>
-        	<name>iBiblio Repo</name>
-        	<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-        </repository>
-    </repositories>
 	
 	<dependencies>
 	        <!-- Internal -->

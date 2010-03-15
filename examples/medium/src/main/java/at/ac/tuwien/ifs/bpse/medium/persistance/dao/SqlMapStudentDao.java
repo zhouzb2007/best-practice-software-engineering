@@ -87,4 +87,10 @@ public class SqlMapStudentDao implements IStudentDAO {
 			return null;
 	}
 
+	@Override
+	public List<Student> getStudents(SortOrder arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
