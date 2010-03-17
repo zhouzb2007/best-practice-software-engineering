@@ -3,7 +3,7 @@
    ---
    Erik Gostischa-Franta
    ---
-   2010-03-13
+   2010-03-17
    ---
 
 Projektauftrag (PA)
@@ -54,7 +54,7 @@ Projektauftrag (PA)
 
 	Siehe {{{./projektvorschlag.html#Featureliste}Feature-Liste}} vom Projektvorschlag (PV) für eine Beschreibung der Features.
 
-** {Anwendungsfall Pakete}
+** {Anwendungsfall Übersicht}
 
   Die Features aus dem Projektvorschlag (PV) wurden zu folgenden Anwendungsfall-Paketen zusammengefasst. Aufgrund der Anforderungsvielfalt dieses Projektauftrags ist eine Priorisierung (<<H>>och, <<M>>ittel, <<N>>iedrig) der einzelnen Pakete zweckmäßig.
 
@@ -221,7 +221,13 @@ Projektauftrag (PA)
 	Architekturelles Design und Software Patterns.
 	Spezifische Horizontale Verantwortlichkeiten für dieses Projekt sind:
 
-	* Projekt Objekt Model (Maven pom.xml); Dependency Management, Plugins, Repositories
+	* Projekt Objekt Model (Maven pom.xml)
+	
+		* Dependency Management, vor allem Versionen
+		
+		* Plugins, z.B. JTidy
+		
+		* verwendete externe Maven Repositories
 	
 	* Expertenwissen zu allen verwendeten Technologien der Technischen Entwicklung, z.B. Eclipse, Maven.
 	
@@ -229,70 +235,98 @@ Projektauftrag (PA)
 	
 	* Erstellung von Richtlinien zur Sourcecode-Dokumentation (Javadoc).
 	
-	* Design der Programmarchitektur und -komponenten (Komponentendiagramm, Verteilungsdiagramm)
+	* Verwaltung aller Enhancement-Tickets im Tracker
+	
+	* Design der Programmarchitektur und -komponenten
+		
+		* UML Komponentendiagramm auf Interface-Ebene
+		
+		* {{{./deployment.html}Verteilungsdiagramm}}
     
 *** Team Koordinator: <<sbi>>
 
-	Team Koordinatoren müssen gute Projektmanagement Kenntnisse haben und sind für die Aktualität der Artefakte des laufenden Projektmanagement (, Projektplan) verantwortlich.
+	Team Koordinatoren müssen gute Projektmanagement Kenntnisse haben und sind für die Aktualität der Artefakte des laufenden Projektmanagement (z.B. Projektplan) verantwortlich.
 
-	* Organisation und Planung (laufende Dokumentation, z.B. Projektplan)
+	* Organisation und Planung (laufende Dokumentation)
 	
-		* Projektplan, Risikoanalyse, Iceberglist, Burn-Down Charts
+		* Projektplan, WBS, siehe {{{Grober Projektplan}Grober Projektplan}}
+		
+		* {{{Risikoanalyse}Risikoanalyse}}, {{{Iceberglist}Iceberglist}}, Burn-Down Charts
 	
 	* Controlling & Tracking
 	
-		* Stundenlisten, Tickets, Statuserhebung für den Statusbericht
-   
-    * Kontrolle der Aufgabenverteilung (User Story/Developer)
-   
-    * Primärer Ansprechpartner für die Auftraggeber
-   
-    * Organisation interner und externer Meetings
-    
-    	* Gruppentreffen (Jour-Fixe), Tutortreffen, IR's, MR's
+		* Stundenlisten, Organisatorische-Tickets vom Tracker
+		
+		* Statuserhebung für den Statusbericht (Reviews), siehe {{{Lieferkomponenten}Lieferkomponenten}}
+		
+	* Kontrolle der Aufgabenverteilung (Arbeit/Developer), siehe {{{Grober Projektplan}Grober Projektplan}} und {{{Iceberglist}Iceberglist}}
+	
+	* Primärer Ansprechpartner für die Auftraggeber
+	
+	* Organisation interner und externer Meetings
+	
+		* Gruppentreffen (Jour-Fixe), Tutortreffen, IR's, MR's
+		
+		* siehe {{{Informationswesen}Informationswesen}}
 
 *** Dokumentationsbeauftragte: <<erikgf & aschatt>>
 
-	* Dokument: Verfügbarkeit der Dokumentation, z.B. über Mercurial und Maven site.
+	* Verfügbarkeit der Dokumentation, z.B. über Mercurial und Maven site.
 	
 	* Java API Dokumentation integrieren mit dem Maven Javadoc Plugin
+		
+		* Jede Java-Package muss dokumentiert werden. Eine package-info.java Datei muss für jedes Java-Package erstellt werden.
 	
 	* Sicherstellen, dass alle Klassen, Variablen und Methoden in English dokumentiert werden
 	
-	* Jede Java-Package muss dokumentiert werden. Eine package-info.java Datei muss für jedes Java-Package erstellt werden.
-
-	* Projektorganisation und -dokumentation
-  
-    * Erstellung von Dokumentationsrichtlinien (Format- und Formatierungsrichtlinien, Spezifikation der Code Conventions, Erstellung von Vorlagen, ...)
-
-    * Überprüfung der Einhaltung von Dokumentationsrichtlinien
-
-    * Überprüfung der Vollständigkeit von Dokumenten
-
-    * Organisation und Archivierung der Dokumente
+	* Erstellung von Dokumentationsrichtlinien (Format- und Formatierungsrichtlinien, Spezifikation der Code Conventions, Erstellung von Vorlagen, ...)
+	
+	* Überprüfung der Einhaltung von Dokumentationsrichtlinien
+	
+	* Überprüfung der Vollständigkeit von Dokumenten
+	
+	* Organisation und Archivierung der Dokumente im SCM
     
 
 *** Testbeauftragte: <<mdemolsky & sbi>>
   
-  	* Test Infrastruktur: Test Suites, Test Bibliotheken, Testdaten (zweite DB). Testcode von Produktionscode trennen
+  	* Test Infrastruktur
+  	
+  		* Test Bibliotheken, Testdaten (zweite DB). 
+  	
+  		* Test Suites: Integration mit Spring Framework um Testdaten zu managen.
+  		
+  		* Sicherstellen, dass Testcode von Produktionscode getrennt wird.
 
-    * Erstellung von Testrichtlinien (Testvorgehensweise, Auswirkungen bei Fehlern, WeitergabeVerhalten bei Fehlern, ...)
+    * Erstellung des Testplans 
+    
+    	* Testvorgehensweise (Codegerüst), Planung von Test-Runs
+    	
+    	* Auswirkungen bei Fehlern, WeitergabeVerhalten bei Fehlern (Exceptionhandling)
+    	
+    	* siehe Meilenstein 2 in den {{{Lieferkomponenten}Lieferkomponenten}}
 
-    * Überprüfung der Einhaltung von Testrichtlinien
+   		* Überprüfung der Einhaltung von Testrichtlinien
 
-    * Planung von Test-Runs
+    * Verwaltung aller Trouble-Tickets im Tracker
 
-    * Verwaltung des Trouble-Ticket-Systems und der allgemeinen Trouble-Tickets
-
-    * Überwachung von Integrations- und Systemtests
+    * Überwachung von Integrations- und Systemtests (starke Zusammenarbeit mit dem Technischen Architekten)
 
     * Regelmäßige Überprüfung aller Unit-Tests
     
     
 *** Build/Release Manager: <<erikgf>>
 
-	* Development Environment Infrastruktur: Scripts, tagging, mercurial, build targets, 
-    
+	* Development Environment Infrastruktur
+	
+		* Scripts zum initialisieren, testen oder verteilen (deploy)
+		
+		* Tagging im SCM für jeden Meilenstein, siehe {{{Iceberglist}Iceberglist}} und {{{Lieferkomponenten}Lieferkomponenten}}
+		
+		* Build, Deploy Targets von Maven; "Projekt kann jederzeit ausgecheckt und kompiliert werden"
+		
+	* Expertenwissen über die Build und SCM Werkzeuge (Maven & Mercurial)
+	
     []
   
 ** {Grober Projektplan}
@@ -441,10 +475,11 @@ Projektauftrag (PA)
   
 * {Komponentendiagramm}
 
-[../images/Architecture_Medium.png]
+~~[../images/Architecture_Medium.png]
+
+	Siehe {{{./overview-medium.html}Komponentendiagramm und verwendete Werkzeuge}}
 
 * {Lieferkomponenten}
-~~TODO: Datenbank, Programm, Dokumentation
 
 	Während der Projektlaufzeit und vor allem beim Abschluss des Projektes wird dem Kunden die erstellte Software sowie dazugehörige Dokumentation übergeben. In diesem Abschnitt werden die Softwarekomponenten und Dokumentation beschrieben und eine Abgrenzung des Lieferumfangs durchgeführt.
 
@@ -476,7 +511,7 @@ Projektauftrag (PA)
 		
 	* Benutzerhandbuch in Form einer Onlinehilfe
 
-	* UML Verteilungsdiagramm (Deployment Diagramm)
+	* UML {{{./deployment.html}Verteilungsdiagramm}} (Deployment Diagramm)
 	
 	* Testplan, Funktionale Testfälle, Testberichte (soweit für die Wartung und Weiterentwicklung notwendig)
 	
