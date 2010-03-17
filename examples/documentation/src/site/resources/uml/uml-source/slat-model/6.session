@@ -1,18 +1,16 @@
-window_sizes 1350 787 337 1007 665 66
+window_sizes 1403 856 337 1060 734 66
 diagrams
-  classdiagram_ref 128003 // Domainmodel
-    882 639 100 4 0 0
-  usecasediagram_ref 130051 // 2.1. Studenten bewerten
-    805 532 100 4 0 52
-  activitydiagram_ref 129263 // Testpunkte eintragen
-    805 532 100 4 0 0
-  active  activitydiagram_ref 129161 // Account anlegen
-    805 563 100 4 0 0
+  active  classdiagram_ref 128003 // Domainmodel
+    1056 714 100 4 85 0
+  activitydiagram_ref 129161 // Account anlegen
+    529 563 100 4 0 0
+  usecasediagram_ref 129155 // Akteure_Hierachie
+    407 235 100 4 0 0
 end
 show_stereotypes
-selected activitydiagram_ref 129161 // Account anlegen
+selected 
+  package_ref 129 // slat-model
 open
-  activity_ref 128009 // Account anlegen
   usecaseview_ref 128259 // 2. Bewertung
 end
 end

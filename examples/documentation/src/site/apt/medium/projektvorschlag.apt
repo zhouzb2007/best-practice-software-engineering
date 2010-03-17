@@ -14,7 +14,7 @@ Projektvorschlag (PV)
 
 * {Projektbezeichnung und Entwicklerteam}
 
-  Dieser Abschnitt beinhaltet den Projektvorschlag für das Software-Engineering Anmelde Tool (SAT) in der Medium-Ausbaustufe.
+  Dieser Abschnitt beinhaltet den Projektvorschlag für das Software-Engineering Anmelde-Tool (SAT) in der Medium-Ausbaustufe.
   Das SAT Projekt baut technisch auf dem Basic Beispiel auf. Die Architekturellen Änderungen bzw. Erweiterungen sind jedoch massiv, 
   weitere Analyse und Design in einem Team sind notwendig um ein gutes mittelgroßes Projekt in angemessener Zeit durchzuführen. 
 
@@ -32,20 +32,20 @@ Projektvorschlag (PV)
 
 * {Ausgangssituation}
 
-  Die Lehrveranstalltung (LVA) "Software Engineering & Projektmanagement"
+  Die Lehrveranstaltung (LVA) "Software Engineering & Projektmanagement"
   (SE&PM) wird von zwei verschiedenen Instituten an der Technischen Universität 
   Wien gemeinsam abgehalten. Dabei wird aus Administrationssicht der Tutoren und 
   Professoren, der erste Teil der Lehrveranstaltung, die "Eingangsphase", 
-  gemeinsam und der zweite Teil "Guppenphase" an den zwei Instituten separat 
+  gemeinsam und der zweite Teil "Gruppenphase" an den zwei Instituten separat 
   durchgeführt. 
   Derzeit sind vier bis fünf verschiedene Webanwendungen an der Administration 
   der SE&PM LVA beteiligt. Jede Webanwendung tragt bestimmte wichtige Funktionen 
   zum Prozess bei, entweder die Anwendung ist universell genug um von beiden 
-  Instituten verwendet zu werden (Google Docs/Google Calendar) oder die Anwendung 
+  Instituten verwendet zu werden (Google Docs / Calendar) oder die Anwendung 
   bezieht sich auf ein spezielles Problem seitens der Administration und 
   Automatisierung (Domänenwissen der Professoren bzw. interne Webanwendungen). 
   Andere, von der Universität angebotene, Webanwendungen erlauben es zwar 
-  Lehrveranstalltungen gut zu administrieren, doch beziehen sich diese immer auf 
+  Lehrveranstaltungen gut zu administrieren, doch beziehen sich diese immer auf 
   genau eine LVA welche von genau einem Institut abgehalten wird. Sobald mit den 
   bestehenden Anwendungen versucht wird eine gemeinsame Eingangsphase der LVA 
   abzubilden, stoßen diese bestehenden Werkzeuge auf ihre Grenzen und können den 
@@ -67,21 +67,21 @@ Projektvorschlag (PV)
 
   SAT soll nicht alles abdecken, aber es ist eine vollständige Web Applikation 
   und zählt daher bereits zu einem verteilten System. Es geht darum, den Studenten 
-  und Professoren eine Platform zur Verfügung zu stellen. Student und Professor bzw. 
+  und Professoren eine Plattform zur Verfügung zu stellen. Student und Professor bzw. 
   LVA-Leitung sind auch die Zielgruppen der SAT Webanwendung welche im Abschnitt 
   {{Zielgruppen}} näher beschrieben sind.
 
 ~~%TODO: following Paragraphs could use more Requirements, like Tutors, maybe some non-funct?
-  Für Studenten bietet die Platform die Möglichkeit sich zu Veranstaltungen und 
-  Prüfungen anzumelden. Die Professoren nutzen diese Platform für die Statistikabfrage. 
+  Für Studenten bietet die Plattform die Möglichkeit sich zu Veranstaltungen und 
+  Prüfungen anzumelden. Die Professoren nutzen diese Plattform für die Statistikabfrage. 
   Die ersten Anforderungen welche mittels Brainstorming aller beteiligten Stakeholder 
   entstanden sind sind in der {{Featureliste}} beschrieben.
 
   Betrachten wir zuerst die Funktionen für einen Studenten. Damit ein Student die 
-  Platform überhaupt nutzen kann, muss dieser im System vorhanden sein. 
+  Plattform überhaupt nutzen kann, muss dieser im System vorhanden sein. 
 ~~Für die Verwaltung der Studenten wird das Basis Beispiel (siehe Chapter TODO Ref) verwendet. 
   Nach erfolgreichen Login im System, bekommt der Student die Möglichkeit 
-  Professoren und Kurse zu suchen und erhält die Ergebnise in Form einer Tabelle 
+  Professoren und Kurse zu suchen und erhält die Ergebnisse in Form einer Tabelle 
   dargestellt. Ein Student kann sich für jede Prüfung zu einem bestimmten Datum 
   anmelden. Dem Studenten wird auch eine Übersicht seiner aktuell registrierten 
   Prüfungen angezeigt.
@@ -107,7 +107,7 @@ Projektvorschlag (PV)
   Abgabetermin angemeldet haben.
 ~~TODO: Tutoreinschaetzung, free-form text
 
-  <<Administratoren>> wollen zu Begin eines neuen Semesters die Datenbestände aus alten 
+  <<Administratoren>> wollen zu Beginn eines neuen Semesters die Datenbestände aus alten 
   Semestern übernehmen um organisatorischen Overhead zu verringern. Automatisierung: 
   Nach der Bewertung der Einzelphase, sollen jene Studenten welche die Abgabe 
   positiv absolviert haben, zu Gruppen zusammengestellt werden. Nach Zuteilung des
@@ -121,7 +121,7 @@ Projektvorschlag (PV)
   
 * {Featureliste}
 
-  Da SAT eine bestehende Applikation ablösen soll, sind die Features in "Bestehende Funktionaliät" und "Neue Features" unterteilt. Die Kunden-Priorität ist spezifiziert als "N" für niedrig, "M" für mittel und "H" für hoch. Der Aufwand ist, im Hinblick auf Agile Methoden (Iceberglist), als abstrakte "Story Points" auf einer Skala von 1 bis 9 geschätzt.
+  Da SAT eine bestehende Applikation ablösen soll, sind die Features in "Bestehende Funktionalität" und "Neue Features" unterteilt. Die Kunden-Priorität ist spezifiziert als "N" für niedrig, "M" für mittel und "H" für hoch. Der Aufwand ist, im Hinblick auf Agile Methoden (Iceberglist), als abstrakte "Story Points" auf einer Skala von 1 bis 9 geschätzt.
 
 ** Bestehender Funktionsumfang
 
@@ -185,9 +185,9 @@ Projektvorschlag (PV)
 ~~\item Notenvergabe (NEU) - Noten sollen am Ende der LVA in das Tool eingetragen werden.
 ~~\item Notenexport - Noten sollen bei Bedarf für das TUWIS unabhängig nach Gruppe, Semester und Institut exportiert werden. Dabei werden Studenten, die schon in der Eingangsphase negativ bewertet wurden automatisch auf die Institute aufgeteilt.
 ~~\item Berichte ablegen (NEU) - Berichte der Tutoren sollen im Tool abgelegt werden können.  
-~~Die zu realisierenden Funktionen der Platform sind im Use Case Diagramm in Abbildung \ref{abb:medium_usecase} dargestellt.
+~~Die zu realisierenden Funktionen der Plattform sind im Use Case Diagramm in Abbildung \ref{abb:medium_usecase} dargestellt.
 ~~Rundmail-Versand
   
 * Domänenmodell
 
-[../uml/medium/slat-model/fig128003.png] Domänenmodel
+[../uml/medium/slat-model/fig128003.png] Domänenmodell

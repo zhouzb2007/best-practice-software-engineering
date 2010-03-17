@@ -41,12 +41,12 @@
             	<item name="Getting Started" href="medium/getting-started-medium.html"/>
             	<item name="Dev Setup" href="medium/devsetup.html"/>
             	-->
-            	<item name="Actors" href="medium/actors.html"/>
+            	
             	<!--
             	<item name="Vertikale Arbeitspakete" href="medium/verticalRoles.html"/>
             	-->
             	<item name="Domain Model" href="medium/domain.html"/>
-            	<item name="Deployment" href="medium/deployment.html"/>
+            	<item name="Deployment Diagram" href="medium/deployment.html"/>
             	<item name="UML Use Cases" href="medium/usecases.html">
             		<item name="Account" href="medium/usecases_account.html"/>
             		<!--

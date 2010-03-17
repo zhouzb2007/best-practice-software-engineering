@@ -3,7 +3,6 @@ package at.ac.tuwien.ifs.bpse.dao;
 import java.util.List;
 
 import at.ac.tuwien.ifs.bpse.domain.Student;
-import at.ac.tuwien.ifs.bpse.domain.StudentExam;
 
 /**
  * The DAO abstracts and encapsulates all access to the data source
@@ -86,18 +85,6 @@ public interface IStudentDAO {
 	/**
 	 * Retrieves all students from the database.
 	 * 
-	 * @param order
-	 *            database column which the result set should be ordered by
-	 * @return List of type Student holding all students available
-	 * 
-	 * @deprecated Use {@link #getStudents(SortOrder)} instead!
-	 * @see #getStudents(SortOrder)
-	 */
-	public List<Student> getStudents(String order);
-
-	/**
-	 * Retrieves all students from the database.
-	 * 
 	 * @param SortOrder
 	 *            that the result set should be ordered by
 	 * @return List of type Student holding all students available
@@ -107,8 +94,4 @@ public interface IStudentDAO {
 	 */
 	public List<Student> getStudents(SortOrder order);
 
-	/**
-	 * Retrieves a list of registered exams
-	 */
-	public List<StudentExam> getRegisteredExams(Student student);
 }
