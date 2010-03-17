@@ -9,7 +9,7 @@
 Projektauftrag (PA)
 
   Dieser Abschnitt beinhaltet den Projektauftrag (PA) für das <Software Engineering 
-  Anmelde Tool (SAT)> in der Medium-Ausbaustufe. Der Projektauftrag (PA) basiert auf 
+  Anmelde-Tool (SAT)> in der Medium-Ausbaustufe. Der Projektauftrag (PA) basiert auf 
   dem {{{./projektvorschlag.html}Projektvorschlag (PV)}}. 
   
   Der PA umschreibt konkrete Anforderungen sowie Artefakte des Projektmanagement, 
@@ -34,9 +34,21 @@ Projektauftrag (PA)
 	Siehe {{{./projektvorschlag.html#Zielgruppen}Zielgruppen}} vom Projektvorschlag
 
   Zusätzlich zu den beschriebenen Zielgruppen, wurde eine UML Aktorenhierarchie erstellt, 
-  auf die sich die {{{Icebergliste}Icebergliste}} (erweiterte Featuresliste) im folgenden Abschnitt bezieht.
+  auf die sich die {{{Iceberglist}Iceberglist}} (erweiterte Featureliste) im folgenden Abschnitt bezieht.
 
 [../uml/medium/slat-model/fig129155.png]
+
+*-----------+-----------+-----------+
+|| Aktor	 || Rechte im System	|| Anmerkungen |
+*-----------+-----------+-----------+
+| Anonym | Keine Rechte im System | Anonyme User können nur die Einstiegs-Seite/Homepage von SAT betrachten, wo sie sich aber als Student registrieren können um Zugang zum System zu erlangen. |
+*-----------+-----------+-----------+
+| Student | Studenten können ihre eigenen Anmeldedaten verwalten, sich zu Abgabegesprächen anmelden und Gruppenwünsche bekanntgeben. | Verwaltung der Anmeldedaten umfasst auch die Abgabe einer Instituts- bzw. Übungspräferenz und optionales ausfüllen eines Fragebogens. |
+*-----------+-----------+-----------+
+| Tutor | Kann die Anmeldedaten von Studenten einsehen und ändern sowie Bewertungen der Studenten durchführen. | Nur Tutoren dürfen Studenten bewerten |
+*-----------+-----------+-----------+
+| Admin | Uneingeschränkten Zugriff auf den Datenbestand. Eingeschränkter Zugriff auf Services vom System. Administratoren müssen nach erfolgreicher Bewertung, die Studenten zu Gruppen zusammenstellen und ihnen Tutoren zuteilen. | Nur Administratoren können neue LVA's, Termine und Bewertungs-/Fragebögen verwalten. Administratoren können aber nicht bewerten, nur Tutoren haben die Rechte zum bewerten. |
+*-----------+-----------+-----------+
 
 * {Funktionale Anforderungen, Anwendungsfälle}
 
@@ -44,20 +56,22 @@ Projektauftrag (PA)
 
 ** {Anwendungsfall Pakete}
 
-  Die Features aus dem Projektvorschlag (PV) wurden zu folgenden Anwendungsfallpaketen abstrahiert:
+  Die Features aus dem Projektvorschlag (PV) wurden zu folgenden Anwendungsfall-Paketen zusammengefasst. Aufgrund der Anforderungsvielfalt dieses Projektauftrags ist eine Priorisierung (<<H>>och, <<M>>ittel, <<N>>iedrig) der einzelnen Pakete zweckmäßig.
 
-  * Registrierung
-
-  * LVA Verwaltung
-
-  * Terminverwaltung
-
-  * Gruppenbildung (Student), Gruppenverwaltung (Admin)
-
-  * Fragebogen
-
-  * (Studenten-) Bewertung
+  [[1]] <Registrierung> (<<H>>): Unbedingt erforderlich, kritisch
   
+  [[2]] <Fragebogen> (<<M>>): nur Grundfunktionalität notwendig (Institutspräferenz)
+
+  [[3]] <Terminverwaltung> (<<M>>): nur Grundfunktionalität notwendig (Abgabegespräch)
+
+  [[4]] <Gruppenbildung, Student> (<<M>>): nur Grundfunktionalität notwendig (erstellen/beitreten/abmelden)
+  
+  [[5]] <(Studenten-) Bewertung> (<<H>>): Unbedingt erforderlich, kritisch
+  
+  [[6]] <Gruppenverwaltung, Admin> (<<N>>): Erweiternde Features, können auch nach dem Projekt implementiert werden
+
+  [[7]] <LVA Verwaltung> (<<H>>): Unbedingt erforderlich, kritisch
+
   []
   
 ** {Iceberglist}
@@ -70,25 +84,27 @@ Projektauftrag (PA)
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 1.1 | Registrierung, Anonym | Account anlegen | H | 3 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.2 | Registrierung, Student | Accountdaten ändern | H | 1 | <<1>> | mdemolky |
+| 1.2 | Registrierung, Student/Tutor | Account-Daten ändern | H | 1 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.5 | Registrierung, Tutor | Accountdaten ändern | H | 1 | <<1>> | mdemolky |
+| 1.4 | Registrierung, Admin | Student/Tutor suchen | H | 1 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.6 | Registrierung, Admin | Daten einsehen | H | 3 | <<1>> | mdemolky |
+| 1.6 | Registrierung, Admin | Student/Tutor Daten einsehen | H | 3 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.10 | Registrierung, Admin | Student oder Tutor Passwort ändern (mit Benachrichtigen) | H | 4 | <<1>> | mdemolky |
+| 1.10 | Registrierung, Admin | Student/Tutor Passwort ändern (mit Benachrichtigen) | H | 4 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 3.1 | Terminverwaltung, Student | zu Termin anmelden | H | 4 | <<1>> | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 3.2 | Terminverwaltung, Student | von Termin abmelden | H | 2 | <<1>> | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 3.3 | Terminverwaltung, Admin | Termin erstellen | H | 5 | <<1>> | sbi |
+| 3.3 | Terminverwaltung, Admin | (Serien) Termin erstellen | H | 5 | <<1>> | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 4.1 | Gruppenbildung, Student | Gruppe erstellen | H | 4 | <<1>> | sbi |
+| 1.3 | Registrierung, Student, Tutor | neues Passwort anfordern | H | 2 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 4.2 | Gruppenbildung, Student | Gruppe ansehen | M | 3 | <<1>> | sbi |
+| 1.7 | Registrierung, Admin | Account löschen | H | 2 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 4.2 | Gruppenbildung, Student | Gruppenbeschreibung editieren | N | 8 | <<1>> | sbi |
+| 1.8 | Registrierung, Admin | Account-Daten ändern | H | 1 | <<1>> | mdemolky |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
+| 1.9 | Registrierung, Admin | Tutor account anlegen | H | 3 | <<1>> | mdemolky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 5.1 | Bewertung, Tutor | Student suchen | M | 4 | <<1>> | aschatt |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
@@ -102,21 +118,17 @@ Projektauftrag (PA)
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 7.4 | LVA-Verwaltung, Admin | LVA löschen |  N  | 3 | <<1>> | aschatt |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 7.7 | LVA-Verwaltung, Admin | Testpunkte import |  H  | 1 | <<1>> | aschatt |
+| 7.7 | LVA-Verwaltung, Admin | Testpunkte importieren |  H  | 1 | <<1>> | aschatt |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 5.3.1 | Bewertung, Admin | Bewertungsbogen erstellen |  H  | 5 | <<1>> | erikgf |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 5.3.2 | Bewertung, Admin | Bewertungsbogen ändern |  H  | 4 | <<1>> | erikgf |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.3 | Registrierung, Student | neues Passwort anfordern | H | 2 | 2 | mdemolky |
+| 4.1 | Gruppenbildung, Student | Gruppe erstellen | H | 4 | 2 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.4 | Registrierung, Tutor | neues Passwort anfordern | H | 2 | 2 | mdemolky |
+| 4.2 | Gruppenbildung, Student | Gruppe ansehen | M | 3 | 2 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.7 | Registrierung, Admin | Account löschen | H | 2 | 2 | mdemolky |
-*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.8 | Registrierung, Admin | Accountdaten ändern | H | 1 | 2 | mdemolky |
-*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 1.9 | Registrierung, Admin | Tutor account anlegen | H | 3 | 2 | mdemolky |
+| 4.2 | Gruppenbildung, Student | Gruppenbeschreibung editieren | N | 8 | 2 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 2.2 | Fragebogen, Admin | Fragebogen erstellen | M | 8 | 2 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
@@ -152,11 +164,11 @@ Projektauftrag (PA)
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 5.3 | Bewertung, Admin | Bewertungsbögen verwalten |  H  | 8 | 3 | erikgf |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 2.2 | Fragebogen, Admin | Fragebogen veröffentlichen | M | 3 | 4 | sbi |
+| 2.2 | Fragebogen, Admin | Fragebogen veröffentlichen | M | 3 | 3 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 2.2 | Fragebogen, Admin | Fragebogen schliessen | M | 2 | 4 | sbi |
+| 2.2 | Fragebogen, Admin | Fragebogen schliessen | M | 2 | 3 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 5.4 | Bewertung, Admin | Tutor zur Bewertung (für einen Termin) freischalten |  H  | 5 | 4 | mdemolsky |
+| 5.4 | Bewertung, Admin | Tutor zur Bewertung (für einen Termin) freischalten |  H  | 5 | 3 | mdemolsky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 6.3 | Gruppenverwaltung, Admin | Gruppenbildung freischalten |  N  | 2 | 4 | mdemolsky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
@@ -164,24 +176,24 @@ Projektauftrag (PA)
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 6.6 | Gruppenverwaltung, Admin | Student aus Gruppe entfernen |  H  | 1 | 4 | mdemolsky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 7.5 | LVA-Verwaltung, Admin | LVA Daten export |  M  | 2 | 4 | aschatt |
+| 7.5 | LVA-Verwaltung, Admin | LVA Daten exportieren |  M  | 2 | 4 | aschatt |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 | 6.7 | Gruppenverwaltung, Admin | Gruppen zusammenlegen (optionale Konstruktionsheuristik) |  M  | 9 | 4 | erikgf |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 2.2 | Fragebogen, Admin | Fragebogen auswerten | M | 6 | 5 | sbi |
+| 2.2 | Fragebogen, Admin | Fragebogen auswerten | M | 6 | 4 | sbi |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 6.5 | Gruppenverwaltung, Admin | Assistent zu Gruppe zuweisen |  N  | 2 | 5 | mdemolsky |
+| 6.5 | Gruppenverwaltung, Admin | Assistent zu Gruppe zuweisen |  N  | 2 | 4 | mdemolsky |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 6.8 | Gruppenverwaltung, Admin | Gruppezusammenlegung Rückgängig machen |  N  | 4 | 5 | erikgf |
+| 6.8 | Gruppenverwaltung, Admin | Gruppenzusammenlegung Rückgängig machen |  N  | 4 | 4 | erikgf |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 6.9 | Gruppenverwaltung, Admin | Gruppenkonfiguration zurücksetzen |  M  | 4 | 5 | erikgf |
+| 6.9 | Gruppenverwaltung, Admin | Gruppenkonfiguration zurücksetzen |  M  | 4 | 4 | erikgf |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 7.6 | LVA-Verwaltung, Admin | Gruppenkonfiguration export |  H  | 2 | 5 | aschatt |
+| 7.6 | LVA-Verwaltung, Admin | Gruppenkonfiguration exportieren |  H  | 2 | 4 | aschatt |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 7.6.1 | LVA-Verwaltung, Admin | xls export (für GoogleDocs) |  H  | 3 | 5 | aschatt |
+| 7.6.1 | LVA-Verwaltung, Admin | XLS exportieren (für GoogleDocs) |  H  | 3 | 4 | aschatt |
 *-----------*-----------+-----------+-----------*-----------*-----------*-----------*
-| 7.6.2 | LVA-Verwaltung, Admin | SCM, Tracker, Mailingslist export |  H  | 8 | 5 | erikgf |
-
+| 7.6.2 | LVA-Verwaltung, Admin | SCM, Tracker, Mailingliste exportieren |  H  | 8 | 4 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*-----------*
 
 * {Domänenmodell}
 
@@ -194,7 +206,8 @@ Projektauftrag (PA)
 
 ** Rollenverteilung
 
-  	Siehe {{{./projektvorschlag.html#Projektbezeichnung_und_Entwicklerteam}Projektbezeichnung und Entwicklerteam}} vom Projektvorschlag
+  	Siehe {{{./projektvorschlag.html#Projektbezeichnung_und_Entwicklerteam}Projektbezeichnung und Entwicklerteam}} vom Projektvorschlag.
+  	
   	Aufgrund dieser Expertenrollen muss die Projekt- (SCM, Tracker) und Produktinfrastruktur (Maven) aufgebaut werden.
 	Auch das verfassen von Artefakten bzw. Dokumentation unterliegt bestimmten Experten (siehe {{{Grober Projektplan}Grober Projektplan}}), jedoch reviewen und beitragen muss jeder.
     
@@ -236,11 +249,17 @@ Projektauftrag (PA)
    
     * Organisation interner und externer Meetings
     
-    	* Gruppentreffen (Jour-Fix), Tutortrefen, IR's, MR's
+    	* Gruppentreffen (Jour-Fixe), Tutortreffen, IR's, MR's
 
-*** Dokumentbeauftragte: <<erikgf & aschatt>>
+*** Dokumentationsbeauftragte: <<erikgf & aschatt>>
 
 	* Dokument: Verfügbarkeit der Dokumentation, z.B. über Mercurial und Maven site.
+	
+	* Java API Dokumentation integrieren mit dem Maven Javadoc Plugin
+	
+	* Sicherstellen, dass alle Klassen, Variablen und Methoden in English dokumentiert werden
+	
+	* Jede Java-Package muss dokumentiert werden. Eine package-info.java Datei muss für jedes Java-Package erstellt werden.
 
 	* Projektorganisation und -dokumentation
   
@@ -255,7 +274,7 @@ Projektauftrag (PA)
 
 *** Testbeauftragte: <<mdemolsky & sbi>>
   
-  	* Test Infrastrukture: Test Suites, Test Libraries, Testdata (zweite DB). Testcode von Produktionscode trennen
+  	* Test Infrastruktur: Test Suites, Test Bibliotheken, Testdaten (zweite DB). Testcode von Produktionscode trennen
 
     * Erstellung von Testrichtlinien (Testvorgehensweise, Auswirkungen bei Fehlern, WeitergabeVerhalten bei Fehlern, ...)
 
@@ -272,7 +291,7 @@ Projektauftrag (PA)
     
 *** Build/Release Manager: <<erikgf>>
 
-	* Development Environment Infrastructure: scripts, tagging, mercurial, build targets, 
+	* Development Environment Infrastruktur: Scripts, tagging, mercurial, build targets, 
     
     []
   
@@ -281,90 +300,120 @@ Projektauftrag (PA)
 
 	Artefakte, die aus dem Projektauftrag entstehen und werkzeugunterstützt oder als eigenständige Artefakte weitergeführt werden, wurden bereits in der Work Breakdown Structure eingeplant. Die Verteilung basiert auf den Rollen und Horizontalen Verantwortungen.
 
-*** Work Breakdown Structure auf Meilensteinebene
+*** Work Breakdown Structure (WBS)
 
-*-----------*-----------+-----------+-----------*-----------*
-|| \ 	 || \	|| \ || \ || Personen-\ |
-|| Nr. 	 || Arbeitspakete	|| Anfang || Ende || tage |
-*-----------*-----------+-----------+-----------*-----------*
-| <MS.0> | <Kick-off> | <01.10.2009> | <02.10.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.1 | Anforderungs-Analyse | 02.10.2009 | 04.11.2009 | 23 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.1.1 | \ \ \ \ \ Feature-Liste verfeinern: Iceberglist | 05.10.2009 | 13.10.2009 | 8 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.1.2 | \ \ \ \ \ Ausgangssituation & Projektbeschreibung (vom PV) verfeinern | 06.10.2009 | 10.10.2009 | 4 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.1.3 | \ \ \ \ \ Zielgruppen verfeinern, Aktorenhierarchie erstellen | 10.10.2009 | 13.10.2009 | 3 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.1.4 | \ \ \ \ \ Anwendungsfälle: User Story zu den 5 wichtigsten (Kundenpriotität) | 10.10.2009 | 13.10.2009 | 3 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.1.5 | \ \ \ \ \ Projektplan erstellen | 03.10.2009 | 13.10.2009 | 10 |
-*-----------*-----------+-----------+-----------*-----------*
-| <MS.1> | <Projektdefinition, Projektauftrag> | <13.10.2009> | <14.10.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| <MR-1> | <Management Review 1 (Anforderungs Review)> | <15.10.2009> | <16.10.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.2 | Anforderungs-Analyse fertigstellen | 05.11.2009 | 11.11.2009 | 5 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.2.1 | \ \ \ \ \ Anwendungsfall-Beschreibung: alle UCs mit User Story | 05.11.2009 | 11.11.2009 | 5 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.2.2 | \ \ \ \ \ Nichtfunktionale Anforderungen in die UCs einarbeiten | 05.11.2009 | 07.11.2009 | 2 |
-*-----------*-----------+-----------+-----------*-----------*
-| 1.2.3 | \ \ \ \ \ Projektplan verfeinern, Arbeitspaketebene | 07.11.2009 | 11.11.2009 | 3 |
-*-----------*-----------+-----------+-----------*-----------*
-| 2.1 | Entwurf und Design | 19.10.2009 | 04.11.2009 | 13 |
-*-----------*-----------+-----------+-----------*-----------*
-| 2.1.1 | \ \ \ \ \ Domänenmodell abschliessen, im SCM einchecken | 19.10.2009 | 20.10.2009 | 1 |
-*-----------*-----------+-----------+-----------*-----------*
-| 2.1.1 | \ \ \ \ \ Komponentendiagramm aktualisieren, im SCM einchecken | 19.10.2009 | 20.10.2009 | 1 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0 | Implementierung Sprint 1 | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.1 | \ \ \ \ \ DB Schema & Testdaten | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.2 | \ \ \ \ \ Persistenzschicht, DAOs, Model Klassen | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.3 | \ \ \ \ \ Service Schicht & erstes GUI Panel | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.4 | \ \ \ \ \ SCM, Tracker Konfiguration | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.5 | \ \ \ \ \ Produkt Dokumentation, maven site | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.6 | \ \ \ \ \ Maven Konfiguration (pom.xml) | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.0.7 | \ \ \ \ \ Tests der Persistenzschicht (DAOs), Test-Suites | 15.10.2009 | 1.11.2009 | 16 |
-*-----------*-----------+-----------+-----------*-----------*
-| <MS.2> | <Erster Systemtest (Hello World)> | <01.11.2009> | <2.11.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| <IR-1> | <Internes Review 1 (Anforderungs Review), Pre-Release Demo> | <04.11.2009> | <5.11.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| 2.2 | Entwurf und Design fertigstellen | 05.11.2009 | 04.12.2009 | 21 |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.1 | Implementierung Sprint 2 bis Version 2, siehe {{{Iceberglist}Iceberglist}} | 06.11.2009 | 10.12.2009 | 24 |
-*-----------*-----------+-----------+-----------*-----------*
-| <MS.3> | <GUI Prototyp mit DAO Tests, 40% der User Stories implementiert> | <07.12.2009> | <8.12.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| <MR-2> | <Management Review 2 (Design Review), Alpha Release Demo> | <10.12.2009> | <11.12.2009> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.2 | Implementierung Sprint 3 bis Version 3, siehe {{{Iceberglist}Iceberglist}} | 11.12.2009 | 12.01.2010 | 22 |
-*-----------*-----------+-----------+-----------*-----------*
-| <MS.4> | <70% der User Stories implementiert, Service-Schicht Tests> | <09.01.2009> | <10.01.2010> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| <IR-2> | <Internes Review (Code Inspection), Beta Version Demo> | <12.01.2009> | <13.01.2010> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| 3.3 | Implementierung Sprint 4 bis Version 5, siehe {{{Iceberglist}Iceberglist}} | 13.01.2010 | 28.01.2010 | 11 |
-*-----------*-----------+-----------+-----------*-----------*
-| <MS.5> | <100% der User Stories implementiert, Akzeptanztests> | <25.01.2010> | <26.01.2010> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
-| <MR-3> | <Management Review 3: Projektabnahme, General Availability (GA) Version Demo> | <28.01.2010> | <29.01.2010> | <1> |
-*-----------*-----------+-----------+-----------*-----------*
+	Die WBS wurde auf Meilenstein-Ebene entworfen und es wurden die ersten Arbeitspakete aufgrund der Horizontalen Verantwortungen berücksichtigt. Die technischen Arbeitspakete der {{{Iceberglist}Iceberglist}} werden in der WBS in diesem Projekt nur auf Meilensteinebene berücksichtigt - wir wir technisch nach SCRUM vorgehen. Das heisst es werden hier nur "nicht-technische" Arbeitspakete (Dokumentation, Konfiguration, etc.) eingetragen.
+
+*-----------*-----------+-----------+-----------*-----------*-----------*
+|| \ 	 || \	|| \ || \ || Personen-\ || Verant- |
+|| Nr. 	 || Arbeitspakete	|| Anfang || Ende || tage || wortlich |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MS.0> | <Kick-Off> | <01.10.2009> | <02.10.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.1 | Anforderungs-Analyse | 02.10.2009 | 04.11.2009 | 23 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.1.1 | \ \ \ \ \ Feature-Liste verfeinern: Iceberglist | 05.10.2009 | 13.10.2009 | 8 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.1.2 | \ \ \ \ \ Ausgangssituation & Projektbeschreibung (vom PV) verfeinern | 06.10.2009 | 10.10.2009 | 4 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.1.3 | \ \ \ \ \ Zielgruppen verfeinern, Aktorenhierarchie erstellen | 10.10.2009 | 13.10.2009 | 3 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.1.4 | \ \ \ \ \ Anwendungsfälle: User Story zu den 5 wichtigsten (Kundenpriorität) | 10.10.2009 | 13.10.2009 | 3 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.1.5 | \ \ \ \ \ Projektplan erstellen | 03.10.2009 | 13.10.2009 | 10 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MS.1> | <Projektdefinition, Projektauftrag> | <13.10.2009> | <14.10.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MR-1> | <Management Review 1 (Anforderungs-Review)> | <15.10.2009> | <16.10.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.2 | Anforderungs-Analyse fertigstellen | 05.11.2009 | 11.11.2009 | 5 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.2.1 | \ \ \ \ \ Anwendungsfall-Beschreibung: alle UCs mit User Story | 05.11.2009 | 11.11.2009 | 5 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.2.2 | \ \ \ \ \ Nichtfunktionale Anforderungen in die UCs einarbeiten | 05.11.2009 | 07.11.2009 | 2 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 1.2.3 | \ \ \ \ \ Projektplan verfeinern, Arbeitspaket-Ebene | 07.11.2009 | 11.11.2009 | 3 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 2.1 | Entwurf und Design | 19.10.2009 | 04.11.2009 | 13 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 2.1.1 | \ \ \ \ \ Domänenmodell abschliessen, im SCM einchecken | 19.10.2009 | 20.10.2009 | 1 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 2.1.1 | \ \ \ \ \ Komponentendiagramm aktualisieren, im SCM einchecken | 19.10.2009 | 20.10.2009 | 1 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0 | Implementierung Sprint 1 | 15.10.2009 | 1.11.2009 | 16 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.1 | \ \ \ \ \ DB Schema & Testdaten | 15.10.2009 | 1.11.2009 | 16 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.2 | \ \ \ \ \ Persistenz-Schicht, DAOs, Model Klassen | 15.10.2009 | 1.11.2009 | 16 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.3 | \ \ \ \ \ Service Schicht & erstes GUI Panel | 15.10.2009 | 1.11.2009 | 16 | sbi |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.4 | \ \ \ \ \ SCM, Tracker Konfiguration | 15.10.2009 | 1.11.2009 | 16 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.5 | \ \ \ \ \ Produkt Dokumentation, maven site | 15.10.2009 | 1.11.2009 | 16 | erikgf |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.6 | \ \ \ \ \ Maven Konfiguration (pom.xml) | 15.10.2009 | 1.11.2009 | 16 | aschatt |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.0.7 | \ \ \ \ \ Tests der Persistenz-Schicht (DAOs), Test-Suites | 15.10.2009 | 1.11.2009 | 16 | mdemolsky |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MS.2> | <Erster Systemtest (Hello World)> | <01.11.2009> | <2.11.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <IR-1> | <Internes Review 1 (Anforderungs Review), Pre-Release Demo> | <04.11.2009> | <5.11.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 2.2 | Entwurf und Design fertigstellen | 05.11.2009 | 04.12.2009 | 21 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.1 | Implementierung Sprint 2 bis Version 2, siehe {{{Iceberglist}Iceberglist}} | 06.11.2009 | 10.12.2009 | 24 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MS.3> | <GUI Prototyp mit DAO Tests, 40% der User Stories implementiert> | <07.12.2009> | <8.12.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MR-2> | <Management Review 2 (Design Review), Alpha Release Demo> | <10.12.2009> | <11.12.2009> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.2 | Implementierung Sprint 3 bis Version 3, siehe {{{Iceberglist}Iceberglist}} | 11.12.2009 | 12.01.2010 | 22 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MS.4> | <70% der User Stories implementiert, Service-Schicht Tests> | <09.01.2009> | <10.01.2010> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <IR-2> | <Internes Review (Code Inspektion), Beta Version Demo> | <12.01.2009> | <13.01.2010> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| 3.3 | Implementierung Sprint 4 bis Version 5, siehe {{{Iceberglist}Iceberglist}} | 13.01.2010 | 28.01.2010 | 11 | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MS.5> | <100% der User Stories implementiert, Akzeptanztests> | <25.01.2010> | <26.01.2010> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
+| <MR-3> | <Management Review 3: Projektabnahme, General Availability (GA) Version Demo> | <28.01.2010> | <29.01.2010> | <1> | |
+*-----------*-----------+-----------+-----------*-----------*-----------*
 
 *** Meilensteinbeschreibung
 
-*** GANTT Diagramm
+	[[1]] Projektauftrag :)
 
-[../images/gantt_meilenstein.png]
+	
+	[[2]] Erster Systemtest (Hello World)
+	
+		Zu diesem Zeitpunkt soll ein erster Prototyp der Applikation vorhanden sein, d.h. alle Schichten der Architektur sollen miteinander verbunden werden und ein erster Systemtest, mit der GUI und echter Datenbankverbindung, durchgeführt werden.
+		
+		Dieser Meilenstein könnte auch als sog. "pre-release" betrachtet werden, d.h. sie Software läuft, aber es gibt keine wirkliche Funktionalität ausser getestete CRUD Methoden.
+	
+	[[3]] GUI Prototyp mit DAO Tests, 40% der User Stories implementiert
+	
+		Dieser Meilenstein stellt die erste benutzbare Version (Alpha-Version) der Software dar. <40% der User Stories bedeutet alle Use Cases der {{{Iceberglist}Iceberglist}}, die der Version 1 zugeordnet sind.>
+		
+		Zusätzlich, soll die Persistenz-Schicht schon relativ weit (70%-80%) fortgeschritten sein und es müssen Integrationstests für die Data Access Objects (DAOs) vorliegen.
+	
+	[[4]] 70% der User Stories implementiert, Service-Schicht Tests
+	
+		Die Beta Version der Software, d.h. das Softwareprodukt soll so weit fortgeschritten sein, dass es entweder online zum download/test angeboten werden kann oder z.B. bereits beim Kunden installiert werden kann. <70% der User Stories bedeutet bis zur Version 3 der {{{Iceberglist}Iceberglist}}.>
+		
+		Zu diesem Zeitpunkt soll auch die Service-Schicht vollständig getestet sein, da wir sonst mit Meilenstein 5 in Verzug geraten.
+	
+	[[5]] 100% der User Stories implementiert, Akzeptanztests
+	
+		Alle Use Cases der Iceberglist sollen abgearbeitet sein und klarerweise müssen die Akzeptanztests funktionieren um das Produkt beim Kunden vorzuzeigen.
+	
+	[]
+
+	Alle Meilensteine, enthalten auch andere, non-source-code Artefakte , siehe {{{Lieferkomponenten}Lieferkomponenten}} für eine vollständige Beschreibung des Lieferumfangs.
+
+~~*** GANTT Diagramm
+~~[../images/gantt_meilenstein.png]
 
 * {Projektabgrenzungen}
  
@@ -375,11 +424,20 @@ Projektauftrag (PA)
 
   * Forum für Diskussionen zum Einzelbeispiel der Eingangsphase
 
-  * Mailinglisten für die Studentengruppen der Gruppenphase
+  * Mailinglisten, SCM & Tracker für die Studentengruppen der Gruppenphase
 
   * Verteilung von Dokumentation (Foliensätze, Infoblätter, Abgaben)
 
   []
+  
+  Folgende Funktionen oder Arbeitspakete liegen nicht im Umfang vom SAT Projekt und werden auch nicht vom Entwicklerteam verarbeitet:
+  
+  * Konvertierung von bestehenden Datenbeständen
+  
+  * Produktivstellung der SAT Software auf einem Institutsinternen Webserver.
+  
+  * Die Schnittstellen zu externen Systemen funktionieren über manuellen Import/Export von Dateien, dies muss von den Zuständigen Betreuern übernommen werden
+  
   
 * {Komponentendiagramm}
 
@@ -388,35 +446,25 @@ Projektauftrag (PA)
 * {Lieferkomponenten}
 ~~TODO: Datenbank, Programm, Dokumentation
 
-  * Die Anwendung und der dazu gehörige Quelltext mit Programmkommentaren
+	Während der Projektlaufzeit und vor allem beim Abschluss des Projektes wird dem Kunden die erstellte Software sowie dazugehörige Dokumentation übergeben. In diesem Abschnitt werden die Softwarekomponenten und Dokumentation beschrieben und eine Abgrenzung des Lieferumfangs durchgeführt.
 
-  * Projektdokumentation, soweit für die Wartung oder Weiterentwicklung notwendig
+** Software
 
-  * Konfigurationsdaten für Datenbanken und Server, soweit für Wartung oder Weiterentwicklung notwendig
-
-  * Benutzerhandbuch in Form einer Onlinehilfe.
+	Nach Projektabschluss werden dem Kunden folgende Kernkomponenten der Software in Produktionsfähigen Zustand übergeben:
   
-  []
-  
-  ~~TODO: Meilensteinbeschreibung  
-  
-  * Abschluss des generellen Aufbaus der Infrastruktur bis 30. März 2009
+  	* Apache Wicket Webapplikation (WAR File)
+  	
+  	* Hyper SQL Datenbank mit Datenbankskripts zur Inbetriebnahme der Applikation (Initialisierung)
+  	
+  	* Konfigurationsdaten für Datenbanken und Server, soweit für Wartung und Weiterentwicklung notwendig
+  	
+  	* Konstruktionsheuristik für die Gruppenbildung
+  	
+  	* Schnittstelle zu den Werkzeugen der Gruppenphase (Export der Gruppenkonfiguration)
 
-  * Abschluss der Analysephase bis 27. April 2009
-
-  * Abschluss der Entwurfsphase bis 18. Mai 2009
-
-  * Abschluss des Aufbaus der Serverinfrastruktur 01. Juni 2009
-
-  * Abschluss des Projekts bis 22. Juni 2009
-
-  * Abschluss der externe Tests (Auftraggeber) bis Ende Juli 2009
-
-  * Monitoring und Bugfixing des Projekts Anfang des WS09/10
-  
-  []
-  
+	[]
 	
+** Artefakte & Projektdokumentation
 
 	* Domänenmodell & Komponentendigramm
 	
@@ -424,73 +472,144 @@ Projektauftrag (PA)
 		
 		* Anwendungsfallbeschreibung
 		
-		* Anwendungsfalldiagramme, Packages & Aktorenhierarchie
-	
-	* Projektstrukturplan (GANTT)
-	
-	* Iceberglist, Burn-Down Charts
+		* Anwendungsfalldiagramme, Pakete & Aktorenhierarchie
+		
+	* Benutzerhandbuch in Form einer Onlinehilfe
 
-	[]	
-
-	Weitere Artefakte bzw. Dokumentation:
-	
-	* Artefakte des laufenden Projektmanagement (Besprechungsprotokolle, Stundenlisten, Risikoanalyse, Statusberichte)
-	
-	* UI Skizzen
-	
 	* UML Verteilungsdiagramm (Deployment Diagramm)
 	
-	* Testplan, Funktionale Testfälle, Testberichte
+	* Testplan, Funktionale Testfälle, Testberichte (soweit für die Wartung und Weiterentwicklung notwendig)
 	
 	* Datenbankbeschreibung & ER Diagramm
 	
-	* Präsentationen zu den Reviews (vor allem MRs)
-	
+	* Präsentationen zu den Reviews (MRs)
 	
 	[]
+
+** Meilensteine
   
-* {Anwendungsfälle, Funktionale Anforderungen}
+*** Meilenstein 2: Erster Systemtest (Hello World)
+  
+  		* Artefakte des Laufenden Projektmanagement (Besprechungsprotokolle, Stundenlisten, Risikoabschätzung, Iceberglist, Projektstrukturplan (Work Breakdown Structure auf Arbeitspaketebene))
+  		
+  		* IR-1 Statusbericht		
+		* Funktionale Anforderungen (Übersicht über alle Anwendungsfälle, Beschreibung der Anwendungsfälle, Anwendungsfalldiagramme, AkteurInnenliste, AkteurInnenhierarchie)
+				* Komponentendiagramm
+				* UI-Skizze und Beschreibung
+				* Deployment Diagramm
+				* „Hello World“ Prototyp mit GUI: erster Systemtest
+		
+		* Testartefakte (Testplan)
+		
+		* Datenbankbeschreibung (ER-Diagramm, Beschreibung der Attribute)
+		[]
 
-  Abbildung \ref{abb:medium_usecase} zeigt die wichtigsten Akteure und Anwendungsfälle als 
-  UML Use Case Diagramm.
 
-~~ UCs
+*** Meilenstein 3: GUI Prototyp mit DAO Tests, 40% der User Stories implementiert
+  
+  		* Artefakte des Laufenden Projektmanagement + MR-2 Statusbericht mit Präsentation
+  		
+  		* Anwendungsfallbeschreibung überarbeitet und abgeschlossen
+  		
+  		* Testplan abgeschlossen
+  		
+  		* Datenbankbeschreibung abgeschlossen
+  		
+  		* „Alpha Version“: Prototyp mit DAO Tests und 40% der Funktionalen Anforderungen (User Stories) Implementiert
+  		
+  		* UI Skizzen/Design abgeschlossen
+  		
+  		* Deploymentdiagramm, Komponentendiagramm überarbeitet und abgeschlossen
+  		
+  		* Testartefakte (Funktionale Testfälle / Akzeptanztests)
+  
+*** Meilenstein 4: 70% der User Stories implementiert, Service-Schicht Tests
+  
+  		* Artefakte des Laufenden Projektmanagement + IR-2 Statusbericht
+  		
+  		* „Beta Version“: 70% der User Stories implementiert mit Service-Schicht Tests
+  
+*** Meilenstein 5: 100% der User Stories implementiert, Akzeptanztests
+  
+  		* Artefakte des Laufenden Projektmanagement + MR-3 Statusbericht mit Präsentation
+  		
+  		* Testberichte abgeschlossen
+  		
+  		* „General Availability Version“: funktionierendes Produkt
+  
+  []
+	
+** Abgrenzung des Lieferumfangs
 
-  Folgende Tabelle beschreibt eine grobe Gliederung der Anwendungsfaelle sowie eine Kurzbeschreibung 
-  und Zuständigkeiten der Teammitglieder. 
+	Nicht im Lieferumfang des End-Produkts (MS.5/MR-3) enthalten, sind:
+
+	* Projektstrukturplan (GANTT)
+	
+	* Iceberglist, Burn-Down Charts
+	
+	* Artefakte des laufenden Projektmanagement (Besprechungsprotokolle, Stundenlisten, Risikoanalyse)
+	
+	* UI Skizzen
+	
+	[] 
   
 * {Nichtfunktionale Anforderungen}
 
-  * Verfügbarkeit - Die Anwendung muss Hauptanwendungszeiten, als v.a. zu Beginn des Semesters stabil laufen und mehrere hundert Anfragen parallel bedienen können.
+  * <<Verfügbarkeit>> - Die Anwendung muss Haupt-Anwendungszeiten, als v.a. zu Beginn des Semesters stabil laufen und mehrere hundert Anfragen parallel bedienen können.
 
-  * Wiederherstellung - Die Daten müssen bei einem Ausfall des Systems wieder komplett hergestellt werden können.
+  * <<Wiederherstellung>> - Die Daten müssen bei einem Ausfall des Systems wieder komplett hergestellt werden können.
 
-  * Browser-Konformität - Die Oberfläche muss zumindest auf den am häufigsten genutzten Browsern getestet und ausreichend benutzbar sein um die Features fehlerfrei zu nutzen.
+  * <<Browser-Konformität>> - Die Oberfläche muss zumindest auf den am häufigsten genutzten Browsern getestet und ausreichend benutzbar sein um die Features fehlerfrei zu nutzen.
 
-  * Benutzbarkeit - Durch eine möglichst Prozess gebundene Darstellung und Unterstützung wie Onlinehilfe, Tooltips, Statusmeldungen, soll eine einfache Bedienbarkeit gewährleistet werden.
+  * <<Benutzerfreundlichkeit>> - Vordergründige Aufgabe ist es die vorhandenen brauchbaren Features (wie z.B. Serientermin erstellen) zu erhalten und die Dialoge der Webapplikation deutlich zu verbessern. Es sollen neben einer klar gegliederten grafischen Benutzeroberfläche eine einheitliche Struktur geschaffen werden, welche sich durch die gesamte Applikation zieht.
 
-  * Fehlerfeedback - Sowohl Benutzer- als auch Entwickler-seitig soll ein sinnvolles Fehlerfeedback genutzt werden, um die Ursachen schnell und unkompliziert lösen zu können.
+  * <<Feedback>> - Sowohl Benutzer- als auch Entwicklerseitig soll ein sinnvolles Fehlerfeedback genutzt werden, um die Ursachen schnell und unkompliziert lösen zu können.
 
-  * Wartbarkeit - Die Anwendung soll so umgesetzt werden, dass eine spätere Wartung möglichst einfach ausfällt. Dazu gehören aussagekräftige Kommentare des Programmcodes und ein sauberer Programmierstil.
+  * <<Wartbarkeit>> - Die Anwendung soll so umgesetzt werden, dass eine spätere Wartung möglichst einfach ausfällt. Dazu gehören aussagekräftige Kommentare des Programmcodes und ein sauberer Programmierstil.
 
-  * Datensicherheit - Die Daten (z.B. Noten) der einzelnen Akteure dürfen nur von den dafür vorgesehenen Benutzern eingesehen werden können.
+  * <<Datensicherheit>> - Die Daten (z.B. Noten) der einzelnen Benutzer (Akteure) dürfen nur von den dafür vorgesehenen Tutoren und Administratoren eingesehen werden können.
 
-  * Skalierbarkeit - Eine grundsätzliche Skalierbarkeit ist sinnvoll. Es wird aber nicht damit gerechnet, dass die Anwendung in Umgebungen benutzt wird, die eine volle Skalierbarkeit benötigt.
+  * <<Skalierbarkeit>> - Eine grundsätzliche Skalierbarkeit ist sinnvoll. Es wird aber nicht damit gerechnet, dass die Anwendung in Umgebungen benutzt wird, die eine volle Skalierbarkeit benötigt.
   
   []
+  
+  
+* {Risikoabschätzung}
+
+	Im folgenden sind Risiken gelistet, die während der Projektlaufzeit eintreten können. Zusätzlich sind mögliche 	
+	Gegenmaßnahmen zu den einzelnen Risiken beschrieben. Die Gegenmaßnahmen, die bei eintreten eines Risikos gewählt werden, 
+	hängen jedoch immer von der konkreten Situation ab.
+	
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
+|| \   || \   || \         || Eintritts-\        || \ || Ver-\ || \ || \ |
+|| \   || \   || Priori\         || wahrschein-\        || Folge- || ant-\ || Name & \ || \ |
+|| Nr. || Typ || -tät || lichkeit || risiken || wortliche || Beschreibung || Gegenmaßnahmen |
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
+| 1 | immer | hoch | mittel | 2, 3 | sbi | <<Ausfall eines Projektmitglieds:>> Ein Projektmitglied kann, zB bedingt duch eine Krankheit, längere Zeit nicht am Projekt mitarbeiten bzw scheidet komplett aus dem Projektteam aus. | Sammeln der bereits geleisteten und noch ausständigen Arbeit; Besprechung und Aufteilung der Aufgaben innerhalb der Gruppe (zusätzlich zum Jour-Fixe, kann auch elektronisch stattfinden). Zuteilung der Rolle zu einem anderen Gruppenmitglied. |
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
+| 2 | entwicklung | hoch | niedrig |  | aschatt | <<Rechtzeitige Fertigstellung gefährdet:>> Die rechtzeitige Fertigstellung des Projekts ist gefährdet. Mögliche Ursachen könnten zu hohe Anforderungen, zu geringe zeitliche Ressourcen, Ausfall von Team-Mitgliedern, etc sein. | Reduktion von Features anhand ihrer Priorisierung (abhängig von aktuellem Fortschritt) |
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
+| 3 | management | hoch | niedrig | 2 | sbi | <<Verlust von Projekt-internen Wissen:>> Verlust an Projekt-internem Wissen durch verschiedene Ursachen (zB Ausscheiden eines Projektmitglieds, Server-Ausfall, etc) | Dokumentation aller relevanten Informationen im SCM und Tracker; Eigenständige Backups vom Tracker |
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
+| 4 | planung, entwicklung | hoch | niedrig | 2 | aschatt | <<Notwendige Libraries nicht verfügbar:>> Während des Projektverlaufs stellt sich heraus, dass für ein bestimmtes Feature notwendige Libraries nicht (frei) verfügbar sind. | Sofern der Aufwand vertretbar ist, können die Funktionalitäten selbst entwickelt, bzw andere Libraries adaptiert werden; Ist dies nicht möglich, muss das Feature so weit wie notwendig reduziert werden. |
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
+| 5 | planung, entwicklung | mittel | mittel | 2 | mdemolsky | <<Unzureichende Design-Entscheidungen:>> Während der Implementierung stellt sich eine Design-Entscheidung als unzureichend heraus. | Design-Entscheidungen werden so früh wie möglich mit allen Projektmitgliedern besprochen, die die Entscheidung bezüglich Ihrer Rolle beurteilen; Modulares Design, damit die Auswirkungen falscher Design-Entscheidungen möglichst klein gehalten werden |
+*-----------*-----------+-----------*-----------*-----------*-----------*-----------+-----------+
   
 * {Informationswesen}
 ~~TODO: Kommunikationswege, Dokumentation, Tooling, Sonstige Dokumente
   
   Die Informationsstruktur für das Projekt wird folgendermaßen aussehen:
 
-  * Wöchentliche Treffen intern und mit dem Auftraggeber (bei Bedarf mehr)
+  * Wöchentliche Treffen intern (Jour-Fixe)
+  
+  * Wöchentliche Treffen mit dem Tutor (Tutortreffen)
+  
+  * Insgesamt 5 Reviews (2 IRs, 3 MRs) zu den 5 {{{Meilensteinbeschreibung}Meilensteinen}} mit 5 Statusberichten
 
-  * Kommunikation via interner Mailingliste und bei Bedarf telefonisch
+  * Elektronische Kommunikation synchron mit Skype und Google Docs, asynchron via dem Tracker. Die Mailingliste ist mit niedrigerer Priorität zu verwenden.
 
-  * Kommunikation mit den Auftraggebern per Mailingliste
-
-  * Bugtracking mittels TRAC
+  * Kommunikation mit den Auftraggebern und Tutor per Mailingliste
 
   []
 
@@ -512,15 +631,14 @@ Projektauftrag (PA)
   
 * {Besonderheiten}
 
-  Wir wollen nochmals zusammenfassen welche Design Patterns und Architekturprinzipen in diesem Beispiel 
-  angewandt wurden. Als Architekturstil wurde eine 5-Schichten-Architektur gewählt, wobei ausschließlich 
-  der Presentation Layer am Client (= Browser) läuft. Durch die verteilte Architektur erfolgt die 
-  Kommunikation zwischen Client und Browser über das HTTP Protokoll. Wie auch im Basis Beispiel wurden 
-  Interfaces und DAOs verwendet. Um eine klare Trennung zwischen der realationalen Welt und der objekt 
-  orientierten Welt zu schaffen, wurde ein O/R Mapper eingesetzt. Die Mapping Informationen wurden 
-  mithilfe von Annotations direkt in den Java Objekten definiert. Querschnittsfunktionen wie Security 
-  und Transaktionsmanagement wurden mit der Aspekt Orientierten Programmierung (AOP) realisiert, was eine 
-  Verschlankung unserer DAOs und Service Objekte mit sich brachte.
-
-
-~~ TODO: Risikoabschaetzung
+	Das SAT Projekt basiert auf der Architektur des Medium Examples von Best-Practice Software Engineering (BPSE-Medium).
+	Wir wollen nochmals zusammenfassen welche Design Patterns und Architekturprinzipen in BPSE-Medium angewandt wurden. 
+	Als Architekturstil wurde eine 5-Schichten-Architektur gewählt, wobei ausschließlich der Presentation Layer am Client 
+	(= Browser) läuft. Durch die verteilte Architektur erfolgt die Kommunikation zwischen Client und Browser über das 
+	HTTP Protokoll. 
+	
+	Wie auch im Basis Beispiel (BPSE-Basic) wurden Interfaces und DAOs verwendet. Um eine klare Trennung 
+	zwischen der relationalen Welt und der objekt orientierten Welt zu schaffen, wurde ein O/R Mapper eingesetzt. 
+	Die Mapping Informationen wurden in XML Dateien definiert. Querschnittsfunktionen wie Security 
+  	und Transaktionsmanagement wurden mit der Aspekt Orientierten Programmierung (AOP) realisiert, was ein 
+  	Verschlanken unserer DAOs und Service Objekte mit sich brachte.

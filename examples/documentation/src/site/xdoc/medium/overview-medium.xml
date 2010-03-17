@@ -8,48 +8,6 @@
     
     <body>
         <section name="Medium sample overview">
-            <subsection name="Overview">
-		The basic sample focus on student administration by providing a rich client. This module increment the system with a student 
-information system platform. The following use case diagram illustrates the main functionalities of the medium sample
-			<div align="center">
-                  	<img src="images/Usecase_Medium.png" />
-                  </div>
-		<div>
-		This table gives an short description about the different use cases.
-		<table>
-			<tr>
-				<td>Search courses</td>
-				<td>Provide a simple search functionality of courses which will be displayed in a table format. A student can 
-				    register for an course exam</td>
-			</tr>
-			<tr>
-				<td>Search professor</td>
-				<td>Provide a simple search functionality of professors which will be displayed in a table format.</td>
-			</tr>
-			<tr>
-				<td>Search for exam</td>
-				<td>A student can register for many exams. This use case provides a list of registered exams of the student.</td>
-			</tr>
-			<tr>
-				<td>Register for exam</td>
-				<td>A student can register for an exam</td>
-			</tr>
-		</table>
-		</div>
-                <p>
-                    <b>Documentation requirements:</b>
-                    
-                    <ul>
-                        <li>The Java API documentation must be created using the Maven Javadoc plugin and the mvn site task</li>
-                        <li>All classes, variables and methods have to be documented in english</li>
-                        <li>
-                            Each package has to be documented. 
-                            A <code>package-info.java</code> file has to be delivered for every package directory
-                            containing information what the package is used for.
-                        </li>
-                    </ul>
-                </p>
-            </subsection>
          
          <subsection name="Architecture">
 			<div align="center">

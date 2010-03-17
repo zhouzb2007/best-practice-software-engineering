@@ -37,4 +37,5 @@ examples/designpatterns/target
 .project
 .settings
 .springBeans
+.wicketprops
 examples/bin

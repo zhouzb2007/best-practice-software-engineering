@@ -1,6 +1,6 @@
 format 69
 "slat-model"
-  revision 32
+  revision 33
   modified_by 6 "frost"
 
 
@@ -37,7 +37,7 @@ format 69
   mark_for_import
   
   ncouples 1
-  key "html dir" value "/Users/frost/workspace/sat/documentation/src/site/resources/slat-model/"
+  key "html dir" value "/Users/frost/workspaceSVN/best-practice-software-engineering/examples/documentation/src/site/resources/uml/medium/slat-model/"
   classview 128003 "Domainmodel"
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
@@ -3621,12 +3621,6 @@ format 69
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 133891 // <generalisation>
-	relation 131459 ---|>
-	  a public
-	    classrelation_ref 133891 // <generalisation>
-	  b parent class_ref 130819 // Tutor
-      end
     end
 
     class 130691 "Student"
@@ -3649,6 +3643,13 @@ format 69
       idl_decl ""
       explicit_switch_type ""
       
+      classrelation 128006 // <generalisation>
+	relation 128006 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128006 // <generalisation>
+	  b parent class_ref 130691 // Student
+      end
     end
 
     class 128122 "Anonym"

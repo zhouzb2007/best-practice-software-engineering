@@ -85,7 +85,7 @@
             A Student for testting the SELECT method
         </description>
         <property name="id" value="42" />
-        <property name="matnr" value="8925164" />
+        <property name="matnr" value="8027164" />
         <property name="firstname" value="Alex" />
         <property name="lastname" value="Rodrigues" />
         <property name="email" value="alex.r@info.com" />
