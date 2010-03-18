@@ -29,8 +29,9 @@ Behavioral Design Patterns
 ~~  	* <<Chain of Responsibility>> prescribes communication between objects - it chains the receiving objects of a request and passes the request along the chain until an object handles it. Decouples senders and receivers, gives more than one object the chance to handle the request.
 ~~ 	    * <<Command>> defines an object that acts as a token to be passed around and invoked at a later time - it encapsulates a request, utilizes polymorphism. Command lets you parameterize clients with different requests, it allows queueing and logging requests aswell as undoable operations.
 ~~	    * <<Memento>> captures and externalizes an object's internal state, usually non-polymorphic. Memento allows the object to be restored to a later state.
-  	    * {{./{patterns/iterator.html}<<Iterator>>}} encapsulates the way you access and traverse the elements of an aggregate sequentially without exposing its underlying representation.
+  	    * {{{./{patterns/iterator.html}<<Iterator>>}} encapsulates the way you access and traverse the elements of an aggregate sequentially without exposing its underlying representation.
 ~~  	* <<Mediator>> encapsulates the protocol between objects, centralizes communication. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
+
         * {{{./patterns/observer.html}<<Observer>>}} defines a one-to-many dependency between objects, distributes communication. Observer notifies all its dependents when the observed object changes its state.
                  
         * {{{./patterns/event_listener.html}<<Event Listener>>}} is a special flavor of the Observer pattern. 

@@ -1,114 +1,100 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>at.ac.tuwien.ifs.qse</groupId>
-    <artifactId>se1-site</artifactId>
-    <packaging>jar</packaging>
-    <version>0.1.0-SNAPSHOT</version>
-    <name>Site SE1 sample</name>
-    <description>Description of the whole prototype</description>
-    <url>http://maven.apache.org</url>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <repositories>
-        <repository>
-            <id>qseRepo</id>
-            <name>Repository for the sample application at the TU Vienna</name>
-            <url>http://best-practice-software-engineering.ifs.tuwien.ac.at/repository/</url>
-        </repository>
-        <repository>
-            <id>mvnRepo</id>
-            <name>Main Maven Repository</name>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-    </repositories>
-    <developers>
-        <developer>
-            <id>axschatten</id>
-            <name>Alexander Schatten</name>
-            <url>http://www.schatten.info</url>
-            <email/>
-            <roles>
-                <role>Project leader, Java Developer, Testing, Documentation</role>
-            </roles>
-            <timezone/>
-        </developer>
-        <developer>
-            <id>msdemolsky</id>
-            <name>Markus Demolsky</name>
-            <email/>
-            <roles>
-                <role>Project leader</role>
-                <role>Main Java developer</role>
-            </roles>
-            <timezone/>
-        </developer>
-        <developer>
-            <id>erikgf</id>
-            <name>Erik Gostischa-Franta</name>
-            <email/>
-            <roles>
-                <role>Java developer, Documentation, Testing</role>
-            </roles>
-            <timezone/>
-        </developer>
-        <developer>
-            <id>kristofm</id>
-            <name>Kristof Meixner</name>
-            <email/>
-            <roles>
-                <role>Java developer, Documentation, Testing</role>
-            </roles>
-            <timezone/>
-        </developer>
-    </developers>
-    <contributors>
-        <contributor>
-            <name>Stefan Biffl</name>
-            <email/>
-            <url>http://qse.ifs.tuwien.ac.at/~biffl/</url>
-            <timezone>+1</timezone>
-            <organization>Vienna University of Technology</organization>
-            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
-            <roles>
-                <role>Tester</role>
-            </roles>
-        </contributor>
-    </contributors>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <locales>de</locales>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>jtidy</groupId>
-                <artifactId>maven-jtidy-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <configuration>
-                    <srcdir>target/site</srcdir>
-                    <destdir>target/site</destdir>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jtidy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    <dependencies>
-    </dependencies>
-    <distributionManagement>
-        <site>
-            <id>website</id>
-            <url>final2</url>
-        </site>
-    </distributionManagement>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>at.ac.tuwien.ifs.qse</groupId>
+	<artifactId>se1-site</artifactId>
+	<packaging>jar</packaging>
+	<version>0.1.0-SNAPSHOT</version>
+	<name>Site SE1 sample</name>
+	<description>Description of the whole prototype</description>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<repositories>
+		<repository>
+			<id>qseRepo</id>
+			<name>Repository for the sample application at the TU Vienna</name>
+			<url>http://best-practice-software-engineering.ifs.tuwien.ac.at/repository/</url>
+		</repository>
+		<repository>
+			<id>mvnRepo</id>
+			<name>Main Maven Repository</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+	</repositories>
+	<developers>
+		<developer>
+			<id>axschatten</id>
+			<name>Alexander Schatten</name>
+			<url>http://www.schatten.info</url>
+			<email />
+			<roles>
+				<role>Project leader, Java Developer, Testing, Documentation</role>
+			</roles>
+			<timezone />
+		</developer>
+		<developer>
+			<id>msdemolsky</id>
+			<name>Markus Demolsky</name>
+			<email />
+			<roles>
+				<role>Project leader</role>
+				<role>Main Java developer</role>
+			</roles>
+			<timezone />
+		</developer>
+		<developer>
+			<id>erikgf</id>
+			<name>Erik Gostischa-Franta</name>
+			<email />
+			<roles>
+				<role>Java developer, Documentation, Testing</role>
+			</roles>
+			<timezone />
+		</developer>
+		<developer>
+			<id>kristofm</id>
+			<name>Kristof Meixner</name>
+			<email />
+			<roles>
+				<role>Java developer, Documentation, Testing</role>
+			</roles>
+			<timezone />
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Stefan Biffl</name>
+			<email />
+			<url>http://qse.ifs.tuwien.ac.at/~biffl/</url>
+			<timezone>+1</timezone>
+			<organization>Vienna University of Technology</organization>
+			<organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
+			<roles>
+				<role>Tester</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<locales>de</locales>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+	
+	<distributionManagement>
+		<site>
+			<id>website</id>
+			<url>final2</url>
+		</site>
+	</distributionManagement>
 </project>
