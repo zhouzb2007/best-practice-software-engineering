@@ -77,7 +77,29 @@
                         
     </section>
     <section name="Errata">
-        <subsection name="Seite x">
+    	<p>
+    	Bei folgenden Diagrammen haben sich im Druck leider Fehler eingeschlichen.
+    	</p>
+        <subsection name="Seite 178">
+        <p style="text-align:center">
+      	<img src="images/komponente.png" width="50%"/>
+      	<br/>
+        Abbildung 6.9, Komponentendiagramm: Interface-Abhängigkeit zwischen Komponenten.
+        </p>
+        </subsection>
+        <subsection name="Seite 179">
+        <p style="text-align:center">
+        <img src="images/komponente_zwei.png" width="55%"/>
+        <br/>
+        Abbildung 6.10, Interface-Abhängigkeit zwischen Komponenten <i>Lollipop</i>-Notation.
+        </p>
+        </subsection>
+        <subsection name="Seite 189">
+        <p style="text-align:center">
+        <img src="images/er_uml.png" width="65%"/>
+        <br/>
+        Abbildung 6:18, Entity-Relationship-Modellierung mit UML.
+        </p>
         </subsection>
     </section>
   </body>
