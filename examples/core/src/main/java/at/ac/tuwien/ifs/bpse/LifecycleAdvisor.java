@@ -8,10 +8,10 @@ import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
 
-import at.ac.tuwien.ifs.bpse.dao.ICourseDAO;
-import at.ac.tuwien.ifs.bpse.dao.IExamDAO;
-import at.ac.tuwien.ifs.bpse.dao.IProfessorDAO;
-import at.ac.tuwien.ifs.bpse.dao.IStudentDAO;
+import at.ac.tuwien.ifs.bpse.dao.interfaces.ICourseDAO;
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IExamDAO;
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IProfessorDAO;
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO;
 import at.ac.tuwien.ifs.bpse.domain.Exam;
 import at.ac.tuwien.ifs.bpse.domain.Lab;
 import at.ac.tuwien.ifs.bpse.domain.Lecture;

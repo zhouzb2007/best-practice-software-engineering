@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="at.ac.tuwien.ifs.bpse.persistence.interfaces.CourseMapper">
+
+	<select id="selectCourse" parameterType="int" resultMap="courseResult"> 
+		select c.id as cid, c.title as title, c.ects as ects,
+			p.id as pid, p.officenr as onr, p.firstname as fn, p.lastname as ln, p.email as email
+		
+		from course c
+		left join course_professor on c.id = course_professor.courseId
+		left join professor p on course_professor.professorId = p.id
+		
+		where c.id = #{id}
+	</select>
+
+	<resultMap id="courseResult" type="Course">
+		<id property="id" column="cid" />
+		<result property="title" column="title" />
+		<result property="ects" column="ects" />
+		<collection property="professors" ofType="Professor">
+			<id property="id" column="pid" />
+			<result property="officenr" column="onr" />
+			<result property="firstname" column="fn" />
+			<result property="lastname" column="ln" />
+			<result property="email" column="email" />
+		</collection>
+	</resultMap>
+	
+	<insert id="insertCourse" parameterType="Course"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into Course
+		(title, ects)
+		values
+		(#{title,jdbcType=VARCHAR},#{ects,jdbcType=DECIMAL})
+	</insert>
+	<update id="updateCourse" parameterType="Course">
+		update course set
+		id=#{id}, title=#{title}, ects=#{ects}
+		where id = #{id}
+	</update>
+	<delete id="deleteCourse" parameterType="int">
+		delete from course
+		where id = #{id}
+	</delete>
+</mapper>
