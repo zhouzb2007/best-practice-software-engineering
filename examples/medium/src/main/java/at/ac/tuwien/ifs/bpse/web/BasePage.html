@@ -1,0 +1,31 @@
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" >
+    <head>  
+        <title>BPSE Wicket Example</title>
+    </head>
+    <body>
+        <strong>Willkommen bei der BSPE Wicket Beispielanwendung. Sie sind angemeldet als <span wicket:id="studentName"/></strong>
+        <br/><br/><hr/>
+	
+	<table height="85%"><tr><td valign="top">
+	<!-- Navigator -->
+	<div id="navigator">
+		<table>
+			<tr><td><a href="#" wicket:id="linkToStudentProfile">Mein Profil bearbeiten</a></td></tr>
+			<tr><td><a href="#" wicket:id="linkToCourseList">Kursanmeldung</a></td></tr>
+		</table>
+	</div></td>
+	
+	<!-- Detailcontent -->
+	<td style="background-color: rgb(233,233,241);" width="90%" valign="top">
+		<div id="body">
+			<wicket:child />
+		</div>
+	</td></tr></table>
+	<hr/>
+	
+	<!-- Footer. Information about the company -->
+	<div id="footer">
+		Powered by SE Team 2010
+	</div>
+	</body>
+</html>

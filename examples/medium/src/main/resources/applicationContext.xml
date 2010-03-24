@@ -39,4 +39,12 @@
         <property name="configLocation" value="classpath:iBatisConfiguration.xml"/>
         <property name="environment" ref="environment"/>
     </bean>
+    
+    <!--  Services -->
+    <bean id="studentService" 
+          class="at.ac.tuwien.ifs.bpse.services.StudentService"/>
+          
+    <bean id="courseService" 
+          class="at.ac.tuwien.ifs.bpse.services.CourseService"/>
+    
 </beans>

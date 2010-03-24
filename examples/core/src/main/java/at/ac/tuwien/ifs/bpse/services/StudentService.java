@@ -14,6 +14,7 @@ public class StudentService implements IStudentService{
 
 	@Override
 	public Student login(String username, String password) {
+		log.info("Check login. Username: " + username + " Password: " + password);
 		//TODO: Call dao to check login. 
 		Student s = new Student();
 		s.setId(1);
@@ -21,6 +22,7 @@ public class StudentService implements IStudentService{
 		s.setEmail("mdemolsky@gmail.com");
 		s.setFirstname("Markus");
 		s.setLastname("Demolsky");
+		s.setTutor(true);
 		return s;
 	}
 

@@ -11,11 +11,14 @@ import java.util.List;
  * Several special type of courses can be inherited from this object (e.g., Lab and Lecture in this example)
  * 
  */
-public class Course {
+public class Course implements java.io.Serializable{
 
+	/* Primary key */
     private int id;
 
+    /* Title of the course */
     private String title;
+    /* ECTS points of the course */
     private float ects;
     
     /*

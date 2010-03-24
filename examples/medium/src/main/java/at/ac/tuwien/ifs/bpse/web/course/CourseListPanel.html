@@ -1,0 +1,23 @@
+<wicket:panel>
+    <span wicket:id="courseFilter"/><a href="#" wicket:id="newCourse">Neuer Kurs</a>
+   	<table wicket:id="courseListContainer">
+   		<thead>
+   			<tr>
+   				<td>Titel</td>
+   				<td>ECTS</td>
+   				<td></td>
+   				<td></td>
+   				<td></td>
+   			</tr>
+   		</thead>
+   		<tbody>
+       		<tr wicket:id="courseList">
+				<td><span wicket:id="title"/></td>
+				<td><span wicket:id="ects"/></td>
+    			<td><a href="#" wicket:id="register">Register</a></td>
+    			<td><a href="#" wicket:id="unregister">Unregister</a></td>
+    			<td><a href="#" wicket:id="details">Details</a></td>
+			</tr>       		
+   		</tbody>
+   	</table>
+</wicket:panel>
