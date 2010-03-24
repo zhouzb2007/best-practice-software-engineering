@@ -46,6 +46,32 @@ public interface IStudentService {
      */
     public boolean deleteStudent(int id);
     
-    
+    /**
+     * Register a student in the database
+     * @param student
+     * @return Registered Student
+     */
+	public Student register(Student student);
+	
+	/**
+	 * Login a Student with his username and password
+	 * @param username
+	 * @param password
+	 * @return If the login procedure was successfull, the Student will be returned, otherwise null
+	 */
+	public Student login(String username, String password);
+	
+	/**
+	 * Update a Student Account.
+	 * @param student
+	 * @return updated Student account
+	 */
+	public Student updateAccount(Student student);
+	
+	/**
+	 * Reset Student passwort. Send the Student an email with a new generated passwort
+	 * @param student from which the password should be reset
+	 */
+	public void resetPassword(Student student);
     
 }
