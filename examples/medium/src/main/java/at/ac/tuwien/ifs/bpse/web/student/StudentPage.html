@@ -1,0 +1,29 @@
+<html>
+<wicket:extend>
+        <strong>Mein Profil</strong>
+        <br/><br/>
+        <form wicket:id="studentForm">
+        	<table>
+        		<tr>
+        			<td>Matrikel-Nr</td><td><input type="text" wicket:id="matnr"/></td>
+        		</tr>
+        		<tr>
+        			<td>Vorname</td><td><input type="text" wicket:id="firstname"/></td>
+        		</tr>
+        		<tr>
+        			<td>Nachname</td><td><input type="text" wicket:id="lastname"/></td>
+        		</tr>
+        		<tr>
+        			<td>Email</td><td><input type="text" wicket:id="email"/></td>
+        		</tr>
+        		<tr>
+        			<td>Als Tutor aktiv?</td><td><input type="checkbox" wicket:id="tutor" /></td>
+        		</tr>
+        	</table>
+        	<input type="submit" value="Speichern"/>
+        </form>
+        <a href="#" wicket:id="resetPassword">Reset Passwort</a><br/>
+        <hr/>
+        <span wicket:id="courseListPanel"/>
+</wicket:extend>
+</html>

@@ -1,0 +1,21 @@
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" >
+    <head>  
+        <title>Course Details Page</title>
+    </head>
+    <body>
+        <strong>Course Details</strong>
+        <br/><br/>
+        <form wicket:id="CourseForm">
+        	<table>
+        		<tr>
+        			<td>Titel</td><td><input type="text" wicket:id="title"/></td>
+        		</tr>
+        		<tr>
+        			<td>ECTS</td><td><input type="text" wicket:id="ects"/></td>
+        		</tr>
+        	</table>
+        	<input type="submit" value="Speichern"/>
+        	<a href="#" wicket:id="remove">Remove</a>
+        </form>
+    </body>
+</html>

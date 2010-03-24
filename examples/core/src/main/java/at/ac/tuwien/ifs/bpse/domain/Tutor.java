@@ -1,5 +1,7 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
+/* Tutor Flag is set in student object */
+@Deprecated 
 public class Tutor extends Person {
 
 	private String matnr;
