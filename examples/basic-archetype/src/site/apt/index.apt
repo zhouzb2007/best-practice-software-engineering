@@ -1,0 +1,17 @@
+    ------
+    bpse-archetype-basic
+    ------
+    Kristof Meixner
+    ------
+    31.07.2007
+
+The Basic Archetype Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The Basic Archetype Project provides a Maven archetype that further creates a basic 
+  project structure and files for a ready-to-use application like the one used in the
+  {{{http://best-practice-software-engineering.ifs.tuwien.ac.at/arch-basic.html}BPSE Basic Sample}}.
+
+  This documentation gives an overview on how to use the archetype and the application
+  as well as a deeper view into the archetype and how to modify it for your own project
+  structure.

@@ -1,0 +1,82 @@
+    ------
+    bpse-archetype-basic
+    ------
+    Kristof Meixner
+    ------
+    31.07.2007
+
+The Basic Archetype Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+
+* Structure of the <<<archetype.xml>>>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The <<<archetype.xml>>> has the following basic structure.
+
++------------------------------------------------------------------------------+
+  <archetype>
+    <id>Archetype Id</id>
+    <sources>
+      <source>Path to file</source>
+    </sources>
+    <resources>
+      <resource>Path to file</resource>
+    </resources>
+    <testSources/>
+    <testResources/>
+    <siteResources/>
+  </archetype>
++------------------------------------------------------------------------------+
+
+      * <<<id>>> holds the id of the archetype used in the <<<pom.xml>>> of the 
+        archetype.
+
+      * <<<sources>>> incloses multiple <<<source>>>-entries that refer to the 
+        program sources of the archetype. For the path of all sources and 
+        resources the <<<archetype-resources>>> directory is used as root.
+
+      * <<<resources>>> contains multiple <<<resource>>>-entries that refer to 
+        additional files needed for the archetype. These need not to 
+        necessarily be files in the common used <<<resources>>>-directory. 
+        Examples would be files for the configuration management or the 
+        <<<webapp>>> directory for webapplications.
+
+      * <<<testSources>>> and <<<testResources>>> are similarly used to 
+        <<<sources>>> and <<<resources>>> for the needed unit tests.
+
+      * <<<siteResources>>> includes <<<resource>>>-elements that are used for 
+        the documentation.
+
+* Example of an <<<archetype.xml>>>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  This section shows a part of the <<<archetype.xml>>> of the basic archetype.
+
++------------------------------------------------------------------------------+
+  <archetype>
+    <id>bpse-archetype-basic</id>
+    <sources>
+      <source>src/main/java/Main.java</source>
+      <source>src/main/java/Constants.java</source>
+      [...]
+      <source>src/main/java/dao/IStudentDAO.java</source>
+      [...]
+      <source>src/main/java/gui/MainFrame.java</source>
+    </sources>
+    <resources>
+      <resource>src/main/resources/messages_de.properties</resource>
+      [...]
+      <resource>data/database.script</resource>
+    </resources>
+    <testSources>
+      <source>src/test/java/dao/test/JDBCStudentDAOTest.java</source>
+    </testSources>
+    <testResources>
+      <resource>src/test/resources/messages_de.properties</resource>
+    </testResources>
+    <siteResources>
+      <resource>src/site/site.xml</resource>
+      [...]
+    </siteResources>
+  </archetype>
++------------------------------------------------------------------------------+

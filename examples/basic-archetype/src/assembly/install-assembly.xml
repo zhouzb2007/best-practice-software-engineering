@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>bin</id>
+	<!-- Formats of the assembled files -->
+	<formats>
+		<format>tar.gz</format>
+		<!-- format>tar.bz2</format -->
+		<format>zip</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<!-- Inclusions from the root directory e.g. Readme or Data -->
+			<includes>
+				<include>README*</include>
+				<include>pom.xml</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<!-- Directory to assemble -->
+			<directory>src</directory>
+			<!-- Directory to output the archieves. Default is the target directory of the project -->
+			<!-- outputDirectory></outputDirectory -->
+			<!--includes>
+				<include>*.*</include>
+			</includes-->
+			<excludes>
+				<!-- Exclusion of dierctories and files from the assembly -->
+				<!-- exclude>*.html</exclude -->
+				<exclude>**/assembly/**</exclude>
+				<exclude>*.gz</exclude>
+				<exclude>*.bz2</exclude>
+			</excludes>
+		</fileSet>
+	</fileSets>
+</assembly>

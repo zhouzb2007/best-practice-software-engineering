@@ -1,0 +1,144 @@
+    ------
+    bpse-archetype-basic
+    ------
+    Kristof Meixner
+    ------
+    31.07.2007
+
+The Basic Archetype Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Directory and File Stucture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The archetype builds the following structure for the project.
+
++------------------------------------------------------------------------------+
+  my-artifactId
+  |-- pom.xml
+  |-- data
+  |   |-- database.properties
+  |   `-- database.script
+  `-- src
+      |-- main
+      |   |-- java
+      |   |   `-- my
+      |   |       `-- groupId
+      |   |           |-- bo
+      |   |           |   |-- package-info.java
+      |   |           |   `-- Student.java
+      |   |           |-- dao
+      |   |           |   |-- package-info.java
+      |   |           |   |-- IStudentDAO.java
+      |   |           |   `-- JDBCStudentDAO.java
+      |   |           |-- gui
+      |   |           |   |-- package-info.java
+      |   |           |   `-- MainFrame.java
+      |   |           |-- package-info.java
+      |   |           |-- Constants.java
+      |   |           `-- Main.java
+      |   `-- resources
+      |       |-- beans.xml
+      |       |-- log4j.properties
+      |       `-- messages_de.properties
+      |-- test
+      |   |-- java
+      |   |   `-- my
+      |   |       `-- groupId
+      |   |           `-- dao
+      |   |               `-- test
+      |   |                   |-- package-info.java
+      |   |                   `-- JDBCStudentDAOTest.java
+      |   `-- resources
+      |       `-- resource.txt
+      `-- site
+          |-- apt
+          |   |-- index.apt
+          |   `-- format.apt
+          |-- fml
+          |   `-- faq.fml
+          |-- xdoc
+          |   `-- xdoc.xml
+          `-- site.xml
+
+
+
++------------------------------------------------------------------------------+
+
+** General Files
+~~~~~~~~~~~~~~~~
+
+      * <<<pom.xml>>> is the Project Object Model for this application which contains all information 
+        about the organisation, structure, dependencies and reporting.
+
+      * <<<package-info.java>>>: contains the Javadoc description for the specific Java Package.
+
+** Database
+~~~~~~~~~~~
+
+  The <<<data>>> folder contains the necessary files for the HSQL database.
+
+      * <<<database.properties>>> sets the basic settings for the database.
+
+      * <<<database.script>>> contains the structure and content of the database.
+
+** Application Source
+~~~~~~~~~~~~~~~~~~~~~
+
+      * <<<main - java - my.groupId>>> is the general package of the project where 
+      e.g. the starting class is placed.
+
+            * <<<Main.java>>> is the starting class for the sample application.
+
+            * <<<Constants.java>>> defines some constants that are generally 
+		available within the application.
+
+      * <<<main - java - my.groupId.bo>>> contains all Business Objects for the 
+      application logic.
+
+            * <<<Student.java>>> is the BO for the example application and represents 
+		the internal structure of a student as a POJO.
+
+      * <<<main - java - my.groupId.dao>>> contains the interfaces and DAOs for 
+	the application.
+
+            * <<<IStudentDAO.java>>> represents the interface to manipulate the 
+		corresponding BO.
+
+            * <<<JDBCStudentDAO.java>>> is the DAO that contains the implemented 
+		methods to manipulate the BO.
+
+      * <<<main - java - my.groupId.gui>>> is the package that contains all classes
+	that are used by the User-Interface.
+
+            * <<<MainFrame.java>>> builds the User-Interface of the sample application
+		and shows the data.
+
+      * <<<main - resources>>> is the folder where additional resources for the program
+	can be stored.
+
+            * <<<beans.xml>>> contains all the information to wire the 
+		used framework to the beans.
+
+            * <<<log4j.properties>>> contains properties for the Log4J logger in the 
+		application.	
+
+            * <<<message_de.properties>>> contains keys and values for l18n used by the 
+		application.
+
+      * <<<test - java>>> is the folder where Unit tests are placed.
+
+      * <<<test - java - my.groupId.dao.test>>> is the package for the DAO tests.
+
+            * <<<JDBCStudentDAOTest.java>>> is the test for the Student DAO of the sample.
+
+      * <<<test - resources>>> is the folder where additional resources for the tests
+	can be stored.
+
+      * <<<site>>> contains the documentation of the project.
+
+      * <<<site - apt>>> contains documentation in APT (Almost Plain Text) format.
+
+      * <<<site - fml>>> contains the FAQs in FML format
+
+      * <<<site - xdoc>>> contains documenation in XDOC format.

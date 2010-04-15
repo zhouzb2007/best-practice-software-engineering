@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="bpse-archetype-basic">
+	<bannerLeft>
+		<name>bpse-archetype-basic</name>
+		<href>http://maven.apache.org/</href>
+	</bannerLeft>
+	<body>
+		<links>
+			<item name="Apache" href="http://www.apache.org/"/>
+			<item name="Maven 1.0" href="http://maven.apache.org/"/>
+			<item name="Maven 2" href="http://maven.apache.org/maven2/"/>
+		</links>
+		<menu ref="parent"/>
+		<menu name="Archetype Usage">
+			<item name="Installation and Usage" href="installation.html"/>
+			<item name="Directory Structure" href="directory.html"/>
+			<item name="Application Usage" href="usage.html"/>
+		</menu>
+		<menu name="Archetype Structure">
+			<item name="Directory Structure" href="structure.html"/>
+			<item name="archetype.xml" href="archetype.html"/>
+			<item name="Example File" href="example.html"/>
+		</menu>
+	</body>
+</project>

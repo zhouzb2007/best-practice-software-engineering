@@ -1,0 +1,57 @@
+    ------
+    bpse-archetype-basic
+    ------
+    Kristof Meixner
+    ------
+    31.07.2007
+
+The Basic Archetype Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Application Usage
+~~~~~~~~~~~~~~~~~~~
+
+  To explore the application source and use the application open a console window and change 
+  the directory to the root directory of your created archetype. Type and run <<<mvn eclipse:eclipse>>>
+  for an Eclipse integration.
+
+  Open Eclipse and import the project as a new Java project. You might set the variable path 
+  for the dependencies to the directory of your Maven repository.
+
+  You can now browse through the code an run the application by right clicking <<<Main.java>>> 
+  and selecting <<<Run as - JavaApplication>>>.
+
+* Application Documentation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  The documentation of the sample application can be build with the command <<<mvn site>>>
+  from the root directory.
+
+  The documentation is seperated into three parts.
+
+** Reports
+~~~~~~~~~~
+
+  The first one shows all reports created automatically by Maven. Parts of these sites are 
+  directly build from information of the POM like the team-list or the project summary. 
+  For other reports plugins like the Javadoc or Taglist plugin have to be used.
+
+  Some menu items that are defined in the POM are not even visible like modules or parent 
+  because they do not exist within the certain project.
+
+  Corresponding files <<<pom.xml>>> and <<<site.xml>>>.
+
+** Menustructure
+~~~~~~~~~~~~~~~~
+
+  A basic usage of the menustructure and how to build it up is shown here.
+
+  Corresponding file <<<site.xml>>>
+
+** Documentation Formats
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  This part shows examples in which different formats the documentation can be written and
+  how it looks when it is parsed.
+
+  Corresponding files <<<format.apt>>>, <<<faq.fml>>> and <<<xdoc.xml>>>.
