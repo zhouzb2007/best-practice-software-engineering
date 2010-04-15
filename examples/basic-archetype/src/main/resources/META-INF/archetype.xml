@@ -1,0 +1,62 @@
+<archetype>
+	<id>bpse-archetype-basic</id>
+	<sources>
+		<!-- java source files for the new project -->
+		<source>src/main/java/Basis.java</source>
+		<source>src/main/java/package-info.java</source>
+		<source>src/main/java/helper/Constants.java</source>
+		<source>src/main/java/helper/package-info.java</source>
+		<source>src/main/java/dao/IStudentDAO.java</source>
+		<source>src/main/java/dao/JdbcObjectStudentDAO.java</source>
+		<source>src/main/java/dao/package-info.java</source>
+		<source>src/main/java/domain/Student.java</source>
+		<source>src/main/java/domain/Person.java</source>
+		<source>src/main/java/export_import/Export.java</source>
+		<source>src/main/java/export_import/HtmlExport.java</source>
+		<source>src/main/java/export_import/Import.java</source>
+		<source>src/main/java/export_import/package-info.java</source>
+		<source>src/main/java/export_import/XmlExportImport.java</source>
+		<source>src/main/java/gui/EditStudentFrame.java</source>
+		<source>src/main/java/gui/ExportMenuModel.java</source>
+		<source>src/main/java/gui/RegexTextField.java</source>
+		<source>src/main/java/gui/StudentenTableModel.java</source>
+		<source>src/main/java/gui/MainFrame.java</source>
+		<source>src/main/java/gui/package-info.java</source>
+	</sources>
+	<resources>
+		<!-- resources for the new project -->
+		<resource>src/main/resources/messages_en.properties</resource>
+		<resource>src/main/resources/messages.properties</resource>
+		<resource>src/main/resources/log4j.properties</resource>
+		<resource>src/main/resources/beans.xml</resource>
+		<resource>src/main/resources/data/pruefungen.properties</resource>
+		<resource>src/main/resources/data/pruefungen.script</resource>
+	</resources>
+	<testSources>
+		<!-- java source files for the unit tests of the new project -->
+		<source>src/test/java/test/dao/AllDAOTests.java</source>
+		<source>src/test/java/test/dao/JdbcStudentTest.java</source>
+		<source>src/test/java/test/dao/package-info.java</source>
+		<source>src/test/java/test/export/AllExportTests.java</source>
+		<source>src/test/java/test/export/ExportImportTest.java</source>
+		<source>src/test/java/test/export/HtmlExportTest.java</source>
+		<source>src/test/java/test/export/XmlExportImportTest.java</source>
+		<source>src/test/java/test/export/package-info.java</source>
+		<source>src/test/java/test/AllTests.java</source>
+		<source>src/test/java/test/package-info.java</source>
+	</testSources>
+	<testResources>
+		<!-- resources needed by the unit tests -->
+		<resource>src/test/resources/test-beans.xml</resource>
+		<resource>src/test/resources/data/pruefungen.properties</resource>
+		<resource>src/test/resources/data/pruefungen.script</resource>
+		<resource>src/test/resources/test/html-export.html</resource>
+	</testResources>
+	<siteResources>
+		<resource>src/site/site.xml</resource>
+		<resource>src/site/apt/format.apt</resource>
+		<resource>src/site/apt/index.apt</resource>
+		<resource>src/site/fml/faq.fml</resource>
+		<resource>src/site/xdoc/xdoc.xml</resource>
+	</siteResources>
+</archetype>
