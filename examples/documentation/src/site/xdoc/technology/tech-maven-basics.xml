@@ -20,8 +20,8 @@
 					result in a message like:</li>
 				</ul>
 				<source>
-Maven version: 2.0.8
-Java version: 1.5.0
+Maven version: 2.2.1
+Java version: 1.6.0
 OS name: "Windows XP"
 				</source>
 				<ul>
@@ -41,8 +41,9 @@ OS name: "Windows XP"
 					<li>Type and run:</li>
 				</ul>
 				<source>
-mvn archetype:create 
--DarchetypeGroupId=org.apache.maven.archetypes 
+mvn archetype:generate 
+-DarchetypeGroupId=org.apache.maven.archetypes
+-DarchetypeArtifactId=maven-archetype-quickstart 
 -DgroupId=com.mycompany.app 
 -DartifactId=my-app				
 				</source>
@@ -89,7 +90,7 @@ my-app
     &lt;dependency&gt;
       &lt;groupId&gt;junit&lt;/groupId&gt; 
       &lt;artifactId&gt;junit&lt;/artifactId&gt; 
-      &lt;version&gt;3.8.1&lt;/version&gt; 
+      &lt;version&gt;4.7&lt;/version&gt; 
       &lt;scope&gt;test&lt;/scope&gt; 
     &lt;/dependency&gt;
   &lt;/dependencies&gt;
@@ -143,7 +144,6 @@ my-app
 				<p>To build the Maven project site (the one you are just looking at right now), use:</p>
 				<source>mvn site</source>
 				<p>This creates a directory <code>target\site</code> where all html files can be found that represent the documentation..</p>
-				<p>For further information look at the <a href="tech-maven-site.html">Maven Site tutorial</a> at this page.</p>
 				
 				<h4>IDE Preperation</h4>
 				<p>You can prepare the project for some IDEs like Eclipse or Netbeans.</p>
@@ -170,7 +170,7 @@ my-app
 				<p>This will first clean all structures and then compile the sources to new target folders and package them.</p>
 			</subsection>
 			
-			<subsection name="Reference">
+			<subsection name="Reference Material">
 				<ul>
 					<li>To get started, you should refer to the <a href="http://maven.apache.org/guides/getting-started/index.html">Getting started with Maven 2 guide</a>.</li>
 					<li>Further configuration of Maven: <a href="http://maven.apache.org/guides/mini/guide-configuring-maven.html">Maven configuration guide</a></li>

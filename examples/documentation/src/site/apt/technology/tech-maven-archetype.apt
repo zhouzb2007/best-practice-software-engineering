@@ -5,48 +5,69 @@
     ------
     29.09.2008
 
-Technology: Maven Archetype - Basic
+Technology: Maven Archetypes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  Maven Arvchetypes are used to create a basic structure for a certain kind of project. A simple 
+  Maven Archetypes are used to create a basic structure for a certain kind of project. A simple 
   example is the archetype that creates the structure for Maven site. These archetypes can be 
-  easily adapted for individual use and different types of projects (e.g. a webappliciation).
+  easily adapted for individual use and different types of projects.
 
-  This document first introduces an archetype based on the BPSE Basic Sample that creates a 
+  This document introduces the BPSE Basic Sample archetype that creates a 
   project which can be compiled directly after creation and contains a very simple program to
-  show software concepts. After this the document shows how archetypes themselfs are designed and
+  show some software concepts. We will also look at how archetypes themselves are designed and
   can be created for individual use.
 
-* Archetype Usage
+* BPSE-Basic Archetype
 ~~~~~~~~~~~~~~~~~
 
 ** Download & Installation
 ~~~~~~~~~~~~~~~
 
-  You can download the archetype from this {{{bpse-archetype-basic-0.1.0.jar}link}}.
+  You can download the archetype as a jar from {{{http://bpse.ifs.tuwien.ac.at/repository/at/ac/tuwien/ifs/qse/bpse-archetype-basic/0.1.0/bpse-archetype-basic-0.1.0.jar}here}}.
 
-  To use this archetype you have to install it first into your Maven Repository.
-
-      * Open a console window and change to the directory <<<${basedir}/bpse-archetype-basic>>>.
-
-      * Run <<<mvn install>>>.
+  To use this archetype you have to install it first into your Maven Repository. Open a console window and type:
+      
++------------------------------------------------------------------------------+
+  mvn install:install-file 
+    -Dfile=<Path_to_archetype.jar> 
+    -DgroupId=at.ac.tuwien.ifs.qse 
+    -DartifactId=bpse-archetype-basic 
+    -Dversion=0.1.0 
+    -Dpackaging=jar 
+    -DcreateChecksum=true
++------------------------------------------------------------------------------+
 
 ** Archetype Usage
 ~~~~~~~~~~~~~~~~~~
   
-  To create a project with your specific namespace and project name type and run the following 
-  into a console window from a desired directory.
+  To create a project (MyartifactId) with your specific namespace (MygroupId) run the following 
+  in a console window from a desired directory.
 
 +------------------------------------------------------------------------------+
-  mvn archetype:create \
-	-DarchetypeGroupId=at.ac.tuwien.ifs.qse \
-	-DarchetypeArtifactId=bpse-archetype-basic \
-	-DarchetypeVersion=0.1.0 \
-	-DgroupId=my.groupId \
-	-DartifactId=my-artifactId
+  mvn archetype:generate 
+	-DarchetypeGroupId=at.ac.tuwien.ifs.qse 
+	-DarchetypeArtifactId=bpse-archetype-basic 
+	-DarchetypeVersion=0.1.0 
+	-DgroupId=MygroupId 
+	-DartifactId=MyartifactId
 +------------------------------------------------------------------------------+
 
-  Where <<<my.groupId>>> is the namespace and <<<my-artifactId>>> is the name of your project.
+  Where <<<MygroupId>>> is the namespace and <<<MyartifactId>>> is the name of your project.
+
+** Automatic Download, Installation & Usage
+~~~~~~~~~~~~~~~~~~
+
+  You can also have maven download, install and use the archetype in one step, however you must specifiy the private Repository location:
+
++------------------------------------------------------------------------------+
+  mvn archetype:generate 
+  -DarchetypeRepository=http://best-practice-software-engineering.ifs.tuwien.ac.at/repository/ 
+  -DarchetypeGroupId=at.ac.tuwien.ifs.qse 
+  -DarchetypeArtifactId=bpse-archetype-basic 
+  -DarchetypeVersion=0.1.0 
+  -DgroupId=MygroupId 
+  -DartifactId=MyartifactId
++------------------------------------------------------------------------------+
 
 ** Directory and File Stucture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,43 +75,69 @@ Technology: Maven Archetype - Basic
   The archetype creates the following structure for the project.
 
 +------------------------------------------------------------------------------+
-  my-artifactId
+  MyartifactId
   |-- pom.xml
-  |-- data
-  |   |-- database.properties
-  |   `-- database.script
+  |
   `-- src
       |-- main
       |   |-- java
-      |   |   `-- my
-      |   |       `-- groupId
-      |   |           |-- bo
-      |   |           |   |-- package-info.java
-      |   |           |   `-- Student.java
-      |   |           |-- dao
-      |   |           |   |-- package-info.java
-      |   |           |   |-- IStudentDAO.java
-      |   |           |   `-- JDBCStudentDAO.java
-      |   |           |-- gui
-      |   |           |   |-- package-info.java
-      |   |           |   `-- MainFrame.java
-      |   |           |-- package-info.java
-      |   |           |-- Constants.java
-      |   |           `-- Main.java
+      |   |   `-- MygroupId
+      |   |       |-- dao
+      |   |       |   |-- package-info.java
+      |   |       |   |-- IStudentDAO.java
+      |   |       |   `-- JdbcObjectStudentDAO.java
+      |   |       |-- domain
+      |   |       |   |-- Person.java
+      |   |       |   `-- Student.java
+      |   |       |-- export_import
+      |   |       |   |-- Export.java
+      |   |       |   |-- HtmlExport.java
+      |   |       |   |-- Import.java
+      |   |       |   |-- package-info.java
+      |   |       |   `-- XmlExportImport.java
+      |   |       |-- gui
+      |   |       |   |-- EditStudentFrame.java
+      |   |       |   |-- ExportMenuModel.java
+      |   |       |   |-- MainFrame.java
+      |   |       |   |-- package-info.java
+      |   |       |   |-- RegexTextField.java
+      |   |       |   `-- StudentTableModel.java
+      |   |       |-- helper
+      |   |       |   |-- Constants.java
+      |   |       |   `-- package-info.java
+      |   |       |-- package-info.java
+      |   |       `-- Basis.java
       |   `-- resources
+      |       |-- data
+      |       |   |-- database.properties
+      |       |   `-- database.script
       |       |-- beans.xml
       |       |-- log4j.properties
-      |       `-- messages_de.properties
+      |       |-- messages_en.properties
+      |       `-- messages.properties
       |-- test
       |   |-- java
-      |   |   `-- my
-      |   |       `-- groupId
-      |   |           `-- dao
-      |   |               `-- test
-      |   |                   |-- package-info.java
-      |   |                   `-- JDBCStudentDAOTest.java
+      |   |   `-- MygroupId
+      |   |       `-- test
+      |   |           |-- dao
+      |   |           |    |-- AllDAOTests.java
+      |   |           |    |-- package-info.java
+      |   |           |    `-- JdbcStudentTest.java
+      |   |           |-- export
+      |   |           |    |-- AllExportTests.java
+      |   |           |    |-- ExportImportTest.java
+      |   |           |    |-- HtmlExportTest.java
+      |   |           |    |-- package-info.java
+      |   |           |    `-- XmlExportImportTest.java
+      |   |           |-- AllTests.java
+      |   |           `-- package-info.java
       |   `-- resources
-      |       `-- resource.txt
+      |       |-- data
+      |       |   |-- pruefungen.properties
+      |       |   `-- pruefungen.script
+      |       | -- test
+      |       |    `-- html-export.html
+      |       `-- test-beans.xml
       `-- site
           |-- apt
           |   |-- index.apt
@@ -118,37 +165,37 @@ Technology: Maven Archetype - Basic
 
   The <<<data>>> folder contains the necessary files for the HSQL database.
 
-      * <<<database.properties>>> sets the basic settings for the database.
+      * <<<pruefungen.properties>>> sets the basic settings for the database.
 
-      * <<<database.script>>> contains the structure and content of the database.
+      * <<<pruefungen.script>>> contains the structure and content of the database.
 
 *** Application Source
 ~~~~~~~~~~~~~~~~~~~~~~
 
-      * <<<main - java - my.groupId>>> is the general package of the project where 
+      * <<<main - java - MygroupId>>> is the general package of the project where 
       e.g. the starting class is placed.
 
-            * <<<Main.java>>> is the starting class for the sample application.
+            * <<<Basis.java>>> is the starting class for the sample application.
 
             * <<<Constants.java>>> defines some constants that are generally 
 		available within the application.
 
-      * <<<main - java - my.groupId.bo>>> contains all Business Objects for the 
+      * <<<main - java - MygroupId.domain>>> contains all Business Objects for the 
       application logic.
 
             * <<<Student.java>>> is the BO for the example application and represents 
 		the internal structure of a student as a POJO.
 
-      * <<<main - java - my.groupId.dao>>> contains the interfaces and DAOs for 
+      * <<<main - java - MygroupId.dao>>> contains the interfaces and DAOs for 
 	the application.
 
             * <<<IStudentDAO.java>>> represents the interface to manipulate the 
 		corresponding BO.
 
-            * <<<JDBCStudentDAO.java>>> is the DAO that contains the implemented 
+            * <<<JdbcObjectStudentDAO.java>>> is the DAO that contains the implemented 
 		methods to manipulate the BO.
 
-      * <<<main - java - my.groupId.gui>>> is the package that contains all classes
+      * <<<main - java - MygroupId.gui>>> is the package that contains all classes
 	that are used by the User-Interface.
 
             * <<<MainFrame.java>>> builds the User-Interface of the sample application
@@ -163,14 +210,14 @@ Technology: Maven Archetype - Basic
             * <<<log4j.properties>>> contains properties for the Log4J logger in the 
 		application.	
 
-            * <<<message_de.properties>>> contains keys and values for l18n used by the 
+            * <<<message_en.properties>>> contains keys and values for l18n used by the 
 		application.
 
       * <<<test - java>>> is the folder where Unit tests are placed.
 
-      * <<<test - java - my.groupId.dao.test>>> is the package for the DAO tests.
+      * <<<test - java - MygroupId.test.dao>>> is the package for the DAO tests.
 
-            * <<<JDBCStudentDAOTest.java>>> is the test for the Student DAO of the sample.
+            * <<<JdbcStudentTest.java>>> is the test for the Student DAO of the sample.
 
       * <<<test - resources>>> is the folder where additional resources for the tests
 	can be stored.
@@ -193,7 +240,7 @@ Technology: Maven Archetype - Basic
   Open Eclipse and import the project as a new Java project. You might set the variable path 
   for the dependencies to the directory of your Maven repository.
 
-  You can now browse through the code an run the application by right clicking <<<Main.java>>> 
+  You can now browse through the code an run the application by right clicking <<<Basis.java>>> 
   and selecting <<<Run as - JavaApplication>>>.
 
 * Archetype Structure

@@ -10,11 +10,11 @@
 				<p>This section shows how to create and configure the documentation for a project with Maven Site.</p><br />
 				<p>Open a console windows and go to the parent directory of the project created before. Type and run the following (Notice that the values for <code>groupId</code> and <code>artifactId</code> are the same as before):</p>
 				<source>
-mvn archetype:create 
+mvn archetype:generate 
 -DarchetypeGroupId=org.apache.maven.archetypes 
 -DarchetypeArtifactId=maven-archetype-site 
 -DgroupId=com.mycompany.app 
--DartifactId=my-app				
+-DartifactId=documentation			
 				</source>
 				<p>The command will change the directory structure of your project to the following:</p>
 				<source>

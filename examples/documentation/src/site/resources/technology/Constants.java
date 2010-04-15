@@ -1,20 +1,24 @@
-package at.ac.tuwien.ifs.qse;
+package at.ac.tuwien.ifs.bpse.basic.helper;
 
 /**
- * This class contains all constants needed for the application.
+ * This class contains application-wide used constants.
  * 
- * @author Kristof
- * @version 0.1.0
- * 
+ * @author The SE-Team
+ * @version 1.0
  */
 public class Constants {
+	/**
+	 * The input file for the SpringBeans, the current value is {@value}.
+	 */
+	public final static String SPRINGBEANS = "/beans.xml";
 
 	/**
-	 * This constant defines the Spring configuration file.
-	 * The file beans.xml itself was stored in the resources folder 
-	 * of the Maven project structure and added automatically at build 
-	 * time. You can also use package structures within the resources 
-	 * folder and use them for your project.
+	 * This constant holds the reference for the test-configuration, the current value is {@value}.
 	 */
-	public final static String SPRINGBEANS = "beans.xml";
+	public final static String SPRINGBEANS_TEST = "/test-beans.xml";
+
+	/**
+	 * The properties file for logging, the current value is {@value}.
+	 */
+	public final static String LOG_PROPERTIES_FILE = "/log.properties";
 }
