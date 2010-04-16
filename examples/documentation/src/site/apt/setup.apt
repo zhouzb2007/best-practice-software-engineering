@@ -1,22 +1,22 @@
    ---
    Development Environment Setup Guideline
    ---
-   Michael Pernkopf
+   Michael Pernkopf, Erik Gostischa-Franta
    ---
    ---
 
-Setup of BP development environment
+Setup of Best-Practice development environment
 
-  This guideline provides all of the information needed to setup the best practice development environment 
- (please find the examples in {{{./download.html} <<Download>>}} section.
+  This guideline provides information to setup the best practice development environment 
+ (please find the examples in the {{{./download.html} <<Download>>}} section.
 
 * Installation Instructions
 
   Please follow all the instructions to assure the functionality of the development environment. 
 
-* Java 5 Setup
+* Java 6 Setup
 
-	The best practice examples use the Java 5 technology. To compile and run it, you need to have Java SE SDK 1.5 installed.
+	The best practice examples use the Java 6 technology. To compile and run them, you need to have JDK 1.6 installed (JRE is not sufficient).
 
 ** Download and install JDK
 
@@ -33,7 +33,7 @@ Setup of BP development environment
 	
 	<<Name>>: JAVA_HOME
 	
-	<<Value>>: path/to/your/JDK-installation (e.g: H:\Programme\Java\jdk1.5.0_01 - <<Note: not the bin-directory>>)
+	<<Value>>: path/to/your/JDK-installation (e.g: H:\Programme\Java\jdk1.6.0_17 - <<Note: not the bin-directory>>)
 	
 	Go to your console/shell and use the following command (anywhere):
 	
@@ -44,132 +44,83 @@ java -version
 	Output should look something like this (depends on the version you installed):
 
 ---
-java version "1.5.0_02"
-Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_02-b09)
-Java HotSport(TM) Client VM (build 1.5.0_02-b09, mixed mode, sharing)
+java version "1.6.0_17"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.6.0_17-b04)
+Java HotSport(TM) Server VM (build 1.6.0_17-b04, mixed mode)
 ---
 
 * Maven 2 installation
 
 	Maven 2 is used to organize, build and deploy this application.
 
-** Maven Download (all platforms)
+** Maven Download & Installation
 
 	Please download the latest version at {{{http://maven.apache.org/download.html} <<Maven Project site>>}}.
-
-** Install instructions
-
-*** Windows2000/XP
-
-	[[1]] After downloading, unzip maven-2.x.x-bin.zip to a directory you wish to install Maven (e.g: C:\Maven).
+	Installation instructions are {{{http://maven.apache.org/download.html#Installation}here}}.
 	
-	[[2]] Add the bin directory to your path by opening up the system properties (WinKey + Pause), selecting the "Advanced"
-	tab and the "Environment Varibales" button, then editing the PATH variable in the user variables (e.g: "C:\Maven\bin";%PATH%).
-	
-	[[3]] In the same dialog make sure that JAVA_HOME is set to the location of your JDK (see above "System settings").
-	
-	[[4]] Run <mvn --version> (in your console) to verify that it is installed correctly.	
-	
-	Output should look something like this:
+	Run <mvn --version> (in your console) to verify that it is installed correctly.	
+	Output should look something like this (depends on the version you installed):
 	
 ---
-Maven version: 2.0.4 (depends on the version you installed)
+Maven version: 2.2.1 
+Apache Maven 2.2.1 (r801777; 2009-08-06 21:16:01+0200)
+Java version: 1.6.0_17
+Java home: /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
+Default locale: en_US, platform encoding: MacRoman
+OS name: "mac os x" version: "10.6.3" arch: "x86_64" Family: "mac"
 ---
-	
-*** Unix-based Operating Systems (Linux, Mac OS X and Solaris)
 
-	[[1]] After downloading, extract the distribution archive to the directory you wish to install Maven. These instructions assume
-	you chose </usr/local/maven-2.0.3>. The directory <maven-2.0.3> will be created from the archive.
-	
-	[[2]] Add the bin directory to your path, e.g: <export PATH=/usr/local/maven-2.0.3/bin:$PATH>.
-	
-	[[3]] Make sure that JAVA_HOME is set to the location of your JDK, e.g. <export JAVA_HOME=/usr/java/jdk1.5.0_02>.
-	
-	[[4]] Run <mvn --version> (in your shell) to verify that it is installed correctly.	
-	
-	Output should look something like this:
-	
----
-Maven version: 2.0.4 (depends on the version you installed)
----	
+* BPSE Examples download & installation
 
-* Example installation
-
-	Download your copy of the example sample from {{{./download.html} <<Download>>}} section and 
+	Download the examples from {{{./download.html} <<Download>>}} section and 
 	unpack the archive to a folder of your choice.
 	
 	After extracting the archive, you find the following folder structure
 
 ---
-+- root folder (from 1.)
++- bpse
 |
-|`-- advanced 
+|`-- designpatterns 
 |	`-- subfolders
 |
 |`-- basic 
 |	`-- subfolders
 |
-|`-- core
-|	`-- subfolders
-|
-|`-- medium
+|`-- documentation
 |	`-- subfolders
 |
 `- pom.xml
 ---
 
 	(detailed information can be found at {{{./architecture.html} <<The sample apps>>}} section)
-
-	<<General>>
 	
-	You then have to use Maven downloading all the dependencies (used libraries in project; for more information see 
+	You then have to use Maven to download all required dependencies (used libraries in project; for more information see 
 	{{{./technology/tech-maven.html} <<Maven technology page>>}}). 
-	Therefore you execute <<mvn install>> in your <<root>> and <<core>> folder (in your console).
 	<<Note>>: All mvn commands are executed in your console.
 	
-	<<Additionally>>
+	Execute <mvn compile> in the <basic folder> to automatically download all project dependencies to you local maven repository and compile the sources.
 	
-	<Usage of basic example:>
-	
-	Execute <mvn install> in the <basic folder>
-	
-	<Usage of medium example:>
+** Basic Example Dependencies
 
-	Execute <mvn install> in the <medium folder>
+[images/basic_dependencies.png]
 	
-	<Usage of advanced example:>
+	Optionally Execute <mvn compile> in the <designpatterns folder>
 	
-	Execute <mvn install> in the <advanced folder>
+	Optionally build the Documentation locally (this site): Execute <mvn site> in the <documentation folder>
 
-* IDE Integration
-
-	If you f.ex. want to use the examples in Eclipse, you only have to execute <<mvn eclipse:eclipse>> in your desired folder (basic, medium, advanced).
-	
-** Example 
+** BPSE-Basic Installation 
 
 	We just extracted the archive to a desired folder. Now we want to use the basic example in Eclipse.
 	
 	Todos:
 	
-	[[1]] execute <<mvn install>> in root, core and basic folder
+	[[1]] go to the basic folder and execute <<mvn compile>> or <<mvn install>> if you haven't done this already (download all dependencies for the project and compile)
 	
-	[[2]] go to the basic folder and execute <<mvn eclipse:eclipse>>. This will create Eclipse project files (.project, .classpath)
+	[[2]] execute <<mvn eclipse:eclipse>>. This will create Eclipse project files (.project, .classpath, ...)
 	
-	[[3]] Open Eclipse and goto <File - New - Project>, select <Java Project>, give the <project> any <name> you like, check <Create project from
-	existing source> and browse to your basic folder, where you executed you <mvn eclipse:eclipse> command before.
+	[[3]] Open Eclipse and goto <File - Import>, select <Existing Projects into Workspace>, select the directory where you executed the <mvn eclipse:eclipse> command before.
 	<Finish> will create your project.
-	
-	After creating the project it may happen, that you get some curious <<Unbounded classpath>> errors. This may happen, because Eclipse actually
-	doesn´t know where to find all the libraries used in the project. Therefore we define a <<classpath variable>> in Eclipse.
-	
-	[[1]] We go to <Window - Preferences>, select <Java - Build Path - Classpath Variables> and click <New>
-	
-	[[2]] The new entry shall contain the following values:
-	
-	<<Name:>> M2_REPO
-	
-	<<Path:>> path/to/your/localMavenRepository (in our case: C:/test/.m2/repository)
-	
-	
-	Now everything is ready to use/browse/play around with the basic example (Integration of Medium and Advanced example is similar).
 
+	Now everything is ready to play around with the basic example (Integration of the designpatterns example is very similar).
+	
+	The libraries used in the project should be available under <Referenced Libraries> in the Package Explorer of Eclipse - the <mvn eclipse:eclipse> command should already have added all dependencies to the classpath. These dependecies should all point to a classpath variable configured in Eclipse - "M2_REPO". You can optionally install a Maven plugin for Eclipse, but if you would like to configure this variable manually, you can go to <Window - Preferences>, select <Java - Build Path - Classpath Variables> and configure M2_REPO from there.

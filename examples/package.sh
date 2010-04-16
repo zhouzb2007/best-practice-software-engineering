@@ -33,9 +33,14 @@ then
 	mvn clean
 	echo "Executing 'mvn site for core, basic and documentation'"
 	sleep 2
-	cd basic
+	cd basic-archetype
+	mvn clean
+	cd ../designpatterns
+	mvn clean
+	cd ../basic
 	mvn site
 	cd ../documentation
+	mvn clean
 	mvn site
 	cd ../core
 	mvn site
@@ -92,6 +97,7 @@ echo "Done with documentation, now archiving the source packages into $dest_pack
 sleep 2
 mkdir $dest_packages
 mkdir $dest_packages/bpse
+mkdir $dest_packages/basic-archetype
 
 for p in $packages
 do
@@ -105,10 +111,14 @@ do
  cp -rv $bp $dest_packages/bpse/basic/
 done
 
+cp -rv basic-archetype/* $dest_packages/basic-archetype/
+
 sleep 2
 cd $dest_packages
 zip -r BPSE.zip bpse
-rm -rf bpse 
+rm -rf bpse
+zip -r basic-archetype.zip basic-archetype
+rm -rf basic-archetype
 #tar cfvz $dest_packages/BPSE.tar.gz $packages
 # rar a -r $dest_packages/BPSE.rar $packages
 cd ..
