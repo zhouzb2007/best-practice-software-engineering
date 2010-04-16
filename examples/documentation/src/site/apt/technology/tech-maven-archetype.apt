@@ -17,6 +17,8 @@ Technology: Maven Archetypes
   show some software concepts. We will also look at how archetypes themselves are designed and
   can be created for individual use.
 
+%{toc|section=1|fromDepth=2|toDepth=4} 
+
 * BPSE-Basic Archetype
 ~~~~~~~~~~~~~~~~~
 
@@ -249,8 +251,7 @@ Technology: Maven Archetypes
 ** Download
 ~~~~~~~~~~~
 
-  You can download the archetype sources from these links: {{{bpse-archetype-basic-0.1.0-bin.tar.gz}.tar.gz}}
-  , {{{bpse-archetype-basic-0.1.0-bin.zip}.zip}}
+  You can download the archetype sources {{{src-package/basic-archetype.zip}here}} as a .zip archive.
 
 ** Directory and File Stucture
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -266,29 +267,42 @@ Technology: Maven Archetypes
       |   |   `-- META-INF
       |   |       `-- archetype.xml
       |   `-- archetype-resources
-      |       |-- data
-      |       |   |-- database.properties
-      |       |   `-- database.script
       |       |-- src
       |       |   |-- main
       |       |   |   |-- java
-      |       |   |   |   |-- bo
-      |       |   |   |   |   |-- package-info.java
-      |       |   |   |   |   `-- Student.java
       |       |   |   |   |-- dao
       |       |   |   |   |   |-- package-info.java
       |       |   |   |   |   |-- IStudentDAO.java
-      |       |   |   |   |   `-- JDBCStudentDAO.java
-      |       |   |   |   |-- gui
+      |       |   |   |   |   `-- JdbcObjectStudentDAO.java
+      |       |   |   |   |-- domain
+      |       |   |   |   |   |-- Person.java
+      |       |   |   |   |   `-- Student.java
+      |       |   |   |   |-- export_import
+      |       |   |   |   |   |-- Export.java
+      |       |   |   |   |   |-- HtmlExport.java
+      |       |   |   |   |   |-- Import.java
       |       |   |   |   |   |-- package-info.java
-      |       |   |   |   |   `-- MainFrame.java
+      |       |   |   |   |   `-- XmlExportImport.java
+      |       |   |   |   |-- gui
+      |       |   |   |   |   |-- EditStudentFrame.java
+      |       |   |   |   |   |-- ExportMenuModel.java
+      |       |   |   |   |   |-- MainFrame.java
+      |       |   |   |   |   |-- package-info.java
+      |       |   |   |   |   |-- RegexTextField.java
+      |       |   |   |   |   `-- StudentTableModel.java
+      |       |   |   |   |-- helper
+      |       |   |   |   |   |-- Constants.java
+      |       |   |   |   |   `-- package-info.java
       |       |   |   |   |-- package-info.java
-      |       |   |   |   |-- Constants.java
-      |       |   |   |   `-- Main.java
+      |       |   |   |   `-- Basis.java
       |       |   |   `-- resources
+      |       |   |       |-- data
+      |       |   |       |   |-- pruefungen.properties
+      |       |   |       |   `-- pruefungen.script
       |       |   |       |-- beans.xml
       |       |   |       |-- log4j.properties
-      |       |   |       `-- messages_de.properties
+      |       |   |       |-- messages.properties
+      |       |   |       `-- messages_en.properties
       |       |   |-- site
       |       |   |   |-- apt
       |       |   |   |   |-- format.apt
@@ -302,11 +316,26 @@ Technology: Maven Archetypes
       |       |   |   `-- site.xml
       |       |   `-- test
       |       |       |-- java
-      |       |       |   `-- dao
-      |       |       |       `-- test
-      |       |       |           |-- JDBCStudentDAOTest.java
-      |       |       |           `-- package-info.java
+      |       |       |   `-- test
+      |       |       |       |-- dao
+      |       |       |       |   |-- AllDAOTests.java
+      |       |       |       |   |-- package-info.java
+      |       |       |       |   `-- JdbcStudentTest.java
+      |       |       |       |-- export
+      |       |       |       |   |-- AllExportTests.java
+      |       |       |       |   |-- ExportImportTest.java
+      |       |       |       |   |-- HtmlExportTest.java
+      |       |       |       |   |-- package-info.java
+      |       |       |       |   `-- XmlExportImportTest.java
+      |       |       |       |-- AllTests.java
+      |       |       |       `-- package-info.java
       |       |       `-- resources
+      |       |           |-- data
+      |       |           |   |-- pruefungen.properties
+      |       |           |   `-- pruefungen.script
+      |       |           |-- test
+      |       |           |   `-- html-export.html
+      |       |           `-- test-beans.xml
       |       `-- pom.xml
       `-- site
           |-- apt
@@ -327,10 +356,6 @@ Technology: Maven Archetypes
       * <<<pom.xml>>> is the Project Object Model for the whole archetype itself which contains 
         all information about the organisation, structure, dependencies and reporting.
 
-            * <<IMPORTANT!>>  One big difference to POMs of other projects is that to create an
-              archetype the content of the <<<<packaging>>>>-tag is <must be> set to
-              <<<maven-plugin>>>.
-
       * <<<src - site>>> contains the documentation for the archetype.
 
             * <<<src - site - site.xml>>> defines the structure of this documentation.
@@ -350,15 +375,12 @@ Technology: Maven Archetypes
 *** Archetype Files
 ~~~~~~~~~~~~~~~~~~~
 
-  Mainly an archetype needs two directories. The first one is the <<<resources - META-INF>>> 
-  directory that contains the <<<archetype.xml>>> file which defines the structure of the
-  archetype. The second one - <<<archetype-resources>>> - contains a reflection of the 
+  An Archetype requires a least two directories. The first one is the <<<resources - META-INF>>> 
+  directory which contains the <<<archetype.xml>>> file that defines the structure of the
+  archetype. The second one - <<<archetype - resources>>> - contains a reflection of the 
   directories and files that should be included in the archetype. The files in these 
   directories contain 'real' information like program code or pictures and are linked to
   the final archetype by the <<<archetype.xml>>>.
-
-  How to bind a document whether it is program code or a resource is dicussed in the
-  archtype.xml section that can be found in the menu on the left.
 
 ** Structure of the <<<archetype.xml>>>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -408,7 +430,7 @@ Technology: Maven Archetypes
   <archetype>
     <id>bpse-archetype-basic</id>
     <sources>
-      <source>src/main/java/Main.java</source>
+      <source>src/main/java/Basis.java</source>
       <source>src/main/java/Constants.java</source>
       [...]
       <source>src/main/java/dao/IStudentDAO.java</source>
@@ -416,15 +438,15 @@ Technology: Maven Archetypes
       <source>src/main/java/gui/MainFrame.java</source>
     </sources>
     <resources>
-      <resource>src/main/resources/messages_de.properties</resource>
+      <resource>src/main/resources/beans.xml</resource>
       [...]
-      <resource>data/database.script</resource>
+      <resource>src/main/resources/data/pruefungen.script</resource>
     </resources>
     <testSources>
-      <source>src/test/java/dao/test/JDBCStudentDAOTest.java</source>
+      <source>src/test/java/test/dao/JdbcStudentTest.java</source>
     </testSources>
     <testResources>
-      <resource>src/test/resources/messages_de.properties</resource>
+      <resource>src/test/resources/test-beans.xml</resource>
     </testResources>
     <siteResources>
       <resource>src/site/site.xml</resource>
@@ -439,14 +461,15 @@ Technology: Maven Archetypes
   This section shows an example on how to build program code that can be used in
   the archetype.
 
-  The program snippet below is used in the basic archetype. It seems to be a 
-  common Java class with the difference that instead of the <<<package>>> 
+  The program snippet below is used in the basic archetype. At first it looks like a 
+  common Java class, but instead of the <<<package>>> 
   declaration and the first part of the <<<import>>> declaration a Maven 
-  variable is written. This variable is the <<<groupId>>> that is later entered 
-  by the user who builds a new application structure. Maven then searches the 
-  files included in the archetype-resources and replaces the variable with the 
-  one entered. If neccessary other Maven variables e.g. version information can 
-  also be used.
+  variable is used. This variable is the <<<groupId>>> which is later entered 
+  by the user who builds a new application structure. When creating a Projekt from
+  an archetype, Maven searches the 
+  files included in the archetype-resources folder and replaces the variable with the 
+  value entered. If neccessary other Maven variables e.g. version information can 
+  also be specified.
 
 +------------------------------------------------------------------------------+
   package ${groupId};
@@ -462,7 +485,7 @@ Technology: Maven Archetypes
    * @version 0.1.0
    * 
    */
-  public class Main {
+  public class Basis {
 
       /**
        * Retrieve log4j Logger for this class.
