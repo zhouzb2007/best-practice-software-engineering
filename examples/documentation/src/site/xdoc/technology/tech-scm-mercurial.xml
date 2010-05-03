@@ -62,20 +62,20 @@
             <subsection name="How to Read this Tutorial">
                 <p>For a basic understanding of distributed SCM and Mercurial (e.g. for individual use) read the sections:</p>
                 <ul>
-                    <li><a href="Getting_Started">Getting Started</a></li>
-                    <li><a href="Creating_a_New_Project">Creating a new Project</a></li>
-                    <li><a href="Cloning_an_Existing_Project">Cloning an Existing Project</a></li>
-                    <li><a href="Making_Changes">Making Changes</a></li>
-                    <li><a href="Status_of_the_Repository">Status of the Repository</a></li>
-                    <li><a href="Navigating_in_the_Version_History">Navigating in the Version History</a></li>
-                    <li><a href="Adding_Removing_and_Ignoring_Files">Adding, (Re)moving and Ignoring Files</a></li>
+                    <li><a href="#Getting_Started">Getting Started</a></li>
+                    <li><a href="#Creating_a_New_Project">Creating a new Project</a></li>
+                    <li><a href="#Cloning_an_Existing_Project">Cloning an Existing Project</a></li>
+                    <li><a href="#Making_Changes">Making Changes</a></li>
+                    <li><a href="#Status_of_the_Repository">Status of the Repository</a></li>
+                    <li><a href="#Navigating_in_the_Version_History">Navigating in the Version History</a></li>
+                    <li><a href="#Adding_Removing_and_Ignoring_Files">Adding, (Re)moving and Ignoring Files</a></li>
                 </ul>
                 <p>More advanced functionality is described in the following sections (this will be needed particularly as soon as team collaboration is needed):</p>
                 <ul>
-                    <li><a href="Sharing_Changes">Sharing Changes</a></li>
-                    <li><a href="The_Version_History:_Working_with_Revisions">The Version History: Working with Revisions</a></li>
-                    <li><a href="Branches_and_Tags">Branches and Tags</a></li>
-                    <li><a href="Merging_and_Rebasing">Merging and Rebasing</a></li>
+                    <li><a href="#Sharing_Changes">Sharing Changes</a></li>
+                    <li><a href="#The_Version_History:_Working_with_Revisions">The Version History: Working with Revisions</a></li>
+                    <li><a href="#Branches_and_Tags">Branches and Tags</a></li>
+                    <li><a href="#Merging_and_Rebasing">Merging and Rebasing</a></li>
                 </ul>
                 <p>Finally a short overview on <a href="Collaboration_Platforms">"modern" collaboration platforms</a> that support DSCM is given in the final section, a short overview on <a href="Tools">helpful tools</a> and <a href="Further_Information">further information resources</a> is given.</p>
             </subsection>
