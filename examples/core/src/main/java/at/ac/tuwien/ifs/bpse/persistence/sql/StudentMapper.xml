@@ -6,18 +6,24 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 		resultType="Student">
 		select * from student where id = #{id}
 	</select>
+	<select id="selectAllStudents" parameterType="at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO$SortOrder"
+		resultType="Student">
+		select * from student
+		<if test="order != null">ORDER BY ${order}</if>
+	</select>
 	<select id="selectStudentByMatrNr" parameterType="int"
 		resultType="Student">
 		select * from student where matnr = #{matnr}
 	</select>
-	<select id="findStudents" parameterType="String"
+	<select id="findStudents" parameterType="map"
 		resultType="Student">
 		select * from student 
 		where 
-		matnr LIKE #{searchchar} OR
+		matnr LIKE #{searchphrase} OR
 		firstname LIKE #{searchphrase} OR
 		lastname LIKE #{searchphrase} OR
 		email LIKE #{searchphrase}
+		<if test="order != null">ORDER BY ${order}</if>
 	</select>
 	<insert id="insertStudent" parameterType="Student"
 		useGeneratedKeys="true" keyProperty="id">

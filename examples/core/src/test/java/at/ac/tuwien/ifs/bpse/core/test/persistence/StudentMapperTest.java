@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -23,6 +21,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO.SortOrder;
 import at.ac.tuwien.ifs.bpse.domain.Student;
 import at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean;
 import at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper;
@@ -66,6 +65,10 @@ public class StudentMapperTest {
 	private final String destroySchema = "bpse-sample-medium-destroySchema.sql";
 	
 	private final String dbData = "bpse-sample-medium-TestData.sql";
+
+	private Student testStudentGet;
+
+	private Student testStudentAdd;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() {
@@ -92,6 +95,9 @@ public class StudentMapperTest {
 		sqlSessionFactory = (SqlSessionFactoryBean) ac.getBean("sqlSessionFactory");
 		sqlSession = sqlSessionFactory.openSession();
 		studentMapper = sqlSession.getMapper(StudentMapper.class);
+		
+		testStudentGet = (Student)ac.getBean("StudentGet");
+		testStudentAdd = (Student)ac.getBean("StudentAdd");
 	}
 
 	@After
@@ -111,54 +117,50 @@ public class StudentMapperTest {
 			log.info("DB Script " + destroySchema + " not found");
 			e.printStackTrace();
 		}
+		
+		testStudentGet = null;
+		testStudentAdd = null;
+		System.gc();
 	}
 
 	@Test
 	public void selectStudent_shouldGetStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentMapper.selectStudent(s.getId());
-		assertThat( stud.getFirstname(), is(s.getFirstname()) );
-		assertThat( stud.getMatnr(), is(s.getMatnr()) );
-		assertThat( stud.getEmail(), is(s.getEmail()) );
-		assertThat( stud.getLastname(), is(s.getLastname()) );
-		assertThat( stud.getFullname(), is(s.getFullname()) );
-		assertThat( stud.getId(), is(s.getId()) );
+		Student stud = studentMapper.selectStudent(testStudentGet.getId());
+		assertThat( stud.getFirstname(), is(testStudentGet.getFirstname()) );
+		assertThat( stud.getMatnr(), is(testStudentGet.getMatnr()) );
+		assertThat( stud.getEmail(), is(testStudentGet.getEmail()) );
+		assertThat( stud.getLastname(), is(testStudentGet.getLastname()) );
+		assertThat( stud.getFullname(), is(testStudentGet.getFullname()) );
+		assertThat( stud.getId(), is(testStudentGet.getId()) );
 	}
 	
 	@Test
 	public void selectStudentByMatrNr_shouldGetStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentMapper.selectStudentByMatrNr(s.getMatnr());
-		assertThat( stud.getFirstname(), is(s.getFirstname()) );
-		assertThat( stud.getMatnr(), is(s.getMatnr()) );
-		assertThat( stud.getEmail(), is(s.getEmail()) );
-		assertThat( stud.getLastname(), is(s.getLastname()) );
-		assertThat( stud.getFullname(), is(s.getFullname()) );
-		assertThat( stud.getId(), is(s.getId()) );
+		Student stud = studentMapper.selectStudentByMatrNr(testStudentGet.getMatnr());
+		assertThat( stud.getFirstname(), is(testStudentGet.getFirstname()) );
+		assertThat( stud.getMatnr(), is(testStudentGet.getMatnr()) );
+		assertThat( stud.getEmail(), is(testStudentGet.getEmail()) );
+		assertThat( stud.getLastname(), is(testStudentGet.getLastname()) );
+		assertThat( stud.getFullname(), is(testStudentGet.getFullname()) );
+		assertThat( stud.getId(), is(testStudentGet.getId()) );
 	}
 	
 	@Test
-	public void insertStudent_shouldSaveStudentToDB() {
-		Student s = (Student)ac.getBean("StudentAdd");
-		assertThat(s.getId(), is(2));
+	public void insertStudent_shouldSaveStudentToDB() throws CloneNotSupportedException {
 		
-		//int id = s.getId();
-		String matnr = s.getMatnr();
-		String first = s.getFirstname();
-		String last = s.getLastname();
-		String full = first + " " + last;
-		String email = s.getEmail();
+		final Student origStud = (Student)testStudentAdd.clone();
 		
-		int ret = studentMapper.insertStudent(s);		
+		assertThat(testStudentAdd.getId(), is(2));
+		int ret = studentMapper.insertStudent(testStudentAdd);		
 		assertThat(ret, is(1));
-		assertThat(s.getId(), is(43));
-		Student stud = studentMapper.selectStudent(s.getId());
+		assertThat(testStudentAdd.getId(), is(43));
+		Student stud = studentMapper.selectStudent(testStudentAdd.getId());
 		
-		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first) );
-		assertThat( stud.getLastname(), is(last) );
-		assertThat( stud.getFullname(), is(full) );
-		assertThat( stud.getEmail(), is(email) );
+		assertThat( stud.getMatnr(), is(origStud.getMatnr()) );
+		assertThat( stud.getFirstname(), is(origStud.getFirstname()) );
+		assertThat( stud.getLastname(), is(origStud.getLastname()) );
+		assertThat( stud.getFullname(), is(origStud.getFullname()) );
+		assertThat( stud.getEmail(), is(origStud.getEmail()) );
 	}
 	
 	@Test
@@ -193,10 +195,38 @@ public class StudentMapperTest {
 	
 	@Test
 	public void findStudents() {
-		List<Student> studs = studentMapper.findStudents("%odrig%");
+		List<Student> studs = studentMapper.findStudents("%");
+		assertThat(studs.size(), is(3));
+		assertThat(studs.get(0).getMatnr(), is("0027226"));
+		assertThat(studs.get(1).getMatnr(), is("1234027"));
+		assertThat(studs.get(2).getMatnr(), is("8027164"));
+		
+		studs = studentMapper.findStudents("%odrig%", SortOrder.matnr);
 		assertThat(studs.size(), is(2));
-		List<Student> studs2 = studentMapper.findStudents("%027%");
-		assertThat(studs2.size(), is(3));
+		assertThat(studs.get(0).getMatnr(), is("0027226"));
+		assertThat(studs.get(1).getMatnr(), is("8027164"));
+
+		//assertThat(stud1.getMatnr(), is());
+		studs = studentMapper.findStudents("%027%", SortOrder.lastname);
+		assertThat(studs.size(), is(3));
+		assertThat(studs.get(0).getLastname(), is("Rodrigues"));
+		assertThat(studs.get(1).getLastname(), is("Rodrigues2"));
+		assertThat(studs.get(2).getLastname(), is("Studentos"));
 	}
 
+	@Test
+	public void getAllStudents() {
+		List<Student> studs = studentMapper.selectAllStudents(SortOrder.lastname);
+		assertThat(studs.size(), is(3));
+		assertThat(studs.get(0).getLastname(), is("Rodrigues"));
+		assertThat(studs.get(1).getLastname(), is("Rodrigues2"));
+		assertThat(studs.get(2).getLastname(), is("Studentos"));
+		
+		studs = studentMapper.selectAllStudents();
+		assertThat(studs.size(), is(3));
+		assertThat(studs.get(0).getLastname(), is("Rodrigues"));
+		assertThat(studs.get(1).getLastname(), is("Rodrigues2"));
+		assertThat(studs.get(2).getLastname(), is("Studentos"));
+	}
+	
 }

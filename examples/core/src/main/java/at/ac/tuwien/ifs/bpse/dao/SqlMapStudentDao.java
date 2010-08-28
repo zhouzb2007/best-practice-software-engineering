@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO;
 import at.ac.tuwien.ifs.bpse.domain.Student;
-import at.ac.tuwien.ifs.bpse.domain.StudentExam;
 import at.ac.tuwien.ifs.bpse.persistence.SqlSessionFactoryBean;
 import at.ac.tuwien.ifs.bpse.persistence.interfaces.StudentMapper;
 
@@ -53,11 +52,6 @@ public class SqlMapStudentDao implements IStudentDAO {
 			return false;
 	}
 
-	public List<StudentExam> getRegisteredExams(Student arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Student getStudent(int id) {
 		return studentMapper.selectStudent(id);
 	}
@@ -66,10 +60,6 @@ public class SqlMapStudentDao implements IStudentDAO {
 		return studentMapper.selectStudentByMatrNr(matnr);
 	}
 
-	public List<Student> getStudents(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public Student saveStudent(Student s) {
 		int ret = studentMapper.insertStudent(s);
@@ -88,7 +78,7 @@ public class SqlMapStudentDao implements IStudentDAO {
 	}
 
 	@Override
-	public List<Student> getStudents(SortOrder arg0) {
+	public List<Student> getStudents(SortOrder order) {
 		// TODO Auto-generated method stub
 		return null;
 	}
