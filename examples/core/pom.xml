@@ -15,8 +15,7 @@
     <packaging>jar</packaging>
     <name>Core BPSE sample</name>
     <description>
-        Contains the domain model and interfaces of the Software Engineering sample. All other modules
-        are based on the core module.
+        Contains the domain model, interfaces and persistance layer of the Software Engineering sample. 
     </description>
     <dependencies>
 			<dependency>

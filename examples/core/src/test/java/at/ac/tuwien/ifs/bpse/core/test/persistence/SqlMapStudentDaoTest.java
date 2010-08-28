@@ -92,7 +92,7 @@ public class SqlMapStudentDaoTest {
 	}
 
 	@Test
-	public void selectStudent_shouldGetStudentFromDB() {
+	public void getStudent_shouldRetrieveStudentFromDB() {
 		Student s = (Student)ac.getBean("StudentGet");
 		Student stud = studentDAO.getStudent(s.getId());
 		assertThat( stud.getFirstname(), is(s.getFirstname()) );
@@ -104,24 +104,25 @@ public class SqlMapStudentDaoTest {
 	}
 	
 	@Test
-	public void selectStudentByMatrNr_shouldGetStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentGet");
-		Student stud = studentDAO.getStudentByMatrNr(s.getMatnr());
-		assertThat( stud.getFirstname(), is(s.getFirstname()) );
-		assertThat( stud.getMatnr(), is(s.getMatnr()) );
-		assertThat( stud.getEmail(), is(s.getEmail()) );
-		assertThat( stud.getLastname(), is(s.getLastname()) );
-		assertThat( stud.getFullname(), is(s.getFullname()) );
-		assertThat( stud.getId(), is(s.getId()) );
-	}
-	
-	@Test
-	public void deleteStudent_shouldDeleteStudentFromDB() {
-		Student s = (Student)ac.getBean("StudentUpdateDelete");
-		boolean ret = studentDAO.deleteStudent(s.getId());
-		assertThat(ret, is(true));
-		Student stud = studentDAO.getStudent(s.getId());
-		assertNull(stud);
+	public void addStudent_shouldAddStudentToDB() {
+		Student s = (Student)ac.getBean("StudentAdd");
+		assertThat(s.getId(), is(2));
+		
+		//int id = s.getId();
+		String matnr = s.getMatnr();
+		String first = s.getFirstname();
+		String last = s.getLastname();
+		String full = first + " " + last;
+		String email = s.getEmail();
+		
+		Student stud = studentDAO.saveStudent(s);	
+
+		assertThat( stud.getId(), is(43));
+		assertThat( stud.getMatnr(), is(matnr) );
+		assertThat( stud.getFirstname(), is(first) );
+		assertThat( stud.getLastname(), is(last) );
+		assertThat( stud.getFullname(), is(full) );
+		assertThat( stud.getEmail(), is(email) );
 	}
 	
 	@Test
@@ -143,24 +144,24 @@ public class SqlMapStudentDaoTest {
 	}
 	
 	@Test
-	public void insertStudent_shouldSaveStudentToDB() {
-		Student s = (Student)ac.getBean("StudentAdd");
-		assertThat(s.getId(), is(2));
-		
-		//int id = s.getId();
-		String matnr = s.getMatnr();
-		String first = s.getFirstname();
-		String last = s.getLastname();
-		String full = first + " " + last;
-		String email = s.getEmail();
-		
-		Student stud = studentDAO.saveStudent(s);	
-
-		assertThat( stud.getId(), is(43));
-		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first) );
-		assertThat( stud.getLastname(), is(last) );
-		assertThat( stud.getFullname(), is(full) );
-		assertThat( stud.getEmail(), is(email) );
+	public void deleteStudent_shouldDeleteStudentFromDB() {
+		Student s = (Student)ac.getBean("StudentUpdateDelete");
+		boolean ret = studentDAO.deleteStudent(s.getId());
+		assertThat(ret, is(true));
+		Student stud = studentDAO.getStudent(s.getId());
+		assertNull(stud);
 	}
+	
+	@Test
+	public void getStudentByMatrNr_shouldGetStudentFromDB() {
+		Student s = (Student)ac.getBean("StudentGet");
+		Student stud = studentDAO.getStudentByMatrNr(s.getMatnr());
+		assertThat( stud.getFirstname(), is(s.getFirstname()) );
+		assertThat( stud.getMatnr(), is(s.getMatnr()) );
+		assertThat( stud.getEmail(), is(s.getEmail()) );
+		assertThat( stud.getLastname(), is(s.getLastname()) );
+		assertThat( stud.getFullname(), is(s.getFullname()) );
+		assertThat( stud.getId(), is(s.getId()) );
+	}
+
 }

@@ -4,8 +4,12 @@ package at.ac.tuwien.ifs.bpse.domain;
 /**
  * Student extends Person, hence inherits all properties from Person class (main data of a person)
  */
-public class Student extends Person implements java.io.Serializable{
+public class Student extends Person implements java.io.Serializable, Cloneable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3011368781691657737L;
 	/* Matrikel Number */
     private String matnr;
     /* Username for the web application */
@@ -54,6 +58,13 @@ public class Student extends Person implements java.io.Serializable{
 
 	public void setTutor(boolean tutor) {
 		this.tutor = tutor;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Object stud = null;
+		stud = super.clone();
+		return stud;
 	}
 
 }
