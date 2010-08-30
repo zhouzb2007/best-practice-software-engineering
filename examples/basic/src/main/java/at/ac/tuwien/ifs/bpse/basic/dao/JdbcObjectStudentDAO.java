@@ -1,17 +1,13 @@
 package at.ac.tuwien.ifs.bpse.basic.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.jdbc.core.SqlParameter;
-import org.springframework.jdbc.object.MappingSqlQuery;
-import org.springframework.jdbc.object.SqlUpdate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
@@ -23,14 +19,16 @@ import at.ac.tuwien.ifs.bpse.basic.domain.Student;
  * Implementation of the Student Data Access Object for JDBC. This class makes
  * heavy use of the Spring Framework's facilities and provides access to the
  * data stored in the database aswell as defines how this data is mapped from
- * the application objects to the database tables.<br>
+ * the application objects to the database tables (insert and update operations).
+ * For mapping data from the database to application objects (select operations), 
+ * see the class RowMappers.
  * Also see the Bean-Config file 
  * ({@value at.ac.tuwien.ifs.bpse.basic.helper.Constants#SPRINGBEANS})
  * for configuration.
  * 
  * @author The SE-Team
- * @version 1.1
- * @see StudentDAO
+ * @version 2.0
+ * @see IStudentDAO
  */
 public class JdbcObjectStudentDAO implements IStudentDAO {
 
@@ -40,11 +38,11 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	private static Log log = LogFactory.getLog(JdbcObjectStudentDAO.class);
 
 	/**
-	 * SQL Datasource. In order to work with data from a database, we need to
-	 * obtain a connection to the database. A Datasource is part of the JDBC
-	 * specification and can be seen as a generalized connection factory.
+	 * Provides access to the Datasource, set by setDataSource().
+	 * Wrapper class for JdbcTemplate providing Java-5-based convenience and exposing
+	 * only the most commonly required operations.
 	 */
-	private DataSource dataSource = null;
+	protected SimpleJdbcTemplate simpleJdbcTemplate = null;
 
 	/**
 	 * Transaction Manager. For encapsulating insert and updates in transaction.
@@ -60,196 +58,6 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	private String sql_getInsertId = "";
 	private String sql_updateStudent = "";
 	private String sql_deleteStudent = "";
-
-	/**
-	 * Query Objects.
-	 */
-	private Query_GetStudent query_getStudent;
-	private Query_InsertStudent query_insertStudent;
-	private Query_UpdateStudent query_updateStudent;
-	private Query_DeleteStudent query_deleteStudent;
-	private Query_GetStudentID query_getStudentId;
-	private Query_GetAllStudentsOrderMatnr query_getAllStudentsOrderMatnr;
-	private Query_GetAllStudentsOrderNachname query_getAllStudentsOrderNachname;
-
-	
-	
-	/** ******************************************************************* */
-	/** ******************************************************************* */
-	/* INNER CLASSES TO DEFINE SQL STATEMENTS AND MAPPINGS */
-	/** ******************************************************************* */
-	/** ******************************************************************* */
-
-	/**
-	 * Defines the base class used for all other queries. This is a private
-	 * inner class, as this is used only in this data access object
-	 */
-	private class BaseStudentsQuery extends MappingSqlQuery {
-		/**
-		 * The Base query is extended by all other queries
-		 * 
-		 * @param ds SQL Datasource
-		 * @see #dataSource
-		 * @param sql  The SQL search String
-		 */
-		public BaseStudentsQuery(DataSource ds, String sql) {
-			super(ds, sql);
-		}
-
-		protected Student mapRow(ResultSet rs, int rowNumber)
-				throws SQLException {
-			Student student = new Student();
-			student.setId(rs.getInt("id"));
-			student.setMatnr(rs.getString("matnr"));
-			student.setFirstname(rs.getString("vorname"));
-			student.setLastname(rs.getString("nachname"));
-			student.setEmail(rs.getString("email"));
-			return student;
-		}
-	}
-
-	/**
-	 * Retrieves all students in the DB ordered by their Matrikel number. This
-	 * is a private inner class, as this is used only in this data access
-	 * object.
-	 */
-	private class Query_GetAllStudentsOrderMatnr extends BaseStudentsQuery {
-		/**
-		 * Fetches all students from table
-		 * 
-		 * @param ds SQL Datasource
-		 *            
-		 * @see #dataSource
-		 */
-		public Query_GetAllStudentsOrderMatnr(DataSource ds) {
-			super(ds, sql_getAllStudents + " order by matnr");
-			compile();
-		}
-	}
-
-	/**
-	 * Retrieves all students in the DB ordered by their last name. This is a
-	 * private inner class, as this is used only in this data access object.
-	 */
-	private class Query_GetAllStudentsOrderNachname extends BaseStudentsQuery {
-		/**
-		 * Fetches all students from table.
-		 * 
-		 * @param ds  SQL Datasource
-		 * @see #dataSource
-		 */
-		public Query_GetAllStudentsOrderNachname(DataSource ds) {
-			super(ds, sql_getAllStudents + " order by nachname");
-			compile();
-		}
-	}
-
-	/**
-	 * Retrieves one student from the DB. This is a private inner class, as this
-	 * is used only in this data access object
-	 */
-	private class Query_GetStudent extends BaseStudentsQuery {
-		/**
-		 * Fetches only ONE student from database.
-		 * 
-		 * @param ds  SQL Datasource
-		 * @see #dataSource
-		 */
-		public Query_GetStudent(DataSource ds) {
-			super(ds, sql_getStudent);
-			super.declareParameter(new SqlParameter("id", Types.INTEGER));
-			compile();
-		}
-	}
-
-	/**
-	 * Adds one student to database. This is a private inner class, as this is
-	 * used only in this data access object.
-     * SqlUpdate is a helper class provided by the Spring-Framework
-	 */
-	private class Query_InsertStudent extends SqlUpdate {
-		/**
-		 * Retrieves the ID of the student added to database.
-		 * 
-		 * @param ds  SQL Datasource
-		 * @see #dataSource
-		 */
-		public Query_InsertStudent(DataSource ds) {
-			super.setDataSource(ds);
-			setSql(sql_insertStudent);
-			declareParameter(new SqlParameter("matnr", Types.VARCHAR));
-			declareParameter(new SqlParameter("firstname", Types.VARCHAR));
-			declareParameter(new SqlParameter("lastname", Types.VARCHAR));
-			declareParameter(new SqlParameter("email", Types.VARCHAR));
-		}
-	}
-
-	/**
-	 * Updates one student in the database. This is a private inner class, as
-	 * this is used only in this data access object.
-     * SqlUpdate is a helper class provided by the Spring-Framework
-	 */
-	private class Query_UpdateStudent extends SqlUpdate {
-		/**
-		 * Create and initialises the SQL-Query for updating a student.
-		 * 
-		 * @param ds  SQL Datasource
-		 * @see #dataSource
-		 */
-		public Query_UpdateStudent(DataSource ds) {
-			super.setDataSource(ds);
-			setSql(sql_updateStudent);
-			declareParameter(new SqlParameter("id", Types.INTEGER));
-			declareParameter(new SqlParameter("matnr", Types.VARCHAR));
-			declareParameter(new SqlParameter("firstname", Types.VARCHAR));
-			declareParameter(new SqlParameter("lastname", Types.VARCHAR));
-			declareParameter(new SqlParameter("email", Types.VARCHAR));
-		}
-	}
-
-	/**
-	 * Deletes one stundent from the database. This is a private inner class, as
-	 * this is used only in this data access object.
-	 */
-	private class Query_DeleteStudent extends SqlUpdate {
-		/**
-		 * Creates and initializes the SQL-Query for deleting a student.
-		 * 
-		 * @param ds  SQL Datasource
-		 * @see #dataSource
-		 */
-		public Query_DeleteStudent(DataSource ds) {
-			super.setDataSource(ds);
-			setSql(sql_deleteStudent);
-			declareParameter(new SqlParameter("id", Types.INTEGER));
-		}
-	}
-
-	/**
-	 * Retrieves the ID of the student added to database. This is a private
-	 * inner class, as this is used only in this data access object.
-	 */
-	private class Query_GetStudentID extends MappingSqlQuery {
-		/**
-		 * Retrieves the ID of the student added to database.
-		 * 
-		 * @param ds
-		 *            SQL Datasource
-		 * @see #dataSource
-		 */
-		public Query_GetStudentID(DataSource ds) {
-			super(ds, sql_getInsertId);
-			compile();
-		}
-
-		protected Object mapRow(ResultSet rs, int rowNumber)
-				throws SQLException {
-			// "@p0" is the row name hsqldb creates for the one value returning
-			// the ID
-			Integer id = Integer.valueOf(rs.getInt("@p0"));
-			return id;
-		}
-	}
 
 	/** ******************************************************************* */
 	/** ******************************************************************* */
@@ -270,15 +78,6 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	 */
 	public void init() {
 		log.info("Initialise StudentDAO");
-		query_getStudent = new Query_GetStudent(dataSource);
-		query_insertStudent = new Query_InsertStudent(dataSource);
-		query_getStudentId = new Query_GetStudentID(dataSource);
-		query_updateStudent = new Query_UpdateStudent(dataSource);
-		query_deleteStudent = new Query_DeleteStudent(dataSource);
-		query_getAllStudentsOrderMatnr = new Query_GetAllStudentsOrderMatnr(
-				dataSource);
-		query_getAllStudentsOrderNachname = new Query_GetAllStudentsOrderNachname(
-				dataSource);
 	}
 
 	/**
@@ -378,7 +177,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	 * @see #dataSource
 	 */
 	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+		this.simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
 	}
 
 	/**
@@ -412,9 +211,11 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 
 	public Student getStudent(int id) {
 		log.info("Get Student ID = " + id);
-		List students = query_getStudent.execute(id);
+		
+		List<Student> students = simpleJdbcTemplate.query(sql_getStudent, new RowMappers.StudentMapper(), id);
+		//List<Student> students = query_getStudent.execute(id);
 		if (students.size() == 1) {
-			Student s = (Student) students.get(0);
+			Student s = students.get(0);
 			log.debug("Returning Student \"" + s.getFirstname() + " "
 					+ s.getLastname() + "\"");
 			return s;
@@ -442,20 +243,20 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	 * @return unique id generated by database assigned to the newly created
 	 *         Student
 	 */
-	public Student saveStudent(Student student) {
+	public Student saveStudent(final Student student) {
 		log.info("Add Student Name = " + student.getFirstname() + " "
 				+ student.getLastname());
-		log.debug("Initialise SQL Parameters");
-		final Object[] param = new Object[] { student.getMatnr(),
-				student.getFirstname(), student.getLastname(), student.getEmail() };
 		log.debug("Initialise Transaction Manager");
 		TransactionTemplate tt = new TransactionTemplate(transactionManager);
-		Object result = tt.execute(new TransactionCallback() {
+		Object result = tt.execute(new TransactionCallback<Object>() {
 			public Object doInTransaction(TransactionStatus status) {
 				// The transaction is run from here
 				log.debug("Start Transaction");
-				query_insertStudent.update(param);
-
+				//query_insertStudent.update(param);
+				//KeyHolder keyHolder = new GeneratedKeyHolder();
+				simpleJdbcTemplate.update(sql_insertStudent, student.getMatnr(),
+						student.getFirstname(), student.getLastname(), student.getEmail());
+				
 				/*
 				 * activate the following error line to create an Error which
 				 * terminates this method. One will see, that the complete
@@ -472,8 +273,9 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 				 * result from query is a list, actually containing only one row
 				 * and one column
 				 */
-				List results = query_getStudentId.execute();
-				Integer id = (Integer) results.get(0);
+				//List results = query_getStudentId.execute();
+				//List results = simpleJdbcTemplate.query(sql_getStudent, new RowMappers.StudentMapper(), args)
+				Integer id = simpleJdbcTemplate.queryForInt(sql_getInsertId, new MapSqlParameterSource());
 				log.debug("End Transaction");
 				return id;
 				/*
@@ -496,12 +298,11 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	public Student updateStudent(Student student, long id) {
 		log.info("Update Student, ID = " + student.getId() + " new ID = "
 				+ id);
-		log.debug("Initialise SQL Parameters");
-		final Object[] param = new Object[] { student.getMatnr(),
-				student.getFirstname(), student.getLastname(),
-				student.getEmail(), id };
 		log.debug("Execute Update");
-		if (query_updateStudent.update(param) == 1) {
+		//KeyHolder keyHolder = new GeneratedKeyHolder();
+		if (simpleJdbcTemplate.update(sql_updateStudent, student.getMatnr(),
+				student.getFirstname(), student.getLastname(),
+				student.getEmail(), id) == 1) {
 			log.debug("Update Successfull");
 			return student;
 		}
@@ -526,10 +327,12 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		log.info("Get all Students order = " + order.toString());
 		List<Student> students = null;
 		if (order.equals(SortOrder.StudentId)) {
-			students = query_getAllStudentsOrderMatnr.execute();
+			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by matnr", new RowMappers.StudentMapper());
+			//students = query_getAllStudentsOrderMatnr.execute();
 			log.debug("Student List contains " + students.size() + " students ordered by studentId");
 		} else if (order.equals(SortOrder.LastName)) {
-			students = query_getAllStudentsOrderNachname.execute();
+			//students = query_getAllStudentsOrderNachname.execute();
+			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by nachname", new RowMappers.StudentMapper());
 			log.debug("Student List contains " + students.size() + " students ordered by lastname");
 		}
 		return students;
@@ -540,7 +343,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		log.debug("Initialize SQL Parameters");
 		final Object[] param = new Object[] { id };
 		log.debug("Executing SQL");
-		if (query_deleteStudent.update(param) == 1) {
+		if (simpleJdbcTemplate.update(sql_deleteStudent, param) == 1) {
 			log.debug("Deleting successfull");
 			return true;
 		}

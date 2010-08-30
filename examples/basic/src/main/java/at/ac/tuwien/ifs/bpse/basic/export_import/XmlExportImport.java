@@ -218,9 +218,8 @@ public class XmlExportImport implements Export, Import {
 			throw new IOException("" + e);
 		}
 		List<Student> studenten = new ArrayList<Student>();
-		List studentenEl = doc.getRootElement().elements();
-		for (Object o: studentenEl) {
-			Element e = (Element) o;
+		List<Element> studentenEl = (List<Element>) doc.getRootElement().elements();
+		for (Element e: studentenEl) {
 			Student s = new Student();
 			s.setId(new Integer(e.attributeValue("id")));
 			s.setFirstname(e.elementText("firstname"));
