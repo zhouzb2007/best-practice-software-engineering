@@ -144,7 +144,7 @@ public class JdbcStudentTest {
 	 * 
 	 */
 	@Test
-	public void addStudent_shouldAddStudentToDB() {
+	public void saveStudent_shouldAddStudentToDB() {
 		// get a test-dataset from Spring config
 		Student student = (Student) xbf.getBean("StudentAddUpdateDelete");
 		Integer oldId = student.getId();
