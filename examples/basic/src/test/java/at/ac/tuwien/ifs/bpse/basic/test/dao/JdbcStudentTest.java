@@ -153,7 +153,7 @@ public class JdbcStudentTest {
 		studentDAO.saveStudent(student);
 		// new ID should be different from old ID
 		assertThat(student.getId(), is(not(oldId)));
-		
+
 		// check if student was added
 		// read student from database using the new generated ID
 		// then compare if the newly read data equals the old one,

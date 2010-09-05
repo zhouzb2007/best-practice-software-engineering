@@ -21,16 +21,14 @@ import at.ac.tuwien.ifs.bpse.basic.domain.Student;
 /**
  * Implementation of the Student Data Access Object for JDBC. This class makes
  * heavy use of the Spring Framework's facilities and provides access to the
- * data stored in the database aswell as defines how this data is mapped from
- * the application objects to the database tables (insert and update operations).
- * For mapping data from the database to application objects (select operations), 
- * see the class RowMappers.
+ * data stored in the database. It also defines how this data is mapped from
+ * the application objects to the database tables and vice-versa.
  * Also see the Bean-Config file 
  * ({@value at.ac.tuwien.ifs.bpse.basic.helper.Constants#SPRINGBEANS})
  * for configuration.
  * 
  * @author The SE-Team
- * @version 2.0
+ * @version 2.1
  * @see IStudentDAO
  */
 public class JdbcStudentDAO implements IStudentDAO {
@@ -55,8 +53,8 @@ public class JdbcStudentDAO implements IStudentDAO {
 	/**
 	 * SQL Query Strings.
 	 */
-	private String sql_getAllStudents = "";
-	private String sql_getStudent = "";
+	private String sql_selectAllStudents = "";
+	private String sql_selectStudent = "";
 	private String sql_insertStudent = "";
 	private String sql_getInsertId = "";
 	private String sql_updateStudent = "";
@@ -114,21 +112,21 @@ public class JdbcStudentDAO implements IStudentDAO {
 	/**
 	 * Sets the SQL String to get all students.
 	 * 
-	 * @param sql_getAllStudents
+	 * @param sql_selectAllStudents
 	 *            SQL Statement as String
 	 */
-	public void setSql_getAllStudents(String sql_getAllStudents) {
-		this.sql_getAllStudents = sql_getAllStudents;
+	public void setSql_selectAllStudents(String sql_selectAllStudents) {
+		this.sql_selectAllStudents = sql_selectAllStudents;
 	}
 
 	/**
 	 * Sets the SQL String to get one student with one SQL parameter.
 	 * 
-	 * @param sql_getStudent
+	 * @param sql_selectStudent
 	 *            SQL Statement as String
 	 */
-	public void setSql_getStudent(String sql_getStudent) {
-		this.sql_getStudent = sql_getStudent;
+	public void setSql_selectStudent(String sql_selectStudent) {
+		this.sql_selectStudent = sql_selectStudent;
 	}
 
 	/**
@@ -195,6 +193,14 @@ public class JdbcStudentDAO implements IStudentDAO {
 		this.transactionManager = transactionManager;
 	}
 
+	/**
+	 * Maps data from a database row to an application object.
+	 * This method is used by all DAO methods which query the database 
+	 * with an SQL SELECT statement.
+	 *
+	 * @since 2.1
+	 *
+	 */
 	public static final class StudentMapper implements RowMapper<Student> {
 	      public Student mapRow(ResultSet rs, int rowNumber)
 			throws SQLException {
@@ -228,7 +234,7 @@ public class JdbcStudentDAO implements IStudentDAO {
 	public Student getStudent(int id) {
 		log.info("Get Student ID = " + id);
 		
-		List<Student> students = simpleJdbcTemplate.query(sql_getStudent, new StudentMapper(), id);
+		List<Student> students = simpleJdbcTemplate.query(sql_selectStudent, new StudentMapper(), id);
 		//List<Student> students = query_getStudent.execute(id);
 		if (students.size() == 1) {
 			Student s = students.get(0);
@@ -289,9 +295,7 @@ public class JdbcStudentDAO implements IStudentDAO {
 				 * result from query is a list, actually containing only one row
 				 * and one column
 				 */
-				//List results = query_getStudentId.execute();
-				//List results = simpleJdbcTemplate.query(sql_getStudent, new RowMappers.StudentMapper(), args)
-				Integer id = simpleJdbcTemplate.queryForInt(sql_getInsertId, new MapSqlParameterSource());
+				Integer id = simpleJdbcTemplate.queryForInt(sql_getInsertId);
 				log.debug("End Transaction");
 				return id;
 				/*
@@ -343,12 +347,12 @@ public class JdbcStudentDAO implements IStudentDAO {
 		log.info("Get all Students order = " + order.toString());
 		List<Student> students = null;
 		if (order.equals(SortOrder.StudentId)) {
-			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by matnr", new StudentMapper());
+			students = simpleJdbcTemplate.query(sql_selectAllStudents+" order by matnr", new StudentMapper());
 			//students = query_getAllStudentsOrderMatnr.execute();
 			log.debug("Student List contains " + students.size() + " students ordered by studentId");
 		} else if (order.equals(SortOrder.LastName)) {
 			//students = query_getAllStudentsOrderNachname.execute();
-			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by nachname", new StudentMapper());
+			students = simpleJdbcTemplate.query(sql_selectAllStudents+" order by nachname", new StudentMapper());
 			log.debug("Student List contains " + students.size() + " students ordered by lastname");
 		}
 		return students;
