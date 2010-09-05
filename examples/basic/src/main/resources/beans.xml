@@ -61,13 +61,13 @@
 		<!-- This is the transaction manager needed for SQL Transactions -->
 		<property name="transactionManager" ref="TransactionManager" />
 		<!-- The next properties are SQL Commands used in this DAO -->
-		<property name="sql_getAllStudents">
+		<property name="sql_selectAllStudents">
 			<value>
 				select id, matnr, vorname, nachname, email from
 				studenten
 			</value>
 		</property>
-		<property name="sql_getStudent">
+		<property name="sql_selectStudent">
 			<value>
 				select id, matnr, vorname, nachname, email from
 				studenten where id=?

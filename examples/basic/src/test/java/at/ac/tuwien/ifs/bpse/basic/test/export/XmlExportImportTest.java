@@ -96,7 +96,7 @@ public class XmlExportImportTest {
 		Element rootEl = doc.getRootElement();
 		assertThat(rootEl.getName(), is("students"));
 		// check two children
-		List studentenEl = rootEl.elements();
+		List<Student> studentenEl = (List<Student>) rootEl.elements();
 		assertThat(studentenEl.size(), is(2));
 		// check one Student Element
 		Element sEl = (Element) studentenEl.get(0);

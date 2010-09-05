@@ -21,7 +21,7 @@ import at.ac.tuwien.ifs.bpse.basic.helper.Constants;
  * access object (DAO).
  * 
  * @author The SE-Team
- * @version 1.1
+ * @version 1.2
  * 
  */
 public class StudentenTableModel extends AbstractTableModel {
@@ -57,32 +57,12 @@ public class StudentenTableModel extends AbstractTableModel {
 	private List<Student> studenten = null;
 
 	/**
-	 * Order of the TableModel, must be "Matrikelnummer" or "Nachname".
-	 */
-	private String order = "";
-
-	/**
 	 * Order of the TableModel
 	 * 
 	 * @see SortOrder
+	 * @see IStudentDAO
 	 */
 	private SortOrder sortOrder = SortOrder.StudentId;
-
-	/**
-	 * Creates a new StudentenTableModel with default ordering.
-	 * 
-	 * @param order
-	 *            the default Order
-	 * @see #order
-	 */
-	public StudentenTableModel(String order) {
-		super();
-		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS);
-		xbf = new XmlBeanFactory(res);
-		studentDAO = (IStudentDAO) xbf.getBean("StudentDAO");
-		this.order = order;
-		readData();
-	}
 
 	/**
 	 * Creates a new StudentenTableModel with default ordering.
@@ -149,20 +129,20 @@ public class StudentenTableModel extends AbstractTableModel {
 	 * @see #sortOrder
 	 * @see SortOrder
 	 */
-	public void setOrder(SortOrder order) {
+	public void setSortOrder(SortOrder order) {
 		log.info("Sort Order Changed to " + order.toString()
 				+ ": reading data...");
 		this.sortOrder = order;
 		reload();
 	}
-
+	
 	/**
 	 * Get the number of rows in this TableModel.
 	 * 
 	 * @return number of rows
 	 */
 	public int getRowCount() {
-		log.debug("rowcount = " + studenten.size());
+		//log.debug("rowcount = " + studenten.size());
 		return studenten.size();
 	}
 
@@ -172,7 +152,7 @@ public class StudentenTableModel extends AbstractTableModel {
 	 * @return number of colums
 	 */
 	public int getColumnCount() {
-		log.debug("colCount = " + columnName.length);
+		//log.debug("colCount = " + columnName.length);
 		return columnName.length;
 	}
 
@@ -222,7 +202,7 @@ public class StudentenTableModel extends AbstractTableModel {
 	 * @return String containing the value of the cell.
 	 */
 	public Object getValueAt(int row, int col) {
-		log.debug("getValue row = " + row + " col = " + col);
+		//log.debug("getValue row = " + row + " col = " + col);
 		Student s = studenten.get(row);
 		switch (col) {
 		case 0:

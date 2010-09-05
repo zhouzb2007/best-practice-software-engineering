@@ -157,7 +157,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * @see ExportMenuModel
 	 */
 	private void initModels() {
-		studentenTM = new StudentenTableModel("Matrikelnummer");
+		studentenTM = new StudentenTableModel(SortOrder.StudentId);
 		exportMenuModel = (ExportMenuModel) xbf.getBean("ExportMenuModel");
 	}
 	
@@ -425,14 +425,14 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * 
 	 * @param order
 	 *            the new order
-	 * @see StudentenTableModel#setOrder(String)
+	 * @see StudentenTableModel#setSortOrder(String)
 	 */
 	private void sortOrderChanged(String order) {
 		log.info("Sort Order Changed to \"" + order + "\"");
 		if(order.equals(messageBundle.getString("cb.option.studentid"))) {
-			studentenTM.setOrder(SortOrder.StudentId);
+			studentenTM.setSortOrder(SortOrder.StudentId);
 		} else if (order.equals(messageBundle.getString("cb.option.lastname"))) {
-			studentenTM.setOrder(SortOrder.LastName);
+			studentenTM.setSortOrder(SortOrder.LastName);
 		}
 	}
 

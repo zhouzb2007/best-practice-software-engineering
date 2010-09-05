@@ -209,7 +209,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 			setTitle("Create new Student");
 			break;
 		case Update:
-			setTitle("Update Student");
+			setTitle("Edit existing Student");
 			break;
 		}
 		// Fill Frame
@@ -274,7 +274,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 			saveButton.setText(messageBundle.getString("btn.lbl.create"));
 			break;
 		case Update:
-			saveButton.setText(messageBundle.getString("btn.lbl.edit"));
+			saveButton.setText(messageBundle.getString("btn.lbl.save"));
 			break;
 		}
 		saveButton.addActionListener(this);
@@ -326,7 +326,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 		log.info("Action performed: \"" + action + "\"");
 		if (action.equals(messageBundle.getString("btn.lbl.close"))) {
 			closeFrame();
-		} else if (action.equals(messageBundle.getString("btn.lbl.edit"))) {
+		} else if (action.equals(messageBundle.getString("btn.lbl.save"))) {
 			if (validateInput()) {
 				studentDAO
 						.updateStudent(getStudentFromFrame());
@@ -342,7 +342,7 @@ public class EditStudentFrame extends JFrame implements ActionListener {
 					this.mode = Mode.Update;
 					idLabel.setText(student.getId()+"");
 					log.trace("after");
-					((JButton) e.getSource()).setText(messageBundle.getString("btn.lbl.edit"));
+					((JButton) e.getSource()).setText(messageBundle.getString("btn.lbl.save"));
 					centerBox.add(idLabel, 0);
 					centerBox.add(new JLabel(messageBundle.getString("lbl.id")), 0);
 					this.repaint();

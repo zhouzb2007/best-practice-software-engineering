@@ -210,6 +210,7 @@ public class XmlExportImport implements Export, Import {
 	 * @return list of students
 	 * @see #readXml(String)
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Student> read(String filename) throws IOException {
 		try {
 			readXml(filename);
