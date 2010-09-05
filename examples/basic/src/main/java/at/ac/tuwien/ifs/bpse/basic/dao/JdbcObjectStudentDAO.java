@@ -1,11 +1,14 @@
 package at.ac.tuwien.ifs.bpse.basic.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -192,6 +195,19 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		this.transactionManager = transactionManager;
 	}
 
+	public static final class StudentMapper implements RowMapper<Student> {
+	      public Student mapRow(ResultSet rs, int rowNumber)
+			throws SQLException {
+	    	  at.ac.tuwien.ifs.bpse.basic.domain.Student student = new at.ac.tuwien.ifs.bpse.basic.domain.Student();
+				student.setId(rs.getInt("id"));
+				student.setMatnr(rs.getString("matnr"));
+				student.setFirstname(rs.getString("vorname"));
+				student.setLastname(rs.getString("nachname"));
+				student.setEmail(rs.getString("email"));
+				return student;
+			}
+	  } 
+	
 	/** ******************************************************************* */
 	/** ******************************************************************* */
 	/*
@@ -212,7 +228,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	public Student getStudent(int id) {
 		log.info("Get Student ID = " + id);
 		
-		List<Student> students = simpleJdbcTemplate.query(sql_getStudent, new RowMappers.StudentMapper(), id);
+		List<Student> students = simpleJdbcTemplate.query(sql_getStudent, new StudentMapper(), id);
 		//List<Student> students = query_getStudent.execute(id);
 		if (students.size() == 1) {
 			Student s = students.get(0);
@@ -327,12 +343,12 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 		log.info("Get all Students order = " + order.toString());
 		List<Student> students = null;
 		if (order.equals(SortOrder.StudentId)) {
-			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by matnr", new RowMappers.StudentMapper());
+			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by matnr", new StudentMapper());
 			//students = query_getAllStudentsOrderMatnr.execute();
 			log.debug("Student List contains " + students.size() + " students ordered by studentId");
 		} else if (order.equals(SortOrder.LastName)) {
 			//students = query_getAllStudentsOrderNachname.execute();
-			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by nachname", new RowMappers.StudentMapper());
+			students = simpleJdbcTemplate.query(sql_getAllStudents+" order by nachname", new StudentMapper());
 			log.debug("Student List contains " + students.size() + " students ordered by lastname");
 		}
 		return students;
