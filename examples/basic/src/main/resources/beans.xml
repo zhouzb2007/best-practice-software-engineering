@@ -54,7 +54,7 @@
 	<!-- ********************************************************************************************** -->
 	<!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
 	<bean id="StudentDAO"
-		class="at.ac.tuwien.ifs.bpse.basic.dao.JdbcObjectStudentDAO"
+		class="at.ac.tuwien.ifs.bpse.basic.dao.JdbcStudentDAO"
 		scope="singleton" init-method="init" destroy-method="destroy">
 		<!-- This is the datasource needed for JDBC Database Access -->
 		<property name="dataSource" ref="HsqldbDataSource" />

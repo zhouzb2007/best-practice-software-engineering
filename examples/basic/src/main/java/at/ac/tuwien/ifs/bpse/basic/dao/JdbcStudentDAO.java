@@ -33,12 +33,12 @@ import at.ac.tuwien.ifs.bpse.basic.domain.Student;
  * @version 2.0
  * @see IStudentDAO
  */
-public class JdbcObjectStudentDAO implements IStudentDAO {
+public class JdbcStudentDAO implements IStudentDAO {
 
 	/**
 	 * Retrieves the logger for this class.
 	 */
-	private static Log log = LogFactory.getLog(JdbcObjectStudentDAO.class);
+	private static Log log = LogFactory.getLog(JdbcStudentDAO.class);
 
 	/**
 	 * Provides access to the Datasource, set by setDataSource().
@@ -68,7 +68,7 @@ public class JdbcObjectStudentDAO implements IStudentDAO {
 	/** ******************************************************************* */
 	/** ******************************************************************* */
 
-	public JdbcObjectStudentDAO() {
+	public JdbcStudentDAO() {
 		super();
 	}
 
