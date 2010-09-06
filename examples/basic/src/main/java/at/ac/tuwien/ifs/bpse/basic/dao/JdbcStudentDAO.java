@@ -203,7 +203,7 @@ public class JdbcStudentDAO implements IStudentDAO {
 	public static final class StudentMapper implements RowMapper<Student> {
 	      public Student mapRow(ResultSet rs, int rowNumber)
 			throws SQLException {
-	    	  at.ac.tuwien.ifs.bpse.basic.domain.Student student = new at.ac.tuwien.ifs.bpse.basic.domain.Student();
+	    	    Student student = new Student();
 				student.setId(rs.getInt("id"));
 				student.setMatnr(rs.getString("matnr"));
 				student.setFirstname(rs.getString("vorname"));
