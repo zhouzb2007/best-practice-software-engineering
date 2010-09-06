@@ -5,6 +5,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses( { CourseMapperTest.class, ExamMapperTest.class, ProfessorMapperTest.class, SqlMapStudentDaoTest.class, StudentMapperTest.class })
+@SuiteClasses( { JdbcStudentTest.class })
 public class AllPersistanceTests {
 }
