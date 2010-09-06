@@ -1,5 +1,6 @@
 package at.ac.tuwien.ifs.bpse.dao.interfaces;
 
+
 import java.util.List;
 
 import at.ac.tuwien.ifs.bpse.domain.Student;
@@ -12,10 +13,28 @@ import at.ac.tuwien.ifs.bpse.domain.Student;
  * @version 1.1
  */
 public interface IStudentDAO {
-
+	/**
+	 * Enumeration for different sort orders of students that can be used.
+	 * Possible sort ordes are:
+	 * <ul>
+	 * <li><code>StudentId</code> for an ascending order by studentId.</li>
+	 * <li><code>LastName</code> for an ascending order by lastname.</li>
+	 * </ul>
+	 * 
+	 * @author The SE-Team
+	 * @since 1.1
+	 * 
+	 */
 	public enum SortOrder {
-		matnr,
-		lastname
+		/**
+		 * Use this sort order to order ascending by studentId.
+		 */
+		StudentId,
+
+		/**
+		 * Use this sort order to order ascending by lastname.
+		 */
+		LastName,
 	}
 
 	/**

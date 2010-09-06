@@ -1,4 +1,4 @@
-package at.ac.tuwien.ifs.bpse.basic.dao;
+package at.ac.tuwien.ifs.bpse.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +15,10 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import at.ac.tuwien.ifs.bpse.basic.domain.Student;
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO;
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO.SortOrder;
+import at.ac.tuwien.ifs.bpse.domain.Student;
+
 
 /**
  * Implementation of the Student Data Access Object for JDBC. This class makes
@@ -206,8 +209,8 @@ public class JdbcStudentDAO implements IStudentDAO {
 	    	    Student student = new Student();
 				student.setId(rs.getInt("id"));
 				student.setMatnr(rs.getString("matnr"));
-				student.setFirstname(rs.getString("vorname"));
-				student.setLastname(rs.getString("nachname"));
+				student.setFirstname(rs.getString("firstname"));
+				student.setLastname(rs.getString("lastname"));
 				student.setEmail(rs.getString("email"));
 				return student;
 			}
