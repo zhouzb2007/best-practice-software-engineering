@@ -24,21 +24,22 @@ import at.ac.tuwien.ifs.bpse.basic.domain.Student;
 import at.ac.tuwien.ifs.bpse.basic.helper.Constants;
 
 /**
- * Class containing the testcases for StudentDAO. 
+ * Class containing the testcases for IStudentDAO. 
  * 
- * The test assumes that there is specific test-data in the hsqldb database and also reads test-data from the beans.xml
+ * The test assumes that there is specific test-data in the database and reads additional test-data from test-beans.xml.
  * 
  * The hsqldb database with the test-data can be found in 
  * 
- * /basic/src/test/resources/data
+ *  /basic/src/test/resources/data
+ * 
+ * This database is used for the tests (as it is defined in the src/test/resources/test-beans.xml as the datasource). 
  * 
  * when "mvn compile" is executed, this database files are copied to the target folder which is:
  * 
- *  basic/target/test-classes/data
+ *  /basic/target/test-classes/data
  *  
- *  This database is used for the tests (as it is defined in the src/test/resources/beans.xml). 
- *  Consequently, if you should "destroy" the test data in the target directory,
- *  just make an "mvn clean compile" and the correct database is again copied from the src/test directory.
+ * Consequently, if you should "destroy" the test data in the target directory,
+ * just execute a "mvn clean compile" and a fresh database is again copied from the src/test/resources/data directory.
  *  
  *  
  * One addtional thing should be noted: there are two beans.xml files and two database directories:
@@ -48,12 +49,12 @@ import at.ac.tuwien.ifs.bpse.basic.helper.Constants;
  * This allows us to distinguish between running tests and running the application. For example: when running the application
  * changing data cannot destroy the data that we need for the tests.
  * 
- * Additionally in the "operative" beans.xml there is not test-data included.
+ * The "operative" beans.xml does not contain any test-data.
  * 
  * 
  * @author The SE-Team
- * @version 1.0
- * @see StudentDAO
+ * @version 2.1
+ * @see JdbcStudentDAO
  * 
  */
 public class JdbcStudentTest {
@@ -80,6 +81,8 @@ public class JdbcStudentTest {
 		// notice, that the TEST beans.xml is loaded!
 		ClassPathResource res = new ClassPathResource(Constants.SPRINGBEANS_TEST);
 		xbf = new XmlBeanFactory(res);
+		/* since the datasource configured in test-beans.xml is pointing to a file 
+		   with predefined test-data, we don't need to insert any test-data here. */
 	}
 	
 	/**
@@ -102,7 +105,8 @@ public class JdbcStudentTest {
 	}
 
 	/**
-	 * Test StudentBean initialisation.
+	 * Test StudentBean initialisation, make sure Spring Framework works and the 
+	 * XML Bean Factory is returning test-data for our save & updateStudent tests.
 	 * 
 	 */
 	@Test
@@ -118,7 +122,7 @@ public class JdbcStudentTest {
 	/**
 	 * Test the method getStudent.
 	 * 
-	 * There is already test-data in the hsqldb database and the dataset with id=0 is read
+	 * Test-data already exists in the database and the dataset with id=0 is read.
 	 * 
 	 * @see StudentDAO#getStudent(Long)
 	 * 
@@ -133,14 +137,12 @@ public class JdbcStudentTest {
 	}
 
 	/**
-	 * Test the method addStudent, deleteStudent.
+	 * Test the methods saveStudent and deleteStudent - actually this is 
+	 * a complete CRD (Create, Read, Delete) lifecycle.
 	 * 
-	 * actually this is a complete CRD lifecycle
 	 * 
-	 * (create, read, delete)
-	 * 
-	 * @see StudentDAO#addStudent(Student)
-	 * @see StudentDAO#deleteStudent(Long)
+	 * @see IStudentDAO#saveStudent(Student)
+	 * @see IStudentDAO#deleteStudent(Long)
 	 * 
 	 */
 	@Test
@@ -206,7 +208,7 @@ public class JdbcStudentTest {
 	 * @see StudentDAO#getStudents(String)
 	 */
 	@Test
-	public void getStudentsMatnr_shouldRetrieveOrderedListOfStudentsFromDB() {
+	public void getStudents_shouldRetrieveAllStudentsOrderedByMatnrFromDB() {
 		// Order by Matrikelnummer
 		List<Student> students = studentDAO.getStudents(SortOrder.StudentId);
 		assertThat(students, is(notNullValue()));
@@ -231,7 +233,7 @@ public class JdbcStudentTest {
 	 * 
 	 */
 	@Test
-	public void getStudentsNachname_shouldRetrieveOrderedListOfStudentsFromDB() {
+	public void getStudents_shouldRetrieveAllStudentsOrderedByNachnameFromDB() {
 		// Order by Nachname
 		List<Student> students = studentDAO.getStudents(SortOrder.LastName);
 		assertThat(students, is(notNullValue()));
