@@ -2,6 +2,7 @@ package at.ac.tuwien.ifs.bpse.web.student;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -21,27 +22,30 @@ import at.ac.tuwien.ifs.bpse.web.course.CourseListPanel;
  * @author mde
  *
  */
+@AuthorizeInstantiation("ROLE_USER")
 public class StudentPage extends BasePage {
 
 	@SpringBean
 	private IStudentService studentService;
+	
 	@SpringBean
 	private ICourseService courseService;
 	
 	
-	
 	public StudentPage(final Student student){
-		super(student);
+		super();
 		boolean newRegistration = false;
-		if(student.getId() == 0){
+		if(student == null){
 			newRegistration = true;
 		}
 		add(new StudentForm("studentForm", new CompoundPropertyModel<Student>(student)));
 		//Button to reset password
-		AjaxLink lnkReset = new AjaxLink("resetPassword"){
+		AjaxLink lnkReset = new AjaxLink("changePassword"){
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				studentService.resetPassword(student);
+				//studentService.resetPassword(student);
+				// TODO: Have user enter old passwd and new passwd
+				// JdbcUserDetailsManager.changePassword(oldPassword, newPassword);
 			}
 		};
 		add(lnkReset);
@@ -69,9 +73,14 @@ public class StudentPage extends BasePage {
 		@Override
 		protected void onSubmit() {
 			//Update Student Account
-			Student s = getModelObject();
 			studentService.updateAccount(getModelObject());
-			setResponsePage(new BasePage(s));
+			setDefaultResponsePageIfNecessary();
 		}
+		
+		private void setDefaultResponsePageIfNecessary() {
+	        if(!continueToOriginalDestination()) {
+	            setResponsePage(getApplication().getHomePage());
+	        }
+	    }
 	}
 }

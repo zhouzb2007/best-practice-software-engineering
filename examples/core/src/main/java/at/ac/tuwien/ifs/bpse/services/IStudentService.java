@@ -1,5 +1,7 @@
 package at.ac.tuwien.ifs.bpse.services;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
@@ -15,7 +17,7 @@ public interface IStudentService {
      * @return Student object holding the data of one student or null if no student with the
      *         matching id is found
      */
-    public Student getStudent(long id);
+    public Student getStudent(int id);
 
     /**
      * Retrieves one single Student by a given matrikel number. Should delegate the request to a DAO service
@@ -51,15 +53,14 @@ public interface IStudentService {
      * @param student
      * @return Registered Student
      */
-	public Student register(Student student);
+	public Student register(Student student, UserDetails user);
 	
 	/**
-	 * Login a Student with his username and password
+	 * Get a Student BO to a username
 	 * @param username
-	 * @param password
-	 * @return If the login procedure was successfull, the Student will be returned, otherwise null
+	 * @return If the Username exists, the Student will be returned, otherwise null
 	 */
-	public Student login(String username, String password);
+	public Student getStudentByUsername(String username);
 	
 	/**
 	 * Update a Student Account.
@@ -72,6 +73,6 @@ public interface IStudentService {
 	 * Reset Student passwort. Send the Student an email with a new generated passwort
 	 * @param student from which the password should be reset
 	 */
-	public void resetPassword(Student student);
+	public void resetPassword(UserDetails user);
     
 }

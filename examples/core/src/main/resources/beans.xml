@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/jdbc
+           http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+      
+     <context:annotation-config />
+
+	<!-- ********************************************************************************************** -->
+	<!-- Configuration of Datasource                   -->
+	<!-- ********************************************************************************************** -->
+ 
+	<jdbc:embedded-database id="HsqldbDataSource" type="HSQL">
+		<jdbc:script location="classpath:/bpse-sample-medium-testSchema.sql"/>
+		<jdbc:script location="classpath:/bpse-sample-medium-testData.sql"/>
+	</jdbc:embedded-database>
+ 
+	<bean class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+		<constructor-arg ref="HsqldbDataSource" />
+	</bean>
+
+	<!-- This Transaction Manager is needed for SQL Transactions: it uses a 
+		SQL Datasource (see above) -->
+	<bean id="TransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="HsqldbDataSource" />
+	</bean>
+
+	<bean id="userDetailsService"
+		class="org.springframework.security.provisioning.JdbcUserDetailsManager">
+		<property name="dataSource" ref="HsqldbDataSource" />
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder" ref="passwordEncoder"/>
+		<property name="saltSource" ref="saltSource"/>
+	</bean>
+
+	<bean id="passwordEncoder"
+            class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">
+		<property name="systemWideSalt" value="enohpeleTnaCniT"/>
+	</bean>
+
+	<!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean below) -->
+	<tx:advice id="txAdvice" transaction-manager="TransactionManager">
+		<!-- the transactional semantics... -->
+		<tx:attributes>
+			<!-- all methods starting with 'get' are read-only -->
+			<tx:method name="get*" read-only="true" />
+			<!-- other methods use the default transaction settings (see below) -->
+			<tx:method name="save*" />
+			<tx:method name="update*" />
+			<tx:method name="delete*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ensure that the above transactional advice runs for any execution of 
+		an operation defined by the DAO interfaces interface -->
+	<aop:config>
+		<aop:pointcut id="DAOOperations"
+			expression="execution(* at.ac.tuwien.ifs.bpse.dao.interfaces.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAOOperations" />
+	</aop:config>
+
+  	<!-- ********************************************************************************************** -->
+    <!-- Configuration of Data Access Objects and injection of session and transaction manager          -->
+    <!-- ********************************************************************************************** -->
+    <!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
+    
+    <!-- this is the DAO that we want to make transactional -->
+    <bean id="StudentDAO"
+        class="at.ac.tuwien.ifs.bpse.dao.JdbcStudentDAO"
+        scope="singleton" init-method="init" destroy-method="destroy">
+        <!-- This is the datasource needed for JDBC Database Access -->
+        <property name="dataSource" ref="HsqldbDataSource" />
+        <!-- This is the transaction manager needed for SQL Transactions -->
+        <property name="transactionManager" ref="TransactionManager" />
+        <!-- The next properties are SQL Commands used in this DAO -->
+        <property name="sql_selectAllStudents">
+            <value>
+                select id, matnr, firstname, lastname, email from
+                student
+            </value>
+        </property>
+        <property name="sql_selectStudent">
+            <value>
+                select id, matnr, firstname, lastname, email from
+                student where id=?
+            </value>
+        </property>
+        <property name="sql_selectStudentByEmail">
+            <value>
+                select id, matnr, firstname, lastname, email from
+                student where email=?
+            </value>
+        </property>
+        <property name="sql_insertStudent">
+            <value>
+                INSERT INTO student (matnr, firstname, lastname, email)
+                values (?, ?, ?, ?)
+            </value>
+        </property>
+        <property name="sql_updateStudent">
+            <value>
+                UPDATE student SET matnr=?, firstname=?, lastname=?,
+                email=? WHERE id=?
+            </value>
+        </property>
+        <property name="sql_deleteStudent">
+            <value>DELETE FROM student WHERE id=?</value>
+        </property>
+        <property name="sql_getInsertId">
+            <value>CALL IDENTITY()</value>
+        </property>
+    </bean>
+    
+     <bean id="CourseDAO"
+        class="at.ac.tuwien.ifs.bpse.dao.JdbcCourseDAO"
+        scope="singleton" init-method="init" destroy-method="destroy">
+        <!-- This is the datasource needed for JDBC Database Access -->
+        <property name="dataSource" ref="HsqldbDataSource" />
+        <!-- This is the transaction manager needed for SQL Transactions -->
+        <property name="transactionManager" ref="TransactionManager" />
+        <!-- The next properties are SQL Commands used in this DAO -->
+        <property name="sql_selectAllCourses">
+            <value>
+                select id, title, ects from
+                course
+            </value>
+        </property>
+        <property name="sql_selectProfessorsToCourse">
+            <value>
+                select id, officenr, firstname, lastname, email 
+                from professor p
+                left join course_professor on p.id = course_professor.professorId
+                where course_professor.courseId=?
+            </value>
+        </property>
+        <property name="sql_selectCourse">
+            <value>
+                select id, title, ects from
+                course where id=?
+            </value>
+        </property>
+        <property name="sql_selectCourseByTitle">
+            <value>
+                select id, title, ects from
+                course where title=?
+            </value>
+        </property>
+        <property name="sql_insertCourse">
+            <value>
+                INSERT INTO course (title, ects)
+                values (?, ?)
+            </value>
+        </property>
+        <property name="sql_updateCourse">
+            <value>
+                UPDATE course SET title=?, ects=?
+                WHERE id=?
+            </value>
+        </property>
+        <property name="sql_deleteCourse">
+            <value>DELETE FROM course WHERE id=?</value>
+        </property>
+        <property name="sql_getInsertId">
+            <value>CALL IDENTITY()</value>
+        </property>
+        <property name="sql_selectExamsOfCourse">
+            <value></value>
+        </property>
+        <property name="sql_insertCourseProfessors">
+            <value>
+                INSERT INTO course_professor (courseId, professorId)
+                values (?, ?)
+            </value>
+        </property>
+        <property name="sql_deleteAllCourseProfessors">
+            <value>
+                DELETE FROM course_professor WHERE courseId=?
+            </value>
+        </property>
+    </bean>
+</beans>

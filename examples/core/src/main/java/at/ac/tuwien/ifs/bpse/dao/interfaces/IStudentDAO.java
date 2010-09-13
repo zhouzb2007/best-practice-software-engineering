@@ -57,6 +57,15 @@ public interface IStudentDAO {
 	public Student getStudentByMatrNr(String matnr);
 
 	/**
+	 * Retrieves one single Student by a given Email
+	 * 
+	 * @param matnr
+	 * @return Student object if someone existed, otherwise null if no student
+	 *         with the given matnr exist
+	 */
+	public Student getStudentByEmail(String email);
+	
+	/**
 	 * Saves one single Student to the Database.
 	 * 
 	 * @param student

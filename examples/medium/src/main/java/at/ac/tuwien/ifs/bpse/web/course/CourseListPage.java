@@ -14,12 +14,12 @@ import at.ac.tuwien.ifs.bpse.web.BasePage;
 public class CourseListPage extends BasePage {
 
 	public CourseListPage(Student student, CourseListMode listMode){
-		super(student);
+		super();
 		add(new CourseListPanel("courseListPanel", student, listMode));
 	}
 	
 	public CourseListPage(Student student, List<Course> courses, CourseListMode listMode){
-		super(student);
+		super();
 		add(new CourseListPanel("courseListPanel", courses, student, listMode));
 	}
 
