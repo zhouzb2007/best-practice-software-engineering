@@ -11,13 +11,12 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO;
 import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO.SortOrder;
@@ -45,60 +44,34 @@ import at.ac.tuwien.ifs.bpse.domain.Student;
  * 
  * One set in the src/main directory the other set in the src/test directory.
  *  
- * This allows us to distinguish between running tests and running the application. For example: when running the application
+ * This allows uds to distinguish between running tests and running the application. For example: when running the application
  * changing data cannot destroy the data that we need for the tests.
  * 
  * Additionally in the "operative" beans.xml there is no test-data included.
  * 
  * 
  * @author The SE-Team
- * @version 1.0
+ * @version 2.1
  * @see StudentDAO
  * 
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:test-beans.xml"})
 public class JdbcStudentTest {
 	
 	/**
-	 * Spring Framework Application Context (Bean Factory, Global Scope).
+	 * Spring Framework Application Context (Bean Factory).
 	 */
-	private static ApplicationContext ac; 
+	@Autowired
+	private ApplicationContext ac; 
 	
 	/**
-	 * Data Access Object for Student, fetched with xbf.
+	 * Data Access Object for Student
 	 */
-	private IStudentDAO studentDAO = null;
+	@Autowired
+	private IStudentDAO studentDAO;
 	
 	private static Logger log = Logger.getLogger(JdbcStudentTest.class);
-
-	
-	/**
-	 * This method is executed before all testcases.
-	 * 
-	 */
-	@BeforeClass
-	public static void setUpBefore() throws Exception {
-		// notice, that the TEST beans.xml is loaded!
-		ac = new FileSystemXmlApplicationContext("classpath:test-beans.xml");
-	}
-	
-	/**
-	 * This method is executed before every testcase.
-	 * 
-	 */
-	@Before
-	public void setUp() throws Exception {
-		studentDAO = (IStudentDAO) ac.getBean("StudentDAO");
-	}
-
-	/**
-	 * This method is executed after each testcase.
-	 * 
-	 */
-	@After
-	public void tearDown() throws Exception {
-		studentDAO = null;
-		//xbf.destroySingletons();
-	}
 
 	/**
 	 * Test StudentBean initialisation.
@@ -134,20 +107,31 @@ public class JdbcStudentTest {
 	}
 
 	/**
-	 * Test the method addStudent, deleteStudent.
+	 * Test the method saveStudent
 	 * 
-	 * actually this is a complete CRD lifecycle
-	 * 
-	 * (create, read, delete)
 	 * 
 	 * @see StudentDAO#addStudent(Student)
 	 * @see StudentDAO#deleteStudent(Long)
 	 * 
 	 */
 	@Test
-	public void saveStudent_shouldAddStudentToDB() {
+	public void saveStudent_shouldNotAddNonUserStudentToDB() {
 		// get a test-dataset from Spring config
-		Student s = (Student)ac.getBean("StudentAdd");
+		Student s = (Student)ac.getBean("NonUserStudentAdd");
+		int sid = s.getId();
+		// Add Student
+		Student retstud = studentDAO.saveStudent(s);	
+		// DAO should return null
+		assertThat(retstud, is(nullValue()));
+		// Student should not exist in DB
+		Student s2 = studentDAO.getStudent(sid);
+		assertThat(s2, is(nullValue()));
+	}
+	
+	@Test
+	public void saveStudent_shouldAddStudentToDBAsEnabledUser() {
+		// get a test-dataset from Spring config
+		Student s = (Student)ac.getBean("UserStudentAdd");
 		Integer oldId = s.getId();
 		String matnr = s.getMatnr();
 		String first = s.getFirstname();
@@ -156,10 +140,10 @@ public class JdbcStudentTest {
 		String email = s.getEmail();
 		
 		// Add Student
-		Student stud = studentDAO.saveStudent(s);	
+		Student stud = studentDAO.saveStudent(s);
+		assertThat( stud, is(notNullValue()) );
 		// new ID should be different from old ID
 		assertThat(stud.getId(), is(not(oldId)));
-		//assertThat( stud.getId(), is(43));
 		assertThat( stud.getMatnr(), is(matnr) );
 		assertThat( stud.getFirstname(), is(first) );
 		assertThat( stud.getLastname(), is(last) );
@@ -203,28 +187,25 @@ public class JdbcStudentTest {
 		String matnr = s.getMatnr();
 		String first = s.getFirstname();
 		String last = s.getLastname();
-		String email = s.getEmail();
 		// assuming this dataset already exists in the DB
-		// change the student data and update this student in database
-		s.setFirstname(first + "2");
-		s.setLastname(last + "2");
-		s.setEmail(email + ".at");
+		// and the dataset retrieved from test-beans.xml already contains slight changes to the data
 		Student stud = studentDAO.updateStudent(s);
 		assertThat( stud, is(notNullValue()) );
 		assertThat( stud.getId(), is(id) );
 		assertThat( stud.getMatnr(), is(matnr) );
-		assertThat( stud.getFirstname(), is(first+"2") );
-		assertThat( stud.getLastname(), is(last+"2") );
-		assertThat( stud.getEmail(), is(email+".at") );
+		assertThat( stud.getFirstname(), is(first) );
+		assertThat( stud.getLastname(), is(last) );
+		//TODO: changing Email changes Username
+		//assertThat( stud.getEmail(), is(email+".at") );
 
 		// retrieve student again from database and check if all fields are updated correctly
 		Student newStudent = studentDAO.getStudent(id);
 		assertThat( newStudent, is(notNullValue()) );
 		assertThat( newStudent.getId(), is(id) );
 		assertThat( newStudent.getMatnr(), is(matnr) );
-		assertThat( newStudent.getFirstname(), is(first+"2") );
-		assertThat( newStudent.getLastname(), is(last+"2") );
-		assertThat( newStudent.getEmail(), is(email+".at") );
+		assertThat( newStudent.getFirstname(), is(first) );
+		assertThat( newStudent.getLastname(), is(last) );
+		//assertThat( newStudent.getEmail(), is(email+".at") );
 	}
 
 	/**
@@ -232,7 +213,7 @@ public class JdbcStudentTest {
 	 * 
 	 * @see StudentDAO#getStudents(String)
 	 */
-	@Ignore
+	@Test
 	public void getStudents_shouldRetrieveAllStudentsOrderedByMatnrFromDB() {
 		// Order by Matrikelnummer
 		List<Student> students = studentDAO.getStudents(SortOrder.StudentId);
@@ -257,7 +238,7 @@ public class JdbcStudentTest {
 	 * @see StudentDAO#getStudents(String)
 	 * 
 	 */
-	@Ignore
+	@Test
 	public void getStudents_shouldRetrieveAllStudentsOrderedByNachnameFromDB() {
 		// Order by Nachname
 		List<Student> students = studentDAO.getStudents(SortOrder.LastName);

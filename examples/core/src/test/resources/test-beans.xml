@@ -4,11 +4,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.0.xsd
            http://www.springframework.org/schema/jdbc
@@ -28,18 +31,60 @@
 	<bean class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
 		<constructor-arg ref="HsqldbDataSource" />
 	</bean>
-	
-	<!-- This Transaction Manager is needed for SQL Transactions: it uses a SQL Datasource (see above) -->
-    <bean id="TransactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="HsqldbDataSource" />
-    </bean>
+
+	<!-- This Transaction Manager is needed for SQL Transactions: it uses a 
+		SQL Datasource (see above) -->
+	<bean id="TransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="HsqldbDataSource" />
+	</bean>
+
+	<bean id="userDetailsService"
+		class="org.springframework.security.provisioning.JdbcUserDetailsManager">
+		<property name="dataSource" ref="HsqldbDataSource" />
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder" ref="passwordEncoder"/>
+		<property name="saltSource" ref="saltSource"/>
+	</bean>
+
+	<bean id="passwordEncoder"
+            class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">
+		<property name="systemWideSalt" value="enohpeleTnaCniT"/>
+	</bean>
+
+	<!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean below) -->
+	<tx:advice id="txAdvice" transaction-manager="TransactionManager">
+		<!-- the transactional semantics... -->
+		<tx:attributes>
+			<!-- all methods starting with 'get' are read-only -->
+			<tx:method name="get*" read-only="true" />
+			<!-- other methods use the default transaction settings (see below) -->
+			<tx:method name="save*" />
+			<tx:method name="update*" />
+			<tx:method name="delete*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ensure that the above transactional advice runs for any execution of 
+		an operation defined by the DAO interfaces interface -->
+	<aop:config>
+		<aop:pointcut id="DAOOperations"
+			expression="execution(* at.ac.tuwien.ifs.bpse.dao.interfaces.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAOOperations" />
+	</aop:config>
 
   	<!-- ********************************************************************************************** -->
     <!-- Configuration of Data Access Objects and injection of session and transaction manager          -->
     <!-- ********************************************************************************************** -->
     <!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
     
+    <!-- this is the DAO that we want to make transactional -->
     <bean id="StudentDAO"
         class="at.ac.tuwien.ifs.bpse.dao.JdbcStudentDAO"
         scope="singleton" init-method="init" destroy-method="destroy">
@@ -60,6 +105,12 @@
                 student where id=?
             </value>
         </property>
+        <property name="sql_selectStudentByEmail">
+            <value>
+                select id, matnr, firstname, lastname, email from
+                student where email=?
+            </value>
+        </property>
         <property name="sql_insertStudent">
             <value>
                 INSERT INTO student (matnr, firstname, lastname, email)
@@ -77,6 +128,74 @@
         </property>
         <property name="sql_getInsertId">
             <value>CALL IDENTITY()</value>
+        </property>
+    </bean>
+    
+     <bean id="CourseDAO"
+        class="at.ac.tuwien.ifs.bpse.dao.JdbcCourseDAO"
+        scope="singleton" init-method="init" destroy-method="destroy">
+        <!-- This is the datasource needed for JDBC Database Access -->
+        <property name="dataSource" ref="HsqldbDataSource" />
+        <!-- This is the transaction manager needed for SQL Transactions -->
+        <property name="transactionManager" ref="TransactionManager" />
+        <!-- The next properties are SQL Commands used in this DAO -->
+        <property name="sql_selectAllCourses">
+            <value>
+                select id, title, ects from
+                course
+            </value>
+        </property>
+        <property name="sql_selectProfessorsToCourse">
+            <value>
+                select id, officenr, firstname, lastname, email 
+                from professor p
+                left join course_professor on p.id = course_professor.professorId
+                where course_professor.courseId=?
+            </value>
+        </property>
+        <property name="sql_selectCourse">
+            <value>
+                select id, title, ects from
+                course where id=?
+            </value>
+        </property>
+        <property name="sql_selectCourseByTitle">
+            <value>
+                select id, title, ects from
+                course where title=?
+            </value>
+        </property>
+        <property name="sql_insertCourse">
+            <value>
+                INSERT INTO course (title, ects)
+                values (?, ?)
+            </value>
+        </property>
+        <property name="sql_updateCourse">
+            <value>
+                UPDATE course SET title=?, ects=?
+                WHERE id=?
+            </value>
+        </property>
+        <property name="sql_deleteCourse">
+            <value>DELETE FROM course WHERE id=?</value>
+        </property>
+        <property name="sql_getInsertId">
+            <value>CALL IDENTITY()</value>
+        </property>
+        <property name="sql_selectExamsOfCourse">
+            <value></value>
+        </property>
+        <property name="sql_insertCourseProfessors">
+            <value>
+                INSERT INTO course_professor (courseId, professorId)
+                values (?, ?)
+            </value>
+        </property>
+        <property name="sql_deleteAllCourseProfessors">
+            <value>
+                DELETE FROM course_professor WHERE courseId=?
+            </value>
         </property>
     </bean>
     
@@ -101,7 +220,7 @@
         <property name="id" value="40" />
         <property name="matnr" value="0027226" />
         <property name="firstname" value="Bender" />
-        <property name="lastname" value="Rodrigues2" />
+        <property name="lastname" value="Rodrigues" />
         <property name="email"
             value="bender@info.com" />
     </bean>
@@ -113,10 +232,9 @@
         </description>
         <property name="id" value="41" />
         <property name="matnr" value="0926759" />
-        <property name="firstname" value="Test" />
-        <property name="lastname" value="Student" />
-        <property name="email"
-            value="test.student@qse.ifs.tuwien.ac.at" />
+        <property name="firstname" value="Test2" />
+        <property name="lastname" value="Student2" />
+        <property name="email" value="user@qse" />
     </bean>
 
     <bean id="StudentGet"
@@ -127,40 +245,74 @@
         <property name="id" value="42" />
         <property name="matnr" value="8027164" />
         <property name="firstname" value="Alex" />
-        <property name="lastname" value="Rodrigues" />
-        <property name="email" value="alex.r@info.com" />
+        <property name="lastname" value="Schatten" />
+        <property name="email" value="test@qse" />
     </bean>
 
-    <bean id="StudentAdd"
+    <bean id="NonUserStudentAdd"
         class="at.ac.tuwien.ifs.bpse.domain.Student">
         <description>
-            A Student for testing the INSERT method
+            A Student for testing the INSERT method. The users table 
+            should not contain this students email address.
         </description>
-        <property name="id" value="2" />
+        <property name="id" value="0" />
         <property name="matnr" value="8765432" />
         <property name="firstname" value="Hubert" />
         <property name="lastname" value="Meixner" />
         <property name="email" value="hubert@meixner.test" />
     </bean>
     
-    <bean id="CourseUpdateDelete"
+    <bean id="UserStudentAdd"
+        class="at.ac.tuwien.ifs.bpse.domain.Student">
+        <description>
+            A Student for testing the INSERT method. The users table
+            should contain this students email address.
+        </description>
+        <property name="id" value="0" />
+        <property name="matnr" value="1234567" />
+        <property name="firstname" value="UserStudent" />
+        <property name="lastname" value="MyLastname" />
+        <property name="email" value="user@student" />
+    </bean>
+    
+    <bean id="CourseUpdate"
         class="at.ac.tuwien.ifs.bpse.domain.Course">
         <description>
-            A Course for testting the UPDATE and DELETE method
+            A Course for testing the UPDATE  method
         </description>
-        <property name="id" value="2" />
+        <property name="id" value="3" />
         <property name="title" value="ASE" />
-        <property name="ects" value="3.5" />
+        <property name="ects" value="4.5" />
+        <property name="professors">
+        <list>
+          <ref bean="ProfessorGet" />
+     	 </list>
+  		</property>
+    </bean>
+    
+    <bean id="CourseDelete"
+        class="at.ac.tuwien.ifs.bpse.domain.Course">
+        <description>
+            A Course for testing the DELETE method
+        </description>
+        <property name="id" value="1" />
+        <property name="title" value="EasyCourse" />
+        <property name="ects" value="8.2" />
     </bean>
 
     <bean id="CourseGet"
         class="at.ac.tuwien.ifs.bpse.domain.Course">
         <description>
-            A Course for testting the SELECT method
+            A Course for testing the SELECT method
         </description>
         <property name="id" value="2" />
         <property name="title" value="SEPM" />
         <property name="ects" value='4.5' />
+        <property name="professors">
+      	<list>
+          <ref bean="ProfessorGet" />
+     	 </list>
+  		</property>
     </bean>
 
     <bean id="CourseAdd"
@@ -168,10 +320,38 @@
         <description>
             A Course for testing the INSERT method
         </description>
-        <property name="id" value="509" />
+        <property name="id" value="0" />
         <property name="title" value="ASE" />
         <property name="ects" value="6.5" />
+        <property name="professors">
+      	<list>
+          <ref bean="ProfessorGet" />
+     	 </list>
+  		</property>
     </bean>
+
+	<bean id="CourseUnableToAdd" class="at.ac.tuwien.ifs.bpse.domain.Course">
+		<description>
+			A Course for testing the INSERT method
+        </description>
+		<property name="id" value="0" />
+		<property name="title" value="ASE" />
+		<property name="ects" value="6.5" />
+		<property name="professors">
+			<list>
+				<bean class="at.ac.tuwien.ifs.bpse.domain.Professor">
+					<description>
+						A Professor that does not exist in the DB yet
+        			</description>
+					<property name="id" value="66" />
+					<property name="officenr" value="188" />
+					<property name="firstname" value="Fake" />
+					<property name="lastname" value="Professor" />
+					<property name="email" value="test@info.com" />
+				</bean>
+			</list>
+		</property>
+	</bean>
     
     <bean id="ProfessorUpdateDelete"
         class="at.ac.tuwien.ifs.bpse.domain.Professor">
@@ -194,7 +374,7 @@
         <property name="officenr" value="188" />
         <property name="firstname" value="Assi" />
         <property name="lastname" value="1" />
-        <property name="email" value="assi@info.com" />
+        <property name="email" value="prof@qse" />
     </bean>
 	
     <bean id="ProfessorAdd"

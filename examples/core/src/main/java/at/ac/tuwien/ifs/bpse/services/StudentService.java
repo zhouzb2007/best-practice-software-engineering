@@ -1,7 +1,11 @@
 package at.ac.tuwien.ifs.bpse.services;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
+import at.ac.tuwien.ifs.bpse.dao.interfaces.IStudentDAO;
 import at.ac.tuwien.ifs.bpse.domain.Student;
 
 /**
@@ -12,61 +16,66 @@ import at.ac.tuwien.ifs.bpse.domain.Student;
 public class StudentService implements IStudentService{
 	private Logger log = Logger.getLogger(StudentService.class);
 
+	/**
+	 * Data Access Object for Student
+	 */
+	@Autowired
+	private IStudentDAO studentDAO;
+	
+	@Autowired
+	private JdbcUserDetailsManager userDAO;
+	
 	@Override
-	public Student login(String username, String password) {
-		log.info("Check login. Username: " + username + " Password: " + password);
-		//TODO: Call dao to check login. 
-		Student s = new Student();
-		s.setId(1);
-		s.setMatnr("0201857");
-		s.setEmail("mdemolsky@gmail.com");
-		s.setFirstname("Markus");
-		s.setLastname("Demolsky");
-		s.setTutor(true);
+	public Student getStudentByUsername(String username) {
+		log.info("Get Student for Username: " + username);
+		// Call DAO to get Student BO. 
+		Student s = studentDAO.getStudentByEmail(username);
 		return s;
 	}
 
 	@Override
-	public Student register(Student student) {
+	public Student register(Student student, UserDetails user) {
 		log.info("Register new Student Account" + student.getMatnr() 
 							+ ", " + student.getFirstname() 
 							+ ", " + student.getLastname() 
 							+ ", " + student.getEmail());
-		//TODO: Call DAO
+		// register Student as a User, add User priviledges
+		userDAO.createUser(user);
+		// add Student profile
+		studentDAO.saveStudent(student);
 		return student;
 	}
 
 	@Override
-	public void resetPassword(Student student) {
-		log.info("Reset password for Student");
-		//TODO: Implement
+	public void resetPassword(UserDetails user) {
+		/*
+		log.info("Reset password for Student "+user.getUsername());
+		if (user.getPassword()==null)
+			// reset pw and send email
+		else if (userDAO.userExists(user.getUsername()))
+			userDAO.changePassword(oldPassword, newPassword);
+			*/
 	}
 
 	@Override
 	public Student updateAccount(Student student) {
-		if(student.getId() == 0){
-			register(student);
-			//TODO: Call DAO
-		}else{
-			log.info("Update Student Account" + student.getMatnr() 
-					+ ", " + student.getFirstname() 
-					+ ", " + student.getLastname() 
-					+ ", " + student.getEmail());
-			//TODO: Call DAO
-		}
+		log.info("Update Student Account" + student.getMatnr() 
+				+ ", " + student.getFirstname() 
+				+ ", " + student.getLastname() 
+				+ ", " + student.getEmail());
+		studentDAO.updateStudent(student);
 		return student;
 	}
 
 	@Override
 	public boolean deleteStudent(int id) {
-		//TODO: Call DAO
-		return false;
+		// TODO: set user inactive
+		return studentDAO.deleteStudent(id);
 	}
 
 	@Override
-	public Student getStudent(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Student getStudent(int id) {
+		return studentDAO.getStudent(id);
 	}
 
 	@Override
@@ -77,14 +86,12 @@ public class StudentService implements IStudentService{
 
 	@Override
 	public Student saveStudent(Student student) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDAO.saveStudent(student);
 	}
 
 	@Override
 	public Student updateStudent(Student student) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDAO.updateStudent(student);
 	}
 	
 	

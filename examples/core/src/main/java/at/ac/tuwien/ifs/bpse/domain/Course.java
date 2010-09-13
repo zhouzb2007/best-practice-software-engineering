@@ -1,6 +1,5 @@
 package at.ac.tuwien.ifs.bpse.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +11,11 @@ import java.util.List;
  * 
  */
 public class Course implements java.io.Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4547204730854205742L;
 
 	/* Primary key */
     private int id;
@@ -61,8 +65,5 @@ public class Course implements java.io.Serializable{
     public void setId(int id) {
         this.id = id;
     }
-
-    
-    
 
 }
