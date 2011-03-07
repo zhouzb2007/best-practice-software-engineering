@@ -1,38 +1,103 @@
-<mockup version="1.0" skin="sketch" measuredW="990" measuredH="622">
+<mockup version="1.0" skin="sketch" measuredW="781" measuredH="490" mockupW="781" mockupH="490">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="210" y="64" w="770" h="548" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="781" h="490" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Software%20Engineering%20Anmelde%20Tool%20%28SAT%29</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::FieldSet" x="402" y="166" w="553" h="404" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Label" x="25" y="86" w="-1" h="-1" measuredW="269" measuredH="23" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Angemeldet%20als%20Max%20Musterman%20%280123456%29%2C%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::FieldSet" x="24" y="283" w="162" h="166" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0</backgroundAlpha>
+        <color>16777215</color>
+        <text>Mein%20Status</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::CheckBox" x="146" y="316" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabledSelected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::CheckBox" x="146" y="344" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabledSelected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::CheckBox" x="146" y="374" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabledSelected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::CheckBox" x="146" y="405" w="-1" h="-1" measuredW="25" measuredH="22" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabledSelected</state>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Label" x="39" y="316" w="-1" h="-1" measuredW="99" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>LVA-Pr%E4ferenz%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Label" x="39" y="344" w="-1" h="-1" measuredW="101" measuredH="23" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Gruppenwunsch%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Label" x="39" y="374" w="-1" h="-1" measuredW="91" measuredH="23" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Abgabetermin%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="39" y="405" w="-1" h="-1" measuredW="52" measuredH="23" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Abgabe%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="25" y="124" w="-1" h="-1" measuredW="49" measuredH="23" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>SAT%2C</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="57" y="147" w="-1" h="-1" measuredW="125" measuredH="23" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>LVA-Varianten</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="57" y="170" w="-1" h="-1" measuredW="88" measuredH="23" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Gruppen</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="57" y="193" w="-1" h="-1" measuredW="127" measuredH="23" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Abgabetermine</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Link" x="294" y="85" w="-1" h="-1" measuredW="44" measuredH="23" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::LinkBar" x="539" y="84" w="-1" h="-1" measuredW="217" measuredH="23" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>LVA-Einstellungen%2C%20Mein%20Account</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::TitleWindow" x="205" y="124" w="551" h="325" measuredW="450" measuredH="400" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Arbeitsbereich</text>
-      </controlProperties>
-    </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="225" y="166" w="162" h="404" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Men%FC</text>
-      </controlProperties>
-    </control>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="240" y="200" w="132" h="-1" measuredW="89" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Studenten</text>
-      </controlProperties>
-    </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="240" y="236" w="132" h="-1" measuredW="72" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Tutoren</text>
-      </controlProperties>
-    </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="240" y="279" w="132" h="-1" measuredW="60" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Kurse</text>
-      </controlProperties>
-    </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="240" y="324" w="132" h="-1" measuredW="143" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Passwort%20anfordern</text>
       </controlProperties>
     </control>
   </controls>
