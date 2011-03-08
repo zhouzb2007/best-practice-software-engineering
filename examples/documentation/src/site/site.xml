@@ -67,23 +67,23 @@
             <item name="Advanced Sample" href="arch-advanced.html"/>
             -->
             <item name="Javadoc" href="technology/javadoc.html">
-                <item name="Core Module" href="core/apidocs/index.html"/>
-                <item name="Basic Module" href="basic/apidocs/index.html"/>
+                <item name="Core Module" href="bpse-sample-core/apidocs/index.html"/>
+                <item name="Basic Module" href="bpse-sample-basic/apidocs/index.html"/>
                 <!--
                 <item name="Medium Module" href="medium/apidocs/index.html"/>
                 -->
             </item>
 
-            <item name="Source" href="xref-source.html">
-                <item name="Core Module" href="core/xref/index.html"/>
-                <item name="Basic Module" href="basic/xref/index.html"/>
+            <item name="Source" href="bpse-sample-core/jxr.html">
+                <item name="Core Module" href="bpse-sample-core/xref/index.html"/>
+                <item name="Basic Module" href="bpse-sample-basic/xref/index.html"/>
                 <!--
                 <item name="Medium Module" href="medium/xref/index.html"/>
                 -->
             </item>
 
             <item name="Test Source" href="xref-source.html">
-                <item name="Basic Module" href="basic/xref-test/index.html"/>
+                <item name="Basic Module" href="bpse-sample-basic/xref-test/index.html"/>
                 <!--
                 <item name="Medium Module" href="medium/xref-test/index.html"/>
                 -->
