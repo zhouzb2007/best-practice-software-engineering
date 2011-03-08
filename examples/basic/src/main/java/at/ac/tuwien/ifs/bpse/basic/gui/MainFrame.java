@@ -263,7 +263,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		editButton.setEnabled(false);
 		editButton.addActionListener(this);
 		leftColumnBottomPanel.add(editButton);
-		JButton createButton = new JButton(messageBundle.getString("btn.lbl.create"));
+		JButton createButton = new JButton(messageBundle.getString("btn.lbl.new"));
 		createButton.addActionListener(this);
 		leftColumnBottomPanel.add(createButton);
 		deleteButton = new JButton(messageBundle.getString("btn.lbl.delete"));
@@ -349,7 +349,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		log.debug("Action Performed \"" + cmd + "\"");
 		if (cmd.equals(messageBundle.getString("menu.lbl.exit"))) {
 			terminateApplication();
-		} else if (cmd.equals(messageBundle.getString("btn.lbl.create"))) {
+		} else if (cmd.equals(messageBundle.getString("btn.lbl.new"))) {
 			createStudent();
 		} else if (cmd.equals(messageBundle.getString("btn.lbl.edit"))) {
 			editStudent();
