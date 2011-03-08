@@ -206,8 +206,8 @@ public class JdbcStudentDAO implements IStudentDAO {
 	    	    Student student = new Student();
 				student.setId(rs.getInt("id"));
 				student.setMatnr(rs.getString("matnr"));
-				student.setFirstname(rs.getString("vorname"));
-				student.setLastname(rs.getString("nachname"));
+				student.setFirstname(rs.getString("firstname"));
+				student.setLastname(rs.getString("lastname"));
 				student.setEmail(rs.getString("email"));
 				return student;
 			}
@@ -350,7 +350,7 @@ public class JdbcStudentDAO implements IStudentDAO {
 			log.debug("Student List contains " + students.size() + " students ordered by studentId");
 		} else if (order.equals(SortOrder.LastName)) {
 			//students = query_getAllStudentsOrderNachname.execute();
-			students = simpleJdbcTemplate.query(sql_selectAllStudents+" order by nachname", new StudentMapper());
+			students = simpleJdbcTemplate.query(sql_selectAllStudents+" order by lastname", new StudentMapper());
 			log.debug("Student List contains " + students.size() + " students ordered by lastname");
 		}
 		return students;

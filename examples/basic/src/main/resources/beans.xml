@@ -1,60 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-           http://www.springframework.org/schema/aop
-           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-           http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<!-- ********************************************************************************************** -->
-	<!-- Configuration of Datasource and Spring Session and Transaction Management                      -->
+	<!-- Configuration of Datasource, Spring Session and Transaction Management -->
 	<!-- ********************************************************************************************** -->
 
-	<!--  This is a datasource for usage with hsqldb in server mode 	-->
+	<!-- This is a datasource for hsqldb to connect to a 'files_in_jar' mode database instance, 
+		 used when creating an executable jar with "mvn package" -->
 	<!-- 
-		<bean id="HsqldbServerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-		<property name="url" value="jdbc:hsqldb:hsql://localhost/scrum"/>
-		<property name="username" value="SE"/>
-		<property name="password" value="SE_APP"/>
-		</bean>
-	-->
-	<!-- This datasource is for usage with the hsqldb database in EMBEDDED mode 
-         All HSQL database files are loacted in src/main/resources/data. On executing Maven (e.g. compile)
-         these files are copied to target/classes/data/pruefungen. This strategy has the advantage to test
-         with a clean database, by doing mvn clean.-->
 	<bean id="HsqldbDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:file:target/classes/data/pruefungen" />
+		<property name="url" value="jdbc:hsqldb:res:data/pruefungen" />
+		<property name="username" value="SE" />
+		<property name="password" value="SE_APP" />
+	</bean>
+	-->
+
+	<!-- This datasource is for the hsqldb database and Persistent, In-Process Database Connections. 
+		 All HSQL database files are loacted in src/main/resources/data. 
+		 On executing Maven (e.g. compile) these files are copied to target/classes/data/pruefungen. -->
+	<bean id="HsqldbDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url"
+			value="jdbc:hsqldb:file:target/classes/data/pruefungen" />
 		<property name="username" value="SE" />
 		<property name="password" value="SE_APP" />
 	</bean>
 
-	<!-- This Transaction Manager is needed for SQL Transactions: it uses a SQL Datasource (see above) -->
+	<!-- This is a datasource for hsqldb in server mode,
+		 you can use this to inspect the DB during runtime by using the external hsqldb manager utility -->
+	<!-- 
+	<bean id="HsqldbServerDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:hsql://localhost/scrum" />
+		<property name="username" value="SE" />
+		<property name="password" value="SE_APP" />
+	</bean>
+	 -->
+
+	<!-- This Transaction Manager is needed for SQL Transactions: it uses a 
+		SQL Datasource (see above) -->
 	<bean id="TransactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="HsqldbDataSource" />
 	</bean>
-	
+
 	<!-- This ResourceBundle is used to provide l18n for the GUI -->
-	<bean id="resourceBundle" class="java.util.ResourceBundle" factory-method="getBundle">
+	<bean id="resourceBundle" class="java.util.ResourceBundle"
+		factory-method="getBundle">
 		<constructor-arg type="java.lang.String">
-		    <value>messages</value>
+			<value>messages</value>
 		</constructor-arg>
 	</bean>
 
 	<!-- ********************************************************************************************** -->
-	<!-- Configuration of Data Access Objects and injection of session and transaction manager          -->
+	<!-- Configuration of Data Access Objects and injection of session and transaction manager -->
 	<!-- ********************************************************************************************** -->
 	<!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
-	<bean id="StudentDAO"
-		class="at.ac.tuwien.ifs.bpse.basic.dao.JdbcStudentDAO"
+	<bean id="StudentDAO" class="at.ac.tuwien.ifs.bpse.basic.dao.JdbcStudentDAO"
 		scope="singleton" init-method="init" destroy-method="destroy">
 		<!-- This is the datasource needed for JDBC Database Access -->
 		<property name="dataSource" ref="HsqldbDataSource" />
@@ -62,44 +72,44 @@
 		<property name="transactionManager" ref="TransactionManager" />
 		<!-- The next properties are SQL Commands used in this DAO -->
 		<property name="sql_selectAllStudents">
-			<value>
-				select id, matnr, vorname, nachname, email from
-				studenten
-			</value>
-		</property>
-		<property name="sql_selectStudent">
-			<value>
-				select id, matnr, vorname, nachname, email from
-				studenten where id=?
-			</value>
-		</property>
-		<property name="sql_insertStudent">
-			<value>
-				INSERT INTO studenten (matnr, vorname, nachname, email)
-				values (?, ?, ?, ?)
-			</value>
-		</property>
-		<property name="sql_updateStudent">
-			<value>
-				UPDATE studenten SET matnr=?, vorname=?, nachname=?,
-				email=? WHERE id=?
-			</value>
-		</property>
-		<property name="sql_deleteStudent">
-			<value>DELETE FROM studenten WHERE id=?</value>
-		</property>
-		<property name="sql_getInsertId">
-			<value>CALL IDENTITY()</value>
-		</property>
+            <value>
+                SELECT id, matnr, firstname, lastname, email
+                FROM student
+            </value>
+        </property>
+        <property name="sql_selectStudent">
+            <value>
+                SELECT id, matnr, firstname, lastname, email 
+                FROM student WHERE id=?
+            </value>
+        </property>
+        <property name="sql_insertStudent">
+            <value>
+                INSERT INTO student (matnr, firstname, lastname, email)
+                VALUES (?, ?, ?, ?)
+            </value>
+        </property>
+        <property name="sql_updateStudent">
+            <value>
+                UPDATE student SET matnr=?, firstname=?, lastname=?,
+                email=? WHERE id=?
+            </value>
+        </property>
+        <property name="sql_deleteStudent">
+            <value>DELETE FROM student WHERE id=?</value>
+        </property>
+        <property name="sql_getInsertId">
+            <value>CALL IDENTITY()</value>
+        </property>
 	</bean>
 
 
 
 	<!-- ********************************************************************************************** -->
-	<!-- Import, Export                                                                                 -->
+	<!-- Import, Export -->
 	<!-- ********************************************************************************************** -->
 
-	<bean id="Import" 
+	<bean id="Import"
 		class="at.ac.tuwien.ifs.bpse.basic.export_import.XmlExportImport">
 	</bean>
 
@@ -108,21 +118,18 @@
 		<property name="encoding" value="utf-8" />
 	</bean>
 
-	<bean id="HtmlExport"
-		class="at.ac.tuwien.ifs.bpse.basic.export_import.HtmlExport">
+	<bean id="HtmlExport" class="at.ac.tuwien.ifs.bpse.basic.export_import.HtmlExport">
 		<property name="title" value="Export of Student-Data" />
 	</bean>
 
-	<!-- 
-		This bean is responsible for rendering all available Export Filters in the Swing GUI.
-		Hence it is implementing the ComboBoxModel Interface.
-		All Export Classes should be added to the exportFilter list
-	-->
-	
-	<bean id="ExportMenuModel"
-		class="at.ac.tuwien.ifs.bpse.basic.gui.ExportMenuModel"
+	<!-- This bean is responsible for rendering all available Export Filters 
+		in the Swing GUI. Hence it is implementing the ComboBoxModel Interface. All 
+		Export Classes should be added to the exportFilter list -->
+
+	<bean id="ExportMenuModel" class="at.ac.tuwien.ifs.bpse.basic.gui.ExportMenuModel"
 		init-method="init">
-		<!--  Register the actually available Export Filters: classes implementing the Export Interface -->
+		<!-- Register the actually available Export Filters: classes implementing 
+			the Export Interface -->
 		<property name="exportFilter">
 			<list>
 				<ref local="Export" />
@@ -131,5 +138,5 @@
 		</property>
 	</bean>
 
-    
+
 </beans>
