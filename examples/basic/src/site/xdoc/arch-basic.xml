@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
   <properties>
-    <title>Basic Sample</title>
+    <title>About</title>
     <author></author>
   </properties>
   <body>
-    <section name="Basic sample">
-      <table>
-        <caption>Table of Contents</caption>
-        <tr>
-          <td>
-            <a href="#Overview">Overview</a>
-          </td>
-          <td>
-            <a href="#Architecture">Architecture</a>
-          </td>
-          <td>
-            <a href="#Used_technology">Used technology</a>
-          </td>
-          <td>
-            <a href="#Used_patterns">Used patterns</a>
-          </td>
-          <td>
-            <a href="#Build_and_run_the_Application">Build and run the Application</a>
-          </td>
-        </tr>
-      </table>
-      <subsection name="Overview">
+    <section name="About BPSE-Basic">
         <p>The basic sample application shows how to create a simple application that fulfills 
           the following
           <strong>functional requirements</strong>
@@ -116,7 +95,7 @@
               containing information what the package is used for.</li>
           </ul>
         </p>
-        Your programed basic sample should later be used as a foundation for further development.</subsection>
+        Your programed basic sample should later be used as a foundation for further development.
       <subsection name="Architecture">
         <p>
           <div align="center">

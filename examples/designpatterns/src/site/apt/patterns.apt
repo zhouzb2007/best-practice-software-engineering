@@ -7,6 +7,8 @@
 
 Software and Design Patterns
 
+  This part of the documentation will explain general solution strategies for common engineering problems. We explain mainly patterns that are also used in the {{{./architecture.html} examples}}.
+
   <<"Design Patterns are general, repeatable solutions to common recurring problems in software development.">>
   <[From Wikipedia, the free encyclopedia, "Design pattern (computer science)"].>
   
@@ -85,18 +87,7 @@ Software and Design Patterns
 			[[D]] {{{./patterns/strategy.html} Strategy}}
   
   \ 
-  
-* Pattern Map
-
-  The diagram below shows the relationships between the patterns described in this documentation, the notation
-  is according to Zimmer's classifications and relationships. <[Zimmer, Walter (1995), "Relationships between Design Patterns",  
-  from "Pattern Languages of Program Design", Addison-Wesley.]> There are three types of relationships in this diagram:
-  uses (pattern us used by), combine (pattern can be used by), and similar (patterns are similar in their design).
-  
-  \ 
-  
-[patterns/images/pattern_map.jpg] Pattern map according to Zimmer
-  
+    
 * References / More Info
 
   {{{http://www.martinfowler.com/books.html#ap} M.Fowler, "Analysis Patterns - Reusable Object Models", Addison Wesley, ISBN 0201895420 }}

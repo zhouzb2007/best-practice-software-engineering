@@ -11,7 +11,6 @@
 
 	<!-- This is a datasource for hsqldb to connect to a 'files_in_jar' mode database instance, 
 		 used when creating an executable jar with "mvn package" -->
-	<!-- 
 	<bean id="HsqldbDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
@@ -19,11 +18,11 @@
 		<property name="username" value="SE" />
 		<property name="password" value="SE_APP" />
 	</bean>
-	-->
 
 	<!-- This datasource is for the hsqldb database and Persistent, In-Process Database Connections. 
 		 All HSQL database files are loacted in src/main/resources/data. 
 		 On executing Maven (e.g. compile) these files are copied to target/classes/data/pruefungen. -->
+	<!-- 
 	<bean id="HsqldbDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
@@ -32,6 +31,7 @@
 		<property name="username" value="SE" />
 		<property name="password" value="SE_APP" />
 	</bean>
+	-->
 
 	<!-- This is a datasource for hsqldb in server mode,
 		 you can use this to inspect the DB during runtime by using the external hsqldb manager utility -->
