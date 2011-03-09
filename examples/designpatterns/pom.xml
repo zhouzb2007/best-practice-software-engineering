@@ -152,12 +152,12 @@
     </reporting>
     <distributionManagement>
     	<repository>
-			<id>localhost</id>
-			<url>scp://localhost/Users/frost/Sites/test/repository</url>
+			<id>storm</id>
+			<url>scp://storm/var/www/html/bpse/repository</url>
 		</repository>
 		<site>
-			<id>localhost</id>
-			<url>scp://localhost/Users/frost/Sites/test</url>
+			<id>storm</id>
+			<url>scp://storm/var/www/html/bpse</url>
 		</site>
 	</distributionManagement>
 </project>
