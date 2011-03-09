@@ -1,0 +1,23 @@
+   ---
+   Software and Design Patterns
+   ---
+   Erik Gostischa-Franta
+   ---
+   ---
+
+Pattern Map
+
+  The diagram below shows the relationships between the patterns described, notation according to Zimmer's classifications and relationships. <[Zimmer, Walter (1995), "Relationships between Design Patterns", from "Pattern Languages of Program Design", Addison-Wesley.]> 
+  
+  There are three types of relationships in this diagram:
+  
+	[[1]] uses (pattern us used by)
+	
+	[[2]] combine (pattern can be used by)
+	
+	[[3]] similar (patterns are similar in their design).
+  
+  \ 
+  
+[patterns/images/pattern_map.jpg] Pattern map according to Zimmer
+

@@ -1,24 +1,98 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>at.ac.tuwien.ifs.bpsw.designpatterns</groupId>
+    <parent>
+        <groupId>at.ac.tuwien.ifs.bpse</groupId>
+        <artifactId>bpse-parent</artifactId>
+        <version>1.0</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <groupId>at.ac.tuwien.ifs.bpse</groupId>
     <artifactId>designpatterns</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>Designpattern Examples</name>
+    <version>1.0</version>
+    <name>Best Practice Software Engineering</name>
     <description>This project is only intended to focus on GoF design patterns without concrete application scenarios.</description>
-    <url>http://best-practice-software-engineering.ifs.tuwien.ac.at</url>
-    <developers>
-        <developer>
-            <id>axschatten</id>
-            <name>Alexander Schatten</name>
-            <email/>
-            <roles>
-                <role>Project leader</role>
-            </roles>
-            <timezone>+1</timezone>
-        </developer>
-    </developers>
+    <url>http://code.google.com/p/best-practice-software-engineering/source/browse/examples/designpatterns</url>
+	<developers>
+		<developer>
+			<name>Alexander Schatten</name>
+			<email>schatten@ifs.tuwien.ac.at</email>
+			<url>http://www.schatten.info/index.html</url>
+			<organization>CDL</organization>
+			<organizationUrl>http://cdl.ifs.tuwien.ac.at/</organizationUrl>
+			<roles>
+				<role>Project leader</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Markus Demolsky</name>
+			<email />
+			<organization>Vienna University of Technology</organization>
+			<organizationUrl>http://www.tuwien.ac.at/</organizationUrl>
+			<roles>
+				<role>Project Assistant</role>
+			</roles>
+		</developer>
+		<developer>
+		<name>Erik Gostischa-Franta</name>
+			<email>Gostischa-franta@qse.ifs.tuwien.ac.at</email>
+			<organization>Vienna University of Technology</organization>
+			<organizationUrl>http://www.tuwien.ac.at/</organizationUrl>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Stefan Biffl</name>
+			<email>stefan.biffl@tuwien.ac.at</email>
+			<url>http://qse.ifs.tuwien.ac.at/~biffl/</url>
+			<organization>IFS</organization>
+			<organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
+			<roles>
+				<role>Tester</role>
+				<role>Reviewer</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Dietmar Winkler</name>
+			<email>dietmar.winkler@qse.ifs.tuwien.ac.at</email>
+			<url>http://qse.ifs.tuwien.ac.at/~winkler/</url>
+			<organization>IFS</organization>
+			<organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
+			<roles>
+				<role>Tester</role>
+				<role>Reviewer</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Thomas Östreicher</name>
+			<email>thomas.oestreicher@qse.ifs.tuwien.ac.at</email>
+			<url>http://cdl.ifs.tuwien.ac.at/oestreicher</url>
+			<organization>CDL</organization>
+			<organizationUrl>http://cdl.ifs.tuwien.ac.at/</organizationUrl>
+			<roles>
+				<role>Reviewer</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<issueManagement>
+    <system>Google</system>
+    <url>http://code.google.com/p/best-practice-software-engineering/issues/list</url>
+  	</issueManagement>
+    
+    <scm>
+		<connection>scm:hg:https://best-practice-software-engineering.googlecode.com/hg/examples/</connection>
+		<developerConnection>scm:hg:https://best-practice-software-engineering.googlecode.com/hg/examples/</developerConnection>
+		<url>http://code.google.com/p/best-practice-software-engineering/source/browse/</url>
+	</scm>
+    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -31,14 +105,59 @@
     <build>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-              <source>1.5</source>
-              <target>1.5</target>
-          </configuration>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-source-plugin</artifactId>
+        	<version>${maven.source.plugin}</version>
+        	<executions>
+        		<execution>
+        			<id>attach-sources</id>
+        			<phase>package</phase>
+        			<goals>
+        				<goal>jar-no-fork</goal>
+        				<goal>test-jar-no-fork</goal>
+        			</goals>
+        		</execution>
+        	</executions>
+        </plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-compiler-plugin</artifactId>
+        	<version>${maven.compiler.plugin}</version>
+        </plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-site-plugin</artifactId>
+        	<version>${maven.site.plugin}</version>
+        </plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-project-info-reports-plugin</artifactId>
+        	<version>${maven.project.info.reports.plugin}</version>
         </plugin>
       </plugins>
     </build>
-    
+    <reporting>
+    	<plugins>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-jxr-plugin</artifactId>
+    			<version>${maven.jxr.plugin}</version>
+    		</plugin>
+    		<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-javadoc-plugin</artifactId>
+    			<version>${maven.javadoc.plugin}</version>
+    		</plugin>
+    	</plugins>
+    </reporting>
+    <distributionManagement>
+    	<repository>
+			<id>localhost</id>
+			<url>scp://localhost/Users/frost/Sites/test/repository</url>
+		</repository>
+		<site>
+			<id>localhost</id>
+			<url>scp://localhost/Users/frost/Sites/test</url>
+		</site>
+	</distributionManagement>
 </project>

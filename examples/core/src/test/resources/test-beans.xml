@@ -20,7 +20,7 @@
      <context:annotation-config />
 
 	<!-- ********************************************************************************************** -->
-	<!-- Configuration of Datasource                   -->
+	<!-- Configuration of Datasource                   													-->
 	<!-- ********************************************************************************************** -->
  
 	<jdbc:embedded-database id="HsqldbDataSource" type="HSQL">
@@ -28,34 +28,40 @@
 		<jdbc:script location="classpath:/bpse-sample-medium-testData.sql"/>
 	</jdbc:embedded-database>
  
+	<!-- ********************************************************************************************** -->
+    <!-- SimpleJdbcTemplate used by DAO's Student and Course        									-->
+    <!-- ********************************************************************************************** -->
+    <!-- Complete Bean Lifecycle Management here: including initialisation and destroying -->
+
 	<bean class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
 		<constructor-arg ref="HsqldbDataSource" />
 	</bean>
 
-	<!-- This Transaction Manager is needed for SQL Transactions: it uses a 
-		SQL Datasource (see above) -->
+	<!-- ********************************************************************************************** -->
+    <!-- MyBatis       									-->
+    <!-- ********************************************************************************************** -->
+    <!--  -->
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+    	<property name="dataSource" ref="HsqldbDataSource" />
+	</bean>
+    
+    <bean id="userMapper" class="org.mybatis.spring.sample.mapper.UserDaoImpl"> 
+    	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
+		<property name="basePackage" value="org.mybatis.spring.sample.mapper" />
+	</bean>
+    
+   	<!-- ********************************************************************************************** -->
+    <!-- This Transaction Manager is needed for SQL Transactions: it uses a SQL Datasource (see above)  -->
+    <!-- ********************************************************************************************** -->
+    <!-- Declarative Transaction Management used here: see txAdvice bean and DAOOperations AOP Stmnt 	-->
+
 	<bean id="TransactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="HsqldbDataSource" />
-	</bean>
-
-	<bean id="userDetailsService"
-		class="org.springframework.security.provisioning.JdbcUserDetailsManager">
-		<property name="dataSource" ref="HsqldbDataSource" />
-	</bean>
-
-	<bean id="daoAuthenticationProvider"
-		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-		<property name="userDetailsService" ref="userDetailsService" />
-		<property name="passwordEncoder" ref="passwordEncoder"/>
-		<property name="saltSource" ref="saltSource"/>
-	</bean>
-
-	<bean id="passwordEncoder"
-            class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
-
-	<bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">
-		<property name="systemWideSalt" value="enohpeleTnaCniT"/>
 	</bean>
 
 	<!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean below) -->
@@ -78,6 +84,31 @@
 			expression="execution(* at.ac.tuwien.ifs.bpse.dao.interfaces.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAOOperations" />
 	</aop:config>
+
+   	<!-- ********************************************************************************************** -->
+    <!-- Spring Security Provides a ready to use userDetailsService bean  								-->
+    <!-- ********************************************************************************************** -->
+    <!-- daoAuthenticationsProvider, also a ready to use Spring class, provides a DAO with secure DB 
+    	 access, see passwordEncoder and saltSource -->
+
+	<bean id="userDetailsService"
+		class="org.springframework.security.provisioning.JdbcUserDetailsManager">
+		<property name="dataSource" ref="HsqldbDataSource" />
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder" ref="passwordEncoder"/>
+		<property name="saltSource" ref="saltSource"/>
+	</bean>
+
+	<bean id="passwordEncoder"
+            class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">
+		<property name="systemWideSalt" value="enohpeleTnaCniT"/>
+	</bean>
 
   	<!-- ********************************************************************************************** -->
     <!-- Configuration of Data Access Objects and injection of session and transaction manager          -->

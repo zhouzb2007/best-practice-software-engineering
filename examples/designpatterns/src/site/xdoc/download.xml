@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+    <properties>
+        <title>Design-Pattern Downloads</title>
+        <author>Alexander Schatten</author>
+    </properties>
+
+	<body>
+		<section name="Download Design-Pattern Examples">
+			<!--<subsection name="Packages">-->
+				<p>These jar archives contain the implemented design patterns discussed in the BPSE Book and their test-code respectively.</p>
+					<ul>
+						<li> designpatterns-1.0-sources.jar <a href="repository/at/ac/tuwien/ifs/bpse/designpatterns/1.0/designpatterns-1.0-sources.jar"> <img src="images/download.gif" /></a></li>
+						<li> designpatterns-1.0-test-sources.jar <a href="repository/at/ac/tuwien/ifs/bpse/designpatterns/1.0/designpatterns-1.0-test-sources.jar"> <img src="images/download.gif" /></a></li>
+					</ul>
+		</section>
+	</body>
+</document>
+

@@ -7,8 +7,7 @@
     </properties>
 
 	<body>
-  	<section name="Best Practice Software Engineering">
-	    <subsection name="Welcome to Best Practices Engineering Documentation">
+  	<section name="About Best Practice Software Engineering (BPSE)">
             <p><font color="#ff0000"><b>Note:</b></font> One remark in the beginning: We update this site
             and the examples regularly. Especially for <b>students</b> we would suggest to <b>return</b>
             to this documentation regularly</p>
@@ -28,8 +27,6 @@
             <p>Also stay in contact with us by reading or <a href="http://best-practice-software-engineering.blogspot.com/">Blog</a>, where we discuss current SE related topics.</p>
             <p><b>This website will be updated on a
             weekly basis (each Wednesday)</b>.</p>
-        </subsection>
-
       <subsection name="The Book">
           <table>
               <tr>

@@ -1,215 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>at.ac.tuwien.ifs.bpse</groupId>
-    <artifactId>bpse-parent</artifactId>
-    <packaging>pom</packaging>
-    <version>0.1.0-SNAPSHOT</version>
-    <name>Parent BPSE sample</name>
-    <description>Description of the whole prototype</description>
-    <url>http://best-practice-software-engineering.ifs.tuwien.ac.at</url>
-    <modules>
-        <module>core</module>
-        <module>basic</module>
-        <module>medium</module>
-        <!--<module>documentation</module>-->
-        <!--<module>advanced</module>-->
-    </modules>
-    
-    <developers>
-        <developer>
-            <id>axschatten</id>
-            <name>Alexander Schatten</name>
-            <email/>
-            <roles>
-                <role>Project leader</role>
-            </roles>
-            <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <id>msdemolsky</id>
-            <name>Markus Demolsky</name>
-            <email/>
-            <roles>
-                <role>Project leader</role>
-            </roles>
-            <timezone>+1</timezone>
-        </developer>
-    </developers>
-    
-    <contributors>
-        <contributor>
-            <name>Stefan Biffl</name>
-            <email>stefan.biffl@tuwien.ac.at</email>
-            <url>http://qse.ifs.tuwien.ac.at/~biffl/</url>
-            <timezone>+1</timezone>
-            <organization>Vienna University of Technology</organization>
-            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
-            <roles>
-                <role>Tester</role>
-            </roles>
-        </contributor>
-        <contributor>
-            <name>Erik Gostischa-Franta</name>
-            <email>frost@ull.at</email>
-            <timezone>+1</timezone>
-            <organization>Vienna University of Technology</organization>
-            <organizationUrl>http://www.ifs.tuwien.ac.at</organizationUrl>
-            <roles>
-                <role>Pattern documenter</role>
-            </roles>
-        </contributor>
-    </contributors>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>at.ac.tuwien.ifs.bpse</groupId>
+	<artifactId>bpse-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<name>Best Practice Software Engineering</name>
+	<description>BPSE Website</description>
+	
+	<modules>
+		<!--<module>core</module> -->
+		<module>basic</module>
+		<!--<module>medium</module> -->
+		<module>designpatterns</module>
+		<!--<module>advanced</module> -->
+	</modules>
 
-    <!-- Define Plugin to force compilation and execution with JDK 1.5 -->
-    <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-              <source>1.6</source>
-              <target>1.6</target>
-          </configuration>
-        </plugin>
-      </plugins>
-    </build>
-    <!-- A list of all remote repositories used in the sample -->
-    <repositories>
-        <repository>
-            <id>qseRepo</id>
-            <name>Repository for the sample application at the TU Vienna</name>
+	<!-- Define Plugin to force compilation and execution with JDK 1.5 -->
+	<build>
+		<extensions>
+			<!-- Enabling the use of SSH for deploy plugin -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>1.0-beta-7</version>
+			</extension>
+		</extensions>
+	</build>
+	<!-- A list of all remote repositories used in the sample -->
+	<repositories>
+		<repository>
+			<id>qseRepo</id>
+			<name>Repository for the sample application at the TU Vienna</name>
 			<url>http://best-practice-software-engineering.ifs.tuwien.ac.at/repository/</url>
-        </repository>
-        <repository>
-			<id>org.springframework.maven.milestone</id>
-			<name>Maven Central Compatible Spring Milestone Repository</name>
-			<url>http://maven.springframework.org/milestone</url>
-			</repository>
-    </repositories>
-    
-    <dependencyManagement>
-        <dependencies> 
-            <!-- Internal -->
-            <dependency>
-                <groupId>at.ac.tuwien.ifs.bpse</groupId>
-                <artifactId>bpse-sample-core</artifactId>
-                <version>${pom.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>at.ac.tuwien.ifs.bpse</groupId>
-                <artifactId>bpse-sample-medium</artifactId>
-                <version>${pom.version}</version>
-            </dependency>            
-            <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>1.6.1</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    
-    <!-- Dependencies used by all modules -->
-    <dependencies>
-        
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>avalon-framework</artifactId>
-                    <groupId>avalon-framework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>logkit</artifactId>
-                    <groupId>logkit</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>servlet-api</artifactId>
-                    <groupId>javax.servlet</groupId>
-                </exclusion>
-            </exclusions>                
-        </dependency>
-        
-        <dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
-		</dependency>
-        
-        <!-- As Spring is used in the service layer for all modules, this can be done here -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        
-        <!-- For testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.7</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.hamcrest</groupId>
-        	<artifactId>hamcrest-all</artifactId>
-        	<version>1.1</version>
-        	<scope>test</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework</groupId>
-        	<artifactId>spring-beans</artifactId>
-        	<version>${spring.version}</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework</groupId>
-        	<artifactId>spring-jdbc</artifactId>
-        	<version>${spring.version}</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework</groupId>
-        	<artifactId>spring-context</artifactId>
-        	<version>${spring.version}</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework.security</groupId>
-        	<artifactId>spring-security-core</artifactId>
-        	<version>${spring.version}</version>
-        	<type>jar</type>
-        	<scope>compile</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.hsqldb</groupId>
-        	<artifactId>hsqldb</artifactId>
-        	<version>2.0.0</version>
-        	<type>jar</type>
-        	<scope>compile</scope>
-        </dependency>
-    </dependencies>
-    
-    <reporting>
-        <plugins>
-            <plugin>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jxr-maven-plugin</artifactId>
-            </plugin>      
-        </plugins>
-    </reporting>
-    
-    <properties>
-    	<spring.version>3.0.5.RELEASE</spring.version>
-    </properties>
-    
+		</repository>
+	</repositories>
+
+	<!-- Internal
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>at.ac.tuwien.ifs.bpse</groupId>
+				<artifactId>bpse-sample-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>at.ac.tuwien.ifs.bpse</groupId>
+				<artifactId>bpse-sample-medium</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	-->
+
+	<!-- Dependencies used by all modules 
+	<dependencies>
+
+	</dependencies>
+	-->
+	
+	<reporting>
+		<plugins>
+		</plugins>
+	</reporting>
+
+	<properties>
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<maven.compiler.plugin>2.3.2</maven.compiler.plugin>
+		<maven.source.plugin>2.1.2</maven.source.plugin>
+		<maven.site.plugin>3.0-beta-3</maven.site.plugin>
+		<maven.project.info.reports.plugin>2.3.1</maven.project.info.reports.plugin>
+		<maven.jxr.plugin>2.2</maven.jxr.plugin>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.javadoc.plugin>2.7</maven.javadoc.plugin>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>localhost</id>
+			<url>scp://localhost/Users/frost/Sites/test/repository</url>
+		</repository>
+		<site>
+			<id>localhost</id>
+			<url>scp://localhost/Users/frost/Sites/test/bpse-parent</url>
+		</site>
+	</distributionManagement>
+
+
 </project>
