@@ -78,13 +78,13 @@
 	</properties>
 
 	<distributionManagement>
-		<repository>
-			<id>localhost</id>
-			<url>scp://localhost/Users/frost/Sites/test/repository</url>
+    	<repository>
+			<id>storm</id>
+			<url>scp://storm/var/www/html/bpse/repository</url>
 		</repository>
 		<site>
-			<id>localhost</id>
-			<url>scp://localhost/Users/frost/Sites/test/bpse-parent</url>
+			<id>storm</id>
+			<url>scp://storm/var/www/html/bpse/bpse-parent</url>
 		</site>
 	</distributionManagement>
 
