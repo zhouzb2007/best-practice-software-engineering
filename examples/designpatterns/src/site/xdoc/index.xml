@@ -19,14 +19,6 @@
             us whether you plan to work with our examples. The <b>sources</b> for this site including all
             examples, downloadable content and license details are available on <a
             href="http://code.google.com/p/best-practice-software-engineering"><b>Google Code</b></a></p>
-            <p>Currently the <b>Medium (Web)</b> example is under heavy development and will be
-            completely refactored until end of March. The reason is, that technology changes fast and we
-            decided to move from the old JSF based example towards Wicket. If you are interested in the
-            old JSF example, please visit Google Code Repository, clone the repository and update to tag
-            "2010-02-26_before_medium_move". Stay tuned!</p> 
-            <p>Also stay in contact with us by reading or <a href="http://best-practice-software-engineering.blogspot.com/">Blog</a>, where we discuss current SE related topics.</p>
-            <p><b>This website will be updated on a
-            weekly basis (each Wednesday)</b>.</p>
       <subsection name="The Book">
           <table>
               <tr>
@@ -166,7 +158,7 @@
 	  
       <subsection name="Who we are?">
         <p>
-            This example-and-documentation project is an effort from a team around the <a href="http://qse.ifs.tuwien.ac.at">Quality-Software-Engineering group</a> of the <a href="http://www.tuwien.ac.at">Vienna University of Technology</a>. The project initiator and leader is <a href="http://www.schatten.info">Alexander Schatten</a>. Please check out our websites and our <a href="http://best-practice-software-engineering.blogspot.com">Blog</a>!
+            This example-and-documentation project is an effort from a team around the <a href="http://qse.ifs.tuwien.ac.at">Quality-Software-Engineering group</a> of the <a href="http://www.tuwien.ac.at">Vienna University of Technology</a>. The project initiator was <a href="http://www.schatten.info">Alexander Schatten</a>. 
         </p> 
         <p>
             A big thanks to all contributors! Please have a look at the <a href="team-list.html">team page</a>!!.
