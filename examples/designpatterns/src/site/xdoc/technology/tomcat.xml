@@ -49,9 +49,9 @@
                 </p>
                 <p>
                     Various versions of Apache Tomcat are available which differ in
-                    the underlying architecture. Apache Tomcat implements the Sun
-                    <a href="http://java.sun.com/products/servlet/index.jsp">Servlet</a>/
-                    <a href="http://java.sun.com/products/jsp/index.jsp">JSP</a>
+                    the underlying architecture. Apache Tomcat implements the Java
+                    <a href="http://www.oracle.com/technetwork/java/javaee/servlet/index.html">Servlet</a>/
+                    <a href="http://www.oracle.com/technetwork/java/javaee/jsp/index.html">JSP</a>
                     specifications and each major version implements
                     another specification whereas minor versions are mostly bugfixing and 
                     maintainance versions. E.g. both Tomcat versions 5.0 and 5.5 implement
@@ -204,7 +204,7 @@ connectionTimeout="20000" disableUploadTimeout="true" />
                         <ol>
                             <li>
                                 Download the latest version of the 
-                                <a href="http://java.sun.com/j2ee/javaserverfaces/download.html">
+                                <a href="http://www.oracle.com/technetwork/java/javaee/download-139288.html">
                                     JSF Reference Implementation</a> as archive file
                                     (named something like <code>jsf-1_1_01.zip</code>).
                             </li>
@@ -248,8 +248,8 @@ connectionTimeout="20000" disableUploadTimeout="true" />
                     Additional information about Apache Tomcat can be found on the
                     <a href="http://tomcat.apache.org/">Official Tomcat website</a>.
                     The JSF reference implementation is published on the 
-                    <a href="http://java.sun.com/j2ee/javaserverfaces/download.html">
-                        Sun JSF website.
+                    <a href="http://www.oracle.com/technetwork/java/javaee/download-139288.html">
+                        Oracle JSF website.
                     </a>
                 </p>
             </subsection>

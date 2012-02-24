@@ -41,7 +41,7 @@
             <subsection name="References">
                 <ul>
                     <li><a href="http://mercurial.selenic.com/">Mercurial</a>, <a href="http://git-scm.com/">GIT</a> and <a href="http://bazaar.canonical.com/en/">Bazaar</a> are very popular (Open Source) distributed SCMs.</li>
-                    <li><a href="http://subversion.tigris.org/">Subversion</a> is one of the leading centralised SCM systems (Open Source).</li>
+                    <li><a href="http://subversion.apache.org/">Subversion</a> is one of the leading centralised SCM systems (Open Source).</li>
                 </ul>
            </subsection>
         </section>

@@ -20,14 +20,14 @@
 		
 		  <p>A lot of information around Swing can be found at</p>
 		  <ul>
-		  <li><a href="http://java.sun.com/products/jfc/">Suns official page of JFC: Swing</a></li>
+		  <li><a href="http://java.sun.com/docs/books/javatutorial/jfc.html">Oracles official page of JFC: Swing</a></li>
 		  </ul>
 
           <p>Swing is a large library and this is not the place to introduce into the development of GUIs with Swing.</p>
 		  
-		  <p>If you are unfamiliar with Swing, you should work through <a href="http://java.sun.com/docs/books/tutorial/uiswing/">this tutorial</a>.</p>
+		  <p>If you are unfamiliar with Swing, you should work through <a href="http://docs.oracle.com/javase/tutorial/uiswing/">this tutorial</a>.</p>
 		  
-		  <p>Since Swing is part of the J2SE Development Kit, the API documentation can be found in the J2SE JavaDoc, e.g. for Version 5 at: <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html">http://java.sun.com/j2se/1.5.0/docs/api/index.html</a>.</p>
+		  <p>Since Swing is part of the J2SE Development Kit, the API documentation can be found in the J2SE JavaDoc, e.g. for Version 6 at: <a href="http://docs.oracle.com/javase/6/docs/api/index.htmll">http://docs.oracle.com/javase/6/docs/api/index.html</a>.</p>
 		  
 		  
 		</subsection>

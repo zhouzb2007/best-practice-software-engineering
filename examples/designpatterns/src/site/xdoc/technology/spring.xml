@@ -30,7 +30,7 @@
             
             <subsection name="Modules">
                 <p>
-                    The Spring documentation gives a good <a href="http://static.springframework.org/spring/docs/2.0.x/reference/introduction.html#introduction-overview">Overview</a> on the modules Spring provides. Essentially these are:
+                    The Spring documentation gives a good <a href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/">Overview</a> on the modules Spring provides. Essentially these are:
                 </p>
                 <ul>
                     <li><b>Core:</b> This is the dependency injection/inversion of control container</li>
@@ -72,7 +72,6 @@
                         <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/orm.html">ORM Support (Hibernate, ...)</a></li>
                         <li><a href="http://static.springframework.org/spring/docs/2.0.x/reference/remoting.html">Spring Remoting</a></li>
                     </ul>
-                    <li>Additionally, the Spring website lists a <a href="http://www.springframework.org/bookreview">series of books</a>.</li>
                 </ul>
             </subsection>
             
