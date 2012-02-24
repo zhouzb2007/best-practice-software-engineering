@@ -17,8 +17,8 @@
             <subsection name="Reference">
                 
                 <p>To understand Java Server Faces, please refer to Chapter 9 of the 
-                    <a href="http://java.sun.com/javaee/5/docs/tutorial/doc/index.html">Java EE 5 Tutorial</a>. The API documentation for JSF can be found at:
-                <a href="http://java.sun.com/javaee/javaserverfaces/">http://java.sun.com/javaee/javaserverfaces/</a>.</p>
+                    <a href="http://docs.oracle.com/javaee/5/tutorial/doc/index.html">Java EE 5 Tutorial</a>. The API documentation for JSF can be found at:
+                <a href="http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html">http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html</a>.</p>
             </subsection>
         </section>
         

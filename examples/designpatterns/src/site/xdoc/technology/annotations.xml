@@ -47,11 +47,8 @@ void myOverridenMethod() { }
         <subsection name="Reference">
             <p>
                 A Guide to annotations can be found on the 
-                <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html">
-                Sun documentation site</a> for Java 1.5.0. Also
-                a 
-                <a href="http://java.sun.com/docs/books/tutorial/java/javaOO/annotations.html">
-                tutorial</a> exists.
+                <a href="http://docs.oracle.com/javase/1.5.0/docs/guide/language/annotations.html">
+                Oracle documentation site</a> for Java 1.5.0. 
                 People interested in the original Java Specification Request can go to the
                 <a href="http://jcp.org/en/jsr/detail?id=175">JSR-175</a>.
                 

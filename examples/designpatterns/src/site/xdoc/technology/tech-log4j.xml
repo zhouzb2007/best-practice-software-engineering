@@ -105,9 +105,8 @@ private static Logger log = Logger.getLogger(my.package.subpackage.classname.cla
 
 	      <subsection name="Reference">
 	      
-	      <p>The official Log4J page can be found at <a href="http://logging.apache.org/log4j/docs/">http://logging.apache.org/log4j/docs/</a>.<br />
-	      Other resources of logging documentation can be found at <a href="http://www.torsten-horn.de/techdocs/java-log4j.htm">http://www.torsten-horn.de/techdocs/java-log4j.htm</a> (german documentation)<br />
-	      and <a href="http://javacore.de/jumpToDownload.php&#63;id=8">German log4j manual a javacore.de</a> (pdf direct download link)
+	      <p>The official Log4J page can be found at <a href="http://logging.apache.org/log4j/">http://logging.apache.org/log4j/docs/</a>.<br />
+	      Other resources of logging documentation can be found at <a href="http://www.torsten-horn.de/techdocs/java-log4j.htm">http://www.torsten-horn.de/techdocs/java-log4j.htm</a> (german documentation)<br />.
 	      </p>
 	      		   
 		   </subsection>

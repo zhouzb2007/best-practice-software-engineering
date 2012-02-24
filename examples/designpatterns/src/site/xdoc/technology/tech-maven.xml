@@ -53,9 +53,8 @@
 
 			<subsection name="Reference">
 				<ul>
-					<li>To get started, you should refer to the <a href="http://maven.apache.org/guides/getting-started/index.html">Getting started with Maven 2 guide</a>.</li>
+					<li>To get started, you should refer to the <a href="http://maven.apache.org/guides/getting-started/index.html">Getting started with Maven guide</a>.</li>
 					<li>Further configuration of Maven: <a href="http://maven.apache.org/guides/mini/guide-configuring-maven.html">Maven configuration guide</a></li>
-					<li>The book <em>Better Builds with Maven</em> can be downloaded for free from <a href="http://www.mergere.com/better-build-maven/">http://www.mergere.com/better-build-maven/</a>.</li>
 					<li>The reference to the Project Object Model is available here: <a href="http://maven.apache.org/ref/current/maven-model/maven.html">http://maven.apache.org/ref/current/maven-model/maven.html</a>.</li>
 					<li><a name="repo"></a>A website that can be searched for external libraries and their corresponding POM entries: <a href="http://www.mvnrepository.com/">http://www.mvnrepository.com</a></li>
 					<li>Useful plugins for Maven projects: <a href="http://maven.apache.org/plugins/index.html">Maven plugin site</a></li>

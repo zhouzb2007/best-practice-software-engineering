@@ -33,7 +33,7 @@
                         <li><a href="technology/tech-log4j.html">Log4J</a> [basic, medium, advanced]</li>
                         <li><a href="technology/tech-maven.html">Maven</a> [basic, medium, advanced]</li>
                         <li><a href="technology/spring.html">Spring</a> [basic, medium, advanced]</li>
-                        <li><a href="technology/tech-jdbctemplates.html">Spring JDBC</a> [basic]</li>
+                        <li><a href="technology/spring_jdbctemplates.html">Spring JDBC</a> [basic]</li>
                         <li><a href="technology/spring_orm.html">Spring ORM</a> [medium, advanced]</li>
                         <li><a href="technology/spring_remote.html">Spring Remote</a> [advanced]</li>			
                         <li><a href="technology/aop.html">Aspect Oriented Programming</a> [medium]</li>			

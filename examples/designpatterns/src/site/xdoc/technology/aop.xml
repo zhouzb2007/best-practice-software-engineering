@@ -603,7 +603,6 @@ declare parents : Account implements Loggable;
 					<li><a href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/aop.html">Aspects with Spring</a></li>
 					<li><a href="http://www.theserverside.com/tt/articles/article.tss?l=ObjectCachingWithAOP">Implementing Objec Caching with AOP</a></li>
 					<li><a href="http://today.java.net/pub/a/today/2005/11/08/implementing-validation-rules-with-aspects.html">Implementing Validation Rules using Aspects</a></li>
-					<li><a href="http://www.securityfocus.com/infocus/1895/1">AOP and Security</a></li>
 				</ul>
  			</subsection>
 		</section>

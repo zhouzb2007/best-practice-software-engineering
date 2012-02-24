@@ -13,7 +13,7 @@
 		  
           <p>But it should be noted here, that <b>O/R tools like Hibernate are actually instrinsically very complex tools</b>. They can contribute to a clean and efficient application design, particularly when complex object-graphs in large applications have to be persisted. In simple applications the usage of O/R tools is typically an overkill. One thing has to be clear anyway: the additional complexity of O/R tools must not be underestimated and a very skilled expert should be available to configure the system appropriately. Otherwise the whole project might be in jeopardy!</p>
           
-          <p>In many cases "better" object to SQL mapping using Apache <a href="http://ibatis.apache.org">iBatis</a> might be the best way to go.</p>
+          <p>In many cases "better" object to SQL mapping using <a href="http://www.mybatis.org/">mybatis</a> might be the best way to go.</p>
           
 		<p>Hibernate (<a href="http://www.hibernate.org">http://www.hibernate.org</a>) and Castor (<a href="http://www.castor.org/">http://www.castor.org/</a>) are the
 		  two most popular ORM-tools at the moment. Hibernate is tightly integrated into Java and now also into JBoss and is used in the "Medium" example, the webapplication alongside with Java Server Faces technology.</p>
@@ -27,9 +27,8 @@
 		
 		<subsection name="Reference">
 		   <p>Hibernate has also a great
-		   documentation that you should look at: <a href="http://www.hibernate.org/hib_docs/v3/reference/en/html/">http://www.hibernate.org/hib_docs/v3/reference/en/html/</a> 
-		   (other languages are also available at <a href="http://www.hibernate.org">http://www.hibernate.org</a>). If you are new to Hibernate, you should start with 
-		   Chapter 1.1, which is a simple "HelloWorld" application. </p>
+		   documentation that you should look at: <a href="http://docs.jboss.org/hibernate/core/4.0/quickstart/en-US/html/">http://docs.jboss.org/hibernate/core/4.0/quickstart/en-US/html/</a> 
+		   (other languages are also available at <a href="http://www.hibernate.org">http://www.hibernate.org</a>).  </p>
 		   
 		</subsection>
 	</section>
